@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Route 66 Hemp</title>
   
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
@@ -19,8 +23,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
   <script>
     tailwind.config = {
       darkMode: 'media',
@@ -51,21 +57,21 @@
     /* Ensure dark mode text contrast */
     @media (prefers-color-scheme: dark) {
       .dark-mode-text {
-        color: #e5e7eb;
+        color: #ffffff; /* Increased contrast */
       }
       body {
-        background-color: #181818;
-        color: #e5e7eb;
+        background-color: #121212; /* Darker background */
+        color: #ffffff; /* Increased contrast */
       }
     }
     
     @media (prefers-color-scheme: light) {
       .dark-mode-text {
-        color: #1f2937;
+        color: #000000; /* Increased contrast */
       }
       body {
-        background-color: #FFFFFF;
-        color: #1f2937;
+        background-color: #f5f5f5; /* Lighter background */
+        color: #000000; /* Increased contrast */
       }
     }
     
@@ -249,18 +255,16 @@
                           <p className="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                             Discover our range of high-quality, lab-tested hemp products. From CBD oils to edibles, we have everything you need for a balanced lifestyle.
                           </p>
-                          <div className="mt-10 sm:mt-12">
-                            <div className="sm:flex sm:justify-center lg:justify-start">
-                              <div className="rounded-md shadow">
-                                <a href="#products" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-opacity-90 md:py-4 md:text-lg md:px-10">
-                                  Explore Products
-                                </a>
-                              </div>
-                              <div className="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="#about" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 md:py-4 md:text-lg md:px-10">
-                                  Learn More
-                                </a>
-                              </div>
+                          <div className="mt-10 sm:mt-12 flex justify-center lg:justify-start space-x-4">
+                            <div className="rounded-md shadow">
+                              <a href="#products" className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-opacity-90 md:py-4 md:text-lg md:px-10">
+                                Explore Products
+                              </a>
+                            </div>
+                            <div className="rounded-md shadow">
+                              <a href="#about" className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-primary bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 md:py-5 md:text-lg md:px-10">
+                                Learn More
+                              </a>
                             </div>
                           </div>
                         </div>
