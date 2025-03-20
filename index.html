@@ -35,9 +35,9 @@
       theme: {
         extend: {
           colors: {
-            primary: '#4a4ac4', // Adjusted to improve contrast
-            secondary: '#4CAF50',
-            accent: '#8BC34A'
+            primary: '#2a2ac4', // Adjusted to improve contrast
+            secondary: '#388E3C',
+            accent: '#689F38'
           },
           fontFamily: {
             sans: ['Montserrat', 'sans-serif']
@@ -67,24 +67,21 @@
       }
     }
     
-    @media (prefers-color-scheme: light) {
-      .dark-mode-text {
-        color: #000000; /* Increased contrast */
-      }
-      body {
-        background-color: #f5f5f5; /* Lighter background */
-        color: #000000; /* Increased contrast */
-      }
-    }
-    
-    /* Update text color for better contrast */
-    .text-gray-500 {
-      color: #6b7280; /* Adjusted to improve contrast */
-    }
-
-    .text-gray-400 {
-      color: #9ca3af; /* Adjusted to improve contrast */
-    }
+   @media (prefers-color-scheme: light) {
+     .dark-mode-text {
+       color: #1a1a1a; /* Darker text for better contrast */
+     }
+     body {
+       background-color: #ffffff; /* Pure white background */
+       color: #1a1a1a; /* Darker text color */
+     }
+     .text-gray-500 {
+       color: #4a4a4a; /* Darker gray for better contrast */
+     }
+     .text-gray-400 {
+       color: #6a6a6a; /* Slightly darker gray */
+     }
+   }
     
     /* Custom cannabis leaf loader */
     .leaf-loader {
@@ -97,6 +94,15 @@
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+
+    button {
+      background-color: #2a2ac4; /* Darker primary color */
+      color: #ffffff; /* White text for contrast */
+    }
+
+    button:hover {
+      background-color: #1f1fa3; /* Even darker on hover */
     }
   </style>
 </head>
@@ -262,7 +268,7 @@
                           <div className="lg:py-24">
                             <h1 className="mt-4 text-4xl tracking-tight font-extrabold dark-mode-text sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                               <span>Premium Hemp Products</span>
-                              <span className="text-secondary block">For Your Wellness</span>
+                              <span className="text-secondary block" style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);">For Your Wellness</span>
                             </h1>
                             <p className="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                               Discover our range of high-quality, lab-tested hemp products. From CBD oils to edibles, we have everything you need for a balanced lifestyle.
