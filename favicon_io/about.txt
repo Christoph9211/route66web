@@ -1,6 +1,0 @@
-This favicon was generated using the following font:
-
-- Font Title: Reddit Mono
-- Font Author: undefined
-- Font Source: https://fonts.gstatic.com/s/redditmono/v3/oPWc_kRmmu4oQ88oo13o48DHbsqn28eR20vUaSEacnnYz7yQYA.ttf
-- Font License: undefined)
