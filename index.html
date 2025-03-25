@@ -39,10 +39,16 @@
 
   <!-- Google Fonts -->
 
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
+  <!-- Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
 
   <script>
 
@@ -994,7 +1000,7 @@
 
                           <div className="flex-shrink-0 mb-2">
 
-                            <i className="fas fa-map-marker-alt text-primary text-xl" aria-hidden="true"></i>
+                            <i className="fas fa-map-marker-alt text-secondary text-xl" aria-hidden="true"></i>
 
                           </div>
 
@@ -1013,7 +1019,7 @@
 
                           <div className="flex-shrink-0">
 
-                            <i className="fas fa-phone-alt text-primary text-xl" aria-hidden="true"></i>
+                            <i className="fas fa-phone-alt text-secondary text-xl" aria-hidden="true"></i>
 
                           </div>
 
@@ -1030,7 +1036,7 @@
 
                           <div className="flex-shrink-0">
 
-                            <i className="fas fa-envelope text-primary text-xl" aria-hidden="true"></i>
+                            <i className="fas fa-envelope text-secondary text-xl" aria-hidden="true"></i>
 
                           </div>
 
@@ -1047,7 +1053,7 @@
 
                           <div className="flex-shrink-0">
 
-                            <i className="fas fa-clock text-primary text-xl" aria-hidden="true"></i>
+                            <i className="fas fa-clock text-secondary text-xl" aria-hidden="true"></i>
 
                           </div>
 
@@ -1070,21 +1076,21 @@
 
                           <div className="flex flex-col space-y-2 mt-2 lg:flex-row lg:space-x-6 lg:space-y-0 lg:justify-center justify-center gap-x-4">
 
-                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary lg:text-center" aria-label="Facebook">
+                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary lg:text-center" aria-label="Facebook">
 
                               <i className="fab fa-facebook text-2xl" aria-hidden="true"></i>
                               <span className="sr-only">Facebook</span>
 
                             </a>
 
-                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary lg:text-center" aria-label="Instagram">
+                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary lg:text-center" aria-label="Instagram">
 
                               <i className="fab fa-instagram text-2xl" aria-hidden="true"></i>
                               <span className="sr-only">Instagram</span>
 
                             </a>
 
-                            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary lg:text-center" aria-label="Twitter">
+                            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary lg:text-center" aria-label="Twitter">
 
                               <i className="fab fa-twitter text-2xl" aria-hidden="true"></i>
                               <span className="sr-only">Twitter</span>
@@ -1441,9 +1447,6 @@
     root.render(<App />);
 
   </script>
-
-
-
 
 </body>
 
