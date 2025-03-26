@@ -1,15 +1,15 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
+  "trailingSlash": true,
   "rewrites": [
     {
-      "source": "/:path*/",
+      "source": "/:path*",
       "destination": "/:path*"
     }
   ],
   "headers": [
     {
-      "source": "/(.*\\.html)",
+      "source": "/specific-directory/(.*\\.html)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
