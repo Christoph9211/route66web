@@ -1,7 +1,6 @@
-.vscode
-.DS_Store
-node_modules
-.env
-.json
-.png
-.ico
+# Ignore all .json files except package.json
+*.json
+!package.json
+
+# Ignore all node_modules directories
+node_modules/

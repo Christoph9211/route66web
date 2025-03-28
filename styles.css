@@ -44,14 +44,6 @@
   100% { transform: rotate(360deg); }
 }
 
-button {
-  background-color: #4A0F66;
-  color: #ffffff;
-}
-button:hover {
-  background-color: #3A0C52;
-}
-
 /* Focus styles for accessibility */
 a:focus,
 button:focus,
