@@ -171,12 +171,12 @@ function App() {
                         </p>
                         <div className="mt-10 sm:mt-12 flex justify-center lg:justify-start space-x-4">
                           <div className="rounded-md shadow">
-                            <a href="#products" className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 md:py-4 md:text-lg md:px-10">
+                            <a href="#products" className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 hover:bg-opacity-90 md:py-4 md:text-lg md:px-10">
                               Explore Products
                             </a>
                           </div>
                           <div className="rounded-md shadow">
-                            <a href="#about" className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-opacity-90 hover:bg-opacity-90 dark:hover:bg-gray-700 md:py-5 md:text-lg md:px-10">
+                            <a href="#about" className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 hover:bg-opacity-90 md:py-4 md:text-lg md:px-10">
                               Learn More
                             </a>
                           </div>
@@ -284,7 +284,7 @@ function App() {
               </div>
             ) : (
               <div className="col-span-full text-center py-12">
-                <p className="text-gray-700 dark:text-gray-300">No products found in this category.</p>
+                <p className="text-gray-700 dark:text-gray-300">Products Coming Soon</p>
               </div>
             )}
           </div>
@@ -516,7 +516,7 @@ function App() {
                     </li>
                     <li>
                       <a href="#" className="text-base text-gray-400 hover:text-white">
-                        Hemp Flowers
+                        Hemp Flower
                       </a>
                     </li>
                     <li>
