@@ -1,7 +1,7 @@
-.vscode
-.DS_Store
-node_modules
-.env
-.json
-.png
-.ico
+# Ignore all .json files except package.json
+*.json
+!package.json
+
+# Ignore all .ico files except those in a specific folder (e.g., public/icons)
+*.ico
+!public/*.ico
