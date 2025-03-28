@@ -361,7 +361,7 @@ function App() {
                       </div>
                       <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">Organically Grown</h3>
                       <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
-                        Our hemp is grown using organic practices, free from harmful pesticides and chemicals, resulting in a cleaner, better product.
+                        Our hemp is grown free from harmful pesticides and chemicals, resulting in a cleaner, better product.
                       </p>
                     </div>
                   </div>
