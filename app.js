@@ -29,7 +29,7 @@ function App() {
         category: 'cbd-oil',
         rating: 4.5,
         image: '/assets/images/cbd-oil-500mg.jpg',
-        url: '/products/cbd-oil-500mg'
+        url: 'https://route66hemp.com/products/cbd-oil-500mg'
       },
       {
         id: 'cbd-gummies-1000mg',
@@ -39,7 +39,7 @@ function App() {
         category: 'edibles',
         rating: 4.8,
         image: '/assets/images/cbd-gummies-1000mg.jpg',
-        url: '/products/cbd-gummies-1000mg'
+        url: 'https://route66hemp.com/products/cbd-gummies-1000mg'
       }
     ];
     setAppState((prevState) => ({
