@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snipcart Templates</title>
+</head>
+<body>
+  <div id="snipcart-templates">
+    <!-- Custom cart template -->
+    <div id="snipcart-cart-template">
+      <div class="snipcart-cart-header">
+        <h2>Your Cart</h2>
+      </div>
+      <div class="snipcart-cart-content">
+        <div class="snipcart-cart-items">
+          {{#each items}}
+            <div class="snipcart-cart-item">
+              <img src="{{image}}" alt="{{name}}" class="snipcart-cart-item-image">
+              <div class="snipcart-cart-item-details">
+                <h3>{{name}}</h3>
+                <p>{{description}}</p>
+                <p class="snipcart-cart-item-price">${{price}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="snipcart-cart-footer">
+        <div class="snipcart-cart-total">
+          <h3>Total: ${{total}}</h3>
+        </div>
+        <button class="snipcart-checkout">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 
