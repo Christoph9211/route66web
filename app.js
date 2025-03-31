@@ -20,7 +20,28 @@ function App() {
       { id: 'flowers', name: 'Hemp Flower' },
       { id: 'accessories', name: 'Accessories' },
     ];
-    const sampleProducts = [];
+    const sampleProducts = [
+      {
+        id: 'cbd-oil-500mg',
+        name: 'CBD Oil 500mg',
+        description: 'Premium CBD Oil 500mg - Natural flavor.',
+        price: 49.99,
+        category: 'cbd-oil',
+        rating: 4.5,
+        image: '/assets/images/cbd-oil-500mg.jpg',
+        url: '/products/cbd-oil-500mg'
+      },
+      {
+        id: 'cbd-gummies-1000mg',
+        name: 'CBD Gummies 1000mg',
+        description: 'Delicious CBD Gummies - Mixed Berry flavor.',
+        price: 59.99,
+        category: 'edibles',
+        rating: 4.8,
+        image: '/assets/images/cbd-gummies-1000mg.jpg',
+        url: '/products/cbd-gummies-1000mg'
+      }
+    ];
     setAppState((prevState) => ({
       ...prevState,
       categories: sampleCategories,
@@ -114,6 +135,12 @@ function App() {
               <a href="#products" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">Products</a>
               <a href="#about" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">About</a>
               <a href="#contact" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">Contact</a>
+              <button 
+                className="snipcart-checkout dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150 flex items-center"
+              >
+                <i className="fas fa-shopping-cart mr-2"></i>
+                <span className="snipcart-items-count">0</span>
+              </button>
             </div>
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center">
@@ -148,6 +175,13 @@ function App() {
               <a href="#products" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Products</a>
               <a href="#about" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">About</a>
               <a href="#contact" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Contact</a>
+              <button 
+                className="snipcart-checkout w-full text-left dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium flex items-center"
+              >
+                <i className="fas fa-shopping-cart mr-2"></i>
+                <span>Cart</span>
+                <span className="snipcart-items-count ml-2">(0)</span>
+              </button>
             </div>
           </div>
         )}
@@ -265,6 +299,15 @@ function App() {
                     key={product.id}
                     className="group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow"
                   >
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-48 object-cover rounded-md mb-4"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/assets/images/placeholder.jpg';
+                      }}
+                    />
                     <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
                     <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{product.description}</p>
                     <p className="mt-2 font-medium text-gray-900 dark:text-gray-100">${product.price.toFixed(2)}</p>
@@ -279,6 +322,20 @@ function App() {
                       ))}
                       <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">({product.rating})</span>
                     </div>
+                    <button
+                      className="snipcart-add-item mt-4 w-full py-2 bg-primary text-white rounded-lg transition duration-200"
+                      data-item-id={product.id}
+                      data-item-price={product.price}
+                      data-item-description={product.description}
+                      data-item-image={product.image}
+                      data-item-name={product.name}
+                      data-item-url={product.url}
+                      data-item-custom1-name="Age Verification"
+                      data-item-custom1-options="21+"
+                      data-item-custom1-required="true"
+                    >
+                      Add to Cart
+                    </button>
                   </div>
                 ))}
               </div>
