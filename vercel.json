@@ -3,7 +3,7 @@
   "trailingSlash": true,
   "headers": [
     {
-      "source": "/specific-directory/(.*\\.html)",
+      "source": "/assets/images/(.*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
