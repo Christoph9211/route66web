@@ -1,0 +1,46 @@
+// [
+//   {
+//     "id": "cbd-oil-500mg",
+//     "name": "CBD Oil 500mg",
+//     "description": "Premium CBD Oil 500mg - Natural flavor.",
+//     "price": 49.99,
+//     "image": "/assets/images/cbd-oil-500mg.jpg",
+//     "url": "/",
+//     "inventoryManagementMethod": "Simple",
+//     "dimensions": {
+//       "weight": 100,
+//       "width": 2,
+//       "height": 6,
+//       "length": 2
+//     },
+//     "customFields": [
+//       {
+//         "name": "Age Verification",
+//         "options": "21+",
+//         "required": true
+//       }
+//     ]
+//   },
+//   {
+//     "id": "cbd-gummies-1000mg",
+//     "name": "CBD Gummies 1000mg",
+//     "description": "Delicious CBD Gummies - Mixed Berry flavor.",
+//     "price": 59.99,
+//     "image": "/assets/images/cbd-gummies-1000mg.jpg",
+//     "url": "/",
+//     "inventoryManagementMethod": "Simple",
+//     "dimensions": {
+//       "weight": 200,
+//       "width": 4,
+//       "height": 4,
+//       "length": 4
+//     },
+//     "customFields": [
+//       {
+//         "name": "Age Verification",
+//         "options": "21+",
+//         "required": true
+//       }
+//     ]
+//   }
+// ] 
