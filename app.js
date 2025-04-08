@@ -17,7 +17,7 @@ function App() {
       { id: 'cbd-oil', name: 'CBD Oil' },
       { id: 'edibles', name: 'Edibles' },
       { id: 'concentrates', name: 'Concentrates' },
-      { id: 'flowers', name: 'Hemp Flower' },
+      { id: 'cannabis-flower', name: 'Cannabis Flower' },
       { id: 'accessories', name: 'Accessories' },
     ];
     const sampleProducts = [];
