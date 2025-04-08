@@ -416,7 +416,7 @@ function App() {
                         <i className="fas fa-phone-alt text-secondary text-xl" aria-hidden="true" tabIndex="-1"></i>
                       </div>
                       <div className="ml-3 text-base text-gray-700 dark:text-gray-300">
-                        <p>+1 (555) 123-4567</p>
+                        <p>+1 (573) 578-2988</p>
                       </div>
                     </div>
                     <div className="flex flex-col items-center mb-6">
@@ -433,8 +433,8 @@ function App() {
                       </div>
                       <div className="ml-3 text-base text-gray-700 dark:text-gray-300 lg:text-center">
                         <p className="font-medium dark-mode-text">Store Hours:</p>
-                        <p>Monday - Saturday: 10:00 AM - 8:00 PM</p>
-                        <p>Sunday: 12:00 PM - 6:00 PM</p>
+                        <p>Monday - Saturday: 10:00 AM - 9:00 PM</p>
+                        <p>Sunday: Closed</p>
                       </div>
                     </div>
                     <div className="mt-8">
