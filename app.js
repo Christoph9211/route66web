@@ -17,7 +17,7 @@ function App() {
       { id: 'cbd-oil', name: 'CBD Oil' },
       { id: 'edibles', name: 'Edibles' },
       { id: 'concentrates', name: 'Concentrates' },
-      { id: 'flowers', name: 'Hemp Flower' },
+      { id: 'cannabis-flower', name: 'Cannabis Flower' },
       { id: 'accessories', name: 'Accessories' },
     ];
     const sampleProducts = [
@@ -135,12 +135,6 @@ function App() {
               <a href="#products" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">Products</a>
               <a href="#about" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">About</a>
               <a href="#contact" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">Contact</a>
-              <button 
-                className="snipcart-checkout dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150 flex items-center"
-              >
-                <i className="fas fa-shopping-cart mr-2"></i>
-                <span className="snipcart-items-count">0</span>
-              </button>
             </div>
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center">
@@ -322,20 +316,6 @@ function App() {
                       ))}
                       <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">({product.rating})</span>
                     </div>
-                    <button
-                      className="snipcart-add-item mt-4 w-full py-2 bg-primary text-white rounded-lg transition duration-200"
-                      data-item-id={product.id}
-                      data-item-price={product.price}
-                      data-item-description={product.description}
-                      data-item-image={product.image}
-                      data-item-name={product.name}
-                      data-item-url={product.url}
-                      data-item-custom1-name="Age Verification"
-                      data-item-custom1-options="21+"
-                      data-item-custom1-required="true"
-                    >
-                      Add to Cart
-                    </button>
                   </div>
                 ))}
               </div>
