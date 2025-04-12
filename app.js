@@ -470,8 +470,9 @@ function App() {
                       </div>
                       <div className="ml-3 text-base text-gray-700 dark:text-gray-300 lg:text-center">
                         <p className="font-medium dark-mode-text">Store Hours:</p>
-                        <p>Monday - Saturday: 10:00 AM - 8:00 PM</p>
-                        <p>Sunday: 12:00 PM - 6:00 PM</p>
+                        <p>Monday - Thursday: 11:00 AM - 9:00 PM</p>
+                        <p>Friday - Saturday: 11:00 AM - 10:00 PM</p>
+                        <p>Sunday: Closed</p>
                       </div>
                     </div>
                     <div className="mt-8">
