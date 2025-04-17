@@ -9,3 +9,4 @@ node_modules/
 # Ignore all .tmp files
 *.tmp
 .vscode/
+products/json-gen.html
