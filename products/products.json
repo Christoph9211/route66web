@@ -4,43 +4,51 @@
     "name": "CBD Oil 500mg",
     "description": "Premium CBD Oil 500mg - Natural flavor.",
     "price": 49.99,
-    "image": "/assets/images/cbd-oil-500mg.jpg",
-    "url": "/",
+    "category": "cbd-oil",
+    "rating": 5,
+    "image": "image: '/assets/images/cbd-oil-500mg.jpg',",
+    "url": "https://route66hemp.com/products/cbd-oil-500mg",
     "inventoryManagementMethod": "Simple",
     "dimensions": {
       "weight": 100,
-      "width": 2,
-      "height": 6,
-      "length": 2
-    },
-    "customFields": [
-      {
-        "name": "Age Verification",
-        "options": "21+",
-        "required": true
-      }
-    ]
-  },
-  {
-    "id": "cbd-gummies-1000mg",
-    "name": "CBD Gummies 1000mg",
-    "description": "Delicious CBD Gummies - Mixed Berry flavor.",
-    "price": 59.99,
-    "image": "/assets/images/cbd-gummies-1000mg.jpg",
-    "url": "/",
-    "inventoryManagementMethod": "Simple",
-    "dimensions": {
-      "weight": 200,
       "width": 4,
       "height": 4,
       "length": 4
-    },
-    "customFields": [
-      {
-        "name": "Age Verification",
-        "options": "21+",
-        "required": true
-      }
-    ]
+    }
+  },
+  {
+    
+    "id": "new-product-id",
+    "name": "New Product Name",
+    "description": "New Product Description",
+    "price": 99.99,
+    "category": "new-category",
+    "rating": 4,
+    "image": "new-image-url",
+    "url": "https://example.com/new-product-url",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "Placeholder",
+    "name": "Placeholder",
+    "description": "Placeholder",
+    "price": 55,
+    "category": "Placeholder",
+    "rating": 5,
+    "image": "Placeholder",
+    "url": "Placeholder",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
   }
-] 
+]
