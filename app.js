@@ -13,41 +13,43 @@ function App() {
     if (verifiedAge) {
       setAppState((prevState) => ({ ...prevState, age: parseInt(verifiedAge) }));
     }
-    const sampleCategories = [
-      { id: 'cbd-oil', name: 'CBD Oil' },
-      { id: 'edibles', name: 'Edibles' },
-      { id: 'concentrates', name: 'Concentrates' },
-      { id: 'cannabis-flower', name: 'Cannabis Flower' },
-      { id: 'accessories', name: 'Accessories' },
-    ];
-    const sampleProducts = [
-      {
-        id: 'cbd-oil-500mg',
-        name: 'CBD Oil 500mg',
-        description: 'Premium CBD Oil 500mg - Natural flavor.',
-        price: 49.99,
-        category: 'cbd-oil',
-        rating: 4.5,
-        image: '/assets/images/cbd-oil-500mg.jpg',
-        url: 'https://route66hemp.com/products/cbd-oil-500mg'
-      },
-      {
-        id: 'cbd-gummies-1000mg',
-        name: 'CBD Gummies 1000mg',
-        description: 'Delicious CBD Gummies - Mixed Berry flavor.',
-        price: 59.99,
-        category: 'edibles',
-        rating: 4.8,
-        image: '/assets/images/cbd-gummies-1000mg.jpg',
-        url: 'https://route66hemp.com/products/cbd-gummies-1000mg'
-      }
-    ];
-    setAppState((prevState) => ({
-      ...prevState,
-      categories: sampleCategories,
-      products: sampleProducts,
-      loading: false,
-    }));
+
+    // Fetch products from the JSON file
+    fetch('/products/products.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        return response.json();
+      })
+      .then(productsData => {
+        // Extract unique categories from products
+        const uniqueCategories = [...new Set(productsData.map(product => product.category))];
+        
+        // Format categories for your UI
+        const formattedCategories = uniqueCategories.map(categoryId => {
+          // Convert category-id to Category Name format
+          const name = categoryId.split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+          
+          return { id: categoryId, name };
+        });
+
+        setAppState((prevState) => ({
+          ...prevState,
+          categories: formattedCategories,
+          products: productsData,
+          loading: false,
+        }));
+      })
+      .catch(error => {
+        console.error('Error loading products:', error);
+        setAppState((prevState) => ({
+          ...prevState,
+          loading: false,
+        }));
+      });
   }, []);
 
   const handleAgeVerification = (isOver21) => {
