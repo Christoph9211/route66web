@@ -119,7 +119,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav className="bg-white dark:bg-gray-800 shadow-md">
+      <nav role="navigation" className="bg-white dark:bg-gray-800 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -182,7 +182,7 @@ function App() {
           </div>
         )}
       </nav>
-      <main>
+      <section>
         {/* Hero Section */}
         <div className="relative bg-gray-50 dark:bg-gray-900 overflow-hidden">
           <div className="max-w-7xl mx-auto">
@@ -500,9 +500,9 @@ function App() {
             </div>
           </div>
         </div>
-      </main>
+      </section>
       {/* Footer */}
-      <footer className="bg-gray-800 dark:bg-gray-900">
+      <footer role = "contentinfo" className="bg-gray-800 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
