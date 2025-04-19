@@ -1,11 +1,10 @@
 [
-
   {
-    "id": "Premium-Blueberry-Diesel-one-gram",
-    "name": "Premium Blueberry Diesel Wax",
-    "description": "One Gram - 97.1% THCA ",
-    "price": 10,
-    "category": "Concentrates",
+    "id": "premium-blueberry-diesel-1g",
+    "name": "Premium Blueberry Diesel - 1g",
+    "description": "Premium Blueberry Diesel concentrate (1g), 97.7% THCA.",
+    "price": 10.0,
+    "category": "concentrates",
     "rating": 5,
     "image": "/assets/images/Premium-Blueberry-Diesel.jpg",
     "url": "https://www.route66hemp.com/Products/Premium-Blueberry-Diesel_one-gram",
@@ -13,41 +12,789 @@
     "dimensions": {
       "weight": 100,
       "width": 4,
-      "height": 5,
+      "height": 4,
       "length": 4
     }
   },
   {
-    "id": "Premium-Blueberry-Diesel-three-grams",
-    "name": "Premium Blueberry Diesel Wax",
-    "description": "Three Grams - 97.1% THCA ",
-    "price": 25,
-    "category": "Concentrates",
+    "id": "premium-blueberry-diesel-3g",
+    "name": "Premium Blueberry Diesel - 3g",
+    "description": "Premium Blueberry Diesel concentrate (3g), 97.7% THCA.",
+    "price": 25.0,
+    "category": "concentrates",
     "rating": 5,
-    "image": "/assets/images/Premium-Blueberry-Diesel.jpg",
-    "url": "https://www.route66hemp.com/Products/Premium-Blueberry-Diesel_three-grams",
+    "image": "",
+    "url": "",
     "inventoryManagementMethod": "Simple",
     "dimensions": {
       "weight": 100,
       "width": 4,
-      "height": 5,
+      "height": 4,
       "length": 4
     }
   },
   {
-    "id": "Placeholder",
-    "name": "Placeholder",
-    "description": "Placeholder",
-    "price": 55,
-    "category": "Placeholder",
+    "id": "super-sour-diesel-1g",
+    "name": "Super Sour Diesel - 1g",
+    "description": "Super Sour Diesel concentrate (1g), 96.1% THCA.",
+    "price": 10.0,
+    "category": "concentrates",
     "rating": 5,
-    "image": "Placeholder",
-    "url": "Placeholder",
+    "image": "",
+    "url": "",
     "inventoryManagementMethod": "Simple",
     "dimensions": {
       "weight": 100,
       "width": 4,
-      "height": 5,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "super-sour-diesel-3g",
+    "name": "Super Sour Diesel - 3g",
+    "description": "Super Sour Diesel concentrate (3g), 96.1% THCA.",
+    "price": 25.0,
+    "category": "concentrates",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "granddaddy-purple-dab-crumble-1g",
+    "name": "Granddaddy Purple Dab Crumble - 1g",
+    "description": "Granddaddy Purple Dab Crumble concentrate (1g), 97.1% THCA.",
+    "price": 10.0,
+    "category": "concentrates",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "granddaddy-purple-dab-crumble-3g",
+    "name": "Granddaddy Purple Dab Crumble - 3g",
+    "description": "Granddaddy Purple Dab Crumble concentrate (3g), 97.1% THCA.",
+    "price": 25.0,
+    "category": "concentrates",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "cherry-pie-dab-crumble-1g",
+    "name": "Cherry Pie Dab Crumble - 1g",
+    "description": "Cherry Pie Dab Crumble concentrate (1g), 97.1% THCA.",
+    "price": 10.0,
+    "category": "concentrates",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "cherry-pie-dab-crumble-3g",
+    "name": "Cherry Pie Dab Crumble - 3g",
+    "description": "Cherry Pie Dab Crumble concentrate (3g), 97.1% THCA.",
+    "price": 25.0,
+    "category": "concentrates",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "quattro-kush-1-8",
+    "name": "Quattro Kush - 1/8",
+    "description": "Quattro Kush premium THCA hemp flower (1/8).",
+    "price": 20.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "quattro-kush-1-4",
+    "name": "Quattro Kush - 1/4",
+    "description": "Quattro Kush premium THCA hemp flower (1/4).",
+    "price": 40.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "quattro-kush-1-2",
+    "name": "Quattro Kush - 1/2",
+    "description": "Quattro Kush premium THCA hemp flower (1/2).",
+    "price": 80.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "quattro-kush-ounce",
+    "name": "Quattro Kush - Ounce",
+    "description": "Quattro Kush premium THCA hemp flower (Ounce).",
+    "price": 145.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "super-boof-1-8",
+    "name": "Super Boof - 1/8",
+    "description": "Super Boof premium THCA hemp flower (1/8).",
+    "price": 15.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "super-boof-1-4",
+    "name": "Super Boof - 1/4",
+    "description": "Super Boof premium THCA hemp flower (1/4).",
+    "price": 30.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "super-boof-1-2",
+    "name": "Super Boof - 1/2",
+    "description": "Super Boof premium THCA hemp flower (1/2).",
+    "price": 60.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "super-boof-ounce",
+    "name": "Super Boof - Ounce",
+    "description": "Super Boof premium THCA hemp flower (Ounce).",
+    "price": 110.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "mittens-cake-1-8",
+    "name": "Mittens Cake - 1/8",
+    "description": "Mittens Cake premium THCA hemp flower (1/8).",
+    "price": 18.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "mittens-cake-1-4",
+    "name": "Mittens Cake - 1/4",
+    "description": "Mittens Cake premium THCA hemp flower (1/4).",
+    "price": 32.5,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "mittens-cake-1-2",
+    "name": "Mittens Cake - 1/2",
+    "description": "Mittens Cake premium THCA hemp flower (1/2).",
+    "price": 65.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "mittens-cake-ounce",
+    "name": "Mittens Cake - Ounce",
+    "description": "Mittens Cake premium THCA hemp flower (Ounce).",
+    "price": 125.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "apples-bananas-1-8",
+    "name": "Apples & Bananas - 1/8",
+    "description": "Apples & Bananas premium THCA hemp flower (1/8).",
+    "price": 18.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "apples-bananas-1-4",
+    "name": "Apples & Bananas - 1/4",
+    "description": "Apples & Bananas premium THCA hemp flower (1/4).",
+    "price": 32.5,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "apples-bananas-1-2",
+    "name": "Apples & Bananas - 1/2",
+    "description": "Apples & Bananas premium THCA hemp flower (1/2).",
+    "price": 65.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "apples-bananas-ounce",
+    "name": "Apples & Bananas - Ounce",
+    "description": "Apples & Bananas premium THCA hemp flower (Ounce).",
+    "price": 125.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "jelly-breath-1-8",
+    "name": "Jelly Breath - 1/8",
+    "description": "Jelly Breath premium THCA hemp flower (1/8).",
+    "price": 18.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "jelly-breath-1-4",
+    "name": "Jelly Breath - 1/4",
+    "description": "Jelly Breath premium THCA hemp flower (1/4).",
+    "price": 32.5,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "jelly-breath-1-2",
+    "name": "Jelly Breath - 1/2",
+    "description": "Jelly Breath premium THCA hemp flower (1/2).",
+    "price": 65.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "jelly-breath-ounce",
+    "name": "Jelly Breath - Ounce",
+    "description": "Jelly Breath premium THCA hemp flower (Ounce).",
+    "price": 125.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "girl-scout-cookies-1-8",
+    "name": "Girl Scout Cookies - 1/8",
+    "description": "Girl Scout Cookies premium THCA hemp flower (1/8).",
+    "price": 18.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "girl-scout-cookies-1-4",
+    "name": "Girl Scout Cookies - 1/4",
+    "description": "Girl Scout Cookies premium THCA hemp flower (1/4).",
+    "price": 32.5,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "girl-scout-cookies-1-2",
+    "name": "Girl Scout Cookies - 1/2",
+    "description": "Girl Scout Cookies premium THCA hemp flower (1/2).",
+    "price": 65.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "girl-scout-cookies-ounce",
+    "name": "Girl Scout Cookies - Ounce",
+    "description": "Girl Scout Cookies premium THCA hemp flower (Ounce).",
+    "price": 125.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "mac-1-1-8",
+    "name": "Mac 1 - 1/8",
+    "description": "Mac 1 premium THCA hemp flower (1/8).",
+    "price": 18.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "mac-1-1-4",
+    "name": "Mac 1 - 1/4",
+    "description": "Mac 1 premium THCA hemp flower (1/4).",
+    "price": 32.5,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "mac-1-1-2",
+    "name": "Mac 1 - 1/2",
+    "description": "Mac 1 premium THCA hemp flower (1/2).",
+    "price": 65.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "mac-1-ounce",
+    "name": "Mac 1 - Ounce",
+    "description": "Mac 1 premium THCA hemp flower (Ounce).",
+    "price": 125.0,
+    "category": "flower",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "diamond-sauce-blueberry-muffin-1g",
+    "name": "Diamond & Sauce Blueberry Muffin - 1g",
+    "description": "Diamond & Sauce Blueberry Muffin (1g).",
+    "price": 15.0,
+    "category": "diamonds-and-sauce",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "diamond-sauce-blueberry-muffin-3g",
+    "name": "Diamond & Sauce Blueberry Muffin - 3g",
+    "description": "Diamond & Sauce Blueberry Muffin (3g).",
+    "price": 40.0,
+    "category": "diamonds-and-sauce",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "d-sauce-amnesia-haze-1g",
+    "name": "D& Sauce Amnesia Haze - 1g",
+    "description": "D& Sauce Amnesia Haze (1g).",
+    "price": 15.0,
+    "category": "diamonds-and-sauce",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "d-sauce-amnesia-haze-3g",
+    "name": "D& Sauce Amnesia Haze - 3g",
+    "description": "D& Sauce Amnesia Haze (3g).",
+    "price": 40.0,
+    "category": "diamonds-and-sauce",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "flower-preroll",
+    "name": "Flower Preroll",
+    "description": "Premium THCA flower preroll.",
+    "price": 5.0,
+    "category": "other",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "2-gram-vape-runtz",
+    "name": "2 Gram Vape - Runtz",
+    "description": "2\u2011gram disposable THCA vape \u2013 Runtz flavor.",
+    "price": 30.0,
+    "category": "vapes",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "2-gram-vape-chemdawg",
+    "name": "2 Gram Vape - Chemdawg",
+    "description": "2\u2011gram disposable THCA vape \u2013 Chemdawg flavor.",
+    "price": 30.0,
+    "category": "vapes",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "2-gram-vape-cherry-cookies",
+    "name": "2 Gram Vape - Cherry Cookies",
+    "description": "2\u2011gram disposable THCA vape \u2013 Cherry Cookies flavor.",
+    "price": 30.0,
+    "category": "vapes",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "1-gram-cart-cherry-cookies",
+    "name": "1 Gram Cart - Cherry Cookies",
+    "description": "1\u2011gram THCA cartridge \u2013 Cherry Cookies (Indica).",
+    "price": 16.0,
+    "category": "carts",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "1-gram-cart-tropical-cherries",
+    "name": "1 Gram Cart - Tropical Cherries",
+    "description": "1\u2011gram THCA cartridge \u2013 Tropical Cherries (Sativa).",
+    "price": 16.0,
+    "category": "carts",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
+      "length": 4
+    }
+  },
+  {
+    "id": "1-gram-cart-white-fire-zkittles",
+    "name": "1 Gram Cart - White Fire Zkittles",
+    "description": "1\u2011gram THCA cartridge \u2013 White Fire Zkittles (Hybrid).",
+    "price": 16.0,
+    "category": "carts",
+    "rating": 5,
+    "image": "",
+    "url": "",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 4,
       "length": 4
     }
   }
