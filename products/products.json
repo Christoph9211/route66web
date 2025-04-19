@@ -17,15 +17,14 @@
     }
   },
   {
-    
-    "id": "new-product-id",
-    "name": "New Product Name",
-    "description": "New Product Description",
-    "price": 99.99,
-    "category": "new-category",
-    "rating": 4,
-    "image": "new-image-url",
-    "url": "https://example.com/new-product-url",
+    "id": "Premium-Blueberry-Diesel-one-gram",
+    "name": "Premium Blueberry Diesel Wax",
+    "description": "Premium Blueberry Diesel Wax 1 gram \n97.1% THCA ",
+    "price": 10,
+    "category": "Concentrates",
+    "rating": 5,
+    "image": "image: '/assets/images/Premium-Blueberry-Diesel.jpg',",
+    "url": "www.route66hemp.com/Products/Premium-Blueberry-Diesel_one-gram",
     "inventoryManagementMethod": "Simple",
     "dimensions": {
       "weight": 100,
