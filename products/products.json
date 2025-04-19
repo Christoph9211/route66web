@@ -1,21 +1,5 @@
 [
-  {
-    "id": "cbd-oil-500mg",
-    "name": "CBD Oil 500mg",
-    "description": "Premium CBD Oil 500mg - Natural flavor.",
-    "price": 49.99,
-    "category": "cbd-oil",
-    "rating": 5,
-    "image": "image: '/assets/images/cbd-oil-500mg.jpg',",
-    "url": "https://route66hemp.com/products/cbd-oil-500mg",
-    "inventoryManagementMethod": "Simple",
-    "dimensions": {
-      "weight": 100,
-      "width": 4,
-      "height": 5,
-      "length": 4
-    }
-  },
+
   {
     "id": "Premium-Blueberry-Diesel-one-gram",
     "name": "Premium Blueberry Diesel Wax",
@@ -23,7 +7,7 @@
     "price": 10,
     "category": "Concentrates",
     "rating": 5,
-    "image": "image: '/assets/images/Premium-Blueberry-Diesel.jpg',",
+    "image": "/assets/images/Premium-Blueberry-Diesel.jpg",
     "url": "https://www.route66hemp.com/Products/Premium-Blueberry-Diesel_one-gram",
     "inventoryManagementMethod": "Simple",
     "dimensions": {
@@ -40,7 +24,7 @@
     "price": 25,
     "category": "Concentrates",
     "rating": 5,
-    "image": "image: '/assets/images/Premium-Blueberry-Diesel.jpg',",
+    "image": "/assets/images/Premium-Blueberry-Diesel.jpg",
     "url": "https://www.route66hemp.com/Products/Premium-Blueberry-Diesel_three-grams",
     "inventoryManagementMethod": "Simple",
     "dimensions": {
