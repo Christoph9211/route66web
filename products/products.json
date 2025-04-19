@@ -24,7 +24,24 @@
     "category": "Concentrates",
     "rating": 5,
     "image": "image: '/assets/images/Premium-Blueberry-Diesel.jpg',",
-    "url": "www.route66hemp.com/Products/Premium-Blueberry-Diesel_one-gram",
+    "url": "https://www.route66hemp.com/Products/Premium-Blueberry-Diesel_one-gram",
+    "inventoryManagementMethod": "Simple",
+    "dimensions": {
+      "weight": 100,
+      "width": 4,
+      "height": 5,
+      "length": 4
+    }
+  },
+  {
+    "id": "Premium-Blueberry-Diesel-three-grams",
+    "name": "Premium Blueberry Diesel Wax",
+    "description": "Three Grams - 97.1% THCA ",
+    "price": 25,
+    "category": "Concentrates",
+    "rating": 5,
+    "image": "image: '/assets/images/Premium-Blueberry-Diesel.jpg',",
+    "url": "https://www.route66hemp.com/Products/Premium-Blueberry-Diesel_three-grams",
     "inventoryManagementMethod": "Simple",
     "dimensions": {
       "weight": 100,
