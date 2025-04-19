@@ -298,7 +298,7 @@ function App() {
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-48 object-cover rounded-md mb-4"
+                      className="w-full h-50 object-cover rounded-md mb-4"
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = '/assets/images/placeholder.png';
