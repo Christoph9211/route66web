@@ -301,7 +301,7 @@ function App() {
                       className="w-full h-48 object-cover rounded-md mb-4"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = '/assets/images/placeholder.jpg';
+                        e.target.src = '/assets/images/placeholder.png';
                       }}
                     />
                     <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
