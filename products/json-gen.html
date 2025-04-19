@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product JSON Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; margin-bottom: 0.25rem; font-weight: bold; }
+    input, textarea, select { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 0.5rem 1rem; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+    #output { height: 200px; }
+    .product-item { border: 1px solid #ddd; padding: 0.5rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .product-item button { margin-left: 0.5rem; padding: 0.25rem 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Product JSON Generator</h1>
+  <form id="product-form">
+    <div class="form-group">
+      <label for="id">ID (optional)</label>
+      <input type="text" id="id" name="id" placeholder="product-slug" />
+    </div>
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input type="text" id="name" name="name" placeholder="CBD Oil 500mg" required />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="3" placeholder="Premium CBD Oil 500mg - Natural flavor." required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" step="0.01" id="price" name="price" placeholder="49.99" required />
+    </div>
+    <div class="form-group">
+      <label for="category">Category ID</label>
+      <input type="text" id="category" name="category" placeholder="cbd-oil" required />
+    </div>
+    <div class="form-group">
+      <label for="rating">Rating (1-5)</label>
+      <input type="number" step="0.1" min="1" max="5" id="rating" name="rating" value="5" required />
+    </div>
+    <div class="form-group">
+      <label for="image">Image Path</label>
+      <input type="text" id="image" name="image" placeholder="/assets/images/cbd-oil-500mg.jpg" />
+    </div>
+    <div class="form-group">
+      <label for="url">Product URL</label>
+      <input type="text" id="url" name="url" placeholder="https://route66hemp.com/products/cbd-oil-500mg" />
+    </div>
+    <div class="form-group">
+      <label for="inventoryManagementMethod">Inventory Method</label>
+      <select id="inventoryManagementMethod" name="inventoryManagementMethod">
+        <option value="Simple">Simple</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+    </div>
+    <fieldset style="margin-bottom:1rem; padding:1rem; border:1px solid #ccc; border-radius:4px;">
+      <legend><strong>Dimensions</strong></legend>
+      <div class="form-group">
+        <label for="weight">Weight</label>
+        <input type="number" id="weight" name="dimensions.weight" value="100" />
+      </div>
+      <div class="form-group">
+        <label for="width">Width</label>
+        <input type="number" id="width" name="dimensions.width" value="4" />
+      </div>
+      <div class="form-group">
+        <label for="height">Height</label>
+        <input type="number" id="height" name="dimensions.height" value="4" />
+      </div>
+      <div class="form-group">
+        <label for="length">Length</label>
+        <input type="number" id="length" name="dimensions.length" value="4" />
+      </div>
+    </fieldset>
+    <button type="submit" id="submit-btn">Generate JSON</button>
+  </form>
+
+  <h2>Existing Products</h2>
+  <div id="products-list"></div>
+
+  <h2>Output</h2>
+  <textarea id="output" readonly placeholder="Your product JSON will appear here..."></textarea>
+  <button id="download-btn" style="margin-top:1rem; display:none;">Download JSON</button>
+
+  <script>
+    const form = document.getElementById('product-form');
+    const output = document.getElementById('output');
+    const downloadBtn = document.getElementById('download-btn');
+    const productsListEl = document.getElementById('products-list');
+    const submitBtn = document.getElementById('submit-btn');
+
+    let productsList = [];
+    let editingIndex = null;
+
+    function renderProductsList() {
+      productsListEl.innerHTML = '';
+      productsList.forEach((prod, idx) => {
+        const item = document.createElement('div');
+        item.className = 'product-item';
+        item.innerHTML = `
+          <span>${prod.name} (${prod.id})</span>
+          <div>
+            <button data-index="${idx}" class="edit-btn">Edit</button>
+            <button data-index="${idx}" class="delete-btn">Delete</button>
+          </div>
+        `;
+        productsListEl.appendChild(item);
+      });
+      attachListEvents();
+    }
+
+    function attachListEvents() {
+      document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.onclick = () => loadProductIntoForm(btn.dataset.index);
+      });
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.onclick = () => {
+          productsList.splice(btn.dataset.index, 1);
+          renderProductsList();
+        };
+      });
+    }
+
+    function loadProductIntoForm(index) {
+      const prod = productsList[index];
+      editingIndex = +index;
+      Object.keys(prod).forEach(key => {
+        if (typeof prod[key] === 'object') {
+          Object.keys(prod[key]).forEach(sub => {
+            const fld = document.querySelector(`[name="${key}.${sub}"]`);
+            if (fld) fld.value = prod[key][sub];
+          });
+        } else {
+          const fld = document.querySelector(`[name="${key}"]`);
+          if (fld) fld.value = prod[key];
+        }
+      });
+      submitBtn.textContent = 'Save Changes';
+      output.value = JSON.stringify(prod, null, 2);
+      downloadBtn.style.display = 'block';
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const product = {};
+      for (const [key, value] of formData.entries()) {
+        if (key.includes('.')) {
+          const [parent, child] = key.split('.');
+          product[parent] = product[parent] || {};
+          product[parent][child] = value === '' ? '' : parseFloat(value);
+        } else {
+          product[key] = ['price', 'rating'].includes(key) && value !== ''
+            ? parseFloat(value)
+            : value;
+        }
+      }
+      if (!product.id) {
+        product.id = product.name.toLowerCase().replace(/\s+/g, '-');
+      }
+      if (editingIndex !== null) {
+        productsList[editingIndex] = product;
+      } else {
+        productsList.push(product);
+      }
+      renderProductsList();
+      resetForm();
+      const jsonString = JSON.stringify(product, null, 2);
+      output.value = jsonString;
+      downloadBtn.style.display = 'block';
+      downloadBtn.onclick = () => {
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = product.id + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+    });
+
+    function resetForm() {
+      form.reset();
+      editingIndex = null;
+      submitBtn.textContent = 'Generate JSON';
+    }
+  </script>
+</body>
+</html>
