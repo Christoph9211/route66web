@@ -13,20 +13,84 @@ function App() {
     if (verifiedAge) {
       setAppState((prevState) => ({ ...prevState, age: parseInt(verifiedAge) }));
     }
-    const sampleCategories = [
-      { id: 'cbd-oil', name: 'CBD Oil' },
-      { id: 'edibles', name: 'Edibles' },
-      { id: 'concentrates', name: 'Concentrates' },
-      { id: 'cannabis-flower', name: 'Cannabis Flower' },
-      { id: 'accessories', name: 'Accessories' },
-    ];
-    const sampleProducts = [];
-    setAppState((prevState) => ({
-      ...prevState,
-      categories: sampleCategories,
-      products: sampleProducts,
-      loading: false,
-    }));
+
+    // Fetch products from the JSON file
+    fetch('/products/products.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        return response.json();
+      })
+      .then(productsData => {
+        // Group products by name and category, combining size options and prices
+        const grouped = {};
+        productsData.forEach(prod => {
+          // Use name+category as key
+          const key = (prod.name || prod["name"]) + '|' + (prod.category || prod["category"]);
+          if (!grouped[key]) {
+            grouped[key] = {
+              ...prod,
+              size_options: prod.size_options ? [...prod.size_options] : prod.size_options || [],
+              prices: prod.prices ? { ...prod.prices } : prod.prices || {},
+              variants: [],
+              ids: [prod.id],
+              images: [prod.image],
+              descriptions: [prod.description],
+              ratings: [prod.rating],
+              urls: [prod.url],
+            };
+            if (prod.size_options && prod.prices) {
+              // Already in new format
+            } else if (prod.name && prod.name.match(/ - (.+)/)) {
+              // Try to extract size from name
+              const size = prod.name.match(/ - (.+)/)[1];
+              grouped[key].size_options = [size];
+              grouped[key].prices = { [size]: prod.price };
+            } else {
+              grouped[key].size_options = [];
+              grouped[key].prices = {};
+            }
+          } else {
+            // Add size/price if not present
+            if (prod.name && prod.name.match(/ - (.+)/)) {
+              const size = prod.name.match(/ - (.+)/)[1];
+              if (!grouped[key].size_options.includes(size)) {
+                grouped[key].size_options.push(size);
+                grouped[key].prices[size] = prod.price;
+              }
+            }
+            grouped[key].ids.push(prod.id);
+            grouped[key].images.push(prod.image);
+            grouped[key].descriptions.push(prod.description);
+            grouped[key].ratings.push(prod.rating);
+            grouped[key].urls.push(prod.url);
+          }
+        });
+        const groupedProducts = Object.values(grouped);
+        // Extract unique categories from products
+        const uniqueCategories = [...new Set(groupedProducts.map(product => product.category))];
+        // Format categories for your UI
+        const formattedCategories = uniqueCategories.map(categoryId => {
+          const name = categoryId.split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+          return { id: categoryId, name };
+        });
+        setAppState((prevState) => ({
+          ...prevState,
+          categories: formattedCategories,
+          products: groupedProducts,
+          loading: false,
+        }));
+      })
+      .catch(error => {
+        console.error('Error loading products:', error);
+        setAppState((prevState) => ({
+          ...prevState,
+          loading: false,
+        }));
+      });
   }, []);
 
   const handleAgeVerification = (isOver21) => {
@@ -96,7 +160,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav className="bg-white dark:bg-gray-800 shadow-md">
+      <nav role="navigation" className="bg-white dark:bg-gray-800 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -148,11 +212,18 @@ function App() {
               <a href="#products" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Products</a>
               <a href="#about" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">About</a>
               <a href="#contact" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Contact</a>
+              <button 
+                className="snipcart-checkout w-full text-left dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium flex items-center"
+              >
+                <i className="fas fa-shopping-cart mr-2"></i>
+                <span>Cart</span>
+                <span className="snipcart-items-count ml-2">(0)</span>
+              </button>
             </div>
           </div>
         )}
       </nav>
-      <main>
+      <section>
         {/* Hero Section */}
         <div className="relative bg-gray-50 dark:bg-gray-900 overflow-hidden">
           <div className="max-w-7xl mx-auto">
@@ -261,25 +332,7 @@ function App() {
             ) : filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {filteredProducts.map((product) => (
-                  <div
-                    key={product.id}
-                    className="group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow"
-                  >
-                    <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
-                    <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{product.description}</p>
-                    <p className="mt-2 font-medium text-gray-900 dark:text-gray-100">${product.price.toFixed(2)}</p>
-                    <div className="flex items-center mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <i
-                          key={i}
-                          className={`text-xs ${i < Math.floor(product.rating) ? 'fas fa-star text-yellow-600' : 'far fa-star text-yellow-600'}`}
-                          aria-hidden="true"
-                          tabIndex="-1"
-                        ></i>
-                      ))}
-                      <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">({product.rating})</span>
-                    </div>
-                  </div>
+                  <ProductCard key={product.name + product.category} product={product} />
                 ))}
               </div>
             ) : (
@@ -461,9 +514,9 @@ function App() {
             </div>
           </div>
         </div>
-      </main>
+      </section>
       {/* Footer */}
-      <footer className="bg-gray-800 dark:bg-gray-900">
+      <footer role = "contentinfo" className="bg-gray-800 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
@@ -622,6 +675,122 @@ function App() {
           </div>
         </div>
       </footer>
+    </div>
+  );
+}
+
+// ProductCard component for displaying product with size dropdown and dynamic price
+function ProductCard({ product }) {
+  // Generate combined options if both flavors and size_options exist
+  let combinedOptions = [];
+  if (product.flavors && product.flavors.length > 0 && product.size_options && product.size_options.length > 0) {
+    combinedOptions = product.flavors.flatMap(flavor =>
+      product.size_options.map(size => ({
+        label: `${flavor} - ${size}`,
+        flavor,
+        size
+      }))
+    );
+  }
+
+  // State for combined selection
+  const [selectedCombo, setSelectedCombo] = React.useState(
+    combinedOptions.length > 0 ? combinedOptions[0] : null
+  );
+  // Fallback for only size or only flavor
+  const [selectedSize, setSelectedSize] = React.useState(
+    !combinedOptions.length && product.size_options && product.size_options.length > 0 ? product.size_options[0] : null
+  );
+  const [selectedFlavor, setSelectedFlavor] = React.useState(
+    !combinedOptions.length && product.flavors && product.flavors.length > 0 ? product.flavors[0] : null
+  );
+
+  // Determine price
+  let price = product.price;
+  if (combinedOptions.length > 0 && selectedCombo) {
+    if (product.prices && product.prices[selectedCombo.size] !== undefined) {
+      price = product.prices[selectedCombo.size];
+    }
+  } else if (selectedSize && product.prices && product.prices[selectedSize] !== undefined) {
+    price = product.prices[selectedSize];
+  } else if (!selectedSize && selectedFlavor && product.price) {
+    price = product.price;
+  }
+
+  return (
+    <div className="group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow">
+      <img
+        src={product.image || (product.images && product.images[0]) || '/assets/images/placeholder.png'}
+        alt={product.name}
+        className="w-full h-50 object-cover rounded-md mb-4"
+        onError={e => {
+          e.target.onerror = null;
+          e.target.src = '/assets/images/placeholder.png';
+        }}
+      />
+      <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
+      <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">{product.category}</p>
+      <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{product.description || (product.descriptions && product.descriptions[0])}</p>
+      {/* Combined dropdown for flavor + size */}
+      {combinedOptions.length > 0 && (
+        <div className="mt-2">
+          <label className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Flavor & Size:</label>
+          <select
+            className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
+            value={selectedCombo ? selectedCombo.label : ''}
+            onChange={e => {
+              const combo = combinedOptions.find(opt => opt.label === e.target.value);
+              setSelectedCombo(combo);
+            }}
+          >
+            {combinedOptions.map(opt => (
+              <option key={opt.label} value={opt.label}>{opt.label}</option>
+            ))}
+          </select>
+        </div>
+      )}
+      {/* Size dropdown (if no flavors) */}
+      {!combinedOptions.length && product.size_options && product.size_options.length > 0 && (
+        <div className="mt-2">
+          <label className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Size:</label>
+          <select
+            className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
+            value={selectedSize}
+            onChange={e => setSelectedSize(e.target.value)}
+          >
+            {product.size_options.map(size => (
+              <option key={size} value={size}>{size}</option>
+            ))}
+          </select>
+        </div>
+      )}
+      {/* Flavor dropdown (if no sizes) */}
+      {!combinedOptions.length && product.flavors && product.flavors.length > 0 && (
+        <div className="mt-2">
+          <label className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Flavor:</label>
+          <select
+            className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
+            value={selectedFlavor}
+            onChange={e => setSelectedFlavor(e.target.value)}
+          >
+            {product.flavors.map(flavor => (
+              <option key={flavor} value={flavor}>{flavor}</option>
+            ))}
+          </select>
+        </div>
+      )}
+      <p className="mt-2 font-medium text-gray-900 dark:text-gray-100">${price ? price.toFixed(2) : 'N/A'}</p>
+      <div className="flex items-center mt-1">
+        {[...Array(5)].map((_, i) => (
+          <i
+            key={i}
+            className={`text-xs ${i < Math.floor(product.rating || (product.ratings && product.ratings[0]) || 5) ? 'fas fa-star text-yellow-600' : 'far fa-star text-yellow-600'}`}
+            aria-hidden="true"
+            tabIndex="-1"
+          ></i>
+        ))}
+        <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">({product.rating || (product.ratings && product.ratings[0]) || 5})</span>
+      </div>
     </div>
   );
 }
