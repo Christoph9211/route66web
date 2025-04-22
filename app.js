@@ -734,8 +734,9 @@ function ProductCard({ product }) {
       {/* Combined dropdown for flavor + size */}
       {combinedOptions.length > 0 && (
         <div className="mt-2">
-          <label className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Flavor & Size:</label>
+          <label htmlFor={`combo-${product.name}`} className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Flavor & Size:</label>
           <select
+            id={`combo-${product.name}`}
             className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
             value={selectedCombo ? selectedCombo.label : ''}
             onChange={e => {
@@ -752,8 +753,9 @@ function ProductCard({ product }) {
       {/* Size dropdown (if no flavors) */}
       {!combinedOptions.length && product.size_options && product.size_options.length > 0 && (
         <div className="mt-2">
-          <label className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Size:</label>
+          <label htmlFor={`size-${product.name}`} className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Size:</label>
           <select
+            id={`size-${product.name}`}
             className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
             value={selectedSize}
             onChange={e => setSelectedSize(e.target.value)}
@@ -767,8 +769,9 @@ function ProductCard({ product }) {
       {/* Flavor dropdown (if no sizes) */}
       {!combinedOptions.length && product.flavors && product.flavors.length > 0 && (
         <div className="mt-2">
-          <label className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Flavor:</label>
+          <label htmlFor={`flavor-${product.name}`} className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Flavor:</label>
           <select
+            id={`flavor-${product.name}`}
             className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
             value={selectedFlavor}
             onChange={e => setSelectedFlavor(e.target.value)}
