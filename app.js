@@ -743,6 +743,7 @@ function ProductCard({ product }) {
               const combo = combinedOptions.find(opt => opt.label === e.target.value);
               setSelectedCombo(combo);
             }}
+            aria-label="Select flavor and size"
           >
             {combinedOptions.map(opt => (
               <option key={opt.label} value={opt.label}>{opt.label}</option>
@@ -759,6 +760,7 @@ function ProductCard({ product }) {
             className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
             value={selectedSize}
             onChange={e => setSelectedSize(e.target.value)}
+            aria-label="Select size"
           >
             {product.size_options.map(size => (
               <option key={size} value={size}>{size}</option>
@@ -775,6 +777,7 @@ function ProductCard({ product }) {
             className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
             value={selectedFlavor}
             onChange={e => setSelectedFlavor(e.target.value)}
+            aria-label="Select flavor"
           >
             {product.flavors.map(flavor => (
               <option key={flavor} value={flavor}>{flavor}</option>
