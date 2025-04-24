@@ -720,12 +720,12 @@ function ProductCard({ product }) {
   return (
     <div className="group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow">
       <img
-        src={product.image || (product.images && product.images[0]) || '/assets/images/placeholder.png'}
+        src={product.image || (product.images && product.images[0]) || '/assets/images/placeholder.webp'}
         alt={product.name}
         className="w-full h-50 object-cover rounded-md mb-4"
         onError={e => {
           e.target.onerror = null;
-          e.target.src = '/assets/images/placeholder.png';
+          e.target.src = '/assets/images/placeholder.webp';
         }}
       />
       <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
