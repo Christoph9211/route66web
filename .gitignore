@@ -11,3 +11,4 @@ node_modules/
 .vscode/
 # Ignore json-gen.html
 /json-gen.html
+*.xml
