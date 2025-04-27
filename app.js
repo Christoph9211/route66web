@@ -212,13 +212,6 @@ function App() {
               <a href="#products" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Products</a>
               <a href="#about" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">About</a>
               <a href="#contact" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Contact</a>
-              <button 
-                className="snipcart-checkout w-full text-left dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium flex items-center"
-              >
-                <i className="fas fa-shopping-cart mr-2"></i>
-                <span>Cart</span>
-                <span className="snipcart-items-count ml-2">(0)</span>
-              </button>
             </div>
           </div>
         )}
