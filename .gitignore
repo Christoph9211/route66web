@@ -12,3 +12,5 @@ node_modules/
 # Ignore json-gen.html
 /json-gen.html
 *.xml
+dist/
+/instructions.txt
