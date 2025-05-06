@@ -12,3 +12,4 @@ node_modules/
 # Ignore json-gen.html
 /products/json-gen.html
 instructions.txt
+dist/
