@@ -1150,6 +1150,7 @@ function ProductCard({ product }) {
                 : "far fa-star text-yellow-600"
             }`}
             aria-hidden="true"
+            tabIndex={"-1"}
           ></i>
         ))}
         <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">
