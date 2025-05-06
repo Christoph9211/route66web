@@ -1,7 +1,7 @@
 function App() {
   const [appState, setAppState] = React.useState({
     isMobileMenuOpen: false,
-    selectedCategory: 'all',
+    selectedCategory: "all",
     age: null,
     products: [],
     categories: [],
@@ -9,29 +9,37 @@ function App() {
   });
 
   React.useEffect(() => {
-    const verifiedAge = localStorage.getItem('ageVerified');
+    const verifiedAge = localStorage.getItem("ageVerified");
     if (verifiedAge) {
-      setAppState((prevState) => ({ ...prevState, age: parseInt(verifiedAge) }));
+      setAppState((prevState) => ({
+        ...prevState,
+        age: parseInt(verifiedAge),
+      }));
     }
 
     // Fetch products from the JSON file
-    fetch('/products/products.json')
-      .then(response => {
+    fetch("products/products.json")
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch products');
+          throw new Error("Failed to fetch products");
         }
         return response.json();
       })
-      .then(productsData => {
+      .then((productsData) => {
         // Group products by name and category, combining size options and prices
         const grouped = {};
-        productsData.forEach(prod => {
+        productsData.forEach((prod) => {
           // Use name+category as key
-          const key = (prod.name || prod["name"]) + '|' + (prod.category || prod["category"]);
+          const key =
+            (prod.name || prod["name"]) +
+            "|" +
+            (prod.category || prod["category"]);
           if (!grouped[key]) {
             grouped[key] = {
               ...prod,
-              size_options: prod.size_options ? [...prod.size_options] : prod.size_options || [],
+              size_options: prod.size_options
+                ? [...prod.size_options]
+                : prod.size_options || [],
               prices: prod.prices ? { ...prod.prices } : prod.prices || {},
               variants: [],
               ids: [prod.id],
@@ -69,12 +77,15 @@ function App() {
         });
         const groupedProducts = Object.values(grouped);
         // Extract unique categories from products
-        const uniqueCategories = [...new Set(groupedProducts.map(product => product.category))];
+        const uniqueCategories = [
+          ...new Set(groupedProducts.map((product) => product.category)),
+        ];
         // Format categories for your UI
-        const formattedCategories = uniqueCategories.map(categoryId => {
-          const name = categoryId.split('-')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
+        const formattedCategories = uniqueCategories.map((categoryId) => {
+          const name = categoryId
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
           return { id: categoryId, name };
         });
         setAppState((prevState) => ({
@@ -84,8 +95,8 @@ function App() {
           loading: false,
         }));
       })
-      .catch(error => {
-        console.error('Error loading products:', error);
+      .catch((error) => {
+        console.error("Error loading products:", error);
         setAppState((prevState) => ({
           ...prevState,
           loading: false,
@@ -96,14 +107,14 @@ function App() {
   const handleAgeVerification = (isOver21) => {
     if (isOver21) {
       setAppState((prevState) => ({ ...prevState, age: 21 }));
-      localStorage.setItem('ageVerified', '21');
+      localStorage.setItem("ageVerified", "21");
     } else {
       setAppState((prevState) => ({ ...prevState, age: 0 }));
     }
   };
 
   const filteredProducts =
-    appState.selectedCategory === 'all'
+    appState.selectedCategory === "all"
       ? appState.products
       : appState.products.filter(
           (product) => product.category === appState.selectedCategory
@@ -113,10 +124,18 @@ function App() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-          <h2 className="text-2xl font-bold mb-6 dark-mode-text">Age Verification</h2>
+          <h2 className="text-2xl font-bold mb-6 dark-mode-text">
+            Age Verification
+          </h2>
           <div className="mb-8">
-            <i className="fas fa-cannabis text-5xl text-secondary mb-4" aria-hidden="true" tabIndex="-1"></i>
-            <p className="dark-mode-text">You must be 21 years or older to enter this website.</p>
+            <i
+              className="fas fa-cannabis text-5xl text-secondary mb-4"
+              aria-hidden="true"
+              tabIndex="-1"
+            ></i>
+            <p className="dark-mode-text">
+              You must be 21 years or older to enter this website.
+            </p>
           </div>
           <div className="flex flex-col space-y-4">
             <button
@@ -133,7 +152,8 @@ function App() {
             </button>
           </div>
           <p className="mt-6 text-sm text-gray-700 dark:text-gray-300">
-            By entering, you acknowledge and agree to our Terms of Service and Privacy Policy.
+            By entering, you acknowledge and agree to our Terms of Service and
+            Privacy Policy.
           </p>
         </div>
       </div>
@@ -144,10 +164,16 @@ function App() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-          <h2 className="text-2xl font-bold mb-4 dark-mode-text">Access Denied</h2>
-          <p className="mb-6 dark-mode-text">You must be 21 or older to access this website.</p>
+          <h2 className="text-2xl font-bold mb-4 dark-mode-text">
+            Access Denied
+          </h2>
+          <p className="mb-6 dark-mode-text">
+            You must be 21 or older to access this website.
+          </p>
           <button
-            onClick={() => setAppState((prevState) => ({ ...prevState, age: null }))}
+            onClick={() =>
+              setAppState((prevState) => ({ ...prevState, age: null }))
+            }
             className="py-2 px-4 bg-primary hover:bg-opacity-90 text-white rounded-lg transition duration-200"
           >
             Go Back
@@ -167,21 +193,48 @@ function App() {
               <div className="flex-shrink-0 flex items-center">
                 {/* Logo */}
                 <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-2">
-                  <i className="fas fa-cannabis text-white" aria-hidden="true" tabIndex="-1"></i>
+                  <i
+                    className="fas fa-cannabis text-white"
+                    aria-hidden="true"
+                    tabIndex="-1"
+                  ></i>
                 </div>
-                <span className="font-bold text-xl dark-mode-text">Route 66 Hemp</span>
+                <span className="font-bold text-xl dark-mode-text">
+                  Route 66 Hemp
+                </span>
               </div>
             </div>
             {/* Desktop menu */}
             <div className="hidden md:flex md:items-center md:space-x-6">
-              <a href="#" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">Home</a>
-              <a href="#products" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">Products</a>
-              <a href="#about" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">About</a>
-              <a href="#contact" className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150">Contact</a>
+              <a
+                href="#"
+                className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+              >
+                Home
+              </a>
+              <a
+                href="#products"
+                className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+              >
+                Products
+              </a>
+              <a
+                href="#about"
+                className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+              >
+                About
+              </a>
+              <a
+                href="#contact"
+                className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+              >
+                Contact
+              </a>
             </div>
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center">
               <button
+                type="button"
                 onClick={() =>
                   setAppState((prevState) => ({
                     ...prevState,
@@ -190,13 +243,15 @@ function App() {
                 }
                 className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"
                 aria-label={
-                  appState.isMobileMenuOpen ? 'Close main menu' : 'Open main menu'
+                  appState.isMobileMenuOpen
+                    ? "Close main menu"
+                    : "Open main menu"
                 }
-                aria-expanded={appState.isMobileMenuOpen ? 'true' : 'false'}
+                aria-labelledby={appState.isMobileMenuOpen ? "true" : "false"}
               >
                 <i
                   className={`fas ${
-                    appState.isMobileMenuOpen ? 'fa-times' : 'fa-bars'
+                    appState.isMobileMenuOpen ? "fa-times" : "fa-bars"
                   } text-xl`}
                   aria-hidden="true"
                   tabIndex="-1"
@@ -208,10 +263,30 @@ function App() {
         {appState.isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Home</a>
-              <a href="#products" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Products</a>
-              <a href="#about" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">About</a>
-              <a href="#contact" className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium">Contact</a>
+              <a
+                href="#"
+                className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+              >
+                Home
+              </a>
+              <a
+                href="#products"
+                className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+              >
+                Products
+              </a>
+              <a
+                href="#about"
+                className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+              >
+                About
+              </a>
+              <a
+                href="#contact"
+                className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+              >
+                Contact
+              </a>
             </div>
           </div>
         )}
@@ -228,19 +303,29 @@ function App() {
                       <div className="lg:py-24">
                         <h1 className="mt-4 text-4xl tracking-tight font-extrabold dark-mode-text sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                           <span>Premium Hemp Products</span>
-                          <span className="text-primary dark:text-secondary block">For Your Wellness</span>
+                          <span className="text-primary dark:text-secondary block">
+                            For Your Wellness
+                          </span>
                         </h1>
                         <p className="mt-3 text-base text-gray-700 dark:text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                          Discover our range of high-quality, lab-tested hemp products. From CBD oils to edibles, we have everything you need for a balanced lifestyle.
+                          Discover our range of high-quality, lab-tested hemp
+                          products. From CBD oils to edibles, we have everything
+                          you need for a balanced lifestyle.
                         </p>
                         <div className="mt-10 sm:mt-12 flex justify-center lg:justify-start space-x-4">
                           <div className="rounded-md shadow">
-                            <a href="#products" className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 hover:bg-opacity-90 md:py-4 md:text-lg md:px-10">
+                            <a
+                              href="#products"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 hover:bg-opacity-90 md:py-4 md:text-lg md:px-10"
+                            >
                               Explore Products
                             </a>
                           </div>
                           <div className="rounded-md shadow">
-                            <a href="#about" className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 hover:bg-opacity-90 md:py-4 md:text-lg md:px-10">
+                            <a
+                              href="#about"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 hover:bg-opacity-90 md:py-4 md:text-lg md:px-10"
+                            >
                               Learn More
                             </a>
                           </div>
@@ -251,12 +336,20 @@ function App() {
                       <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0">
                         <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-green-200 to-green-600 dark:from-green-900 dark:to-green-600 relative overflow-hidden">
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <i className="fas fa-cannabis text-white text-9xl opacity-30" aria-hidden="true" tabIndex="-1"></i>
+                            <i
+                              className="fas fa-cannabis text-white text-9xl opacity-30"
+                              aria-hidden="true"
+                              tabIndex="-1"
+                            ></i>
                           </div>
                           <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                             <div className="text-center text-white px-4">
-                              <div className="font-bold text-2xl sm:text-3xl mb-2">Premium Hemp</div>
-                              <div className="text-lg sm:text-xl">Locally Grown, Organically Harvested</div>
+                              <div className="font-bold text-2xl sm:text-3xl mb-2">
+                                Premium Hemp
+                              </div>
+                              <div className="text-lg sm:text-xl">
+                                Locally Grown, Organically Harvested
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -272,7 +365,9 @@ function App() {
         <div id="products" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-8">
-              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">Products</h2>
+              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
+                Products
+              </h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark-mode-text sm:text-4xl">
                 Explore Our Collection
               </p>
@@ -285,13 +380,13 @@ function App() {
                 onClick={() =>
                   setAppState((prevState) => ({
                     ...prevState,
-                    selectedCategory: 'all',
+                    selectedCategory: "all",
                   }))
                 }
                 className={`px-4 py-2 rounded-full text-sm font-medium ${
-                  appState.selectedCategory === 'all'
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 dark-mode-text hover:bg-gray-300 dark:hover:bg-gray-600'
+                  appState.selectedCategory === "all"
+                    ? "bg-primary text-white"
+                    : "bg-gray-200 dark:bg-gray-700 dark-mode-text hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
                 All Products
@@ -307,8 +402,8 @@ function App() {
                   }
                   className={`px-4 py-2 rounded-full text-sm font-medium ${
                     appState.selectedCategory === category.id
-                      ? 'bg-primary text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 dark-mode-text hover:bg-gray-300 dark:hover:bg-gray-600'
+                      ? "bg-primary text-white"
+                      : "bg-gray-200 dark:bg-gray-700 dark-mode-text hover:bg-gray-300 dark:hover:bg-gray-600"
                   }`}
                 >
                   {category.name}
@@ -318,19 +413,28 @@ function App() {
             {appState.loading ? (
               <div className="col-span-full flex items-center justify-center py-12">
                 <div className="leaf-loader">
-                  <i className="fas fa-cannabis text-primary text-5xl" aria-hidden="true" tabIndex="-1"></i>
+                  <i
+                    className="fas fa-cannabis text-primary text-5xl"
+                    aria-hidden="true"
+                    tabIndex="-1"
+                  ></i>
                 </div>
                 <span className="sr-only">Loading products...</span>
               </div>
             ) : filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {filteredProducts.map((product) => (
-                  <ProductCard key={product.name + product.category} product={product} />
+                  <ProductCard
+                    key={product.name + product.category}
+                    product={product}
+                  />
                 ))}
               </div>
             ) : (
               <div className="col-span-full text-center py-12">
-                <p className="text-gray-700 dark:text-gray-300">Products Coming Soon</p>
+                <p className="text-gray-700 dark:text-gray-300">
+                  Products Coming Soon
+                </p>
               </div>
             )}
           </div>
@@ -339,7 +443,9 @@ function App() {
         <div id="about" className="py-12 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-10">
-              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">About Us</h2>
+              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
+                About Us
+              </h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark-mode-text sm:text-4xl">
                 Our Story
               </p>
@@ -351,9 +457,18 @@ function App() {
                     <div className="aspect-w-2 aspect-h-1 rounded-lg shadow-xl overflow-hidden">
                       <div className="w-full h-full bg-gradient-to-r from-green-800 to-green-600 flex items-center justify-center p-6">
                         <div className="text-center text-white">
-                          <i className="fas fa-leaf text-6xl mb-4" aria-hidden="true" tabIndex="-1"></i>
-                          <h3 className="text-2xl font-bold mb-2">From Seed to Sale</h3>
-                          <p className="text-lg">We control every step of the process to ensure the highest quality products</p>
+                          <i
+                            className="fas fa-leaf text-6xl mb-4"
+                            aria-hidden="true"
+                            tabIndex="-1"
+                          ></i>
+                          <h3 className="text-2xl font-bold mb-2">
+                            From Seed to Sale
+                          </h3>
+                          <p className="text-lg">
+                            We control every step of the process to ensure the
+                            highest quality products
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -362,17 +477,30 @@ function App() {
                 <div className="mt-10 lg:mt-0 lg:row-start-1 lg:col-start-1">
                   <div className="text-base max-w-prose mx-auto lg:max-w-none">
                     <p className="text-lg text-gray-700 dark:text-gray-300">
-                      Founded in 2025, Route 66 Hemp started with a simple mission: to provide high-quality hemp products that enhance people's well-being while promoting sustainable agricultural practices.
+                      Founded in 2025, Route 66 Hemp started with a simple
+                      mission: to provide high-quality hemp products that
+                      enhance people's well-being while promoting sustainable
+                      agricultural practices.
                     </p>
                     <div className="mt-5 prose prose-indigo dark:prose-invert text-gray-700 dark:text-gray-300">
                       <p>
-                        Our team of experts carefully selects the finest hemp strains and works closely with local farmers who share our commitment to organic growing methods and environmental stewardship.
+                        Our team of experts carefully selects the finest hemp
+                        strains and works closely with local farmers who share
+                        our commitment to organic growing methods and
+                        environmental stewardship.
                       </p>
                       <p>
-                        We pride ourselves on transparency. All our products undergo rigorous third-party testing to ensure purity, potency, and safety. The test results are readily available to our customers, giving you peace of mind with every purchase.
+                        We pride ourselves on transparency. All our products
+                        undergo rigorous third-party testing to ensure purity,
+                        potency, and safety. The test results are readily
+                        available to our customers, giving you peace of mind
+                        with every purchase.
                       </p>
                       <p>
-                        At Route 66 Hemp, we're a community of hemp enthusiasts and wellness advocates dedicated to educating and empowering individuals to make informed choices about their health and wellness journey.
+                        At Route 66 Hemp, we're a community of hemp enthusiasts
+                        and wellness advocates dedicated to educating and
+                        empowering individuals to make informed choices about
+                        their health and wellness journey.
                       </p>
                     </div>
                   </div>
@@ -387,12 +515,20 @@ function App() {
                     <div className="-mt-6">
                       <div>
                         <span className="inline-flex items-center justify-center p-3 bg-secondary rounded-md shadow-lg">
-                          <i className="fas fa-flask text-white text-xl" aria-hidden="true" tabIndex="-1"></i>
+                          <i
+                            className="fas fa-flask text-white text-xl"
+                            aria-hidden="true"
+                            tabIndex="-1"
+                          ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">Lab Tested</h3>
+                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">
+                        Lab Tested
+                      </h3>
                       <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
-                        All our products are tested by third-party labs for potency, pesticides, and purity to ensure you get only the highest quality.
+                        All our products are tested by third-party labs for
+                        potency, pesticides, and purity to ensure you get only
+                        the highest quality.
                       </p>
                     </div>
                   </div>
@@ -402,12 +538,19 @@ function App() {
                     <div className="-mt-6">
                       <div>
                         <span className="inline-flex items-center justify-center p-3 bg-secondary rounded-md shadow-lg">
-                          <i className="fas fa-leaf text-white text-xl" aria-hidden="true" tabIndex="-1"></i>
+                          <i
+                            className="fas fa-leaf text-white text-xl"
+                            aria-hidden="true"
+                            tabIndex="-1"
+                          ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">Organically Grown</h3>
+                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">
+                        Organically Grown
+                      </h3>
                       <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
-                        Our hemp is grown free from harmful pesticides and chemicals, resulting in a cleaner, better product.
+                        Our hemp is grown free from harmful pesticides and
+                        chemicals, resulting in a cleaner, better product.
                       </p>
                     </div>
                   </div>
@@ -417,12 +560,20 @@ function App() {
                     <div className="-mt-6">
                       <div>
                         <span className="inline-flex items-center justify-center p-3 bg-secondary rounded-md shadow-lg">
-                          <i className="fas fa-users text-white text-xl" aria-hidden="true" tabIndex="-1"></i>
+                          <i
+                            className="fas fa-users text-white text-xl"
+                            aria-hidden="true"
+                            tabIndex="-1"
+                          ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">Expert Guidance</h3>
+                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">
+                        Expert Guidance
+                      </h3>
                       <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
-                        Our knowledgeable staff is here to help you find the right products for your specific needs and answer any questions.
+                        Our knowledgeable staff is here to help you find the
+                        right products for your specific needs and answer any
+                        questions.
                       </p>
                     </div>
                   </div>
@@ -435,7 +586,9 @@ function App() {
         <div id="contact" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-10">
-              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">Contact Us</h2>
+              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
+                Contact Us
+              </h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark-mode-text sm:text-4xl">
                 Get In Touch
               </p>
@@ -446,11 +599,17 @@ function App() {
             <div id="store-info" className="mt-10 flex justify-center">
               <div className="lg:w-1/2">
                 <div className="text-center">
-                  <h3 className="text-lg font-medium dark-mode-text mb-4">Store Information</h3>
+                  <h3 className="text-lg font-medium dark-mode-text mb-4">
+                    Store Information
+                  </h3>
                   <div className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow p-6">
                     <div className="flex flex-col items-center mb-6">
                       <div className="flex-shrink-0 mb-2">
-                        <i className="fas fa-map-marker-alt text-secondary text-xl" aria-hidden="true" tabIndex="-1"></i>
+                        <i
+                          className="fas fa-map-marker-alt text-secondary text-xl"
+                          aria-hidden="true"
+                          tabIndex="-1"
+                        ></i>
                       </div>
                       <div className="text-base text-gray-700 dark:text-gray-300">
                         <p>14076 State Hwy Z</p>
@@ -459,7 +618,11 @@ function App() {
                     </div>
                     <div className="flex flex-col items-center mb-6">
                       <div className="flex-shrink-0">
-                        <i className="fas fa-phone-alt text-secondary text-xl" aria-hidden="true" tabIndex="-1"></i>
+                        <i
+                          className="fas fa-phone-alt text-secondary text-xl"
+                          aria-hidden="true"
+                          tabIndex="-1"
+                        ></i>
                       </div>
                       <div className="ml-3 text-base text-gray-700 dark:text-gray-300">
                         <p>+1 (573) 578-2988</p>
@@ -467,7 +630,11 @@ function App() {
                     </div>
                     <div className="flex flex-col items-center mb-6">
                       <div className="flex-shrink-0">
-                        <i className="fas fa-envelope text-secondary text-xl" aria-hidden="true" tabIndex="-1"></i>
+                        <i
+                          className="fas fa-envelope text-secondary text-xl"
+                          aria-hidden="true"
+                          tabIndex="-1"
+                        ></i>
                       </div>
                       <div className="ml-3 text-base text-gray-700 dark:text-gray-300">
                         <p>route66hemp@gmail.com</p>
@@ -475,10 +642,16 @@ function App() {
                     </div>
                     <div className="flex flex-col items-center">
                       <div className="flex-shrink-0">
-                        <i className="fas fa-clock text-secondary text-xl" aria-hidden="true" tabIndex="-1"></i>
+                        <i
+                          className="fas fa-clock text-secondary text-xl"
+                          aria-hidden="true"
+                          tabIndex="-1"
+                        ></i>
                       </div>
                       <div className="ml-3 text-base text-gray-700 dark:text-gray-300 lg:text-center">
-                        <p className="font-medium dark-mode-text">Store Hours:</p>
+                        <p className="font-medium dark-mode-text">
+                          Store Hours:
+                        </p>
                         <p>Monday - Thursday: 11:00 AM - 9:00 PM</p>
                         <p>Friday - Saturday: 11:00 AM - 10:00 PM</p>
                         <p>Sunday: Closed</p>
@@ -487,16 +660,46 @@ function App() {
                     <div className="mt-8">
                       <p className="font-medium dark-mode-text">Follow Us:</p>
                       <div className="flex flex-col space-y-2 mt-2 lg:flex-row lg:space-x-6 lg:space-y-0 lg:justify-center justify-center gap-x-4">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary lg:text-center" aria-label="Facebook">
-                          <i className="fab fa-facebook text-2xl" aria-hidden="true" tabIndex="-1"></i>
+                        <a
+                          href="https://www.facebook.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white hover:text-primary lg:text-center"
+                          aria-label="Facebook"
+                        >
+                          <i
+                            className="fab fa-facebook text-2xl"
+                            aria-hidden="true"
+                            tabIndex="-1"
+                          ></i>
                           <span className="sr-only">Facebook</span>
                         </a>
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary lg:text-center" aria-label="Instagram">
-                          <i className="fab fa-instagram text-2xl" aria-hidden="true" tabIndex="-1"></i>
+                        <a
+                          href="https://www.instagram.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white hover:text-primary lg:text-center"
+                          aria-label="Instagram"
+                        >
+                          <i
+                            className="fab fa-instagram text-2xl"
+                            aria-hidden="true"
+                            tabIndex="-1"
+                          ></i>
                           <span className="sr-only">Instagram</span>
                         </a>
-                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary lg:text-center" aria-label="Twitter">
-                          <i className="fab fa-twitter text-2xl" aria-hidden="true" tabIndex="-1"></i>
+                        <a
+                          href="https://www.twitter.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white hover:text-primary lg:text-center"
+                          aria-label="Twitter"
+                        >
+                          <i
+                            className="fab fa-twitter text-2xl"
+                            aria-hidden="true"
+                            tabIndex="-1"
+                          ></i>
                           <span className="sr-only">Twitter</span>
                         </a>
                       </div>
@@ -509,34 +712,73 @@ function App() {
         </div>
       </section>
       {/* Footer */}
-      <footer role = "contentinfo" className="bg-gray-800 dark:bg-gray-900">
+      <footer role="contentinfo" className="bg-gray-800 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
               <div className="flex items-center">
                 <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-2">
-                  <i className="fas fa-cannabis text-white" aria-hidden="true" tabIndex="-1"></i>
+                  <i
+                    className="fas fa-cannabis text-white"
+                    aria-hidden="true"
+                    tabIndex="-1"
+                  ></i>
                 </div>
-                <span className="font-bold text-xl text-white">Route 66 Hemp</span>
+                <span className="font-bold text-xl text-white">
+                  Route 66 Hemp
+                </span>
               </div>
               <p className="text-gray-300 text-base">
-                Premium hemp products for your wellness journey. Quality you can trust.
+                Premium hemp products for your wellness journey. Quality you can
+                trust.
               </p>
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-400 hover:text-white" aria-label="Facebook">
-                  <i className="fab fa-facebook text-xl" aria-hidden="true" tabIndex="-1"></i>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white"
+                  aria-label="Facebook"
+                >
+                  <i
+                    className="fab fa-facebook text-xl"
+                    aria-hidden="true"
+                    tabIndex="-1"
+                  ></i>
                   <span className="sr-only">Facebook</span>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white" aria-label="Instagram">
-                  <i className="fab fa-instagram text-xl" aria-hidden="true" tabIndex="-1"></i>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white"
+                  aria-label="Instagram"
+                >
+                  <i
+                    className="fab fa-instagram text-xl"
+                    aria-hidden="true"
+                    tabIndex="-1"
+                  ></i>
                   <span className="sr-only">Instagram</span>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white" aria-label="Twitter">
-                  <i className="fab fa-twitter text-xl" aria-hidden="true" tabIndex="-1"></i>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white"
+                  aria-label="Twitter"
+                >
+                  <i
+                    className="fab fa-twitter text-xl"
+                    aria-hidden="true"
+                    tabIndex="-1"
+                  ></i>
                   <span className="sr-only">Twitter</span>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white" aria-label="YouTube">
-                  <i className="fab fa-youtube text-xl" aria-hidden="true" tabIndex="-1"></i>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white"
+                  aria-label="YouTube"
+                >
+                  <i
+                    className="fab fa-youtube text-xl"
+                    aria-hidden="true"
+                    tabIndex="-1"
+                  ></i>
                   <span className="sr-only">YouTube</span>
                 </a>
               </div>
@@ -544,60 +786,94 @@ function App() {
             <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">Products</h3>
+                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                    Products
+                  </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         CBD Oils
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Edibles
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Topicals
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Hemp Flower
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Accessories
                       </a>
                     </li>
                   </ul>
                 </div>
                 <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">Company</h3>
+                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                    Company
+                  </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         About Us
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Blog
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Careers
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Press
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Partners
                       </a>
                     </li>
@@ -606,50 +882,78 @@ function App() {
               </div>
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">Support</h3>
+                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                    Support
+                  </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Contact Us
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         FAQs
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Shipping & Returns
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Track Order
                       </a>
                     </li>
                   </ul>
                 </div>
                 <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">Legal</h3>
+                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                    Legal
+                  </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Privacy Policy
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Terms of Service
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Cookie Policy
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-base text-gray-400 hover:text-white">
+                      <a
+                        href="#"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
                         Compliance
                       </a>
                     </li>
@@ -663,7 +967,8 @@ function App() {
               &copy; 2025 Route 66 Hemp. All rights reserved.
             </p>
             <p className="text-sm text-gray-400 text-center mt-2">
-              All products contain less than 0.3% THC and are legal under the 2018 Farm Bill.
+              All products contain less than 0.3% THC and are legal under the
+              2018 Farm Bill.
             </p>
           </div>
         </div>
@@ -676,12 +981,17 @@ function App() {
 function ProductCard({ product }) {
   // Generate combined options if both flavors and size_options exist
   let combinedOptions = [];
-  if (product.flavors && product.flavors.length > 0 && product.size_options && product.size_options.length > 0) {
-    combinedOptions = product.flavors.flatMap(flavor =>
-      product.size_options.map(size => ({
+  if (
+    product.flavors &&
+    product.flavors.length > 0 &&
+    product.size_options &&
+    product.size_options.length > 0
+  ) {
+    combinedOptions = product.flavors.flatMap((flavor) =>
+      product.size_options.map((size) => ({
         label: `${flavor} - ${size}`,
         flavor,
-        size
+        size,
       }))
     );
   }
@@ -692,10 +1002,16 @@ function ProductCard({ product }) {
   );
   // Fallback for only size or only flavor
   const [selectedSize, setSelectedSize] = React.useState(
-    !combinedOptions.length && product.size_options && product.size_options.length > 0 ? product.size_options[0] : null
+    !combinedOptions.length &&
+      product.size_options &&
+      product.size_options.length > 0
+      ? product.size_options[0]
+      : null
   );
   const [selectedFlavor, setSelectedFlavor] = React.useState(
-    !combinedOptions.length && product.flavors && product.flavors.length > 0 ? product.flavors[0] : null
+    !combinedOptions.length && product.flavors && product.flavors.length > 0
+      ? product.flavors[0]
+      : null
   );
 
   // Determine price
@@ -704,7 +1020,11 @@ function ProductCard({ product }) {
     if (product.prices && product.prices[selectedCombo.size] !== undefined) {
       price = product.prices[selectedCombo.size];
     }
-  } else if (selectedSize && product.prices && product.prices[selectedSize] !== undefined) {
+  } else if (
+    selectedSize &&
+    product.prices &&
+    product.prices[selectedSize] !== undefined
+  ) {
     price = product.prices[selectedSize];
   } else if (!selectedSize && selectedFlavor && product.price) {
     price = product.price;
@@ -713,85 +1033,132 @@ function ProductCard({ product }) {
   return (
     <div className="group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow">
       <img
-        src={product.image || (product.images && product.images[0]) || '/assets/images/placeholder.webp'}
+        src={
+          product.image ||
+          (product.images && product.images[0]) ||
+          "/assets/images/placeholder.webp"
+        }
         alt={product.name}
         className="w-full h-50 object-cover rounded-md mb-4"
-        onError={e => {
+        onError={(e) => {
           e.target.onerror = null;
-          e.target.src = '/assets/images/placeholder.webp';
+          e.target.src = "/assets/images/placeholder.webp";
         }}
       />
       <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
-      <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">{product.category}</p>
-      <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{product.description || (product.descriptions && product.descriptions[0])}</p>
+      <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">
+        {product.category}
+      </p>
+      <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+        {product.description ||
+          (product.descriptions && product.descriptions[0])}
+      </p>
       {/* Combined dropdown for flavor + size */}
       {combinedOptions.length > 0 && (
         <div className="mt-2">
-          <label htmlFor={`combo-${product.name}`} className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Flavor & Size:</label>
+          <label
+            htmlFor={`combo-${product.name}`}
+            className="block text-xs text-gray-600 dark:text-gray-300 mb-1"
+          >
+            Flavor & Size:
+          </label>
           <select
             id={`combo-${product.name}`}
             className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
-            value={selectedCombo ? selectedCombo.label : ''}
-            onChange={e => {
-              const combo = combinedOptions.find(opt => opt.label === e.target.value);
+            value={selectedCombo ? selectedCombo.label : ""}
+            onChange={(e) => {
+              const combo = combinedOptions.find(
+                (opt) => opt.label === e.target.value
+              );
               setSelectedCombo(combo);
             }}
             aria-label="Select flavor and size"
           >
-            {combinedOptions.map(opt => (
-              <option key={opt.label} value={opt.label}>{opt.label}</option>
+            {combinedOptions.map((opt) => (
+              <option key={opt.label} value={opt.label}>
+                {opt.label}
+              </option>
             ))}
           </select>
         </div>
       )}
       {/* Size dropdown (if no flavors) */}
-      {!combinedOptions.length && product.size_options && product.size_options.length > 0 && (
-        <div className="mt-2">
-          <label htmlFor={`size-${product.name}`} className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Size:</label>
-          <select
-            id={`size-${product.name}`}
-            className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
-            value={selectedSize}
-            onChange={e => setSelectedSize(e.target.value)}
-            aria-label="Select size"
-          >
-            {product.size_options.map(size => (
-              <option key={size} value={size}>{size}</option>
-            ))}
-          </select>
-        </div>
-      )}
+      {!combinedOptions.length &&
+        product.size_options &&
+        product.size_options.length > 0 && (
+          <div className="mt-2">
+            <label
+              htmlFor={`size-${product.name}`}
+              className="block text-xs text-gray-600 dark:text-gray-300 mb-1"
+            >
+              Size:
+            </label>
+            <select
+              id={`size-${product.name}`}
+              className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
+              value={selectedSize}
+              onChange={(e) => setSelectedSize(e.target.value)}
+              aria-label="Select size"
+            >
+              {product.size_options.map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       {/* Flavor dropdown (if no sizes) */}
-      {!combinedOptions.length && product.flavors && product.flavors.length > 0 && (
-        <div className="mt-2">
-          <label htmlFor={`flavor-${product.name}`} className="block text-xs text-gray-600 dark:text-gray-300 mb-1">Flavor:</label>
-          <select
-            id={`flavor-${product.name}`}
-            className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
-            value={selectedFlavor}
-            onChange={e => setSelectedFlavor(e.target.value)}
-            aria-label="Select flavor"
-          >
-            {product.flavors.map(flavor => (
-              <option key={flavor} value={flavor}>{flavor}</option>
-            ))}
-          </select>
-        </div>
-      )}
-      <p className="mt-2 font-medium text-gray-900 dark:text-gray-100">${price ? price.toFixed(2) : 'N/A'}</p>
+      {!combinedOptions.length &&
+        product.flavors &&
+        product.flavors.length > 0 && (
+          <div className="mt-2">
+            <label
+              htmlFor={`flavor-${product.name}`}
+              className="block text-xs text-gray-600 dark:text-gray-300 mb-1"
+            >
+              Flavor:
+            </label>
+            <select
+              id={`flavor-${product.name}`}
+              className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
+              value={selectedFlavor}
+              onChange={(e) => setSelectedFlavor(e.target.value)}
+              aria-label="Select flavor"
+            >
+              {product.flavors.map((flavor) => (
+                <option key={flavor} value={flavor}>
+                  {flavor}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+      <p className="mt-2 font-medium text-gray-900 dark:text-gray-100">
+        ${price ? price.toFixed(2) : "N/A"}
+      </p>
       <div className="flex items-center mt-1">
         {[...Array(5)].map((_, i) => (
           <i
             key={i}
-            className={`text-xs ${i < Math.floor(product.rating || (product.ratings && product.ratings[0]) || 5) ? 'fas fa-star text-yellow-600' : 'far fa-star text-yellow-600'}`}
+            className={`text-xs ${
+              i <
+              Math.floor(
+                product.rating || (product.ratings && product.ratings[0]) || 5
+              )
+                ? "fas fa-star text-yellow-600"
+                : "far fa-star text-yellow-600"
+            }`}
             aria-hidden="true"
           ></i>
         ))}
-        <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">({product.rating || (product.ratings && product.ratings[0]) || 5})</span>
+        <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">
+          ({product.rating || (product.ratings && product.ratings[0]) || 5})
+        </span>
       </div>
     </div>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
