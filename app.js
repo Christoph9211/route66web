@@ -785,7 +785,6 @@ function ProductCard({ product }) {
             key={i}
             className={`text-xs ${i < Math.floor(product.rating || (product.ratings && product.ratings[0]) || 5) ? 'fas fa-star text-yellow-600' : 'far fa-star text-yellow-600'}`}
             aria-hidden="true"
-            tabIndex="-1"
           ></i>
         ))}
         <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">({product.rating || (product.ratings && product.ratings[0]) || 5})</span>
