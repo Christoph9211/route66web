@@ -1,76 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Route 66 Hemp is a family-owned business that offers a variety of CBD products."
+    />
+    <meta property="og:image" content="https://route66hemp.com/og-image.jpg" />
+    <meta property="og:site_name" content="Route 66 Hemp" />
+    <meta property="og:title" content="Route 66 Hemp - Quality CBD Products" />
+    <meta
+      property="og:description"
+      content="Route 66 Hemp is a family-owned business that offers a variety of CBD products."
+    />
+    <meta property="og:url" content="https://route66hemp.com" />
+    <meta property="og:type" content="website" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Route 66 Hemp is a family-owned business that offers a variety of CBD products.">
-  <meta property="og:image" content="https://route66hemp.com/og-image.jpg">
-  <meta property="og:site_name" content="Route 66 Hemp">
-  <meta property="og:title" content="Route 66 Hemp - Quality CBD Products">
-  <meta property="og:description" content="Route 66 Hemp is a family-owned business that offers a variety of CBD products.">
-  <meta property="og:url" content="https://route66hemp.com">
-  <meta property="og:type" content="website">
-  
-  <title>Route 66 Hemp</title>
+    <title>Route 66 Hemp</title>
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="/styles.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/styles.css" />
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- External Tailwind Config -->
-  <script src="/tailwind-config.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- External Tailwind Config -->
+    <script type="module" src="/tailwind-config.js"></script>
 
-  <meta name="google-site-verification" content="mqIi89j9X4pKNYgBOCXypnGvacxtNjcM9a44yCXSrh0" />
+    <meta
+      name="google-site-verification"
+      content="mqIi89j9X4pKNYgBOCXypnGvacxtNjcM9a44yCXSrh0"
+    />
 
-  <link rel="canonical" href="https://route66hemp.com" />
+    <link rel="canonical" href="https://route66hemp.com" />
 
-  <meta name="author" content="Christopher Gibbons" />
-  <meta name="keywords" content="CBD, THCA, Cannabis, Hemp, CBD Hemp, Route 66 Hemp, Cannabis Accessories, Hemp Products, Route 66, Dispensary, Hemp Dispensary" />
+    <meta name="author" content="Christopher Gibbons" />
+    <meta
+      name="keywords"
+      content="CBD, THCA, Cannabis, Hemp, CBD Hemp, Route 66 Hemp, Cannabis Accessories, Hemp Products, Route 66, Dispensary, Hemp Dispensary"
+    />
 
-  <!-- React from CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- React from CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-  <!-- Babel for JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- Font Awesome Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <!-- Google Fonts -->
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-  />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    />
 
-  <!-- Analytics Initialization -->
-  <script src="/analytics-init.js"></script>
+    <!-- Analytics Initialization -->
+    <script type="module" src="/analytics-init.js"></script>
 
-  <!-- Web Analytics -->
-  <script defer src="/_vercel/insights/script.js"></script>
-</head>
+    <!-- Web Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
 
-<body class="font-sans antialiased">
-  <main role="main">
-    <div id="root"></div>
-  </main>
-  <!-- React App -->
-  <script type="text/babel" src="/app.js"></script>
-  <!-- Speed Analytics -->
-  <script defer src="/_vercel/speed-insights/script.js"></script>
-</body>
-
+  <body class="font-sans antialiased">
+    <main role="main">
+      <div id="root"></div>
+    </main>
+    <!-- React App -->
+    <script type="module" src="/app.jsx"></script>
+    <!-- Speed Analytics -->
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+  </body>
 </html>
