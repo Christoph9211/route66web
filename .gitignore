@@ -10,4 +10,5 @@ node_modules/
 *.tmp
 .vscode/
 # Ignore json-gen.html
-/json-gen.html
+/products/json-gen.html
+instructions.txt
