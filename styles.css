@@ -2,9 +2,9 @@
 .product-card {
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.product-card:hover {
+/* .product-card:hover {
   transform: translateY(-5px);
-}
+} */
 
 /* Ensure dark mode text contrast */
 @media (prefers-color-scheme: dark) {
@@ -16,6 +16,7 @@
     color: #ffffff;
   }
 }
+/* Ensure light mode text contrast */
 @media (prefers-color-scheme: light) {
   .dark-mode-text {
     color: #1a1a1a;
@@ -39,6 +40,8 @@
   height: 50px;
   animation: spin 2s linear infinite;
 }
+
+/* Loader animation */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -61,6 +64,14 @@ button,
   cursor: pointer;
 }
 
+/* Make product card dropdowns appear clickable */
+.product-card select,
+.product-card .dropdown,
+.product-card [role="combobox"] {
+  cursor: pointer;
+}
+
+/* Custom focus styles for dark mode */
 @media (prefers-color-scheme: dark) {
   a:focus,
   button:focus,
