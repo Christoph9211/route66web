@@ -1,5 +1,12 @@
 [
   {
+    "name": "Tricho Jordan Shatter",
+    "category": "Concentrates",
+    "size_options": ["1 gram"],
+    "prices": { "1 gram": 35.0 },
+    "thca_percentage": 98.1
+  },
+  {
     "name": "Blueberry Diesel",
     "category": "Concentrates",
     "size_options": ["1 gram", "3 grams"],
@@ -64,13 +71,13 @@
     "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
   },
   {
-    "name": "Diamonds & Sauce Blueberry Muffin",
+    "name": "Blueberry Muffin",
     "category": "Diamonds & Sauce",
     "size_options": ["1 gram", "3 grams"],
     "prices": { "1 gram": 15.0, "3 grams": 40.0 }
   },
   {
-    "name": "Diamonds & Sauce Amnesia Haze",
+    "name": "Amnesia Haze",
     "category": "Diamonds & Sauce",
     "size_options": ["1 gram", "3 grams"],
     "prices": { "1 gram": 15.0, "3 grams": 40.0 }
