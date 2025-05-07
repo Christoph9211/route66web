@@ -1,5 +1,12 @@
 [
   {
+    "name": "Tricho Jordan Shatter",
+    "category": "Concentrates",
+    "size_options": ["1 gram"],
+    "prices": { "1 gram": 35.0 },
+    "thca_percentage": 98.1
+  },
+  {
     "name": "Blueberry Diesel",
     "category": "Concentrates",
     "size_options": ["1 gram", "3 grams"],
