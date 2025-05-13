@@ -41,12 +41,6 @@
     "prices": { "1/8": 25.0, "1/4": 45.0, "1/2": 85.0, "ounce": 160.0 }
   },
   {
-    "name": "Super Boof",
-    "category": "Flower",
-    "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 20.0, "1/4": 40.0, "1/2": 65.0, "ounce": 125.0 }
-  },
-  {
     "name": "Mittens Cake",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
