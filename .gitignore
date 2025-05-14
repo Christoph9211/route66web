@@ -13,3 +13,6 @@ node_modules/
 /products/json-gen.html
 instructions.txt
 dist/
+/products/products.json
+/products/json-gen.html
+assets\images\placeholder.webp
