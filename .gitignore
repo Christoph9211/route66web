@@ -9,10 +9,6 @@ node_modules/
 # Ignore all .tmp files
 *.tmp
 .vscode/
-# Ignore json-gen.html
-/products/json-gen.html
+
 instructions.txt
 dist/
-/products/products.json
-/products/json-gen.html
-assets/images/placeholder.webp
