@@ -4,6 +4,7 @@
   "description": "",
   "main": "analytics-init.js",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
     "braces": "^3.0.3",
     "detect-libc": "^2.0.4",
     "enhanced-resolve": "^5.18.1",
