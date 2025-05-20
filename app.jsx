@@ -117,7 +117,7 @@ function App() {
     appState.selectedCategory === "all"
       ? appState.products
       : appState.products.filter(
-          (product) => product.category === appState.selectedCategory
+          (product) => product.category === appState.selectedCategory,
         );
 
   if (appState.age === null) {
@@ -992,13 +992,13 @@ function ProductCard({ product }) {
         label: `${flavor} - ${size}`,
         flavor,
         size,
-      }))
+      })),
     );
   }
 
   // State for combined selection
   const [selectedCombo, setSelectedCombo] = React.useState(
-    combinedOptions.length > 0 ? combinedOptions[0] : null
+    combinedOptions.length > 0 ? combinedOptions[0] : null,
   );
   // Fallback for only size or only flavor
   const [selectedSize, setSelectedSize] = React.useState(
@@ -1006,12 +1006,12 @@ function ProductCard({ product }) {
       product.size_options &&
       product.size_options.length > 0
       ? product.size_options[0]
-      : null
+      : null,
   );
   const [selectedFlavor, setSelectedFlavor] = React.useState(
     !combinedOptions.length && product.flavors && product.flavors.length > 0
       ? product.flavors[0]
-      : null
+      : null,
   );
 
   // Determine price
@@ -1068,7 +1068,7 @@ function ProductCard({ product }) {
             value={selectedCombo ? selectedCombo.label : ""}
             onChange={(e) => {
               const combo = combinedOptions.find(
-                (opt) => opt.label === e.target.value
+                (opt) => opt.label === e.target.value,
               );
               setSelectedCombo(combo);
             }}
@@ -1144,7 +1144,7 @@ function ProductCard({ product }) {
             className={`text-xs ${
               i <
               Math.floor(
-                product.rating || (product.ratings && product.ratings[0]) || 5
+                product.rating || (product.ratings && product.ratings[0]) || 5,
               )
                 ? "fas fa-star text-yellow-600"
                 : "far fa-star text-yellow-600"
