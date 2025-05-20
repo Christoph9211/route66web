@@ -190,7 +190,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center">
+              <div className="shrink-0 flex items-center">
                 {/* Logo */}
                 <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-2">
                   <i
@@ -334,7 +334,7 @@ function App() {
                     </div>
                     <div className="mt-12 lg:m-0 lg:relative">
                       <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0">
-                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-green-200 to-green-600 dark:from-green-900 dark:to-green-600 relative overflow-hidden">
+                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-linear-to-br from-green-200 to-green-600 dark:from-green-900 dark:to-green-600 relative overflow-hidden">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <i
                               className="fas fa-cannabis text-white text-9xl opacity-30"
@@ -455,7 +455,7 @@ function App() {
                 <div className="relative lg:row-start-1 lg:col-start-2">
                   <div className="relative text-base mx-auto lg:max-w-none">
                     <div className="aspect-w-2 aspect-h-1 rounded-lg shadow-xl overflow-hidden">
-                      <div className="w-full h-full bg-gradient-to-r from-green-800 to-green-600 flex items-center justify-center p-6">
+                      <div className="w-full h-full bg-linear-to-r from-green-800 to-green-600 flex items-center justify-center p-6">
                         <div className="text-center text-white">
                           <i
                             className="fas fa-leaf text-6xl mb-4"
@@ -604,7 +604,7 @@ function App() {
                   </h3>
                   <div className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow p-6">
                     <div className="flex flex-col items-center mb-6">
-                      <div className="flex-shrink-0 mb-2">
+                      <div className="shrink-0 mb-2">
                         <i
                           className="fas fa-map-marker-alt text-secondary text-xl"
                           aria-hidden="true"
@@ -617,7 +617,7 @@ function App() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center mb-6">
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <i
                           className="fas fa-phone-alt text-secondary text-xl"
                           aria-hidden="true"
@@ -629,7 +629,7 @@ function App() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center mb-6">
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <i
                           className="fas fa-envelope text-secondary text-xl"
                           aria-hidden="true"
@@ -641,7 +641,7 @@ function App() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <i
                           className="fas fa-clock text-secondary text-xl"
                           aria-hidden="true"
