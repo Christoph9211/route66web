@@ -625,7 +625,7 @@ function App() {
                         ></i>
                       </div>
                       <div className="ml-3 text-base text-gray-700 dark:text-gray-300">
-                        <p>+1 (573) 578-2988</p>
+                        <p>+1 (573) 677-6418</p>
                       </div>
                     </div>
                     <div className="flex flex-col items-center mb-6">
