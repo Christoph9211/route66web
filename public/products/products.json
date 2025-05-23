@@ -35,13 +35,31 @@
     "thca_percentage": 97.1
   },
   {
+    "name": "Alcapulco Gold",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 28.0, "1/4": 48.0, "1/2": 90.0, "ounce": 180.0 }
+  },
+  {
     "name": "Quattro Kush",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": { "1/8": 25.0, "1/4": 45.0, "1/2": 85.0, "ounce": 160.0 }
   },
   {
-    "name": "Mittens Cake",
+    "name": "Gooey Butter Cake",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 20.0, "1/4": 40.0, "1/2": 80.0, "ounce": 145.0 }
+  },
+  {
+    "name": "Gucci OG",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 20.0, "1/4": 40.0, "1/2": 80.0, "ounce": 145.0 }
+  },
+  {
+    "name": "Deleted Scene",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
@@ -53,13 +71,25 @@
     "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
   },
   {
-    "name": "Jelly Breath",
+    "name": "Flap Jacks",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 20.0, "1/4": 40.0, "1/2": 80.0, "ounce": 145.0 }
+  },
+  {
+    "name": "Blueberry Muffin",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
   },
   {
-    "name": "Girl Scout Cookies",
+    "name": "Blueberry Pancakes",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
+  },
+  {
+    "name": "Strawberry Cough",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
@@ -80,6 +110,26 @@
     "name": "Flower Preroll",
     "category": "Other",
     "price": 5.0
+  },
+  {
+    "name": "1 Gram Cart",
+    "category": "Vapes & Carts",
+    "price": 16.0,
+    "flavors": [
+      "Cherry Cookies (Indica)",
+      "Tropical Cherries (Sativa)",
+      "White Fire Zkittles (Hybrid)"
+    ]
+  },
+  {
+    "name": "1 Gram Disposable",
+    "category": "Vapes & Carts",
+    "price": 30.0,
+    "flavors": [
+      "Cherry Cookies (Indica)",
+      "Tropical Cherries (Sativa)",
+      "White Fire Zkittles (Hybrid)"
+    ]
   },
   {
     "name": "2 Gram Vape",
