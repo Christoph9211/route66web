@@ -982,14 +982,21 @@ function ProductCard({ product }) {
   // Generate combined options if both flavors and size_options exist
   let combinedOptions = [];
   if (
+    // Do we have flavors?
     product.flavors &&
+    // Are there any flavors?
     product.flavors.length > 0 &&
+    // Do we have size options?
     product.size_options &&
+    // Are there any size options?
     product.size_options.length > 0
   ) {
+    // Combine each flavor with each size option
     combinedOptions = product.flavors.flatMap((flavor) =>
       product.size_options.map((size) => ({
+        // Create a label that's the combination of flavor and size
         label: `${flavor} - ${size}`,
+        // Store the flavor and size for later use
         flavor,
         size,
       }))
@@ -1017,6 +1024,7 @@ function ProductCard({ product }) {
   // Determine price
   let price = product.price;
   if (combinedOptions.length > 0 && selectedCombo) {
+    // If we have combined options, check if the price is defined for the selected size
     if (product.prices && product.prices[selectedCombo.size] !== undefined) {
       price = product.prices[selectedCombo.size];
     }
@@ -1025,27 +1033,45 @@ function ProductCard({ product }) {
     product.prices &&
     product.prices[selectedSize] !== undefined
   ) {
+    // If we have a selected size, check if the price is defined for that size
     price = product.prices[selectedSize];
   } else if (!selectedSize && selectedFlavor && product.price) {
+    // If we have a selected flavor but no selected size, use the default price
     price = product.price;
   }
 
+  // Render a product card with the given product data
+  // This component is complicated because it needs to handle three different cases:
+  // 1. The product has both flavors and size options
+  // 2. The product has only flavors
+  // 3. The product has only size options
+  // It also needs to dynamically calculate the price based on the selected flavor and size
   return (
-    <div className="group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow">
+    <div
+      className="group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow"
+      // This class is for the card shadow effect
+    >
       <img
         src={
+          // If the product has an image, use it
           product.image ||
+          // If the product has an array of images, use the first one
           (product.images && product.images[0]) ||
+          // If the product has no images, use a placeholder image
           "/assets/images/placeholder.webp"
         }
         alt={product.name}
         className="w-full h-50 object-cover rounded-md mb-4"
+        // This class is for the image height and object-fit
         onError={(e) => {
+          // If the image fails to load, use a placeholder image
           e.target.onerror = null;
           e.target.src = "/assets/images/placeholder.webp";
         }}
       />
-      <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
+      <h3 className="text-lg font-bold dark-mode-text">
+        {product.name}
+      </h3>
       <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">
         {product.category}
       </p>
@@ -1067,6 +1093,7 @@ function ProductCard({ product }) {
             className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
             value={selectedCombo ? selectedCombo.label : ""}
             onChange={(e) => {
+              // When the user selects a new option, update the selectedCombo state
               const combo = combinedOptions.find(
                 (opt) => opt.label === e.target.value
               );
@@ -1135,9 +1162,11 @@ function ProductCard({ product }) {
           </div>
         )}
       <p className="mt-2 font-medium text-gray-900 dark:text-gray-100">
+        {/* Dynamically calculate the price based on the selected flavor and size */}
         ${price ? price.toFixed(2) : "N/A"}
       </p>
       <div className="flex items-center mt-1">
+        {/* Render the rating stars */}
         {[...Array(5)].map((_, i) => (
           <i
             key={i}
@@ -1154,6 +1183,7 @@ function ProductCard({ product }) {
           ></i>
         ))}
         <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">
+          {/* Show the rating number */}
           ({product.rating || (product.ratings && product.ratings[0]) || 5})
         </span>
       </div>
