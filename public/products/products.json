@@ -109,7 +109,7 @@
   {
     "name": "Flower Preroll",
     "category": "Other",
-    "strain_type": ["Blueberry Muffin", "Chimera"],
+    "size_options": ["Blueberry Muffin", "Chimera"],
     "prices": {
       "Blueberry Muffin": 5.0,
       "Chimera": 5.0
@@ -118,7 +118,7 @@
   {
     "name": "Infused Preroll",
     "category": "Other",
-    "strain_type": ["Candy Runtz"],
+    "size_options": ["Candy Runtz"],
     "prices": {
       "Candy Runtz": 10.0
     }
@@ -126,7 +126,7 @@
   {
     "name": "1 Gram Cart",
     "category": "Vapes & Carts",
-    "strain_type": ["Blue Walker (Sativa)","Bomb Pop (Indica)","Cranberry Haze (Sativa)","Cherry Cookies (Indica)", "Cherry Pie (Sativa)", "Mango Tango (Indica)", "Tropical Cherries (Sativa)", "White Fire Zkittles (Hybrid)"],
+    "size_options": ["Blue Walker (Sativa)", "Bomb Pop (Indica)", "Cranberry Haze (Sativa)", "Cherry Cookies (Indica)", "Cherry Pie (Sativa)", "Mango Tango (Indica)", "Tropical Cherries (Sativa)", "White Fire Zkittles (Hybrid)"],
     "prices": {
       "Blue Walker (Sativa)": 24.0,
       "Bomb Pop (Indica)": 16.0,
@@ -141,10 +141,10 @@
   {
     "name": "1 Gram Disposable",
     "category": "Vapes & Carts",
-    "strain_type": ["Sour Diesel Live Resin" ,"Sour Pebbles(Sativa)","Cherry Cookies(Indica)","Tropical Cherries(Sativa)","Watermelon OG(Indica)"],
+    "size_options": ["Sour Diesel Live Resin", "Sour Pebbles (Sativa)", "Cherry Cookies (Indica)", "Tropical Cherries (Sativa)", "Watermelon OG (Indica)"],
     "prices": {
       "Sour Diesel Live Resin": 35.0,
-      "Sour Pebbles(Sativa)": 30.0,
+      "Sour Pebbles (Sativa)": 30.0,
       "Cherry Cookies (Indica)": 30.0,
       "Tropical Cherries (Sativa)": 30.0,
       "Watermelon OG (Indica)": 30.0
@@ -153,7 +153,7 @@
   {
     "name": "2 Gram Vape",
     "category": "Vapes & Carts",
-    "strain_type": ["Runtz", "Chemdawg", "Cherry Cookies", "Green Crack", "Blueberry"],
+    "size_options": ["Runtz", "Chemdawg", "Cherry Cookies", "Green Crack", "Blueberry"],
     "prices": {
       "Runtz": 30.0,
       "Chemdawg": 30.0,
