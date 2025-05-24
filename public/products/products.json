@@ -105,37 +105,62 @@
     "category": "Diamonds & Sauce",
     "size_options": ["1 gram", "3 grams"],
     "prices": { "1 gram": 15.0, "3 grams": 40.0 }
-  },
+  },  
   {
     "name": "Flower Preroll",
     "category": "Other",
-    "price": 5.0
+    "strain_type": ["Blueberry Muffin", "Chimera"],
+    "prices": {
+      "Blueberry Muffin": 5.0,
+      "Chimera": 5.0
+    }
+  },
+  {
+    "name": "Infused Preroll",
+    "category": "Other",
+    "strain_type": ["Candy Runtz"],
+    "prices": {
+      "Candy Runtz": 10.0
+    }
   },
   {
     "name": "1 Gram Cart",
     "category": "Vapes & Carts",
-    "price": 16.0,
-    "flavors": [
-      "Cherry Cookies (Indica)",
-      "Tropical Cherries (Sativa)",
-      "White Fire Zkittles (Hybrid)"
-    ]
+    "strain_type": ["Blue Walker (Sativa)","Bomb Pop (Indica)","Cranberry Haze (Sativa)","Cherry Cookies (Indica)", "Cherry Pie (Sativa)", "Mango Tango (Indica)", "Tropical Cherries (Sativa)", "White Fire Zkittles (Hybrid)"],
+    "prices": {
+      "Blue Walker (Sativa)": 24.0,
+      "Bomb Pop (Indica)": 16.0,
+      "Cranberry Haze (Sativa)": 24.0,
+      "Cherry Cookies (Indica)": 16.0,
+      "Cherry Pie (Sativa)": 16.0,
+      "Mango Tango (Indica)": 24.0,
+      "Tropical Cherries (Sativa)": 16.0,
+      "White Fire Zkittles (Hybrid)": 16.0
+    }
   },
   {
     "name": "1 Gram Disposable",
     "category": "Vapes & Carts",
-    "price": 30.0,
-    "flavors": [
-      "Cherry Cookies (Indica)",
-      "Tropical Cherries (Sativa)",
-      "White Fire Zkittles (Hybrid)"
-    ]
+    "strain_type": ["Sour Diesel Live Resin" ,"Sour Pebbles(Sativa)","Cherry Cookies(Indica)","Tropical Cherries(Sativa)","Watermelon OG(Indica)"],
+    "prices": {
+      "Sour Diesel Live Resin": 35.0,
+      "Sour Pebbles(Sativa)": 30.0,
+      "Cherry Cookies (Indica)": 30.0,
+      "Tropical Cherries (Sativa)": 30.0,
+      "Watermelon OG (Indica)": 30.0
+    }
   },
   {
     "name": "2 Gram Vape",
     "category": "Vapes & Carts",
-    "price": 30.0,
-    "flavors": ["Runtz", "Chemdawg", "Cherry Cookies"]
+    "strain_type": ["Runtz", "Chemdawg", "Cherry Cookies", "Green Crack", "Blueberry"],
+    "prices": {
+      "Runtz": 30.0,
+      "Chemdawg": 30.0,
+      "Cherry Cookies": 30.0,
+      "Green Crack": 30.0,
+      "Blueberry": 30.0
+    }
   }
   
 ]
