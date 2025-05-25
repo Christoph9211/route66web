@@ -1118,14 +1118,15 @@ function ProductCard({ product }) {
               htmlFor={`size-${product.name}`}
               className="block text-xs text-gray-600 dark:text-gray-300 mb-1"
             >
-              Size:
+              {/* Use 'Strain' for Vapes & Carts and Other, otherwise 'Size' */}
+              {['Vapes & Carts', 'Other'].includes(product.category) ? 'Strain:' : 'Size:'}
             </label>
             <select
               id={`size-${product.name}`}
               className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
-              aria-label="Select size"
+              aria-label={['Vapes & Carts', 'Other'].includes(product.category) ? 'Select strain' : 'Select size'}
             >
               {product.size_options.map((size) => (
                 <option key={size} value={size}>
