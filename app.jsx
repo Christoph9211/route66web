@@ -247,7 +247,7 @@ function App() {
                     ? "Close main menu"
                     : "Open main menu"
                 }
-                aria-labelledby={appState.isMobileMenuOpen ? "true" : "false"}
+                aria-expanded={appState.isMobileMenuOpen}
               >
                 <i
                   className={`fas ${
