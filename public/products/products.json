@@ -89,12 +89,6 @@
     "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
   },
   {
-    "name": "Strawberry Cough",
-    "category": "Flower",
-    "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
-  },
-  {
     "name": "Blueberry Muffin",
     "category": "Diamonds & Sauce",
     "size_options": ["1 gram", "3 grams"],
