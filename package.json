@@ -2,7 +2,6 @@
   "name": "route66web",
   "version": "1.0.0",
   "description": "",
-  "main": "analytics-init.js",
   "dependencies": {
     "braces": "^3.0.3",
     "detect-libc": "^2.0.3",
@@ -49,9 +48,6 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "exports": {
-    ".": "./analytics-init.js"
-  },
   "bugs": {
     "url": "https://github.com/Christoph9211/route66web/issues"
   },
