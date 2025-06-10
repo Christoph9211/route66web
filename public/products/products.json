@@ -41,10 +41,34 @@
     "prices": { "1/8": 28.0, "1/4": 48.0, "1/2": 90.0, "ounce": 180.0 }
   },
   {
+    "name": "Blue Dream Living Soil",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 25.0, "1/4": 50.0, "1/2": 100.0, "ounce": 200.0 }
+  },
+  {
     "name": "Quattro Kush",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": { "1/8": 25.0, "1/4": 45.0, "1/2": 85.0, "ounce": 160.0 }
+  },
+  {
+    "name": "Gelonade",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
+  },
+  {
+    "name": "Orange Creamsicle Living Soil",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
+  },
+  {
+    "name": "Slurricane",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
   },
   {
     "name": "Gooey Butter Cake",
@@ -89,6 +113,12 @@
     "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
   },
   {
+    "name": "White Widow Hydro",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": { "1/8": 25.0, "1/4": 50.0, "1/2": 100.0, "ounce": 200.0 }
+  },
+  {
     "name": "Blueberry Muffin",
     "category": "Diamonds & Sauce",
     "size_options": ["1 gram", "3 grams"],
@@ -99,7 +129,13 @@
     "category": "Diamonds & Sauce",
     "size_options": ["1 gram", "3 grams"],
     "prices": { "1 gram": 15.0, "3 grams": 40.0 }
-  },  
+  },
+  {
+    "name": "Saucy Diamonds",
+    "category": "Diamonds & Sauce",
+    "size_options": ["1 gram", "3 grams"],
+    "prices": { "1 gram": 15.0, "3 grams": 40.0 }
+  },
   {
     "name": "Flower Preroll",
     "category": "Other",
@@ -112,23 +148,41 @@
   {
     "name": "Infused Preroll",
     "category": "Other",
-    "size_options": ["Candy Runtz"],
+    "size_options": ["Candy Runtz", "Diamond Watermelon", "Rainbow Sherbert Caviar"],
     "prices": {
-      "Candy Runtz": 10.0
+      "Candy Runtz": 10.0,
+      "Diamond Watermelon": 12.0,
+      "Rainbow Sherbert Caviar": 7.0
+    }
+  },
+  {
+    "name": "Tropical Cherry Snowcaps",
+    "category": "Flower",
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
+    "prices": {
+      "1/8": 25.0,
+      "1/4": 50.0,
+      "1/2": 100.0,
+      "ounce": 200.0
     }
   },
   {
     "name": "1 Gram Cart",
     "category": "Vapes & Carts",
-    "size_options": ["Blue Walker (Sativa)", "Bomb Pop (Indica)", "Cranberry Haze (Sativa)", "Cherry Cookies (Indica)", "Cherry Pie (Sativa)", "Mango Tango (Indica)", "Tropical Cherries (Sativa)", "White Fire Zkittles (Hybrid)"],
+    "size_options": ["Blue Walker (Sativa)", "Bomb Pop (Indica)", "Cranberry Haze (Sativa)", "Cherry Cookies (Indica)", "Cherry Pie (Sativa)", "Gelato (Hybrid)", "Lemon Cake (Hybrid)", "Mango Tango (Indica)", "Trainwreck (Hybrid)", "Tropical Cherries (Sativa)", "Wedding Cake (Indica)", "White Fire Zkittles (Hybrid)"],
     "prices": {
       "Blue Walker (Sativa)": 24.0,
       "Bomb Pop (Indica)": 16.0,
       "Cranberry Haze (Sativa)": 24.0,
       "Cherry Cookies (Indica)": 16.0,
       "Cherry Pie (Sativa)": 16.0,
+      "Chocolate Diesel (Indica)": 18.0,
+      "Gelato (Hybrid)": 18.0,
+      "Lemon Cake (Hybrid)": 18.0,
       "Mango Tango (Indica)": 24.0,
+      "Trainwreck (Hybrid)": 18.0,
       "Tropical Cherries (Sativa)": 16.0,
+      "Wedding Cake (Indica)": 18.0,
       "White Fire Zkittles (Hybrid)": 16.0
     }
   },
@@ -147,13 +201,15 @@
   {
     "name": "2 Gram Vape",
     "category": "Vapes & Carts",
-    "size_options": ["Runtz", "Chemdawg", "Cherry Cookies", "Green Crack", "Blueberry"],
+    "size_options": ["Runtz", "Chemdawg", "Cherry Cookies", "Green Crack", "Blueberry", "Grape Ape", "Sunset Sherbet"],
     "prices": {
       "Runtz": 30.0,
       "Chemdawg": 30.0,
       "Cherry Cookies": 30.0,
       "Green Crack": 30.0,
-      "Blueberry": 30.0
+      "Blueberry": 30.0,
+      "Grape Ape": 30.0,
+      "Sunset Sherbet": 30.0
     }
   }
   
