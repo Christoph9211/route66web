@@ -11,6 +11,9 @@ module.exports = {
         secondary: '#45b34b',
         accent: '#3A9A2A',
       },
+      height: {
+        50: '12.5rem',
+      },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
       },

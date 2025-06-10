@@ -1061,7 +1061,7 @@ function ProductCard({ product }) {
           "/assets/images/placeholder.webp"
         }
         alt={product.name}
-        className="w-full h-50 object-cover rounded-md mb-4"
+        className="w-full h-48 object-cover rounded-md mb-4"
         // This class is for the image height and object-fit
         onError={(e) => {
           // If the image fails to load, use a placeholder image
