@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@babel/code-frame": "^7.27.1",
-    "eslint": "^7.32.0",
     "prettier": "^2.5.1"
   },
   "scripts": {
@@ -40,7 +39,6 @@
     "serve": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
-    
   },
   "repository": {
     "type": "git",
