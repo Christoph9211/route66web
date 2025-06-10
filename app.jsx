@@ -241,13 +241,12 @@ function App() {
                     isMobileMenuOpen: !prevState.isMobileMenuOpen,
                   }))
                 }
-                className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"
-                aria-label={
+                className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"                aria-label={
                   appState.isMobileMenuOpen
                     ? "Close main menu"
                     : "Open main menu"
                 }
-                aria-expanded={appState.isMobileMenuOpen}
+                aria-expanded={appState.isMobileMenuOpen ? "true" : "false"}
               >
                 <i
                   className={`fas ${
