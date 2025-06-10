@@ -36,7 +36,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:css": "tailwindcss -i ./src/styles.css -o ./styles.css --minify",
+    "build": "npm run build:css && vite build",
     "serve": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
