@@ -49,9 +49,6 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "exports": {
-    ".": "./analytics-init.js"
-  },
   "bugs": {
     "url": "https://github.com/Christoph9211/route66web/issues"
   },
