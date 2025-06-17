@@ -1040,6 +1040,31 @@ function ProductCard({ product }) {
     price = product.price;
   }
 
+  // Determine banner based on selected variant
+  let banner = product.banner;
+  let bannerKey = null;
+  if (combinedOptions.length > 0 && selectedCombo) {
+    bannerKey = selectedCombo.label;
+  } else if (selectedSize) {
+    bannerKey = selectedSize;
+  } else if (selectedFlavor) {
+    bannerKey = selectedFlavor;
+  }
+  if (bannerKey && product.availability) {
+    if (product.availability[bannerKey]) {
+      banner = product.availability[bannerKey];
+    } else if (
+      selectedCombo &&
+      product.availability[selectedCombo.size]
+    ) {
+      banner = product.availability[selectedCombo.size];
+    } else if (selectedFlavor && product.availability[selectedFlavor]) {
+      banner = product.availability[selectedFlavor];
+    } else if (selectedSize && product.availability[selectedSize]) {
+      banner = product.availability[selectedSize];
+    }
+  }
+
   // Render a product card with the given product data
   // This component is complicated because it needs to handle three different cases:
   // 1. The product has both flavors and size options
@@ -1051,9 +1076,9 @@ function ProductCard({ product }) {
       className="relative group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow"
       // This class is for the card shadow effect
     >
-      {product.banner && (
-        <div className="product-banner" aria-label={product.banner}>
-          {product.banner}
+      {banner && (
+        <div className="product-banner" aria-label={banner}>
+          {banner}
         </div>
       )}
       <img
