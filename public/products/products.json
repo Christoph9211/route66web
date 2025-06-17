@@ -4,8 +4,7 @@
     "category": "Concentrates",
     "size_options": ["1 gram"],
     "prices": { "1 gram": 35.0 },
-    "thca_percentage": 98.1,
-    "banner": "Coming Soon"
+    "thca_percentage": 98.1
   },
   {
     "name": "Blueberry Diesel",
@@ -216,8 +215,6 @@
       "Watermelon OG (Indica)": 30.0
     },
     "availability": {
-      "Sour Diesel Live Resin": "Coming Soon",
-      "Watermelon OG (Indica)": "Out Stock"
     }
   },
   {
@@ -242,9 +239,6 @@
       "Sunset Sherbet": 30.0
     },
     "availability": {
-      "Runtz": "Out Stock",
-      "Chemdawg": "Coming Soon"
-    },
-    "banner": "Out of Stock"
+    }
   }
 ]
