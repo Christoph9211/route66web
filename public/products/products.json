@@ -47,12 +47,6 @@
     "prices": { "1/8": 25.0, "1/4": 50.0, "1/2": 100.0, "ounce": 200.0 }
   },
   {
-    "name": "Quattro Kush",
-    "category": "Flower",
-    "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 25.0, "1/4": 45.0, "1/2": 85.0, "ounce": 160.0 }
-  },
-  {
     "name": "Gelonade",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],

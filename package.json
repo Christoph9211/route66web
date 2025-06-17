@@ -2,6 +2,7 @@
   "name": "route66web",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
   "dependencies": {
     "braces": "^3.0.3",
     "detect-libc": "^2.0.3",
