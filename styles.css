@@ -2,6 +2,19 @@
 .product-card {
   transition: transform 0.3s, box-shadow 0.3s;
 }
+/* Small banner that can appear in the corner of a product card */
+.product-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom-right-radius: 0.25rem;
+}
 /* .product-card:hover {
   transform: translateY(-5px);
 } */
