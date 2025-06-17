@@ -214,6 +214,10 @@
       "Cherry Cookies (Indica)": 30.0,
       "Tropical Cherries (Sativa)": 30.0,
       "Watermelon OG (Indica)": 30.0
+    },
+    "availability": {
+      "Sour Diesel Live Resin": "Coming Soon",
+      "Watermelon OG (Indica)": "Out Stock"
     }
   },
   {
@@ -236,6 +240,10 @@
       "Blueberry": 30.0,
       "Grape Ape": 30.0,
       "Sunset Sherbet": 30.0
+    },
+    "availability": {
+      "Runtz": "Out Stock",
+      "Chemdawg": "Coming Soon"
     },
     "banner": "Out of Stock"
   }
