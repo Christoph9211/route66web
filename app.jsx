@@ -1,3 +1,9 @@
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+// injectSpeedInsights();
+
 function App() {
   const [appState, setAppState] = React.useState({
     isMobileMenuOpen: false,
@@ -241,7 +247,8 @@ function App() {
                     isMobileMenuOpen: !prevState.isMobileMenuOpen,
                   }))
                 }
-                className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"                aria-label={
+                className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"
+                aria-label={
                   appState.isMobileMenuOpen
                     ? "Close main menu"
                     : "Open main menu"
@@ -1039,6 +1046,31 @@ function ProductCard({ product }) {
     price = product.price;
   }
 
+  // Determine banner based on selected variant
+  let banner = product.banner;
+  let bannerKey = null;
+  if (combinedOptions.length > 0 && selectedCombo) {
+    bannerKey = selectedCombo.label;
+  } else if (selectedSize) {
+    bannerKey = selectedSize;
+  } else if (selectedFlavor) {
+    bannerKey = selectedFlavor;
+  }
+  if (bannerKey && product.availability) {
+    if (product.availability[bannerKey]) {
+      banner = product.availability[bannerKey];
+    } else if (
+      selectedCombo &&
+      product.availability[selectedCombo.size]
+    ) {
+      banner = product.availability[selectedCombo.size];
+    } else if (selectedFlavor && product.availability[selectedFlavor]) {
+      banner = product.availability[selectedFlavor];
+    } else if (selectedSize && product.availability[selectedSize]) {
+      banner = product.availability[selectedSize];
+    }
+  }
+
   // Render a product card with the given product data
   // This component is complicated because it needs to handle three different cases:
   // 1. The product has both flavors and size options
@@ -1047,9 +1079,14 @@ function ProductCard({ product }) {
   // It also needs to dynamically calculate the price based on the selected flavor and size
   return (
     <div
-      className="group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow"
+      className="relative group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow"
       // This class is for the card shadow effect
     >
+      {banner && (
+        <div className="product-banner" aria-label={banner}>
+          {banner}
+        </div>
+      )}
       <img
         src={
           // If the product has an image, use it
@@ -1068,9 +1105,7 @@ function ProductCard({ product }) {
           e.target.src = "/assets/images/placeholder.webp";
         }}
       />
-      <h3 className="text-lg font-bold dark-mode-text">
-        {product.name}
-      </h3>
+      <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
       <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">
         {product.category}
       </p>
@@ -1118,14 +1153,20 @@ function ProductCard({ product }) {
               className="block text-xs text-gray-600 dark:text-gray-300 mb-1"
             >
               {/* Use 'Strain' for Vapes & Carts and Other, otherwise 'Size' */}
-              {['Vapes & Carts', 'Other'].includes(product.category) ? 'Strain:' : 'Size:'}
+              {["Vapes & Carts", "Other"].includes(product.category)
+                ? "Strain:"
+                : "Size:"}
             </label>
             <select
               id={`size-${product.name}`}
               className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
-              aria-label={['Vapes & Carts', 'Other'].includes(product.category) ? 'Select strain' : 'Select size'}
+              aria-label={
+                ["Vapes & Carts", "Other"].includes(product.category)
+                  ? "Select strain"
+                  : "Select size"
+              }
             >
               {product.size_options.map((size) => (
                 <option key={size} value={size}>
@@ -1183,8 +1224,8 @@ function ProductCard({ product }) {
           ></i>
         ))}
         <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">
-          {/* Show the rating number */}
-          ({product.rating || (product.ratings && product.ratings[0]) || 5})
+          {/* Show the rating number */}(
+          {product.rating || (product.ratings && product.ratings[0]) || 5})
         </span>
       </div>
     </div>

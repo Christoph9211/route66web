@@ -142,7 +142,11 @@
   {
     "name": "Infused Preroll",
     "category": "Other",
-    "size_options": ["Candy Runtz", "Diamond Watermelon", "Rainbow Sherbert Caviar"],
+    "size_options": [
+      "Candy Runtz",
+      "Diamond Watermelon",
+      "Rainbow Sherbert Caviar"
+    ],
     "prices": {
       "Candy Runtz": 10.0,
       "Diamond Watermelon": 12.0,
@@ -163,7 +167,20 @@
   {
     "name": "1 Gram Cart",
     "category": "Vapes & Carts",
-    "size_options": ["Blue Walker (Sativa)", "Bomb Pop (Indica)", "Cranberry Haze (Sativa)", "Cherry Cookies (Indica)", "Cherry Pie (Sativa)", "Gelato (Hybrid)", "Lemon Cake (Hybrid)", "Mango Tango (Indica)", "Trainwreck (Hybrid)", "Tropical Cherries (Sativa)", "Wedding Cake (Indica)", "White Fire Zkittles (Hybrid)"],
+    "size_options": [
+      "Blue Walker (Sativa)",
+      "Bomb Pop (Indica)",
+      "Cranberry Haze (Sativa)",
+      "Cherry Cookies (Indica)",
+      "Cherry Pie (Sativa)",
+      "Gelato (Hybrid)",
+      "Lemon Cake (Hybrid)",
+      "Mango Tango (Indica)",
+      "Trainwreck (Hybrid)",
+      "Tropical Cherries (Sativa)",
+      "Wedding Cake (Indica)",
+      "White Fire Zkittles (Hybrid)"
+    ],
     "prices": {
       "Blue Walker (Sativa)": 24.0,
       "Bomb Pop (Indica)": 16.0,
@@ -183,19 +200,35 @@
   {
     "name": "1 Gram Disposable",
     "category": "Vapes & Carts",
-    "size_options": ["Sour Diesel Live Resin", "Sour Pebbles (Sativa)", "Cherry Cookies (Indica)", "Tropical Cherries (Sativa)", "Watermelon OG (Indica)"],
+    "size_options": [
+      "Sour Diesel Live Resin",
+      "Sour Pebbles (Sativa)",
+      "Cherry Cookies (Indica)",
+      "Tropical Cherries (Sativa)",
+      "Watermelon OG (Indica)"
+    ],
     "prices": {
       "Sour Diesel Live Resin": 35.0,
       "Sour Pebbles (Sativa)": 30.0,
       "Cherry Cookies (Indica)": 30.0,
       "Tropical Cherries (Sativa)": 30.0,
       "Watermelon OG (Indica)": 30.0
+    },
+    "availability": {
     }
   },
   {
     "name": "2 Gram Vape",
     "category": "Vapes & Carts",
-    "size_options": ["Runtz", "Chemdawg", "Cherry Cookies", "Green Crack", "Blueberry", "Grape Ape", "Sunset Sherbet"],
+    "size_options": [
+      "Runtz",
+      "Chemdawg",
+      "Cherry Cookies",
+      "Green Crack",
+      "Blueberry",
+      "Grape Ape",
+      "Sunset Sherbet"
+    ],
     "prices": {
       "Runtz": 30.0,
       "Chemdawg": 30.0,
@@ -204,7 +237,8 @@
       "Blueberry": 30.0,
       "Grape Ape": 30.0,
       "Sunset Sherbet": 30.0
+    },
+    "availability": {
     }
   }
-  
 ]
