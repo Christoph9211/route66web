@@ -1,8 +1,8 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-import { injectSpeedInsights } from '@vercel/speed-insights';
+import React from "react";
+import ReactDOM from "react-dom/client";
+// import { injectSpeedInsights } from '@vercel/speed-insights';
 
-injectSpeedInsights();
+// injectSpeedInsights();
 function App() {
   const [appState, setAppState] = React.useState({
     isMobileMenuOpen: false,
