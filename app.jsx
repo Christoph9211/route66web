@@ -158,15 +158,9 @@ function App() {
             </button>
           </div>
           <p className="mt-6 text-sm text-gray-700 dark:text-gray-300">
-            By entering, you acknowledge and agree to our
-            <a href="/terms-of-service.html" >
-              Terms of Service
-            </a>
-            and
-            <a href="/privacy-policy.html">
-              Privacy Policy
-            </a>
-            .
+            By entering, you acknowledge and agree to our{" "}
+            <a href="/terms-of-service.html">Terms of Service</a> and{" "}
+            <a href="/privacy-policy.html">Privacy Policy</a>.
           </p>
         </div>
       </div>
