@@ -1,6 +1,8 @@
 /* Custom styles */
 .product-card {
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 /* Small banner that can appear in the corner of a product card */
 .product-banner {

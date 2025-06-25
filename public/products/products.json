@@ -214,8 +214,7 @@
       "Tropical Cherries (Sativa)": 30.0,
       "Watermelon OG (Indica)": 30.0
     },
-    "availability": {
-    }
+    "availability": {}
   },
   {
     "name": "2 Gram Vape",
@@ -238,7 +237,6 @@
       "Grape Ape": 30.0,
       "Sunset Sherbet": 30.0
     },
-    "availability": {
-    }
+    "availability": {}
   }
 ]
