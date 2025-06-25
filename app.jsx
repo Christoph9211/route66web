@@ -915,22 +915,6 @@ function App() {
                         FAQs
                       </a>
                     </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
-                        Shipping & Returns
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
-                        Track Order
-                      </a>
-                    </li>
                   </ul>
                 </div>
                 <div className="mt-12 md:mt-0">
