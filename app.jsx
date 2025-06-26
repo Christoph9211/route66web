@@ -802,14 +802,6 @@ function App() {
                         href="#"
                         className="text-base text-gray-400 hover:text-white"
                       >
-                        CBD Oils
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
                         Edibles
                       </a>
                     </li>
@@ -826,7 +818,7 @@ function App() {
                         href="#"
                         className="text-base text-gray-400 hover:text-white"
                       >
-                        Hemp Flower
+                        Flower
                       </a>
                     </li>
                     <li>
@@ -857,23 +849,7 @@ function App() {
                         href="#"
                         className="text-base text-gray-400 hover:text-white"
                       >
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
                         Careers
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
-                        Press
                       </a>
                     </li>
                     <li>
