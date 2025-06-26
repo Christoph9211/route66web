@@ -1,6 +1,6 @@
 // import React from "react";
 // import ReactDOM from "react-dom/client";
-import { injectSpeedInsights } from '@vercel/speed-insights';
+import { injectSpeedInsights } from "@vercel/speed-insights";
 
 // injectSpeedInsights();
 
@@ -123,7 +123,7 @@ function App() {
     appState.selectedCategory === "all"
       ? appState.products
       : appState.products.filter(
-          (product) => product.category === appState.selectedCategory
+          (product) => product.category === appState.selectedCategory,
         );
 
   if (appState.age === null) {
@@ -158,8 +158,9 @@ function App() {
             </button>
           </div>
           <p className="mt-6 text-sm text-gray-700 dark:text-gray-300">
-            By entering, you acknowledge and agree to our Terms of Service and
-            Privacy Policy.
+            By entering, you acknowledge and agree to our{" "}
+            <a href="/terms-of-service.html">Terms of Service</a> and{" "}
+            <a href="/privacy-policy.html">Privacy Policy</a>.
           </p>
         </div>
       </div>
@@ -801,14 +802,6 @@ function App() {
                         href="#"
                         className="text-base text-gray-400 hover:text-white"
                       >
-                        CBD Oils
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
                         Edibles
                       </a>
                     </li>
@@ -825,7 +818,7 @@ function App() {
                         href="#"
                         className="text-base text-gray-400 hover:text-white"
                       >
-                        Hemp Flower
+                        Flower
                       </a>
                     </li>
                     <li>
@@ -856,23 +849,7 @@ function App() {
                         href="#"
                         className="text-base text-gray-400 hover:text-white"
                       >
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
                         Careers
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
-                        Press
                       </a>
                     </li>
                     <li>
@@ -908,22 +885,6 @@ function App() {
                         FAQs
                       </a>
                     </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
-                        Shipping & Returns
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-base text-gray-400 hover:text-white"
-                      >
-                        Track Order
-                      </a>
-                    </li>
                   </ul>
                 </div>
                 <div className="mt-12 md:mt-0">
@@ -933,7 +894,7 @@ function App() {
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
-                        href="#"
+                        href="/privacy-policy.html"
                         className="text-base text-gray-400 hover:text-white"
                       >
                         Privacy Policy
@@ -941,7 +902,7 @@ function App() {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/terms-of-service.html"
                         className="text-base text-gray-400 hover:text-white"
                       >
                         Terms of Service
@@ -1005,13 +966,13 @@ function ProductCard({ product }) {
         // Store the flavor and size for later use
         flavor,
         size,
-      }))
+      })),
     );
   }
 
   // State for combined selection
   const [selectedCombo, setSelectedCombo] = React.useState(
-    combinedOptions.length > 0 ? combinedOptions[0] : null
+    combinedOptions.length > 0 ? combinedOptions[0] : null,
   );
   // Fallback for only size or only flavor
   const [selectedSize, setSelectedSize] = React.useState(
@@ -1019,12 +980,12 @@ function ProductCard({ product }) {
       product.size_options &&
       product.size_options.length > 0
       ? product.size_options[0]
-      : null
+      : null,
   );
   const [selectedFlavor, setSelectedFlavor] = React.useState(
     !combinedOptions.length && product.flavors && product.flavors.length > 0
       ? product.flavors[0]
-      : null
+      : null,
   );
 
   // Determine price
@@ -1059,10 +1020,7 @@ function ProductCard({ product }) {
   if (bannerKey && product.availability) {
     if (product.availability[bannerKey]) {
       banner = product.availability[bannerKey];
-    } else if (
-      selectedCombo &&
-      product.availability[selectedCombo.size]
-    ) {
+    } else if (selectedCombo && product.availability[selectedCombo.size]) {
       banner = product.availability[selectedCombo.size];
     } else if (selectedFlavor && product.availability[selectedFlavor]) {
       banner = product.availability[selectedFlavor];
@@ -1129,7 +1087,7 @@ function ProductCard({ product }) {
             onChange={(e) => {
               // When the user selects a new option, update the selectedCombo state
               const combo = combinedOptions.find(
-                (opt) => opt.label === e.target.value
+                (opt) => opt.label === e.target.value,
               );
               setSelectedCombo(combo);
             }}
@@ -1214,7 +1172,7 @@ function ProductCard({ product }) {
             className={`text-xs ${
               i <
               Math.floor(
-                product.rating || (product.ratings && product.ratings[0]) || 5
+                product.rating || (product.ratings && product.ratings[0]) || 5,
               )
                 ? "fas fa-star text-yellow-600"
                 : "far fa-star text-yellow-600"
