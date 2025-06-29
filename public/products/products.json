@@ -45,7 +45,8 @@
     "name": "Blue Dream Living Soil",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 25.0, "1/4": 50.0, "1/2": 100.0, "ounce": 200.0 }
+    "prices": { "1/8": 25.0, "1/4": 50.0, "1/2": 100.0, "ounce": 200.0 },
+    "banner": "Out of Stock"
   },
   {
     "name": "Gelonade",
