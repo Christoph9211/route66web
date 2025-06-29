@@ -38,7 +38,8 @@
     "name": "Alcapulco Gold",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 28.0, "1/4": 48.0, "1/2": 90.0, "ounce": 180.0 }
+    "prices": { "1/8": 28.0, "1/4": 48.0, "1/2": 90.0, "ounce": 180.0 },
+    "banner": "Out of Stock"
   },
   {
     "name": "Blue Dream Living Soil",
@@ -74,25 +75,29 @@
     "name": "Gucci OG",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 20.0, "1/4": 40.0, "1/2": 80.0, "ounce": 145.0 }
+    "prices": { "1/8": 20.0, "1/4": 40.0, "1/2": 80.0, "ounce": 145.0 },
+    "banner": "Out of Stock"
   },
   {
     "name": "Deleted Scene",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
+    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 },
+    "banner": "Out of Stock"
   },
   {
     "name": "Apples & Bananas",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 }
+    "prices": { "1/8": 18.0, "1/4": 32.5, "1/2": 65.0, "ounce": 125.0 },
+    "banner": "Out of Stock"
   },
   {
     "name": "Flap Jacks",
     "category": "Flower",
     "size_options": ["1/8", "1/4", "1/2", "ounce"],
-    "prices": { "1/8": 20.0, "1/4": 40.0, "1/2": 80.0, "ounce": 145.0 }
+    "prices": { "1/8": 20.0, "1/4": 40.0, "1/2": 80.0, "ounce": 145.0 },
+    "banner": "Out of Stock"
   },
   {
     "name": "Blueberry Muffin",
