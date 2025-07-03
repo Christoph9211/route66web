@@ -209,16 +209,12 @@
     "size_options": [
       "Sour Diesel Live Resin",
       "Sour Pebbles (Sativa)",
-      "Cherry Cookies (Indica)",
-      "Tropical Cherries (Sativa)",
-      "Watermelon OG (Indica)"
+      "Cherry Cookies (Indica)"
     ],
     "prices": {
       "Sour Diesel Live Resin": 35.0,
       "Sour Pebbles (Sativa)": 30.0,
-      "Cherry Cookies (Indica)": 30.0,
-      "Tropical Cherries (Sativa)": 30.0,
-      "Watermelon OG (Indica)": 30.0
+      "Cherry Cookies (Indica)": 30.0
     },
     "availability": {}
   },
@@ -226,20 +222,14 @@
     "name": "2 Gram Vape",
     "category": "Vapes & Carts",
     "size_options": [
-      "Runtz",
-      "Chemdawg",
       "Cherry Cookies",
       "Green Crack",
-      "Blueberry",
       "Grape Ape",
       "Sunset Sherbet"
     ],
     "prices": {
-      "Runtz": 30.0,
-      "Chemdawg": 30.0,
       "Cherry Cookies": 30.0,
       "Green Crack": 30.0,
-      "Blueberry": 30.0,
       "Grape Ape": 30.0,
       "Sunset Sherbet": 30.0
     },
