@@ -1,8 +1,3 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-import { injectSpeedInsights } from "@vercel/speed-insights";
-
-// injectSpeedInsights();
 
 function App() {
   const [appState, setAppState] = React.useState({
@@ -250,16 +245,11 @@ function App() {
                 }
                 className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"
                 aria-label={
-                  appState.isMobileMenuOpen
-                    ? "Close main menu"
-                    : "Open main menu"
+                  appState.isMobileMenuOpen ? "Close main menu" : "Open main menu"
                 }
-                aria-expanded={appState.isMobileMenuOpen ? "true" : "false"}
-              >
+                aria-expanded={appState.isMobileMenuOpen}>
                 <i
-                  className={`fas ${
-                    appState.isMobileMenuOpen ? "fa-times" : "fa-bars"
-                  } text-xl`}
+                  className={`fas ${appState.isMobileMenuOpen ? "fa-times" : "fa-bars"} text-xl`}
                   aria-hidden="true"
                   tabIndex="-1"
                 ></i>
