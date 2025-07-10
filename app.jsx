@@ -247,7 +247,7 @@ function App() {
                 aria-label={
                   appState.isMobileMenuOpen ? "Close main menu" : "Open main menu"
                 }
-                aria-expanded={appState.isMobileMenuOpen}>
+                aria-expanded={appState.isMobileMenuOpen ? 'true' : 'false'}>
                 <i
                   className={`fas ${appState.isMobileMenuOpen ? "fa-times" : "fa-bars"} text-xl`}
                   aria-hidden="true"
@@ -651,7 +651,7 @@ function App() {
                         </p>
                         <p>Monday - Thursday: 11:00 AM - 9:00 PM</p>
                         <p>Friday - Saturday: 11:00 AM - 10:00 PM</p>
-                        <p>Sunday: Closed</p>
+                        <p>Sunday: 11:00 AM - 7:00 PM</p>
                       </div>
                     </div>
                     <div className="mt-8">
