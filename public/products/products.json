@@ -35,7 +35,7 @@
   },
   {
     "name": "Diamond Badder",
-    "category": "Concentrates",
+    "category": "Diamonds & Sauce",
     "size_options": [
       "1 gram",
       "3 grams"
@@ -243,7 +243,7 @@
     "banner": "New"
   },
   {
-    "name": "1 Gram Cart",
+    "name": "One Gram Carts",
     "category": "Vapes & Carts",
     "size_options": [
       "Blue Walker (Sativa)",
@@ -278,7 +278,7 @@
     }
   },
   {
-    "name": "1 Gram Disposable",
+    "name": "One Gram Disposable",
     "category": "Vapes & Carts",
     "size_options": [
       "Blueberry Muffin Live Resin (Indica)",
@@ -299,7 +299,7 @@
     "availability": {}
   },
   {
-    "name": "2 Gram Vape",
+    "name": "Two Gram Vapes",
     "category": "Vapes & Carts",
     "size_options": [
       "Bacio-Gelato",

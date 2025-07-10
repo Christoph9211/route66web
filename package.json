@@ -37,6 +37,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "preview": "vite preview",
     "serve": "vite serve --host 0.0.0.0 --port 3000",
     "lint": "eslint .",
     "format": "prettier --write ."
