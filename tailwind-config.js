@@ -1,5 +1,5 @@
 tailwind.config = {
-  darkMode: "media",
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -8,7 +8,7 @@ tailwind.config = {
         accent: "#3A9A2A", // Updated accent color for better contrast
       },
       fontFamily: {
-        sans: ["Montserrat", "sans-serif"],
+        sans: ["Inter", "Montserrat", "sans-serif"],
       },
     },
   },

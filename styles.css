@@ -1,8 +1,6 @@
 /* Custom styles */
 .product-card {
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 /* Small banner that can appear in the corner of a product card */
 .product-banner {
@@ -17,9 +15,9 @@
   text-transform: uppercase;
   border-bottom-right-radius: 0.25rem;
 }
-/* .product-card:hover {
+.product-card:hover {
   transform: translateY(-5px);
-} */
+}
 
 /* Ensure dark mode text contrast */
 @media (prefers-color-scheme: dark) {
