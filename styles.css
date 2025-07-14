@@ -34,17 +34,17 @@
 /* Ensure light mode text contrast */
 @media (prefers-color-scheme: light) {
   .dark-mode-text {
-    color: #1a1a1a;
+    color: #0f0f0f; /* improved contrast */
   }
   body {
     background-color: #ffffff;
-    color: #1a1a1a;
+    color: #0f0f0f; /* improved contrast */
   }
   .text-gray-500 {
-    color: #595959;
+    color: #4b4b4b; /* darker for readability */
   }
   .text-gray-400 {
-    color: #545454;
+    color: #4a4a4a; /* darker for readability */
   }
 }
 
