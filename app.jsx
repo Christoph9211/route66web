@@ -7,9 +7,19 @@ function App() {
     products: [],
     categories: [],
     loading: true,
+    isDarkMode: false,
   });
 
   React.useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (
+      storedTheme === "dark" ||
+      (!storedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+      setAppState((prevState) => ({ ...prevState, isDarkMode: true }));
+    }
+
     const verifiedAge = localStorage.getItem("ageVerified");
     if (verifiedAge) {
       setAppState((prevState) => ({
@@ -112,6 +122,20 @@ function App() {
     } else {
       setAppState((prevState) => ({ ...prevState, age: 0 }));
     }
+  };
+
+  const toggleDarkMode = () => {
+    setAppState((prevState) => {
+      const newMode = !prevState.isDarkMode;
+      if (newMode) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+      return { ...prevState, isDarkMode: newMode };
+    });
   };
 
   const filteredProducts =
@@ -232,6 +256,16 @@ function App() {
               >
                 Contact
               </a>
+              <button
+                onClick={toggleDarkMode}
+                className="dark-mode-text hover:text-primary focus:outline-none"
+              >
+                <i
+                  className={`fas ${appState.isDarkMode ? "fa-sun" : "fa-moon"}`}
+                  aria-hidden="true"
+                ></i>
+                <span className="sr-only">Toggle dark mode</span>
+              </button>
             </div>
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center">
@@ -253,6 +287,16 @@ function App() {
                   aria-hidden="true"
                   tabIndex="-1"
                 ></i>
+              </button>
+              <button
+                onClick={toggleDarkMode}
+                className="ml-4 dark-mode-text hover:text-primary focus:outline-none"
+              >
+                <i
+                  className={`fas ${appState.isDarkMode ? "fa-sun" : "fa-moon"}`}
+                  aria-hidden="true"
+                ></i>
+                <span className="sr-only">Toggle dark mode</span>
               </button>
             </div>
           </div>
@@ -284,6 +328,13 @@ function App() {
               >
                 Contact
               </a>
+              <button
+                onClick={toggleDarkMode}
+                className="w-full flex justify-start dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+              >
+                <i className={`fas ${appState.isDarkMode ? 'fa-sun' : 'fa-moon'} mr-2`} aria-hidden="true"></i>
+                Toggle Theme
+              </button>
             </div>
           </div>
         )}

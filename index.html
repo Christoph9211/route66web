@@ -73,7 +73,7 @@
     <!-- Google Fonts -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
     />
 
     <!-- Analytics Initialization -->
@@ -86,10 +86,16 @@
     <script defer src="/_vercel/insights/script.js"></script>
   </head>
 
-  <body class="font-sans antialiased">
+  <body class="font-sans antialiased scroll-smooth">
     <main role="main">
       <div id="root"></div>
     </main>
+    <script>
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
     <!-- React App -->
     <script type="module" src="/app.jsx"></script>
 
