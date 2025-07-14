@@ -1,8 +1,6 @@
 /* Custom styles */
 .product-card {
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 /* Small banner that can appear in the corner of a product card */
 .product-banner {
@@ -17,9 +15,10 @@
   text-transform: uppercase;
   border-bottom-right-radius: 0.25rem;
 }
-/* .product-card:hover {
+.product-card:hover {
   transform: translateY(-5px);
-} */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
 
 /* Ensure dark mode text contrast */
 @media (prefers-color-scheme: dark) {
@@ -27,7 +26,7 @@
     color: #ffffff;
   }
   body {
-    background-color: #121212;
+    background-color: #0f172a;
     color: #ffffff;
   }
 }
@@ -37,7 +36,7 @@
     color: #1a1a1a;
   }
   body {
-    background-color: #ffffff;
+    background-color: #f9fafb;
     color: #1a1a1a;
   }
   .text-gray-500 {
