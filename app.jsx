@@ -1,4 +1,3 @@
-
 function App() {
   const [appState, setAppState] = React.useState({
     isMobileMenuOpen: false,
@@ -118,7 +117,7 @@ function App() {
     appState.selectedCategory === "all"
       ? appState.products
       : appState.products.filter(
-          (product) => product.category === appState.selectedCategory,
+          (product) => product.category === appState.selectedCategory
         );
 
   if (appState.age === null) {
@@ -245,11 +244,16 @@ function App() {
                 }
                 className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"
                 aria-label={
-                  appState.isMobileMenuOpen ? "Close main menu" : "Open main menu"
+                  appState.isMobileMenuOpen
+                    ? "Close main menu"
+                    : "Open main menu"
                 }
-                aria-expanded={appState.isMobileMenuOpen ? 'true' : 'false'}>
+                aria-expanded={appState.isMobileMenuOpen ? "true" : "false"}
+              >
                 <i
-                  className={`fas ${appState.isMobileMenuOpen ? "fa-times" : "fa-bars"} text-xl`}
+                  className={`fas ${
+                    appState.isMobileMenuOpen ? "fa-times" : "fa-bars"
+                  } text-xl`}
                   aria-hidden="true"
                   tabIndex="-1"
                 ></i>
@@ -290,9 +294,9 @@ function App() {
       </nav>
       <section>
         {/* Hero Section */}
-        <div className="relative bg-gray-50 dark:bg-gray-900 overflow-hidden">
+        <div className="relative bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
           <div className="max-w-7xl mx-auto">
-            <div className="relative z-10 pb-8 bg-gray-50 dark:bg-gray-900 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32">
+            <div className="relative z-10 pb-8 bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32">
               <div className="pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                   <div className="lg:grid lg:grid-cols-2 lg:gap-8">
@@ -331,7 +335,7 @@ function App() {
                     </div>
                     <div className="mt-12 lg:m-0 lg:relative">
                       <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0">
-                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-green-200 to-green-600 dark:from-green-900 dark:to-green-600 relative overflow-hidden">
+                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <i
                               className="fas fa-cannabis text-white text-9xl opacity-30"
@@ -437,7 +441,7 @@ function App() {
           </div>
         </div>
         {/* About Section */}
-        <div id="about" className="py-12 bg-gray-50 dark:bg-gray-900">
+        <div id="about" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-10">
               <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
@@ -599,7 +603,7 @@ function App() {
                   <h3 className="text-lg font-medium dark-mode-text mb-4">
                     Store Information
                   </h3>
-                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow p-6">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-lg shadow p-6">
                     <div className="flex flex-col items-center mb-6">
                       <div className="flex-shrink-0 mb-2">
                         <i
@@ -956,13 +960,13 @@ function ProductCard({ product }) {
         // Store the flavor and size for later use
         flavor,
         size,
-      })),
+      }))
     );
   }
 
   // State for combined selection
   const [selectedCombo, setSelectedCombo] = React.useState(
-    combinedOptions.length > 0 ? combinedOptions[0] : null,
+    combinedOptions.length > 0 ? combinedOptions[0] : null
   );
   // Fallback for only size or only flavor
   const [selectedSize, setSelectedSize] = React.useState(
@@ -970,12 +974,12 @@ function ProductCard({ product }) {
       product.size_options &&
       product.size_options.length > 0
       ? product.size_options[0]
-      : null,
+      : null
   );
   const [selectedFlavor, setSelectedFlavor] = React.useState(
     !combinedOptions.length && product.flavors && product.flavors.length > 0
       ? product.flavors[0]
-      : null,
+      : null
   );
 
   // Determine price
@@ -1027,7 +1031,7 @@ function ProductCard({ product }) {
   // It also needs to dynamically calculate the price based on the selected flavor and size
   return (
     <div
-      className="relative group product-card p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow"
+      className="relative group product-card p-4 bg-white dark:bg-gray-700 rounded-lg shadow"
       // This class is for the card shadow effect
     >
       {banner && (
@@ -1077,7 +1081,7 @@ function ProductCard({ product }) {
             onChange={(e) => {
               // When the user selects a new option, update the selectedCombo state
               const combo = combinedOptions.find(
-                (opt) => opt.label === e.target.value,
+                (opt) => opt.label === e.target.value
               );
               setSelectedCombo(combo);
             }}
@@ -1162,7 +1166,7 @@ function ProductCard({ product }) {
             className={`text-xs ${
               i <
               Math.floor(
-                product.rating || (product.ratings && product.ratings[0]) || 5,
+                product.rating || (product.ratings && product.ratings[0]) || 5
               )
                 ? "fas fa-star text-yellow-600"
                 : "far fa-star text-yellow-600"
