@@ -1,4 +1,11 @@
 
+import StructuredData from './src/components/StructuredData.jsx';
+import LocalBusinessInfo from './src/components/LocalBusinessInfo.jsx';
+import LocationContent from './src/components/LocationContent.jsx';
+import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx';
+import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx';
+import { businessInfo, generateLocalTitle, generateLocalDescription } from './src/utils/seoHelpers.js';
+
 function App() {
   const [appState, setAppState] = React.useState({
     isMobileMenuOpen: false,
@@ -187,6 +194,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <StructuredData />
       {/* Navigation */}
       <nav role="navigation" className="bg-white dark:bg-gray-800 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -201,8 +209,8 @@ function App() {
                     tabIndex="-1"
                   ></i>
                 </div>
-                <span className="font-bold text-xl dark-mode-text">
-                  Route 66 Hemp
+                <span className="font-bold text-xl dark-mode-text" itemProp="name">
+                  {businessInfo.name}
                 </span>
               </div>
             </div>
@@ -579,6 +587,12 @@ function App() {
             </div>
           </div>
         </div>
+        {/* Location Content */}
+        <LocationContent />
+        {/* Google Business Integration */}
+        <GoogleBusinessIntegration />
+        {/* Local SEO FAQ */}
+        <LocalSEOFAQ />
         {/* Contact Section */}
         <div id="contact" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -595,114 +609,7 @@ function App() {
             </div>
             <div id="store-info" className="mt-10 flex justify-center">
               <div className="lg:w-1/2">
-                <div className="text-center">
-                  <h3 className="text-lg font-medium dark-mode-text mb-4">
-                    Store Information
-                  </h3>
-                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow p-6">
-                    <div className="flex flex-col items-center mb-6">
-                      <div className="flex-shrink-0 mb-2">
-                        <i
-                          className="fas fa-map-marker-alt text-secondary text-xl"
-                          aria-hidden="true"
-                          tabIndex="-1"
-                        ></i>
-                      </div>
-                      <div className="text-base text-gray-700 dark:text-gray-300">
-                        <p>14076 State Hwy Z</p>
-                        <p>St Robert, MO 65584</p>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center mb-6">
-                      <div className="flex-shrink-0">
-                        <i
-                          className="fas fa-phone-alt text-secondary text-xl"
-                          aria-hidden="true"
-                          tabIndex="-1"
-                        ></i>
-                      </div>
-                      <div className="ml-3 text-base text-gray-700 dark:text-gray-300">
-                        <p>+1 (573) 677-6418</p>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center mb-6">
-                      <div className="flex-shrink-0">
-                        <i
-                          className="fas fa-envelope text-secondary text-xl"
-                          aria-hidden="true"
-                          tabIndex="-1"
-                        ></i>
-                      </div>
-                      <div className="ml-3 text-base text-gray-700 dark:text-gray-300">
-                        <p>route66hemp@gmail.com</p>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <div className="flex-shrink-0">
-                        <i
-                          className="fas fa-clock text-secondary text-xl"
-                          aria-hidden="true"
-                          tabIndex="-1"
-                        ></i>
-                      </div>
-                      <div className="ml-3 text-base text-gray-700 dark:text-gray-300 lg:text-center">
-                        <p className="font-medium dark-mode-text">
-                          Store Hours:
-                        </p>
-                        <p>Monday - Thursday: 11:00 AM - 9:00 PM</p>
-                        <p>Friday - Saturday: 11:00 AM - 10:00 PM</p>
-                        <p>Sunday: 11:00 AM - 7:00 PM</p>
-                      </div>
-                    </div>
-                    <div className="mt-8">
-                      <p className="font-medium dark-mode-text">Follow Us:</p>
-                      <div className="flex flex-col space-y-2 mt-2 lg:flex-row lg:space-x-6 lg:space-y-0 lg:justify-center justify-center gap-x-4">
-                        <a
-                          href="https://www.facebook.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white hover:text-primary lg:text-center"
-                          aria-label="Facebook"
-                        >
-                          <i
-                            className="fab fa-facebook text-2xl"
-                            aria-hidden="true"
-                            tabIndex="-1"
-                          ></i>
-                          <span className="sr-only">Facebook</span>
-                        </a>
-                        <a
-                          href="https://www.instagram.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white hover:text-primary lg:text-center"
-                          aria-label="Instagram"
-                        >
-                          <i
-                            className="fab fa-instagram text-2xl"
-                            aria-hidden="true"
-                            tabIndex="-1"
-                          ></i>
-                          <span className="sr-only">Instagram</span>
-                        </a>
-                        <a
-                          href="https://www.twitter.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white hover:text-primary lg:text-center"
-                          aria-label="Twitter"
-                        >
-                          <i
-                            className="fab fa-twitter text-2xl"
-                            aria-hidden="true"
-                            tabIndex="-1"
-                          ></i>
-                          <span className="sr-only">Twitter</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <LocalBusinessInfo />
               </div>
             </div>
           </div>
@@ -722,7 +629,7 @@ function App() {
                   ></i>
                 </div>
                 <span className="font-bold text-xl text-white">
-                  Route 66 Hemp
+                  {businessInfo.name}
                 </span>
               </div>
               <p className="text-gray-300 text-base">
@@ -921,12 +828,15 @@ function App() {
           </div>
           <div className="mt-12 border-t border-gray-700 pt-8">
             <p className="text-base text-gray-400 text-center">
-              &copy; 2025 Route 66 Hemp. All rights reserved.
+              &copy; 2025 {businessInfo.name}. All rights reserved.
             </p>
             <p className="text-sm text-gray-400 text-center mt-2">
               All products contain less than 0.3% THC and are legal under the
               2018 Farm Bill.
             </p>
+            <div className="text-center mt-4">
+              <LocalBusinessInfo variant="inline" className="text-sm text-gray-400" />
+            </div>
           </div>
         </div>
       </footer>
