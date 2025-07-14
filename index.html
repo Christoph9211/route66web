@@ -1,67 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Route 66 Hemp is a family-owned business that offers a variety of CBD products."
+    />
+    <meta property="og:image" content="https://route66hemp.com/og-image.jpg" />
+    <meta property="og:site_name" content="Route 66 Hemp" />
+    <meta property="og:title" content="Route 66 Hemp - Quality CBD Products" />
+    <meta
+      property="og:description"
+      content="Route 66 Hemp is a family-owned business that offers a variety of CBD products."
+    />
+    <meta property="og:url" content="https://route66hemp.com" />
+    <meta property="og:type" content="website" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Route 66 Hemp is a family-owned business that offers a variety of CBD products.">
-  <meta property="og:image" content="https://route66hemp.com/og-image.jpg">
-  <meta property="og:site_name" content="Route 66 Hemp">
-  <meta property="og:title" content="Route 66 Hemp - Quality CBD Products">
-  <meta property="og:description" content="Route 66 Hemp is a family-owned business that offers a variety of CBD products.">
-  <meta property="og:url" content="https://route66hemp.com">
-  <meta property="og:type" content="website">
-  
-  <title>Route 66 Hemp</title>
+    <title>Route 66 Hemp</title>
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="/styles.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/styles.css" />
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- External Tailwind Config -->
-  <script src="/tailwind-config.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- External Tailwind Config -->
+    <script type="module" src="/tailwind-config.js"></script>
 
-  <meta name="google-site-verification" content="mqIi89j9X4pKNYgBOCXypnGvacxtNjcM9a44yCXSrh0" />
-  <meta name="robots" content="index, follow" />
+    <meta
+      name="google-site-verification"
+      content="mqIi89j9X4pKNYgBOCXypnGvacxtNjcM9a44yCXSrh0"
+    />
 
-  <meta name="author" content="Christopher Gibbons" />
-  <meta name="keywords" content="CBD, THCA, Cannabis, Hemp, CBD Hemp, Route 66 Hemp, Cannabis Accessories, Hemp Products, Route 66, Dispensary, Hemp Dispensary" />
+    <link rel="canonical" href="https://route66hemp.com" />
 
-  <!-- React from CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <meta name="author" content="Christopher Gibbons" />
+    <meta
+      name="keywords"
+      content="CBD, THCA, Cannabis, Hemp, CBD Hemp, Route 66 Hemp, Cannabis Accessories, Hemp Products, Route 66, Dispensary, Hemp Dispensary"
+    />
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-RGSJT8T1EF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  <!-- Babel for JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+      gtag('config', 'G-RGSJT8T1EF');
+    </script> -->
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- React from CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+    <!-- Babel for JSX -->
+    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
 
-  <!-- Analytics Initialization -->
-  <script src="/analytics-init.js"></script>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <!-- Web Analytics -->
-  <script defer src="/_vercel/insights/script.js"></script>
-</head>
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    />
 
-<body class="font-sans antialiased">
-  <main role="main">
-    <div id="root"></div>
-  </main>
-  <!-- React App -->
-  <script type="text/babel" src="/app.js"></script>
-  <!-- Speed Analytics -->
-  <script defer src="/_vercel/speed-insights/script.js"></script>
-</body>
+    <!-- Analytics Initialization -->
+    <!-- <script type="module" src="/analytics-init.js"></script> -->
 
+    <!-- Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+
+  <body class="font-sans antialiased">
+    <main role="main">
+      <div id="root"></div>
+    </main>
+    <!-- React App -->
+    <script type="module" src="/app.jsx"></script>
+
+    <script>
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+  </body>
 </html>

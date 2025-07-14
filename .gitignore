@@ -9,5 +9,6 @@ node_modules/
 # Ignore all .tmp files
 *.tmp
 .vscode/
-# Ignore json-gen.html
-/json-gen.html
+
+instructions.txt
+dist/
