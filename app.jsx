@@ -1,15 +1,28 @@
-
 function App() {
   const [appState, setAppState] = React.useState({
     isMobileMenuOpen: false,
     selectedCategory: "all",
     age: null,
+    darkMode: false,
     products: [],
     categories: [],
     loading: true,
   });
 
   React.useEffect(() => {
+    const root = document.documentElement;
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+      root.classList.add("dark");
+      setAppState((prev) => ({ ...prev, darkMode: true }));
+    } else {
+      root.classList.remove("dark");
+      setAppState((prev) => ({ ...prev, darkMode: false }));
+    }
+
     const verifiedAge = localStorage.getItem("ageVerified");
     if (verifiedAge) {
       setAppState((prevState) => ({
@@ -114,11 +127,26 @@ function App() {
     }
   };
 
+  const toggleDarkMode = () => {
+    const root = document.documentElement;
+    setAppState((prev) => {
+      const newDark = !prev.darkMode;
+      if (newDark) {
+        root.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        root.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+      return { ...prev, darkMode: newDark };
+    });
+  };
+
   const filteredProducts =
     appState.selectedCategory === "all"
       ? appState.products
       : appState.products.filter(
-          (product) => product.category === appState.selectedCategory,
+          (product) => product.category === appState.selectedCategory
         );
 
   if (appState.age === null) {
@@ -233,6 +261,19 @@ function App() {
                 Contact
               </a>
             </div>
+            <button
+              onClick={toggleDarkMode}
+              className="hidden md:inline-flex items-center ml-4 p-2 rounded-md dark-mode-text hover:text-primary"
+              aria-label="Toggle dark mode"
+            >
+              <i
+                className={`fas ${
+                  appState.darkMode ? "fa-sun" : "fa-moon"
+                } text-xl`}
+                aria-hidden="true"
+                tabIndex="-1"
+              ></i>
+            </button>
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center">
               <button
@@ -245,11 +286,29 @@ function App() {
                 }
                 className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"
                 aria-label={
-                  appState.isMobileMenuOpen ? "Close main menu" : "Open main menu"
+                  appState.isMobileMenuOpen
+                    ? "Close main menu"
+                    : "Open main menu"
                 }
-                aria-expanded={appState.isMobileMenuOpen ? 'true' : 'false'}>
+                aria-expanded={appState.isMobileMenuOpen ? "true" : "false"}
+              >
                 <i
-                  className={`fas ${appState.isMobileMenuOpen ? "fa-times" : "fa-bars"} text-xl`}
+                  className={`fas ${
+                    appState.isMobileMenuOpen ? "fa-times" : "fa-bars"
+                  } text-xl`}
+                  aria-hidden="true"
+                  tabIndex="-1"
+                ></i>
+              </button>
+              <button
+                onClick={toggleDarkMode}
+                className="ml-3 p-2 rounded-md dark-mode-text hover:text-primary"
+                aria-label="Toggle dark mode"
+              >
+                <i
+                  className={`fas ${
+                    appState.darkMode ? "fa-sun" : "fa-moon"
+                  } text-xl`}
                   aria-hidden="true"
                   tabIndex="-1"
                 ></i>
@@ -956,13 +1015,13 @@ function ProductCard({ product }) {
         // Store the flavor and size for later use
         flavor,
         size,
-      })),
+      }))
     );
   }
 
   // State for combined selection
   const [selectedCombo, setSelectedCombo] = React.useState(
-    combinedOptions.length > 0 ? combinedOptions[0] : null,
+    combinedOptions.length > 0 ? combinedOptions[0] : null
   );
   // Fallback for only size or only flavor
   const [selectedSize, setSelectedSize] = React.useState(
@@ -970,12 +1029,12 @@ function ProductCard({ product }) {
       product.size_options &&
       product.size_options.length > 0
       ? product.size_options[0]
-      : null,
+      : null
   );
   const [selectedFlavor, setSelectedFlavor] = React.useState(
     !combinedOptions.length && product.flavors && product.flavors.length > 0
       ? product.flavors[0]
-      : null,
+      : null
   );
 
   // Determine price
@@ -1077,7 +1136,7 @@ function ProductCard({ product }) {
             onChange={(e) => {
               // When the user selects a new option, update the selectedCombo state
               const combo = combinedOptions.find(
-                (opt) => opt.label === e.target.value,
+                (opt) => opt.label === e.target.value
               );
               setSelectedCombo(combo);
             }}
@@ -1162,7 +1221,7 @@ function ProductCard({ product }) {
             className={`text-xs ${
               i <
               Math.floor(
-                product.rating || (product.ratings && product.ratings[0]) || 5,
+                product.rating || (product.ratings && product.ratings[0]) || 5
               )
                 ? "fas fa-star text-yellow-600"
                 : "far fa-star text-yellow-600"
