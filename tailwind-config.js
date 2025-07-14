@@ -3,12 +3,12 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        primary: "#0F0F9A", // Darkened for better contrast
-        secondary: "#45b34b", // Darkened for better contrast
-        accent: "#3A9A2A", // Updated accent color for better contrast
+        primary: "#1e40af",
+        secondary: "#10b981",
+        accent: "#f59e0b",
       },
       fontFamily: {
-        sans: ["Montserrat", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
       },
     },
   },

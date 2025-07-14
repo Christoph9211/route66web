@@ -188,7 +188,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav role="navigation" className="bg-white dark:bg-gray-800 shadow-md">
+      <nav role="navigation" className="bg-white/90 backdrop-blur dark:bg-gray-900/90 shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -331,7 +331,7 @@ function App() {
                     </div>
                     <div className="mt-12 lg:m-0 lg:relative">
                       <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0">
-                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-green-200 to-green-600 dark:from-green-900 dark:to-green-600 relative overflow-hidden">
+                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-primary via-secondary to-accent relative overflow-hidden">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <i
                               className="fas fa-cannabis text-white text-9xl opacity-30"
@@ -452,7 +452,7 @@ function App() {
                 <div className="relative lg:row-start-1 lg:col-start-2">
                   <div className="relative text-base mx-auto lg:max-w-none">
                     <div className="aspect-w-2 aspect-h-1 rounded-lg shadow-xl overflow-hidden">
-                      <div className="w-full h-full bg-gradient-to-r from-green-800 to-green-600 flex items-center justify-center p-6">
+                      <div className="w-full h-full bg-gradient-to-r from-secondary to-accent flex items-center justify-center p-6">
                         <div className="text-center text-white">
                           <i
                             className="fas fa-leaf text-6xl mb-4"
