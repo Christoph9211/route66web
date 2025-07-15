@@ -1,4 +1,4 @@
-export default {
+ tailwind.config = {
   darkMode: 'media',
   content: ['./index.html', './app.jsx', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
