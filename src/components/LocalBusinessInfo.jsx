@@ -20,14 +20,22 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
     }
   };
 
+  // ----------------------
+  // Variant: Minimal (small footer / sidebar usage)
+  // ----------------------
   if (variant === "minimal") {
     return (
       <div className={`text-sm ${className}`}>
         <div className="font-medium">{businessInfo.name}</div>
         <div>{businessInfo.address.full}</div>
+        {/*
+          Accessibility⁠—The link colour now meets WCAG AA (≥4.5:1)
+          on the dark theme by switching to blue‑400 while keeping a
+          strong, brand‑appropriate blue‑600 in the light theme.
+        */}
         <a
           href={businessInfo.phoneLink}
-          className="text-primary dark:text-blue-400 hover:underline"
+          className="text-blue-600 dark:text-blue-400 hover:underline"
         >
           {businessInfo.phone}
         </a>
@@ -35,13 +43,16 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
     );
   }
 
+  // ----------------------
+  // Variant: Inline (breadcrumbs / headings)
+  // ----------------------
   if (variant === "inline") {
     return (
       <span className={className}>
-        {businessInfo.name} • {businessInfo.address.city}, {businessInfo.address.state} • 
+        {businessInfo.name} • {businessInfo.address.city}, {businessInfo.address.state} •
         <a
           href={businessInfo.phoneLink}
-          className="text-primary dark:text-blue-400 hover:underline ml-1"
+          className="text-blue-600 dark:text-blue-400 hover:underline ml-1"
         >
           {businessInfo.phone}
         </a>
@@ -49,72 +60,70 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
     );
   }
 
+  // ----------------------
+  // Default (full card)
+  // ----------------------
   return (
     <div className={`space-y-4 ${className}`}>
       <div>
-        <h3 className="text-lg font-medium dark-mode-text mb-4">
-          Store Information
-        </h3>
+        <h3 className="text-lg font-medium dark-mode-text mb-4">Store Information</h3>
+
         <div className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow p-6">
+          {/* Address */}
           <div className="flex flex-col items-center mb-6">
             <div className="flex-shrink-0 mb-2">
-              <i
-                className="fas fa-map-marker-alt text-secondary text-xl"
-                aria-hidden="true"
-              />
+              <i className="fas fa-map-marker-alt text-secondary text-xl" aria-hidden="true" />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300 text-center">
               <div className="font-medium dark-mode-text">{businessInfo.name}</div>
               <p>{businessInfo.address.street}</p>
-              <p>{businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}</p>
+              <p>
+                {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
+              </p>
             </div>
           </div>
-          
+
+          {/* Phone */}
           <div className="flex flex-col items-center mb-6">
             <div className="flex-shrink-0 mb-2">
-              <i
-                className="fas fa-phone-alt text-secondary text-xl"
-                aria-hidden="true"
-              />
+              <i className="fas fa-phone-alt text-secondary text-xl" aria-hidden="true" />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300">
               <a
                 href={businessInfo.phoneLink}
-                className="hover:text-primary dark:hover:text-blue-400 transition-colors"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 {businessInfo.phone}
               </a>
             </div>
           </div>
-          
+
+          {/* Email */}
           <div className="flex flex-col items-center mb-6">
             <div className="flex-shrink-0 mb-2">
-              <i
-                className="fas fa-envelope text-secondary text-xl"
-                aria-hidden="true"
-              />
+              <i className="fas fa-envelope text-secondary text-xl" aria-hidden="true" />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300">
               <a
                 href={businessInfo.emailLink}
-                className="hover:text-primary dark:hover:text-blue-400 transition-colors"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 {businessInfo.email}
               </a>
             </div>
           </div>
-          
+
+          {/* Hours */}
           <div className="flex flex-col items-center">
             <div className="flex-shrink-0 mb-2">
-              <i
-                className="fas fa-clock text-secondary text-xl"
-                aria-hidden="true"
-              />
+              <i className="fas fa-clock text-secondary text-xl" aria-hidden="true" />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300 text-center">
               <p className="font-medium dark-mode-text mb-2">Store Hours:</p>
               {Object.entries(businessInfo.hours).map(([days, hours]) => (
-                <p key={days}>{days}: {hours}</p>
+                <p key={days}>
+                  {days}: {hours}
+                </p>
               ))}
             </div>
           </div>
