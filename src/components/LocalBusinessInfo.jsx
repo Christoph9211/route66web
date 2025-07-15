@@ -1,6 +1,6 @@
 // NAP (Name, Address, Phone) Component for consistency across pages
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+
 function LocalBusinessInfo({ variant = "full", className = "" }) {
   const businessInfo = {
     name: "Route 66 Hemp",

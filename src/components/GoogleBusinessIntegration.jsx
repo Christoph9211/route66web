@@ -1,6 +1,6 @@
 // Google Business Profile integration suggestions and review display
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+
 function GoogleBusinessIntegration() {
   const reviews = [
     {
