@@ -1,3 +1,4 @@
+import React from 'react';
 // FAQ component with local SEO focus
 function LocalSEOFAQ() {
   const faqs = [
@@ -93,4 +94,4 @@ function LocalSEOFAQ() {
   );
 }
 
-export default LocalSEOFAQ;
+export {LocalSEOFAQ};

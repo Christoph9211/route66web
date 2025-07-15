@@ -114,4 +114,4 @@ function GoogleBusinessIntegration() {
   );
 }
 
-export default GoogleBusinessIntegration;
+export {GoogleBusinessIntegration};

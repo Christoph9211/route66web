@@ -124,4 +124,4 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
   );
 }
 
-export default LocalBusinessInfo;
+export {LocalBusinessInfo};

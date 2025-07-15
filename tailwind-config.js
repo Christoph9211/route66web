@@ -1,3 +1,5 @@
+import tailwind from "tailwindcss";
+
 tailwind.config = {
   darkMode: "media",
   theme: {

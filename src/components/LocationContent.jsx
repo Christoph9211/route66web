@@ -112,4 +112,4 @@ function LocationContent() {
   );
 }
 
-export default LocationContent;
+export { LocationContent };

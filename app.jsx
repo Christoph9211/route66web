@@ -1,10 +1,11 @@
-
-import StructuredData from './src/components/StructuredData.jsx';
-import LocalBusinessInfo from './src/components/LocalBusinessInfo.jsx';
-import LocationContent from './src/components/LocationContent.jsx';
-import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx';
-import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx';
-import { businessInfo, generateLocalTitle, generateLocalDescription } from './src/utils/seoHelpers.js';
+import React from 'react';
+import ReactDOM from "react-dom/client";
+import { businessInfo } from './src/utils/seoHelpers.js';
+import { StructuredData } from './src/components/StructuredData.jsx';
+import { LocationContent } from './src/components/LocationContent.jsx';
+import { GoogleBusinessIntegration } from './src/components/GoogleBusinessIntegration.jsx';
+import { LocalBusinessInfo } from './src/components/LocalBusinessInfo.jsx';
+import { LocalSEOFAQ } from './src/components/LocalSEOFAQ.jsx';
 
 function App() {
   const [appState, setAppState] = React.useState({
@@ -960,6 +961,8 @@ function ProductCard({ product }) {
           "/assets/images/placeholder.webp"
         }
         alt={product.name}
+        width={512}
+        height={288}
         className="w-full h-50 object-cover rounded-md mb-4"
         // This class is for the image height and object-fit
         onError={(e) => {

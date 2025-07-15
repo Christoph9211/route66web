@@ -167,4 +167,4 @@ function StructuredData() {
   );
 }
 
-export default StructuredData;
+export { StructuredData };
