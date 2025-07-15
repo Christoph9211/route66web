@@ -1,11 +1,16 @@
 export default {
+  darkMode: 'media',
   content: ['./index.html', './app.jsx', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
         primary: '#2563eb',
-        secondary: '#16a34a'
+        secondary: '#16a34a',
+        accent: "#FBBF24"
       }
+    },
+    fontFamily: {
+      sans: ['Inter', 'Montserrat', 'sans-serif']
     }
   },
   plugins: []
