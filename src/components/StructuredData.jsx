@@ -18,8 +18,8 @@ function StructuredData() {
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "37.8267",
-      "longitude": "-92.1432"
+      "latitude": "37.83490",
+      "longitude": "-92.09725"
     },
     "openingHoursSpecification": [
       {
@@ -53,8 +53,8 @@ function StructuredData() {
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "127"
+      "ratingValue": "4.4",
+      "reviewCount": "8"
     },
     "review": [
       {

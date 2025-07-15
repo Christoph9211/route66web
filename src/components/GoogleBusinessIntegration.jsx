@@ -3,36 +3,26 @@ function GoogleBusinessIntegration() {
   const reviews = [
     {
       id: 1,
-      author: "Mike Thompson",
+      author: "Ray",
       rating: 5,
-      date: "2 weeks ago",
-      text: "Great selection of hemp products! Staff is very knowledgeable and helpful. Clean store with fair prices.",
+      text: "Best place in this area to go for quality cannabis, awesome customer service, and great pricing!! The owners are super friendly down to earth people with all around good vibes! Definitely check them out next time you're in need or if you're looking to try something new.",
       verified: true
     },
     {
       id: 2,
-      author: "Jennifer Davis",
+      author: "Jessica",
       rating: 5,
-      date: "1 month ago", 
-      text: "Love this place! Quality products and excellent customer service. They really know their stuff about hemp.",
+      text: "Great place with REALLY good pricing AND quality! Everyone there has been so friendly and down to the earth, you will definitely feel welcome and will want to come back! This is my new favorite spot!",
       verified: true
     },
     {
       id: 3,
-      author: "Robert Wilson",
-      rating: 4,
-      date: "2 months ago",
-      text: "Good variety of products. Convenient location near Fort Leonard Wood. Will definitely be back.",
+      author: "Lauren",
+      rating: 5,
+      text: "Love this place! Great products, friendly people!",
       verified: true
     }
   ];
-
-  const businessStats = {
-    rating: 4.8,
-    totalReviews: 127,
-    responseRate: "100%",
-    responseTime: "Within 1 hour"
-  };
 
   return (
     <div className="py-12 bg-white dark:bg-gray-800">
@@ -44,39 +34,6 @@ function GoogleBusinessIntegration() {
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark-mode-text sm:text-4xl">
             What Our St Robert Customers Say
           </p>
-        </div>
-
-        {/* Business Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold text-secondary">{businessStats.rating}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Average Rating</div>
-            <div className="flex justify-center mt-1">
-              {[...Array(5)].map((_, i) => (
-                <i
-                  key={i}
-                  className={`text-sm ${
-                    i < Math.floor(businessStats.rating)
-                      ? "fas fa-star text-yellow-500"
-                      : "far fa-star text-yellow-500"
-                  }`}
-                  aria-hidden="true"
-                />
-              ))}
-            </div>
-          </div>
-          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold text-secondary">{businessStats.totalReviews}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Total Reviews</div>
-          </div>
-          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold text-secondary">{businessStats.responseRate}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Response Rate</div>
-          </div>
-          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
-            <div className="text-lg font-bold text-secondary">{businessStats.responseTime}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Response Time</div>
-          </div>
         </div>
 
         {/* Reviews Grid */}
@@ -124,7 +81,7 @@ function GoogleBusinessIntegration() {
         {/* Google Business Profile CTA */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
-            Find Us on Google Business Profile
+            Find Us on Google Maps
           </h3>
           <p className="text-blue-100 mb-6">
             Get directions, see our hours, read reviews, and stay updated with our latest posts.

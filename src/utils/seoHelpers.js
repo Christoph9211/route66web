@@ -15,8 +15,8 @@ export const businessInfo = {
   emailLink: "mailto:route66hemp@gmail.com",
   website: "https://route66hemp.com",
   coordinates: {
-    lat: 37.8267,
-    lng: -92.1432
+    lat: 37.83490,
+    lng: -92.09725
   }
 };
 
