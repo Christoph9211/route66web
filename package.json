@@ -1,10 +1,6 @@
 {
   "name": "route66web",
   "version": "1.0.0",
-  "babel": {
-    "presets": ["@babel/preset-react"], 
-    "plugins": ["module:@babel/eslint-parser", "eslint-plugin-react"]
-  },
   "description": "",
   "main": "index.js",
   "dependencies": {
