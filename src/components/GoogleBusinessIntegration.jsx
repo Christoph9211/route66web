@@ -92,7 +92,7 @@ function GoogleBusinessIntegration() {
         </div>
 
         {/* Google Business Profile CTA */}
-        <div className="bg-linear-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-center">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
             Find Us on Google Maps
           </h3>
