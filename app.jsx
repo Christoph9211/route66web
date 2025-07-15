@@ -961,8 +961,8 @@ function ProductCard({ product }) {
           "/assets/images/placeholder.webp"
         }
         alt={product.name}
-        width={512}
-        height={288}
+        width={256}
+        height={144}
         className="w-full h-50 object-cover rounded-md mb-4"
         // This class is for the image height and object-fit
         onError={(e) => {
