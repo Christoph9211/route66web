@@ -92,7 +92,7 @@ function GoogleBusinessIntegration() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-gray-100 transition-colors"
-              aria-label="View Route 66 Hemp on Google Maps"
+              aria-label="View on Google Maps"
             >
               <i className="fab fa-google mr-2" aria-hidden="true" />
               View on Google Maps
