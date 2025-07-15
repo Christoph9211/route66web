@@ -35,7 +35,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
         */}
         <a
           href={businessInfo.phoneLink}
-          className="text-blue-600 dark:text-blue-400 hover:underline"
+          className="hover:underline"
         >
           {businessInfo.phone}
         </a>
@@ -52,7 +52,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
         {businessInfo.name} • {businessInfo.address.city}, {businessInfo.address.state} •
         <a
           href={businessInfo.phoneLink}
-          className="text-blue-600 dark:text-blue-400 hover:underline ml-1"
+          className="hover:underline ml-1"
         >
           {businessInfo.phone}
         </a>
