@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://route66hemp.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Block access to admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow access to important pages
+Allow: /
+Allow: /products/
+Allow: /#products
+Allow: /#about
+Allow: /#contact
+Allow: /privacy-policy.html
+Allow: /terms-of-service.html
+
+# Block access to development files
+Disallow: /*.json$
+Disallow: /src/
+Disallow: /node_modules/
