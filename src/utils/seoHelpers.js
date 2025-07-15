@@ -64,7 +64,9 @@ export const getBusinessHours = () => ({
 
 export const isCurrentlyOpen = () => {
   const now = new Date();
-  const currentDay = now.toLocaleLowerCase().substring(0, 3);
+  const currentDay = now
+    .toLocaleDateString('en-US', { weekday: 'long' })
+    .toLowerCase();
   const currentTime = now.getHours() * 100 + now.getMinutes();
   
   const hours = getBusinessHours();
