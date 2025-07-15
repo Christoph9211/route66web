@@ -83,7 +83,6 @@ function LocalSEOFAQ() {
           <a
             href="tel:+15736776418"
             className="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
-            aria-label="Call Route 66 Hemp"
           >
             <i className="fas fa-phone mr-2" aria-hidden="true" />
             Call (573) 677-6418
