@@ -25,10 +25,9 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
       <div className={`text-sm ${className}`}>
         <div className="font-medium">{businessInfo.name}</div>
         <div>{businessInfo.address.full}</div>
-        <a 
+        <a
           href={businessInfo.phoneLink}
-          className="text-primary hover:underline"
-          aria-label="Call Route 66 Hemp"
+          className="text-primary dark:text-blue-400 hover:underline"
         >
           {businessInfo.phone}
         </a>
@@ -40,10 +39,9 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
     return (
       <span className={className}>
         {businessInfo.name} • {businessInfo.address.city}, {businessInfo.address.state} • 
-        <a 
+        <a
           href={businessInfo.phoneLink}
-          className="text-primary hover:underline ml-1"
-          aria-label="Call Route 66 Hemp"
+          className="text-primary dark:text-blue-400 hover:underline ml-1"
         >
           {businessInfo.phone}
         </a>
@@ -80,10 +78,9 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
               />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300">
-              <a 
+              <a
                 href={businessInfo.phoneLink}
-                className="hover:text-primary transition-colors"
-                aria-label="Call Route 66 Hemp"
+                className="hover:text-primary dark:hover:text-blue-400 transition-colors"
               >
                 {businessInfo.phone}
               </a>
@@ -98,10 +95,9 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
               />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300">
-              <a 
+              <a
                 href={businessInfo.emailLink}
-                className="hover:text-primary transition-colors"
-                aria-label="Email Route 66 Hemp"
+                className="hover:text-primary dark:hover:text-blue-400 transition-colors"
               >
                 {businessInfo.email}
               </a>
