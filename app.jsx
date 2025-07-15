@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { businessInfo } from './src/utils/seoHelpers.js';
-import { StructuredData } from './src/components/StructuredData.jsx';
-import { LocationContent } from './src/components/LocationContent.jsx';
-import { GoogleBusinessIntegration } from './src/components/GoogleBusinessIntegration.jsx';
-import { LocalBusinessInfo } from './src/components/LocalBusinessInfo.jsx';
-import { LocalSEOFAQ } from './src/components/LocalSEOFAQ.jsx';
+import { businessInfo } from "./src/utils/seoHelpers.js";
+import { StructuredData } from "./src/components/StructuredData.jsx";
+import { LocationContent } from "./src/components/LocationContent.jsx";
+import { GoogleBusinessIntegration } from "./src/components/GoogleBusinessIntegration.jsx";
+import { LocalBusinessInfo } from "./src/components/LocalBusinessInfo.jsx";
+import { LocalSEOFAQ } from "./src/components/LocalSEOFAQ.jsx";
 
 function App() {
   const [appState, setAppState] = React.useState({
@@ -126,12 +126,15 @@ function App() {
     appState.selectedCategory === "all"
       ? appState.products
       : appState.products.filter(
-          (product) => product.category === appState.selectedCategory
+          (product) => product.category === appState.selectedCategory,
         );
 
   if (appState.age === null) {
     return (
-      <main role="main" className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
+      <main
+        role="main"
+        className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4"
+      >
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
           <h2 className="text-2xl font-bold mb-6 dark-mode-text">
             Age Verification
@@ -172,7 +175,10 @@ function App() {
 
   if (appState.age < 21) {
     return (
-      <main role="main" className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
+      <main
+        role="main"
+        className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4"
+      >
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
           <h2 className="text-2xl font-bold mb-4 dark-mode-text">
             Access Denied
@@ -197,7 +203,10 @@ function App() {
     <main role="main" className="min-h-screen flex flex-col">
       <StructuredData />
       {/* Navigation */}
-      <nav role="navigation" className="bg-white/90 backdrop-blur dark:bg-gray-900/90 shadow-md sticky top-0 z-50">
+      <nav
+        role="navigation"
+        className="bg-white/90 backdrop-blur dark:bg-gray-900/90 shadow-md sticky top-0 z-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -210,7 +219,10 @@ function App() {
                     tabIndex="-1"
                   ></i>
                 </div>
-                <span className="font-bold text-xl dark-mode-text" itemProp="name">
+                <span
+                  className="font-bold text-xl dark-mode-text"
+                  itemProp="name"
+                >
                   {businessInfo.name}
                 </span>
               </div>
@@ -841,7 +853,10 @@ function App() {
               2018 Farm Bill.
             </p>
             <div className="text-center mt-4">
-              <LocalBusinessInfo variant="inline" className="text-sm text-gray-400" />
+              <LocalBusinessInfo
+                variant="inline"
+                className="text-sm text-gray-400"
+              />
             </div>
           </div>
         </div>
@@ -872,13 +887,13 @@ function ProductCard({ product }) {
         // Store the flavor and size for later use
         flavor,
         size,
-      }))
+      })),
     );
   }
 
   // State for combined selection
   const [selectedCombo, setSelectedCombo] = React.useState(
-    combinedOptions.length > 0 ? combinedOptions[0] : null
+    combinedOptions.length > 0 ? combinedOptions[0] : null,
   );
   // Fallback for only size or only flavor
   const [selectedSize, setSelectedSize] = React.useState(
@@ -886,12 +901,12 @@ function ProductCard({ product }) {
       product.size_options &&
       product.size_options.length > 0
       ? product.size_options[0]
-      : null
+      : null,
   );
   const [selectedFlavor, setSelectedFlavor] = React.useState(
     !combinedOptions.length && product.flavors && product.flavors.length > 0
       ? product.flavors[0]
-      : null
+      : null,
   );
 
   // Determine price
@@ -993,7 +1008,7 @@ function ProductCard({ product }) {
             onChange={(e) => {
               // When the user selects a new option, update the selectedCombo state
               const combo = combinedOptions.find(
-                (opt) => opt.label === e.target.value
+                (opt) => opt.label === e.target.value,
               );
               setSelectedCombo(combo);
             }}
@@ -1078,7 +1093,7 @@ function ProductCard({ product }) {
             className={`text-xs ${
               i <
               Math.floor(
-                product.rating || (product.ratings && product.ratings[0]) || 5
+                product.rating || (product.ratings && product.ratings[0]) || 5,
               )
                 ? "fas fa-star text-yellow-600"
                 : "far fa-star text-yellow-600"

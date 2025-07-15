@@ -1,4 +1,4 @@
-// {import('tailwindcss').Config} 
+// {import('tailwindcss').Config}
 tailwind.config = {
   darkMode: "media",
   theme: {

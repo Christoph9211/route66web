@@ -2,10 +2,7 @@
   {
     "name": "Blueberry Diesel",
     "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 10,
       "3 grams": 25
@@ -15,10 +12,7 @@
   {
     "name": "Super Sour Diesel",
     "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 10,
       "3 grams": 25
@@ -28,10 +22,7 @@
   {
     "name": "Granddaddy Purple Crumble",
     "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 10,
       "3 grams": 25
@@ -41,10 +32,7 @@
   {
     "name": "Cherry Pie Crumble",
     "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 10,
       "3 grams": 30
@@ -54,12 +42,7 @@
   {
     "name": "Alcapulco Gold",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 28,
       "1/4": 48,
@@ -71,12 +54,7 @@
   {
     "name": "Blue Dream Living Soil",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 25,
       "1/4": 50,
@@ -88,12 +66,7 @@
   {
     "name": "Gelonade",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 18,
       "1/4": 32.5,
@@ -104,12 +77,7 @@
   {
     "name": "Orange Creamsicle Living Soil",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 18,
       "1/4": 32.5,
@@ -121,12 +89,7 @@
   {
     "name": "Slurricane",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 18,
       "1/4": 32.5,
@@ -138,12 +101,7 @@
   {
     "name": "Blueberry Muffin",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 18,
       "1/4": 32.5,
@@ -154,10 +112,7 @@
   {
     "name": "Blueberry Muffin",
     "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 15,
       "3 grams": 40
@@ -167,10 +122,7 @@
   {
     "name": "Amnesia Haze",
     "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 15,
       "3 grams": 40
@@ -179,10 +131,7 @@
   {
     "name": "Saucy Diamonds",
     "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 15,
       "3 grams": 40
@@ -191,10 +140,7 @@
   {
     "name": "Flower Preroll",
     "category": "Other",
-    "size_options": [
-      "Blueberry Muffin",
-      "Chimera"
-    ],
+    "size_options": ["Blueberry Muffin", "Chimera"],
     "prices": {
       "Blueberry Muffin": 5,
       "Chimera": 5
@@ -217,12 +163,7 @@
   {
     "name": "Tropical Cherry Snowcaps",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 25,
       "1/4": 50,
@@ -311,12 +252,7 @@
   {
     "name": "Death Star",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 18,
       "1/4": 32.5,
@@ -328,12 +264,7 @@
   {
     "name": "Green Crack",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 20,
       "1/4": 40,
@@ -345,12 +276,7 @@
   {
     "name": "Candy Cane",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 18,
       "1/4": 32.5,
@@ -362,12 +288,7 @@
   {
     "name": "Magic Night",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 18,
       "1/4": 32.5,
@@ -379,12 +300,7 @@
   {
     "name": "Zkittles",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 20,
       "1/4": 40,
@@ -396,12 +312,7 @@
   {
     "name": "Dosido",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 18,
       "1/4": 32.5,
@@ -413,12 +324,7 @@
   {
     "name": "Skywalker",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 20,
       "1/4": 40,
@@ -430,12 +336,7 @@
   {
     "name": "Star Child",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 20,
       "1/4": 40,
@@ -447,12 +348,7 @@
   {
     "name": "Green Crack Snowcaps",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 25,
       "1/4": 50,
@@ -464,12 +360,7 @@
   {
     "name": "Point Break",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 20,
       "1/4": 40,
@@ -481,12 +372,7 @@
   {
     "name": "Mango Mentality",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 20,
       "1/4": 40,
@@ -498,12 +384,7 @@
   {
     "name": "Sour Mac",
     "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
+    "size_options": ["1/8", "1/4", "1/2", "ounce"],
     "prices": {
       "1/8": 25,
       "1/4": 50,
@@ -515,10 +396,7 @@
   {
     "name": "Diamond Badder",
     "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 10,
       "3 grams": 25
@@ -528,10 +406,7 @@
   {
     "name": "Pineapple Express Crumble",
     "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 10,
       "3 grams": 25
@@ -541,10 +416,7 @@
   {
     "name": "Wedding Cake Crumble",
     "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
+    "size_options": ["1 gram", "3 grams"],
     "prices": {
       "1 gram": 10,
       "3 grams": 25
