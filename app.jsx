@@ -312,9 +312,9 @@ function App() {
       </nav>
       <section>
         {/* Hero Section */}
-        <div className="relative bg-linear-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+        <div className="relative bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
           <div className="max-w-7xl mx-auto">
-            <div className="relative z-10 pb-8 bg-linear-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32">
+            <div className="relative z-10 pb-8 bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32">
               <div className="pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                   <div className="lg:grid lg:grid-cols-2 lg:gap-8">
@@ -353,7 +353,7 @@ function App() {
                     </div>
                     <div className="mt-12 lg:m-0 lg:relative">
                       <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0">
-                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-linear-to-br from-primary to-secondary text-white relative overflow-hidden">
+                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <i
                               className="fas fa-cannabis text-white text-9xl opacity-30"
@@ -441,7 +441,7 @@ function App() {
                 <span className="sr-only">Loading products...</span>
               </div>
             ) : filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+              <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 justify-items-center">
                 {filteredProducts.map((product) => (
                   <ProductCard
                     key={product.name + product.category}
@@ -474,7 +474,7 @@ function App() {
                 <div className="relative lg:row-start-1 lg:col-start-2">
                   <div className="relative text-base mx-auto lg:max-w-none">
                     <div className="aspect-w-2 aspect-h-1 rounded-lg shadow-xl overflow-hidden">
-                      <div className="w-full h-full bg-linear-to-r from-green-800 to-green-600 flex items-center justify-center p-6">
+                      <div className="w-full h-full bg-gradient-to-r from-green-800 to-green-600 flex items-center justify-center p-6">
                         <div className="text-center text-white">
                           <i
                             className="fas fa-leaf text-6xl mb-4"
@@ -528,7 +528,7 @@ function App() {
             </div>
             {/* Features */}
             <div className="mt-16">
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
                 <div className="pt-6">
                   <div className="flow-root bg-white dark:bg-gray-800 rounded-lg shadow-lg px-6 pb-8">
                     <div className="-mt-6">
@@ -954,7 +954,7 @@ function ProductCard({ product }) {
   // It also needs to dynamically calculate the price based on the selected flavor and size
   return (
     <div
-      className="relative group product-card p-4 bg-white dark:bg-gray-700 rounded-lg shadow"
+      className="relative group product-card p-4 max-w-sm w-full bg-white dark:bg-gray-700 rounded-lg shadow"
       // This class is for the card shadow effect
     >
       {banner && (
