@@ -6,22 +6,22 @@ function GoogleBusinessIntegration() {
       author: "Ray",
       rating: 5,
       text: "Best place in this area to go for quality cannabis, awesome customer service, and great pricing!! The owners are super friendly down to earth people with all around good vibes! Definitely check them out next time you're in need or if you're looking to try something new.",
-      verified: true
+      verified: true,
     },
     {
       id: 2,
       author: "Jessica",
       rating: 5,
       text: "Great place with REALLY good pricing AND quality! Everyone there has been so friendly and down to the earth, you will definitely feel welcome and will want to come back! This is my new favorite spot!",
-      verified: true
+      verified: true,
     },
     {
       id: 3,
       author: "Lauren",
       rating: 5,
       text: "Love this place! Great products, friendly people!",
-      verified: true
-    }
+      verified: true,
+    },
   ];
 
   return (
@@ -39,20 +39,31 @@ function GoogleBusinessIntegration() {
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {reviews.map((review) => (
-            <div key={review.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+            <div
+              key={review.id}
+              className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6"
+            >
               <div className="flex items-center mb-3">
                 <div className="shrink-0">
                   <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
                     <span className="text-white font-medium text-sm">
-                      {review.author.split(' ').map(n => n[0]).join('')}
+                      {review.author
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
                     </span>
                   </div>
                 </div>
                 <div className="ml-3">
                   <div className="flex items-center">
-                    <span className="font-medium dark-mode-text">{review.author}</span>
+                    <span className="font-medium dark-mode-text">
+                      {review.author}
+                    </span>
                     {review.verified && (
-                      <i className="fas fa-check-circle text-blue-500 ml-1 text-xs" aria-hidden="true" />
+                      <i
+                        className="fas fa-check-circle text-blue-500 ml-1 text-xs"
+                        aria-hidden="true"
+                      />
                     )}
                   </div>
                   <div className="flex items-center">
@@ -73,7 +84,9 @@ function GoogleBusinessIntegration() {
                   </div>
                 </div>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 text-sm">{review.text}</p>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
+                {review.text}
+              </p>
             </div>
           ))}
         </div>
@@ -84,7 +97,8 @@ function GoogleBusinessIntegration() {
             Find Us on Google Maps
           </h3>
           <p className="text-blue-100 mb-6">
-            Get directions, see our hours, read reviews, and stay updated with our latest posts.
+            Get directions, see our hours, read reviews, and stay updated with
+            our latest posts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

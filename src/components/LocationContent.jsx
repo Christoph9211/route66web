@@ -7,17 +7,17 @@ function LocationContent() {
     region: "Central Missouri",
     nearbyAreas: [
       "Fort Leonard Wood",
-      "Waynesville", 
+      "Waynesville",
       "Rolla",
       "Lebanon",
-      "Crocker"
+      "Crocker",
     ],
     landmarks: [
       "Fort Leonard Wood Military Base",
       "Route 66 State Park",
       "Gasconade River",
-      "Mark Twain National Forest"
-    ]
+      "Mark Twain National Forest",
+    ],
   };
 
   return (
@@ -31,23 +31,35 @@ function LocationContent() {
             Your Local Hemp Store in {locationData.region}
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-700 dark:text-gray-300 lg:mx-auto">
-            Proudly serving the {locationData.city}, {locationData.state} community with premium hemp products since 2025.
+            Proudly serving the {locationData.city}, {locationData.state}{" "}
+            community with premium hemp products since 2025.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
             <h3 className="text-xl font-bold dark-mode-text mb-4">
-              <i className="fas fa-map-marked-alt text-secondary mr-2" aria-hidden="true" />
+              <i
+                className="fas fa-map-marked-alt text-secondary mr-2"
+                aria-hidden="true"
+              />
               Areas We Serve
             </h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
-              Located conveniently on State Highway Z in {locationData.city}, we serve customers throughout {locationData.county} and the greater {locationData.region} area.
+              Located conveniently on State Highway Z in {locationData.city}, we
+              serve customers throughout {locationData.county} and the greater{" "}
+              {locationData.region} area.
             </p>
             <div className="grid grid-cols-2 gap-2">
               {locationData.nearbyAreas.map((area) => (
-                <div key={area} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                  <i className="fas fa-check-circle text-secondary mr-2 text-xs" aria-hidden="true" />
+                <div
+                  key={area}
+                  className="flex items-center text-sm text-gray-600 dark:text-gray-400"
+                >
+                  <i
+                    className="fas fa-check-circle text-secondary mr-2 text-xs"
+                    aria-hidden="true"
+                  />
                   {area}
                 </div>
               ))}
@@ -56,16 +68,26 @@ function LocationContent() {
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
             <h3 className="text-xl font-bold dark-mode-text mb-4">
-              <i className="fas fa-landmark text-secondary mr-2" aria-hidden="true" />
+              <i
+                className="fas fa-landmark text-secondary mr-2"
+                aria-hidden="true"
+              />
               Near Local Landmarks
             </h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
-              Find us easily near these well-known {locationData.city} and {locationData.region} landmarks:
+              Find us easily near these well-known {locationData.city} and{" "}
+              {locationData.region} landmarks:
             </p>
             <div className="space-y-2">
               {locationData.landmarks.map((landmark) => (
-                <div key={landmark} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                  <i className="fas fa-map-pin text-secondary mr-2 text-xs" aria-hidden="true" />
+                <div
+                  key={landmark}
+                  className="flex items-center text-sm text-gray-600 dark:text-gray-400"
+                >
+                  <i
+                    className="fas fa-map-pin text-secondary mr-2 text-xs"
+                    aria-hidden="true"
+                  />
                   {landmark}
                 </div>
               ))}
@@ -80,29 +102,47 @@ function LocationContent() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-users text-white text-2xl" aria-hidden="true" />
+                <i
+                  className="fas fa-users text-white text-2xl"
+                  aria-hidden="true"
+                />
               </div>
-              <h4 className="text-lg font-semibold dark-mode-text mb-2">Local Expertise</h4>
+              <h4 className="text-lg font-semibold dark-mode-text mb-2">
+                Local Expertise
+              </h4>
               <p className="text-gray-700 dark:text-gray-300 text-sm">
-                As a locally-owned business in {locationData.city}, we understand our community's needs and preferences.
+                As a locally-owned business in {locationData.city}, we
+                understand our community's needs and preferences.
               </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-shipping-fast text-white text-2xl" aria-hidden="true" />
+                <i
+                  className="fas fa-shipping-fast text-white text-2xl"
+                  aria-hidden="true"
+                />
               </div>
-              <h4 className="text-lg font-semibold dark-mode-text mb-2">Convenient Location</h4>
+              <h4 className="text-lg font-semibold dark-mode-text mb-2">
+                Convenient Location
+              </h4>
               <p className="text-gray-700 dark:text-gray-300 text-sm">
-                Easy access from Fort Leonard Wood, Waynesville, and throughout {locationData.county}.
+                Easy access from Fort Leonard Wood, Waynesville, and throughout{" "}
+                {locationData.county}.
               </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-handshake text-white text-2xl" aria-hidden="true" />
+                <i
+                  className="fas fa-handshake text-white text-2xl"
+                  aria-hidden="true"
+                />
               </div>
-              <h4 className="text-lg font-semibold dark-mode-text mb-2">Community Focused</h4>
+              <h4 className="text-lg font-semibold dark-mode-text mb-2">
+                Community Focused
+              </h4>
               <p className="text-gray-700 dark:text-gray-300 text-sm">
-                Committed to supporting the {locationData.city} community with quality products and service.
+                Committed to supporting the {locationData.city} community with
+                quality products and service.
               </p>
             </div>
           </div>

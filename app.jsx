@@ -1,10 +1,13 @@
-
-import StructuredData from './src/components/StructuredData.jsx';
-import LocalBusinessInfo from './src/components/LocalBusinessInfo.jsx';
-import LocationContent from './src/components/LocationContent.jsx';
-import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx';
-import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx';
-import { businessInfo, generateLocalTitle, generateLocalDescription } from './src/utils/seoHelpers.js';
+import StructuredData from "./src/components/StructuredData.jsx";
+import LocalBusinessInfo from "./src/components/LocalBusinessInfo.jsx";
+import LocationContent from "./src/components/LocationContent.jsx";
+import GoogleBusinessIntegration from "./src/components/GoogleBusinessIntegration.jsx";
+import LocalSEOFAQ from "./src/components/LocalSEOFAQ.jsx";
+import {
+  businessInfo,
+  generateLocalTitle,
+  generateLocalDescription,
+} from "./src/utils/seoHelpers.js";
 
 function App() {
   const [appState, setAppState] = React.useState({
@@ -196,7 +199,10 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <StructuredData />
       {/* Navigation */}
-      <nav role="navigation" className="bg-white/90 backdrop-blur dark:bg-gray-900/90 shadow-md sticky top-0 z-50">
+      <nav
+        role="navigation"
+        className="bg-white/90 backdrop-blur dark:bg-gray-900/90 shadow-md sticky top-0 z-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -209,7 +215,10 @@ function App() {
                     tabIndex="-1"
                   ></i>
                 </div>
-                <span className="font-bold text-xl dark-mode-text" itemProp="name">
+                <span
+                  className="font-bold text-xl dark-mode-text"
+                  itemProp="name"
+                >
                   {businessInfo.name}
                 </span>
               </div>
@@ -840,7 +849,10 @@ function App() {
               2018 Farm Bill.
             </p>
             <div className="text-center mt-4">
-              <LocalBusinessInfo variant="inline" className="text-sm text-gray-400" />
+              <LocalBusinessInfo
+                variant="inline"
+                className="text-sm text-gray-400"
+              />
             </div>
           </div>
         </div>
@@ -1097,5 +1109,3 @@ function ProductCard({ product }) {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
-
-

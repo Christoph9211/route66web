@@ -3,144 +3,146 @@ function StructuredData() {
   const businessData = {
     "@context": "https://schema.org",
     "@type": "Store",
-    "name": "Route 66 Hemp",
-    "description": "Premium hemp products for your wellness journey. Quality you can trust.",
-    "url": "https://route66hemp.com",
-    "telephone": "+1-573-677-6418",
-    "email": "route66hemp@gmail.com",
-    "address": {
+    name: "Route 66 Hemp",
+    description:
+      "Premium hemp products for your wellness journey. Quality you can trust.",
+    url: "https://route66hemp.com",
+    telephone: "+1-573-677-6418",
+    email: "route66hemp@gmail.com",
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": "14076 State Hwy Z",
-      "addressLocality": "St Robert",
-      "addressRegion": "MO",
-      "postalCode": "65584",
-      "addressCountry": "US"
+      streetAddress: "14076 State Hwy Z",
+      addressLocality: "St Robert",
+      addressRegion: "MO",
+      postalCode: "65584",
+      addressCountry: "US",
     },
-    "geo": {
+    geo: {
       "@type": "GeoCoordinates",
-      "latitude": "37.83490",
-      "longitude": "-92.09725"
+      latitude: "37.83490",
+      longitude: "-92.09725",
     },
-    "openingHoursSpecification": [
+    openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-        "opens": "11:00",
-        "closes": "21:00"
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        opens: "11:00",
+        closes: "21:00",
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Friday", "Saturday"],
-        "opens": "11:00",
-        "closes": "22:00"
+        dayOfWeek: ["Friday", "Saturday"],
+        opens: "11:00",
+        closes: "22:00",
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "11:00",
-        "closes": "19:00"
-      }
+        dayOfWeek: "Sunday",
+        opens: "11:00",
+        closes: "19:00",
+      },
     ],
-    "priceRange": "$",
-    "currenciesAccepted": "USD",
-    "paymentAccepted": "Cash, Credit Card",
-    "image": "https://route66hemp.com/og-image.jpg",
-    "logo": "https://route66hemp.com/favicon-32x32.png",
-    "sameAs": [
+    priceRange: "$",
+    currenciesAccepted: "USD",
+    paymentAccepted: "Cash, Credit Card",
+    image: "https://route66hemp.com/og-image.jpg",
+    logo: "https://route66hemp.com/favicon-32x32.png",
+    sameAs: [
       "https://www.facebook.com/route66hemp",
       "https://www.instagram.com/route66hemp",
-      "https://www.twitter.com/route66hemp"
+      "https://www.twitter.com/route66hemp",
     ],
-    "aggregateRating": {
+    aggregateRating: {
       "@type": "AggregateRating",
-      "ratingValue": "4.4",
-      "reviewCount": "8"
+      ratingValue: "4.4",
+      reviewCount: "8",
     },
-    "review": [
+    review: [
       {
         "@type": "Review",
-        "author": {
+        author: {
           "@type": "Person",
-          "name": "Sarah Johnson"
+          name: "Sarah Johnson",
         },
-        "reviewRating": {
+        reviewRating: {
           "@type": "Rating",
-          "ratingValue": "5"
+          ratingValue: "5",
         },
-        "reviewBody": "Excellent quality hemp products and knowledgeable staff. Great selection and fair prices."
-      }
+        reviewBody:
+          "Excellent quality hemp products and knowledgeable staff. Great selection and fair prices.",
+      },
     ],
-    "hasOfferCatalog": {
+    hasOfferCatalog: {
       "@type": "OfferCatalog",
-      "name": "Hemp Products",
-      "itemListElement": [
+      name: "Hemp Products",
+      itemListElement: [
         {
           "@type": "Offer",
-          "itemOffered": {
+          itemOffered: {
             "@type": "Product",
-            "name": "CBD Flower",
-            "category": "Hemp Products"
-          }
+            name: "CBD Flower",
+            category: "Hemp Products",
+          },
         },
         {
           "@type": "Offer",
-          "itemOffered": {
+          itemOffered: {
             "@type": "Product",
-            "name": "Hemp Concentrates",
-            "category": "Hemp Products"
-          }
+            name: "Hemp Concentrates",
+            category: "Hemp Products",
+          },
         },
         {
           "@type": "Offer",
-          "itemOffered": {
+          itemOffered: {
             "@type": "Product",
-            "name": "Vapes & Cartridges",
-            "category": "Hemp Products"
-          }
-        }
-      ]
-    }
+            name: "Vapes & Cartridges",
+            category: "Hemp Products",
+          },
+        },
+      ],
+    },
   };
 
   const breadcrumbData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
+    itemListElement: [
       {
         "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://route66hemp.com"
+        position: 1,
+        name: "Home",
+        item: "https://route66hemp.com",
       },
       {
         "@type": "ListItem",
-        "position": 2,
-        "name": "Products",
-        "item": "https://route66hemp.com#products"
-      }
-    ]
+        position: 2,
+        name: "Products",
+        item: "https://route66hemp.com#products",
+      },
+    ],
   };
 
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Route 66 Hemp",
-    "url": "https://route66hemp.com",
-    "logo": "https://route66hemp.com/favicon-32x32.png",
-    "contactPoint": {
+    name: "Route 66 Hemp",
+    url: "https://route66hemp.com",
+    logo: "https://route66hemp.com/favicon-32x32.png",
+    contactPoint: {
       "@type": "ContactPoint",
-      "telephone": "+1-573-677-6418",
-      "contactType": "customer service",
-      "availableLanguage": "English"
+      telephone: "+1-573-677-6418",
+      contactType: "customer service",
+      availableLanguage: "English",
     },
-    "address": {
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": "14076 State Hwy Z",
-      "addressLocality": "St Robert",
-      "addressRegion": "MO",
-      "postalCode": "65584",
-      "addressCountry": "US"
-    }
+      streetAddress: "14076 State Hwy Z",
+      addressLocality: "St Robert",
+      addressRegion: "MO",
+      postalCode: "65584",
+      addressCountry: "US",
+    },
   };
 
   return (
@@ -148,19 +150,19 @@ function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(businessData)
+          __html: JSON.stringify(businessData),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbData)
+          __html: JSON.stringify(breadcrumbData),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationData)
+          __html: JSON.stringify(organizationData),
         }}
       />
     </>
