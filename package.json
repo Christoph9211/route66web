@@ -1,6 +1,10 @@
 {
   "name": "route66web",
   "version": "1.0.0",
+  "babel": {
+    "presets": ["@babel/preset-react"], 
+    "plugins": ["module:@babel/eslint-parser", "eslint-plugin-react"]
+  },
   "description": "",
   "main": "index.js",
   "dependencies": {
@@ -10,7 +14,6 @@
     "detect-libc": "^2.0.3",
     "enhanced-resolve": "^5.18.1",
     "esbuild": "^0.25.2",
-    "eslint": "^9.31.0",
     "fill-range": "^7.1.1",
     "graceful-fs": "^4.2.11",
     "is-extglob": "^2.1.1",
@@ -36,7 +39,12 @@
   },
   "devDependencies": {
     "@babel/code-frame": "^7.27.1",
+    "@babel/core": "^7.28.0",
+    "@babel/eslint-parser": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
     "@eslint/js": "^9.28.0",
+    "eslint": "^9.31.0",
+    "eslint-plugin-react": "^7.37.5",
     "prettier": "^2.5.1"
   },
   "scripts": {

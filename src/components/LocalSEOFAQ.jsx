@@ -58,7 +58,7 @@ function LocalSEOFAQ() {
                 <i
                   className={`fas ${
                     openIndex === index ? 'fa-chevron-up' : 'fa-chevron-down'
-                  } text-secondary flex-shrink-0`}
+                  } text-secondary shrink-0`}
                   aria-hidden="true"
                 />
               </button>

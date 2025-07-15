@@ -57,7 +57,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
         </h3>
         <div className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow p-6">
           <div className="flex flex-col items-center mb-6">
-            <div className="flex-shrink-0 mb-2">
+            <div className="shrink-0 mb-2">
               <i
                 className="fas fa-map-marker-alt text-secondary text-xl"
                 aria-hidden="true"
@@ -71,7 +71,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
           </div>
           
           <div className="flex flex-col items-center mb-6">
-            <div className="flex-shrink-0 mb-2">
+            <div className="shrink-0 mb-2">
               <i
                 className="fas fa-phone-alt text-secondary text-xl"
                 aria-hidden="true"
@@ -88,7 +88,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
           </div>
           
           <div className="flex flex-col items-center mb-6">
-            <div className="flex-shrink-0 mb-2">
+            <div className="shrink-0 mb-2">
               <i
                 className="fas fa-envelope text-secondary text-xl"
                 aria-hidden="true"
@@ -105,7 +105,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
           </div>
           
           <div className="flex flex-col items-center">
-            <div className="flex-shrink-0 mb-2">
+            <div className="shrink-0 mb-2">
               <i
                 className="fas fa-clock text-secondary text-xl"
                 aria-hidden="true"

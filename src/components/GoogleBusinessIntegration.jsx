@@ -41,7 +41,7 @@ function GoogleBusinessIntegration() {
           {reviews.map((review) => (
             <div key={review.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
               <div className="flex items-center mb-3">
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
                     <span className="text-white font-medium text-sm">
                       {review.author.split(' ').map(n => n[0]).join('')}
@@ -79,7 +79,7 @@ function GoogleBusinessIntegration() {
         </div>
 
         {/* Google Business Profile CTA */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-center">
+        <div className="bg-linear-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
             Find Us on Google Maps
           </h3>

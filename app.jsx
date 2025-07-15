@@ -200,7 +200,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center">
+              <div className="shrink-0 flex items-center">
                 {/* Logo */}
                 <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-2">
                   <i
@@ -303,9 +303,9 @@ function App() {
       </nav>
       <section>
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+        <div className="relative bg-linear-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
           <div className="max-w-7xl mx-auto">
-            <div className="relative z-10 pb-8 bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32">
+            <div className="relative z-10 pb-8 bg-linear-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32">
               <div className="pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                   <div className="lg:grid lg:grid-cols-2 lg:gap-8">
@@ -344,7 +344,7 @@ function App() {
                     </div>
                     <div className="mt-12 lg:m-0 lg:relative">
                       <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0">
-                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden">
+                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-linear-to-br from-primary to-secondary text-white relative overflow-hidden">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <i
                               className="fas fa-cannabis text-white text-9xl opacity-30"
@@ -465,7 +465,7 @@ function App() {
                 <div className="relative lg:row-start-1 lg:col-start-2">
                   <div className="relative text-base mx-auto lg:max-w-none">
                     <div className="aspect-w-2 aspect-h-1 rounded-lg shadow-xl overflow-hidden">
-                      <div className="w-full h-full bg-gradient-to-r from-green-800 to-green-600 flex items-center justify-center p-6">
+                      <div className="w-full h-full bg-linear-to-r from-green-800 to-green-600 flex items-center justify-center p-6">
                         <div className="text-center text-white">
                           <i
                             className="fas fa-leaf text-6xl mb-4"
@@ -1097,3 +1097,5 @@ function ProductCard({ product }) {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
+
+
