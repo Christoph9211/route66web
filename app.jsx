@@ -130,7 +130,7 @@ function App() {
 
   if (appState.age === null) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
+      <main role="main" className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
           <h2 className="text-2xl font-bold mb-6 dark-mode-text">
             Age Verification
@@ -165,13 +165,13 @@ function App() {
             <a href="/privacy-policy.html">Privacy Policy</a>.
           </p>
         </div>
-      </div>
+      </main>
     );
   }
 
   if (appState.age < 21) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
+      <main role="main" className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
           <h2 className="text-2xl font-bold mb-4 dark-mode-text">
             Access Denied
@@ -188,12 +188,12 @@ function App() {
             Go Back
           </button>
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <main role="main" className="min-h-screen flex flex-col">
       <StructuredData />
       {/* Navigation */}
       <nav role="navigation" className="bg-white/90 backdrop-blur dark:bg-gray-900/90 shadow-md sticky top-0 z-50">
@@ -845,7 +845,7 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }
 
