@@ -17,23 +17,6 @@
     "banner": "New"
   },
   {
-    "name": "Death Star",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "New"
-  },
-  {
     "name": "Diamond Badder",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -43,23 +26,6 @@
     "prices": {
       "1 gram": 10,
       "3 grams": 25
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Dosido",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
     },
     "banner": "New"
   },
@@ -77,23 +43,6 @@
       "1/4": 40,
       "1/2": 80,
       "ounce": 150
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Green Crack Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
     },
     "banner": "New"
   },
@@ -162,23 +111,6 @@
     "banner": "New"
   },
   {
-    "name": "Skywalker",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "New"
-  },
-  {
     "name": "Sour Mac",
     "category": "Flower",
     "size_options": [
@@ -192,23 +124,6 @@
       "1/4": 50,
       "1/2": 90,
       "ounce": 180
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Star Child",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
     },
     "banner": "New"
   },
@@ -243,83 +158,6 @@
     "banner": "New"
   },
   {
-    "name": "One Gram Carts",
-    "category": "Vapes & Carts",
-    "size_options": [
-      "Blue Walker (Sativa)",
-      "Bomb Pop (Indica)",
-      "Cranberry Haze (Sativa)",
-      "Cherry Cookies (Indica)",
-      "Cherry Pie (Sativa)",
-      "Gelato (Hybrid)",
-      "Lemon Cake (Hybrid)",
-      "Mango Tango (Indica)",
-      "Purple Haze (Sativa)",
-      "Trainwreck (Hybrid)",
-      "Tropical Cherries (Sativa)",
-      "Wedding Cake (Indica)",
-      "White Fire Zkittles (Hybrid)"
-    ],
-    "prices": {
-      "Blue Walker (Sativa)": 24,
-      "Bomb Pop (Indica)": 16,
-      "Cranberry Haze (Sativa)": 24,
-      "Cherry Cookies (Indica)": 16,
-      "Cherry Pie (Sativa)": 16,
-      "Chocolate Diesel (Indica)": 18,
-      "Gelato (Hybrid)": 18,
-      "Lemon Cake (Hybrid)": 18,
-      "Mango Tango (Indica)": 24,
-      "Purple Haze (Sativa)": 16,
-      "Trainwreck (Hybrid)": 18,
-      "Tropical Cherries (Sativa)": 16,
-      "Wedding Cake (Indica)": 18,
-      "White Fire Zkittles (Hybrid)": 16
-    }
-  },
-  {
-    "name": "One Gram Disposable",
-    "category": "Vapes & Carts",
-    "size_options": [
-      "Blueberry Muffin Live Resin (Indica)",
-      "Chocolate Diesel Live Resin (Sativa)",
-      "Sour Diesel Live Resin (Hybrid)",
-      "Sour Pebbles (Sativa)",
-      "Cherry Cookies (Indica)",
-      "Lemon Cake Live Resin (Sativa)"
-    ],
-    "prices": {
-      "Blueberry Muffin Live Resin (Indica)": 20,
-      "Chocolate Diesel Live Resin (Sativa)": 20,
-      "Sour Diesel Live Resin (Hybrid)": 35,
-      "Sour Pebbles (Sativa)": 30,
-      "Cherry Cookies (Indica)": 30,
-      "Lemon Cake Live Resin (Sativa)": 20
-    },
-    "availability": {}
-  },
-  {
-    "name": "Two Gram Vapes",
-    "category": "Vapes & Carts",
-    "size_options": [
-      "Bacio-Gelato",
-      "Chem Dawg",
-      "Cherry Cookies",
-      "Green Crack",
-      "Grape Ape",
-      "Sunset Sherbet"
-    ],
-    "prices": {
-      "Bacio-Gelato": 30,
-      "Cherry Cookies": 30,
-      "Chem Dawg": 30,
-      "Green Crack": 30,
-      "Grape Ape": 30,
-      "Sunset Sherbet": 30
-    },
-    "availability": {}
-  },
-  {
     "name": "Amnesia Haze",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -329,6 +167,22 @@
     "prices": {
       "1 gram": 15,
       "3 grams": 40
+    }
+  },
+  {
+    "name": "Blue Dream Living Soil",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
     }
   },
   {
@@ -343,22 +197,6 @@
       "3 grams": 25
     },
     "thca_percentage": 97.7
-  },
-  {
-    "name": "Blueberry Muffin",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    }
   },
   {
     "name": "Cherry Pie Crumble",
@@ -429,6 +267,62 @@
     }
   },
   {
+    "name": "One Gram Carts",
+    "category": "Vapes & Carts",
+    "size_options": [
+      "Blue Walker (Sativa)",
+      "Bomb Pop (Indica)",
+      "Cranberry Haze (Sativa)",
+      "Cherry Cookies (Indica)",
+      "Cherry Pie (Sativa)",
+      "Gelato (Hybrid)",
+      "Lemon Cake (Hybrid)",
+      "Mango Tango (Indica)",
+      "Purple Haze (Sativa)",
+      "Trainwreck (Hybrid)",
+      "Tropical Cherries (Sativa)",
+      "Wedding Cake (Indica)",
+      "White Fire Zkittles (Hybrid)"
+    ],
+    "prices": {
+      "Blue Walker (Sativa)": 24,
+      "Bomb Pop (Indica)": 16,
+      "Cranberry Haze (Sativa)": 24,
+      "Cherry Cookies (Indica)": 16,
+      "Cherry Pie (Sativa)": 16,
+      "Chocolate Diesel (Indica)": 18,
+      "Gelato (Hybrid)": 18,
+      "Lemon Cake (Hybrid)": 18,
+      "Mango Tango (Indica)": 24,
+      "Purple Haze (Sativa)": 16,
+      "Trainwreck (Hybrid)": 18,
+      "Tropical Cherries (Sativa)": 16,
+      "Wedding Cake (Indica)": 18,
+      "White Fire Zkittles (Hybrid)": 16
+    }
+  },
+  {
+    "name": "One Gram Disposable",
+    "category": "Vapes & Carts",
+    "size_options": [
+      "Blueberry Muffin Live Resin (Indica)",
+      "Chocolate Diesel Live Resin (Sativa)",
+      "Sour Diesel Live Resin (Hybrid)",
+      "Sour Pebbles (Sativa)",
+      "Cherry Cookies (Indica)",
+      "Lemon Cake Live Resin (Sativa)"
+    ],
+    "prices": {
+      "Blueberry Muffin Live Resin (Indica)": 20,
+      "Chocolate Diesel Live Resin (Sativa)": 20,
+      "Sour Diesel Live Resin (Hybrid)": 35,
+      "Sour Pebbles (Sativa)": 30,
+      "Cherry Cookies (Indica)": 30,
+      "Lemon Cake Live Resin (Sativa)": 20
+    },
+    "availability": {}
+  },
+  {
     "name": "Saucy Diamonds",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -454,6 +348,27 @@
     "thca_percentage": 96.1
   },
   {
+    "name": "Two Gram Vapes",
+    "category": "Vapes & Carts",
+    "size_options": [
+      "Bacio-Gelato",
+      "Chem Dawg",
+      "Cherry Cookies",
+      "Green Crack",
+      "Grape Ape",
+      "Sunset Sherbet"
+    ],
+    "prices": {
+      "Bacio-Gelato": 30,
+      "Cherry Cookies": 30,
+      "Chem Dawg": 30,
+      "Green Crack": 30,
+      "Grape Ape": 30,
+      "Sunset Sherbet": 30
+    },
+    "availability": {}
+  },
+  {
     "name": "Alcapulco Gold",
     "category": "Flower",
     "size_options": [
@@ -471,7 +386,7 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Blue Dream Living Soil",
+    "name": "Blueberry Muffin",
     "category": "Flower",
     "size_options": [
       "1/8",
@@ -480,10 +395,10 @@
       "ounce"
     ],
     "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
     },
     "banner": "Out of Stock"
   },
@@ -497,6 +412,57 @@
     "prices": {
       "1 gram": 15,
       "3 grams": 40
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Death Star",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Dosido",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Green Crack Snowcaps",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
     },
     "banner": "Out of Stock"
   },
@@ -518,6 +484,23 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Skywalker",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Slurricane",
     "category": "Flower",
     "size_options": [
@@ -531,6 +514,23 @@
       "1/4": 32.5,
       "1/2": 65,
       "ounce": 125
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Star Child",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
     },
     "banner": "Out of Stock"
   },
