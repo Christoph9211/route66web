@@ -97,6 +97,7 @@
       <input id="file-input" type="file" accept="application/json" class="hidden" />
       <button id="load-btn" class="btn">Import products.json</button>
       <button id="download-all-btn" class="btn" disabled>Download updated JSON</button>
+      <button id="download-csv-btn" class="btn" disabled>Download updated CSV</button>
     </div>
 
     <h2 id="form-title">Add New Product</h2>
@@ -123,7 +124,9 @@
           id="prices"
           name="prices"
           rows="3"
-          placeholder="1 gram=10\n3 grams=25"
+          placeholder="
+              1 gram=10
+              3 grams=25"
           required
         ></textarea>
       </div>
@@ -150,13 +153,13 @@
           id="availability"
           name="availability"
           rows="2"
-          placeholder="{\n  &quot;Blue Walker (Sativa)&quot;: true\n}"
+          placeholder="{&quot;Blue Walker (Sativa)&quot;: true}"
         ></textarea>
       </div>
 
       <div style="text-align: center; margin-top: 1rem">
-        <button id="submit-btn" class="btn">Add Product</button>
-        <button id="cancel-edit-btn" type="button" class="btn hidden">Cancel</button>
+        <button type="submit" id="submit-btn" class="btn">Add Product</button>
+        <button type="reset" id="cancel-edit-btn" class="btn hidden">Cancel</button>
       </div>
     </form>
 
@@ -184,6 +187,7 @@
       const fileInput = document.getElementById("file-input");
       const loadBtn = document.getElementById("load-btn");
       const downloadAllBtn = document.getElementById("download-all-btn");
+      const downloadCsvBtn = document.getElementById("download-csv-btn");
       const form = document.getElementById("product-form");
       const table = document.getElementById("products-table");
       const tbody = table.querySelector("tbody");
@@ -240,10 +244,12 @@
         if (products.length === 0) {
           table.classList.add("hidden");
           downloadAllBtn.disabled = true;
+          downloadCsvBtn.disabled = true;
           return;
         }
         table.classList.remove("hidden");
         downloadAllBtn.disabled = false;
+        downloadCsvBtn.disabled = false;
         tbody.innerHTML = "";
         products.forEach((p, idx) => {
           const tr = document.createElement("tr");
@@ -295,6 +301,60 @@
         const a = document.createElement("a");
         a.href = url;
         a.download = "products.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // --- Export CSV ---
+      downloadCsvBtn.addEventListener("click", () => {
+        // Clone and sort using the same ranking logic
+        const sorted = [...products].sort((a, b) => {
+          const ra = getRank(a);
+          const rb = getRank(b);
+          if (ra !== rb) return ra - rb;
+          return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
+        });
+
+        const header = [
+          "Name",
+          "Category",
+          "Size",
+          "Price ($)",
+          "THCA (%)",
+          "Banner",
+        ];
+        const lines = [header.join(",")];
+
+        const escapeCsv = (val) => {
+          if (val === null || val === undefined) return "";
+          const str = String(val);
+          return str.includes(",") || str.includes("\"") || str.includes("\n")
+            ? `"${str.replace(/\"/g, '""')}"`
+            : str;
+        };
+
+        sorted.forEach((p) => {
+          p.size_options.forEach((size) => {
+            const priceRaw = p.prices[size];
+            const price = typeof priceRaw === "number" ? priceRaw.toFixed(2) : priceRaw || "";
+            const row = [
+              p.name,
+              p.category,
+              size,
+              price,
+              p.thca_percentage ?? "",
+              p.banner ?? "",
+            ].map(escapeCsv);
+            lines.push(row.join(","));
+          });
+        });
+
+        const csvStr = lines.join("\n");
+        const blob = new Blob([csvStr], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "products.csv";
         a.click();
         URL.revokeObjectURL(url);
       });
