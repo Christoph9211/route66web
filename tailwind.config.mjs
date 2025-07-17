@@ -1,11 +1,14 @@
+// tailwind.config.js
+
+// eslint-disable-next-line no-undef
 tailwind.config = {
   darkMode: "media",
   theme: {
     extend: {
       colors: {
-        primary: "#1D4ED8", // Modern blue primary color
-        secondary: "#10B981", // Modern green secondary color
-        accent: "#FBBF24", // Warm accent for highlights
+        primary:  "#1D4ED8",
+        secondary:"#10B981",
+        accent:   "#FBBF24",
       },
       fontFamily: {
         sans: ["Inter", "Montserrat", "sans-serif"],

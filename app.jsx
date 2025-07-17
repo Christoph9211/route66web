@@ -1,10 +1,14 @@
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import StructuredData from './src/components/StructuredData.jsx';
 import LocalBusinessInfo from './src/components/LocalBusinessInfo.jsx';
 import LocationContent from './src/components/LocationContent.jsx';
 import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx';
 import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx';
 import { businessInfo, generateLocalTitle, generateLocalDescription } from './src/utils/seoHelpers.js';
+
+const DANGEROUS = new Set(['__proto__','prototype','constructor']);
+const clean = k => (DANGEROUS.has(k) ? undefined : k);
 
 function App() {
   const [appState, setAppState] = React.useState({
@@ -35,7 +39,7 @@ function App() {
       })
       .then((productsData) => {
         // Group products by name and category, combining size options and prices
-        const grouped = {};
+        const grouped = Object.create(null);      // no prototype to pollute
         productsData.forEach((prod) => {
           // Use name+category as key
           const key =
@@ -62,7 +66,10 @@ function App() {
               // Try to extract size from name
               const size = prod.name.match(/ - (.+)/)[1];
               grouped[key].size_options = [size];
-              grouped[key].prices = { [size]: prod.price };
+              const safeSize = clean(size);             // drop dangerous names
+              if (safeSize) {
+                grouped[key].prices = { [safeSize]: prod.price };
+              }
             } else {
               grouped[key].size_options = [];
               grouped[key].prices = {};
@@ -71,9 +78,10 @@ function App() {
             // Add size/price if not present
             if (prod.name && prod.name.match(/ - (.+)/)) {
               const size = prod.name.match(/ - (.+)/)[1];
+              const safe = clean(size);  // rename to avoid shadowing
               if (!grouped[key].size_options.includes(size)) {
                 grouped[key].size_options.push(size);
-                grouped[key].prices[size] = prod.price;
+                if (safe) grouped[key].prices[safe] = prod.price;
               }
             }
             grouped[key].ids.push(prod.id);

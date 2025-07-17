@@ -1,4 +1,5 @@
 // Structured Data Component for Local Business SEO
+
 function StructuredData() {
   const businessData = {
     "@context": "https://schema.org",
