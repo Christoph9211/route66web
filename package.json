@@ -22,8 +22,11 @@
     "picocolors": "^1.1.1",
     "picomatch": "^2.3.1",
     "postcss": "^8.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "rollup": "^4.39.0",
     "source-map-js": "^1.2.1",
+    "tailwind": "^2.3.1",
     "tailwindcss": "^4.1.8",
     "tapable": "^2.2.1",
     "to-regex-range": "^5.0.1",
@@ -31,7 +34,15 @@
   },
   "devDependencies": {
     "@babel/code-frame": "^7.27.1",
-    "@eslint/js": "^9.28.0",
+    "@babel/eslint-parser": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.31.0",
+    "@vitejs/plugin-react": "^4.6.0",
+    "eslint": "^9.31.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.3.0",
     "prettier": "^2.5.1"
   },
   "scripts": {

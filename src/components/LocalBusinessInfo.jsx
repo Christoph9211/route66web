@@ -1,4 +1,4 @@
-// NAP (Name, Address, Phone) Component for consistency across pages
+
 function LocalBusinessInfo({ variant = "full", className = "" }) {
   const businessInfo = {
     name: "Route 66 Hemp",
@@ -29,7 +29,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
         <div className="font-medium">{businessInfo.name}</div>
         <div>{businessInfo.address.full}</div>
         {/*
-          Accessibility⁠—The link colour now meets WCAG AA (≥4.5:1)
+          Accessibility⁠—The link colour now meets WCAG AA (≥4.5:1)
           on the dark theme by switching to blue‑400 while keeping a
           strong, brand‑appropriate blue‑600 in the light theme.
         */}
