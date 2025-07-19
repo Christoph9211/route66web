@@ -1,18 +1,18 @@
-// tailwind.config.js
-
-// eslint-disable-next-line no-undef
-tailwind.config = {
-  darkMode: "media",
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: 'media',        // or 'class'
   theme: {
     extend: {
       colors: {
-        primary:  "#1D4ED8",
-        secondary:"#10B981",
-        accent:   "#FBBF24",
+        primary:  '#1D4ED8',
+        secondary:'#10B981',
+        accent:   '#FBBF24',
       },
       fontFamily: {
-        sans: ["Inter", "Montserrat", "sans-serif"],
+        sans: ['Inter', 'Montserrat', 'sans-serif'],
       },
     },
   },
+  plugins: [],
 };
