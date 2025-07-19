@@ -21,8 +21,13 @@
     "nanoid": "^5.1.5",
     "node-addon-api": "^8.5.0",
     "picocolors": "^1.1.1",
+<<<<<<< HEAD
     "picomatch": "^4.0.2",
     "prettier": "^3.6.2",
+=======
+    "picomatch": "^2.3.1",
+    "postcss": "^8.5.3",
+>>>>>>> new_preview
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "rollup": "^4.39.0",
@@ -33,12 +38,24 @@
   },
   "devDependencies": {
     "@babel/code-frame": "^7.27.1",
+<<<<<<< HEAD
     "@babel/core": "^7.22.20",
     "@babel/eslint-parser": "^7.24.0",
     "@babel/preset-react": "^7.22.15",
     "@eslint/js": "^9.28.0",
     "eslint-plugin-react": "^7.34.1",
     "tailwindcss": "^4.1.11"
+=======
+    "@babel/eslint-parser": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.31.0",
+    "@vitejs/plugin-react": "^4.6.0",
+    "eslint": "^9.31.0",
+    "eslint-plugin-react": "^7.37.5",
+    "prettier": "^2.5.1"
+>>>>>>> new_preview
   },
   "scripts": {
     "dev": "vite",

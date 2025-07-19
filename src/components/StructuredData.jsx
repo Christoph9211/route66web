@@ -1,5 +1,8 @@
 // Structured Data Component for Local Business SEO
+<<<<<<< HEAD
 import React from "react";
+=======
+>>>>>>> new_preview
 
 function StructuredData() {
   const businessData = {
