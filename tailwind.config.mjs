@@ -1,4 +1,4 @@
-// tailwind.config.js
+// tailwind.config.mjs
 
 // eslint-disable-next-line no-undef
 tailwind.config = {
