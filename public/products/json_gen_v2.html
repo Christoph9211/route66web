@@ -196,6 +196,18 @@
       const submitBtn = document.getElementById("submit-btn");
       const cancelEditBtn = document.getElementById("cancel-edit-btn");
 
+      // Default categories for datalist
+      const defaultCategories = [
+        "Concentrates",
+        "Diamonds & Sauce",
+        "Edibles",
+        "Flower",
+        "Other",
+        "Vapes & Carts",
+      ];
+
+      refreshCategoryList();
+
       // --- Utility helpers ---
       const getRank = (p) => {
         if (p.banner === "New") return 0;
@@ -223,7 +235,11 @@
 
       const refreshCategoryList = () => {
         categoryList.innerHTML = "";
-        Array.from(new Set(products.map((p) => p.category)))
+        const categories = new Set([
+          ...defaultCategories,
+          ...products.map((p) => p.category),
+        ]);
+        Array.from(categories)
           .sort()
           .forEach((cat) => {
             const option = document.createElement("option");
