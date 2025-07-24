@@ -616,5 +616,18 @@
       "ounce": 150
     },
     "banner": "Out of Stock"
+  },
+  {
+    "name": "Delta-9 Gummies",
+    "category": "Edibles",
+    "size_options": [
+      "10 count",
+      "30 count"
+    ],
+    "prices": {
+      "10 count": 20,
+      "30 count": 50
+    },
+    "banner": "New"
   }
 ]
