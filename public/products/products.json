@@ -35,6 +35,28 @@
     "banner": "New"
   },
   {
+    "name": "Crank Cannabis - Cotton Candy Lemonade 100mg D9 THC",
+    "category": "Edibles",
+    "size_options": [
+      "2oz Bottle"
+    ],
+    "prices": {
+      "2oz Bottle": 9.99
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Crank Cannabis - Tropical Punch 100mg D9 THC",
+    "category": "Edibles",
+    "size_options": [
+      "2oz Bottle"
+    ],
+    "prices": {
+      "2oz Bottle": 9.99
+    },
+    "banner": "New"
+  },
+  {
     "name": "Diamond Badder",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -81,6 +103,28 @@
       "ounce": 200
     },
     "thca_percentage": 63.09,
+    "banner": "New"
+  },
+  {
+    "name": "Euphoria - Delta 9 THC Gummies Grape 250mg",
+    "category": "Edibles",
+    "size_options": [
+      "10ct"
+    ],
+    "prices": {
+      "10ct": 25
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Hemp Living - MEGA DOSE Delta 9 THC Gummies Blue Razz 1000mg",
+    "category": "Edibles",
+    "size_options": [
+      "40ct"
+    ],
+    "prices": {
+      "40ct": 34.95
+    },
     "banner": "New"
   },
   {
@@ -236,11 +280,19 @@
     "category": "Other",
     "size_options": [
       "Blueberry Muffin",
-      "Chimera"
+      "Super Boof",
+      "Tropicana Cherry",
+      "Chem De La Chem",
+      "Grape Cream Cake",
+      "Raspberry Kush"
     ],
     "prices": {
-      "Blueberry Muffin": 5,
-      "Chimera": 5
+      "Blue Dream": 7,
+      "Super Boof": 7,
+      "Tropicana Cherry": 7,
+      "Chem De La Chem": 5,
+      "Grape Cream Cake": 5,
+      "Raspberry Kush": 5
     }
   },
   {
@@ -289,17 +341,17 @@
     }
   },
   {
-    "name": "Infused Preroll",
+    "name": "Infused Prerolls",
     "category": "Other",
     "size_options": [
-      "Candy Runtz",
-      "Diamond Watermelon",
-      "Rainbow Sherbert Caviar"
+      "Benson Arbor Blueberry Muffin Hash Infused",
+      "Benson Arbor Tropic Lemon Hash Infused",
+      "Benson Arbor Sweets Hash Infused"
     ],
     "prices": {
-      "Candy Runtz": 10,
-      "Diamond Watermelon": 12,
-      "Rainbow Sherbert Caviar": 7
+      "Benson Arbor Blueberry Muffin Hash Infused": 20,
+      "Benson Arbor Tropic Lemon Hash Infused": 20,
+      "Benson Arbor Sweets Hash Infused": 20
     }
   },
   {
@@ -616,18 +668,5 @@
       "ounce": 150
     },
     "banner": "Out of Stock"
-  },
-  {
-    "name": "Delta-9 Gummies",
-    "category": "Edibles",
-    "size_options": [
-      "10 count",
-      "30 count"
-    ],
-    "prices": {
-      "10 count": 20,
-      "30 count": 50
-    },
-    "banner": "New"
   }
 ]
