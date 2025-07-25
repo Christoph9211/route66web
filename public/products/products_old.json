@@ -17,6 +17,24 @@
     "banner": "New"
   },
   {
+    "name": "Cherry Punch Snowcaps",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 50.9,
+    "banner": "New"
+  },
+  {
     "name": "Diamond Badder",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -30,7 +48,7 @@
     "banner": "New"
   },
   {
-    "name": "Green Crack",
+    "name": "Forbidden Runtz",
     "category": "Flower",
     "size_options": [
       "1/8",
@@ -39,11 +57,30 @@
       "ounce"
     ],
     "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
     },
+    "thca_percentage": 29.8,
+    "banner": "New"
+  },
+  {
+    "name": "Girls Scout Cookie Snowcaps",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 63.09,
     "banner": "New"
   },
   {
@@ -94,40 +131,6 @@
     "banner": "New"
   },
   {
-    "name": "Point Break",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Sour Mac",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 90,
-      "ounce": 180
-    },
-    "banner": "New"
-  },
-  {
     "name": "Wedding Cake Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -141,7 +144,7 @@
     "banner": "New"
   },
   {
-    "name": "Zkittles",
+    "name": "White Widow Snowcaps",
     "category": "Flower",
     "size_options": [
       "1/8",
@@ -150,11 +153,12 @@
       "ounce"
     ],
     "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
     },
+    "thca_percentage": 60.87,
     "banner": "New"
   },
   {
@@ -212,6 +216,22 @@
     "thca_percentage": 97.1
   },
   {
+    "name": "Death Star",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    }
+  },
+  {
     "name": "Flower Preroll",
     "category": "Other",
     "size_options": [
@@ -251,6 +271,22 @@
       "3 grams": 25
     },
     "thca_percentage": 97.1
+  },
+  {
+    "name": "Green Crack",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    }
   },
   {
     "name": "Infused Preroll",
@@ -323,6 +359,38 @@
     "availability": {}
   },
   {
+    "name": "Orange Creamsicle Living Soil",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    }
+  },
+  {
+    "name": "Point Break",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    }
+  },
+  {
     "name": "Saucy Diamonds",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -332,6 +400,22 @@
     "prices": {
       "1 gram": 15,
       "3 grams": 40
+    }
+  },
+  {
+    "name": "Sour Mac",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 90,
+      "ounce": 180
     }
   },
   {
@@ -346,6 +430,23 @@
       "3 grams": 25
     },
     "thca_percentage": 96.1
+  },
+  {
+    "name": "Tropical Cherry Snowcaps",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 64.54
   },
   {
     "name": "Two Gram Vapes",
@@ -367,6 +468,22 @@
       "Sunset Sherbet": 30
     },
     "availability": {}
+  },
+  {
+    "name": "Zkittles",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    }
   },
   {
     "name": "Alcapulco Gold",
@@ -416,23 +533,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Death Star",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Dosido",
     "category": "Flower",
     "size_options": [
@@ -463,23 +563,6 @@
       "1/4": 50,
       "1/2": 100,
       "ounce": 200
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Orange Creamsicle Living Soil",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
     },
     "banner": "Out of Stock"
   },
@@ -535,20 +618,16 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Tropical Cherry Snowcaps",
-    "category": "Flower",
+    "name": "Delta-9 Gummies",
+    "category": "Edibles",
     "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
+      "10 count",
+      "30 count"
     ],
     "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
+      "10 count": 20,
+      "30 count": 50
     },
-    "banner": "Out of Stock"
+    "banner": "New"
   }
 ]
