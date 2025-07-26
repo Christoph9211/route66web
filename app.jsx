@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import StructuredData from './src/components/StructuredData.jsx';
 import LocalBusinessInfo from './src/components/LocalBusinessInfo.jsx';
 import LocationContent from './src/components/LocationContent.jsx';
@@ -10,7 +12,7 @@ import { businessInfo, generateLocalTitle, generateLocalDescription } from './sr
 const DANGEROUS = new Set(['__proto__','prototype','constructor']);
 const clean = k => (DANGEROUS.has(k) ? undefined : k);
 
-function App() {
+export default function App() {
   const [appState, setAppState] = React.useState({
     isMobileMenuOpen: false,
     selectedCategory: "all",
@@ -853,6 +855,10 @@ function App() {
           </div>
         </div>
       </footer>
+      {/* ... */}
+      <Analytics />
+      {/* ... */}
+      <SpeedInsights />
     </div>
   );
 }
