@@ -7,7 +7,7 @@ import LocalBusinessInfo from './src/components/LocalBusinessInfo.jsx';
 import LocationContent from './src/components/LocationContent.jsx';
 import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx';
 import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx';
-import { businessInfo, generateLocalTitle, generateLocalDescription } from './src/utils/seoHelpers.js';
+import { businessInfo } from './src/utils/seoHelpers.js';
 
 const DANGEROUS = new Set(['__proto__','prototype','constructor']);
 const clean = k => (DANGEROUS.has(k) ? undefined : k);
