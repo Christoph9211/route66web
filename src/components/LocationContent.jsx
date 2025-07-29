@@ -1,4 +1,5 @@
 // Location-specific content component for local SEO
+import React from "react";
 function LocationContent() {
   const locationData = {
     city: "St Robert",
