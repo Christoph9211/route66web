@@ -142,7 +142,7 @@ export default function App() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-          <h2 className="text-2xl font-bold mb-6 dark-mode-text">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             Age Verification
           </h2>
           <div className="mb-8">
@@ -151,14 +151,14 @@ export default function App() {
               aria-hidden="true"
               tabIndex="-1"
             ></i>
-            <p className="dark-mode-text">
+            <p className="text-gray-900 dark:text-gray-100">
               You must be 21 years or older to enter this website.
             </p>
           </div>
           <div className="flex flex-col space-y-4">
             <button
               onClick={() => handleAgeVerification(true)}
-              className="w-full py-3 bg-primary hover:bg-opacity-90 text-white rounded-lg transition duration-200"
+              className="w-full py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg transition duration-200"
             >
               I am 21 or older
             </button>
@@ -183,17 +183,17 @@ export default function App() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-          <h2 className="text-2xl font-bold mb-4 dark-mode-text">
+          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
             Access Denied
           </h2>
-          <p className="mb-6 dark-mode-text">
+          <p className="mb-6 text-gray-900 dark:text-gray-100">
             You must be 21 or older to access this website.
           </p>
           <button
             onClick={() =>
               setAppState((prevState) => ({ ...prevState, age: null }))
             }
-            className="py-2 px-4 bg-primary hover:bg-opacity-90 text-white rounded-lg transition duration-200"
+            className="py-2 px-4 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg transition duration-200"
           >
             Go Back
           </button>
@@ -219,7 +219,7 @@ export default function App() {
                     tabIndex="-1"
                   ></i>
                 </div>
-                <span className="font-bold text-xl dark-mode-text" itemProp="name">
+                <span className="font-bold text-xl text-gray-900 dark:text-gray-100" itemProp="name">
                   {businessInfo.name}
                 </span>
               </div>
@@ -228,25 +228,25 @@ export default function App() {
             <div className="hidden md:flex md:items-center md:space-x-6">
               <a
                 href="#"
-                className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Home
               </a>
               <a
                 href="#products"
-                className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Products
               </a>
               <a
                 href="#about"
-                className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
               >
                 About
               </a>
               <a
                 href="#contact"
-                className="dark-mode-text hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Contact
               </a>
@@ -261,7 +261,7 @@ export default function App() {
                     isMobileMenuOpen: !prevState.isMobileMenuOpen,
                   }))
                 }
-                className="inline-flex items-center justify-center p-2 rounded-md dark-mode-text hover:text-primary focus:outline-none"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 dark:text-gray-100 hover:text-primary focus:outline-none"
                 aria-label={
                   appState.isMobileMenuOpen
                     ? "Close main menu"
@@ -285,25 +285,25 @@ export default function App() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a
                 href="#"
-                className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 rounded-md text-base font-medium"
               >
                 Home
               </a>
               <a
                 href="#products"
-                className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 rounded-md text-base font-medium"
               >
                 Products
               </a>
               <a
                 href="#about"
-                className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 rounded-md text-base font-medium"
               >
                 About
               </a>
               <a
                 href="#contact"
-                className="block dark-mode-text hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 rounded-md text-base font-medium"
               >
                 Contact
               </a>
@@ -321,7 +321,7 @@ export default function App() {
                   <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                     <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
                       <div className="lg:py-24">
-                        <h1 className="mt-4 text-4xl tracking-tight font-extrabold dark-mode-text sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                        <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-100 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                           <span>Premium Hemp Products</span>
                           <span className="text-primary dark:text-secondary block">
                             For Your Wellness
@@ -336,7 +336,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#products"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 hover:bg-opacity-90 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 md:py-4 md:text-lg md:px-10"
                             >
                               Explore Products
                             </a>
@@ -344,7 +344,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#about"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary dark:hover:bg-gray-700 hover:bg-opacity-90 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 md:py-4 md:text-lg md:px-10"
                             >
                               Learn More
                             </a>
@@ -388,7 +388,7 @@ export default function App() {
               <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
                 Products
               </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark-mode-text sm:text-4xl">
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
                 Explore Our Collection
               </p>
               <p className="mt-4 max-w-2xl text-xl text-gray-700 dark:text-gray-300 lg:mx-auto">

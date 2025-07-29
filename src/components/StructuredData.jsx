@@ -1,5 +1,5 @@
 // Structured Data Component for Local Business SEO
-import React from "react";
+
 function StructuredData() {
   const businessData = {
     "@context": "https://schema.org",
