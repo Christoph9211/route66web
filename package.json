@@ -30,6 +30,7 @@
     "source-map-js": "^1.2.1",
     "tailwindcss": "^4.1.11",
     "tapable": "^2.2.1",
+    "terser": "^5.43.1",
     "to-regex-range": "^5.0.1",
     "vite": "^6.2.5"
   },
