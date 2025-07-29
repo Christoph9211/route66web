@@ -55,7 +55,7 @@ export default defineConfig([
     files: ["*.config.js", "tailwind.config.mjs", "scripts/**/*.{js,cjs,mjs}"],
     languageOptions: {
       ecmaVersion: 2023,
-      sourceType: "script",
+      sourceType: "module",
       globals: { ...nodeGlobals, ...es2023 },      // ✅ node globals here
     },
     rules: { ...js.configs.recommended.rules },
