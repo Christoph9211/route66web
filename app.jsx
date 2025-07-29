@@ -147,7 +147,7 @@ export default function App() {
           </h2>
           <div className="mb-8">
             <i
-              className="fas fa-cannabis text-5xl text-secondary mb-4"
+              className="fas fa-cannabis text-5xl text-green-500 mb-4"
               aria-hidden="true"
               tabIndex="-1"
             ></i>
@@ -212,7 +212,7 @@ export default function App() {
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
                 {/* Logo */}
-                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-2">
+                <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-2">
                   <i
                     className="fas fa-cannabis text-white"
                     aria-hidden="true"
@@ -228,25 +228,25 @@ export default function App() {
             <div className="hidden md:flex md:items-center md:space-x-6">
               <a
                 href="#"
-                className="text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Home
               </a>
               <a
                 href="#products"
-                className="text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Products
               </a>
               <a
                 href="#about"
-                className="text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 px-3 py-2 text-sm font-medium transition duration-150"
               >
                 About
               </a>
               <a
                 href="#contact"
-                className="text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Contact
               </a>
@@ -261,7 +261,7 @@ export default function App() {
                     isMobileMenuOpen: !prevState.isMobileMenuOpen,
                   }))
                 }
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 dark:text-gray-100 hover:text-primary focus:outline-none"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 focus:outline-none"
                 aria-label={
                   appState.isMobileMenuOpen
                     ? "Close main menu"
@@ -285,25 +285,25 @@ export default function App() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a
                 href="#"
-                className="block text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
               >
                 Home
               </a>
               <a
                 href="#products"
-                className="block text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
               >
                 Products
               </a>
               <a
                 href="#about"
-                className="block text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
               >
                 About
               </a>
               <a
                 href="#contact"
-                className="block text-gray-900 dark:text-gray-100 hover:text-primary px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
               >
                 Contact
               </a>
@@ -323,7 +323,7 @@ export default function App() {
                       <div className="lg:py-24">
                         <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-100 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                           <span>Premium Hemp Products</span>
-                          <span className="text-primary dark:text-secondary block">
+                          <span className="text-blue-600 dark:text-blue-500 dark:text-green-500 block">
                             For Your Wellness
                           </span>
                         </h1>
@@ -354,7 +354,7 @@ export default function App() {
                     </div>
                     <div className="mt-12 lg:m-0 lg:relative">
                       <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0">
-                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden">
+                        <div className="w-full h-64 sm:h-72 md:h-96 rounded-xl shadow-xl bg-gradient-to-br from-blue-600 to-green-500 text-white relative overflow-hidden">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <i
                               className="fas fa-cannabis text-white text-9xl opacity-30"
@@ -385,7 +385,7 @@ export default function App() {
         <div id="products" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-8">
-              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
+              <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
                 Products
               </h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
@@ -406,7 +406,7 @@ export default function App() {
                 className={`px-4 py-2 rounded-full text-sm font-medium ${
                   appState.selectedCategory === "all"
                     ? "bg-primary text-white"
-                    : "bg-gray-200 dark:bg-gray-700 dark-mode-text hover:bg-gray-300 dark:hover:bg-gray-600"
+                    : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
                 All Products
@@ -423,7 +423,7 @@ export default function App() {
                   className={`px-4 py-2 rounded-full text-sm font-medium ${
                     appState.selectedCategory === category.id
                       ? "bg-primary text-white"
-                      : "bg-gray-200 dark:bg-gray-700 dark-mode-text hover:bg-gray-300 dark:hover:bg-gray-600"
+                      : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600"
                   }`}
                 >
                   {category.name}
@@ -434,7 +434,7 @@ export default function App() {
               <div className="col-span-full flex items-center justify-center py-12">
                 <div className="leaf-loader">
                   <i
-                    className="fas fa-cannabis text-primary text-5xl"
+                    className="fas fa-cannabis text-blue-600 dark:text-blue-500 text-5xl"
                     aria-hidden="true"
                     tabIndex="-1"
                   ></i>
@@ -463,10 +463,10 @@ export default function App() {
         <div id="about" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-10">
-              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
+              <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
                 About Us
               </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark-mode-text sm:text-4xl">
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
                 Our Story
               </p>
             </div>
@@ -534,7 +534,7 @@ export default function App() {
                   <div className="flow-root bg-white dark:bg-gray-800 rounded-lg shadow-lg px-6 pb-8">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-secondary rounded-md shadow-lg">
+                        <span className="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
                           <i
                             className="fas fa-flask text-white text-xl"
                             aria-hidden="true"
@@ -542,7 +542,7 @@ export default function App() {
                           ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">
+                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-gray-100">
                         Lab Tested
                       </h3>
                       <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
@@ -557,7 +557,7 @@ export default function App() {
                   <div className="flow-root bg-white dark:bg-gray-800 rounded-lg shadow-lg px-6 pb-8">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-secondary rounded-md shadow-lg">
+                        <span className="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
                           <i
                             className="fas fa-leaf text-white text-xl"
                             aria-hidden="true"
@@ -565,7 +565,7 @@ export default function App() {
                           ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">
+                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-gray-100">
                         Organically Grown
                       </h3>
                       <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
@@ -579,7 +579,7 @@ export default function App() {
                   <div className="flow-root bg-white dark:bg-gray-800 rounded-lg shadow-lg px-6 pb-8">
                     <div className="-mt-6">
                       <div>
-                        <span className="inline-flex items-center justify-center p-3 bg-secondary rounded-md shadow-lg">
+                        <span className="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
                           <i
                             className="fas fa-users text-white text-xl"
                             aria-hidden="true"
@@ -587,7 +587,7 @@ export default function App() {
                           ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight dark-mode-text">
+                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-gray-100">
                         Expert Guidance
                       </h3>
                       <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
@@ -612,10 +612,10 @@ export default function App() {
         <div id="contact" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-10">
-              <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
+              <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
                 Contact Us
               </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark-mode-text sm:text-4xl">
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
                 Get In Touch
               </p>
               <p className="mt-4 max-w-2xl text-xl text-gray-700 dark:text-gray-300 lg:mx-auto">
@@ -636,7 +636,7 @@ export default function App() {
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
               <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-2">
+                <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-2">
                   <i
                     className="fas fa-cannabis text-white"
                     aria-hidden="true"
@@ -982,7 +982,7 @@ function ProductCard({ product }) {
           e.target.src = "/assets/images/placeholder.webp";
         }}
       />
-      <h3 className="text-lg font-bold dark-mode-text">{product.name}</h3>
+      <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{product.name}</h3>
       <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">
         {product.category}
       </p>

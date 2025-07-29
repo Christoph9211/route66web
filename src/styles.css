@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* Custom styles */
 .product-card {
   transition: transform 0.3s, box-shadow 0.3s;
@@ -21,32 +23,7 @@
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 } */
 
-/* Ensure dark mode text contrast */
-@media (prefers-color-scheme: dark) {
-  .dark-mode-text {
-    color: #ffffff;
-  }
-  body {
-    background-color: #0f172a;
-    color: #ffffff;
-  }
-}
-/* Ensure light mode text contrast */
-@media (prefers-color-scheme: light) {
-  .dark-mode-text {
-    color: #1a1a1a;
-  }
-  body {
-    background-color: #f9fafb;
-    color: #1a1a1a;
-  }
-  .text-gray-500 {
-    color: #595959;
-  }
-  .text-gray-400 {
-    color: #545454;
-  }
-}
+
 
 /* Custom cannabis leaf loader */
 /* .leaf-loader {
