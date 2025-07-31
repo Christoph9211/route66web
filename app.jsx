@@ -336,7 +336,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#products"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-blue-900 bg-white hover:bg-gray-50 dark:text-white dark:bg-blue-500 dark:hover:bg-blue-600 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-black bg-blue-400 dark:text-white hover:bg-blue-800 dark:bg-blue-400 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
                             >
                               Explore Products
                             </a>
@@ -344,7 +344,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#about"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-blue-900 bg-white hover:bg-gray-50 dark:text-white dark:bg-blue-500 dark:hover:bg-blue-600 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-black bg-blue-400 dark:text-white hover:bg-blue-800 dark:bg-blue-400 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
                             >
                               Learn More
                             </a>
@@ -627,7 +627,7 @@ export default function App() {
         </div>
       </section>
       {/* Footer */}
-      <footer role="contentinfo" className="bg-gray-800 dark:bg-gray-900">
+      <footer role="contentinfo" className="relative bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
@@ -643,14 +643,14 @@ export default function App() {
                   {businessInfo.name}
                 </span>
               </div>
-              <p className="text-gray-300 text-base">
+              <p className="text-black dark:text-white text-base">
                 Premium hemp products for your wellness journey. Quality you can
                 trust.
               </p>
               <div className="flex space-x-6">
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-400 hover:text-black dark:hover:text-white"
                   aria-label="Facebook"
                 >
                   <i
@@ -662,7 +662,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-400 hover:text-black dark:hover:text-white"
                   aria-label="Instagram"
                 >
                   <i
@@ -674,7 +674,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-400 hover:text-black dark:hover:text-white"
                   aria-label="Twitter"
                 >
                   <i
@@ -686,7 +686,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-400 hover:text-black dark:hover:text-white"
                   aria-label="YouTube"
                 >
                   <i
@@ -701,14 +701,14 @@ export default function App() {
             <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                  <h3 className="text-sm font-bold text-black dark:text-gray-300 tracking-wider uppercase">
                     Products
                   </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Edibles
                       </a>
@@ -716,7 +716,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Topicals
                       </a>
@@ -724,7 +724,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Flower
                       </a>
@@ -732,7 +732,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Accessories
                       </a>
@@ -740,14 +740,14 @@ export default function App() {
                   </ul>
                 </div>
                 <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                  <h3 className="text-sm font-bold text-black dark:text-gray-300 tracking-wider uppercase">
                     Company
                   </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         About Us
                       </a>
@@ -755,7 +755,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Careers
                       </a>
@@ -763,7 +763,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Partners
                       </a>
@@ -773,14 +773,14 @@ export default function App() {
               </div>
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                  <h3 className="text-sm font-bold text-black dark:text-gray-300 tracking-wider uppercase">
                     Support
                   </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Contact Us
                       </a>
@@ -788,7 +788,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         FAQs
                       </a>
@@ -796,14 +796,14 @@ export default function App() {
                   </ul>
                 </div>
                 <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                  <h3 className="text-sm font-bold text-black dark:text-gray-300 tracking-wider uppercase">
                     Legal
                   </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
                         href="/privacy-policy.html"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Privacy Policy
                       </a>
@@ -811,7 +811,7 @@ export default function App() {
                     <li>
                       <a
                         href="/terms-of-service.html"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Terms of Service
                       </a>
@@ -819,7 +819,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Cookie Policy
                       </a>
@@ -827,7 +827,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
                       >
                         Compliance
                       </a>
@@ -838,15 +838,15 @@ export default function App() {
             </div>
           </div>
           <div className="mt-12 border-t border-gray-700 pt-8">
-            <p className="text-base text-gray-400 text-center">
+            <p className="text-base text-black dark:text-white text-center">
               &copy; 2025 {businessInfo.name}. All rights reserved.
             </p>
-            <p className="text-sm text-gray-400 text-center mt-2">
+            <p className="text-sm text-black dark:text-white text-center mt-2">
               All products contain less than 0.3% THC and are legal under the
               2018 Farm Bill.
             </p>
             <div className="text-center mt-4">
-              <LocalBusinessInfo variant="inline" className="text-sm text-gray-400" />
+              <LocalBusinessInfo variant="inline" className="text-sm text-black dark:text-white" />
             </div>
           </div>
         </div>
