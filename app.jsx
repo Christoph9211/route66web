@@ -336,7 +336,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#products"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-blue-900 bg-white hover:bg-gray-50 dark:text-white dark:bg-blue-500 dark:hover:bg-blue-600 md:py-4 md:text-lg md:px-10"
                             >
                               Explore Products
                             </a>
@@ -344,7 +344,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#about"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-blue-900 bg-white hover:bg-gray-50 dark:text-white dark:bg-blue-500 dark:hover:bg-blue-600 md:py-4 md:text-lg md:px-10"
                             >
                               Learn More
                             </a>
