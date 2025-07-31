@@ -354,7 +354,7 @@ export default function App() {
                     </div>
                     <div className="mt-12 lg:m-0 lg:relative">
                       <div className="mx-auto mt-12 lg:mt-0 max-w-md sm:max-w-2xl">
-                        <div className="w-full aspect-square rounded-xl shadow-xl bg-gradient-to-br from-blue-600 to-green-500 relative overflow-hidden text-white">
+                        <div className="w-full aspect-square rounded-xl shadow-xl bg-gradient-to-br from-blue-600 to-green-600 relative overflow-hidden text-white">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <i className="fa-solid fa-cannabis text-white text-9xl opacity-50" aria-hidden="true" tabIndex="-1"></i>
                           </div>
