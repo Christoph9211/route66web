@@ -51,7 +51,7 @@ function GoogleBusinessIntegration() {
                 </div>
                 <div className="ml-3">
                   <div className="flex items-center">
-                    <span className="font-medium dark-mode-text">{review.author}</span>
+                    <span className="font-medium text-gray-900 dark:text-white">{review.author}</span>
                     {review.verified && (
                       <i className="fas fa-check-circle text-blue-500 ml-1 text-xs" aria-hidden="true" />
                     )}
