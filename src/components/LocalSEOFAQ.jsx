@@ -38,10 +38,10 @@ function LocalSEOFAQ() {
     <div className="py-12 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-base text-black dark:text-secondary font-semibold tracking-wide uppercase">
+          <h2 className="text-base text-green-600 dark:text-secondary font-semibold tracking-wide uppercase">
             Frequently Asked Questions
           </h2>
-          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark-mode-text sm:text-4xl">
+          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark:text-white sm:text-4xl">
             About Route 66 Hemp in St Robert
           </p>
         </div>
@@ -55,7 +55,7 @@ function LocalSEOFAQ() {
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
               >
-                <span className="font-medium dark-mode-text pr-4">{faq.question}</span>
+                <span className="font-medium dark:text-white pr-4">{faq.question}</span>
                 <i
                   className={`fas ${
                     openIndex === index ? 'fa-chevron-up' : 'fa-chevron-down'
@@ -83,7 +83,7 @@ function LocalSEOFAQ() {
           </p>
           <a
             href="tel:+15736776418"
-            className="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
           >
             <i className="fas fa-phone mr-2" aria-hidden="true" />
             Call (573) 677-6418

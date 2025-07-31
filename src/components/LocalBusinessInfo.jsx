@@ -66,16 +66,16 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
   return (
     <div className={`space-y-4 ${className}`}>
       <div>
-        <h3 className="text-lg font-medium dark-mode-text mb-4">Store Information</h3>
+        <h3 className="text-lg font-medium dark:text-white mb-4">Store Information</h3>
 
         <div className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow p-6">
           {/* Address */}
           <div className="flex flex-col items-center mb-6">
             <div className="flex-shrink-0 mb-2">
-              <i className="fas fa-map-marker-alt text-secondary text-xl" aria-hidden="true" />
+              <i className="fas fa-map-marker-alt text-green-600 text-xl" aria-hidden="true" />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300 text-center">
-              <div className="font-medium dark-mode-text">{businessInfo.name}</div>
+              <div className="font-medium dark:text-white">{businessInfo.name}</div>
               <p>{businessInfo.address.street}</p>
               <p>
                 {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
@@ -86,7 +86,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
           {/* Phone */}
           <div className="flex flex-col items-center mb-6">
             <div className="flex-shrink-0 mb-2">
-              <i className="fas fa-phone-alt text-secondary text-xl" aria-hidden="true" />
+              <i className="fas fa-phone-alt text-green-600 text-xl" aria-hidden="true" />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300">
               <a
@@ -101,7 +101,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
           {/* Email */}
           <div className="flex flex-col items-center mb-6">
             <div className="flex-shrink-0 mb-2">
-              <i className="fas fa-envelope text-secondary text-xl" aria-hidden="true" />
+              <i className="fas fa-envelope text-green-600 text-xl" aria-hidden="true" />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300">
               <a
@@ -116,10 +116,10 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
           {/* Hours */}
           <div className="flex flex-col items-center">
             <div className="flex-shrink-0 mb-2">
-              <i className="fas fa-clock text-secondary text-xl" aria-hidden="true" />
+              <i className="fas fa-clock text-green-600 text-xl" aria-hidden="true" />
             </div>
             <div className="text-base text-gray-700 dark:text-gray-300 text-center">
-              <p className="font-medium dark-mode-text mb-2">Store Hours:</p>
+              <p className="font-medium dark:text-white mb-2">Store Hours:</p>
               {Object.entries(businessInfo.hours).map(([days, hours]) => (
                 <p key={days}>
                   {days}: {hours}

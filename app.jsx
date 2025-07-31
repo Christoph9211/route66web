@@ -228,25 +228,25 @@ export default function App() {
             <div className="hidden md:flex md:items-center md:space-x-6">
               <a
                 href="#"
-                className="text-gray-900 hover:text-blue-600 dark:text-blue-500 px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 hover:text-blue-600 dark:text-white px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Home
               </a>
               <a
                 href="#products"
-                className="text-gray-900 hover:text-blue-600 dark:text-blue-500 px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 hover:text-blue-600 dark:text-white px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Products
               </a>
               <a
                 href="#about"
-                className="text-gray-900 hover:text-blue-600 dark:text-blue-500 px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 hover:text-blue-600 dark:text-white px-3 py-2 text-sm font-medium transition duration-150"
               >
                 About
               </a>
               <a
                 href="#contact"
-                className="text-gray-900 hover:text-blue-600 dark:text-blue-500 px-3 py-2 text-sm font-medium transition duration-150"
+                className="text-gray-900 hover:text-blue-600 dark:text-white px-3 py-2 text-sm font-medium transition duration-150"
               >
                 Contact
               </a>
@@ -285,25 +285,25 @@ export default function App() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a
                 href="#"
-                className="block text-gray-900 hover:text-blue-600 dark:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 hover:text-blue-600 dark:text-white px-3 py-2 rounded-md text-base font-medium"
               >
                 Home
               </a>
               <a
                 href="#products"
-                className="block text-gray-900 hover:text-blue-600 dark:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 hover:text-blue-600 dark:text-white px-3 py-2 rounded-md text-base font-medium"
               >
                 Products
               </a>
               <a
                 href="#about"
-                className="block text-gray-900 hover:text-blue-600 dark:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 hover:text-blue-600 dark:text-white px-3 py-2 rounded-md text-base font-medium"
               >
                 About
               </a>
               <a
                 href="#contact"
-                className="block text-gray-900 hover:text-blue-600 dark:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+                className="block text-gray-900 hover:text-blue-600 dark:text-white px-3 py-2 rounded-md text-base font-medium"
               >
                 Contact
               </a>
