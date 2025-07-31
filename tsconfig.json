@@ -11,6 +11,6 @@
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "allowJs": true,
-  },
+    "allowJs": true
+  }
 }
