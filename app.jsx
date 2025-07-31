@@ -353,8 +353,8 @@ export default function App() {
                       </div>
                     </div>
                     <div className="mt-12 lg:m-0 lg:relative">
-                      <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0">
-                        <div className="w-full aspect-square rounded-xl shadow-xl bg-gradient-to-r from-blue-600 to-green-500 text-white relative overflow-hidden">
+                      <div className="mx-auto mt-12 lg:mt-0 max-w-md sm:max-w-2xl">
+                        <div className="w-full aspect-square rounded-xl shadow-xl bg-gradient-to-r from-blue-300 to-green-400 relative overflow-hidden text-white">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <i
                               className="fa-solid fa-cannabis text-white text-9xl opacity-50"
@@ -362,7 +362,7 @@ export default function App() {
                               tabIndex="-1"
                             ></i>
                           </div>
-                          <div className="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                             <div className="text-center text-white px-4">
                               <div className="font-bold text-2xl sm:text-3xl mb-2">
                                 Premium Hemp
