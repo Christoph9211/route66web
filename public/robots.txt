@@ -4,9 +4,6 @@ Allow: /
 # Sitemap location
 Sitemap: https://route66hemp.com/sitemap.xml
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
 # Block access to admin areas (if any)
 Disallow: /admin/
 Disallow: /private/
