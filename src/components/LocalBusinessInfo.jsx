@@ -1,4 +1,4 @@
-import React from "react";
+
 function LocalBusinessInfo({ variant = "full", className = "" }) {
   const businessInfo = {
     name: "Route 66 Hemp",
