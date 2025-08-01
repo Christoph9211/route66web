@@ -142,7 +142,7 @@ export default function App() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
             Age Verification
           </h2>
           <div className="mb-8">
@@ -151,7 +151,7 @@ export default function App() {
               aria-hidden="true"
               tabIndex="-1"
             ></i>
-            <p className="text-gray-900 dark:text-gray-100">
+            <p className="text-gray-900 dark:text-white">
               You must be 21 years or older to enter this website.
             </p>
           </div>
@@ -169,7 +169,7 @@ export default function App() {
               I am under 21
             </button>
           </div>
-          <p className="mt-6 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-6 text-sm text-gray-700 dark:text-white">
             By entering, you acknowledge and agree to our{" "}
             <a href="/terms-of-service.html">Terms of Service</a> and{" "}
             <a href="/privacy-policy.html">Privacy Policy</a>.
@@ -183,10 +183,10 @@ export default function App() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Access Denied
           </h2>
-          <p className="mb-6 text-gray-900 dark:text-gray-100">
+          <p className="mb-6 text-gray-900 dark:text-white">
             You must be 21 or older to access this website.
           </p>
           <button
@@ -219,7 +219,7 @@ export default function App() {
                     tabIndex="-1"
                   ></i>
                 </div>
-                <span className="font-bold text-xl text-gray-900 dark:text-gray-100" itemProp="name">
+                <span className="font-bold text-xl text-gray-900 dark:text-white" itemProp="name">
                   {businessInfo.name}
                 </span>
               </div>
@@ -321,13 +321,13 @@ export default function App() {
                   <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                     <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
                       <div className="lg:py-24">
-                        <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-100 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                        <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                           <span>Premium Hemp Products</span>
                           <span className="text-blue-600 dark:text-green-500 block">
                             For Your Wellness
                           </span>
                         </h1>
-                        <p className="mt-3 text-base text-gray-700 dark:text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                        <p className="mt-3 text-base text-gray-700 dark:text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                           Discover our range of high-quality, lab-tested hemp
                           products. From CBD oils to edibles, we have everything
                           you need for a balanced lifestyle.
@@ -336,7 +336,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#products"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-black bg-blue-400 dark:text-white hover:bg-blue-800 dark:bg-blue-400 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-black bg-blue-400 dark:text-white hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
                             >
                               Explore Products
                             </a>
@@ -344,7 +344,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#about"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-black bg-blue-400 dark:text-white hover:bg-blue-800 dark:bg-blue-400 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-black bg-blue-400 dark:text-white hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
                             >
                               Learn More
                             </a>
@@ -384,10 +384,10 @@ export default function App() {
               <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
                 Products
               </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                 Explore Our Collection
               </p>
-              <p className="mt-4 max-w-2xl text-xl text-gray-700 dark:text-gray-300 lg:mx-auto">
+              <p className="mt-4 max-w-2xl text-xl text-gray-700 dark:text-white lg:mx-auto">
                 Our products are lab tested for quality and purity.
               </p>
             </div>
@@ -402,7 +402,7 @@ export default function App() {
                 className={`px-4 py-2 rounded-full text-sm font-medium ${
                   appState.selectedCategory === "all"
                     ? "bg-primary text-white"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600"
+                    : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
                 All Products
@@ -419,7 +419,7 @@ export default function App() {
                   className={`px-4 py-2 rounded-full text-sm font-medium ${
                     appState.selectedCategory === category.id
                       ? "bg-primary text-white"
-                      : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600"
+                      : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600"
                   }`}
                 >
                   {category.name}
@@ -448,7 +448,7 @@ export default function App() {
               </div>
             ) : (
               <div className="col-span-full text-center py-12">
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 dark:text-white">
                   Products Coming Soon
                 </p>
               </div>
@@ -462,7 +462,7 @@ export default function App() {
               <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
                 About Us
               </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                 Our Story
               </p>
             </div>
@@ -492,13 +492,13 @@ export default function App() {
                 </div>
                 <div className="mt-10 lg:mt-0 lg:row-start-1 lg:col-start-1">
                   <div className="text-base max-w-prose mx-auto lg:max-w-none">
-                    <p className="text-lg text-gray-700 dark:text-gray-300">
+                    <p className="text-lg text-gray-700 dark:text-white">
                       Founded in 2025, Route 66 Hemp started with a simple
                       mission: to provide high-quality hemp products that
                       enhance people's well-being while promoting sustainable
                       agricultural practices.
                     </p>
-                    <div className="mt-5 prose prose-indigo dark:prose-invert text-gray-700 dark:text-gray-300">
+                    <div className="mt-5 prose prose-indigo dark:prose-invert text-gray-700 dark:text-white">
                       <p>
                         Our team of experts carefully selects the finest hemp
                         strains and works closely with local farmers who share
@@ -538,10 +538,10 @@ export default function App() {
                           ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-gray-100">
+                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
                         Lab Tested
                       </h3>
-                      <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
+                      <p className="mt-5 text-base text-gray-700 dark:text-white">
                         All our products are tested by third-party labs for
                         potency, pesticides, and purity to ensure you get only
                         the highest quality.
@@ -561,10 +561,10 @@ export default function App() {
                           ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-gray-100">
+                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
                         Organically Grown
                       </h3>
-                      <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
+                      <p className="mt-5 text-base text-gray-700 dark:text-white">
                         Our hemp is grown free from harmful pesticides and
                         chemicals, resulting in a cleaner, better product.
                       </p>
@@ -583,10 +583,10 @@ export default function App() {
                           ></i>
                         </span>
                       </div>
-                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-gray-100">
+                      <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
                         Expert Guidance
                       </h3>
-                      <p className="mt-5 text-base text-gray-700 dark:text-gray-300">
+                      <p className="mt-5 text-base text-gray-700 dark:text-white">
                         Our knowledgeable staff is here to help you find the
                         right products for your specific needs and answer any
                         questions.
@@ -611,10 +611,10 @@ export default function App() {
               <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
                 Contact Us
               </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                 Get In Touch
               </p>
-              <p className="mt-4 max-w-2xl text-xl text-gray-700 dark:text-gray-300 lg:mx-auto">
+              <p className="mt-4 max-w-2xl text-xl text-gray-700 dark:text-white lg:mx-auto">
                 Have questions? We're here to help!
               </p>
             </div>
@@ -701,14 +701,14 @@ export default function App() {
             <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-bold text-black dark:text-gray-300 tracking-wider uppercase">
+                  <h3 className="text-sm font-bold text-black dark:text-white tracking-wider uppercase">
                     Products
                   </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Edibles
                       </a>
@@ -716,7 +716,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Topicals
                       </a>
@@ -724,7 +724,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Flower
                       </a>
@@ -732,7 +732,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Accessories
                       </a>
@@ -740,14 +740,14 @@ export default function App() {
                   </ul>
                 </div>
                 <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-bold text-black dark:text-gray-300 tracking-wider uppercase">
+                  <h3 className="text-sm font-bold text-black dark:text-white tracking-wider uppercase">
                     Company
                   </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         About Us
                       </a>
@@ -755,7 +755,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Careers
                       </a>
@@ -763,7 +763,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Partners
                       </a>
@@ -773,14 +773,14 @@ export default function App() {
               </div>
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-bold text-black dark:text-gray-300 tracking-wider uppercase">
+                  <h3 className="text-sm font-bold text-black dark:text-white tracking-wider uppercase">
                     Support
                   </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Contact Us
                       </a>
@@ -788,7 +788,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         FAQs
                       </a>
@@ -796,14 +796,14 @@ export default function App() {
                   </ul>
                 </div>
                 <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-bold text-black dark:text-gray-300 tracking-wider uppercase">
+                  <h3 className="text-sm font-bold text-black dark:text-white tracking-wider uppercase">
                     Legal
                   </h3>
                   <ul className="mt-4 space-y-4">
                     <li>
                       <a
                         href="/privacy-policy.html"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Privacy Policy
                       </a>
@@ -811,7 +811,7 @@ export default function App() {
                     <li>
                       <a
                         href="/terms-of-service.html"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Terms of Service
                       </a>
@@ -819,7 +819,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Cookie Policy
                       </a>
@@ -827,7 +827,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:hover:text-white"
+                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                       >
                         Compliance
                       </a>
@@ -978,11 +978,11 @@ function ProductCard({ product }) {
           e.target.src = "/assets/images/placeholder.webp";
         }}
       />
-      <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{product.name}</h3>
-      <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">
+      <h3 className="text-lg font-bold text-gray-900 dark:text-white">{product.name}</h3>
+      <p className="mt-1 text-xs text-gray-500 dark:text-white">
         {product.category}
       </p>
-      <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+      <p className="mt-2 text-sm text-gray-700 dark:text-white">
         {product.description ||
           (product.descriptions && product.descriptions[0])}
       </p>
@@ -991,7 +991,7 @@ function ProductCard({ product }) {
         <div className="mt-2">
           <label
             htmlFor={`combo-${product.name}`}
-            className="block text-xs text-gray-600 dark:text-gray-300 mb-1"
+            className="block text-xs text-gray-600 dark:text-white mb-1"
           >
             Flavor & Size:
           </label>
@@ -1023,7 +1023,7 @@ function ProductCard({ product }) {
           <div className="mt-2">
             <label
               htmlFor={`size-${product.name}`}
-              className="block text-xs text-gray-600 dark:text-gray-300 mb-1"
+              className="block text-xs text-gray-600 dark:text-white mb-1"
             >
               {/* Use 'Strain' for Vapes & Carts and Other, otherwise 'Size' */}
               {["Vapes & Carts", "Other"].includes(product.category)
@@ -1056,7 +1056,7 @@ function ProductCard({ product }) {
           <div className="mt-2">
             <label
               htmlFor={`flavor-${product.name}`}
-              className="block text-xs text-gray-600 dark:text-gray-300 mb-1"
+              className="block text-xs text-gray-600 dark:text-white mb-1"
             >
               Flavor:
             </label>
@@ -1075,7 +1075,7 @@ function ProductCard({ product }) {
             </select>
           </div>
         )}
-      <p className="mt-2 font-medium text-gray-900 dark:text-gray-100">
+      <p className="mt-2 font-medium text-gray-900 dark:text-white">
         {/* Dynamically calculate the price based on the selected flavor and size */}
         ${price ? price.toFixed(2) : "N/A"}
       </p>
@@ -1096,7 +1096,7 @@ function ProductCard({ product }) {
             tabIndex={"-1"}
           ></i>
         ))}
-        <span className="ml-1 text-xs text-gray-700 dark:text-gray-300">
+        <span className="ml-1 text-xs text-gray-700 dark:text-white">
           {/* Show the rating number */}(
           {product.rating || (product.ratings && product.ratings[0]) || 5})
         </span>

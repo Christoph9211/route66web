@@ -74,7 +74,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
             <div className="flex-shrink-0 mb-2">
               <i className="fas fa-map-marker-alt text-green-600 text-xl" aria-hidden="true" />
             </div>
-            <div className="text-base text-gray-700 dark:text-gray-300 text-center">
+            <div className="text-base text-gray-700 dark:text-white text-center">
               <div className="font-medium dark:text-white">{businessInfo.name}</div>
               <p>{businessInfo.address.street}</p>
               <p>
@@ -88,7 +88,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
             <div className="flex-shrink-0 mb-2">
               <i className="fas fa-phone-alt text-green-600 text-xl" aria-hidden="true" />
             </div>
-            <div className="text-base text-gray-700 dark:text-gray-300">
+            <div className="text-base text-gray-700 dark:text-white">
               <a
                 href={businessInfo.phoneLink}
                 className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -103,7 +103,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
             <div className="flex-shrink-0 mb-2">
               <i className="fas fa-envelope text-green-600 text-xl" aria-hidden="true" />
             </div>
-            <div className="text-base text-gray-700 dark:text-gray-300">
+            <div className="text-base text-gray-700 dark:text-white">
               <a
                 href={businessInfo.emailLink}
                 className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -118,7 +118,7 @@ function LocalBusinessInfo({ variant = "full", className = "" }) {
             <div className="flex-shrink-0 mb-2">
               <i className="fas fa-clock text-green-600 text-xl" aria-hidden="true" />
             </div>
-            <div className="text-base text-gray-700 dark:text-gray-300 text-center">
+            <div className="text-base text-gray-700 dark:text-white text-center">
               <p className="font-medium dark:text-white mb-2">Store Hours:</p>
               {Object.entries(businessInfo.hours).map(([days, hours]) => (
                 <p key={days}>

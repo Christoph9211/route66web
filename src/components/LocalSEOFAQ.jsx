@@ -70,7 +70,7 @@ function LocalSEOFAQ() {
                   role="region"
                   aria-labelledby={`faq-question-${index}`}
                 >
-                  <p className="text-gray-700 dark:text-gray-300">{faq.answer}</p>
+                  <p className="text-gray-700 dark:text-white">{faq.answer}</p>
                 </div>
               )}
             </div>
@@ -78,7 +78,7 @@ function LocalSEOFAQ() {
         </div>
 
         <div className="mt-10 text-center">
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-gray-600 dark:text-white mb-4">
             Have more questions about our St Robert hemp store?
           </p>
           <a

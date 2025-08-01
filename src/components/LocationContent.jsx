@@ -42,16 +42,16 @@ return (
             <i className="fas fa-map-marked-alt text-green-600 mr-2" aria-hidden="true" />
             Areas We Serve
           </h3>
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
+          <p className="text-gray-700 dark:text-white mb-4">
             Located conveniently on State Highway Z in {locationData?.city || "your city"}, we serve customers throughout {locationData?.county || "your county"} and the greater {locationData?.region || "your region"} area.
           </p>
           <div className="grid grid-cols-2 gap-2">
             {locationData?.nearbyAreas?.map((area) => (
-              <div key={area} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
+              <div key={area} className="flex items-center text-sm text-gray-600 dark:text-white">
                 <i className="fas fa-check-circle text-green-600 mr-2 text-xs" aria-hidden="true" />
                 {area}
               </div>
-            )) || <p className="text-gray-700 dark:text-gray-300">No nearby areas available.</p>}
+            )) || <p className="text-gray-700 dark:text-white">No nearby areas available.</p>}
           </div>
         </div>
 
@@ -60,16 +60,16 @@ return (
             <i className="fas fa-landmark text-green-600 mr-2" aria-hidden="true" />
             Near Local Landmarks
           </h3>
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
+          <p className="text-gray-700 dark:text-white mb-4">
             Find us easily near these well-known {locationData?.city || "city"} and {locationData?.region || "region"} landmarks:
           </p>
           <div className="space-y-2">
             {locationData?.landmarks?.map((landmark) => (
-              <div key={landmark} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
+              <div key={landmark} className="flex items-center text-sm text-gray-600 dark:text-white">
                 <i className="fas fa-map-pin text-green-600 mr-2 text-xs" aria-hidden="true" />
                 {landmark}
               </div>
-            )) || <p className="text-gray-700 dark:text-gray-300">No landmarks available.</p>}
+            )) || <p className="text-gray-700 dark:text-white">No landmarks available.</p>}
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ return (
               <i className="fas fa-users text-white text-2xl" aria-hidden="true" />
             </div>
             <h4 className="text-lg font-semibold dark:text-white mb-2">Local Expertise</h4>
-            <p className="text-gray-700 dark:text-gray-300 text-sm">
+            <p className="text-gray-700 dark:text-white text-sm">
               As a locally-owned business in {locationData?.city || "our city"}, we understand our community's needs and preferences.
             </p>
           </div>
@@ -93,7 +93,7 @@ return (
               <i className="fas fa-shipping-fast text-white text-2xl" aria-hidden="true" />
             </div>
             <h4 className="text-lg font-semibold dark:text-white mb-2">Convenient Location</h4>
-            <p className="text-gray-700 dark:text-gray-300 text-sm">
+            <p className="text-gray-700 dark:text-white text-sm">
               Easy access from Fort Leonard Wood, Waynesville, and throughout {locationData?.county || "our county"}.
             </p>
           </div>
@@ -102,7 +102,7 @@ return (
               <i className="fas fa-handshake text-white text-2xl" aria-hidden="true" />
             </div>
             <h4 className="text-lg font-semibold dark:text-white mb-2">Community Focused</h4>
-            <p className="text-gray-700 dark:text-gray-300 text-sm">
+            <p className="text-gray-700 dark:text-white text-sm">
               Committed to supporting the {locationData?.city || "our city"} community with quality products and service.
             </p>
           </div>
