@@ -38,7 +38,7 @@ function LocalSEOFAQ() {
     <div className="py-12 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-base text-green-600 dark:text-secondary font-semibold tracking-wide uppercase">
+          <h2 className="text-base text-green-300 dark:text-secondary font-semibold tracking-wide uppercase">
             Frequently Asked Questions
           </h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark:text-white sm:text-4xl">

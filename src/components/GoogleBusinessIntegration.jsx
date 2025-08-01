@@ -29,7 +29,7 @@ function GoogleBusinessIntegration() {
     <div className="py-12 bg-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center mb-10">
-          <h2 className="text-base text-green-400 dark:text-secondary font-semibold tracking-wide uppercase">
+          <h2 className="text-base text-green-300 dark:text-secondary font-semibold tracking-wide uppercase">
             Customer Reviews
           </h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark:text-white sm:text-4xl">
@@ -43,8 +43,8 @@ function GoogleBusinessIntegration() {
             <div key={review.id} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
               <div className="flex items-center mb-3">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-medium text-sm">
+                  <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-semibold text-sm">
                       {review.author.split(' ').map(n => n[0]).join('')}
                     </span>
                   </div>
@@ -80,11 +80,11 @@ function GoogleBusinessIntegration() {
         </div>
 
         {/* Google Business Profile CTA */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-white mb-4">
+        <div className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg p-8 text-center">
+          <h3 className="text-2xl font-bold text-gray-300 dark:text-white mb-4">
             Find Us on Google Maps
           </h3>
-          <p className="text-blue-100 mb-6">
+          <p className="dark:text-white text-gray-300 mb-6">
             Get directions, see our hours, read reviews, and stay updated with our latest posts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

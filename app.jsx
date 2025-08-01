@@ -381,7 +381,7 @@ export default function App() {
         <div id="products" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-8">
-              <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
+              <h2 className="text-base text-black dark:text-green-300 font-semibold tracking-wide uppercase">
                 Products
               </h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -402,7 +402,7 @@ export default function App() {
                 className={`px-4 py-2 rounded-full text-sm font-medium ${
                   appState.selectedCategory === "all"
                     ? "bg-primary text-white"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600"
+                    : "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
                 All Products
@@ -419,7 +419,7 @@ export default function App() {
                   className={`px-4 py-2 rounded-full text-sm font-medium ${
                     appState.selectedCategory === category.id
                       ? "bg-primary text-white"
-                      : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600"
+                      : "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600"
                   }`}
                 >
                   {category.name}
@@ -459,7 +459,7 @@ export default function App() {
         <div id="about" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-10">
-              <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
+              <h2 className="text-base text-black dark:text-green-300 font-semibold tracking-wide uppercase">
                 About Us
               </h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -608,7 +608,7 @@ export default function App() {
         <div id="contact" className="py-12 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center mb-10">
-              <h2 className="text-base text-black dark:text-green-500 font-semibold tracking-wide uppercase">
+              <h2 className="text-base text-black dark:text-green-300 font-semibold tracking-wide uppercase">
                 Contact Us
               </h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -650,7 +650,7 @@ export default function App() {
               <div className="flex space-x-6">
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-black dark:hover:text-white"
+                  className="text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                   aria-label="Facebook"
                 >
                   <i
@@ -662,7 +662,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-black dark:hover:text-white"
+                  className="text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                   aria-label="Instagram"
                 >
                   <i
@@ -674,7 +674,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-black dark:hover:text-white"
+                  className="text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                   aria-label="Twitter"
                 >
                   <i
@@ -686,7 +686,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-black dark:hover:text-white"
+                  className="text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
                   aria-label="YouTube"
                 >
                   <i
@@ -979,10 +979,10 @@ function ProductCard({ product }) {
         }}
       />
       <h3 className="text-lg font-bold text-gray-900 dark:text-white">{product.name}</h3>
-      <p className="mt-1 text-xs text-gray-500 dark:text-white">
+      <p className="mt-1 text-sm font-semibold text-gray-500 dark:text-white">
         {product.category}
       </p>
-      <p className="mt-2 text-sm text-gray-700 dark:text-white">
+      <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-white">
         {product.description ||
           (product.descriptions && product.descriptions[0])}
       </p>
@@ -991,7 +991,7 @@ function ProductCard({ product }) {
         <div className="mt-2">
           <label
             htmlFor={`combo-${product.name}`}
-            className="block text-xs text-gray-600 dark:text-white mb-1"
+            className="block text-xs font-semibold text-gray-600 dark:text-white mb-1"
           >
             Flavor & Size:
           </label>
@@ -1023,7 +1023,7 @@ function ProductCard({ product }) {
           <div className="mt-2">
             <label
               htmlFor={`size-${product.name}`}
-              className="block text-xs text-gray-600 dark:text-white mb-1"
+              className="block text-xs font-semibold text-gray-600 dark:text-white mb-1"
             >
               {/* Use 'Strain' for Vapes & Carts and Other, otherwise 'Size' */}
               {["Vapes & Carts", "Other"].includes(product.category)
@@ -1032,7 +1032,7 @@ function ProductCard({ product }) {
             </label>
             <select
               id={`size-${product.name}`}
-              className="w-full p-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-white"
+              className="w-full p-2 rounded border font-semibold border-gray-300 dark:bg-gray-800 dark:text-white"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
               aria-label={
