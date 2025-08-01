@@ -29,7 +29,7 @@ function GoogleBusinessIntegration() {
     <div className="py-12 bg-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center mb-10">
-          <h2 className="text-base text-green-300 dark:text-secondary font-semibold tracking-wide uppercase">
+          <h2 className="text-2xl font-semibold text-green-600 dark:text-green-400 tracking-wide uppercase">
             Customer Reviews
           </h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark:text-white sm:text-4xl">
@@ -51,7 +51,7 @@ function GoogleBusinessIntegration() {
                 </div>
                 <div className="ml-3">
                   <div className="flex items-center">
-                    <span className="font-medium text-gray-900 dark:text-white">{review.author}</span>
+                    <span className="font-medium text-black dark:text-white">{review.author}</span>
                     {review.verified && (
                       <i className="fas fa-check-circle text-blue-500 ml-1 text-xs" aria-hidden="true" />
                     )}
@@ -68,23 +68,23 @@ function GoogleBusinessIntegration() {
                         aria-hidden="true"
                       />
                     ))}
-                    <span className="ml-2 text-xs text-gray-500 dark:text-white">
+                    <span className="ml-2 text-xs text-black dark:text-white">
                       {review.date}
                     </span>
                   </div>
                 </div>
               </div>
-              <p className="text-gray-700 dark:text-white text-sm">{review.text}</p>
+              <p className="text-black dark:text-white text-sm">{review.text}</p>
             </div>
           ))}
         </div>
 
         {/* Google Business Profile CTA */}
         <div className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-300 dark:text-white mb-4">
+          <h3 className="text-2xl font-bold text-white dark:text-white mb-4">
             Find Us on Google Maps
           </h3>
-          <p className="dark:text-white text-gray-300 mb-6">
+          <p className="dark:text-white text-white mb-6">
             Get directions, see our hours, read reviews, and stay updated with our latest posts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

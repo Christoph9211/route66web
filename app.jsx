@@ -336,7 +336,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#products"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-black bg-blue-400 dark:text-white hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-xl font-bold rounded-md text-white bg-blue-500 dark:text-white hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
                             >
                               Explore Products
                             </a>
@@ -344,7 +344,7 @@ export default function App() {
                           <div className="rounded-md shadow">
                             <a
                               href="#about"
-                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-black bg-blue-400 dark:text-white hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
+                              className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-xl font-bold rounded-md text-white bg-blue-500 dark:text-white hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-800 md:py-4 md:text-lg md:px-10"
                             >
                               Learn More
                             </a>
@@ -650,7 +650,7 @@ export default function App() {
               <div className="flex space-x-6">
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                  className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                   aria-label="Facebook"
                 >
                   <i
@@ -662,7 +662,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                  className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                   aria-label="Instagram"
                 >
                   <i
@@ -674,7 +674,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                  className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                   aria-label="Twitter"
                 >
                   <i
@@ -686,7 +686,7 @@ export default function App() {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                  className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                   aria-label="YouTube"
                 >
                   <i
@@ -708,7 +708,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Edibles
                       </a>
@@ -716,7 +716,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base ttext-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Topicals
                       </a>
@@ -724,7 +724,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Flower
                       </a>
@@ -732,7 +732,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Accessories
                       </a>
@@ -747,7 +747,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         About Us
                       </a>
@@ -755,7 +755,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Careers
                       </a>
@@ -763,7 +763,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Partners
                       </a>
@@ -780,7 +780,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Contact Us
                       </a>
@@ -788,7 +788,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         FAQs
                       </a>
@@ -803,7 +803,7 @@ export default function App() {
                     <li>
                       <a
                         href="/privacy-policy.html"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Privacy Policy
                       </a>
@@ -811,7 +811,7 @@ export default function App() {
                     <li>
                       <a
                         href="/terms-of-service.html"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Terms of Service
                       </a>
@@ -819,7 +819,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Cookie Policy
                       </a>
@@ -827,7 +827,7 @@ export default function App() {
                     <li>
                       <a
                         href="#"
-                        className="text-base text-gray-400 hover:text-black dark:text-white dark:hover:text-gray-300"
+                        className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                       >
                         Compliance
                       </a>
@@ -979,7 +979,7 @@ function ProductCard({ product }) {
         }}
       />
       <h3 className="text-lg font-bold text-gray-900 dark:text-white">{product.name}</h3>
-      <p className="mt-1 text-sm font-semibold text-gray-500 dark:text-white">
+      <p className="mt-1 text-sm font-semibold text-black dark:text-white">
         {product.category}
       </p>
       <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-white">
@@ -991,7 +991,7 @@ function ProductCard({ product }) {
         <div className="mt-2">
           <label
             htmlFor={`combo-${product.name}`}
-            className="block text-xs font-semibold text-gray-600 dark:text-white mb-1"
+            className="block text-xs font-semibold text-black dark:text-white mb-1"
           >
             Flavor & Size:
           </label>
@@ -1023,7 +1023,7 @@ function ProductCard({ product }) {
           <div className="mt-2">
             <label
               htmlFor={`size-${product.name}`}
-              className="block text-xs font-semibold text-gray-600 dark:text-white mb-1"
+              className="block text-xs font-semibold text-black dark:text-white mb-1"
             >
               {/* Use 'Strain' for Vapes & Carts and Other, otherwise 'Size' */}
               {["Vapes & Carts", "Other"].includes(product.category)
