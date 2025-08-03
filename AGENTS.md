@@ -7,31 +7,31 @@ Use Node (≥18) and npm for all tasks.
 
 1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 2. Run the development server
 
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
 ## Linting
 
 1. Lint code with ESLint
 
-   ```bash
-   npm run lint
-   ```
+    ```bash
+    npm run lint
+    ```
 
 ## Build and Preview
 
 1. Ensure the project builds correctly
 
-   ```bash
-   npm run build
-   ```
+    ```bash
+    npm run build
+    ```
 
 ## Commit and PR Guidelines
 

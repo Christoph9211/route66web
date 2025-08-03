@@ -1,633 +1,482 @@
 [
-  {
-    "name": "Candy Cane",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
+    {
+        "name": "Candy Cane",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 18,
+            "1/4": 32.5,
+            "1/2": 65,
+            "ounce": 125
+        },
+        "banner": "New"
     },
-    "banner": "New"
-  },
-  {
-    "name": "Cherry Punch Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
+    {
+        "name": "Cherry Punch Snowcaps",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 25,
+            "1/4": 50,
+            "1/2": 100,
+            "ounce": 200
+        },
+        "thca_percentage": 50.9,
+        "banner": "New"
     },
-    "thca_percentage": 50.9,
-    "banner": "New"
-  },
-  {
-    "name": "Diamond Badder",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
+    {
+        "name": "Diamond Badder",
+        "category": "Diamonds & Sauce",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 10,
+            "3 grams": 25
+        },
+        "banner": "New"
     },
-    "banner": "New"
-  },
-  {
-    "name": "Forbidden Runtz",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
+    {
+        "name": "Forbidden Runtz",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 25,
+            "1/4": 50,
+            "1/2": 100,
+            "ounce": 200
+        },
+        "thca_percentage": 29.8,
+        "banner": "New"
     },
-    "thca_percentage": 29.8,
-    "banner": "New"
-  },
-  {
-    "name": "Girls Scout Cookie Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
+    {
+        "name": "Girls Scout Cookie Snowcaps",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 25,
+            "1/4": 50,
+            "1/2": 100,
+            "ounce": 200
+        },
+        "thca_percentage": 63.09,
+        "banner": "New"
     },
-    "thca_percentage": 63.09,
-    "banner": "New"
-  },
-  {
-    "name": "Magic Night",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
+    {
+        "name": "Magic Night",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 18,
+            "1/4": 32.5,
+            "1/2": 65,
+            "ounce": 125
+        },
+        "banner": "New"
     },
-    "banner": "New"
-  },
-  {
-    "name": "Mango Mentality",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
+    {
+        "name": "Mango Mentality",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 20,
+            "1/4": 40,
+            "1/2": 80,
+            "ounce": 150
+        },
+        "banner": "New"
     },
-    "banner": "New"
-  },
-  {
-    "name": "Pineapple Express Crumble",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
+    {
+        "name": "Pineapple Express Crumble",
+        "category": "Concentrates",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 10,
+            "3 grams": 25
+        },
+        "banner": "New"
     },
-    "banner": "New"
-  },
-  {
-    "name": "Wedding Cake Crumble",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
+    {
+        "name": "Wedding Cake Crumble",
+        "category": "Concentrates",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 10,
+            "3 grams": 25
+        },
+        "banner": "New"
     },
-    "banner": "New"
-  },
-  {
-    "name": "White Widow Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
+    {
+        "name": "White Widow Snowcaps",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 25,
+            "1/4": 50,
+            "1/2": 100,
+            "ounce": 200
+        },
+        "thca_percentage": 60.87,
+        "banner": "New"
     },
-    "thca_percentage": 60.87,
-    "banner": "New"
-  },
-  {
-    "name": "Amnesia Haze",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 15,
-      "3 grams": 40
+    {
+        "name": "Amnesia Haze",
+        "category": "Diamonds & Sauce",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 15,
+            "3 grams": 40
+        }
+    },
+    {
+        "name": "Blue Dream Living Soil",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 25,
+            "1/4": 50,
+            "1/2": 100,
+            "ounce": 200
+        }
+    },
+    {
+        "name": "Blueberry Diesel",
+        "category": "Concentrates",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 10,
+            "3 grams": 25
+        },
+        "thca_percentage": 97.7
+    },
+    {
+        "name": "Cherry Pie Crumble",
+        "category": "Concentrates",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 10,
+            "3 grams": 30
+        },
+        "thca_percentage": 97.1
+    },
+    {
+        "name": "Death Star",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 18,
+            "1/4": 32.5,
+            "1/2": 65,
+            "ounce": 125
+        }
+    },
+    {
+        "name": "Flower Preroll",
+        "category": "Other",
+        "size_options": ["Blueberry Muffin", "Chimera"],
+        "prices": {
+            "Blueberry Muffin": 5,
+            "Chimera": 5
+        }
+    },
+    {
+        "name": "Gelonade",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 18,
+            "1/4": 32.5,
+            "1/2": 65,
+            "ounce": 125
+        }
+    },
+    {
+        "name": "Granddaddy Purple Crumble",
+        "category": "Concentrates",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 10,
+            "3 grams": 25
+        },
+        "thca_percentage": 97.1
+    },
+    {
+        "name": "Green Crack",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 20,
+            "1/4": 40,
+            "1/2": 80,
+            "ounce": 150
+        }
+    },
+    {
+        "name": "Infused Preroll",
+        "category": "Other",
+        "size_options": [
+            "Candy Runtz",
+            "Diamond Watermelon",
+            "Rainbow Sherbert Caviar"
+        ],
+        "prices": {
+            "Candy Runtz": 10,
+            "Diamond Watermelon": 12,
+            "Rainbow Sherbert Caviar": 7
+        }
+    },
+    {
+        "name": "One Gram Carts",
+        "category": "Vapes & Carts",
+        "size_options": [
+            "Blue Walker (Sativa)",
+            "Bomb Pop (Indica)",
+            "Cranberry Haze (Sativa)",
+            "Cherry Cookies (Indica)",
+            "Cherry Pie (Sativa)",
+            "Gelato (Hybrid)",
+            "Lemon Cake (Hybrid)",
+            "Mango Tango (Indica)",
+            "Purple Haze (Sativa)",
+            "Trainwreck (Hybrid)",
+            "Tropical Cherries (Sativa)",
+            "Wedding Cake (Indica)",
+            "White Fire Zkittles (Hybrid)"
+        ],
+        "prices": {
+            "Blue Walker (Sativa)": 24,
+            "Bomb Pop (Indica)": 16,
+            "Cranberry Haze (Sativa)": 24,
+            "Cherry Cookies (Indica)": 16,
+            "Cherry Pie (Sativa)": 16,
+            "Chocolate Diesel (Indica)": 18,
+            "Gelato (Hybrid)": 18,
+            "Lemon Cake (Hybrid)": 18,
+            "Mango Tango (Indica)": 24,
+            "Purple Haze (Sativa)": 16,
+            "Trainwreck (Hybrid)": 18,
+            "Tropical Cherries (Sativa)": 16,
+            "Wedding Cake (Indica)": 18,
+            "White Fire Zkittles (Hybrid)": 16
+        }
+    },
+    {
+        "name": "One Gram Disposable",
+        "category": "Vapes & Carts",
+        "size_options": [
+            "Blueberry Muffin Live Resin (Indica)",
+            "Chocolate Diesel Live Resin (Sativa)",
+            "Sour Diesel Live Resin (Hybrid)",
+            "Sour Pebbles (Sativa)",
+            "Cherry Cookies (Indica)",
+            "Lemon Cake Live Resin (Sativa)"
+        ],
+        "prices": {
+            "Blueberry Muffin Live Resin (Indica)": 20,
+            "Chocolate Diesel Live Resin (Sativa)": 20,
+            "Sour Diesel Live Resin (Hybrid)": 35,
+            "Sour Pebbles (Sativa)": 30,
+            "Cherry Cookies (Indica)": 30,
+            "Lemon Cake Live Resin (Sativa)": 20
+        },
+        "availability": {}
+    },
+    {
+        "name": "Orange Creamsicle Living Soil",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 18,
+            "1/4": 32.5,
+            "1/2": 65,
+            "ounce": 125
+        }
+    },
+    {
+        "name": "Point Break",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 20,
+            "1/4": 40,
+            "1/2": 80,
+            "ounce": 150
+        }
+    },
+    {
+        "name": "Saucy Diamonds",
+        "category": "Diamonds & Sauce",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 15,
+            "3 grams": 40
+        }
+    },
+    {
+        "name": "Sour Mac",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 25,
+            "1/4": 50,
+            "1/2": 90,
+            "ounce": 180
+        }
+    },
+    {
+        "name": "Super Sour Diesel",
+        "category": "Concentrates",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 10,
+            "3 grams": 25
+        },
+        "thca_percentage": 96.1
+    },
+    {
+        "name": "Tropical Cherry Snowcaps",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 25,
+            "1/4": 50,
+            "1/2": 100,
+            "ounce": 200
+        },
+        "thca_percentage": 64.54
+    },
+    {
+        "name": "Two Gram Vapes",
+        "category": "Vapes & Carts",
+        "size_options": [
+            "Bacio-Gelato",
+            "Chem Dawg",
+            "Cherry Cookies",
+            "Green Crack",
+            "Grape Ape",
+            "Sunset Sherbet"
+        ],
+        "prices": {
+            "Bacio-Gelato": 30,
+            "Cherry Cookies": 30,
+            "Chem Dawg": 30,
+            "Green Crack": 30,
+            "Grape Ape": 30,
+            "Sunset Sherbet": 30
+        },
+        "availability": {}
+    },
+    {
+        "name": "Zkittles",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 20,
+            "1/4": 40,
+            "1/2": 80,
+            "ounce": 150
+        }
+    },
+    {
+        "name": "Alcapulco Gold",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 28,
+            "1/4": 48,
+            "1/2": 90,
+            "ounce": 180
+        },
+        "banner": "Out of Stock"
+    },
+    {
+        "name": "Blueberry Muffin",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 18,
+            "1/4": 32.5,
+            "1/2": 65,
+            "ounce": 125
+        },
+        "banner": "Out of Stock"
+    },
+    {
+        "name": "Blueberry Muffin",
+        "category": "Diamonds & Sauce",
+        "size_options": ["1 gram", "3 grams"],
+        "prices": {
+            "1 gram": 15,
+            "3 grams": 40
+        },
+        "banner": "Out of Stock"
+    },
+    {
+        "name": "Dosido",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 18,
+            "1/4": 32.5,
+            "1/2": 65,
+            "ounce": 125
+        },
+        "banner": "Out of Stock"
+    },
+    {
+        "name": "Green Crack Snowcaps",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 25,
+            "1/4": 50,
+            "1/2": 100,
+            "ounce": 200
+        },
+        "banner": "Out of Stock"
+    },
+    {
+        "name": "Skywalker",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 20,
+            "1/4": 40,
+            "1/2": 80,
+            "ounce": 150
+        },
+        "banner": "Out of Stock"
+    },
+    {
+        "name": "Slurricane",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 18,
+            "1/4": 32.5,
+            "1/2": 65,
+            "ounce": 125
+        },
+        "banner": "Out of Stock"
+    },
+    {
+        "name": "Star Child",
+        "category": "Flower",
+        "size_options": ["1/8", "1/4", "1/2", "ounce"],
+        "prices": {
+            "1/8": 20,
+            "1/4": 40,
+            "1/2": 80,
+            "ounce": 150
+        },
+        "banner": "Out of Stock"
+    },
+    {
+        "name": "Delta-9 Gummies",
+        "category": "Edibles",
+        "size_options": ["10 count", "30 count"],
+        "prices": {
+            "10 count": 20,
+            "30 count": 50
+        },
+        "banner": "New"
     }
-  },
-  {
-    "name": "Blue Dream Living Soil",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    }
-  },
-  {
-    "name": "Blueberry Diesel",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "thca_percentage": 97.7
-  },
-  {
-    "name": "Cherry Pie Crumble",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 30
-    },
-    "thca_percentage": 97.1
-  },
-  {
-    "name": "Death Star",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    }
-  },
-  {
-    "name": "Flower Preroll",
-    "category": "Other",
-    "size_options": [
-      "Blueberry Muffin",
-      "Chimera"
-    ],
-    "prices": {
-      "Blueberry Muffin": 5,
-      "Chimera": 5
-    }
-  },
-  {
-    "name": "Gelonade",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    }
-  },
-  {
-    "name": "Granddaddy Purple Crumble",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "thca_percentage": 97.1
-  },
-  {
-    "name": "Green Crack",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    }
-  },
-  {
-    "name": "Infused Preroll",
-    "category": "Other",
-    "size_options": [
-      "Candy Runtz",
-      "Diamond Watermelon",
-      "Rainbow Sherbert Caviar"
-    ],
-    "prices": {
-      "Candy Runtz": 10,
-      "Diamond Watermelon": 12,
-      "Rainbow Sherbert Caviar": 7
-    }
-  },
-  {
-    "name": "One Gram Carts",
-    "category": "Vapes & Carts",
-    "size_options": [
-      "Blue Walker (Sativa)",
-      "Bomb Pop (Indica)",
-      "Cranberry Haze (Sativa)",
-      "Cherry Cookies (Indica)",
-      "Cherry Pie (Sativa)",
-      "Gelato (Hybrid)",
-      "Lemon Cake (Hybrid)",
-      "Mango Tango (Indica)",
-      "Purple Haze (Sativa)",
-      "Trainwreck (Hybrid)",
-      "Tropical Cherries (Sativa)",
-      "Wedding Cake (Indica)",
-      "White Fire Zkittles (Hybrid)"
-    ],
-    "prices": {
-      "Blue Walker (Sativa)": 24,
-      "Bomb Pop (Indica)": 16,
-      "Cranberry Haze (Sativa)": 24,
-      "Cherry Cookies (Indica)": 16,
-      "Cherry Pie (Sativa)": 16,
-      "Chocolate Diesel (Indica)": 18,
-      "Gelato (Hybrid)": 18,
-      "Lemon Cake (Hybrid)": 18,
-      "Mango Tango (Indica)": 24,
-      "Purple Haze (Sativa)": 16,
-      "Trainwreck (Hybrid)": 18,
-      "Tropical Cherries (Sativa)": 16,
-      "Wedding Cake (Indica)": 18,
-      "White Fire Zkittles (Hybrid)": 16
-    }
-  },
-  {
-    "name": "One Gram Disposable",
-    "category": "Vapes & Carts",
-    "size_options": [
-      "Blueberry Muffin Live Resin (Indica)",
-      "Chocolate Diesel Live Resin (Sativa)",
-      "Sour Diesel Live Resin (Hybrid)",
-      "Sour Pebbles (Sativa)",
-      "Cherry Cookies (Indica)",
-      "Lemon Cake Live Resin (Sativa)"
-    ],
-    "prices": {
-      "Blueberry Muffin Live Resin (Indica)": 20,
-      "Chocolate Diesel Live Resin (Sativa)": 20,
-      "Sour Diesel Live Resin (Hybrid)": 35,
-      "Sour Pebbles (Sativa)": 30,
-      "Cherry Cookies (Indica)": 30,
-      "Lemon Cake Live Resin (Sativa)": 20
-    },
-    "availability": {}
-  },
-  {
-    "name": "Orange Creamsicle Living Soil",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    }
-  },
-  {
-    "name": "Point Break",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    }
-  },
-  {
-    "name": "Saucy Diamonds",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 15,
-      "3 grams": 40
-    }
-  },
-  {
-    "name": "Sour Mac",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 90,
-      "ounce": 180
-    }
-  },
-  {
-    "name": "Super Sour Diesel",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "thca_percentage": 96.1
-  },
-  {
-    "name": "Tropical Cherry Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 64.54
-  },
-  {
-    "name": "Two Gram Vapes",
-    "category": "Vapes & Carts",
-    "size_options": [
-      "Bacio-Gelato",
-      "Chem Dawg",
-      "Cherry Cookies",
-      "Green Crack",
-      "Grape Ape",
-      "Sunset Sherbet"
-    ],
-    "prices": {
-      "Bacio-Gelato": 30,
-      "Cherry Cookies": 30,
-      "Chem Dawg": 30,
-      "Green Crack": 30,
-      "Grape Ape": 30,
-      "Sunset Sherbet": 30
-    },
-    "availability": {}
-  },
-  {
-    "name": "Zkittles",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    }
-  },
-  {
-    "name": "Alcapulco Gold",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 28,
-      "1/4": 48,
-      "1/2": 90,
-      "ounce": 180
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Blueberry Muffin",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Blueberry Muffin",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 15,
-      "3 grams": 40
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Dosido",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Green Crack Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Skywalker",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Slurricane",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Star Child",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Delta-9 Gummies",
-    "category": "Edibles",
-    "size_options": [
-      "10 count",
-      "30 count"
-    ],
-    "prices": {
-      "10 count": 20,
-      "30 count": 50
-    },
-    "banner": "New"
-  }
 ]
