@@ -52,7 +52,7 @@ export default defineConfig([
   /* Node‑only config / build scripts                               */
   /* -------------------------------------------------------------- */
   {
-    files: ["*.config.js", "tailwind.config.mjs", "scripts/**/*.{js,cjs,mjs}"],
+    files: ["*.config.js", "scripts/**/*.{js,cjs,mjs}"],
     languageOptions: {
       ecmaVersion: 2023,
       sourceType: "module",

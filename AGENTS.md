@@ -17,15 +17,9 @@ Use Node (≥18) and npm for all tasks.
    npm run dev
    ```
 
-## Linting and Formatting
+## Linting
 
-1. Format code with Prettier
-
-   ```bash
-   npm run format
-   ```
-
-2. Lint code with ESLint
+1. Lint code with ESLint
 
    ```bash
    npm run lint
