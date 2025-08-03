@@ -154,7 +154,7 @@
         "banner": "New"
     },
     {
-        "name": "Amnesia Haze",
+        "name": "Amnesia Haze Diamonds",
         "category": "Diamonds & Sauce",
         "size_options": ["1 gram", "3 grams"],
         "prices": {
@@ -435,7 +435,7 @@
         "banner": "Out of Stock"
     },
     {
-        "name": "Blueberry Muffin",
+        "name": "Blueberry Muffin Flower",
         "category": "Flower",
         "size_options": ["1/8", "1/4", "1/2", "ounce"],
         "prices": {
@@ -447,7 +447,7 @@
         "banner": "Out of Stock"
     },
     {
-        "name": "Blueberry Muffin",
+        "name": "Blueberry Muffin Diamonds",
         "category": "Diamonds & Sauce",
         "size_options": ["1 gram", "3 grams"],
         "prices": {
