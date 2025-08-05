@@ -863,26 +863,10 @@ export default function App() {
                                     <ul className="mt-4 space-y-4">
                                         <li>
                                             <a
-                                                href="privacy-policy.html"
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Privacy Policy
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
                                                 href="terms-of-service.html"
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Terms of Service
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Cookie Policy
                                             </a>
                                         </li>
                                         <li>

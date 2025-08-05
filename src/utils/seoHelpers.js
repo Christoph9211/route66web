@@ -44,11 +44,11 @@ export const generateLocalKeywords = (baseKeywords = []) => {
         'Waynesville MO',
         'Central Missouri',
         'Route 66 State Park',
-        'hemp store St Robert',
+        'Hemp store St Robert',
         'CBD St Robert MO',
-        'cannabis St Robert',
-        'hemp dispensary Missouri',
-        'hemp products Pulaski County',
+        'Cannabis St Robert',
+        'Hemp Dispensary Missouri',
+        'Hemp Products Pulaski County',
     ]
 
     return [...baseKeywords, ...localKeywords]
