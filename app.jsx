@@ -167,13 +167,13 @@ export default function App() {
                     <div className="flex flex-col space-y-4">
                         <button
                             onClick={() => handleAgeVerification(true)}
-                            className="w-full rounded-lg bg-blue-600 py-3 text-white transition duration-200 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                            className="w-full rounded-lg bg-blue-600 py-3 text-xl font-semibold text-white transition duration-200 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
                         >
                             I am 21 or older
                         </button>
                         <button
                             onClick={() => handleAgeVerification(false)}
-                            className="w-full rounded-lg bg-gray-600 py-3 text-white transition duration-200 hover:bg-opacity-90 dark:bg-gray-700"
+                            className="w-full rounded-lg bg-gray-600 py-3 text-xl font-semibold text-white transition duration-200 hover:bg-blue-700 dark:bg-gray-700 dark:hover:bg-gray-600"
                         >
                             I am under 21
                         </button>
