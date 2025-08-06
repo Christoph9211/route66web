@@ -178,7 +178,7 @@ export default function App() {
                             I am under 21
                         </button>
                     </div>
-                    <p className="mt-6 text-sm text-gray-700 dark:text-white hover:bg-blue-700 dark:hover:bg-blue-600">
+                    <p className="mt-6 text-sm text-gray-700 dark:text-white hover:text-blue-700 dark:hover:text-blue-600">
                         By entering, you acknowledge and agree to our{' '}
                         <a href="src/terms-of-service.html">Terms of Service</a>{' '}
                         and <a href="src/privacy-policy.html">Privacy Policy</a>.
