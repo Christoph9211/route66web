@@ -178,10 +178,22 @@ export default function App() {
                             I am under 21
                         </button>
                     </div>
-                    <p className="mt-6 text-sm text-gray-700 dark:text-white hover:text-blue-700 dark:hover:text-blue-600">
+                    <p className="mt-6 text-sm text-gray-700 dark:text-white">
                         By entering, you acknowledge and agree to our{' '}
-                        <a href="src/terms-of-service.html">Terms of Service</a>{' '}
-                        and <a href="src/privacy-policy.html">Privacy Policy</a>.
+                        <a
+                            href="src/terms-of-service.html"
+                            className="hover:text-blue-700 dark:hover:text-blue-600"
+                        >
+                            Terms of Service
+                        </a>{' '}
+                        and{' '}
+                        <a
+                            href="src/privacy-policy.html"
+                            className="hover:text-blue-700 dark:hover:text-blue-600"
+                        >
+                            Privacy Policy
+                        </a>
+                        .
                     </p>
                 </div>
             </div>
