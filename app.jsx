@@ -140,6 +140,22 @@ export default function App() {
         }
     }
 
+    const handleNavigation = (e, targetId) => {
+        e.preventDefault()
+        setAppState((prevState) => ({
+            ...prevState,
+            isMobileMenuOpen: false,
+        }))
+        if (targetId) {
+            document
+                .getElementById(targetId)
+                ?.scrollIntoView({ behavior: 'smooth' })
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+        window.history.replaceState(null, '', window.location.pathname)
+    }
+
     const filteredProducts =
         appState.selectedCategory === 'all'
             ? appState.products
@@ -228,6 +244,7 @@ export default function App() {
 
     return (
         <div className="flex min-h-screen flex-col">
+            <div id="home"></div>
             <StructuredData />
             {/* Navigation */}
             <nav
@@ -257,25 +274,29 @@ export default function App() {
                         {/* Desktop menu */}
                         <div className="hidden md:flex md:items-center md:space-x-6">
                             <a
-                                href="#"
+                                href="#home"
+                                onClick={(e) => handleNavigation(e)}
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
                             >
                                 Home
                             </a>
                             <a
                                 href="#products"
+                                onClick={(e) => handleNavigation(e, 'products')}
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
                             >
                                 Products
                             </a>
                             <a
                                 href="#about"
+                                onClick={(e) => handleNavigation(e, 'about')}
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
                             >
                                 About
                             </a>
                             <a
                                 href="#contact"
+                                onClick={(e) => handleNavigation(e, 'contact')}
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
                             >
                                 Contact
@@ -319,25 +340,29 @@ export default function App() {
                     <div className="md:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                             <a
-                                href="#"
+                                href="#home"
+                                onClick={(e) => handleNavigation(e)}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
                             >
                                 Home
                             </a>
                             <a
                                 href="#products"
+                                onClick={(e) => handleNavigation(e, 'products')}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
                             >
                                 Products
                             </a>
                             <a
                                 href="#about"
+                                onClick={(e) => handleNavigation(e, 'about')}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
                             >
                                 About
                             </a>
                             <a
                                 href="#contact"
+                                onClick={(e) => handleNavigation(e, 'contact')}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
                             >
                                 Contact
@@ -376,6 +401,12 @@ export default function App() {
                                                     <div className="rounded-md shadow">
                                                         <a
                                                             href="#products"
+                                                            onClick={(e) =>
+                                                                handleNavigation(
+                                                                    e,
+                                                                    'products'
+                                                                )
+                                                            }
                                                             className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-4 text-xl font-bold text-white hover:bg-blue-800 md:px-10 md:py-4 md:text-lg dark:bg-blue-800 dark:text-white dark:hover:bg-blue-800"
                                                         >
                                                             Explore Products
@@ -384,6 +415,12 @@ export default function App() {
                                                     <div className="rounded-md shadow">
                                                         <a
                                                             href="#about"
+                                                            onClick={(e) =>
+                                                                handleNavigation(
+                                                                    e,
+                                                                    'about'
+                                                                )
+                                                            }
                                                             className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-4 text-xl font-bold text-white hover:bg-blue-800 md:px-10 md:py-4 md:text-lg dark:bg-blue-800 dark:text-white dark:hover:bg-blue-800"
                                                         >
                                                             Learn More
@@ -722,7 +759,8 @@ export default function App() {
                             </p>
                             <div className="flex space-x-6">
                                 <a
-                                    href="#"
+                                    href="/"
+                                    onClick={(e) => e.preventDefault()}
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="Facebook"
                                 >
@@ -734,7 +772,8 @@ export default function App() {
                                     <span className="sr-only">Facebook</span>
                                 </a>
                                 <a
-                                    href="#"
+                                    href="/"
+                                    onClick={(e) => e.preventDefault()}
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="Instagram"
                                 >
@@ -746,7 +785,8 @@ export default function App() {
                                     <span className="sr-only">Instagram</span>
                                 </a>
                                 <a
-                                    href="#"
+                                    href="/"
+                                    onClick={(e) => e.preventDefault()}
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="Twitter"
                                 >
@@ -758,7 +798,8 @@ export default function App() {
                                     <span className="sr-only">Twitter</span>
                                 </a>
                                 <a
-                                    href="#"
+                                    href="/"
+                                    onClick={(e) => e.preventDefault()}
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="YouTube"
                                 >
@@ -780,7 +821,10 @@ export default function App() {
                                     <ul className="mt-4 space-y-4">
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Edibles
@@ -788,7 +832,10 @@ export default function App() {
                                         </li>
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="ttext-black text-base hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Topicals
@@ -796,7 +843,10 @@ export default function App() {
                                         </li>
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Flower
@@ -804,7 +854,10 @@ export default function App() {
                                         </li>
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Accessories
@@ -819,7 +872,10 @@ export default function App() {
                                     <ul className="mt-4 space-y-4">
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 About Us
@@ -827,7 +883,10 @@ export default function App() {
                                         </li>
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Careers
@@ -835,7 +894,10 @@ export default function App() {
                                         </li>
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Partners
@@ -852,7 +914,10 @@ export default function App() {
                                     <ul className="mt-4 space-y-4">
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Contact Us
@@ -860,7 +925,10 @@ export default function App() {
                                         </li>
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 FAQs
@@ -891,7 +959,10 @@ export default function App() {
                                         </li>
                                         <li>
                                             <a
-                                                href="#"
+                                                href="/"
+                                                onClick={(e) =>
+                                                    e.preventDefault()
+                                                }
                                                 className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
                                                 Compliance
