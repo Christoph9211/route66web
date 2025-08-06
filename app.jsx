@@ -180,8 +180,8 @@ export default function App() {
                     </div>
                     <p className="mt-6 text-sm text-gray-700 dark:text-white">
                         By entering, you acknowledge and agree to our{' '}
-                        <a href="terms-of-service.html">Terms of Service</a>{' '}
-                        and <a href="privacy-policy.html">Privacy Policy</a>.
+                        <a href="src/terms-of-service.html">Terms of Service</a>{' '}
+                        and <a href="src/privacy-policy.html">Privacy Policy</a>.
                     </p>
                 </div>
             </div>
