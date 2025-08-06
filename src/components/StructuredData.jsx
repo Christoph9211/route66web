@@ -119,7 +119,7 @@ function StructuredData() {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Products',
-                item: 'https://route66hemp.com#products',
+                item: 'https://route66hemp.com',
             },
         ],
     }

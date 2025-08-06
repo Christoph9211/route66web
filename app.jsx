@@ -838,7 +838,7 @@ export default function App() {
                                                 }
                                                 className="ttext-black text-base hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             >
-                                                Topicals
+                                                Concentrates
                                             </a>
                                         </li>
                                         <li>
