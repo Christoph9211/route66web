@@ -70,10 +70,17 @@ function QuickNavigation() {
                         className={`flex h-10 w-10 items-center justify-center rounded-full shadow-lg transition-all duration-200 ${
                             activeSection === link.id
                                 ? 'bg-blue-600 text-white scale-110'
-                                : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                                : 'bg-white text-gray-700 hover:bg-gray-50 hover:scale-105 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
                         }`}
                         aria-label={`Go to ${link.label}`}
                         title={link.label}
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault()
+                                handleQuickNavClick(link.id)
+                            }
+                        }}
                     >
                         <i className={`${link.icon} text-sm`} aria-hidden="true" />
                     </button>

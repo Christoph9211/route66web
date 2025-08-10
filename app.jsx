@@ -1,241 +1,379 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React, { useState, useEffect } from 'react'
+import { createRoot } from 'react-dom/client'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
-import StructuredData from './src/components/StructuredData.jsx'
-import LocalBusinessInfo from './src/components/LocalBusinessInfo.jsx'
-import LocationContent from './src/components/LocationContent.jsx'
-import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx'
-import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx'
-import { businessInfo } from './src/utils/seoHelpers.js'
 
-const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
-const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
+// Import components
+import Navigation from './src/components/Navigation'
+import BreadcrumbNavigation from './src/components/BreadcrumbNavigation'
+import FooterNavigation from './src/components/FooterNavigation'
+import QuickNavigation from './src/components/QuickNavigation'
+import LocalSEOFAQ from './src/components/LocalSEOFAQ'
+import LocationContent from './src/components/LocationContent'
+import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration'
+import LocalBusinessInfo from './src/components/LocalBusinessInfo'
+import StructuredData from './src/components/StructuredData'
 
-export default function App() {
-    const [appState, setAppState] = React.useState({
-        isMobileMenuOpen: false,
-        selectedCategory: 'all',
-        age: null,
-        products: [],
-        categories: [],
-        loading: true,
-    })
+// Import hooks
+import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
 
-    React.useEffect(() => {
-        const verifiedAge = localStorage.getItem('ageVerified')
-        if (verifiedAge) {
-            setAppState((prevState) => ({
-                ...prevState,
-                age: parseInt(verifiedAge),
-            }))
+// Import styles
+import './src/style.css'
+
+function ProductCard({ product }) {
+    const [selectedSize, setSelectedSize] = useState(product.size_options[0])
+    const [isAvailable, setIsAvailable] = useState(true)
+
+    useEffect(() => {
+        // Check availability for vapes and other products with availability object
+        if (product.availability && typeof product.availability === 'object') {
+            setIsAvailable(product.availability[selectedSize] !== false)
         }
+    }, [selectedSize, product.availability])
 
-        // Fetch products from the JSON file
-        fetch('products/products.json')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch products')
-                }
-                return response.json()
-            })
-            .then((productsData) => {
-                // Group products by name and category, combining size options and prices
-                const grouped = Object.create(null) // no prototype to pollute
-                productsData.forEach((prod) => {
-                    // Use name+category as key
-                    const key =
-                        (prod.name || prod['name']) +
-                        '|' +
-                        (prod.category || prod['category'])
-                    if (!grouped[key]) {
-                        grouped[key] = {
-                            ...prod,
-                            size_options: prod.size_options
-                                ? [...prod.size_options]
-                                : prod.size_options || [],
-                            prices: prod.prices
-                                ? { ...prod.prices }
-                                : prod.prices || {},
-                            variants: [],
-                            ids: [prod.id],
-                            images: [prod.image],
-                            descriptions: [prod.description],
-                            ratings: [prod.rating],
-                            urls: [prod.url],
-                        }
-                        if (prod.size_options && prod.prices) {
-                            // Already in new format
-                        } else if (prod.name && prod.name.match(/ - (.+)/)) {
-                            // Try to extract size from name
-                            const size = prod.name.match(/ - (.+)/)[1]
-                            grouped[key].size_options = [size]
-                            const safeSize = clean(size) // drop dangerous names
-                            if (safeSize) {
-                                grouped[key].prices = { [safeSize]: prod.price }
-                            }
-                        } else {
-                            grouped[key].size_options = []
-                            grouped[key].prices = {}
-                        }
-                    } else {
-                        // Add size/price if not present
-                        if (prod.name && prod.name.match(/ - (.+)/)) {
-                            const size = prod.name.match(/ - (.+)/)[1]
-                            const safe = clean(size) // rename to avoid shadowing
-                            if (!grouped[key].size_options.includes(size)) {
-                                grouped[key].size_options.push(size)
-                                if (safe) grouped[key].prices[safe] = prod.price
-                            }
-                        }
-                        grouped[key].ids.push(prod.id)
-                        grouped[key].images.push(prod.image)
-                        grouped[key].descriptions.push(prod.description)
-                        grouped[key].ratings.push(prod.rating)
-                        grouped[key].urls.push(prod.url)
-                    }
-                })
-                const groupedProducts = Object.values(grouped)
-                // Extract unique categories from products
-                const uniqueCategories = [
-                    ...new Set(
-                        groupedProducts.map((product) => product.category)
-                    ),
-                ]
-                // Format categories for your UI
-                const formattedCategories = uniqueCategories.map(
-                    (categoryId) => {
-                        const name = categoryId
-                            .split('-')
-                            .map(
-                                (word) =>
-                                    word.charAt(0).toUpperCase() + word.slice(1)
-                            )
-                            .join(' ')
-                        return { id: categoryId, name }
-                    }
-                )
-                setAppState((prevState) => ({
-                    ...prevState,
-                    categories: formattedCategories,
-                    products: groupedProducts,
-                    loading: false,
-                }))
-            })
-            .catch((error) => {
-                console.error('Error loading products:', error)
-                setAppState((prevState) => ({
-                    ...prevState,
-                    loading: false,
-                }))
-            })
-    }, [])
+    const currentPrice = product.prices[selectedSize]
+    const isOutOfStock = product.banner === 'Out of Stock' || !isAvailable
 
-    const handleAgeVerification = (isOver21) => {
-        if (isOver21) {
-            setAppState((prevState) => ({ ...prevState, age: 21 }))
-            localStorage.setItem('ageVerified', '21')
-        } else {
-            setAppState((prevState) => ({ ...prevState, age: 0 }))
-        }
+    return (
+        <div className={`product-card relative rounded-lg bg-white p-6 shadow-md transition-all duration-300 hover:shadow-lg dark:bg-gray-800 ${
+            isOutOfStock ? 'opacity-75' : ''
+        }`}>
+            {/* Product Banner */}
+            {product.banner && (
+                <div className={`product-banner ${
+                    product.banner === 'New' 
+                        ? 'bg-green-600' 
+                        : product.banner === 'Out of Stock' 
+                        ? 'bg-red-600' 
+                        : 'bg-blue-600'
+                }`}>
+                    {product.banner}
+                </div>
+            )}
+
+            <div className="mb-4">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {product.name}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {product.category}
+                </p>
+                {product.thca_percentage && (
+                    <p className="text-sm font-medium text-green-600">
+                        THCa: {product.thca_percentage}%
+                    </p>
+                )}
+            </div>
+
+            <div className="mb-4">
+                <label htmlFor={`size-${product.name}`} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Size:
+                </label>
+                <select
+                    id={`size-${product.name}`}
+                    value={selectedSize}
+                    onChange={(e) => setSelectedSize(e.target.value)}
+                    className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                    disabled={isOutOfStock}
+                >
+                    {product.size_options.map((size) => (
+                        <option key={size} value={size}>
+                            {size}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+            <div className="flex items-center justify-between">
+                <div className="text-xl font-bold text-green-600">
+                    ${currentPrice?.toFixed(2) || 'N/A'}
+                </div>
+                <button
+                    className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                        isOutOfStock
+                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            : 'bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
+                    }`}
+                    disabled={isOutOfStock}
+                    aria-label={`Add ${product.name} to cart`}
+                >
+                    {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+                </button>
+            </div>
+        </div>
+    )
+}
+
+function ProductSection({ title, products, categoryId }) {
+    if (!products || products.length === 0) {
+        return null
     }
 
-    const handleNavigation = (e, targetId) => {
-        e.preventDefault()
-        setAppState((prevState) => ({
-            ...prevState,
-            isMobileMenuOpen: false,
-        }))
-        if (targetId) {
-            document
-                .getElementById(targetId)
-                ?.scrollIntoView({ behavior: 'smooth' })
-        } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }
-        window.history.replaceState(null, '', window.location.pathname)
-    }
+    return (
+        <section id={categoryId} className="py-12">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-white">
+                    {title}
+                </h2>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {products.map((product) => (
+                        <ProductCard key={product.name} product={product} />
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
 
-    const filteredProducts =
-        appState.selectedCategory === 'all'
-            ? appState.products
-            : appState.products.filter(
-                  (product) => product.category === appState.selectedCategory
-              )
-
-    if (appState.age === null) {
-        return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4 dark:bg-gray-900">
-                <div className="w-full max-w-md rounded-lg bg-white p-6 text-center shadow-lg dark:bg-gray-800">
-                    <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
-                        Age Verification
-                    </h2>
-                    <div className="mb-8">
-                        <i
-                            className="fas fa-cannabis mb-4 text-5xl text-green-500"
-                            aria-hidden="true"
-                            tabIndex="-1"
-                        ></i>
-                        <p className="text-gray-900 dark:text-white">
-                            You must be 21 years or older to enter this website.
-                        </p>
-                    </div>
-                    <div className="flex flex-col space-y-4">
-                        <button
-                            onClick={() => handleAgeVerification(true)}
-                            className="w-full rounded-lg bg-blue-600 py-3 text-xl font-semibold text-white transition duration-200 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
-                        >
-                            I am 21 or older
-                        </button>
-                        <button
-                            onClick={() => handleAgeVerification(false)}
-                            className="w-full rounded-lg bg-gray-600 py-3 text-xl font-semibold text-white transition duration-200 hover:bg-blue-700 dark:bg-gray-700 dark:hover:bg-gray-600"
-                        >
-                            I am under 21
-                        </button>
-                    </div>
-                    <p className="mt-6 text-sm text-gray-700 dark:text-white">
-                        By entering, you acknowledge and agree to our{' '}
+function HeroSection() {
+    return (
+        <section id="home" className="relative bg-gradient-to-br from-green-800 to-green-900 py-20 text-white">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="text-center">
+                    <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                        Route 66 Hemp
+                    </h1>
+                    <p className="mx-auto mb-8 max-w-2xl text-xl text-green-100">
+                        Premium hemp products for your wellness journey. Quality you can trust, 
+                        service you can count on. Located in St Robert, Missouri.
+                    </p>
+                    <div className="flex flex-col justify-center gap-4 sm:flex-row">
                         <a
-                            href="src/terms-of-service.html"
-                            className="hover:text-blue-700 dark:hover:text-blue-600"
+                            href="#products"
+                            className="inline-flex items-center rounded-lg bg-white px-8 py-3 font-medium text-green-800 transition-colors hover:bg-green-50"
                         >
-                            Terms of Service
-                        </a>{' '}
-                        and{' '}
-                        <a
-                            href="src/privacy-policy.html"
-                            className="hover:text-blue-700 dark:hover:text-blue-600"
-                        >
-                            Privacy Policy
+                            <i className="fas fa-cannabis mr-2" aria-hidden="true" />
+                            Shop Products
                         </a>
-                        .
+                        <a
+                            href="tel:+15736776418"
+                            className="inline-flex items-center rounded-lg border-2 border-white bg-transparent px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-green-800"
+                        >
+                            <i className="fas fa-phone mr-2" aria-hidden="true" />
+                            Call (573) 677-6418
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function AboutSection() {
+    return (
+        <section id="about" className="bg-white py-16 dark:bg-gray-900">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                    <div>
+                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+                            About Route 66 Hemp
+                        </h2>
+                        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                            Located in the heart of St Robert, Missouri, Route 66 Hemp has been 
+                            serving the Pulaski County community and Fort Leonard Wood area with 
+                            premium hemp products since 2025.
+                        </p>
+                        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                            We're committed to providing high-quality, lab-tested hemp products 
+                            that meet the highest standards of purity and potency. Our knowledgeable 
+                            staff is here to help you find the right products for your wellness journey.
+                        </p>
+                        <div className="mt-8">
+                            <a
+                                href="#location"
+                                className="inline-flex items-center rounded-lg bg-green-600 px-6 py-3 font-medium text-white transition-colors hover:bg-green-700"
+                            >
+                                <i className="fas fa-map-marker-alt mr-2" aria-hidden="true" />
+                                Visit Our Store
+                            </a>
+                        </div>
+                    </div>
+                    <div className="mt-8 lg:mt-0">
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="rounded-lg bg-green-50 p-6 dark:bg-green-900">
+                                <div className="flex items-center">
+                                    <i className="fas fa-certificate text-2xl text-green-600" aria-hidden="true" />
+                                    <div className="ml-4">
+                                        <h3 className="font-semibold text-gray-900 dark:text-white">
+                                            Lab Tested
+                                        </h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                                            All products verified
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="rounded-lg bg-green-50 p-6 dark:bg-green-900">
+                                <div className="flex items-center">
+                                    <i className="fas fa-users text-2xl text-green-600" aria-hidden="true" />
+                                    <div className="ml-4">
+                                        <h3 className="font-semibold text-gray-900 dark:text-white">
+                                            Local Experts
+                                        </h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                                            Knowledgeable staff
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function ContactSection() {
+    return (
+        <section id="contact" className="bg-gray-50 py-16 dark:bg-gray-800">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="text-center">
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+                        Contact Us
+                    </h2>
+                    <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                        Have questions? We're here to help!
                     </p>
                 </div>
+                <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+                    <LocalBusinessInfo />
+                    <div className="rounded-lg bg-white p-8 shadow dark:bg-gray-700">
+                        <h3 className="mb-6 text-xl font-semibold text-gray-900 dark:text-white">
+                            Send us a message
+                        </h3>
+                        <form className="space-y-4">
+                            <div>
+                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Message
+                                </label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows={4}
+                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                                    required
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                className="w-full rounded-md bg-green-600 px-4 py-2 font-medium text-white transition-colors hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                            >
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function App() {
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+    
+    // Use navigation hooks for enhanced UX
+    const { activeSection } = useNavigation()
+    useKeyboardNavigation()
+
+    useEffect(() => {
+        const loadProducts = async () => {
+            try {
+                const response = await fetch('/products/products.json')
+                if (!response.ok) {
+                    throw new Error('Failed to load products')
+                }
+                const data = await response.json()
+                setProducts(data)
+            } catch (err) {
+                setError(err.message)
+                console.error('Error loading products:', err)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadProducts()
+    }, [])
+
+    // Group products by category
+    const productsByCategory = products.reduce((acc, product) => {
+        const category = product.category
+        if (!acc[category]) {
+            acc[category] = []
+        }
+        acc[category].push(product)
+        return acc
+    }, {})
+
+    // Sort products within each category (New items first, then alphabetical)
+    Object.keys(productsByCategory).forEach(category => {
+        productsByCategory[category].sort((a, b) => {
+            // Priority order: New -> Regular -> Out of Stock
+            const getRank = (product) => {
+                if (product.banner === 'New') return 0
+                if (product.banner === 'Out of Stock') return 2
+                return 1
+            }
+            
+            const rankA = getRank(a)
+            const rankB = getRank(b)
+            
+            if (rankA !== rankB) {
+                return rankA - rankB
+            }
+            
+            return a.name.localeCompare(b.name)
+        })
+    })
+
+    if (loading) {
+        return (
+            <div className="flex min-h-screen items-center justify-center">
+                <div className="leaf-loader animate-spin"></div>
+                <span className="ml-3 text-lg">Loading products...</span>
             </div>
         )
     }
 
-    if (appState.age < 21) {
+    if (error) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4 dark:bg-gray-900">
-                <div className="w-full max-w-md rounded-lg bg-white p-6 text-center shadow-lg dark:bg-gray-800">
-                    <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
-                        Access Denied
-                    </h2>
-                    <p className="mb-6 text-gray-900 dark:text-white">
-                        You must be 21 or older to access this website.
-                    </p>
-                    <button
-                        onClick={() =>
-                            setAppState((prevState) => ({
-                                ...prevState,
-                                age: null,
-                            }))
-                        }
-                        className="rounded-lg bg-blue-600 px-4 py-2 text-white transition duration-200 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+            <div className="flex min-h-screen items-center justify-center">
+                <div className="text-center">
+                    <i className="fas fa-exclamation-triangle text-4xl text-red-500 mb-4" aria-hidden="true" />
+                    <h1 className="text-2xl font-bold text-gray-900 mb-2">Error Loading Products</h1>
+                    <p className="text-gray-600">{error}</p>
+                    <button 
+                        onClick={() => window.location.reload()} 
+                        className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
                     >
-                        Go Back
+                        Try Again
                     </button>
                 </div>
             </div>
@@ -243,1021 +381,72 @@ export default function App() {
     }
 
     return (
-        <div className="flex min-h-screen flex-col">
-            <div id="home"></div>
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+            {/* Structured Data for SEO */}
             <StructuredData />
+            
             {/* Navigation */}
-            <nav
-                role="navigation"
-                className="sticky top-0 z-50 bg-white/90 shadow-md backdrop-blur dark:bg-gray-900/90"
-            >
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex h-16 justify-between">
-                        <div className="flex items-center">
-                            <div className="flex flex-shrink-0 items-center">
-                                {/* Logo */}
-                                <div className="mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-green-500">
-                                    <i
-                                        className="fas fa-cannabis text-white"
-                                        aria-hidden="true"
-                                        tabIndex="-1"
-                                    ></i>
-                                </div>
-                                <span
-                                    className="text-xl font-bold text-gray-900 dark:text-white"
-                                    itemProp="name"
-                                >
-                                    {businessInfo.name}
-                                </span>
-                            </div>
-                        </div>
-                        {/* Desktop menu */}
-                        <div className="hidden md:flex md:items-center md:space-x-6">
-                            <a
-                                href="#home"
-                                onClick={(e) => handleNavigation(e)}
-                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
-                            >
-                                Home
-                            </a>
-                            <a
-                                href="#products"
-                                onClick={(e) => handleNavigation(e, 'products')}
-                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
-                            >
-                                Products
-                            </a>
-                            <a
-                                href="#about"
-                                onClick={(e) => handleNavigation(e, 'about')}
-                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
-                            >
-                                About
-                            </a>
-                            <a
-                                href="#contact"
-                                onClick={(e) => handleNavigation(e, 'contact')}
-                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
-                            >
-                                Contact
-                            </a>
-                        </div>
-                        {/* Mobile menu button */}
-                        <div className="flex items-center md:hidden">
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    setAppState((prevState) => ({
-                                        ...prevState,
-                                        isMobileMenuOpen:
-                                            !prevState.isMobileMenuOpen,
-                                    }))
-                                }
-                                className="inline-flex items-center justify-center rounded-md p-2 text-gray-900 hover:text-blue-600 focus:outline-none dark:text-blue-500"
-                                aria-label={
-                                    appState.isMobileMenuOpen
-                                        ? 'Close main menu'
-                                        : 'Open main menu'
-                                }
-                                aria-expanded={
-                                    appState.isMobileMenuOpen ? 'true' : 'false'
-                                }
-                            >
-                                <i
-                                    className={`fas ${
-                                        appState.isMobileMenuOpen
-                                            ? 'fa-times'
-                                            : 'fa-bars'
-                                    } text-xl`}
-                                    aria-hidden="true"
-                                    tabIndex="-1"
-                                ></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                {appState.isMobileMenuOpen && (
-                    <div className="md:hidden">
-                        <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                            <a
-                                href="#home"
-                                onClick={(e) => handleNavigation(e)}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
-                            >
-                                Home
-                            </a>
-                            <a
-                                href="#products"
-                                onClick={(e) => handleNavigation(e, 'products')}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
-                            >
-                                Products
-                            </a>
-                            <a
-                                href="#about"
-                                onClick={(e) => handleNavigation(e, 'about')}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
-                            >
-                                About
-                            </a>
-                            <a
-                                href="#contact"
-                                onClick={(e) => handleNavigation(e, 'contact')}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
-                            >
-                                Contact
-                            </a>
-                        </div>
-                    </div>
-                )}
-            </nav>
-            <section>
+            <Navigation />
+            
+            {/* Main Content */}
+            <main>
                 {/* Hero Section */}
-                <div className="relative overflow-hidden bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-                    <div className="mx-auto max-w-7xl">
-                        <div className="relative z-10 bg-gradient-to-r from-white via-gray-50 to-gray-100 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-                            <div className="pt-10 sm:pt-16 lg:overflow-hidden lg:pb-14 lg:pt-8">
-                                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                                    <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-                                        <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
-                                            <div className="lg:py-24">
-                                                <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl dark:text-white">
-                                                    <span>
-                                                        Premium Hemp Products
-                                                    </span>
-                                                    <span className="block text-blue-600 dark:text-green-500">
-                                                        For Your Wellness
-                                                    </span>
-                                                </h1>
-                                                <p className="mt-3 text-base text-gray-700 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl dark:text-white">
-                                                    Discover our range of
-                                                    high-quality, lab-tested
-                                                    hemp products. From CBD oils
-                                                    to edibles, we have
-                                                    everything you need for a
-                                                    balanced lifestyle.
-                                                </p>
-                                                <div className="mt-10 flex justify-center space-x-4 sm:mt-12 lg:justify-start">
-                                                    <div className="rounded-md shadow">
-                                                        <a
-                                                            href="#products"
-                                                            onClick={(e) =>
-                                                                handleNavigation(
-                                                                    e,
-                                                                    'products'
-                                                                )
-                                                            }
-                                                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-4 text-xl font-bold text-white hover:bg-blue-800 md:px-10 md:py-4 md:text-lg dark:bg-blue-800 dark:text-white dark:hover:bg-blue-800"
-                                                        >
-                                                            Explore Products
-                                                        </a>
-                                                    </div>
-                                                    <div className="rounded-md shadow">
-                                                        <a
-                                                            href="#about"
-                                                            onClick={(e) =>
-                                                                handleNavigation(
-                                                                    e,
-                                                                    'about'
-                                                                )
-                                                            }
-                                                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-4 text-xl font-bold text-white hover:bg-blue-800 md:px-10 md:py-4 md:text-lg dark:bg-blue-800 dark:text-white dark:hover:bg-blue-800"
-                                                        >
-                                                            Learn More
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="mt-12 lg:relative lg:m-0">
-                                            <div className="mx-auto mt-12 max-w-md sm:max-w-2xl lg:mt-0">
-                                                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gradient-to-br from-blue-600 to-green-600 text-white shadow-xl">
-                                                    <div className="absolute inset-0 flex items-center justify-center">
-                                                        <i
-                                                            className="fa-solid fa-cannabis text-9xl text-white opacity-50"
-                                                            aria-hidden="true"
-                                                            tabIndex="-1"
-                                                        ></i>
-                                                    </div>
-                                                    <div className="absolute inset-0 flex items-center justify-center bg-opacity-20">
-                                                        <div className="px-4 text-center text-white">
-                                                            <div className="mb-2 text-2xl font-bold sm:text-3xl">
-                                                                Premium Hemp
-                                                            </div>
-                                                            <div className="text-lg sm:text-xl">
-                                                                Locally Grown,
-                                                                Organically
-                                                                Harvested
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <HeroSection />
+                
                 {/* Products Section */}
-                <div id="products" className="bg-white py-12 dark:bg-gray-800">
+                <section id="products" className="bg-white py-16 dark:bg-gray-900">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="mb-8 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-black dark:text-green-300">
-                                Products
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+                                Our Premium Hemp Products
                             </h2>
-                            <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                                Explore Our Collection
-                            </p>
-                            <p className="mt-4 max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-white">
-                                Our products are lab tested for quality and
-                                purity.
+                            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                                Discover our carefully curated selection of high-quality hemp products
                             </p>
                         </div>
-                        <div className="mb-8 flex flex-wrap justify-center gap-2">
-                            <button
-                                onClick={() =>
-                                    setAppState((prevState) => ({
-                                        ...prevState,
-                                        selectedCategory: 'all',
-                                    }))
-                                }
-                                className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                    appState.selectedCategory === 'all'
-                                        ? 'bg-primary text-white'
-                                        : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-600'
-                                }`}
-                            >
-                                All Products
-                            </button>
-                            {appState.categories.map((category) => (
-                                <button
-                                    key={category.id}
-                                    onClick={() =>
-                                        setAppState((prevState) => ({
-                                            ...prevState,
-                                            selectedCategory: category.id,
-                                        }))
-                                    }
-                                    className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                        appState.selectedCategory ===
-                                        category.id
-                                            ? 'bg-primary text-white'
-                                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-600'
-                                    }`}
-                                >
-                                    {category.name}
-                                </button>
-                            ))}
-                        </div>
-                        {appState.loading ? (
-                            <div className="col-span-full flex items-center justify-center py-12">
-                                <div className="leaf-loader">
-                                    <i
-                                        className="fas fa-cannabis text-5xl text-blue-600 dark:text-blue-500"
-                                        aria-hidden="true"
-                                        tabIndex="-1"
-                                    ></i>
-                                </div>
-                                <span className="sr-only">
-                                    Loading products...
-                                </span>
-                            </div>
-                        ) : filteredProducts.length > 0 ? (
-                            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                {filteredProducts.map((product) => (
-                                    <ProductCard
-                                        key={product.name + product.category}
-                                        product={product}
-                                    />
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="col-span-full py-12 text-center">
-                                <p className="text-gray-700 dark:text-white">
-                                    Products Coming Soon
-                                </p>
-                            </div>
-                        )}
+                        
+                        {/* Product Categories */}
+                        {Object.entries(productsByCategory).map(([category, categoryProducts]) => (
+                            <ProductSection
+                                key={category}
+                                title={category}
+                                products={categoryProducts}
+                                categoryId={category.toLowerCase().replace(/\s+/g, '-')}
+                            />
+                        ))}
                     </div>
-                </div>
+                </section>
+                
                 {/* About Section */}
-                <div id="about" className="bg-white py-12 dark:bg-gray-800">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="mb-10 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-black dark:text-green-300">
-                                About Us
-                            </h2>
-                            <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                                Our Story
-                            </p>
-                        </div>
-                        <div className="mt-10">
-                            <div className="items-center lg:grid lg:grid-cols-2 lg:gap-8">
-                                <div className="relative lg:col-start-2 lg:row-start-1">
-                                    <div className="relative mx-auto text-base lg:max-w-none">
-                                        <div className="aspect-w-2 aspect-h-1 overflow-hidden rounded-lg shadow-xl">
-                                            <div className="flex h-full w-full items-center justify-center bg-gradient-to-r from-green-800 to-green-600 p-6">
-                                                <div className="text-center text-white">
-                                                    <i
-                                                        className="fas fa-leaf mb-4 text-6xl"
-                                                        aria-hidden="true"
-                                                        tabIndex="-1"
-                                                    ></i>
-                                                    <h3 className="mb-2 text-2xl font-bold">
-                                                        From Seed to Sale
-                                                    </h3>
-                                                    <p className="text-lg">
-                                                        We control every step of
-                                                        the process to ensure
-                                                        the highest quality
-                                                        products
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="mt-10 lg:col-start-1 lg:row-start-1 lg:mt-0">
-                                    <div className="mx-auto max-w-prose text-base lg:max-w-none">
-                                        <p className="text-lg text-gray-700 dark:text-white">
-                                            Founded in 2025, Route 66 Hemp
-                                            started with a simple mission: to
-                                            provide high-quality hemp products
-                                            that enhance people's well-being
-                                            while promoting sustainable
-                                            agricultural practices.
-                                        </p>
-                                        <div className="prose prose-indigo dark:prose-invert mt-5 text-gray-700 dark:text-white">
-                                            <p>
-                                                Our team of experts carefully
-                                                selects the finest hemp strains
-                                                and works closely with local
-                                                farmers who share our commitment
-                                                to organic growing methods and
-                                                environmental stewardship.
-                                            </p>
-                                            <p>
-                                                We pride ourselves on
-                                                transparency. All our products
-                                                undergo rigorous third-party
-                                                testing to ensure purity,
-                                                potency, and safety. The test
-                                                results are readily available to
-                                                our customers, giving you peace
-                                                of mind with every purchase.
-                                            </p>
-                                            <p>
-                                                At Route 66 Hemp, we're a
-                                                community of hemp enthusiasts
-                                                and wellness advocates dedicated
-                                                to educating and empowering
-                                                individuals to make informed
-                                                choices about their health and
-                                                wellness journey.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Features */}
-                        <div className="mt-16">
-                            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                                <div className="pt-6">
-                                    <div className="flow-root rounded-lg bg-white px-6 pb-8 shadow-lg dark:bg-gray-800">
-                                        <div className="-mt-6">
-                                            <div>
-                                                <span className="inline-flex items-center justify-center rounded-md bg-green-500 p-3 shadow-lg">
-                                                    <i
-                                                        className="fas fa-flask text-xl text-white"
-                                                        aria-hidden="true"
-                                                        tabIndex="-1"
-                                                    ></i>
-                                                </span>
-                                            </div>
-                                            <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                                Lab Tested
-                                            </h3>
-                                            <p className="mt-5 text-base text-gray-700 dark:text-white">
-                                                All our products are tested by
-                                                third-party labs for potency,
-                                                pesticides, and purity to ensure
-                                                you get only the highest
-                                                quality.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="pt-6">
-                                    <div className="flow-root rounded-lg bg-white px-6 pb-8 shadow-lg dark:bg-gray-800">
-                                        <div className="-mt-6">
-                                            <div>
-                                                <span className="inline-flex items-center justify-center rounded-md bg-green-500 p-3 shadow-lg">
-                                                    <i
-                                                        className="fas fa-leaf text-xl text-white"
-                                                        aria-hidden="true"
-                                                        tabIndex="-1"
-                                                    ></i>
-                                                </span>
-                                            </div>
-                                            <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                                Organically Grown
-                                            </h3>
-                                            <p className="mt-5 text-base text-gray-700 dark:text-white">
-                                                Our hemp is grown free from
-                                                harmful pesticides and
-                                                chemicals, resulting in a
-                                                cleaner, better product.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="pt-6">
-                                    <div className="flow-root rounded-lg bg-white px-6 pb-8 shadow-lg dark:bg-gray-800">
-                                        <div className="-mt-6">
-                                            <div>
-                                                <span className="inline-flex items-center justify-center rounded-md bg-green-500 p-3 shadow-lg">
-                                                    <i
-                                                        className="fas fa-users text-xl text-white"
-                                                        aria-hidden="true"
-                                                        tabIndex="-1"
-                                                    ></i>
-                                                </span>
-                                            </div>
-                                            <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                                Expert Guidance
-                                            </h3>
-                                            <p className="mt-5 text-base text-gray-700 dark:text-white">
-                                                Our knowledgeable staff is here
-                                                to help you find the right
-                                                products for your specific needs
-                                                and answer any questions.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <AboutSection />
+                
                 {/* Location Content */}
                 <LocationContent />
+                
+                {/* Contact Section */}
+                <ContactSection />
+                
                 {/* Google Business Integration */}
                 <GoogleBusinessIntegration />
+                
                 {/* Local SEO FAQ */}
                 <LocalSEOFAQ />
-                {/* Contact Section */}
-                <div id="contact" className="bg-white py-12 dark:bg-gray-800">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="mb-10 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-black dark:text-green-300">
-                                Contact Us
-                            </h2>
-                            <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                                Get In Touch
-                            </p>
-                            <p className="mt-4 max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-white">
-                                Have questions? We're here to help!
-                            </p>
-                        </div>
-                        <div
-                            id="store-info"
-                            className="mt-10 flex justify-center"
-                        >
-                            <div className="lg:w-1/2">
-                                <LocalBusinessInfo />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </main>
+            
             {/* Footer */}
-            <footer
-                role="contentinfo"
-                className="relative overflow-hidden bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
-            >
-                <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-                    <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-                        <div className="space-y-8 xl:col-span-1">
-                            <div className="flex items-center">
-                                <div className="mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-green-500">
-                                    <i
-                                        className="fas fa-cannabis text-white"
-                                        aria-hidden="true"
-                                        tabIndex="-1"
-                                    ></i>
-                                </div>
-                                <span className="text-xl font-bold text-white">
-                                    {businessInfo.name}
-                                </span>
-                            </div>
-                            <p className="text-base text-black dark:text-white">
-                                Premium hemp products for your wellness journey.
-                                Quality you can trust.
-                            </p>
-                            <div className="flex space-x-6">
-                                <a
-                                    href="/"
-                                    onClick={(e) => e.preventDefault()}
-                                    className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                    aria-label="Facebook"
-                                >
-                                    <i
-                                        className="fab fa-facebook text-xl"
-                                        aria-hidden="true"
-                                        tabIndex="-1"
-                                    ></i>
-                                    <span className="sr-only">Facebook</span>
-                                </a>
-                                <a
-                                    href="/"
-                                    onClick={(e) => e.preventDefault()}
-                                    className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                    aria-label="Instagram"
-                                >
-                                    <i
-                                        className="fab fa-instagram text-xl"
-                                        aria-hidden="true"
-                                        tabIndex="-1"
-                                    ></i>
-                                    <span className="sr-only">Instagram</span>
-                                </a>
-                                <a
-                                    href="/"
-                                    onClick={(e) => e.preventDefault()}
-                                    className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                    aria-label="Twitter"
-                                >
-                                    <i
-                                        className="fab fa-twitter text-xl"
-                                        aria-hidden="true"
-                                        tabIndex="-1"
-                                    ></i>
-                                    <span className="sr-only">Twitter</span>
-                                </a>
-                                <a
-                                    href="/"
-                                    onClick={(e) => e.preventDefault()}
-                                    className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                    aria-label="YouTube"
-                                >
-                                    <i
-                                        className="fab fa-youtube text-xl"
-                                        aria-hidden="true"
-                                        tabIndex="-1"
-                                    ></i>
-                                    <span className="sr-only">YouTube</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div className="mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                            <div className="md:grid md:grid-cols-2 md:gap-8">
-                                <div>
-                                    <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
-                                        Products
-                                    </h3>
-                                    <ul className="mt-4 space-y-4">
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Edibles
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="ttext-black text-base hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Concentrates
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Flower
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Accessories
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="mt-12 md:mt-0">
-                                    <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
-                                        Company
-                                    </h3>
-                                    <ul className="mt-4 space-y-4">
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                About Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Careers
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Partners
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="md:grid md:grid-cols-2 md:gap-8">
-                                <div>
-                                    <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
-                                        Support
-                                    </h3>
-                                    <ul className="mt-4 space-y-4">
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Contact Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                FAQs
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="mt-12 md:mt-0">
-                                    <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
-                                        Legal
-                                    </h3>
-                                    <ul className="mt-4 space-y-4">
-                                        <li>
-                                            <a
-                                                href="src/privacy-policy.html"
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Privacy Policy
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="src/terms-of-service.html"
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Terms of Service
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Compliance
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-12 border-t border-gray-700 pt-8">
-                        <p className="text-center text-base text-black dark:text-white">
-                            &copy; 2025 {businessInfo.name}. All rights
-                            reserved.
-                        </p>
-                        <p className="mt-2 text-center text-sm text-black dark:text-white">
-                            All products contain less than 0.3% THC and are
-                            legal under the 2018 Farm Bill.
-                        </p>
-                        <div className="mt-4 text-center">
-                            <LocalBusinessInfo
-                                variant="inline"
-                                className="text-sm text-black dark:text-white"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            {/* ... */}
+            <FooterNavigation />
+            
+            {/* Quick Navigation */}
+            <QuickNavigation />
+            
+            {/* Analytics */}
             <Analytics />
-            {/* ... */}
             <SpeedInsights />
         </div>
     )
 }
 
-// ProductCard component for displaying product with size dropdown and dynamic price
-function ProductCard({ product }) {
-    // Generate combined options if both flavors and size_options exist
-    let combinedOptions = []
-    if (
-        // Do we have flavors?
-        product.flavors &&
-        // Are there any flavors?
-        product.flavors.length > 0 &&
-        // Do we have size options?
-        product.size_options &&
-        // Are there any size options?
-        product.size_options.length > 0
-    ) {
-        // Combine each flavor with each size option
-        combinedOptions = product.flavors.flatMap((flavor) =>
-            product.size_options.map((size) => ({
-                // Create a label that's the combination of flavor and size
-                label: `${flavor} - ${size}`,
-                // Store the flavor and size for later use
-                flavor,
-                size,
-            }))
-        )
-    }
-
-    // State for combined selection
-    const [selectedCombo, setSelectedCombo] = React.useState(
-        combinedOptions.length > 0 ? combinedOptions[0] : null
-    )
-    // Fallback for only size or only flavor
-    const [selectedSize, setSelectedSize] = React.useState(
-        !combinedOptions.length &&
-            product.size_options &&
-            product.size_options.length > 0
-            ? product.size_options[0]
-            : null
-    )
-    const [selectedFlavor, setSelectedFlavor] = React.useState(
-        !combinedOptions.length && product.flavors && product.flavors.length > 0
-            ? product.flavors[0]
-            : null
-    )
-
-    // Determine price
-    let price = product.price
-    if (combinedOptions.length > 0 && selectedCombo) {
-        // If we have combined options, check if the price is defined for the selected size
-        if (
-            product.prices &&
-            product.prices[selectedCombo.size] !== undefined
-        ) {
-            price = product.prices[selectedCombo.size]
-        }
-    } else if (
-        selectedSize &&
-        product.prices &&
-        product.prices[selectedSize] !== undefined
-    ) {
-        // If we have a selected size, check if the price is defined for that size
-        price = product.prices[selectedSize]
-    } else if (!selectedSize && selectedFlavor && product.price) {
-        // If we have a selected flavor but no selected size, use the default price
-        price = product.price
-    }
-
-    // Determine banner based on selected variant
-    let banner = product.banner
-    let bannerKey = null
-    if (combinedOptions.length > 0 && selectedCombo) {
-        bannerKey = selectedCombo.label
-    } else if (selectedSize) {
-        bannerKey = selectedSize
-    } else if (selectedFlavor) {
-        bannerKey = selectedFlavor
-    }
-    if (bannerKey && product.availability) {
-        if (product.availability[bannerKey]) {
-            banner = product.availability[bannerKey]
-        } else if (selectedCombo && product.availability[selectedCombo.size]) {
-            banner = product.availability[selectedCombo.size]
-        } else if (selectedFlavor && product.availability[selectedFlavor]) {
-            banner = product.availability[selectedFlavor]
-        } else if (selectedSize && product.availability[selectedSize]) {
-            banner = product.availability[selectedSize]
-        }
-    }
-
-    // Render a product card with the given product data
-    // This component is complicated because it needs to handle three different cases:
-    // 1. The product has both flavors and size options
-    // 2. The product has only flavors
-    // 3. The product has only size options
-    // It also needs to dynamically calculate the price based on the selected flavor and size
-    return (
-        <div
-            className="product-card group relative rounded-lg bg-white p-4 shadow dark:bg-gray-700"
-            // This class is for the card shadow effect
-        >
-            {banner && (
-                <div className="product-banner" aria-label={banner}>
-                    {banner}
-                </div>
-            )}
-            <img
-                src={
-                    // If the product has an image, use it
-                    product.image ||
-                    // If the product has an array of images, use the first one
-                    (product.images && product.images[0]) ||
-                    // If the product has no images, use a placeholder image
-                    '/assets/images/placeholder.webp'
-                }
-                alt={product.name}
-                className="h-50 mb-4 w-full rounded-md object-cover"
-                // This class is for the image height and object-fit
-                onError={(e) => {
-                    // If the image fails to load, use a placeholder image
-                    e.target.onerror = null
-                    e.target.src = '/assets/images/placeholder.webp'
-                }}
-            />
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                {product.name}
-            </h3>
-            <p className="mt-1 text-sm font-semibold text-black dark:text-white">
-                {product.category}
-            </p>
-            <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-white">
-                {product.description ||
-                    (product.descriptions && product.descriptions[0])}
-            </p>
-            {/* Combined dropdown for flavor + size */}
-            {combinedOptions.length > 0 && (
-                <div className="mt-2">
-                    <label
-                        htmlFor={`combo-${product.name}`}
-                        className="mb-1 block text-xs font-semibold text-black dark:text-white"
-                    >
-                        Flavor & Size:
-                    </label>
-                    <select
-                        id={`combo-${product.name}`}
-                        className="w-full rounded border border-gray-300 p-2 dark:bg-gray-800 dark:text-white"
-                        value={selectedCombo ? selectedCombo.label : ''}
-                        onChange={(e) => {
-                            // When the user selects a new option, update the selectedCombo state
-                            const combo = combinedOptions.find(
-                                (opt) => opt.label === e.target.value
-                            )
-                            setSelectedCombo(combo)
-                        }}
-                        aria-label="Select flavor and size"
-                    >
-                        {combinedOptions.map((opt) => (
-                            <option key={opt.label} value={opt.label}>
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            )}
-            {/* Size dropdown (if no flavors) */}
-            {!combinedOptions.length &&
-                product.size_options &&
-                product.size_options.length > 0 && (
-                    <div className="mt-2">
-                        <label
-                            htmlFor={`size-${product.name}`}
-                            className="mb-1 block text-xs font-semibold text-black dark:text-white"
-                        >
-                            {/* Use 'Strain' for Vapes & Carts and Other, otherwise 'Size' */}
-                            {['Vapes & Carts', 'Other'].includes(
-                                product.category
-                            )
-                                ? 'Strain:'
-                                : 'Size:'}
-                        </label>
-                        <select
-                            id={`size-${product.name}`}
-                            className="w-full rounded border border-gray-300 p-2 font-semibold dark:bg-gray-800 dark:text-white"
-                            value={selectedSize}
-                            onChange={(e) => setSelectedSize(e.target.value)}
-                            aria-label={
-                                ['Vapes & Carts', 'Other'].includes(
-                                    product.category
-                                )
-                                    ? 'Select strain'
-                                    : 'Select size'
-                            }
-                        >
-                            {product.size_options.map((size) => (
-                                <option key={size} value={size}>
-                                    {size}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                )}
-            {/* Flavor dropdown (if no sizes) */}
-            {!combinedOptions.length &&
-                product.flavors &&
-                product.flavors.length > 0 && (
-                    <div className="mt-2">
-                        <label
-                            htmlFor={`flavor-${product.name}`}
-                            className="mb-1 block text-xs text-gray-600 dark:text-white"
-                        >
-                            Flavor:
-                        </label>
-                        <select
-                            id={`flavor-${product.name}`}
-                            className="w-full rounded border border-gray-300 p-2 dark:bg-gray-800 dark:text-white"
-                            value={selectedFlavor}
-                            onChange={(e) => setSelectedFlavor(e.target.value)}
-                            aria-label="Select flavor"
-                        >
-                            {product.flavors.map((flavor) => (
-                                <option key={flavor} value={flavor}>
-                                    {flavor}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                )}
-            <p className="mt-2 font-medium text-gray-900 dark:text-white">
-                {/* Dynamically calculate the price based on the selected flavor and size */}
-                ${price ? price.toFixed(2) : 'N/A'}
-            </p>
-            <div className="mt-1 flex items-center">
-                {/* Render the rating stars */}
-                {[...Array(5)].map((_, i) => (
-                    <i
-                        key={i}
-                        className={`text-xs ${
-                            i <
-                            Math.floor(
-                                product.rating ||
-                                    (product.ratings && product.ratings[0]) ||
-                                    5
-                            )
-                                ? 'fas fa-star text-yellow-600'
-                                : 'far fa-star text-yellow-600'
-                        }`}
-                        aria-hidden="true"
-                        tabIndex={'-1'}
-                    ></i>
-                ))}
-                <span className="ml-1 text-xs text-gray-700 dark:text-white">
-                    {/* Show the rating number */}(
-                    {product.rating ||
-                        (product.ratings && product.ratings[0]) ||
-                        5}
-                    )
-                </span>
-            </div>
-        </div>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'))
+// Render the app
+const container = document.getElementById('root')
+const root = createRoot(container)
 root.render(<App />)
