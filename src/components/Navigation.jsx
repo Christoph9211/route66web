@@ -47,7 +47,7 @@ function Navigation({ products = [] }) {
                     category: 'Vapes & Carts',
                 },
                 { label: 'Edibles', href: '#edibles', category: 'Edibles' },
-                { label: 'Pre-rolls', href: '#prerolls', category: 'Other' },
+                { label: 'Pre-rolls', href: '#prerolls', category: 'Pre-Rolls' },
             ],
         },
         {

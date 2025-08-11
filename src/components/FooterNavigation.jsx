@@ -35,10 +35,10 @@ function FooterNavigation() {
         {
             title: 'Legal',
             links: [
-                { label: 'Privacy Policy', href: '/src/privacy-policy.html' },
+                { label: 'Privacy Policy', href: '/public/privacy-policy.html' },
                 {
                     label: 'Terms of Service',
-                    href: '/src/terms-of-service.html',
+                    href: '/public/terms-of-service.html',
                 },
                 { label: 'Age Verification', href: '#age-verification' },
                 { label: 'Compliance', href: '#compliance' },
