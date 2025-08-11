@@ -36,7 +36,7 @@ function ProductCard({ product }) {
 
     return (
         <div
-            className={`product-card relative rounded-lg bg-white p-6 shadow-md transition-all duration-300 hover:shadow-lg dark:bg-gray-800 md:w-full lg:w-1/2 xl:w-1/3 min-w-[275px] ${
+            className={`product-card relative min-w-[275px] rounded-lg bg-white p-6 shadow-md transition-all duration-300 hover:shadow-lg md:w-full lg:w-1/2 xl:w-1/3 dark:bg-gray-800 ${
                 isOutOfStock ? 'opacity-75' : ''
             }`}
         >
@@ -267,7 +267,7 @@ function ContactSection() {
     return (
         <section
             id="contact"
-            className="bg-gray-50 py-16 dark:bg-gray-800 flex items-center justify-center"
+            className="flex items-center justify-center bg-gray-50 py-16 dark:bg-gray-800"
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
@@ -278,8 +278,10 @@ function ContactSection() {
                         Have questions? We're here to help!
                     </p>
                 </div>
-                <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
-                    <LocalBusinessInfo />
+                <div className="mt-12 flex justify-center">
+                    <div className="w-full max-w-md">
+                        <LocalBusinessInfo />
+                    </div>
                 </div>
             </div>
         </section>
