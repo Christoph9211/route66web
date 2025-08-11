@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { slugify } from '../utils/slugify'
 
 function SearchNavigation({ products = [] }) {
     const [isOpen, setIsOpen] = useState(false)
@@ -15,13 +16,18 @@ function SearchNavigation({ products = [] }) {
             return
         }
 
-        const filtered = products.filter(product => 
-            product.name.toLowerCase().includes(query.toLowerCase()) ||
-            product.category.toLowerCase().includes(query.toLowerCase()) ||
-            product.size_options.some(size => 
-                size.toLowerCase().includes(query.toLowerCase())
+        const filtered = products
+            .filter(
+                (product) =>
+                    product.name.toLowerCase().includes(query.toLowerCase()) ||
+                    product.category
+                        .toLowerCase()
+                        .includes(query.toLowerCase()) ||
+                    product.size_options.some((size) =>
+                        size.toLowerCase().includes(query.toLowerCase())
+                    )
             )
-        ).slice(0, 8) // Limit to 8 results
+            .slice(0, 8) // Limit to 8 results
 
         setResults(filtered)
         setSelectedIndex(-1)
@@ -35,13 +41,13 @@ function SearchNavigation({ products = [] }) {
             switch (e.key) {
                 case 'ArrowDown':
                     e.preventDefault()
-                    setSelectedIndex(prev => 
+                    setSelectedIndex((prev) =>
                         prev < results.length - 1 ? prev + 1 : prev
                     )
                     break
                 case 'ArrowUp':
                     e.preventDefault()
-                    setSelectedIndex(prev => prev > 0 ? prev - 1 : -1)
+                    setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1))
                     break
                 case 'Enter':
                     e.preventDefault()
@@ -65,19 +71,23 @@ function SearchNavigation({ products = [] }) {
     // Close search when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (searchRef.current && !searchRef.current.contains(event.target)) {
+            if (
+                searchRef.current &&
+                !searchRef.current.contains(event.target)
+            ) {
                 setIsOpen(false)
             }
         }
 
         document.addEventListener('mousedown', handleClickOutside)
-        return () => document.removeEventListener('mousedown', handleClickOutside)
+        return () =>
+            document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
     const handleResultClick = (product) => {
         // Navigate to product or category
         const categoryElement = document.getElementById(
-            product.category.toLowerCase().replace(/\s+/g, '-')
+            slugify(product.category)
         )
         if (categoryElement) {
             categoryElement.scrollIntoView({ behavior: 'smooth' })
@@ -88,16 +98,18 @@ function SearchNavigation({ products = [] }) {
 
     const highlightMatch = (text, query) => {
         if (!query) return text
-        
+
         const regex = new RegExp(`(${query})`, 'gi')
         const parts = text.split(regex)
-        
-        return parts.map((part, index) => 
+
+        return parts.map((part, index) =>
             regex.test(part) ? (
                 <mark key={index} className="bg-yellow-200 dark:bg-yellow-800">
                     {part}
                 </mark>
-            ) : part
+            ) : (
+                part
+            )
         )
     }
 
@@ -115,34 +127,46 @@ function SearchNavigation({ products = [] }) {
 
             {/* Search Overlay */}
             {isOpen && (
-                <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-start justify-center pt-20">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl mx-4">
+                <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 pt-20">
+                    <div className="mx-4 w-full max-w-2xl rounded-lg bg-white shadow-xl dark:bg-gray-800">
                         {/* Search Input */}
-                        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+                        <div className="border-b border-gray-200 p-4 dark:border-gray-700">
                             <div className="relative">
-                                <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true" />
+                                <i
+                                    className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
+                                    aria-hidden="true"
+                                />
                                 <input
                                     type="text"
                                     placeholder="Search products, categories, or sizes..."
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                    className="w-full rounded-lg border border-gray-300 py-3 pl-10 pr-4 focus:border-transparent focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                                     autoFocus
                                 />
                                 <button
                                     onClick={() => setIsOpen(false)}
-                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 transform text-gray-400 hover:text-gray-600"
                                 >
-                                    <i className="fas fa-times" aria-hidden="true" />
+                                    <i
+                                        className="fas fa-times"
+                                        aria-hidden="true"
+                                    />
                                 </button>
                             </div>
                         </div>
 
                         {/* Search Results */}
-                        <div ref={resultsRef} className="max-h-96 overflow-y-auto">
+                        <div
+                            ref={resultsRef}
+                            className="max-h-96 overflow-y-auto"
+                        >
                             {query.length >= 2 && results.length === 0 && (
                                 <div className="p-4 text-center text-gray-500 dark:text-gray-400">
-                                    <i className="fas fa-search text-2xl mb-2" aria-hidden="true" />
+                                    <i
+                                        className="fas fa-search mb-2 text-2xl"
+                                        aria-hidden="true"
+                                    />
                                     <p>No products found for "{query}"</p>
                                 </div>
                             )}
@@ -151,37 +175,61 @@ function SearchNavigation({ products = [] }) {
                                 <button
                                     key={product.name}
                                     onClick={() => handleResultClick(product)}
-                                    className={`w-full text-left p-4 border-b border-gray-100 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700 transition-colors ${
-                                        index === selectedIndex ? 'bg-green-50 dark:bg-green-900' : ''
+                                    className={`w-full border-b border-gray-100 p-4 text-left transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700 ${
+                                        index === selectedIndex
+                                            ? 'bg-green-50 dark:bg-green-900'
+                                            : ''
                                     }`}
                                 >
                                     <div className="flex items-center justify-between">
                                         <div>
                                             <h4 className="font-medium text-gray-900 dark:text-white">
-                                                {highlightMatch(product.name, query)}
+                                                {highlightMatch(
+                                                    product.name,
+                                                    query
+                                                )}
                                             </h4>
                                             <p className="text-sm text-gray-600 dark:text-gray-300">
-                                                {highlightMatch(product.category, query)}
+                                                {highlightMatch(
+                                                    product.category,
+                                                    query
+                                                )}
                                             </p>
-                                            <div className="flex items-center mt-1 text-xs text-gray-500">
-                                                <span>Sizes: {product.size_options.join(', ')}</span>
+                                            <div className="mt-1 flex items-center text-xs text-gray-500">
+                                                <span>
+                                                    Sizes:{' '}
+                                                    {product.size_options.join(
+                                                        ', '
+                                                    )}
+                                                </span>
                                                 {product.thca_percentage && (
                                                     <span className="ml-2">
-                                                        THCa: {product.thca_percentage}%
+                                                        THCa:{' '}
+                                                        {
+                                                            product.thca_percentage
+                                                        }
+                                                        %
                                                     </span>
                                                 )}
                                             </div>
                                         </div>
                                         <div className="text-right">
                                             <div className="text-sm font-medium text-green-600">
-                                                From ${Math.min(...Object.values(product.prices))}
+                                                From $
+                                                {Math.min(
+                                                    ...Object.values(
+                                                        product.prices
+                                                    )
+                                                )}
                                             </div>
                                             {product.banner && (
-                                                <span className={`inline-block px-2 py-1 text-xs rounded ${
-                                                    product.banner === 'New' 
-                                                        ? 'bg-green-100 text-green-800' 
-                                                        : 'bg-red-100 text-red-800'
-                                                }`}>
+                                                <span
+                                                    className={`inline-block rounded px-2 py-1 text-xs ${
+                                                        product.banner === 'New'
+                                                            ? 'bg-green-100 text-green-800'
+                                                            : 'bg-red-100 text-red-800'
+                                                    }`}
+                                                >
                                                     {product.banner}
                                                 </span>
                                             )}
@@ -196,11 +244,18 @@ function SearchNavigation({ products = [] }) {
                             <div className="p-4 text-sm text-gray-500 dark:text-gray-400">
                                 <p className="mb-2">Try searching for:</p>
                                 <div className="flex flex-wrap gap-2">
-                                    {['Flower', 'Concentrates', 'Vapes', 'Edibles', '1 gram', 'Snowcaps'].map(term => (
+                                    {[
+                                        'Flower',
+                                        'Concentrates',
+                                        'Vapes',
+                                        'Edibles',
+                                        '1 gram',
+                                        'Snowcaps',
+                                    ].map((term) => (
                                         <button
                                             key={term}
                                             onClick={() => setQuery(term)}
-                                            className="px-2 py-1 bg-gray-100 rounded text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                                            className="rounded bg-gray-100 px-2 py-1 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
                                         >
                                             {term}
                                         </button>

@@ -1,18 +1,22 @@
 import React from 'react'
 import LocalBusinessInfo from './LocalBusinessInfo'
+import { slugify } from '../utils/slugify'
 
 function FooterNavigation() {
     const footerSections = [
         {
             title: 'Products',
             links: [
-                { label: 'Hemp Flower', href: '#flower' },
-                { label: 'Concentrates', href: '#concentrates' },
-                { label: 'Diamonds & Sauce', href: '#diamonds' },
-                { label: 'Vapes & Cartridges', href: '#vapes' },
-                { label: 'Edibles', href: '#edibles' },
-                { label: 'Pre-rolls', href: '#prerolls' },
-            ],
+                { label: 'Hemp Flower', category: 'Flower' },
+                { label: 'Concentrates', category: 'Concentrates' },
+                { label: 'Diamonds & Sauce', category: 'Diamonds & Sauce' },
+                { label: 'Vapes & Carts', category: 'Vapes & Carts' },
+                { label: 'Edibles', category: 'Edibles' },
+                { label: 'Pre-rolls', category: 'Pre-Rolls' },
+            ].map(({ label, category }) => ({
+                label,
+                href: `#${slugify(category)}`,
+            })),
         },
         {
             title: 'Company',
@@ -35,7 +39,10 @@ function FooterNavigation() {
         {
             title: 'Legal',
             links: [
-                { label: 'Privacy Policy', href: '/public/privacy-policy.html' },
+                {
+                    label: 'Privacy Policy',
+                    href: '/public/privacy-policy.html',
+                },
                 {
                     label: 'Terms of Service',
                     href: '/public/terms-of-service.html',
