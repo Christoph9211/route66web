@@ -13,6 +13,10 @@ import LocationContent from './src/components/LocationContent'
 import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration'
 import LocalBusinessInfo from './src/components/LocalBusinessInfo'
 import StructuredData from './src/components/StructuredData'
+import CartDrawer from './src/components/CartDrawer'
+import CartPage from './src/components/CartPage'
+import { CartProvider } from './src/hooks/useCart'
+import { initCartButtonListener } from './src/utils/cartEvents'
 
 // Import hooks
 import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
@@ -107,13 +111,20 @@ function ProductCard({ product }) {
                     ${currentPrice?.toFixed(2) || 'N/A'}
                 </div>
                 <button
-                    className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                    className={`add-to-cart rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                         isOutOfStock
                             ? 'cursor-not-allowed bg-gray-300 text-gray-600 hover:text-red-600'
                             : 'bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
                     }`}
                     disabled={isOutOfStock}
                     aria-label={`Add ${product.name} to cart`}
+                    data-product-id={slugify(product.name)}
+                    data-variant-id={`${slugify(product.name)}_${slugify(selectedSize)}`}
+                    data-name={product.name}
+                    data-price={currentPrice?.toFixed(2) || 0}
+                    data-currency="USD"
+                    data-image=""
+                    data-available={!isOutOfStock}
                 >
                     {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
                 </button>
@@ -318,6 +329,10 @@ function App() {
         loadProducts()
     }, [])
 
+    useEffect(() => {
+        initCartButtonListener()
+    }, [])
+
     // Group products by category
     const productsByCategory = products.reduce((acc, product) => {
         const category = product.category
@@ -446,6 +461,9 @@ function App() {
             {/* Quick Navigation */}
             <QuickNavigation />
 
+            <CartDrawer />
+            <CartPage />
+
             {/* Analytics */}
             <Analytics />
             <SpeedInsights />
@@ -456,4 +474,8 @@ function App() {
 // Render the app
 const container = document.getElementById('root')
 const root = createRoot(container)
-root.render(<App />)
+root.render(
+    <CartProvider>
+        <App />
+    </CartProvider>
+)
