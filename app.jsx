@@ -13,6 +13,8 @@ import LocationContent from './src/components/LocationContent'
 import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration'
 import LocalBusinessInfo from './src/components/LocalBusinessInfo'
 import StructuredData from './src/components/StructuredData'
+import CartPage from './src/components/CartPage'
+import { CartProvider } from './src/hooks/useCart'
 
 // Import hooks
 import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
@@ -20,6 +22,25 @@ import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
 // Import styles
 import './src/style.css'
 import { slugify } from './src/utils/slugify'
+
+// Delegate click events for add-to-cart buttons
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.add-to-cart')
+    if (!btn) return
+    window.dispatchEvent(
+        new CustomEvent('cart:add', {
+            detail: {
+                productId: btn.dataset.productId,
+                variantId: btn.dataset.variantId,
+                name: btn.dataset.name,
+                image: btn.dataset.image,
+                unitPrice: parseFloat(btn.dataset.price),
+                currency: btn.dataset.currency,
+                qty: 1,
+            },
+        })
+    )
+})
 
 function ProductCard({ product }) {
     const [selectedSize, setSelectedSize] = useState(product.size_options[0])
@@ -107,13 +128,20 @@ function ProductCard({ product }) {
                     ${currentPrice?.toFixed(2) || 'N/A'}
                 </div>
                 <button
-                    className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                    className={`add-to-cart rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                         isOutOfStock
                             ? 'cursor-not-allowed bg-gray-300 text-gray-600 hover:text-red-600'
                             : 'bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
                     }`}
                     disabled={isOutOfStock}
                     aria-label={`Add ${product.name} to cart`}
+                    data-product-id={product.id}
+                    data-variant-id={`${product.id}_${selectedSize}`}
+                    data-name={product.name}
+                    data-price={currentPrice?.toFixed(2)}
+                    data-currency="USD"
+                    data-image={product.image}
+                    data-available={!isOutOfStock}
                 >
                     {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
                 </button>
@@ -454,6 +482,17 @@ function App() {
 }
 
 // Render the app
+function RootComponent() {
+    if (window.location.pathname === '/cart') {
+        return <CartPage />
+    }
+    return <App />
+}
+
 const container = document.getElementById('root')
 const root = createRoot(container)
-root.render(<App />)
+root.render(
+    <CartProvider>
+        <RootComponent />
+    </CartProvider>
+)
