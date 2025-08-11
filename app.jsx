@@ -19,6 +19,7 @@ import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
 
 // Import styles
 import './src/style.css'
+import { slugify } from './src/utils/slugify'
 
 function ProductCard({ product }) {
     const [selectedSize, setSelectedSize] = useState(product.size_options[0])
@@ -416,9 +417,7 @@ function App() {
                                     key={category}
                                     title={category}
                                     products={categoryProducts}
-                                    categoryId={category
-                                        .toLowerCase()
-                                        .replace(/\s+/g, '-')}
+                                    categoryId={slugify(category)}
                                 />
                             )
                         )}

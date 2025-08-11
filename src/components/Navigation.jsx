@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import LocalBusinessInfo from './LocalBusinessInfo'
 import SearchNavigation from './SearchNavigation'
+import { slugify } from '../utils/slugify'
 
 function Navigation({ products = [] }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -30,24 +31,12 @@ function Navigation({ products = [] }) {
             href: '#products',
             icon: 'fas fa-cannabis',
             submenu: [
-                { label: 'Flower', href: '#flower', category: 'Flower' },
-                {
-                    label: 'Concentrates',
-                    href: '#concentrates',
-                    category: 'Concentrates',
-                },
-                {
-                    label: 'Diamonds & Sauce',
-                    href: '#diamonds',
-                    category: 'Diamonds & Sauce',
-                },
-                {
-                    label: 'Vapes & Carts',
-                    href: '#vapes',
-                    category: 'Vapes & Carts',
-                },
-                { label: 'Edibles', href: '#edibles', category: 'Edibles' },
-                { label: 'Pre-rolls', href: '#prerolls', category: 'Pre-Rolls' },
+                { label: 'Flower', category: 'Flower' },
+                { label: 'Concentrates', category: 'Concentrates' },
+                { label: 'Diamonds & Sauce', category: 'Diamonds & Sauce' },
+                { label: 'Vapes & Carts', category: 'Vapes & Carts' },
+                { label: 'Edibles', category: 'Edibles' },
+                { label: 'Pre-rolls', category: 'Pre-Rolls' },
             ],
         },
         {
@@ -191,27 +180,36 @@ function Navigation({ products = [] }) {
                                                     role="none"
                                                 >
                                                     {item.submenu.map(
-                                                        (subItem) => (
-                                                            <a
-                                                                key={
-                                                                    subItem.label
-                                                                }
-                                                                href={
-                                                                    subItem.href
-                                                                }
-                                                                onClick={(e) =>
-                                                                    handleNavClick(
-                                                                        e,
-                                                                        subItem.href,
-                                                                        item.id
-                                                                    )
-                                                                }
-                                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400"
-                                                                role="menuitem"
-                                                            >
-                                                                {subItem.label}
-                                                            </a>
-                                                        )
+                                                        (subItem) => {
+                                                            const subHref = `#${slugify(
+                                                                subItem.category
+                                                            )}`
+                                                            return (
+                                                                <a
+                                                                    key={
+                                                                        subItem.label
+                                                                    }
+                                                                    href={
+                                                                        subHref
+                                                                    }
+                                                                    onClick={(
+                                                                        e
+                                                                    ) =>
+                                                                        handleNavClick(
+                                                                            e,
+                                                                            subHref,
+                                                                            item.id
+                                                                        )
+                                                                    }
+                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400"
+                                                                    role="menuitem"
+                                                                >
+                                                                    {
+                                                                        subItem.label
+                                                                    }
+                                                                </a>
+                                                            )
+                                                        }
                                                     )}
                                                 </div>
                                             </div>
@@ -305,23 +303,28 @@ function Navigation({ products = [] }) {
                                             role="menu"
                                             aria-label={`${item.label} submenu`}
                                         >
-                                            {item.submenu.map((subItem) => (
-                                                <a
-                                                    key={subItem.label}
-                                                    href={subItem.href}
-                                                    onClick={(e) =>
-                                                        handleNavClick(
-                                                            e,
-                                                            subItem.href,
-                                                            item.id
-                                                        )
-                                                    }
-                                                    className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
-                                                    role="menuitem"
-                                                >
-                                                    {subItem.label}
-                                                </a>
-                                            ))}
+                                            {item.submenu.map((subItem) => {
+                                                const subHref = `#${slugify(
+                                                    subItem.category
+                                                )}`
+                                                return (
+                                                    <a
+                                                        key={subItem.label}
+                                                        href={subHref}
+                                                        onClick={(e) =>
+                                                            handleNavClick(
+                                                                e,
+                                                                subHref,
+                                                                item.id
+                                                            )
+                                                        }
+                                                        className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
+                                                        role="menuitem"
+                                                    >
+                                                        {subItem.label}
+                                                    </a>
+                                                )
+                                            })}
                                         </div>
                                     )}
                                 </div>
