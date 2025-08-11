@@ -13,3 +13,6 @@ node_modules/
 instructions.txt
 dist/
 public/products/json_gen_old.html
+test-results/
+playwright-report/data
+
