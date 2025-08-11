@@ -110,8 +110,30 @@ export function CartProvider({ children }) {
 
     const openCart = () => setIsOpen(true)
     const closeCart = () => setIsOpen(false)
-    const openCartPage = () => setIsPageOpen(true)
-    const closeCartPage = () => setIsPageOpen(false)
+
+    const openCartPage = () => {
+        setIsOpen(false)
+        setIsPageOpen(true)
+        window.history.pushState({}, '', '/cart')
+    }
+
+    const closeCartPage = () => {
+        setIsPageOpen(false)
+        if (window.location.pathname === '/cart') {
+            window.history.back()
+        }
+    }
+
+    useEffect(() => {
+        const handleRoute = () => {
+            const isCart = window.location.pathname === '/cart'
+            setIsPageOpen(isCart)
+            if (isCart) setIsOpen(false)
+        }
+        window.addEventListener('popstate', handleRoute)
+        handleRoute()
+        return () => window.removeEventListener('popstate', handleRoute)
+    }, [])
 
     return (
         <CartContext.Provider

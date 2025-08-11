@@ -125,12 +125,16 @@ export default function CartDrawer() {
                             <span>Subtotal</span>
                             <span>${cart.subtotal.toFixed(2)}</span>
                         </div>
-                        <button
-                            className="w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
-                            onClick={openCartPage}
+                        <a
+                            href="/cart"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                openCartPage()
+                            }}
+                            className="block w-full rounded bg-green-600 px-4 py-2 text-center text-white hover:bg-green-700"
                         >
                             View Cart
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
