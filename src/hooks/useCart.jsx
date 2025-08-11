@@ -11,12 +11,19 @@ const CartContext = createContext()
 function getInitialCart() {
     try {
         const stored = localStorage.getItem('cart')
-        return stored
-            ? JSON.parse(stored)
-            : { items: [], subtotal: 0, total: 0 }
+        if (stored) {
+            const parsed = JSON.parse(stored)
+            const items = Array.isArray(parsed.items) ? parsed.items : []
+            const subtotal = items.reduce(
+                (sum, item) => sum + item.unitPrice * item.qty,
+                0
+            )
+            return { items, subtotal, total: subtotal }
+        }
     } catch {
-        return { items: [], subtotal: 0, total: 0 }
+        /* ignore parse errors */
     }
+    return { items: [], subtotal: 0, total: 0 }
 }
 
 export function CartProvider({ children }) {

@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import { useCart } from '../hooks/useCart'
 
 export default function CartDrawer() {
-    const { cart, isOpen, closeCart } = useCart()
+    const { cart, isOpen, closeCart } = useCart() || {}
+    const safeCart = cart || { items: [], subtotal: 0 }
     const ref = useRef(null)
 
     useEffect(() => {
@@ -19,7 +20,7 @@ export default function CartDrawer() {
         }
     }, [isOpen])
 
-    const itemCount = cart.items.reduce((sum, i) => sum + i.qty, 0)
+    const itemCount = safeCart.items.reduce((sum, i) => sum + i.qty, 0)
 
     return (
         <div
@@ -47,12 +48,12 @@ export default function CartDrawer() {
                 </div>
                 <div className="flex h-full min-h-0 flex-col">
                     <ul className="flex-1 overflow-y-auto p-4">
-                        {cart.items.length === 0 && (
+                        {safeCart.items.length === 0 && (
                             <li className="text-center text-sm">
                                 Your cart is empty.
                             </li>
                         )}
-                        {cart.items.map((item) => (
+                        {safeCart.items.map((item) => (
                             <li
                                 key={item.variantId}
                                 className="mb-4 flex items-center justify-between"
@@ -123,7 +124,7 @@ export default function CartDrawer() {
                     <div className="flex-shrink-0 border-t p-4">
                         <div className="mb-2 flex justify-between">
                             <span>Subtotal</span>
-                            <span>${cart.subtotal.toFixed(2)}</span>
+                            <span>${safeCart.subtotal.toFixed(2)}</span>
                         </div>
                         <button
                             className="w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
