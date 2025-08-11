@@ -119,18 +119,14 @@ export default function CartDrawer() {
                                 </div>
                             </li>
                         ))}
+                        <button type="button" className="w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700" onClick={openCartPage}> View Cart </button>
                     </ul>
                     <div className="border-t p-4">
                         <div className="mb-2 flex justify-between">
                             <span>Subtotal</span>
                             <span>${cart.subtotal.toFixed(2)}</span>
                         </div>
-                        <button
-                            className="w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
-                            onClick={openCartPage}
-                        >
-                            View Cart
-                        </button>
+                        
                     </div>
                 </div>
             </div>
