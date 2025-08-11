@@ -13,3 +13,8 @@ node_modules/
 instructions.txt
 dist/
 public/products/json_gen_old.html
+test-results/*.json
+test-results/
+test-results/tests-colorContrast--src-p-65bfe-–-light-WCAG-contrast-audit/error-context.md
+test-results/.last-run.json
+a11y-report.json
