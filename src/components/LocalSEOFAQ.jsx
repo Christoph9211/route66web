@@ -40,12 +40,12 @@ function LocalSEOFAQ() {
         <div className="bg-gray-50 py-12 dark:bg-gray-900">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 text-center">
-                    <h2 className="text-2xl font-semibold uppercase tracking-wide text-green-600 dark:text-green-400">
+                    <h2 className="text-base font-semibold uppercase tracking-wide text-green-600 dark:text-green-400 mb-2">
                         Frequently Asked Questions
                     </h2>
-                    <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight sm:text-4xl dark:text-white">
+                    <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl dark:text-white">
                         About Route 66 Hemp in St Robert
-                    </p>
+                    </h1>
                 </div>
 
                 <div className="space-y-4">
@@ -53,16 +53,19 @@ function LocalSEOFAQ() {
                         <div
                             key={index}
                             className="rounded-lg bg-white shadow-md dark:bg-gray-800"
+                            role="region"
+                            aria-labelledby={`faq-question-${index}`}
                         >
                             <button
                                 className="flex w-full items-center justify-between rounded-lg px-6 py-4 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
                                 onClick={() => toggleFAQ(index)}
                                 aria-expanded={openIndex === index}
                                 aria-controls={`faq-answer-${index}`}
+                                id={`faq-question-${index}`}
                             >
-                                <span className="pr-4 font-medium dark:text-white">
+                                <h3 className="pr-4 font-semibold text-lg dark:text-white">
                                     {faq.question}
-                                </span>
+                                </h3>
                                 <i
                                     className={`fas ${
                                         openIndex === index
@@ -79,7 +82,7 @@ function LocalSEOFAQ() {
                                     role="region"
                                     aria-labelledby={`faq-question-${index}`}
                                 >
-                                    <p className="text-gray-700 dark:text-white">
+                                    <p className="text-gray-700 dark:text-gray-100 leading-relaxed">
                                         {faq.answer}
                                     </p>
                                 </div>

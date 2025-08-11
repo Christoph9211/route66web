@@ -25,15 +25,15 @@ function LocationContent() {
         <div className="bg-gray-50 py-12 dark:bg-gray-900">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 lg:text-center">
-                    <h2 className="dark:text-secondary text-base font-semibold uppercase tracking-wide text-green-300">
+                    <p className="text-base font-semibold uppercase tracking-wide text-green-600 dark:text-green-400 mb-2">
                         Serving {locationData?.city || 'our area'} & Surrounding
                         Areas
-                    </h2>
-                    <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight sm:text-4xl dark:text-white">
+                    </p>
+                    <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl dark:text-white mb-4">
                         Your Local Hemp Store in{' '}
                         {locationData?.region || 'your region'}
-                    </p>
-                    <p className="mt-4 max-w-2xl text-xl text-white lg:mx-auto dark:text-white">
+                    </h2>
+                    <p className="max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-gray-200 leading-relaxed">
                         Proudly serving the {locationData?.city || 'community'},{' '}
                         {locationData?.state || 'state'} community with premium
                         hemp products since 2025.
@@ -42,14 +42,14 @@ function LocationContent() {
 
                 <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
                     <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
-                        <h3 className="mb-4 text-xl font-bold dark:text-white">
+                        <h3 className="mb-4 text-xl font-semibold dark:text-white">
                             <i
                                 className="fas fa-map-marked-alt mr-2 text-green-600"
                                 aria-hidden="true"
                             />
                             Areas We Serve
                         </h3>
-                        <p className="mb-4 text-gray-700 dark:text-white">
+                        <p className="mb-4 text-gray-700 dark:text-gray-200 leading-relaxed">
                             Located conveniently on State Highway Z in{' '}
                             {locationData?.city || 'your city'}, we serve
                             customers throughout{' '}
@@ -61,7 +61,7 @@ function LocationContent() {
                             {locationData?.nearbyAreas?.map((area) => (
                                 <div
                                     key={area}
-                                    className="flex items-center text-sm text-gray-600 dark:text-white"
+                                    className="flex items-center text-sm text-gray-600 dark:text-gray-300"
                                 >
                                     <i
                                         className="fas fa-check-circle mr-2 text-xs text-green-600"
@@ -70,7 +70,7 @@ function LocationContent() {
                                     {area}
                                 </div>
                             )) || (
-                                <p className="text-gray-700 dark:text-white">
+                                <p className="text-gray-700 dark:text-gray-200">
                                     No nearby areas available.
                                 </p>
                             )}
@@ -78,14 +78,14 @@ function LocationContent() {
                     </div>
 
                     <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
-                        <h3 className="mb-4 text-xl font-bold dark:text-white">
+                        <h3 className="mb-4 text-xl font-semibold dark:text-white">
                             <i
                                 className="fas fa-landmark mr-2 text-green-600"
                                 aria-hidden="true"
                             />
                             Near Local Landmarks
                         </h3>
-                        <p className="mb-4 text-gray-700 dark:text-white">
+                        <p className="mb-4 text-gray-700 dark:text-gray-200 leading-relaxed">
                             Find us easily near these well-known{' '}
                             {locationData?.city || 'city'} and{' '}
                             {locationData?.region || 'region'} landmarks:
@@ -94,7 +94,7 @@ function LocationContent() {
                             {locationData?.landmarks?.map((landmark) => (
                                 <div
                                     key={landmark}
-                                    className="flex items-center text-sm text-gray-600 dark:text-white"
+                                    className="flex items-center text-sm text-gray-600 dark:text-gray-300"
                                 >
                                     <i
                                         className="fas fa-map-pin mr-2 text-xs text-green-600"
@@ -103,7 +103,7 @@ function LocationContent() {
                                     {landmark}
                                 </div>
                             )) || (
-                                <p className="text-gray-700 dark:text-white">
+                                <p className="text-gray-700 dark:text-gray-200">
                                     No landmarks available.
                                 </p>
                             )}
@@ -112,7 +112,7 @@ function LocationContent() {
                 </div>
 
                 <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-gray-800">
-                    <h3 className="mb-6 text-center text-2xl font-bold dark:text-white">
+                    <h3 className="mb-6 text-center text-2xl font-semibold dark:text-white">
                         Why Choose Route 66 Hemp in{' '}
                         {locationData?.city || 'our city'}?
                     </h3>
@@ -124,10 +124,10 @@ function LocationContent() {
                                     aria-hidden="true"
                                 />
                             </div>
-                            <h4 className="mb-2 text-lg font-semibold dark:text-white">
+                            <h4 className="mb-2 text-lg font-medium dark:text-white">
                                 Local Expertise
                             </h4>
-                            <p className="text-sm text-gray-700 dark:text-white">
+                            <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
                                 As a locally-owned business in{' '}
                                 {locationData?.city || 'our city'}, we
                                 understand our community's needs and
@@ -141,10 +141,10 @@ function LocationContent() {
                                     aria-hidden="true"
                                 />
                             </div>
-                            <h4 className="mb-2 text-lg font-semibold dark:text-white">
+                            <h4 className="mb-2 text-lg font-medium dark:text-white">
                                 Convenient Location
                             </h4>
-                            <p className="text-sm text-gray-700 dark:text-white">
+                            <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
                                 Easy access from Fort Leonard Wood, Waynesville,
                                 and throughout{' '}
                                 {locationData?.county || 'our county'}.
@@ -157,10 +157,10 @@ function LocationContent() {
                                     aria-hidden="true"
                                 />
                             </div>
-                            <h4 className="mb-2 text-lg font-semibold dark:text-white">
+                            <h4 className="mb-2 text-lg font-medium dark:text-white">
                                 Community Focused
                             </h4>
-                            <p className="text-sm text-gray-700 dark:text-white">
+                            <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
                                 Committed to supporting the{' '}
                                 {locationData?.city || 'our city'} community
                                 with quality products and service.

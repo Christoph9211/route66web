@@ -335,10 +335,32 @@ function App() {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [isDyslexiaFriendly, setIsDyslexiaFriendly] = useState(false)
 
     // Use navigation hooks for enhanced UX
     const { activeSection } = useNavigation()
     useKeyboardNavigation()
+
+    // Check for dyslexia-friendly preference
+    useEffect(() => {
+        const dyslexiaPreference = localStorage.getItem('dyslexia-friendly')
+        if (dyslexiaPreference === 'true') {
+            setIsDyslexiaFriendly(true)
+            document.body.classList.add('dyslexia-friendly')
+        }
+    }, [])
+
+    const toggleDyslexiaMode = () => {
+        const newMode = !isDyslexiaFriendly
+        setIsDyslexiaFriendly(newMode)
+        localStorage.setItem('dyslexia-friendly', newMode.toString())
+        
+        if (newMode) {
+            document.body.classList.add('dyslexia-friendly')
+        } else {
+            document.body.classList.remove('dyslexia-friendly')
+        }
+    }
 
     useEffect(() => {
         const loadProducts = async () => {
@@ -427,12 +449,33 @@ function App() {
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
             {/* Structured Data for SEO */}
             <StructuredData />
+            
+            {/* Skip Link for Screen Readers */}
+            <a href="#main-content" className="skip-link">
+                Skip to main content
+            </a>
+            
+            {/* Accessibility Controls */}
+            <div className="fixed top-20 right-4 z-40 flex flex-col space-y-2">
+                <button
+                    onClick={toggleDyslexiaMode}
+                    className={`rounded-full p-3 shadow-lg transition-colors ${
+                        isDyslexiaFriendly
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300'
+                    }`}
+                    aria-label={`${isDyslexiaFriendly ? 'Disable' : 'Enable'} dyslexia-friendly mode`}
+                    title={`${isDyslexiaFriendly ? 'Disable' : 'Enable'} dyslexia-friendly reading`}
+                >
+                    <i className="fas fa-font text-sm" aria-hidden="true" />
+                </button>
+            </div>
 
             {/* Navigation */}
             <Navigation products={products} />
 
             {/* Main Content */}
-            <main>
+            <main id="main-content" role="main">
                 {/* Hero Section */}
                 <HeroSection />
 
