@@ -1,139 +1,89 @@
 @import 'tailwindcss';
 
-/* Typography and Readability Improvements */
 :root {
-    /* Color System - Light Mode */
-    --color-primary: #059669;
-    --color-primary-hover: #047857;
-    --color-primary-light: #10b981;
-    --color-secondary: #6b7280;
-    --color-accent: #3b82f6;
-    
-    /* Background Colors */
-    --color-bg-primary: #ffffff;
-    --color-bg-secondary: #f9fafb;
-    --color-bg-tertiary: #f3f4f6;
-    --color-bg-overlay: rgba(0, 0, 0, 0.5);
-    
-    /* Text Colors */
-    --color-text-primary: #111827;
-    --color-text-secondary: #4b5563;
-    --color-text-tertiary: #6b7280;
+    --color-primary: #007bff;
+    --color-primary-hover: #0056b3;
+    --color-primary-light: #66b2ff;
+    --color-secondary: #6c757d;
+    --color-accent: #17a2b8;
+
+    --color-bg-primary: #f8f9fa;
+    --color-bg-secondary: #e9ecef;
+    --color-bg-tertiary: #dee2e6;
+    --color-bg-overlay: rgba(0, 0, 0, 0.1);
+
+    --color-text-primary: #212529;
+    --color-text-secondary: #495057;
+    --color-text-tertiary: #6c757d;
     --color-text-inverse: #ffffff;
-    
-    /* Border Colors */
-    --color-border-primary: #d1d5db;
-    --color-border-secondary: #e5e7eb;
-    --color-border-focus: #059669;
-    
-    /* Status Colors */
-    --color-success: #10b981;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
-    --color-info: #3b82f6;
-    
-    /* Shadow Colors */
+
+    --color-border-primary: #ced4da;
+    --color-border-secondary: #adb5bd;
+    --color-border-focus: #007bff;
+
+    --color-success: #28a745;
+    --color-warning: #ffc107;
+    --color-error: #dc3545;
+    --color-info: #17a2b8;
+
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    
-    /* Typography Variables */
+
     --font-size-base: 16px;
     --line-height-base: 1.6;
     --line-height-heading: 1.3;
     --letter-spacing-normal: 0.02em;
     --letter-spacing-wide: 0.05em;
     --word-spacing-normal: 0.1em;
-    
-    /* Transition Variables */
+
     --transition-fast: 0.15s ease-in-out;
     --transition-normal: 0.3s ease-in-out;
     --transition-slow: 0.5s ease-in-out;
 }
 
-/* Dark Mode Color Variables */
-[data-theme="dark"] {
-    /* Primary Colors - Adjusted for dark mode */
-    --color-primary: #10b981;
-    --color-primary-hover: #34d399;
-    --color-primary-light: #6ee7b7;
-    --color-secondary: #9ca3af;
-    --color-accent: #60a5fa;
-    
-    /* Background Colors */
-    --color-bg-primary: #111827;
-    --color-bg-secondary: #1f2937;
-    --color-bg-tertiary: #374151;
-    --color-bg-overlay: rgba(0, 0, 0, 0.75);
-    
-    /* Text Colors */
-    --color-text-primary: #f9fafb;
-    --color-text-secondary: #d1d5db;
-    --color-text-tertiary: #9ca3af;
-    --color-text-inverse: #111827;
-    
-    /* Border Colors */
-    --color-border-primary: #4b5563;
-    --color-border-secondary: #374151;
-    --color-border-focus: #10b981;
-    
-    /* Status Colors - Adjusted for dark mode */
-    --color-success: #34d399;
-    --color-warning: #fbbf24;
-    --color-error: #f87171;
-    --color-info: #60a5fa;
-    
-    /* Shadow Colors - Darker shadows for dark mode */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
-}
-
-/* Automatic dark mode based on system preference */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        /* Primary Colors */
         --color-primary: #10b981;
         --color-primary-hover: #34d399;
         --color-primary-light: #6ee7b7;
         --color-secondary: #9ca3af;
         --color-accent: #60a5fa;
-        
-        /* Background Colors */
+
         --color-bg-primary: #111827;
         --color-bg-secondary: #1f2937;
         --color-bg-tertiary: #374151;
         --color-bg-overlay: rgba(0, 0, 0, 0.75);
-        
-        /* Text Colors */
+
         --color-text-primary: #f9fafb;
         --color-text-secondary: #d1d5db;
         --color-text-tertiary: #9ca3af;
         --color-text-inverse: #111827;
-        
-        /* Border Colors */
+
         --color-border-primary: #4b5563;
         --color-border-secondary: #374151;
         --color-border-focus: #10b981;
-        
-        /* Status Colors */
+
         --color-success: #34d399;
         --color-warning: #fbbf24;
         --color-error: #f87171;
         --color-info: #60a5fa;
-        
-        /* Shadow Colors */
+
         --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
         --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
     }
 }
 
-/* Base typography settings for better readability */
+* {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: var(--transition-fast);
+    transition-timing-function: ease-in-out;
+}
+
 html {
     font-size: var(--font-size-base);
     scroll-behavior: smooth;
-    transition: var(--transition-normal);
 }
 
 body {
@@ -147,10 +97,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
-    transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Heading hierarchy with proper spacing and contrast */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', 'Inter', sans-serif;
     font-weight: 700;
@@ -159,7 +107,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 0.75em;
     color: var(--color-text-primary);
-    transition: color var(--transition-normal);
 }
 
 h1 {
@@ -206,14 +153,12 @@ h6 {
     letter-spacing: var(--letter-spacing-wide);
 }
 
-/* Paragraph and text spacing */
 p {
     margin-bottom: 1.25rem;
-    max-width: 70ch; /* Optimal reading width */
+    max-width: 70ch;
     line-height: 1.7;
 }
 
-/* Lists with proper spacing */
 ul, ol {
     margin-bottom: 1.25rem;
     padding-left: 1.5rem;
@@ -224,13 +169,11 @@ li {
     line-height: 1.6;
 }
 
-/* Links with better contrast and focus states */
 a {
     color: var(--color-primary);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
-    transition: all var(--transition-fast);
 }
 
 a:hover {
@@ -245,132 +188,6 @@ a:focus {
     background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
-/* Dark Mode Toggle Button Styles */
-.theme-toggle {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 1px solid var(--color-border-primary);
-    border-radius: 0.5rem;
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text-primary);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    overflow: hidden;
-}
-
-.theme-toggle:hover {
-    background-color: var(--color-bg-tertiary);
-    border-color: var(--color-primary);
-    transform: scale(1.05);
-}
-
-.theme-toggle:focus {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-}
-
-.theme-toggle:active {
-    transform: scale(0.95);
-}
-
-/* Theme toggle icons */
-.theme-toggle .icon {
-    position: absolute;
-    transition: all var(--transition-normal);
-    font-size: 1rem;
-}
-
-.theme-toggle .sun-icon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-}
-
-.theme-toggle .moon-icon {
-    opacity: 0;
-    transform: rotate(180deg) scale(0.5);
-}
-
-[data-theme="dark"] .theme-toggle .sun-icon {
-    opacity: 0;
-    transform: rotate(-180deg) scale(0.5);
-}
-
-[data-theme="dark"] .theme-toggle .moon-icon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-}
-
-/* Smooth transitions for all theme-aware elements */
-* {
-    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
-    transition-duration: var(--transition-fast);
-    transition-timing-function: ease-in-out;
-}
-
-/* Dyslexia-friendly improvements */
-.dyslexia-friendly {
-    font-family: 'OpenDyslexic', 'Comic Sans MS', cursive, sans-serif;
-    letter-spacing: 0.12em;
-    word-spacing: 0.16em;
-    line-height: 1.8;
-}
-
-.dyslexia-friendly p {
-    text-align: left;
-    margin-bottom: 1.5rem;
-}
-
-.dyslexia-friendly h1, 
-.dyslexia-friendly h2, 
-.dyslexia-friendly h3, 
-.dyslexia-friendly h4, 
-.dyslexia-friendly h5, 
-.dyslexia-friendly h6 {
-    font-weight: 600; /* Slightly lighter for dyslexia */
-    letter-spacing: 0.08em;
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    :root {
-        --color-bg-primary: #ffffff;
-        --color-text-primary: #000000;
-        --color-primary: #0066cc;
-        --color-border-primary: #000000;
-    }
-    
-    [data-theme="dark"] {
-        --color-bg-primary: #000000;
-        --color-text-primary: #ffffff;
-        --color-primary: #66b3ff;
-        --color-border-primary: #ffffff;
-    }
-    
-    a {
-        font-weight: 600;
-    }
-    
-    button, .btn {
-        border: 2px solid currentColor;
-    }
-}
-
-/* Text selection improvements */
-::selection {
-    background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
-    color: inherit;
-}
-
-::-moz-selection {
-    background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
-    color: inherit;
-}
-
-/* Skip link for screen readers */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -402,179 +219,3 @@ a:focus {
     outline-offset: 2px;
 }
 
-/* Custom styles */
-.product-card {
-    transition:
-        transform 0.3s,
-        box-shadow 0.3s, background-color var(--transition-normal);
-}
-/* Small banner that can appear in the corner of a product card */
-.product-banner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0.25rem 0.5rem;
-    background-color: var(--color-bg-overlay);
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-bottom-right-radius: 0.25rem;
-}
-/* .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-} */
-
-/* Custom cannabis leaf loader */
-.leaf-loader {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    margin: 0 auto;
-    border: 4px solid var(--color-border-secondary);
-    border-left-color: var(--color-primary);
-    border-radius: 50%;
-}
-
-/* Loader animation */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Focus styles for accessibility */
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-    transition: outline-color var(--transition-fast);
-}
-
-/* Enhanced focus styles for navigation elements */
-nav a:focus,
-nav button:focus {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-    border-radius: 0.375rem;
-}
-
-/* Improved hover transitions */
-.product-card {
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal), opacity var(--transition-fast), background-color var(--transition-normal);
-}
-
-.product-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-/* Navigation hover effects */
-nav a,
-nav button {
-    transition: all var(--transition-fast);
-}
-
-/* Mobile menu animations */
-@media (max-width: 768px) {
-    #mobile-menu {
-        transform-origin: top;
-    }
-    
-    #mobile-menu.max-h-0 {
-        transform: scaleY(0);
-    }
-    
-    #mobile-menu.max-h-screen {
-        transform: scaleY(1);
-    }
-}
-
-/* Ensure interactive elements are clearly interactive */
-a,
-button,
-[role='button'] {
-    cursor: pointer;
-    -webkit-tap-highlight-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
-}
-
-/* Improved touch targets for mobile */
-@media (max-width: 768px) {
-    nav a,
-    nav button {
-        min-height: 44px;
-        min-width: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-/* Make product card dropdowns appear clickable */
-.product-card select,
-.product-card .dropdown,
-.product-card [role='combobox'] {
-    cursor: pointer;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.product-card select:hover {
-    border-color: var(--color-primary);
-}
-
-/* Loading animation improvements */
-.leaf-loader {
-    animation: spin 1s linear infinite;
-}
-
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-    
-    .product-card:hover {
-        transform: none;
-    }
-}
-
-/* Improved text contrast for product cards */
-.product-card h3 {
-    color: var(--color-text-primary);
-    font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
-}
-
-.product-card p {
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
-}
-
-/* Button text improvements */
-button, .btn {
-    font-weight: 500;
-    letter-spacing: 0.025em;
-    line-height: 1.2;
-}
-
-/* Form label improvements */
-label {
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: 0.5rem;
-    display: block;
-}

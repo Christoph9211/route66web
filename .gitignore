@@ -18,3 +18,8 @@ test-results/
 test-results/tests-colorContrast--src-p-65bfe-–-light-WCAG-contrast-audit/error-context.md
 test-results/.last-run.json
 a11y-report.json
+playwright-report/
+playwright-report/data/f74a72ae9a793d6b5a0759a5ed8b38d94f5fccac.md
+
+test-results/tests-colorContrast--–-dark-WCAG-contrast-audit/error-context.md
+test-results/.last-run.json

@@ -2,6 +2,9 @@
 
 ```yaml
 - main:
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - button "Enable dyslexia-friendly mode"
   - navigation:
     - link "Route 66 Hemp St Robert, MO":
       - /url: "#home"
@@ -16,6 +19,7 @@
     - link "Contact":
       - /url: "#contact"
     - button "Search products": Search
+    - 'button "Current theme: System preference. Click to cycle through themes."': "Toggle theme. Current: System preference (light)"
     - link "(573) 677-6418":
       - /url: tel:+15736776418
   - main:
@@ -480,8 +484,8 @@
     - paragraph: All products verified
     - heading "Local Experts" [level=3]
     - paragraph: Knowledgeable staff
-    - heading "Serving St Robert & Surrounding Areas" [level=2]
-    - paragraph: Your Local Hemp Store in Central Missouri
+    - paragraph: Serving St Robert & Surrounding Areas
+    - heading "Your Local Hemp Store in Central Missouri" [level=2]
     - paragraph: Proudly serving the St Robert, Missouri community with premium hemp products since 2025.
     - heading "Areas We Serve" [level=3]
     - paragraph: Located conveniently on State Highway Z in St Robert, we serve customers throughout Pulaski County and the greater Central Missouri area.
@@ -534,13 +538,25 @@
       - /url: https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO
       - text: Leave a Review
     - heading "Frequently Asked Questions" [level=2]
-    - paragraph: About Route 66 Hemp in St Robert
-    - button "Where is Route 66 Hemp located in St Robert?"
-    - button "What are your store hours in St Robert?"
-    - button "Do you serve customers from Fort Leonard Wood?"
-    - button "What hemp products do you carry at your St Robert location?"
-    - button "Is Route 66 Hemp a licensed hemp dispensary in Missouri?"
-    - button "Do you offer delivery in the St Robert area?"
+    - heading "About Route 66 Hemp in St Robert" [level=1]
+    - region "Where is Route 66 Hemp located in St Robert?":
+      - button "Where is Route 66 Hemp located in St Robert?":
+        - heading "Where is Route 66 Hemp located in St Robert?" [level=3]
+    - region "What are your store hours in St Robert?":
+      - button "What are your store hours in St Robert?":
+        - heading "What are your store hours in St Robert?" [level=3]
+    - region "Do you serve customers from Fort Leonard Wood?":
+      - button "Do you serve customers from Fort Leonard Wood?":
+        - heading "Do you serve customers from Fort Leonard Wood?" [level=3]
+    - region "What hemp products do you carry at your St Robert location?":
+      - button "What hemp products do you carry at your St Robert location?":
+        - heading "What hemp products do you carry at your St Robert location?" [level=3]
+    - region "Is Route 66 Hemp a licensed hemp dispensary in Missouri?":
+      - button "Is Route 66 Hemp a licensed hemp dispensary in Missouri?":
+        - heading "Is Route 66 Hemp a licensed hemp dispensary in Missouri?" [level=3]
+    - region "Do you offer delivery in the St Robert area?":
+      - button "Do you offer delivery in the St Robert area?":
+        - heading "Do you offer delivery in the St Robert area?" [level=3]
     - paragraph: Have more questions about our St Robert hemp store?
     - link "Call (573) 677-6418":
       - /url: tel:+15736776418

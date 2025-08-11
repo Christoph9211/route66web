@@ -1350,5 +1350,1877 @@
     "bgColor": "#101828",
     "contrastRatio": 3.38,
     "html": "<a href=\"/index.html\" class=\"text-blue-600 underline\">Back to Home</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".skip-link"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#059669",
+    "contrastRatio": 3.76,
+    "html": "<a href=\"#main-content\" class=\"skip-link\">Skip to main content</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".duration-200[aria-current=\"page\"][href$=\"#home\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#00a63e",
+    "contrastRatio": 1.17,
+    "html": "<a href=\"#home\" aria-current=\"page\" class=\"flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 bg-green-600 text-white\"><i class=\"fas fa-home mr-2 text-sm\" aria-hidden=\"true\"></i>Home</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[aria-haspopup=\"true\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#f9fafb",
+    "contrastRatio": 3.6,
+    "html": "<a href=\"#products\" aria-haspopup=\"true\" aria-expanded=\"false\" class=\"flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 text-gray-700 hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400\">"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".duration-200.hover\\:bg-green-50[href$=\"#about\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#f9fafb",
+    "contrastRatio": 3.6,
+    "html": "<a href=\"#about\" class=\"flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 text-gray-700 hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400\">"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".duration-200.hover\\:bg-green-50[href$=\"#location\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#f9fafb",
+    "contrastRatio": 3.6,
+    "html": "<a href=\"#location\" class=\"flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 text-gray-700 hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400\">"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".duration-200.hover\\:bg-green-50[href$=\"#contact\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#f9fafb",
+    "contrastRatio": 3.6,
+    "html": "<a href=\"#contact\" class=\"flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 text-gray-700 hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400\">"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".dark\\:hover\\:text-green-400.hover\\:text-green-600[href=\"tel:+15736776418\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#f9fafb",
+    "contrastRatio": 3.6,
+    "html": "<a href=\"tel:+15736776418\" class=\"flex items-center text-gray-700 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400\"><i class=\"fas fa-phone mr-1\" aria-hidden=\"true\"></i>(573) 677-6418</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".text-green-800"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.76,
+    "html": "<a href=\"#products\" class=\"inline-flex items-center rounded-lg bg-white px-8 py-3 font-medium text-green-800 transition-colors hover:bg-green-50\"><i class=\"fas fa-cannabis mr-2\" aria-hidden=\"true\"></i>Shop Products</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Cherry Punch Snowcaps to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Forbidden Runtz to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Forbidden Runtz to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Girls Scout Cookie Snowcaps to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(4) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Magic Night to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Magic Night to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".product-card.hover\\:shadow-lg.duration-300:nth-child(5) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Mango Mentality to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Mango Mentality to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".product-card.hover\\:shadow-lg.duration-300:nth-child(6) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(6) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add White Widow Snowcaps to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Death Star to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Death Star to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Sour Mac to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Sour Mac to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".product-card.hover\\:shadow-lg.duration-300:nth-child(9) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Tropical Cherry Snowcaps to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Zkittles to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Zkittles to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(11) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(11) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(11) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$28.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(12) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(12) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(12) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$25.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(13) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(13) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(13) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$18.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(14) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(14) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(14) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$18.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(15) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(15) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(15) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$18.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(16) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(16) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(16) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$18.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(17) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(17) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(17) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$20.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(18) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(18) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(18) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$25.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(19) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(19) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(19) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$18.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(20) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(20) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(20) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$20.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(21) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(21) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(21) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$20.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(22) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(22) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(22) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$18.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(23) > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(23) > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Flower</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".opacity-75.product-card.hover\\:shadow-lg:nth-child(23) > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$20.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Cotton Candy Lemonade Shots 100mg to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Euphoria - Gummies Grape 250mg to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add MEGA DOSE Gummies Blue Razz 1000mg to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(4) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(4) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Tropical Punch Shots 100mg to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#diamonds-\\&-sauce > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Diamond Badder to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Diamond Badder to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#diamonds-\\&-sauce > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Amnesia Haze Diamonds to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Saucy Diamonds to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Saucy Diamonds to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#diamonds-\\&-sauce > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .opacity-75.product-card.hover\\:shadow-lg > .bg-red-600.product-banner"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#a0a0a0",
+    "contrastRatio": 2.61,
+    "html": "<div class=\"product-banner bg-red-600\">Out of Stock</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#diamonds-\\&-sauce > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .opacity-75.product-card.hover\\:shadow-lg > .mb-4:nth-child(2) > .text-gray-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#78808a",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.99,
+    "html": "<p class=\"text-sm text-gray-600 dark:text-gray-300\">Diamonds &amp; Sauce</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#diamonds-\\&-sauce > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .opacity-75.product-card.hover\\:shadow-lg > .justify-between.flex.items-center > .text-xl.font-bold.text-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#20bc6e",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.47,
+    "html": "<div class=\"text-xl font-bold text-green-600\">$15.00</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#concentrates > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#concentrates > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Pineapple Express Crumble to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#concentrates > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .product-banner.bg-green-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#808080",
+    "contrastRatio": 3.94,
+    "html": "<div class=\"product-banner bg-green-600\">New</div>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#concentrates > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Wedding Cake Crumble to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Blueberry Diesel to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Blueberry Diesel to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Cherry Pie Crumble to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Cherry Pie Crumble to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#concentrates > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(5) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Granddaddy Purple Crumble to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Super Sour Diesel to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Super Sour Diesel to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Flower Preroll to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Flower Preroll to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Infused Prerolls to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Infused Prerolls to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add One Gram Carts to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add One Gram Carts to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#vapes-\\&-carts > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add One Gram Disposable to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Two Gram Vapes to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Two Gram Vapes to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".inline-flex.py-3[href$=\"#location\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#00a63e",
+    "contrastRatio": 1.16,
+    "html": "<a href=\"#location\" class=\"inline-flex items-center rounded-lg bg-green-600 px-6 py-3 font-medium text-white transition-colors hover:bg-green-700\"><i class=\"fas fa-map-marker-alt mr-2\" aria-hidden=\"true\"></i>Visit Our Store</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".dark\\:bg-gray-900.bg-gray-50.py-12:nth-child(4) > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .lg\\:text-center.mb-10 > .uppercase.tracking-wide.dark\\:text-green-400"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#00a63e",
+    "bgColor": "#f9fafb",
+    "contrastRatio": 3.1,
+    "html": "<p class=\"text-base font-semibold uppercase tracking-wide text-green-600 dark:text-green-400 mb-2\">Serving St Robert &amp; Surrounding Areas</p>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".dark\\:hover\\:text-blue-400.hover\\:text-blue-600[href=\"tel:+15736776418\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#f9fafb",
+    "contrastRatio": 3.6,
+    "html": "<a href=\"tel:+15736776418\" class=\"transition-colors hover:text-blue-600 dark:hover:text-blue-400\">+1 (573) 677-6418</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[href=\"mailto:route66hemp@gmail.com\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#f9fafb",
+    "contrastRatio": 3.6,
+    "html": "<a href=\"mailto:route66hemp@gmail.com\" class=\"transition-colors hover:text-blue-600 dark:hover:text-blue-400\">route66hemp@gmail.com</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[type=\"submit\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.24,
+    "html": "<button type=\"submit\" class=\"w-full rounded-md bg-green-600 px-4 py-2 font-medium text-white transition-colors hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\">Send Message</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".text-blue-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.76,
+    "html": "<a href=\"https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center rounded-lg bg-white px-6 py-3 font-medium text-blue-600 transition-colors hover:bg-gray-100\" aria-label=\"View on Google Maps\">"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".hover\\:bg-opacity-90"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#059669",
+    "bgColor": "#155dfc",
+    "contrastRatio": 1.39,
+    "html": "<a href=\"tel:+15736776418\" class=\"inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-opacity-90\"><i class=\"fas fa-phone mr-2\" aria-hidden=\"true\"></i>Call (573) 677-6418</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".duration-200[aria-current=\"page\"][href$=\"#home\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#10b981",
+    "bgColor": "#00a63e",
+    "contrastRatio": 1.26,
+    "html": "<a href=\"#home\" aria-current=\"page\" class=\"flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 bg-green-600 text-white\"><i class=\"fas fa-home mr-2 text-sm\" aria-hidden=\"true\"></i>Home</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".text-green-800"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#10b981",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.53,
+    "html": "<a href=\"#products\" class=\"inline-flex items-center rounded-lg bg-white px-8 py-3 font-medium text-green-800 transition-colors hover:bg-green-50\"><i class=\"fas fa-cannabis mr-2\" aria-hidden=\"true\"></i>Shop Products</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Cherry Punch Snowcaps to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Forbidden Runtz to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Forbidden Runtz to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Girls Scout Cookie Snowcaps to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Magic Night to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Magic Night to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Mango Mentality to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Mango Mentality to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(6) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add White Widow Snowcaps to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Death Star to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Death Star to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Sour Mac to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Sour Mac to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".product-card.hover\\:shadow-lg.duration-300:nth-child(9) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Tropical Cherry Snowcaps to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Zkittles to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Zkittles to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Cotton Candy Lemonade Shots 100mg to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Euphoria - Gummies Grape 250mg to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add MEGA DOSE Gummies Blue Razz 1000mg to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#edibles > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(4) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Tropical Punch Shots 100mg to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Diamond Badder to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Diamond Badder to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#diamonds-\\&-sauce > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Amnesia Haze Diamonds to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Saucy Diamonds to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Saucy Diamonds to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#concentrates > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Pineapple Express Crumble to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#concentrates > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Wedding Cake Crumble to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Blueberry Diesel to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Blueberry Diesel to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Cherry Pie Crumble to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Cherry Pie Crumble to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#concentrates > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(5) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Granddaddy Purple Crumble to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Super Sour Diesel to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Super Sour Diesel to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Flower Preroll to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Flower Preroll to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Infused Prerolls to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Infused Prerolls to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add One Gram Carts to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add One Gram Carts to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "#vapes-\\&-carts > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add One Gram Disposable to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[aria-label=\"Add Two Gram Vapes to cart\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.21,
+    "html": "<button class=\"rounded-md px-4 py-2 text-sm font-medium transition-colors bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\" aria-label=\"Add Two Gram Vapes to cart\">Add to Cart</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".inline-flex.py-3[href$=\"#location\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#10b981",
+    "bgColor": "#00a63e",
+    "contrastRatio": 1.27,
+    "html": "<a href=\"#location\" class=\"inline-flex items-center rounded-lg bg-green-600 px-6 py-3 font-medium text-white transition-colors hover:bg-green-700\"><i class=\"fas fa-map-marker-alt mr-2\" aria-hidden=\"true\"></i>Visit Our Store</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".dark\\:hover\\:text-blue-400.hover\\:text-blue-600[href=\"tel:+15736776418\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#10b981",
+    "bgColor": "#364153",
+    "contrastRatio": 4.06,
+    "html": "<a href=\"tel:+15736776418\" class=\"transition-colors hover:text-blue-600 dark:hover:text-blue-400\">+1 (573) 677-6418</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[href=\"mailto:route66hemp@gmail.com\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#10b981",
+    "bgColor": "#364153",
+    "contrastRatio": 4.06,
+    "html": "<a href=\"mailto:route66hemp@gmail.com\" class=\"transition-colors hover:text-blue-600 dark:hover:text-blue-400\">route66hemp@gmail.com</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "button[type=\"submit\"]"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#ffffff",
+    "bgColor": "#00a63e",
+    "contrastRatio": 3.24,
+    "html": "<button type=\"submit\" class=\"w-full rounded-md bg-green-600 px-4 py-2 font-medium text-white transition-colors hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2\">Send Message</button>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".text-blue-600"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#10b981",
+    "bgColor": "#ffffff",
+    "contrastRatio": 2.53,
+    "html": "<a href=\"https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center rounded-lg bg-white px-6 py-3 font-medium text-blue-600 transition-colors hover:bg-gray-100\" aria-label=\"View on Google Maps\">"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".hover\\:bg-opacity-90"
+    ],
+    "url": "http://localhost:3000/",
+    "fgColor": "#10b981",
+    "bgColor": "#155dfc",
+    "contrastRatio": 2.06,
+    "html": "<a href=\"tel:+15736776418\" class=\"inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-opacity-90\"><i class=\"fas fa-phone mr-2\" aria-hidden=\"true\"></i>Call (573) 677-6418</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".dark\\:text-blue-400"
+    ],
+    "url": "http://localhost:3000/src/privacy-policy.html",
+    "fgColor": "#059669",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.76,
+    "html": "<a href=\"mailto:route66hemp@gmail.com\" class=\"text-blue-600 underline dark:text-blue-400\">route66hemp@gmail.com</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[href=\"/index.html\"]"
+    ],
+    "url": "http://localhost:3000/src/privacy-policy.html",
+    "fgColor": "#059669",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.76,
+    "html": "<a href=\"/index.html\" class=\"text-blue-600 underline\">Back to Home</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".dark\\:text-blue-400"
+    ],
+    "url": "http://localhost:3000/src/privacy-policy.html",
+    "fgColor": "#0cab77",
+    "bgColor": "#d9dadc",
+    "contrastRatio": 2.11,
+    "html": "<a href=\"mailto:route66hemp@gmail.com\" class=\"text-blue-600 underline dark:text-blue-400\">route66hemp@gmail.com</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[href=\"/index.html\"]"
+    ],
+    "url": "http://localhost:3000/src/privacy-policy.html",
+    "fgColor": "#0cab77",
+    "bgColor": "#d9dadc",
+    "contrastRatio": 2.11,
+    "html": "<a href=\"/index.html\" class=\"text-blue-600 underline\">Back to Home</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[href$=\"privacy-policy.html\"]"
+    ],
+    "url": "http://localhost:3000/src/terms-of-service.html",
+    "fgColor": "#059669",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.76,
+    "html": "<a href=\"privacy-policy.html\" class=\"text-blue-600 underline\">Privacy Policy</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".dark\\:text-blue-400"
+    ],
+    "url": "http://localhost:3000/src/terms-of-service.html",
+    "fgColor": "#059669",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.76,
+    "html": "<a href=\"mailto:route66hemp@gmail.com\" class=\"text-blue-600 underline dark:text-blue-400\">route66hemp@gmail.com</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[href=\"/index.html\"]"
+    ],
+    "url": "http://localhost:3000/src/terms-of-service.html",
+    "fgColor": "#059669",
+    "bgColor": "#ffffff",
+    "contrastRatio": 3.76,
+    "html": "<a href=\"/index.html\" class=\"text-blue-600 underline\">Back to Home</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[href$=\"privacy-policy.html\"]"
+    ],
+    "url": "http://localhost:3000/src/terms-of-service.html",
+    "fgColor": "#0db17b",
+    "bgColor": "#c8cacd",
+    "contrastRatio": 1.68,
+    "html": "<a href=\"privacy-policy.html\" class=\"text-blue-600 underline\">Privacy Policy</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      ".dark\\:text-blue-400"
+    ],
+    "url": "http://localhost:3000/src/terms-of-service.html",
+    "fgColor": "#0db17b",
+    "bgColor": "#c8cacd",
+    "contrastRatio": 1.68,
+    "html": "<a href=\"mailto:route66hemp@gmail.com\" class=\"text-blue-600 underline dark:text-blue-400\">route66hemp@gmail.com</a>"
+  },
+  {
+    "rule": "color-contrast",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "impact": "serious",
+    "target": [
+      "a[href=\"/index.html\"]"
+    ],
+    "url": "http://localhost:3000/src/terms-of-service.html",
+    "fgColor": "#0db17b",
+    "bgColor": "#c8cacd",
+    "contrastRatio": 1.68,
+    "html": "<a href=\"/index.html\" class=\"text-blue-600 underline\">Back to Home</a>"
   }
 ]

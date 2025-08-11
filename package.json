@@ -40,7 +40,7 @@
         "lint": "eslint .",
         "format": "prettier --write .",
         "test:e2e": "playwright test",
-        "a11y:dev": "concurrently -k \"npm run serve\" \"wait-on http://localhost:3000 && npm run a11y\"",
+        "a11y:dev": "concurrently -k npm run serve wait-on http://localhost:3000 && npm run a11y",
         "a11y": "playwright test --project=chromium --grep @a11y",
         "a11y:ci": "npm run a11y || (cat a11y-report.json && exit 1)"
     },
