@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import LocalBusinessInfo from './LocalBusinessInfo'
 import SearchNavigation from './SearchNavigation'
 import { slugify } from '../utils/slugify'
+import { useCart } from '../hooks/useCart'
 
 function Navigation({ products = [] }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
     const [activeSection, setActiveSection] = useState('home')
+    const { cart, openCart } = useCart()
 
     // Handle scroll effects
     useEffect(() => {
@@ -237,6 +239,26 @@ function Navigation({ products = [] }) {
                                     (573) 677-6418
                                 </a>
                             </div>
+
+                            {/* Cart Button */}
+                            <button
+                                onClick={openCart}
+                                aria-label="Open cart"
+                                className="relative rounded p-2 text-gray-700 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400"
+                            >
+                                <i
+                                    className="fas fa-shopping-cart"
+                                    aria-hidden="true"
+                                />
+                                {cart.items.length > 0 && (
+                                    <span className="absolute -right-1 -top-1 rounded-full bg-red-600 px-1 text-xs text-white">
+                                        {cart.items.reduce(
+                                            (sum, i) => sum + i.qty,
+                                            0
+                                        )}
+                                    </span>
+                                )}
+                            </button>
 
                             {/* Mobile menu button */}
                             <button
