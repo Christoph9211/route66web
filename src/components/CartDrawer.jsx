@@ -45,7 +45,7 @@ export default function CartDrawer() {
                         ✕
                     </button>
                 </div>
-                <div className="flex h-full flex-col justify-between">
+                <div className="flex h-full min-h-0 flex-col">
                     <ul className="flex-1 overflow-y-auto p-4">
                         {cart.items.length === 0 && (
                             <li className="text-center text-sm">
@@ -120,7 +120,7 @@ export default function CartDrawer() {
                             </li>
                         ))}
                     </ul>
-                    <div className="border-t p-4">
+                    <div className="flex-shrink-0 border-t p-4">
                         <div className="mb-2 flex justify-between">
                             <span>Subtotal</span>
                             <span>${cart.subtotal.toFixed(2)}</span>
