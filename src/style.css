@@ -1,4 +1,230 @@
 @import 'tailwindcss';
+
+/* Typography and Readability Improvements */
+:root {
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+    --line-height-heading: 1.3;
+    --letter-spacing-normal: 0.02em;
+    --letter-spacing-wide: 0.05em;
+    --word-spacing-normal: 0.1em;
+}
+
+/* Base typography settings for better readability */
+html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: var(--line-height-base);
+    letter-spacing: var(--letter-spacing-normal);
+    word-spacing: var(--word-spacing-normal);
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heading hierarchy with proper spacing and contrast */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-normal);
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    color: inherit;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+    margin-top: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.625rem;
+    margin-top: 1.25rem;
+}
+
+h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Paragraph and text spacing */
+p {
+    margin-bottom: 1.25rem;
+    max-width: 70ch; /* Optimal reading width */
+    line-height: 1.7;
+}
+
+/* Lists with proper spacing */
+ul, ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Links with better contrast and focus states */
+a {
+    color: #059669; /* Green-600 with better contrast */
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #047857; /* Green-700 */
+    text-decoration-thickness: 2px;
+}
+
+a:focus {
+    outline: 2px solid #059669;
+    outline-offset: 2px;
+    border-radius: 2px;
+    background-color: rgba(5, 150, 105, 0.1);
+}
+
+/* Dark mode text improvements */
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #f8fafc; /* Slate-50 for better contrast */
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+    }
+    
+    a {
+        color: #34d399; /* Emerald-400 for dark mode */
+    }
+    
+    a:hover {
+        color: #6ee7b7; /* Emerald-300 */
+    }
+    
+    a:focus {
+        outline-color: #34d399;
+        background-color: rgba(52, 211, 153, 0.1);
+    }
+}
+
+/* Dyslexia-friendly improvements */
+.dyslexia-friendly {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', cursive, sans-serif;
+    letter-spacing: 0.12em;
+    word-spacing: 0.16em;
+    line-height: 1.8;
+}
+
+.dyslexia-friendly p {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.dyslexia-friendly h1, 
+.dyslexia-friendly h2, 
+.dyslexia-friendly h3, 
+.dyslexia-friendly h4, 
+.dyslexia-friendly h5, 
+.dyslexia-friendly h6 {
+    font-weight: 600; /* Slightly lighter for dyslexia */
+    letter-spacing: 0.08em;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    body {
+        background: #ffffff;
+        color: #000000;
+    }
+    
+    .dark body {
+        background: #000000;
+        color: #ffffff;
+    }
+    
+    a {
+        color: #0066cc;
+        font-weight: 600;
+    }
+    
+    .dark a {
+        color: #66b3ff;
+    }
+    
+    button, .btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Text selection improvements */
+::selection {
+    background-color: rgba(5, 150, 105, 0.3);
+    color: inherit;
+}
+
+::-moz-selection {
+    background-color: rgba(5, 150, 105, 0.3);
+    color: inherit;
+}
+
+/* Skip link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #059669;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 6px;
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
 /* Custom styles */
 .product-card {
     transition:
@@ -156,4 +382,45 @@ button,
     textarea:focus {
         outline-color: #10b981;
     }
+}
+
+/* Improved text contrast for product cards */
+.product-card h3 {
+    color: #1f2937; /* Gray-800 for better contrast */
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    color: #4b5563; /* Gray-600 */
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.dark .product-card h3 {
+    color: #f9fafb; /* Gray-50 */
+}
+
+.dark .product-card p {
+    color: #d1d5db; /* Gray-300 */
+}
+
+/* Button text improvements */
+button, .btn {
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    line-height: 1.2;
+}
+
+/* Form label improvements */
+label {
+    font-weight: 600;
+    color: #374151; /* Gray-700 */
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.dark label {
+    color: #f3f4f6; /* Gray-100 */
 }
