@@ -1,6 +1,6 @@
 {
-    "cleanUrls": false,
-    "trailingSlash": true,
+    "cleanUrls": true,
+    "trailingSlash": false,
     "headers": [
         {
             "source": "/assets/images/(.*)",
