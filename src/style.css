@@ -122,8 +122,8 @@ button,
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.product-card select:hover {
-    border-color: #10b981;
+.product-card.select-out-of-stock {
+    border-color: red;
 }
 
 /* Loading animation improvements */

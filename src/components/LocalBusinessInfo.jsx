@@ -63,7 +63,7 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
     return (
         <div className={`space-y-4 ${className}`}>
             <div>
-                <h3 className="mb-4 text-lg font-medium dark:text-white">
+                <h3 className="mb-4 text-lg font-medium text-center dark:text-white">
                     Store Information
                 </h3>
 

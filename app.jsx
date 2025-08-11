@@ -36,7 +36,7 @@ function ProductCard({ product }) {
 
     return (
         <div
-            className={`product-card relative rounded-lg bg-white p-6 shadow-md transition-all duration-300 hover:shadow-lg dark:bg-gray-800 ${
+            className={`product-card relative rounded-lg bg-white p-6 shadow-md transition-all duration-300 hover:shadow-lg dark:bg-gray-800 md:w-full lg:w-1/2 xl:w-1/3 min-w-[275px] ${
                 isOutOfStock ? 'opacity-75' : ''
             }`}
         >
@@ -60,11 +60,15 @@ function ProductCard({ product }) {
                     {product.name}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {product.category}
+                    {product.category || 'N/A'}
                 </p>
-                {product.thca_percentage && (
+                {product.thca_percentage ? (
                     <p className="text-sm font-medium text-green-600">
                         THCa: {product.thca_percentage}%
+                    </p>
+                ) : (
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                        N/A
                     </p>
                 )}
             </div>
@@ -76,19 +80,25 @@ function ProductCard({ product }) {
                 >
                     Size:
                 </label>
-                <select
-                    id={`size-${product.name}`}
-                    value={selectedSize}
-                    onChange={(e) => setSelectedSize(e.target.value)}
-                    className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                    disabled={isOutOfStock}
-                >
-                    {product.size_options.map((size) => (
-                        <option key={size} value={size}>
-                            {size}
-                        </option>
-                    ))}
-                </select>
+                {product.size_options.length > 1 ? (
+                    <select
+                        id={`size-${product.name}`}
+                        value={selectedSize}
+                        onChange={(e) => setSelectedSize(e.target.value)}
+                        className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                        disabled={isOutOfStock}
+                    >
+                        {product.size_options.map((size) => (
+                            <option key={size} value={size}>
+                                {size}
+                            </option>
+                        ))}
+                    </select>
+                ) : (
+                    <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                        {selectedSize || 'N/A'}
+                    </span>
+                )}
             </div>
 
             <div className="flex items-center justify-between">
@@ -98,7 +108,7 @@ function ProductCard({ product }) {
                 <button
                     className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                         isOutOfStock
-                            ? 'cursor-not-allowed bg-gray-300 text-gray-500'
+                            ? 'cursor-not-allowed bg-gray-300 text-gray-600 hover:text-red-600'
                             : 'bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
                     }`}
                     disabled={isOutOfStock}
@@ -255,7 +265,10 @@ function AboutSection() {
 
 function ContactSection() {
     return (
-        <section id="contact" className="bg-gray-50 py-16 dark:bg-gray-800">
+        <section
+            id="contact"
+            className="bg-gray-50 py-16 dark:bg-gray-800 flex items-center justify-center"
+        >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                     <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
@@ -267,64 +280,6 @@ function ContactSection() {
                 </div>
                 <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
                     <LocalBusinessInfo />
-                    <div className="rounded-lg bg-white p-8 shadow dark:bg-gray-700">
-                        <h3 className="mb-6 text-xl font-semibold text-gray-900 dark:text-white">
-                            Send us a message
-                        </h3>
-                        <form className="space-y-4">
-                            <div>
-                                <label
-                                    htmlFor="name"
-                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                                >
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor="email"
-                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor="message"
-                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                                >
-                                    Message
-                                </label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows={4}
-                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                                    required
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full rounded-md bg-green-600 px-4 py-2 font-medium text-white transition-colors hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-                            >
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </section>
