@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { useCart } from '../hooks/useCart'
 
 export default function CartDrawer() {
-    const { cart, isOpen, closeCart, openCartPage } = useCart()
+    const { cart, isOpen, closeCart } = useCart()
     const ref = useRef(null)
 
     useEffect(() => {
@@ -45,7 +45,7 @@ export default function CartDrawer() {
                         ✕
                     </button>
                 </div>
-                <div className="flex h-full flex-col justify-between">
+                <div className="flex h-full min-h-0 flex-col">
                     <ul className="flex-1 overflow-y-auto p-4">
                         {cart.items.length === 0 && (
                             <li className="text-center text-sm">
@@ -120,14 +120,17 @@ export default function CartDrawer() {
                             </li>
                         ))}
                     </ul>
-                    <div className="border-t p-4">
+                    <div className="flex-shrink-0 border-t p-4">
                         <div className="mb-2 flex justify-between">
                             <span>Subtotal</span>
                             <span>${cart.subtotal.toFixed(2)}</span>
                         </div>
                         <button
                             className="w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
-                            onClick={openCartPage}
+                            onClick={() => {
+                                closeCart()
+                                window.location.href = '/cart'
+                            }}
                         >
                             View Cart
                         </button>

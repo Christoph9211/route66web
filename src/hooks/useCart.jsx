@@ -22,7 +22,6 @@ function getInitialCart() {
 export function CartProvider({ children }) {
     const [cart, setCart] = useState(getInitialCart)
     const [isOpen, setIsOpen] = useState(false)
-    const [isPageOpen, setIsPageOpen] = useState(false)
 
     const recalc = (items) => {
         const subtotal = items.reduce(
@@ -110,8 +109,6 @@ export function CartProvider({ children }) {
 
     const openCart = () => setIsOpen(true)
     const closeCart = () => setIsOpen(false)
-    const openCartPage = () => setIsPageOpen(true)
-    const closeCartPage = () => setIsPageOpen(false)
 
     return (
         <CartContext.Provider
@@ -124,9 +121,6 @@ export function CartProvider({ children }) {
                 isOpen,
                 openCart,
                 closeCart,
-                isPageOpen,
-                openCartPage,
-                closeCartPage,
             }}
         >
             {children}
