@@ -316,7 +316,7 @@ function Navigation({ products = [] }) {
                                                             item.id
                                                         )
                                                     }
-                                                    className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
+                                                    className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400"
                                                     role="menuitem"
                                                 >
                                                     {subItem.label}

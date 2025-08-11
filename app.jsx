@@ -98,7 +98,7 @@ function ProductCard({ product }) {
                 <button
                     className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                         isOutOfStock
-                            ? 'cursor-not-allowed bg-gray-300 text-gray-500'
+                            ? 'cursor-not-allowed bg-gray-300 text-gray-700 dark:bg-gray-600 dark:text-gray-300'
                             : 'bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
                     }`}
                     disabled={isOutOfStock}
