@@ -812,164 +812,140 @@ export default function App() {
                                 </a>
                             </div>
                         </div>
-                        <div className="mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                            <div className="md:grid md:grid-cols-2 md:gap-8">
-                                <div>
-                                    <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
-                                        Products
-                                    </h3>
-                                    <ul className="mt-4 space-y-4">
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Edibles
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="ttext-black text-base hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Concentrates
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Flower
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Accessories
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="mt-12 md:mt-0">
-                                    <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
-                                        Company
-                                    </h3>
-                                    <ul className="mt-4 space-y-4">
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                About Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Careers
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Partners
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <div className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
+                            <div>
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                                    Products
+                                </h3>
+                                <ul className="mt-4 space-y-4">
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Edibles
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="ttext-black text-base hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Concentrates
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Flower
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Accessories
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div className="md:grid md:grid-cols-2 md:gap-8">
-                                <div>
-                                    <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
-                                        Support
-                                    </h3>
-                                    <ul className="mt-4 space-y-4">
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Contact Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                FAQs
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="mt-12 md:mt-0">
-                                    <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
-                                        Legal
-                                    </h3>
-                                    <ul className="mt-4 space-y-4">
-                                        <li>
-                                            <a
-                                                href="src/privacy-policy.html"
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Privacy Policy
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="src/terms-of-service.html"
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Terms of Service
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/"
-                                                onClick={(e) =>
-                                                    e.preventDefault()
-                                                }
-                                                className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                            >
-                                                Compliance
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div className="mt-12 md:mt-0">
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                                    Company
+                                </h3>
+                                <ul className="mt-4 space-y-4">
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            About Us
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Careers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Partners
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="mt-12 md:mt-0">
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                                    Support
+                                </h3>
+                                <ul className="mt-4 space-y-4">
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Contact Us
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            FAQs
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="mt-12 md:mt-0">
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                                    Legal
+                                </h3>
+                                <ul className="mt-4 space-y-4">
+                                    <li>
+                                        <a
+                                            href="src/privacy-policy.html"
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Privacy Policy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="src/terms-of-service.html"
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Terms of Service
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/"
+                                            onClick={(e) => e.preventDefault()}
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                        >
+                                            Compliance
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
