@@ -10,7 +10,14 @@ export function useNavigation() {
             setIsScrolled(window.scrollY > 20)
 
             // Update active section based on scroll position
-            const sections = ['home', 'products', 'about', 'location', 'contact', 'faq']
+            const sections = [
+                'home',
+                'products',
+                'about',
+                'location',
+                'contact',
+                'faq',
+            ]
             let currentSection = 'home'
 
             for (const section of sections) {
@@ -18,7 +25,10 @@ export function useNavigation() {
                 if (element) {
                     const rect = element.getBoundingClientRect()
                     // Consider a section active if it's in the top half of the viewport
-                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    if (
+                        rect.top <= window.innerHeight / 2 &&
+                        rect.bottom >= window.innerHeight / 2
+                    ) {
                         currentSection = section
                         break
                     }
@@ -49,9 +59,9 @@ export function useNavigation() {
     const navigateToSection = (sectionId) => {
         const element = document.getElementById(sectionId)
         if (element) {
-            element.scrollIntoView({ 
+            element.scrollIntoView({
                 behavior: 'smooth',
-                block: 'start'
+                block: 'start',
             })
         }
         setActiveSection(sectionId)
@@ -61,7 +71,7 @@ export function useNavigation() {
         activeSection,
         isScrolled,
         navigateToSection,
-        setActiveSection
+        setActiveSection,
     }
 }
 
@@ -69,30 +79,45 @@ export function useKeyboardNavigation() {
     useEffect(() => {
         const handleKeyDown = (event) => {
             // Skip if user is typing in an input
-            if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+            if (
+                event.target.tagName === 'INPUT' ||
+                event.target.tagName === 'TEXTAREA'
+            ) {
                 return
             }
 
             switch (event.key) {
                 case '1':
-                    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })
+                    document
+                        .getElementById('home')
+                        ?.scrollIntoView({ behavior: 'smooth' })
                     break
                 case '2':
-                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })
+                    document
+                        .getElementById('products')
+                        ?.scrollIntoView({ behavior: 'smooth' })
                     break
                 case '3':
-                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+                    document
+                        .getElementById('about')
+                        ?.scrollIntoView({ behavior: 'smooth' })
                     break
                 case '4':
-                    document.getElementById('location')?.scrollIntoView({ behavior: 'smooth' })
+                    document
+                        .getElementById('location')
+                        ?.scrollIntoView({ behavior: 'smooth' })
                     break
                 case '5':
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                    document
+                        .getElementById('contact')
+                        ?.scrollIntoView({ behavior: 'smooth' })
                     break
                 case 'Escape':
                     // Close any open menus
-                    const openMenus = document.querySelectorAll('[data-menu-open="true"]')
-                    openMenus.forEach(menu => {
+                    const openMenus = document.querySelectorAll(
+                        '[data-menu-open="true"]'
+                    )
+                    openMenus.forEach((menu) => {
                         menu.click()
                     })
                     break

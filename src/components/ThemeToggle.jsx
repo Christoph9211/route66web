@@ -7,14 +7,14 @@ function ThemeToggle() {
     // Initialize theme on component mount
     useEffect(() => {
         setMounted(true)
-        
+
         // Get stored theme preference or default to 'system'
         const storedTheme = localStorage.getItem('theme') || 'system'
         setTheme(storedTheme)
-        
+
         // Apply initial theme
         applyTheme(storedTheme)
-        
+
         // Listen for system theme changes
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
         const handleSystemThemeChange = () => {
@@ -22,9 +22,9 @@ function ThemeToggle() {
                 applyTheme('system')
             }
         }
-        
+
         mediaQuery.addEventListener('change', handleSystemThemeChange)
-        
+
         return () => {
             mediaQuery.removeEventListener('change', handleSystemThemeChange)
         }
@@ -33,17 +33,19 @@ function ThemeToggle() {
     // Apply theme to document
     const applyTheme = (newTheme) => {
         const root = document.documentElement
-        
+
         // Remove existing theme attributes
         root.removeAttribute('data-theme')
-        
+
         if (newTheme === 'dark') {
             root.setAttribute('data-theme', 'dark')
         } else if (newTheme === 'light') {
             root.setAttribute('data-theme', 'light')
         } else {
             // System preference
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+            const prefersDark = window.matchMedia(
+                '(prefers-color-scheme: dark)'
+            ).matches
             if (prefersDark) {
                 root.setAttribute('data-theme', 'dark')
             } else {
@@ -55,7 +57,7 @@ function ThemeToggle() {
     // Toggle between themes
     const toggleTheme = () => {
         let newTheme
-        
+
         if (theme === 'light') {
             newTheme = 'dark'
         } else if (theme === 'dark') {
@@ -63,11 +65,11 @@ function ThemeToggle() {
         } else {
             newTheme = 'light'
         }
-        
+
         setTheme(newTheme)
         localStorage.setItem('theme', newTheme)
         applyTheme(newTheme)
-        
+
         // Announce theme change to screen readers
         const announcement = `Theme changed to ${newTheme === 'system' ? 'system preference' : newTheme} mode`
         announceToScreenReader(announcement)
@@ -80,9 +82,9 @@ function ThemeToggle() {
         announcement.setAttribute('aria-atomic', 'true')
         announcement.className = 'sr-only'
         announcement.textContent = message
-        
+
         document.body.appendChild(announcement)
-        
+
         setTimeout(() => {
             document.body.removeChild(announcement)
         }, 1000)
@@ -91,7 +93,9 @@ function ThemeToggle() {
     // Get current effective theme for display
     const getEffectiveTheme = () => {
         if (theme === 'system') {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            return window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
         }
         return theme
     }
@@ -109,7 +113,7 @@ function ThemeToggle() {
     const themeLabels = {
         light: 'Light mode',
         dark: 'Dark mode',
-        system: 'System preference'
+        system: 'System preference',
     }
 
     return (
@@ -121,17 +125,11 @@ function ThemeToggle() {
             type="button"
         >
             {/* Sun icon for light mode */}
-            <i 
-                className="fas fa-sun icon sun-icon" 
-                aria-hidden="true"
-            />
-            
+            <i className="fas fa-sun icon sun-icon" aria-hidden="true" />
+
             {/* Moon icon for dark mode */}
-            <i 
-                className="fas fa-moon icon moon-icon" 
-                aria-hidden="true"
-            />
-            
+            <i className="fas fa-moon icon moon-icon" aria-hidden="true" />
+
             {/* Screen reader only text */}
             <span className="sr-only">
                 Toggle theme. Current: {themeLabels[theme]} ({effectiveTheme})

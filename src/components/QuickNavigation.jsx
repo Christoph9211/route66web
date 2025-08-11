@@ -17,8 +17,14 @@ function QuickNavigation() {
             setIsVisible(window.scrollY > 300)
 
             // Update active section based on scroll position
-            const sections = ['home', 'products', 'about', 'location', 'contact']
-            const currentSection = sections.find(section => {
+            const sections = [
+                'home',
+                'products',
+                'about',
+                'location',
+                'contact',
+            ]
+            const currentSection = sections.find((section) => {
                 const element = document.getElementById(section)
                 if (element) {
                     const rect = element.getBoundingClientRect()
@@ -26,7 +32,7 @@ function QuickNavigation() {
                 }
                 return false
             })
-            
+
             if (currentSection) {
                 setActiveSection(currentSection)
             }
@@ -48,18 +54,25 @@ function QuickNavigation() {
     }
 
     return (
-        <div className={`fixed bottom-6 right-6 z-40 transition-all duration-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-        }`}>
+        <div
+            className={`fixed bottom-6 right-6 z-40 transition-all duration-300 ${
+                isVisible
+                    ? 'translate-y-0 opacity-100'
+                    : 'pointer-events-none translate-y-4 opacity-0'
+            }`}
+        >
             {/* Quick Action Buttons */}
             <div className="flex flex-col space-y-2">
                 {/* Call Button - Always Visible */}
                 <a
                     href="tel:+15736776418"
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition-colors group"
+                    className="group flex h-12 w-12 items-center justify-center rounded-full bg-green-600 text-white shadow-lg transition-colors hover:bg-green-700"
                     aria-label="Call Route 66 Hemp"
                 >
-                    <i className="fas fa-phone group-hover:animate-pulse" aria-hidden="true" />
+                    <i
+                        className="fas fa-phone group-hover:animate-pulse"
+                        aria-hidden="true"
+                    />
                 </a>
 
                 {/* Navigation Buttons */}
@@ -69,8 +82,8 @@ function QuickNavigation() {
                         onClick={() => handleQuickNavClick(link.id)}
                         className={`flex h-10 w-10 items-center justify-center rounded-full shadow-lg transition-all duration-200 ${
                             activeSection === link.id
-                                ? 'bg-blue-600 text-white scale-110'
-                                : 'bg-white text-gray-700 hover:bg-gray-50 hover:scale-105 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                                ? 'scale-110 bg-blue-600 text-white'
+                                : 'bg-white text-gray-700 hover:scale-105 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
                         }`}
                         aria-label={`Go to ${link.label}`}
                         title={link.label}
@@ -82,7 +95,10 @@ function QuickNavigation() {
                             }
                         }}
                     >
-                        <i className={`${link.icon} text-sm`} aria-hidden="true" />
+                        <i
+                            className={`${link.icon} text-sm`}
+                            aria-hidden="true"
+                        />
                     </button>
                 ))}
             </div>

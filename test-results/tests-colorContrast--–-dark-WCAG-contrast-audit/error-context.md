@@ -1,5 +1,6 @@
 # Page snapshot
 
+```yaml
 - main:
   - link "Skip to main content":
     - /url: "#main-content"
@@ -507,7 +508,7 @@
     - paragraph: St Robert, MO 65584
     - link "+1 (573) 677-6418":
       - /url: tel:+15736776418
-    - link "<route66hemp@gmail.com>":
+    - link "route66hemp@gmail.com":
       - /url: mailto:route66hemp@gmail.com
     - paragraph: "Store Hours:"
     - paragraph: "Monday - Thursday: 11:00 AM - 9:00 PM"
@@ -532,9 +533,9 @@
     - heading "Find Us on Google Maps" [level=3]
     - paragraph: Get directions, see our hours, read reviews, and stay updated with our latest posts.
     - link "View on Google Maps":
-      - /url: <https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO>
+      - /url: https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO
     - link "Leave a review for Route 66 Hemp":
-      - /url: <https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO>
+      - /url: https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO
       - text: Leave a Review
     - heading "Frequently Asked Questions" [level=2]
     - heading "About Route 66 Hemp in St Robert" [level=1]
@@ -567,11 +568,11 @@
     - /url: tel:+15736776418
   - heading "Follow Us" [level=4]
   - link "Follow us on Facebook":
-    - /url: <https://facebook.com/route66hemp>
+    - /url: https://facebook.com/route66hemp
   - link "Follow us on Instagram":
-    - /url: <https://instagram.com/route66hemp>
+    - /url: https://instagram.com/route66hemp
   - link "Follow us on Google":
-    - /url: <https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO>
+    - /url: https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO
   - heading "Products" [level=4]
   - list:
     - listitem:
@@ -647,3 +648,4 @@
   - button "Go to Visit Us"
   - button "Go to Contact"
   - button "Go to Top"
+```

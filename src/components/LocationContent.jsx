@@ -25,15 +25,15 @@ function LocationContent() {
         <div className="bg-gray-50 py-12 dark:bg-gray-900">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 lg:text-center">
-                    <p className="text-base font-semibold uppercase tracking-wide text-green-600 dark:text-green-400 mb-2">
+                    <p className="mb-2 text-base font-semibold uppercase tracking-wide text-green-600 dark:text-green-400">
                         Serving {locationData?.city || 'our area'} & Surrounding
                         Areas
                     </p>
-                    <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl dark:text-white mb-4">
+                    <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl dark:text-white">
                         Your Local Hemp Store in{' '}
                         {locationData?.region || 'your region'}
                     </h2>
-                    <p className="max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-gray-200 leading-relaxed">
+                    <p className="max-w-2xl text-xl leading-relaxed text-gray-700 lg:mx-auto dark:text-gray-200">
                         Proudly serving the {locationData?.city || 'community'},{' '}
                         {locationData?.state || 'state'} community with premium
                         hemp products since 2025.
@@ -49,7 +49,7 @@ function LocationContent() {
                             />
                             Areas We Serve
                         </h3>
-                        <p className="mb-4 text-gray-700 dark:text-gray-200 leading-relaxed">
+                        <p className="mb-4 leading-relaxed text-gray-700 dark:text-gray-200">
                             Located conveniently on State Highway Z in{' '}
                             {locationData?.city || 'your city'}, we serve
                             customers throughout{' '}
@@ -85,7 +85,7 @@ function LocationContent() {
                             />
                             Near Local Landmarks
                         </h3>
-                        <p className="mb-4 text-gray-700 dark:text-gray-200 leading-relaxed">
+                        <p className="mb-4 leading-relaxed text-gray-700 dark:text-gray-200">
                             Find us easily near these well-known{' '}
                             {locationData?.city || 'city'} and{' '}
                             {locationData?.region || 'region'} landmarks:
@@ -127,7 +127,7 @@ function LocationContent() {
                             <h4 className="mb-2 text-lg font-medium dark:text-white">
                                 Local Expertise
                             </h4>
-                            <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                            <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-200">
                                 As a locally-owned business in{' '}
                                 {locationData?.city || 'our city'}, we
                                 understand our community's needs and
@@ -144,7 +144,7 @@ function LocationContent() {
                             <h4 className="mb-2 text-lg font-medium dark:text-white">
                                 Convenient Location
                             </h4>
-                            <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                            <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-200">
                                 Easy access from Fort Leonard Wood, Waynesville,
                                 and throughout{' '}
                                 {locationData?.county || 'our county'}.
@@ -160,7 +160,7 @@ function LocationContent() {
                             <h4 className="mb-2 text-lg font-medium dark:text-white">
                                 Community Focused
                             </h4>
-                            <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                            <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-200">
                                 Committed to supporting the{' '}
                                 {locationData?.city || 'our city'} community
                                 with quality products and service.

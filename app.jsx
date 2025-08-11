@@ -346,14 +346,16 @@ function App() {
         // Prevent flash of unstyled content by setting initial theme immediately
         const storedTheme = localStorage.getItem('theme') || 'system'
         const root = document.documentElement
-        
+
         if (storedTheme === 'dark') {
             root.setAttribute('data-theme', 'dark')
         } else if (storedTheme === 'light') {
             root.setAttribute('data-theme', 'light')
         } else {
             // System preference
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+            const prefersDark = window.matchMedia(
+                '(prefers-color-scheme: dark)'
+            ).matches
             root.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
         }
     }, [])
@@ -371,7 +373,7 @@ function App() {
         const newMode = !isDyslexiaFriendly
         setIsDyslexiaFriendly(newMode)
         localStorage.setItem('dyslexia-friendly', newMode.toString())
-        
+
         if (newMode) {
             document.body.classList.add('dyslexia-friendly')
         } else {
@@ -466,14 +468,14 @@ function App() {
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
             {/* Structured Data for SEO */}
             <StructuredData />
-            
+
             {/* Skip Link for Screen Readers */}
             <a href="#main-content" className="skip-link">
                 Skip to main content
             </a>
-            
+
             {/* Accessibility Controls */}
-            <div className="fixed top-20 right-4 z-40 flex flex-col space-y-2">
+            <div className="fixed right-4 top-20 z-40 flex flex-col space-y-2">
                 <button
                     onClick={toggleDyslexiaMode}
                     className={`rounded-full p-3 shadow-lg transition-colors ${

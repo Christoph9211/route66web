@@ -87,12 +87,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1267,
+                  "duration": 1244,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-08-11T15:11:42.253Z",
+                  "startTime": "2025-08-11T15:31:59.923Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -136,7 +136,7 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 2455,
+                      "duration": 2250,
                       "error": {
                         "message": "Error: Color contrast violations detected",
                         "stack": "Error: Color contrast violations detected\n    at scanPage (F:\\GitHub\\route66web\\tests\\helpers\\axe.ts:72:11)\n    at F:\\GitHub\\route66web\\tests\\colorContrast.spec.ts:53:9",
@@ -190,14 +190,14 @@
                           "text": "  Node 8: .text-green-800\n"
                         },
                         {
-                          "text": "  Node 9: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .product-banner.bg-green-600\n"
+                          "text": "  Node 9: .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .mb-4:nth-child(2) > .text-green-600\n"
                         },
                         {
                           "text": "  Node 10: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700\n"
                         }
                       ],
                       "retry": 0,
-                      "startTime": "2025-08-11T15:11:42.324Z",
+                      "startTime": "2025-08-11T15:31:59.987Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -245,7 +245,7 @@
                       "workerIndex": 2,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 2466,
+                      "duration": 2322,
                       "error": {
                         "message": "Error: Color contrast violations detected",
                         "stack": "Error: Color contrast violations detected\n    at scanPage (F:\\GitHub\\route66web\\tests\\helpers\\axe.ts:72:11)\n    at F:\\GitHub\\route66web\\tests\\colorContrast.spec.ts:53:9",
@@ -281,32 +281,32 @@
                           "text": "  Node 2: .text-green-800\n"
                         },
                         {
-                          "text": "  Node 3: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700\n"
+                          "text": "  Node 3: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .product-banner.bg-green-600\n"
                         },
                         {
-                          "text": "  Node 4: button[aria-label=\"Add Forbidden Runtz to cart\"]\n"
+                          "text": "  Node 4: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(1) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700\n"
                         },
                         {
-                          "text": "  Node 5: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700\n"
+                          "text": "  Node 5: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(2) > .product-banner.bg-green-600\n"
                         },
                         {
-                          "text": "  Node 6: button[aria-label=\"Add Magic Night to cart\"]\n"
+                          "text": "  Node 6: button[aria-label=\"Add Forbidden Runtz to cart\"]\n"
                         },
                         {
-                          "text": "  Node 7: button[aria-label=\"Add Mango Mentality to cart\"]\n"
+                          "text": "  Node 7: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .product-banner.bg-green-600\n"
                         },
                         {
-                          "text": "  Node 8: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(6) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700\n"
+                          "text": "  Node 8: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(3) > .justify-between.flex.items-center > .focus\\:ring-offset-2.focus\\:ring-2.hover\\:bg-green-700\n"
                         },
                         {
-                          "text": "  Node 9: button[aria-label=\"Add Death Star to cart\"]\n"
+                          "text": "  Node 9: #flower > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 > .product-card.hover\\:shadow-lg.duration-300:nth-child(4) > .product-banner.bg-green-600\n"
                         },
                         {
-                          "text": "  Node 10: button[aria-label=\"Add Sour Mac to cart\"]\n"
+                          "text": "  Node 10: button[aria-label=\"Add Magic Night to cart\"]\n"
                         }
                       ],
                       "retry": 0,
-                      "startTime": "2025-08-11T15:11:45.374Z",
+                      "startTime": "2025-08-11T15:32:02.832Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -354,7 +354,7 @@
                       "workerIndex": 3,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 1156,
+                      "duration": 1099,
                       "error": {
                         "message": "Error: Color contrast violations detected",
                         "stack": "Error: Color contrast violations detected\n    at scanPage (F:\\GitHub\\route66web\\tests\\helpers\\axe.ts:72:11)\n    at F:\\GitHub\\route66web\\tests\\colorContrast.spec.ts:53:9",
@@ -391,7 +391,7 @@
                         }
                       ],
                       "retry": 0,
-                      "startTime": "2025-08-11T15:11:48.425Z",
+                      "startTime": "2025-08-11T15:32:05.744Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -425,7 +425,7 @@
           "specs": [
             {
               "title": "WCAG contrast audit",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -438,61 +438,18 @@
                     {
                       "workerIndex": 4,
                       "parallelIndex": 0,
-                      "status": "failed",
-                      "duration": 1065,
-                      "error": {
-                        "message": "Error: Color contrast violations detected",
-                        "stack": "Error: Color contrast violations detected\n    at scanPage (F:\\GitHub\\route66web\\tests\\helpers\\axe.ts:72:11)\n    at F:\\GitHub\\route66web\\tests\\colorContrast.spec.ts:53:9",
-                        "location": {
-                          "file": "F:\\GitHub\\route66web\\tests\\helpers\\axe.ts",
-                          "column": 11,
-                          "line": 72
-                        },
-                        "snippet": "\u001b[90m   at \u001b[39mtests\\helpers\\axe.ts:72\n\n\u001b[0m \u001b[90m 70 |\u001b[39m       })\u001b[33m;\u001b[39m\n \u001b[90m 71 |\u001b[39m     }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m'Color contrast violations detected'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 |\u001b[39m   }\n \u001b[90m 74 |\u001b[39m }\n \u001b[90m 75 |\u001b[39m\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "F:\\GitHub\\route66web\\tests\\helpers\\axe.ts",
-                            "column": 11,
-                            "line": 72
-                          },
-                          "message": "Error: Color contrast violations detected\n\n\u001b[90m   at \u001b[39mtests\\helpers\\axe.ts:72\n\n\u001b[0m \u001b[90m 70 |\u001b[39m       })\u001b[33m;\u001b[39m\n \u001b[90m 71 |\u001b[39m     }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m'Color contrast violations detected'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 |\u001b[39m   }\n \u001b[90m 74 |\u001b[39m }\n \u001b[90m 75 |\u001b[39m\u001b[0m\n\u001b[2m    at scanPage (F:\\GitHub\\route66web\\tests\\helpers\\axe.ts:72:11)\u001b[22m\n\u001b[2m    at F:\\GitHub\\route66web\\tests\\colorContrast.spec.ts:53:9\u001b[22m"
-                        }
-                      ],
+                      "status": "passed",
+                      "duration": 1103,
+                      "errors": [],
                       "stdout": [],
-                      "stderr": [
-                        {
-                          "text": "Axe found 1 color-contrast violation groups\n"
-                        },
-                        {
-                          "text": "- color-contrast: Elements must meet minimum color contrast ratio thresholds (serious)\n"
-                        },
-                        {
-                          "text": "  Node 1: .dark\\:text-blue-400\n"
-                        },
-                        {
-                          "text": "  Node 2: a[href=\"/index.html\"]\n"
-                        }
-                      ],
+                      "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-11T15:11:50.187Z",
+                      "startTime": "2025-08-11T15:32:07.456Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "F:\\GitHub\\route66web\\test-results\\tests-colorContrast--src-p-93867--–-dark-WCAG-contrast-audit\\error-context.md"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "F:\\GitHub\\route66web\\tests\\helpers\\axe.ts",
-                        "column": 11,
-                        "line": 72
-                      }
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "0035d4441c0763261935-df9929ad5740a1471066",
@@ -521,10 +478,10 @@
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 5,
+                      "workerIndex": 4,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 1060,
+                      "duration": 1051,
                       "error": {
                         "message": "Error: Color contrast violations detected",
                         "stack": "Error: Color contrast violations detected\n    at scanPage (F:\\GitHub\\route66web\\tests\\helpers\\axe.ts:72:11)\n    at F:\\GitHub\\route66web\\tests\\colorContrast.spec.ts:53:9",
@@ -564,7 +521,7 @@
                         }
                       ],
                       "retry": 0,
-                      "startTime": "2025-08-11T15:11:51.844Z",
+                      "startTime": "2025-08-11T15:32:08.604Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -598,7 +555,7 @@
           "specs": [
             {
               "title": "WCAG contrast audit",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -609,66 +566,20 @@
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 6,
+                      "workerIndex": 5,
                       "parallelIndex": 0,
-                      "status": "failed",
-                      "duration": 1071,
-                      "error": {
-                        "message": "Error: Color contrast violations detected",
-                        "stack": "Error: Color contrast violations detected\n    at scanPage (F:\\GitHub\\route66web\\tests\\helpers\\axe.ts:72:11)\n    at F:\\GitHub\\route66web\\tests\\colorContrast.spec.ts:53:9",
-                        "location": {
-                          "file": "F:\\GitHub\\route66web\\tests\\helpers\\axe.ts",
-                          "column": 11,
-                          "line": 72
-                        },
-                        "snippet": "\u001b[90m   at \u001b[39mtests\\helpers\\axe.ts:72\n\n\u001b[0m \u001b[90m 70 |\u001b[39m       })\u001b[33m;\u001b[39m\n \u001b[90m 71 |\u001b[39m     }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m'Color contrast violations detected'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 |\u001b[39m   }\n \u001b[90m 74 |\u001b[39m }\n \u001b[90m 75 |\u001b[39m\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "F:\\GitHub\\route66web\\tests\\helpers\\axe.ts",
-                            "column": 11,
-                            "line": 72
-                          },
-                          "message": "Error: Color contrast violations detected\n\n\u001b[90m   at \u001b[39mtests\\helpers\\axe.ts:72\n\n\u001b[0m \u001b[90m 70 |\u001b[39m       })\u001b[33m;\u001b[39m\n \u001b[90m 71 |\u001b[39m     }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m'Color contrast violations detected'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 |\u001b[39m   }\n \u001b[90m 74 |\u001b[39m }\n \u001b[90m 75 |\u001b[39m\u001b[0m\n\u001b[2m    at scanPage (F:\\GitHub\\route66web\\tests\\helpers\\axe.ts:72:11)\u001b[22m\n\u001b[2m    at F:\\GitHub\\route66web\\tests\\colorContrast.spec.ts:53:9\u001b[22m"
-                        }
-                      ],
+                      "status": "passed",
+                      "duration": 1093,
+                      "errors": [],
                       "stdout": [],
-                      "stderr": [
-                        {
-                          "text": "Axe found 1 color-contrast violation groups\n"
-                        },
-                        {
-                          "text": "- color-contrast: Elements must meet minimum color contrast ratio thresholds (serious)\n"
-                        },
-                        {
-                          "text": "  Node 1: a[href$=\"privacy-policy.html\"]\n"
-                        },
-                        {
-                          "text": "  Node 2: .dark\\:text-blue-400\n"
-                        },
-                        {
-                          "text": "  Node 3: a[href=\"/index.html\"]\n"
-                        }
-                      ],
+                      "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-11T15:11:53.509Z",
+                      "startTime": "2025-08-11T15:32:10.203Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "F:\\GitHub\\route66web\\test-results\\tests-colorContrast--src-t-83c69--–-dark-WCAG-contrast-audit\\error-context.md"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "F:\\GitHub\\route66web\\tests\\helpers\\axe.ts",
-                        "column": 11,
-                        "line": 72
-                      }
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "0035d4441c0763261935-289be70c4a869a73be79",
@@ -683,11 +594,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-08-11T15:11:40.463Z",
-    "duration": 14270.704,
-    "expected": 1,
+    "startTime": "2025-08-11T15:31:58.285Z",
+    "duration": 13183.476,
+    "expected": 3,
     "skipped": 0,
-    "unexpected": 6,
+    "unexpected": 4,
     "flaky": 0
   }
 }
