@@ -113,6 +113,23 @@
             content="CBD, THCA, Cannabis, Hemp, CBD Hemp, Route 66 Hemp, Cannabis Accessories, Hemp Products, Route 66, Dispensary, Hemp Dispensary, St Robert MO, Pulaski County, Fort Leonard Wood, Central Missouri"
         />
 
+        <!-- Prevent flash of unstyled content -->
+        <script>
+            (function() {
+                const theme = localStorage.getItem('theme') || 'system';
+                const root = document.documentElement;
+                
+                if (theme === 'dark') {
+                    root.setAttribute('data-theme', 'dark');
+                } else if (theme === 'light') {
+                    root.setAttribute('data-theme', 'light');
+                } else {
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                }
+            })();
+        </script>
+
         <!-- Avoid extra round-trips -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

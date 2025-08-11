@@ -2,18 +2,138 @@
 
 /* Typography and Readability Improvements */
 :root {
+    /* Color System - Light Mode */
+    --color-primary: #059669;
+    --color-primary-hover: #047857;
+    --color-primary-light: #10b981;
+    --color-secondary: #6b7280;
+    --color-accent: #3b82f6;
+    
+    /* Background Colors */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f9fafb;
+    --color-bg-tertiary: #f3f4f6;
+    --color-bg-overlay: rgba(0, 0, 0, 0.5);
+    
+    /* Text Colors */
+    --color-text-primary: #111827;
+    --color-text-secondary: #4b5563;
+    --color-text-tertiary: #6b7280;
+    --color-text-inverse: #ffffff;
+    
+    /* Border Colors */
+    --color-border-primary: #d1d5db;
+    --color-border-secondary: #e5e7eb;
+    --color-border-focus: #059669;
+    
+    /* Status Colors */
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+    
+    /* Shadow Colors */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    /* Typography Variables */
     --font-size-base: 16px;
     --line-height-base: 1.6;
     --line-height-heading: 1.3;
     --letter-spacing-normal: 0.02em;
     --letter-spacing-wide: 0.05em;
     --word-spacing-normal: 0.1em;
+    
+    /* Transition Variables */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+}
+
+/* Dark Mode Color Variables */
+[data-theme="dark"] {
+    /* Primary Colors - Adjusted for dark mode */
+    --color-primary: #10b981;
+    --color-primary-hover: #34d399;
+    --color-primary-light: #6ee7b7;
+    --color-secondary: #9ca3af;
+    --color-accent: #60a5fa;
+    
+    /* Background Colors */
+    --color-bg-primary: #111827;
+    --color-bg-secondary: #1f2937;
+    --color-bg-tertiary: #374151;
+    --color-bg-overlay: rgba(0, 0, 0, 0.75);
+    
+    /* Text Colors */
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #d1d5db;
+    --color-text-tertiary: #9ca3af;
+    --color-text-inverse: #111827;
+    
+    /* Border Colors */
+    --color-border-primary: #4b5563;
+    --color-border-secondary: #374151;
+    --color-border-focus: #10b981;
+    
+    /* Status Colors - Adjusted for dark mode */
+    --color-success: #34d399;
+    --color-warning: #fbbf24;
+    --color-error: #f87171;
+    --color-info: #60a5fa;
+    
+    /* Shadow Colors - Darker shadows for dark mode */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* Automatic dark mode based on system preference */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        /* Primary Colors */
+        --color-primary: #10b981;
+        --color-primary-hover: #34d399;
+        --color-primary-light: #6ee7b7;
+        --color-secondary: #9ca3af;
+        --color-accent: #60a5fa;
+        
+        /* Background Colors */
+        --color-bg-primary: #111827;
+        --color-bg-secondary: #1f2937;
+        --color-bg-tertiary: #374151;
+        --color-bg-overlay: rgba(0, 0, 0, 0.75);
+        
+        /* Text Colors */
+        --color-text-primary: #f9fafb;
+        --color-text-secondary: #d1d5db;
+        --color-text-tertiary: #9ca3af;
+        --color-text-inverse: #111827;
+        
+        /* Border Colors */
+        --color-border-primary: #4b5563;
+        --color-border-secondary: #374151;
+        --color-border-focus: #10b981;
+        
+        /* Status Colors */
+        --color-success: #34d399;
+        --color-warning: #fbbf24;
+        --color-error: #f87171;
+        --color-info: #60a5fa;
+        
+        /* Shadow Colors */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    }
 }
 
 /* Base typography settings for better readability */
 html {
     font-size: var(--font-size-base);
     scroll-behavior: smooth;
+    transition: var(--transition-normal);
 }
 
 body {
@@ -25,6 +145,9 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 /* Heading hierarchy with proper spacing and contrast */
@@ -35,7 +158,8 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: var(--letter-spacing-normal);
     margin-top: 0;
     margin-bottom: 0.75em;
-    color: inherit;
+    color: var(--color-text-primary);
+    transition: color var(--transition-normal);
 }
 
 h1 {
@@ -102,47 +226,89 @@ li {
 
 /* Links with better contrast and focus states */
 a {
-    color: #059669; /* Green-600 with better contrast */
+    color: var(--color-primary);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
-    transition: all 0.2s ease-in-out;
+    transition: all var(--transition-fast);
 }
 
 a:hover {
-    color: #047857; /* Green-700 */
+    color: var(--color-primary-hover);
     text-decoration-thickness: 2px;
 }
 
 a:focus {
-    outline: 2px solid #059669;
+    outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
     border-radius: 2px;
-    background-color: rgba(5, 150, 105, 0.1);
+    background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
-/* Dark mode text improvements */
-@media (prefers-color-scheme: dark) {
-    body {
-        color: #f8fafc; /* Slate-50 for better contrast */
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-        color: #ffffff;
-    }
-    
-    a {
-        color: #34d399; /* Emerald-400 for dark mode */
-    }
-    
-    a:hover {
-        color: #6ee7b7; /* Emerald-300 */
-    }
-    
-    a:focus {
-        outline-color: #34d399;
-        background-color: rgba(52, 211, 153, 0.1);
-    }
+/* Dark Mode Toggle Button Styles */
+.theme-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 0.5rem;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background-color: var(--color-bg-tertiary);
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Theme toggle icons */
+.theme-toggle .icon {
+    position: absolute;
+    transition: all var(--transition-normal);
+    font-size: 1rem;
+}
+
+.theme-toggle .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(180deg) scale(0.5);
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* Smooth transitions for all theme-aware elements */
+* {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: var(--transition-fast);
+    transition-timing-function: ease-in-out;
 }
 
 /* Dyslexia-friendly improvements */
@@ -170,23 +336,22 @@ a:focus {
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-    body {
-        background: #ffffff;
-        color: #000000;
+    :root {
+        --color-bg-primary: #ffffff;
+        --color-text-primary: #000000;
+        --color-primary: #0066cc;
+        --color-border-primary: #000000;
     }
     
-    .dark body {
-        background: #000000;
-        color: #ffffff;
+    [data-theme="dark"] {
+        --color-bg-primary: #000000;
+        --color-text-primary: #ffffff;
+        --color-primary: #66b3ff;
+        --color-border-primary: #ffffff;
     }
     
     a {
-        color: #0066cc;
         font-weight: 600;
-    }
-    
-    .dark a {
-        color: #66b3ff;
     }
     
     button, .btn {
@@ -196,22 +361,34 @@ a:focus {
 
 /* Text selection improvements */
 ::selection {
-    background-color: rgba(5, 150, 105, 0.3);
+    background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
     color: inherit;
 }
 
 ::-moz-selection {
-    background-color: rgba(5, 150, 105, 0.3);
+    background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
     color: inherit;
 }
 
 /* Skip link for screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .skip-link {
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #059669;
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
     padding: 8px;
     text-decoration: none;
     border-radius: 4px;
@@ -221,7 +398,7 @@ a:focus {
 
 .skip-link:focus {
     top: 6px;
-    outline: 2px solid #ffffff;
+    outline: 2px solid var(--color-text-inverse);
     outline-offset: 2px;
 }
 
@@ -229,7 +406,7 @@ a:focus {
 .product-card {
     transition:
         transform 0.3s,
-        box-shadow 0.3s;
+        box-shadow 0.3s, background-color var(--transition-normal);
 }
 /* Small banner that can appear in the corner of a product card */
 .product-banner {
@@ -237,7 +414,7 @@ a:focus {
     top: 0;
     left: 0;
     padding: 0.25rem 0.5rem;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: var(--color-bg-overlay);
     color: #ffffff;
     font-size: 0.75rem;
     font-weight: bold;
@@ -255,8 +432,8 @@ a:focus {
     width: 50px;
     height: 50px;
     margin: 0 auto;
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #0f0f9a;
+    border: 4px solid var(--color-border-secondary);
+    border-left-color: var(--color-primary);
     border-radius: 50%;
 }
 
@@ -276,22 +453,22 @@ button:focus,
 input:focus,
 select:focus,
 textarea:focus {
-    outline: 2px solid #0f0f9a;
+    outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
-    transition: outline-color 0.2s ease-in-out;
+    transition: outline-color var(--transition-fast);
 }
 
 /* Enhanced focus styles for navigation elements */
 nav a:focus,
 nav button:focus {
-    outline: 2px solid #10b981;
+    outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
     border-radius: 0.375rem;
 }
 
 /* Improved hover transitions */
 .product-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.2s ease;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), opacity var(--transition-fast), background-color var(--transition-normal);
 }
 
 .product-card:hover {
@@ -302,7 +479,7 @@ nav button:focus {
 /* Navigation hover effects */
 nav a,
 nav button {
-    transition: all 0.2s ease-in-out;
+    transition: all var(--transition-fast);
 }
 
 /* Mobile menu animations */
@@ -325,7 +502,7 @@ a,
 button,
 [role='button'] {
     cursor: pointer;
-    -webkit-tap-highlight-color: rgba(16, 185, 129, 0.2);
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
 /* Improved touch targets for mobile */
@@ -345,11 +522,11 @@ button,
 .product-card .dropdown,
 .product-card [role='combobox'] {
     cursor: pointer;
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .product-card select:hover {
-    border-color: #10b981;
+    border-color: var(--color-primary);
 }
 
 /* Loading animation improvements */
@@ -373,37 +550,18 @@ button,
     }
 }
 
-/* Custom focus styles for dark mode */
-@media (prefers-color-scheme: dark) {
-    a:focus,
-    button:focus,
-    input:focus,
-    select:focus,
-    textarea:focus {
-        outline-color: #10b981;
-    }
-}
-
 /* Improved text contrast for product cards */
 .product-card h3 {
-    color: #1f2937; /* Gray-800 for better contrast */
+    color: var(--color-text-primary);
     font-weight: 600;
     line-height: 1.4;
     margin-bottom: 0.5rem;
 }
 
 .product-card p {
-    color: #4b5563; /* Gray-600 */
+    color: var(--color-text-secondary);
     line-height: 1.5;
     margin-bottom: 0.75rem;
-}
-
-.dark .product-card h3 {
-    color: #f9fafb; /* Gray-50 */
-}
-
-.dark .product-card p {
-    color: #d1d5db; /* Gray-300 */
 }
 
 /* Button text improvements */
@@ -416,11 +574,7 @@ button, .btn {
 /* Form label improvements */
 label {
     font-weight: 600;
-    color: #374151; /* Gray-700 */
+    color: var(--color-text-primary);
     margin-bottom: 0.5rem;
     display: block;
-}
-
-.dark label {
-    color: #f3f4f6; /* Gray-100 */
 }

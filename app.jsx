@@ -341,6 +341,23 @@ function App() {
     const { activeSection } = useNavigation()
     useKeyboardNavigation()
 
+    // Initialize theme system
+    useEffect(() => {
+        // Prevent flash of unstyled content by setting initial theme immediately
+        const storedTheme = localStorage.getItem('theme') || 'system'
+        const root = document.documentElement
+        
+        if (storedTheme === 'dark') {
+            root.setAttribute('data-theme', 'dark')
+        } else if (storedTheme === 'light') {
+            root.setAttribute('data-theme', 'light')
+        } else {
+            // System preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+            root.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
+        }
+    }, [])
+
     // Check for dyslexia-friendly preference
     useEffect(() => {
         const dyslexiaPreference = localStorage.getItem('dyslexia-friendly')

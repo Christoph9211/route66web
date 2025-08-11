@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import LocalBusinessInfo from './LocalBusinessInfo'
 import SearchNavigation from './SearchNavigation'
+import ThemeToggle from './ThemeToggle'
 
 function Navigation({ products = [] }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -225,6 +226,9 @@ function Navigation({ products = [] }) {
                         <div className="flex items-center space-x-4">
                             {/* Search Component */}
                             <SearchNavigation products={products} />
+
+                            {/* Theme Toggle */}
+                            <ThemeToggle />
 
                             {/* Quick Contact (Desktop) */}
                             <div className="hidden items-center space-x-4 text-sm lg:flex">
