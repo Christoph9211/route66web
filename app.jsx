@@ -462,7 +462,6 @@ function App() {
             <QuickNavigation />
 
             <CartDrawer />
-            <CartPage />
 
             {/* Analytics */}
             <Analytics />
@@ -471,11 +470,12 @@ function App() {
     )
 }
 
-// Render the app
+// Render the app or cart page based on current path
 const container = document.getElementById('root')
 const root = createRoot(container)
+
 root.render(
     <CartProvider>
-        <App />
+        {window.location.pathname === '/cart' ? <CartPage /> : <App />}
     </CartProvider>
 )

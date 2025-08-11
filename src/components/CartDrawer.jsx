@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { useCart } from '../hooks/useCart'
 
 export default function CartDrawer() {
-    const { cart, isOpen, closeCart, openCartPage } = useCart()
+    const { cart, isOpen, closeCart } = useCart()
     const ref = useRef(null)
 
     useEffect(() => {
@@ -127,7 +127,10 @@ export default function CartDrawer() {
                         </div>
                         <button
                             className="w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
-                            onClick={openCartPage}
+                            onClick={() => {
+                                closeCart()
+                                window.location.href = '/cart'
+                            }}
                         >
                             View Cart
                         </button>
