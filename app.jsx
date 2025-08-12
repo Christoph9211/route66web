@@ -17,6 +17,7 @@ import CartDrawer from './src/components/CartDrawer'
 import CartPage from './src/components/CartPage'
 import { CartProvider } from './src/hooks/useCart'
 import { initCartButtonListener } from './src/utils/cartEvents'
+import { applyAutoContrast } from './src/utils/autoContrast'
 
 // Import hooks
 import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
@@ -331,6 +332,10 @@ function App() {
 
     useEffect(() => {
         initCartButtonListener()
+    }, [])
+
+    useEffect(() => {
+        applyAutoContrast()
     }, [])
 
     // Group products by category
