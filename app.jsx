@@ -17,6 +17,7 @@ import CartDrawer from './src/components/CartDrawer'
 import CartPage from './src/components/CartPage'
 import { CartProvider } from './src/hooks/useCart'
 import { initCartButtonListener } from './src/utils/cartEvents'
+import { applyAutoContrast } from './src/utils/autoContrast'
 
 // Import hooks
 import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
@@ -48,7 +49,7 @@ function ProductCard({ product }) {
             {/* Product Banner */}
             {product.banner && (
                 <div
-                    className={`product-banner ${
+                    className={`product-banner auto-contrast ${
                         product.banner === 'New'
                             ? 'bg-green-600'
                             : product.banner === 'Out of Stock'
@@ -332,6 +333,10 @@ function App() {
     useEffect(() => {
         initCartButtonListener()
     }, [])
+
+    useEffect(() => {
+        applyAutoContrast()
+    }, [products])
 
     // Group products by category
     const productsByCategory = products.reduce((acc, product) => {
