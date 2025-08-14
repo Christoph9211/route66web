@@ -10,7 +10,7 @@ export default function CartPage() {
 
     return (
         <div className="fixed inset-0 z-40 overflow-auto bg-white dark:bg-gray-900">
-            <div className="mx-auto max-w-3xl p-6">
+            <div className="mx-auto mt-16 max-w-3xl p-6">
                 <div className="mb-6 flex items-center justify-between border-b pb-4">
                     <h1 className="auto-contrast text-2xl font-bold">
                         Your Cart ({itemCount})
@@ -122,27 +122,31 @@ export default function CartPage() {
                         ))}
                     </ul>
                 )}
-                {cart.items.length > 0 && (
-                    <div className="mt-6 border-t pt-4">
+                <div
+                    className={`mt-6 ${cart.items.length > 0 ? 'border-t pt-4' : ''}`}
+                >
+                    {cart.items.length > 0 && (
                         <div className="mb-4 flex justify-between text-lg">
                             <span className="auto-contrast">Subtotal</span>
                             <span className="auto-contrast font-semibold">
                                 ${cart.subtotal.toFixed(2)}
                             </span>
                         </div>
-                        <div className="flex justify-end gap-4">
-                            <button
-                                onClick={closeCartPage}
-                                className="auto-contrast rounded border px-4 py-2 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800"
-                            >
-                                Continue shopping
-                            </button>
+                    )}
+                    <div className="flex justify-end gap-4">
+                        <button
+                            onClick={closeCartPage}
+                            className="auto-contrast rounded border px-4 py-2 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800"
+                        >
+                            Continue shopping
+                        </button>
+                        {cart.items.length > 0 && (
                             <button className="rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700">
                                 Checkout
                             </button>
-                        </div>
+                        )}
                     </div>
-                )}
+                </div>
             </div>
         </div>
     )
