@@ -110,8 +110,14 @@ export function CartProvider({ children }) {
 
     const openCart = () => setIsOpen(true)
     const closeCart = () => setIsOpen(false)
-    const openCartPage = () => setIsPageOpen(true)
-    const closeCartPage = () => setIsPageOpen(false)
+    const openCartPage = () => {
+        setIsOpen(false)
+        setIsPageOpen(true)
+    }
+    const closeCartPage = () => {
+        setIsPageOpen(false)
+        setIsOpen(false)
+    }
 
     return (
         <CartContext.Provider
