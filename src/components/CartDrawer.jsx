@@ -41,14 +41,18 @@ export default function CartDrawer() {
                     <h2 className=" auto-contrast text-lg font-semibold">
                         Cart ({itemCount})
                     </h2>
-                    <button onClick={closeCart} aria-label="Close cart">
+                    <button
+                        onClick={closeCart}
+                        aria-label="Close cart"
+                        className="auto-contrast hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    >
                         ✕
                     </button>
                 </div>
                 <div className="flex h-full flex-col justify-between">
                     <ul className="flex-1 overflow-y-auto p-4">
                         {cart.items.length === 0 && (
-                            <li className="text-center text-sm">
+                            <li className="auto-contrast text-center text-sm">
                                 Your cart is empty.
                             </li>
                         )}
@@ -58,8 +62,8 @@ export default function CartDrawer() {
                                 className="mb-4 flex items-center justify-between"
                             >
                                 <div>
-                                    <p className="font-medium">{item.name}</p>
-                                    <p className="text-sm">
+                                    <p className="auto-contrast font-medium">{item.name}</p>
+                                    <p className="auto-contrast text-sm">
                                         $
                                         {(item.unitPrice * item.qty).toFixed(2)}
                                     </p>
@@ -119,7 +123,7 @@ export default function CartDrawer() {
                                 </div>
                             </li>
                         ))}
-                        <button type="button" className="w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700" onClick={openCartPage}> View Cart </button>
+                        <button type="button" className=" auto-contrast w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700" onClick={openCartPage}> View Cart </button>
                     </ul>
                     <div className="border-t p-4">
                         <div className="mb-2 flex justify-between">
