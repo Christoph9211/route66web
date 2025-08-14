@@ -75,7 +75,7 @@ function FooterNavigation() {
     ]
 
     return (
-        <footer className="bg-gray-900 text-white">
+        <footer className="auto-contrast bg-gray-900 text-white">
             <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">

@@ -9,7 +9,7 @@ export default function CartPage() {
     return (
         <div className="fixed inset-0 z-40 overflow-auto bg-white p-6 dark:bg-gray-900">
             <div className="mb-4 flex items-center justify-between">
-                <h1 className="text-2xl font-bold">Shopping Cart</h1>
+                <h1 className=" auto-contrast text-2xl font-bold">Shopping Cart</h1>
                 <button onClick={closeCartPage} aria-label="Close cart page">
                     ✕
                 </button>
@@ -17,7 +17,7 @@ export default function CartPage() {
             {cart.items.length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (
-                <table className="w-full text-left">
+                <table className="auto-contrast w-full text-left">
                     <thead>
                         <tr>
                             <th className="p-2">Product</th>

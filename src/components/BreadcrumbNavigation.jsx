@@ -24,7 +24,7 @@ function BreadcrumbNavigation({ currentPage, category, productName }) {
     if (breadcrumbs.length <= 1) return null
 
     return (
-        <nav className="bg-gray-50 py-3 dark:bg-gray-800" aria-label="Breadcrumb">
+        <nav className="auto-contrast bg-gray-50 py-3 dark:bg-gray-800" aria-label="Breadcrumb">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <ol className="flex items-center space-x-2 text-sm">
                     {breadcrumbs.map((crumb, index) => (

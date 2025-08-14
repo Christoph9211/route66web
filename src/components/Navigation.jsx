@@ -173,7 +173,7 @@ function Navigation({ products = [] }) {
                                         {/* Desktop Dropdown */}
                                         {item.submenu && (
                                             <div
-                                                className="invisible absolute left-0 mt-2 w-48 rounded-md bg-white opacity-0 shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 group-hover:visible group-hover:opacity-100 dark:bg-gray-800"
+                                                className="auto-contrast invisible absolute left-0 mt-2 w-48 rounded-md bg-white opacity-0 shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 group-hover:visible group-hover:opacity-100 dark:bg-gray-800"
                                                 role="menu"
                                                 aria-label={`${item.label} submenu`}
                                             >
@@ -321,7 +321,7 @@ function Navigation({ products = [] }) {
                                     {/* Mobile Submenu */}
                                     {item.submenu && (
                                         <div
-                                            className="ml-6 mt-1 space-y-1"
+                                            className=" auto-contrast ml-6 mt-1 space-y-1"
                                             role="menu"
                                             aria-label={`${item.label} submenu`}
                                         >

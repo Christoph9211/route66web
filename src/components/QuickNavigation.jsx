@@ -56,7 +56,7 @@ function QuickNavigation() {
                 {/* Call Button - Always Visible */}
                 <a
                     href="tel:+15736776418"
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition-colors group"
+                    className=" auto-contrast flex h-12 w-12 items-center justify-center rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition-colors group"
                     aria-label="Call Route 66 Hemp"
                 >
                     <i className="fas fa-phone group-hover:animate-pulse" aria-hidden="true" />

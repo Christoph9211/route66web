@@ -38,7 +38,7 @@ export default function CartDrawer() {
                 aria-label="Shopping cart"
             >
                 <div className="flex items-center justify-between border-b p-4">
-                    <h2 className="text-lg font-semibold">
+                    <h2 className=" auto-contrast text-lg font-semibold">
                         Cart ({itemCount})
                     </h2>
                     <button onClick={closeCart} aria-label="Close cart">
