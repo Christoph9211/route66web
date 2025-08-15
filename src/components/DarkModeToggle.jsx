@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { useDarkMode } from '../hooks/useDarkMode'
+import React, { useState } from 'react'
+import { useTheme } from './ThemeProvider'
 
 function DarkModeToggle({ className = '' }) {
-    const { isDark, toggle, isLoading } = useDarkMode()
+    const { isDark, toggle, isLoading } = useTheme()
     const [isAnimating, setIsAnimating] = useState(false)
 
     const handleToggle = () => {
         setIsAnimating(true)
         toggle()
-        
+
         // Reset animation state after transition
         setTimeout(() => {
             setIsAnimating(false)
@@ -19,7 +19,7 @@ function DarkModeToggle({ className = '' }) {
     if (isLoading) {
         return (
             <div className={`h-10 w-10 ${className}`} aria-hidden="true">
-                <div className="animate-pulse rounded-full bg-gray-200 h-full w-full dark:bg-gray-700" />
+                <div className="h-full w-full animate-pulse rounded-full bg-gray-200 dark:bg-gray-700" />
             </div>
         )
     }
@@ -27,17 +27,7 @@ function DarkModeToggle({ className = '' }) {
     return (
         <button
             onClick={handleToggle}
-            className={`
-                relative inline-flex h-10 w-10 items-center justify-center
-                rounded-full border-2 border-transparent
-                bg-gray-100 text-gray-700 transition-all duration-300 ease-in-out
-                hover:bg-gray-200 hover:scale-105
-                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700
-                dark:focus:ring-blue-400 dark:focus:ring-offset-gray-900
-                ${isAnimating ? 'scale-95' : ''}
-                ${className}
-            `}
+            className={`relative inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-transparent bg-gray-100 text-gray-700 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-blue-400 dark:focus:ring-offset-gray-900 ${isAnimating ? 'scale-95' : ''} ${className} `}
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
             aria-pressed={isDark}
             role="switch"
@@ -45,13 +35,11 @@ function DarkModeToggle({ className = '' }) {
         >
             {/* Sun Icon */}
             <svg
-                className={`
-                    absolute h-5 w-5 transition-all duration-300 ease-in-out
-                    ${isDark 
-                        ? 'rotate-90 scale-0 opacity-0' 
+                className={`absolute h-5 w-5 transition-all duration-300 ease-in-out ${
+                    isDark
+                        ? 'rotate-90 scale-0 opacity-0'
                         : 'rotate-0 scale-100 opacity-100'
-                    }
-                `}
+                } `}
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,13 +54,11 @@ function DarkModeToggle({ className = '' }) {
 
             {/* Moon Icon */}
             <svg
-                className={`
-                    absolute h-5 w-5 transition-all duration-300 ease-in-out
-                    ${isDark 
-                        ? 'rotate-0 scale-100 opacity-100' 
+                className={`absolute h-5 w-5 transition-all duration-300 ease-in-out ${
+                    isDark
+                        ? 'rotate-0 scale-100 opacity-100'
                         : '-rotate-90 scale-0 opacity-0'
-                    }
-                `}
+                } `}
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
