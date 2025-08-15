@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useTheme } from './ThemeProvider'
 
 function DarkModeToggle({ className = '' }) {
-    const { isDark, toggle, isLoading } = useTheme()
+    const { isDark, setTheme, isLoading } = useTheme()
     const [isAnimating, setIsAnimating] = useState(false)
 
     const handleToggle = () => {
         setIsAnimating(true)
-        toggle()
+        setTheme(!isDark)
 
         // Reset animation state after transition
         setTimeout(() => {
@@ -27,7 +27,7 @@ function DarkModeToggle({ className = '' }) {
     return (
         <button
             onClick={handleToggle}
-            className={`relative inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-transparent bg-gray-100 text-gray-700 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-blue-400 dark:focus:ring-offset-gray-900 ${isAnimating ? 'scale-95' : ''} ${className} `}
+            className={`relative inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-transparent bg-gray-100 text-gray-700 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-blue-400 dark:focus:ring-offset-gray-900 ${isAnimating ? 'scale-95' : ''} ${className}`}
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
             aria-pressed={isDark}
             role="switch"
