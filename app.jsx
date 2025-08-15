@@ -18,6 +18,7 @@ import CartPage from './src/components/CartPage'
 import { CartProvider } from './src/hooks/useCart'
 import { initCartButtonListener } from './src/utils/cartEvents'
 import { applyAutoContrast } from './src/utils/autoContrast'
+import ThemeProvider from './src/components/ThemeProvider'
 
 // Import hooks
 import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
@@ -482,7 +483,9 @@ function App() {
 const container = document.getElementById('root')
 const root = createRoot(container)
 root.render(
-    <CartProvider>
-        <App />
-    </CartProvider>
+    <ThemeProvider>
+        <CartProvider>
+            <App />
+        </CartProvider>
+    </ThemeProvider>
 )

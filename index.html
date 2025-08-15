@@ -112,6 +112,10 @@
             name="keywords"
             content="CBD, THCA, Cannabis, Hemp, CBD Hemp, Route 66 Hemp, Cannabis Accessories, Hemp Products, Route 66, Dispensary, Hemp Dispensary, St Robert MO, Pulaski County, Fort Leonard Wood, Central Missouri"
         />
+        
+        <!-- Theme color meta tag (will be updated by dark mode toggle) -->
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="color-scheme" content="light dark" />
 
         <!-- Avoid extra round-trips -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -158,7 +162,21 @@
             />
         </noscript>
     </head>
-    <body class="bg-gray-50 font-sans antialiased dark:bg-gray-900">
+    <body class="bg-gray-50 font-sans antialiased dark:bg-gray-900 transition-colors duration-300">
+        <!-- Prevent flash of unstyled content -->
+        <script>
+            // Apply theme immediately to prevent flash
+            (function() {
+                const stored = localStorage.getItem('route66-theme-preference');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const shouldBeDark = stored === 'dark' || (stored === null && prefersDark);
+                
+                if (shouldBeDark) {
+                    document.documentElement.classList.add('dark');
+                }
+            })();
+        </script>
+        
         <main role="main">
             <div id="root"></div>
         </main>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import LocalBusinessInfo from './LocalBusinessInfo'
 import SearchNavigation from './SearchNavigation'
+import DarkModeToggle from './DarkModeToggle'
 import { slugify } from '../utils/slugify'
 import { useCart } from '../hooks/useCart'
 
@@ -259,6 +260,9 @@ function Navigation({ products = [] }) {
                                     </span>
                                 )}
                             </button>
+
+                            {/* Dark Mode Toggle */}
+                            <DarkModeToggle />
 
                             {/* Mobile menu button */}
                             <button
