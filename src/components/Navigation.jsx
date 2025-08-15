@@ -158,7 +158,7 @@ function Navigation({ products = [] }) {
                                             }`}
                                         >
                                             <i
-                                                className={`${item.icon} mr-2 text-sm`}
+                                                className={`${item.icon} mr-2 text-sm auto-contrast`}
                                                 aria-hidden="true"
                                             />
                                             {item.label}
@@ -173,12 +173,12 @@ function Navigation({ products = [] }) {
                                         {/* Desktop Dropdown */}
                                         {item.submenu && (
                                             <div
-                                                className="auto-contrast invisible absolute left-0 mt-2 w-48 rounded-md bg-white opacity-0 shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 group-hover:visible group-hover:opacity-100 dark:bg-gray-800"
+                                                className="invisible absolute left-0 mt-2 w-48 font-bold text-white rounded-md bg-white opacity-0 shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 group-hover:visible group-hover:opacity-100 dark:bg-gray-800"
                                                 role="menu"
                                                 aria-label={`${item.label} submenu`}
                                             >
                                                 <div
-                                                    className="py-1"
+                                                    className="flex flex-col py-1 font-extrabold"
                                                     role="none"
                                                 >
                                                     {item.submenu.map(
@@ -203,7 +203,7 @@ function Navigation({ products = [] }) {
                                                                             item.id
                                                                         )
                                                                     }
-                                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400"
+                                                                    className="block px-4 py-2 text-white hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400"
                                                                     role="menuitem"
                                                                 >
                                                                     {
@@ -340,7 +340,7 @@ function Navigation({ products = [] }) {
                                                                 item.id
                                                             )
                                                         }
-                                                        className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
+                                                        className="block px-3 py-2 text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
                                                         role="menuitem"
                                                     >
                                                         {subItem.label}

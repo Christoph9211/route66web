@@ -42,7 +42,7 @@ function ProductCard({ product }) {
 
     return (
         <div
-            className={`product-card relative min-w-[275px] rounded-lg bg-white p-6 shadow-md transition-all duration-300 hover:shadow-lg md:w-full lg:w-1/2 xl:w-1/3 dark:bg-gray-800 ${
+            className={`product-card relative min-w-[285px] rounded-lg bg-white p-6 shadow-md transition-all duration-300 hover:shadow-lg sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/4 dark:bg-gray-800 ${
                 isOutOfStock ? 'opacity-75' : ''
             }`}
         >
@@ -51,10 +51,10 @@ function ProductCard({ product }) {
                 <div
                     className={`product-banner auto-contrast ${
                         product.banner === 'New'
-                            ? 'bg-green-600'
+                            ? 'bg-green-600 text-white'
                             : product.banner === 'Out of Stock'
-                              ? 'bg-red-600'
-                              : 'bg-blue-600'
+                              ? 'bg-red-600 text-white'
+                              : 'bg-blue-600 text-white'
                     }`}
                 >
                     {product.banner}
@@ -112,10 +112,10 @@ function ProductCard({ product }) {
                     ${currentPrice?.toFixed(2) || 'N/A'}
                 </div>
                 <button
-                    className={`add-to-cart rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                    className={`add-to-cart rounded-md px-4 py-2 ${
                         isOutOfStock
-                            ? 'cursor-not-allowed bg-gray-300 text-gray-600 hover:text-red-600'
-                            : 'bg-green-600 text-semibold text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
+                            ? 'cursor-not-allowed bg-white text-black hover:text-red-600'
+                            : 'bg-emerald-700 text-white transition-colors hover:bg-white hover:text-green-600 focus:outline-green-500 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 active:bg-emerald-600 active:text-white'
                     }`}
                     disabled={isOutOfStock}
                     aria-label={`Add ${product.name} to cart`}
@@ -127,7 +127,9 @@ function ProductCard({ product }) {
                     data-image=""
                     data-available={!isOutOfStock}
                 >
-                    {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+                    <span className="text-lg font-bold">
+                        {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+                    </span>
                 </button>
             </div>
         </div>

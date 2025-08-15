@@ -157,3 +157,10 @@ button,
         outline-color: #10b981;
     }
 }
+button {
+  font-weight: bold;
+}
+
+.add-to-cart {
+  font-weight: bold;
+}

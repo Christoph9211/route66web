@@ -75,10 +75,10 @@ function FooterNavigation() {
     ]
 
     return (
-        <footer className="auto-contrast bg-gray-900 text-white">
+        <footer className="auto-contrast bg-gray-900 text-white border-t border-gray-800">
             <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
-                <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-6">
                     {/* Business Info */}
                     <div className="lg:col-span-2">
                         <div className="mb-6">
@@ -160,7 +160,7 @@ function FooterNavigation() {
                 {/* Bottom Footer */}
                 <div className="mt-12 border-t border-gray-800 pt-8">
                     <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
-                        <div className="text-center text-sm text-gray-400 md:text-left">
+                        <div className="text-center text-sm text-white md:text-left">
                             <p>
                                 &copy; 2025 Route 66 Hemp. All rights reserved.
                             </p>
@@ -168,7 +168,7 @@ function FooterNavigation() {
                                 Licensed hemp retailer in Missouri | 21+ Only
                             </p>
                         </div>
-                        <div className="flex items-center text-sm text-gray-400">
+                        <div className="flex items-center text-sm text-white">
                             <span>St Robert, MO 65584</span>
                         </div>
                     </div>

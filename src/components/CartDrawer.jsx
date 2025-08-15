@@ -52,7 +52,7 @@ export default function CartDrawer() {
                 <div className="flex h-full flex-col justify-between">
                     <ul className="flex-1 overflow-y-auto p-4">
                         {cart.items.length === 0 && (
-                            <li className="auto-contrast text-center text-sm">
+                            <li className="text-center text-white text-sm">
                                 Your cart is empty.
                             </li>
                         )}
@@ -62,15 +62,15 @@ export default function CartDrawer() {
                                 className="mb-4 flex items-center justify-between"
                             >
                                 <div>
-                                    <p className="auto-contrast font-medium">{item.name}</p>
-                                    <p className="auto-contrast text-sm">
+                                    <p className="text-white font-medium">{item.name}</p>
+                                    <p className="text-white font-medium">
                                         $
                                         {(item.unitPrice * item.qty).toFixed(2)}
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <button
-                                        className="px-2"
+                                        className="px-2 dark:text-white"
                                         onClick={() =>
                                             window.dispatchEvent(
                                                 new CustomEvent('cart:update', {
@@ -86,9 +86,9 @@ export default function CartDrawer() {
                                     >
                                         -
                                     </button>
-                                    <span>{item.qty}</span>
+                                    <span className="text-white">{item.qty}</span>
                                     <button
-                                        className="px-2"
+                                        className="px-2 text-white"
                                         onClick={() =>
                                             window.dispatchEvent(
                                                 new CustomEvent('cart:update', {
@@ -123,7 +123,7 @@ export default function CartDrawer() {
                                 </div>
                             </li>
                         ))}
-                        <button type="button" className=" auto-contrast w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700" onClick={openCartPage}> View Cart </button>
+                        <button type="button" className="w-full text-lg font-bold rounded bg-emerald-600 px-4 py-2 text-black hover:bg-green-700" onClick={openCartPage}> View Cart </button>
                     </ul>
                     <div className="border-t p-4">
                         <div className="mb-2 flex justify-between">

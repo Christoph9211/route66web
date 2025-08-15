@@ -9,22 +9,22 @@ export default function CartPage() {
     const itemCount = cart.items.reduce((sum, item) => sum + item.qty, 0)
 
     return (
-        <div className="fixed inset-0 z-40 overflow-auto bg-white dark:bg-gray-900">
+        <div className="fixed inset-0 z-40 overflow-auto bg-gray-100 dark:bg-gray-800">
             <div className="mx-auto mt-16 max-w-3xl p-6">
                 <div className="mb-6 flex items-center justify-between border-b pb-4">
-                    <h1 className="auto-contrast text-2xl font-bold">
+                    <h1 className="auto-contrast dark:text-white text-2xl font-bold">
                         Your Cart ({itemCount})
                     </h1>
                     <button
                         onClick={closeCartPage}
                         aria-label="Close cart page"
-                        className="auto-contrast rounded p-2 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        className="auto-contrast rounded p-2 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
                     >
                         ✕
                     </button>
                 </div>
                 {cart.items.length === 0 ? (
-                    <p className="auto-contrast">Your cart is empty.</p>
+                    <p className="auto-contrast dark:text-white">Your cart is empty.</p>
                 ) : (
                     <ul className="divide-y">
                         {cart.items.map((item) => (
@@ -33,16 +33,16 @@ export default function CartPage() {
                                 className="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between"
                             >
                                 <div className="flex-1">
-                                    <p className="auto-contrast font-medium">
+                                    <p className="auto-contrast dark:text-white font-medium">
                                         {item.name}
                                     </p>
-                                    <p className="auto-contrast text-sm">
+                                    <p className="auto-contrast dark:text-white text-sm">
                                         ${item.unitPrice.toFixed(2)} each
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <button
-                                        className="px-2"
+                                        className="px-2 dark:text-white"
                                         onClick={() =>
                                             window.dispatchEvent(
                                                 new CustomEvent('cart:update', {
@@ -61,7 +61,7 @@ export default function CartPage() {
                                     <input
                                         type="number"
                                         min="1"
-                                        className="w-16 border p-1 text-center"
+                                        className="w-16 border p-1 text-center dark:text-white"
                                         value={item.qty}
                                         onChange={(e) =>
                                             window.dispatchEvent(
@@ -79,7 +79,7 @@ export default function CartPage() {
                                         aria-label={`Quantity for ${item.name}`}
                                     />
                                     <button
-                                        className="px-2"
+                                        className="dark:text-white px-2"
                                         onClick={() =>
                                             window.dispatchEvent(
                                                 new CustomEvent('cart:update', {
@@ -97,12 +97,12 @@ export default function CartPage() {
                                     </button>
                                 </div>
                                 <div className="text-right sm:w-24">
-                                    <p className="auto-contrast">
+                                    <p className="dark:text-white">
                                         $
                                         {(item.unitPrice * item.qty).toFixed(2)}
                                     </p>
                                     <button
-                                        className="text-sm text-red-600"
+                                        className="text-red-600 font-medium hover:underline dark:text-red-500 dark:hover:text-white"
                                         onClick={() =>
                                             window.dispatchEvent(
                                                 new CustomEvent('cart:remove', {
@@ -127,8 +127,8 @@ export default function CartPage() {
                 >
                     {cart.items.length > 0 && (
                         <div className="mb-4 flex justify-between text-lg">
-                            <span className="auto-contrast">Subtotal</span>
-                            <span className="auto-contrast font-semibold">
+                            <span className="dark:text-white">Subtotal</span>
+                            <span className="font-semibold dark:text-white">
                                 ${cart.subtotal.toFixed(2)}
                             </span>
                         </div>
@@ -136,12 +136,12 @@ export default function CartPage() {
                     <div className="flex justify-end gap-4">
                         <button
                             onClick={closeCartPage}
-                            className="auto-contrast rounded border px-4 py-2 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800"
+                            className="bg-emerald-600 text-black rounded border px-4 py-2 hover:bg-green-700 border-green-600 focus-outline-green-500 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                         >
                             Continue shopping
                         </button>
                         {cart.items.length > 0 && (
-                            <button className="rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700">
+                            <button className="rounded bg-emerald-600 px-4 py-2 text-black hover:bg-green-700 border-green-600 focus-outline-green-500 focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                                 Checkout
                             </button>
                         )}
