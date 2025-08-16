@@ -8,6 +8,15 @@ const ThemeContext = createContext({
     isLoading: true
 })
 
+/**
+ * ThemeProvider component wraps the application and provides access to the
+ * current theme state and functions to toggle the theme. It also announces
+ * theme changes to screen readers.
+ * 
+ * @param {Object} props - The component properties.
+ * @param {ReactNode} props.children - The child components.
+ * @returns {ReactNode} - The rendered component.
+ */
 export function ThemeProvider({ children }) {
     const darkMode = useDarkMode()
 
@@ -39,6 +48,13 @@ export function ThemeProvider({ children }) {
     )
 }
 
+/**
+ * Custom hook that provides the current theme state and functions. It must be
+ * used within a ThemeProvider component.
+ *
+ * @throws {Error} Throws an error if not used within a ThemeProvider.
+ * @return {Object} The current theme state and functions.
+ */
 export function useTheme() {
     const context = useContext(ThemeContext)
     if (context === undefined) {

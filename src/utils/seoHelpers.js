@@ -20,11 +20,27 @@ export const businessInfo = {
     },
 }
 
+
+/**
+ * Generates a local title for SEO purposes.
+ *
+ * @param {string} pageTitle - The title of the page.
+ * @param {boolean} [includeLocation=true] - Whether to include the location in the title.
+ * @return {string} The generated local title.
+ */
 export const generateLocalTitle = (pageTitle, includeLocation = true) => {
     const location = includeLocation ? ` | St Robert, MO` : ''
     return `${pageTitle} - ${businessInfo.name}${location}`
 }
 
+
+/**
+ * Generates a local description for SEO purposes.
+ *
+ * @param {string} baseDescription - The base description of the page.
+ * @param {boolean} [includeLocation=true] - Whether to include the location in the description.
+ * @return {string} The generated local description.
+ */
 export const generateLocalDescription = (
     baseDescription,
     includeLocation = true
@@ -35,6 +51,13 @@ export const generateLocalDescription = (
     return `${baseDescription}${location}`
 }
 
+/**
+ * Generates a list of local keywords for SEO purposes by combining the baseKeywords
+ * with a predefined list of local keywords.
+ *
+ * @param {Array<string>} [baseKeywords=[]] - The base list of keywords for the page.
+ * @return {Array<string>} - The generated list of local keywords.
+ */
 export const generateLocalKeywords = (baseKeywords = []) => {
     const localKeywords = [
         'St Robert MO',
@@ -57,6 +80,12 @@ export const generateLocalKeywords = (baseKeywords = []) => {
 export const formatPhoneForDisplay = () => businessInfo.phoneFormatted
 export const formatPhoneForTel = () => businessInfo.phoneLink
 
+/**
+ * Returns an object representing the business hours for each day of the week.
+ *
+ * @return {Object} An object with keys for each day of the week and values
+ * representing the opening and closing times for that day.
+ */
 export const getBusinessHours = () => ({
     monday: { open: '11:00', close: '21:00' },
     tuesday: { open: '11:00', close: '21:00' },
@@ -67,6 +96,11 @@ export const getBusinessHours = () => ({
     sunday: { open: '11:00', close: '19:00' },
 })
 
+/**
+ * Determines if the current time falls within the business hours for the current day of the week.
+ *
+ * @return {boolean} True if the current time is within the business hours, false otherwise.
+ */
 export const isCurrentlyOpen = () => {
     const now = new Date()
     const currentDay = now
@@ -85,6 +119,13 @@ export const isCurrentlyOpen = () => {
     return currentTime >= openTime && currentTime <= closeTime
 }
 
+
+/**
+ * Generates a breadcrumb schema object for use in SEO markup.
+ *
+ * @param {Array} breadcrumbs - An array of objects representing each breadcrumb in the schema.
+ * @return {Object} The breadcrumb schema object.
+ */
 export const generateBreadcrumbSchema = (breadcrumbs) => {
     return {
         '@context': 'https://schema.org',
@@ -98,6 +139,13 @@ export const generateBreadcrumbSchema = (breadcrumbs) => {
     }
 }
 
+
+/**
+ * Generates a FAQ schema object for use in SEO markup.
+ *
+ * @param {Array} faqs - An array of objects representing each FAQ in the schema.
+ * @return {Object} The FAQ schema object.
+ */
 export const generateFAQSchema = (faqs) => {
     return {
         '@context': 'https://schema.org',
@@ -113,6 +161,17 @@ export const generateFAQSchema = (faqs) => {
     }
 }
 
+
+/**
+ * Generates a product schema object for use in SEO markup.
+ *
+ * @param {Object} product - An object representing the product in the schema.
+ * @param {string} product.name - The name of the product.
+ * @param {string} product.description - The description of the product.
+ * @param {string} product.category - The category of the product.
+ * @param {number} product.price - The price of the product.
+ * @return {Object} The product schema object.
+ */
 export const generateProductSchema = (product) => {
     return {
         '@context': 'https://schema.org',

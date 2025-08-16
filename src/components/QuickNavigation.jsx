@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react'
 
+/**
+ * Renders a quick navigation component that provides quick access to
+ * various sections of the page and a call button.
+ *
+ * The quick navigation component is visible when the user scrolls down 300px
+ * from the top of the page. It displays a call button and a set of buttons
+ * that navigate to different sections of the page. The active section is
+ * determined by finding the first element with an ID from the `sections` array
+ * whose top and bottom positions are both within 100px of the top of the
+ * viewport.
+ *
+ * @return {JSX.Element} The quick navigation component.
+ */
 function QuickNavigation() {
     const [isVisible, setIsVisible] = useState(false)
     const [activeSection, setActiveSection] = useState('')
@@ -12,6 +25,19 @@ function QuickNavigation() {
     ]
 
     useEffect(() => {
+    /**
+     * Handles the scroll event and updates the state of the quick navigation
+     * based on the scroll position.
+     *
+     * This function is called whenever the window is scrolled. It checks if the
+     * scroll position is greater than 300px and updates the `isVisible` state
+     * accordingly. It also updates the `activeSection` state based on the
+     * current scroll position. The active section is determined by finding the
+     * first element with an ID from the `sections` array whose top and bottom
+     * positions are both within 100px of the top of the viewport.
+     *
+     * @return {void} No return value.
+     */
         const handleScroll = () => {
             // Show quick nav after scrolling down 300px
             setIsVisible(window.scrollY > 300)
@@ -36,6 +62,13 @@ function QuickNavigation() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    /**
+     * Handles a click on a quick navigation link.
+     *
+     * @param {string} id - The ID of the link that was clicked.
+     *                     If "top", scrolls to the top of the page smoothly.
+     *                     Otherwise, scrolls to the element with the given ID.
+     */
     const handleQuickNavClick = (id) => {
         if (id === 'top') {
             window.scrollTo({ top: 0, behavior: 'smooth' })

@@ -5,6 +5,13 @@ import DarkModeToggle from './DarkModeToggle'
 import { slugify } from '../utils/slugify'
 import { useCart } from '../hooks/useCart'
 
+
+/**
+ * Navigation component for the header of the website.
+ *
+ * @param {Array} products - Array of products to be used in the search navigation.
+ * @return {JSX.Element} The navigation component.
+ */
 function Navigation({ products = [] }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
@@ -13,6 +20,17 @@ function Navigation({ products = [] }) {
 
     // Handle scroll effects
     useEffect(() => {
+
+    /**
+     * Handles the scroll event and updates the state of whether the user has
+     * scrolled more than 20 pixels from the top of the page.
+     *
+     * This function is called whenever the window is scrolled. It checks if the
+     * scroll position is greater than 20 pixels from the top of the page and
+     * updates the `isScrolled` state accordingly.
+     *
+     * @return {void} No return value.
+     */
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20)
         }
@@ -62,14 +80,36 @@ function Navigation({ products = [] }) {
         },
     ]
 
+    /**
+     * Toggles the menu open and closed.
+     *
+     * This function toggles the value of `isMenuOpen` state. If the menu is
+     * currently closed, it will be opened. If it is currently open, it will be
+     * closed.
+     *
+     * @return {void} This function does not return anything.
+     */
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
     }
 
+    /**
+     * Closes the menu by setting the `isMenuOpen` state to `false`.
+     *
+     * @return {void} This function does not return anything.
+     */
     const closeMenu = () => {
         setIsMenuOpen(false)
     }
 
+    /**
+     * Handles a click on a navigation link.
+     *
+     * @param {Event} e - The click event.
+     * @param {string} href - The href of the link that was clicked.
+     * @param {string} id - The id of the link that was clicked.
+     * @return {void} This function does not return anything.
+     */
     const handleNavClick = (e, href, id) => {
         e.preventDefault()
         setActiveSection(id)

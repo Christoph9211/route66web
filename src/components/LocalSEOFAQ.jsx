@@ -1,5 +1,12 @@
 // FAQ component with local SEO focus
 import React from 'react'
+/**
+ * LocalSEOFAQ is a React functional component that renders a section of frequently asked questions
+ * about the Route 66 Hemp store in St Robert, Missouri. The component includes a list of questions
+ * and their respective answers, as well as a call to action to contact the store for more information.
+ *
+ * @return {JSX.Element} A JSX element containing the FAQ section.
+ */
 function LocalSEOFAQ() {
     const faqs = [
         {
@@ -32,6 +39,14 @@ function LocalSEOFAQ() {
 
     const [openIndex, setOpenIndex] = React.useState(null)
 
+    /**
+     * Toggles the openIndex state based on the provided index. 
+     * If the openIndex is already equal to the provided index, it sets openIndex to null.
+     * Otherwise, it sets openIndex to the provided index. 
+     * 
+     * @param {number} index - The index to toggle the openIndex state with.
+     * @return {void}
+     */
     const toggleFAQ = (index) => {
         setOpenIndex(openIndex === index ? null : index)
     }

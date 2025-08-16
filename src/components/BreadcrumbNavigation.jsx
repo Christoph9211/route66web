@@ -1,5 +1,14 @@
 import React from 'react'
 
+/**
+ * Renders a breadcrumb navigation component based on the provided props.
+ * 
+ * @param {Object} props - The props object containing the following properties:
+ *   - currentPage: The current page being viewed.
+ *   - category: The category of the current page.
+ *   - productName: The name of the current product.
+ * @return {JSX.Element|null} The breadcrumb navigation component or null if there is only one breadcrumb.
+ */
 function BreadcrumbNavigation({ currentPage, category, productName }) {
     const breadcrumbs = [
         { label: 'Home', href: '#home', icon: 'fas fa-home' },

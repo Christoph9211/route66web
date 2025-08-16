@@ -1,6 +1,11 @@
 import React from 'react'
 import { useCart } from '../hooks/useCart'
 
+/**
+ * Renders the cart page.
+ *
+ * @return {JSX.Element|null} The cart page component or null if the page is not open.
+ */
 export default function CartPage() {
     const { cart, isPageOpen, closeCartPage, removeItem } = useCart()
 

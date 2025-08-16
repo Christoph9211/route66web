@@ -1,11 +1,24 @@
 import React, { useEffect, useRef } from 'react'
 import { useCart } from '../hooks/useCart'
 
+/**
+ * Renders the shopping cart drawer component.
+ *
+ * @return {JSX.Element} The shopping cart drawer component.
+ */
 export default function CartDrawer() {
     const { cart, isOpen, closeCart, openCartPage } = useCart()
     const ref = useRef(null)
 
     useEffect(() => {
+
+
+        /**
+         * Handles the 'Escape' key event by closing the cart.
+         *
+         * @param {KeyboardEvent} e - The keyboard event.
+         * @return {void} This function does not return anything.
+         */
         const handleEsc = (e) => {
             if (e.key === 'Escape') closeCart()
         }

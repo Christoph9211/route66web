@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { useDarkMode } from '../hooks/useDarkMode'
 
+/**
+ * A component that toggles the dark mode state and animates the button.
+ * 
+ * @param {string} className - An optional class name to apply to the component.
+ * @returns {JSX.Element} A button component that toggles the dark mode state and animates the button.
+ */
 function DarkModeToggle({ className = '' }) {
     const { isDark, toggle, isLoading } = useDarkMode()
     const [isAnimating, setIsAnimating] = useState(false)
 
+    /**
+     * Toggles the dark mode state, animates the button, and resets the animation state after a transition.
+     *
+     * @return {void}
+     */
     const handleToggle = () => {
         setIsAnimating(true)
         toggle()

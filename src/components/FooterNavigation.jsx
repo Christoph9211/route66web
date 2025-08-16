@@ -2,6 +2,12 @@ import React from 'react'
 import LocalBusinessInfo from './LocalBusinessInfo'
 import { slugify } from '../utils/slugify'
 
+/**
+ * FooterNavigation is a React component that renders the footer of the website.
+ * It displays business information, social links, and footer links.
+ *
+ * @return {JSX.Element} The FooterNavigation component.
+ */
 function FooterNavigation() {
     const footerSections = [
         {

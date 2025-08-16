@@ -3,6 +3,15 @@ import { useState, useEffect, useCallback } from 'react'
 const STORAGE_KEY = 'route66-theme-preference'
 const DARK_CLASS = 'dark'
 
+/**
+ * Custom hook for managing dark mode theme preference.
+ *
+ * @returns {Object} An object containing the current theme state and functions.
+ * @property {boolean} isDark - The current theme preference.
+ * @property {Function} toggle - Function to toggle the theme preference.
+ * @property {Function} setTheme - Function to set the theme preference.
+ * @property {boolean} isLoading - Indicates if the initial theme preference is being loaded.
+ */
 export function useDarkMode() {
     const [isDark, setIsDark] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -120,9 +129,9 @@ export function useDarkMode() {
             return () => mediaQuery.removeEventListener('change', handleChange)
         }
         // Legacy browsers
-        else if (mediaQuery.addListener) {
-            mediaQuery.addListener(handleChange)
-            return () => mediaQuery.removeListener(handleChange)
+        else if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleChange)
+            return () => mediaQuery.removeEventListener('change', handleChange)
         }
     }, [setTheme])
 

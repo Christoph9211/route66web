@@ -1,5 +1,10 @@
 // Structured Data Component for Local Business SEO
 
+/**
+ * StructuredData component for Local Business SEO.
+ * Renders structured data for business information, breadcrumbs, and organization.
+ * @returns {JSX.Element} The StructuredData component.
+ */
 function StructuredData() {
     const businessData = {
         '@context': 'https://schema.org',

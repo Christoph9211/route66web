@@ -1,3 +1,13 @@
+
+/**
+ * Renders local business information based on the provided variant.
+ *
+ * @param {Object} props - The props for the component.
+ * @param {string} [props.variant='full'] - The variant of the component.
+ *   The default variant is 'full'.
+ * @param {string} [props.className=''] - The additional class name for the component.
+ * @returns {JSX.Element} - The rendered local business information.
+ */
 function LocalBusinessInfo({ variant = 'full', className = '' }) {
     const businessInfo = {
         name: 'Route 66 Hemp',

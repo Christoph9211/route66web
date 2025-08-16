@@ -1,6 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { slugify } from '../utils/slugify'
 
+/**
+ * SearchNavigation is a React component that provides a search functionality for products, categories, and sizes.
+ * It displays a search bar and allows users to search for products based on their names, categories, or sizes.
+ * Results are displayed in a dropdown below the search bar, and users can click on a result to navigate to the product or category section on the page.
+ * The component uses React hooks to manage state and handle user interactions.
+ *
+ * @param {Array} products - An array of product objects to search through.
+ * @return {JSX.Element} A React component that displays a search bar and search results dropdown.
+ */
 function SearchNavigation({ products = [] }) {
     const [isOpen, setIsOpen] = useState(false)
     const [query, setQuery] = useState('')
@@ -35,6 +44,12 @@ function SearchNavigation({ products = [] }) {
 
     // Handle keyboard navigation
     useEffect(() => {
+    /**
+     * Handles keydown events for search navigation.
+     *
+     * @param {KeyboardEvent} e - The keyboard event.
+     * @return {void}
+     */
         const handleKeyDown = (e) => {
             if (!isOpen) return
 
@@ -70,6 +85,13 @@ function SearchNavigation({ products = [] }) {
 
     // Close search when clicking outside
     useEffect(() => {
+        /**
+         * Handles the click event outside the search box.
+         * If the click event target is not within the search box,
+         * it closes the search box.
+         *
+         * @param {Event} event - the click event
+         */
         const handleClickOutside = (event) => {
             if (
                 searchRef.current &&
@@ -84,6 +106,15 @@ function SearchNavigation({ products = [] }) {
             document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
+    /**
+     * Handles the click event on a search result.
+     * 
+     * @param {Object} product - The product object representing the search result.
+     * @return {void} This function does not return anything.
+     * 
+     * Navigates to the product or category section on the page 
+     * and closes the search bar.
+     */
     const handleResultClick = (product) => {
         // Navigate to product or category
         const categoryElement = document.getElementById(
@@ -96,6 +127,13 @@ function SearchNavigation({ products = [] }) {
         setQuery('')
     }
 
+    /**
+     * Highlights the occurrences of a query in a given text.
+     *
+     * @param {string} text - The text to search for occurrences of the query.
+     * @param {string} query - The query to search for in the text.
+     * @return {JSX.Element[]} An array of JSX elements, where the occurrences of the query are wrapped in a mark element.
+     */
     const highlightMatch = (text, query) => {
         if (!query) return text
 

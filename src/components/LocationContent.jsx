@@ -1,5 +1,13 @@
 // Location-specific content component for local SEO
 
+/**
+ * LocationContent is a component that displays location-specific content
+ * for local SEO. It renders information about the city, state, county,
+ * region, nearby areas, and landmarks.
+ *
+ * @returns {JSX.Element} The JSX element representing the LocationContent
+ * component.
+ */
 function LocationContent() {
     const locationData = {
         city: 'St Robert',

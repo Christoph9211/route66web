@@ -1,8 +1,17 @@
 import React, { useEffect, useRef } from 'react'
 
+
 /**
- * Component for making announcements to screen readers
- * Used for dynamic content changes that need to be announced
+ * AccessibilityAnnouncer is a React component that creates a live region for 
+ * screen readers to announce messages to users. It is used to provide
+ * important information to users that may not be visible to all users.
+ *
+ * @param {Object} props - The component properties.
+ * @param {string} props.message - The message to announce.
+ * @param {string} [props.priority='polite'] - The priority of the announcement.
+ * @param {number} [props.clearAfter=1000] - The time in milliseconds to clear
+ * the announcement after.
+ * @return {JSX.Element} The AccessibilityAnnouncer component.
  */
 function AccessibilityAnnouncer({ message, priority = 'polite', clearAfter = 1000 }) {
     const announcerRef = useRef(null)

@@ -1,5 +1,12 @@
 // Google Business Profile integration suggestions and review display
 
+/**
+ * Component for displaying customer reviews and a call to action to find and
+ * leave a review on Google Business Profile.
+ *
+ * @return {JSX.Element} The component for displaying customer reviews and a
+ * call to action to find and leave a review on Google Business Profile.
+ */
 function GoogleBusinessIntegration() {
     const reviews = [
         {
