@@ -35,7 +35,7 @@ Use Node (≥18) and npm for all tasks.
 
 ## Commit and PR Guidelines
 
-1. Run npm run format, npm run lint, and npm run build before committing.
+1. Run npm run lint, and npm run build before committing.
 
 2. If any command fails, resolve the errors and rerun.
 
