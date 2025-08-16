@@ -14,7 +14,7 @@ import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegratio
 import LocalBusinessInfo from './src/components/LocalBusinessInfo'
 import StructuredData from './src/components/StructuredData'
 import CartDrawer from './src/components/CartDrawer'
-import CartPage from './src/components/CartPage'
+import CartDialog from './src/components/CartDialog'
 import { CartProvider } from './src/hooks/useCart'
 import { initCartButtonListener } from './src/utils/cartEvents'
 import { applyAutoContrast } from './src/utils/autoContrast'
@@ -63,7 +63,7 @@ function ProductCard({ product }) {
             )}
 
             <div className="mb-4">
-                <h3 className=" text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     {product.name}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -470,7 +470,7 @@ function App() {
             <QuickNavigation />
 
             <CartDrawer />
-            <CartPage />
+            <CartDialog />
 
             {/* Analytics */}
             <Analytics />
