@@ -2,151 +2,94 @@ import React from 'react'
 import { useCart } from '../hooks/useCart'
 
 export default function CartPage() {
-    const { cart, isPageOpen, closeCartPage } = useCart()
+    const { cart, isPageOpen, closeCartPage, removeItem } = useCart()
 
     if (!isPageOpen) return null
 
-    const itemCount = cart.items.reduce((sum, item) => sum + item.qty, 0)
-
     return (
-        <div className="fixed inset-0 z-40 overflow-auto bg-gray-100 dark:bg-gray-800">
-            <div className="mx-auto mt-16 max-w-3xl p-6">
-                <div className="mb-6 flex items-center justify-between border-b pb-4">
-                    <h1 className="auto-contrast dark:text-white text-2xl font-bold">
-                        Your Cart ({itemCount})
-                    </h1>
+        <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cart-title"
+            id="cart-panel"
+            className="fixed inset-0 z-50 grid place-items-center p-4"
+        >
+            <div
+                className="absolute inset-0 bg-black/50"
+                onClick={closeCartPage}
+                aria-hidden
+            />
+            <div className="relative w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-4 shadow-xl dark:border-gray-700 dark:bg-gray-800">
+                <div className="flex items-center justify-between">
+                    <h2
+                        id="cart-title"
+                        className="text-xl font-bold dark:text-white"
+                    >
+                        Your Cart
+                    </h2>
                     <button
                         onClick={closeCartPage}
-                        aria-label="Close cart page"
-                        className="auto-contrast rounded p-2 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
+                        className="rounded-xl border border-slate-300 p-2 focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:ring-offset-2 dark:border-gray-600"
+                        aria-label="Close cart"
                     >
                         ✕
                     </button>
                 </div>
                 {cart.items.length === 0 ? (
-                    <p className="auto-contrast dark:text-white">Your cart is empty.</p>
+                    <p className="mt-4 text-slate-700 dark:text-gray-300">
+                        Your cart is empty.
+                    </p>
                 ) : (
-                    <ul className="divide-y">
+                    <div className="mt-4 grid gap-4">
                         {cart.items.map((item) => (
-                            <li
+                            <div
                                 key={item.variantId}
-                                className="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between"
+                                className="flex items-start justify-between gap-3 border-b border-slate-200 pb-3 dark:border-gray-700"
                             >
-                                <div className="flex-1">
-                                    <p className="auto-contrast dark:text-white font-medium">
+                                <div>
+                                    <p className="font-semibold dark:text-white">
                                         {item.name}
                                     </p>
-                                    <p className="auto-contrast dark:text-white text-sm">
-                                        ${item.unitPrice.toFixed(2)} each
+                                    <p className="text-sm text-slate-600 dark:text-gray-400">
+                                        Qty: {item.qty}
                                     </p>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <button
-                                        className="px-2 dark:text-white"
-                                        onClick={() =>
-                                            window.dispatchEvent(
-                                                new CustomEvent('cart:update', {
-                                                    detail: {
-                                                        variantId:
-                                                            item.variantId,
-                                                        qty: item.qty - 1,
-                                                    },
-                                                })
-                                            )
-                                        }
-                                        aria-label={`Decrease quantity of ${item.name}`}
-                                    >
-                                        -
-                                    </button>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        className="w-16 border p-1 text-center dark:text-white"
-                                        value={item.qty}
-                                        onChange={(e) =>
-                                            window.dispatchEvent(
-                                                new CustomEvent('cart:update', {
-                                                    detail: {
-                                                        variantId:
-                                                            item.variantId,
-                                                        qty: Number(
-                                                            e.target.value
-                                                        ),
-                                                    },
-                                                })
-                                            )
-                                        }
-                                        aria-label={`Quantity for ${item.name}`}
-                                    />
-                                    <button
-                                        className="dark:text-white px-2"
-                                        onClick={() =>
-                                            window.dispatchEvent(
-                                                new CustomEvent('cart:update', {
-                                                    detail: {
-                                                        variantId:
-                                                            item.variantId,
-                                                        qty: item.qty + 1,
-                                                    },
-                                                })
-                                            )
-                                        }
-                                        aria-label={`Increase quantity of ${item.name}`}
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                                <div className="text-right sm:w-24">
-                                    <p className="dark:text-white">
+                                <div className="text-right">
+                                    <p className="font-semibold dark:text-white">
                                         $
                                         {(item.unitPrice * item.qty).toFixed(2)}
                                     </p>
                                     <button
-                                        className="text-red-600 font-medium hover:underline dark:text-red-500 dark:hover:text-white"
                                         onClick={() =>
-                                            window.dispatchEvent(
-                                                new CustomEvent('cart:remove', {
-                                                    detail: {
-                                                        variantId:
-                                                            item.variantId,
-                                                    },
-                                                })
-                                            )
+                                            removeItem(item.variantId)
                                         }
-                                        aria-label={`Remove ${item.name}`}
+                                        className="mt-2 text-sm underline underline-offset-4 dark:text-red-400"
                                     >
                                         Remove
                                     </button>
                                 </div>
-                            </li>
+                            </div>
                         ))}
-                    </ul>
-                )}
-                <div
-                    className={`mt-6 ${cart.items.length > 0 ? 'border-t pt-4' : ''}`}
-                >
-                    {cart.items.length > 0 && (
-                        <div className="mb-4 flex justify-between text-lg">
-                            <span className="dark:text-white">Subtotal</span>
-                            <span className="font-semibold dark:text-white">
+                        <div className="flex items-center justify-between">
+                            <p className="font-semibold dark:text-white">
+                                Subtotal
+                            </p>
+                            <p className="font-bold dark:text-white">
                                 ${cart.subtotal.toFixed(2)}
-                            </span>
+                            </p>
                         </div>
-                    )}
-                    <div className="flex justify-end gap-4">
                         <button
-                            onClick={closeCartPage}
-                            className="bg-emerald-600 text-black rounded border px-4 py-2 hover:bg-green-700 border-green-600 focus-outline-green-500 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                            className="inline-flex w-full items-center justify-center rounded-2xl bg-emerald-700 px-5 py-3 font-semibold text-white shadow hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:ring-offset-2"
+                            aria-label="Proceed to checkout"
                         >
-                            Continue shopping
+                            Checkout
                         </button>
-                        {cart.items.length > 0 && (
-                            <button className="rounded bg-emerald-600 px-4 py-2 text-black hover:bg-green-700 border-green-600 focus-outline-green-500 focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                                Checkout
-                            </button>
-                        )}
+                        <p className="text-xs text-slate-600 dark:text-gray-400">
+                            Secure checkout and age verification applied at
+                            payment.
+                        </p>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     )
