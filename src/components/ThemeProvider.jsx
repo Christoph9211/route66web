@@ -5,7 +5,7 @@ const ThemeContext = createContext({
     isDark: false,
     toggle: () => {},
     setTheme: () => {},
-    isLoading: true
+    isLoading: true,
 })
 
 export function ThemeProvider({ children }) {
@@ -15,16 +15,16 @@ export function ThemeProvider({ children }) {
     useEffect(() => {
         if (!darkMode.isLoading) {
             const announcement = `Theme changed to ${darkMode.isDark ? 'dark' : 'light'} mode`
-            
+
             // Create a temporary element for screen reader announcement
             const announcer = document.createElement('div')
             announcer.setAttribute('aria-live', 'polite')
             announcer.setAttribute('aria-atomic', 'true')
             announcer.className = 'sr-only'
             announcer.textContent = announcement
-            
+
             document.body.appendChild(announcer)
-            
+
             // Remove after announcement
             setTimeout(() => {
                 document.body.removeChild(announcer)
