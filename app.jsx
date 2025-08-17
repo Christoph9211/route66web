@@ -19,6 +19,8 @@ import { CartProvider } from './src/hooks/useCart'
 import { initCartButtonListener } from './src/utils/cartEvents'
 import { applyAutoContrast } from './src/utils/autoContrast'
 import ThemeProvider from './src/components/ThemeProvider'
+import SkipToContent from './src/components/SkipToContent'
+import ProductSection from './src/components/ProductSection'
 
 // Import hooks
 import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
@@ -406,6 +408,9 @@ function App() {
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+            {/* Skip to Content Link */}
+            <SkipToContent />
+            
             {/* Structured Data for SEO */}
             <StructuredData />
 
@@ -413,18 +418,68 @@ function App() {
             <Navigation products={products} />
 
             {/* Main Content */}
-            <main>
+            <main 
+                id="main-content"
+                role="main" 
+                aria-label="Main content"
+            >
                 {/* Hero Section */}
-                <HeroSection />
+                <section 
+                    id="home" 
+                    aria-labelledby="hero-heading"
+                    className="relative bg-gradient-to-br from-green-800 to-green-900 py-20 text-white"
+                >
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="text-center">
+                            <h1 
+                                id="hero-heading"
+                                className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+                            >
+                                Route 66 Hemp
+                            </h1>
+                            <p className="mx-auto mb-8 max-w-2xl text-xl text-green-100">
+                                Premium hemp products for your wellness journey. Quality
+                                you can trust, service you can count on. Located in St
+                                Robert, Missouri.
+                            </p>
+                            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+                                <a
+                                    href="#products"
+                                    className="inline-flex items-center rounded-lg bg-white px-8 py-3 font-medium text-green-800 transition-colors hover:bg-green-50"
+                                >
+                                    <i
+                                        className="fas fa-cannabis mr-2"
+                                        aria-hidden="true"
+                                    />
+                                    Shop Products
+                                </a>
+                                <a
+                                    href="tel:+15736776418"
+                                    className="inline-flex items-center rounded-lg border-2 border-white bg-transparent px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-green-800"
+                                >
+                                    <i
+                                        className="fas fa-phone mr-2"
+                                        aria-hidden="true"
+                                    />
+                                    Call (573) 677-6418
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Products Section */}
                 <section
                     id="products"
+                    aria-labelledby="products-heading"
                     className="bg-white py-16 dark:bg-gray-900"
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-12 text-center">
-                            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
+                            <h2 
+                                id="products-heading"
+                                className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white"
+                            >
                                 Our Premium Hemp Products
                             </h2>
                             <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
@@ -441,6 +496,7 @@ function App() {
                                     title={category}
                                     products={categoryProducts}
                                     categoryId={slugify(category)}
+                                    ProductCard={ProductCard}
                                 />
                             )
                         )}
@@ -448,29 +504,156 @@ function App() {
                 </section>
 
                 {/* About Section */}
-                <AboutSection />
+                <section 
+                    id="about" 
+                    aria-labelledby="about-heading"
+                    className="bg-white py-16 dark:bg-gray-900"
+                >
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-8">
+                            <div>
+                                <h2 
+                                    id="about-heading"
+                                    className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white"
+                                >
+                                    About Route 66 Hemp
+                                </h2>
+                                <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                                    Located in the heart of St Robert, Missouri, Route
+                                    66 Hemp has been serving the Pulaski County
+                                    community and Fort Leonard Wood area with premium
+                                    hemp products since 2025.
+                                </p>
+                                <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                                    We're committed to providing high-quality,
+                                    lab-tested hemp products that meet the highest
+                                    standards of purity and potency. Our knowledgeable
+                                    staff is here to help you find the right products
+                                    for your wellness journey.
+                                </p>
+                                <div className="mt-8">
+                                    <a
+                                        href="#location"
+                                        className="inline-flex items-center rounded-lg bg-green-600 px-6 py-3 font-medium text-white transition-colors hover:bg-green-700"
+                                    >
+                                        <i
+                                            className="fas fa-map-marker-alt mr-2"
+                                            aria-hidden="true"
+                                        />
+                                        Visit Our Store
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="mt-8 lg:mt-0">
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="rounded-lg bg-green-50 p-6 dark:bg-green-900">
+                                        <div className="flex items-center">
+                                            <i
+                                                className="fas fa-certificate text-2xl text-green-600"
+                                                aria-hidden="true"
+                                            />
+                                            <div className="ml-4">
+                                                <h3 className="font-semibold text-gray-900 dark:text-white">
+                                                    Lab Tested
+                                                </h3>
+                                                <p className="text-sm text-gray-600 dark:text-gray-300">
+                                                    All products verified
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="rounded-lg bg-green-50 p-6 dark:bg-green-900">
+                                        <div className="flex items-center">
+                                            <i
+                                                className="fas fa-users text-2xl text-green-600"
+                                                aria-hidden="true"
+                                            />
+                                            <div className="ml-4">
+                                                <h3 className="font-semibold text-gray-900 dark:text-white">
+                                                    Local Experts
+                                                </h3>
+                                                <p className="text-sm text-gray-600 dark:text-gray-300">
+                                                    Knowledgeable staff
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Location Content */}
-                <LocationContent />
+                <section 
+                    id="location" 
+                    role="complementary"
+                    aria-labelledby="location-heading"
+                >
+                    <LocationContent />
+                </section>
 
                 {/* Contact Section */}
-                <ContactSection />
+                <section
+                    id="contact"
+                    aria-labelledby="contact-heading"
+                    className="flex items-center justify-center bg-gray-50 py-16 dark:bg-gray-800"
+                >
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="text-center">
+                            <h2 
+                                id="contact-heading"
+                                className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white"
+                            >
+                                Contact Us
+                            </h2>
+                            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                                Have questions? We're here to help!
+                            </p>
+                        </div>
+                        <div className="mt-12 flex justify-center">
+                            <div className="w-full max-w-md">
+                                <LocalBusinessInfo />
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Google Business Integration */}
-                <GoogleBusinessIntegration />
+                <aside 
+                    role="complementary"
+                    aria-labelledby="reviews-heading"
+                >
+                    <GoogleBusinessIntegration />
+                </aside>
 
                 {/* Local SEO FAQ */}
-                <LocalSEOFAQ />
+                <section 
+                    id="faq"
+                    aria-labelledby="faq-heading"
+                >
+                    <LocalSEOFAQ />
+                </section>
             </main>
 
             {/* Footer */}
-            <FooterNavigation />
+            <footer role="contentinfo" aria-label="Site footer">
+                <FooterNavigation />
+            </footer>
 
             {/* Quick Navigation */}
-            <QuickNavigation />
+            <aside 
+                role="complementary" 
+                aria-label="Quick navigation"
+            >
+                <QuickNavigation />
+            </aside>
 
-            <CartDrawer />
-            <CartPage />
+            {/* Cart Components */}
+            <aside role="complementary" aria-label="Shopping cart">
+                <CartDrawer />
+                <CartPage />
+            </aside>
 
             {/* Analytics */}
             <Analytics />

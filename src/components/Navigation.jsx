@@ -126,13 +126,19 @@ function Navigation({ products = [] }) {
         <>
             {/* Main Navigation Header */}
             <header
+                role="banner"
+                aria-label="Site header"
                 className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
                     isScrolled
                         ? 'bg-white/95 shadow-lg backdrop-blur-md dark:bg-gray-900/95'
                         : 'bg-transparent'
                 }`}
             >
-                <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <nav 
+                    role="navigation" 
+                    aria-label="Main navigation"
+                    className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+                >
                     <div className="flex h-16 items-center justify-between">
                         {/* Logo/Brand */}
                         <div className="flex items-center">

@@ -36,7 +36,10 @@ function GoogleBusinessIntegration() {
         <div className="bg-white py-12 dark:bg-gray-800">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 lg:text-center">
-                    <h2 className="text-2xl font-semibold uppercase tracking-wide text-green-600 dark:text-green-400">
+                    <h2 
+                        id="reviews-heading"
+                        className="text-2xl font-semibold uppercase tracking-wide text-green-600 dark:text-green-400"
+                    >
                         Customer Reviews
                     </h2>
                     <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight sm:text-4xl dark:text-white">

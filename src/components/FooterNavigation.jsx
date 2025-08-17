@@ -81,10 +81,14 @@ function FooterNavigation() {
     ]
 
     return (
-        <footer className="auto-contrast bg-gray-900 text-white border-t border-gray-800">
+        <div className="auto-contrast bg-gray-900 text-white border-t border-gray-800">
             <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
-                <div className="grid grid-cols-1 gap-8 lg:grid-cols-6">
+                <div 
+                    className="grid grid-cols-1 gap-8 lg:grid-cols-6"
+                    role="contentinfo"
+                    aria-label="Footer content"
+                >
                     {/* Business Info */}
                     <div className="lg:col-span-2">
                         <div className="mb-6">
@@ -180,7 +184,7 @@ function FooterNavigation() {
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
     )
 }
 

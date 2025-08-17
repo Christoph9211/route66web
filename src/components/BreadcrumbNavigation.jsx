@@ -33,11 +33,22 @@ function BreadcrumbNavigation({ currentPage, category, productName }) {
     if (breadcrumbs.length <= 1) return null
 
     return (
-        <nav className="auto-contrast bg-gray-50 py-3 dark:bg-gray-800" aria-label="Breadcrumb">
+        <nav 
+            className="auto-contrast bg-gray-50 py-3 dark:bg-gray-800" 
+            aria-label="Breadcrumb navigation"
+            role="navigation"
+        >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <ol className="flex items-center space-x-2 text-sm">
+                <ol 
+                    className="flex items-center space-x-2 text-sm"
+                    role="list"
+                >
                     {breadcrumbs.map((crumb, index) => (
-                        <li key={index} className="flex items-center">
+                        <li 
+                            key={index} 
+                            className="flex items-center"
+                            role="listitem"
+                        >
                             {index > 0 && (
                                 <i 
                                     className="fas fa-chevron-right mx-2 text-xs text-gray-400" 

@@ -55,7 +55,10 @@ function LocalSEOFAQ() {
         <div className="bg-gray-50 py-12 dark:bg-gray-900">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 text-center">
-                    <h2 className="text-2xl font-semibold uppercase tracking-wide text-green-600 dark:text-green-400">
+                    <h2 
+                        id="faq-heading"
+                        className="text-2xl font-semibold uppercase tracking-wide text-green-600 dark:text-green-400"
+                    >
                         Frequently Asked Questions
                     </h2>
                     <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight sm:text-4xl dark:text-white">

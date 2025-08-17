@@ -33,7 +33,10 @@ function LocationContent() {
         <div className="bg-gray-50 py-12 dark:bg-gray-900">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 lg:text-center">
-                    <h2 className="dark:text-secondary text-base font-semibold uppercase tracking-wide text-green-300">
+                    <h2 
+                        id="location-heading"
+                        className="dark:text-secondary text-base font-semibold uppercase tracking-wide text-green-300"
+                    >
                         Serving {locationData?.city || 'our area'} & Surrounding
                         Areas
                     </h2>
