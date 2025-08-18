@@ -81,14 +81,14 @@ function ProductCard({ product }) {
 
             <div className="mb-4">
                 <label
-                    htmlFor={`size-${product.name}`}
+                    htmlFor={`size-${slugify(product.name)}`}
                     className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
                     Size:
                 </label>
                 {product.size_options.length > 1 ? (
                     <select
-                        id={`size-${product.name}`}
+                        id={`size-${slugify(product.name)}`}
                         value={selectedSize}
                         onChange={(e) => setSelectedSize(e.target.value)}
                         className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
