@@ -56,10 +56,10 @@ export default function CartDrawer() {
                     </h2>
                     <button
                         onClick={closeCart}
-                        aria-label="Close cart"
                         className="auto-contrast hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                     >
-                        ✕
+                        <span aria-hidden="true">✕</span>
+                        <span className="sr-only">Close cart</span>
                     </button>
                 </div>
                 <div className="flex h-full flex-col justify-between">
@@ -97,7 +97,7 @@ export default function CartDrawer() {
                                         }
                                         aria-label={`Decrease quantity of ${item.name}`}
                                     >
-                                        -
+                                        <span aria-hidden="true">-</span>
                                     </button>
                                     <span className="text-gray-900 dark:text-white">{item.qty}</span>
                                     <button
@@ -115,7 +115,7 @@ export default function CartDrawer() {
                                         }
                                         aria-label={`Increase quantity of ${item.name}`}
                                     >
-                                        +
+                                        <span aria-hidden="true">+</span>
                                     </button>
                                     <button
                                         className="text-red-600"

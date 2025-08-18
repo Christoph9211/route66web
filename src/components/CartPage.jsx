@@ -35,9 +35,9 @@ export default function CartPage() {
                     <button
                         onClick={closeCartPage}
                         className="rounded-xl border border-slate-300 p-2 focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:ring-offset-2 dark:border-gray-600"
-                        aria-label="Close cart"
                     >
-                        ✕
+                        <span aria-hidden="true">✕</span>
+                        <span className="sr-only">Close cart</span>
                     </button>
                 </div>
                 {cart.items.length === 0 ? (
