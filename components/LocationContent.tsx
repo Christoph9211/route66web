@@ -1,3 +1,5 @@
+'use client';
+/* eslint-disable react/no-unescaped-entities */
 // Location-specific content component for local SEO
 
 /**

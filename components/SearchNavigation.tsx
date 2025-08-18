@@ -1,3 +1,5 @@
+'use client';
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect, useRef } from 'react'
 import { slugify } from '../utils/slugify'
 
@@ -256,9 +258,7 @@ function SearchNavigation({ products = [] }) {
                                             <div className="text-sm font-medium text-green-600">
                                                 From $
                                                 {Math.min(
-                                                    ...Object.values(
-                                                        product.prices
-                                                    )
+                                                    ...Object.values(product.prices as Record<string, number>)
                                                 )}
                                             </div>
                                             {product.banner && (

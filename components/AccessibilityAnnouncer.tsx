@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef } from 'react'
 
 
@@ -35,7 +36,7 @@ function AccessibilityAnnouncer({ message, priority = 'polite', clearAfter = 100
     return (
         <div
             ref={announcerRef}
-            aria-live={priority}
+            aria-live={priority as 'polite' | 'assertive' | 'off'}
             aria-atomic="true"
             className="sr-only"
             role="status"
@@ -44,3 +45,4 @@ function AccessibilityAnnouncer({ message, priority = 'polite', clearAfter = 100
 }
 
 export default AccessibilityAnnouncer
+

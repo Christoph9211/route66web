@@ -1,8 +1,9 @@
+'use client';
 import React, { useState, useEffect } from 'react'
 import LocalBusinessInfo from './LocalBusinessInfo'
 import SearchNavigation from './SearchNavigation'
 import { slugify } from '../utils/slugify'
-import { useCart } from '../hooks/useCart'
+import { useCart } from '../context/CartContext'
 
 
 /**
@@ -17,7 +18,8 @@ function Navigation({ products = [] }) {
     const [activeSection, setActiveSection] = useState('home')
     const [activeDropdown, setActiveDropdown] = useState(null)
     const [dropdownTimeout, setDropdownTimeout] = useState(null)
-    const { cart, openCart } = useCart()
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { cart, openCart } = useCart() as any
 
     // Handle scroll effects
     useEffect(() => {

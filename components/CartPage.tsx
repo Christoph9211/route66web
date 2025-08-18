@@ -1,5 +1,6 @@
+'use client';
 import React from 'react'
-import { useCart } from '../hooks/useCart'
+import { useCart } from '../context/CartContext'
 
 /**
  * Renders the cart page.
@@ -7,7 +8,8 @@ import { useCart } from '../hooks/useCart'
  * @return {JSX.Element|null} The cart page component or null if the page is not open.
  */
 export default function CartPage() {
-    const { cart, isPageOpen, closeCartPage, removeItem } = useCart()
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { cart, isPageOpen, closeCartPage, removeItem } = useCart() as any
 
     if (!isPageOpen) return null
 

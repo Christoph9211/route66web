@@ -1,3 +1,4 @@
+'use client';
 import React, {
     createContext,
     useContext,
@@ -6,7 +7,7 @@ import React, {
     useCallback,
 } from 'react'
 
-const CartContext = createContext()
+const CartContext = createContext({} as any)
 
 
 /**

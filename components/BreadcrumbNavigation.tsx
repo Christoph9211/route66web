@@ -1,36 +1,28 @@
-import React from 'react'
+'use client';
+import React from 'react';
 
-/**
- * Renders a breadcrumb navigation component based on the provided props.
- * 
- * @param {Object} props - The props object containing the following properties:
- *   - currentPage: The current page being viewed.
- *   - category: The category of the current page.
- *   - productName: The name of the current product.
- * @return {JSX.Element|null} The breadcrumb navigation component or null if there is only one breadcrumb.
- */
 function BreadcrumbNavigation({ currentPage, category, productName }) {
     const breadcrumbs = [
         { label: 'Home', href: '#home', icon: 'fas fa-home' },
-    ]
+    ];
 
-    // Add category if provided
     if (category) {
         breadcrumbs.push({
             label: category,
             href: `#${category.toLowerCase().replace(/\s+/g, '-')}`,
-        })
+            icon: '',
+        });
     }
 
-    // Add current page
     if (currentPage && currentPage !== 'Home') {
         breadcrumbs.push({
             label: productName || currentPage,
-            href: null, // Current page, no link
-        })
+            href: null,
+            icon: '',
+        });
     }
 
-    if (breadcrumbs.length <= 1) return null
+    if (breadcrumbs.length <= 1) return null;
 
     return (
         <nav className="auto-contrast bg-gray-50 py-3 dark:bg-gray-800" aria-label="Breadcrumb">
@@ -39,9 +31,9 @@ function BreadcrumbNavigation({ currentPage, category, productName }) {
                     {breadcrumbs.map((crumb, index) => (
                         <li key={index} className="flex items-center">
                             {index > 0 && (
-                                <i 
-                                    className="fas fa-chevron-right mx-2 text-xs text-gray-400" 
-                                    aria-hidden="true" 
+                                <i
+                                    className="fas fa-chevron-right mx-2 text-xs text-gray-400"
+                                    aria-hidden="true"
                                 />
                             )}
                             {crumb.href ? (
@@ -67,7 +59,7 @@ function BreadcrumbNavigation({ currentPage, category, productName }) {
                 </ol>
             </div>
         </nav>
-    )
+    );
 }
 
-export default BreadcrumbNavigation
+export default BreadcrumbNavigation;

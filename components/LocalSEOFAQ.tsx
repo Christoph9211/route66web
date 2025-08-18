@@ -1,3 +1,4 @@
+'use client';
 // FAQ component with local SEO focus
 import React from 'react'
 /**

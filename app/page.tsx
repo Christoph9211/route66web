@@ -1,30 +1,30 @@
+'use client';
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from 'react'
-import { createRoot } from 'react-dom/client'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
 // Import components
-import Navigation from './src/components/Navigation'
-import BreadcrumbNavigation from './src/components/BreadcrumbNavigation'
-import FooterNavigation from './src/components/FooterNavigation'
-import QuickNavigation from './src/components/QuickNavigation'
-import LocalSEOFAQ from './src/components/LocalSEOFAQ'
-import LocationContent from './src/components/LocationContent'
-import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration'
-import LocalBusinessInfo from './src/components/LocalBusinessInfo'
-import StructuredData from './src/components/StructuredData'
-import CartDrawer from './src/components/CartDrawer'
-import CartPage from './src/components/CartPage'
-import { CartProvider } from './src/hooks/useCart'
-import { initCartButtonListener } from './src/utils/cartEvents'
-import { applyAutoContrast } from './src/utils/autoContrast'
+import Navigation from '@/components/Navigation'
+import BreadcrumbNavigation from '@/components/BreadcrumbNavigation'
+import FooterNavigation from '@/components/FooterNavigation'
+import QuickNavigation from '@/components/QuickNavigation'
+import LocalSEOFAQ from '@/components/LocalSEOFAQ'
+import LocationContent from '@/components/LocationContent'
+import GoogleBusinessIntegration from '@/components/GoogleBusinessIntegration'
+import LocalBusinessInfo from '@/components/LocalBusinessInfo'
+import StructuredData from '@/components/StructuredData'
+import CartDrawer from '@/components/CartDrawer'
+import CartPage from '@/components/CartPage'
+import { CartProvider } from '@/context/CartContext'
+import { initCartButtonListener } from '@/utils/cartEvents'
+import { applyAutoContrast } from '@/utils/autoContrast'
 
 // Import hooks
-import { useNavigation, useKeyboardNavigation } from './src/hooks/useNavigation'
+import { useNavigation, useKeyboardNavigation } from '@/hooks/useNavigation'
 
 // Import styles
-import './src/style.css'
-import { slugify } from './src/utils/slugify'
+import { slugify } from '@/utils/slugify'
 
 function ProductCard({ product }) {
     const [selectedSize, setSelectedSize] = useState(product.size_options[0])
@@ -483,11 +483,6 @@ function App() {
     )
 }
 
-// Render the app
-const container = document.getElementById('root')
-const root = createRoot(container)
-root.render(
-    <CartProvider>
-        <App />
-    </CartProvider>
-)
+export default function Page() {
+  return <App />;
+}
