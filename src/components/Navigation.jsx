@@ -325,9 +325,17 @@ function Navigation({ products = [] }) {
                             {/* Cart Button */}
                             <button
                                 onClick={openCart}
-                                aria-label="Open cart"
+                                aria-label={`Open cart ${
+                                    cart.items.length > 0
+                                        ? `with ${cart.items.reduce(
+                                              (sum, i) => sum + i.qty,
+                                              0
+                                          )} items`
+                                        : ''
+                                }`}
                                 className="relative rounded p-2 text-gray-700 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400"
                             >
+                                <span className="sr-only">Open cart</span>
                                 <i
                                     className="fas fa-shopping-cart"
                                     aria-hidden="true"
