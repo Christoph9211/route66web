@@ -1,3 +1,5 @@
+'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Google Business Profile integration suggestions and review display
 
 /**
@@ -87,7 +89,7 @@ function GoogleBusinessIntegration() {
                                             />
                                         ))}
                                         <span className="ml-2 text-xs text-black dark:text-white">
-                                            {review.date}
+{(review as any).date}
                                         </span>
                                     </div>
                                 </div>

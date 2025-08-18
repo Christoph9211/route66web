@@ -1,3 +1,4 @@
+'use client';
 // Structured Data Component for Local Business SEO
 
 /**

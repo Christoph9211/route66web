@@ -1,5 +1,6 @@
+'use client';
 import React, { useEffect, useRef } from 'react'
-import { useCart } from '../hooks/useCart'
+import { useCart } from '../context/CartContext'
 
 /**
  * Renders the shopping cart drawer component.
@@ -7,7 +8,8 @@ import { useCart } from '../hooks/useCart'
  * @return {JSX.Element} The shopping cart drawer component.
  */
 export default function CartDrawer() {
-    const { cart, isOpen, closeCart, openCartPage } = useCart()
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { cart, isOpen, closeCart, openCartPage } = useCart() as any
     const ref = useRef(null)
 
     useEffect(() => {
@@ -44,7 +46,7 @@ export default function CartDrawer() {
             />
             <div
                 ref={ref}
-                tabIndex="-1"
+                tabIndex={-1}
                 className={`absolute right-0 top-0 h-full w-80 bg-white shadow-xl transition-transform dark:bg-gray-800 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
                 role="dialog"
                 aria-modal="true"

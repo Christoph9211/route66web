@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react'
 
 /**
@@ -152,7 +153,7 @@ export function useKeyboardNavigation() {
                     // Close any open menus
                     const openMenus = document.querySelectorAll('[data-menu-open="true"]')
                     openMenus.forEach(menu => {
-                        menu.click()
+                        (menu as HTMLElement).click()
                     })
                     break
                 default:

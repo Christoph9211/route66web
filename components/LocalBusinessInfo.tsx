@@ -1,3 +1,4 @@
+'use client';
 
 /**
  * Renders local business information based on the provided variant.

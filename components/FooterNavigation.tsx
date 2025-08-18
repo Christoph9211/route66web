@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import LocalBusinessInfo from './LocalBusinessInfo'
 import { slugify } from '../utils/slugify'
