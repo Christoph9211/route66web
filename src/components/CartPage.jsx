@@ -37,7 +37,7 @@ export default function CartPage() {
                         className="rounded-xl border border-slate-300 p-2 focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:ring-offset-2 dark:border-gray-600"
                         aria-label="Close cart"
                     >
-                        ✕
+                        <span aria-hidden="true">✕</span>
                     </button>
                 </div>
                 {cart.items.length === 0 ? (
@@ -85,7 +85,6 @@ export default function CartPage() {
                         </div>
                         <button
                             className="inline-flex w-full items-center justify-center rounded-2xl bg-emerald-700 px-5 py-3 font-semibold text-white shadow hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:ring-offset-2"
-                            aria-label="Proceed to checkout"
                         >
                             Checkout
                         </button>

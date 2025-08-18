@@ -355,10 +355,9 @@ function Navigation({ products = [] }) {
                                 onClick={toggleMenu}
                                 aria-expanded={isMenuOpen}
                                 aria-controls="mobile-menu"
-                                aria-label="Toggle navigation menu"
                                 className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-green-50 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500 md:hidden dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-400"
                             >
-                                <span className="sr-only">Open main menu</span>
+                                <span className="sr-only">{isMenuOpen ? 'Close main menu' : 'Open main menu'}</span>
                                 <i
                                     className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}
                                     aria-hidden="true"

@@ -185,6 +185,7 @@ function SearchNavigation({ products = [] }) {
                                 <button
                                     onClick={() => setIsOpen(false)}
                                     className="absolute right-3 top-1/2 -translate-y-1/2 transform text-gray-400 hover:text-gray-600"
+                                    aria-label="Close search"
                                 >
                                     <i
                                         className="fas fa-times"
