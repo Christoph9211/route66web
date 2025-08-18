@@ -119,7 +119,11 @@ function ProductCard({ product }) {
                             : 'bg-emerald-700 text-white transition-colors hover:bg-white hover:text-green-600 focus:outline-green-500 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 active:bg-emerald-600 active:text-white'
                     }`}
                     disabled={isOutOfStock}
-                    aria-label={`Add ${product.name} to cart`}
+                    aria-label={
+                        isOutOfStock
+                            ? `Out of Stock ${product.name}`
+                            : `Add to Cart ${product.name}`
+                    }
                     data-product-id={slugify(product.name)}
                     data-variant-id={`${slugify(product.name)}_${slugify(selectedSize)}`}
                     data-name={product.name}
