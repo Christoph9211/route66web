@@ -16,6 +16,8 @@ function Navigation({ products = [] }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
     const [activeSection, setActiveSection] = useState('home')
+    const [activeDropdown, setActiveDropdown] = useState(null)
+    const [dropdownTimeout, setDropdownTimeout] = useState(null)
     const { cart, openCart } = useCart()
 
     // Handle scroll effects
@@ -37,6 +39,38 @@ function Navigation({ products = [] }) {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+
+    // Cleanup timeout on unmount
+    useEffect(() => {
+        return () => {
+            if (dropdownTimeout) {
+                clearTimeout(dropdownTimeout)
+            }
+        }
+    }, [dropdownTimeout])
+
+    /**
+     * Handles mouse enter event for dropdown menus
+     * @param {string} itemId - The ID of the menu item
+     */
+    const handleDropdownEnter = (itemId) => {
+        if (dropdownTimeout) {
+            clearTimeout(dropdownTimeout)
+            setDropdownTimeout(null)
+        }
+        setActiveDropdown(itemId)
+    }
+
+    /**
+     * Handles mouse leave event for dropdown menus with delay
+     * @param {string} itemId - The ID of the menu item
+     */
+    const handleDropdownLeave = (itemId) => {
+        const timeout = setTimeout(() => {
+            setActiveDropdown(null)
+        }, 600) // 600ms delay for smooth user experience
+        setDropdownTimeout(timeout)
+    }
 
     // Navigation items with clear hierarchy
     const navigationItems = [
@@ -166,7 +200,9 @@ function Navigation({ products = [] }) {
                                 {navigationItems.map((item) => (
                                     <div
                                         key={item.id}
-                                        className="group relative"
+                                        className="relative"
+                                        onMouseEnter={() => item.submenu && handleDropdownEnter(item.id)}
+                                        onMouseLeave={() => item.submenu && handleDropdownLeave(item.id)}
                                     >
                                         <a
                                             href={item.href}
@@ -189,7 +225,7 @@ function Navigation({ products = [] }) {
                                             }
                                             aria-expanded={
                                                 item.submenu
-                                                    ? 'false'
+                                                    ? activeDropdown === item.id ? 'true' : 'false'
                                                     : undefined
                                             }
                                             className={`flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 ${
@@ -205,7 +241,9 @@ function Navigation({ products = [] }) {
                                             {item.label}
                                             {item.submenu && (
                                                 <i
-                                                    className="fas fa-chevron-down ml-1 text-xs"
+                                                    className={`fas fa-chevron-down ml-1 text-xs transition-transform duration-200 ${
+                                                        activeDropdown === item.id ? 'rotate-180' : ''
+                                                    }`}
                                                     aria-hidden="true"
                                                 />
                                             )}
@@ -214,7 +252,11 @@ function Navigation({ products = [] }) {
                                         {/* Desktop Dropdown */}
                                         {item.submenu && (
                                             <div
-                                                className="invisible absolute left-0 mt-2 w-48 font-bold text-white rounded-md bg-white opacity-0 shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 group-hover:visible group-hover:opacity-100 dark:bg-gray-800"
+                                                className={`absolute left-0 mt-2 w-48 font-bold text-white rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 dark:bg-gray-800 ${
+                                                    activeDropdown === item.id
+                                                        ? 'visible opacity-100 translate-y-0'
+                                                        : 'invisible opacity-0 -translate-y-2 pointer-events-none'
+                                                }`}
                                                 role="menu"
                                                 aria-label={`${item.label} submenu`}
                                             >
