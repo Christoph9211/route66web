@@ -47,14 +47,16 @@ function FooterNavigation() {
             links: [
                 {
                     label: 'Privacy Policy',
-                    href: '/public/privacy-policy.html',
+                    href: '/privacy-policy.html',
                 },
                 {
                     label: 'Terms of Service',
-                    href: '/public/terms-of-service.html',
+                    href: '/terms-of-service.html',
                 },
-                { label: 'Age Verification', href: '#age-verification' },
-                { label: 'Compliance', href: '#compliance' },
+                {
+                    label: 'Cookie Policy',
+                    href: 'cookie-policy.html',
+                },
             ],
         },
     ]
