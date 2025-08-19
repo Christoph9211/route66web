@@ -938,11 +938,10 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="src/cookie-policy.html"
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
-                                            Compliance
+                                            Cookie Policy
                                         </a>
                                     </li>
                                 </ul>

@@ -11,7 +11,8 @@ export default defineConfig({
       input: {
         main: 'index.html',
         terms: 'src/terms-of-service.html',
-        privacy: 'src/privacy-policy.html'
+        privacy: 'src/privacy-policy.html',
+        cookie: 'src/cookie-policy.html'
       }
     }
   }
