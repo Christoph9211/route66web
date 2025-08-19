@@ -55,7 +55,7 @@ function FooterNavigation() {
                 },
                 {
                     label: 'Cookie Policy',
-                    href: 'cookie-policy.html',
+                    href: '/cookie-policy.html',
                 },
             ],
         },
