@@ -263,22 +263,6 @@
     }
   },
   {
-    "name": "Gelonade",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    }
-  },
-  {
     "name": "Granddaddy Purple Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -290,22 +274,6 @@
       "3 grams": 25
     },
     "thca_percentage": 97.1
-  },
-  {
-    "name": "Green Crack",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    }
   },
   {
     "name": "Infused Prerolls",
@@ -376,38 +344,6 @@
       "Lemon Cake Live Resin (Sativa)": 20
     },
     "availability": {}
-  },
-  {
-    "name": "Orange Creamsicle Living Soil",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    }
-  },
-  {
-    "name": "Point Break",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    }
   },
   {
     "name": "Saucy Diamonds",
@@ -603,6 +539,40 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Gelonade",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Green Crack",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Green Crack Snowcaps",
     "category": "Flower",
     "size_options": [
@@ -616,6 +586,40 @@
       "1/4": 50,
       "1/2": 100,
       "ounce": 200
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Orange Creamsicle Living Soil",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Point Break",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
     },
     "banner": "Out of Stock"
   },

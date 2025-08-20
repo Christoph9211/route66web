@@ -29,19 +29,6 @@
     "banner": "New"
   },
   {
-    "name": "Diamond Badder",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "banner": "New"
-  },
-  {
     "name": "Euphoria - Gummies Grape 250mg",
     "category": "Edibles",
     "size_options": [
@@ -89,6 +76,19 @@
     "banner": "New"
   },
   {
+    "name": "Ice Cream Cake Diamonds",
+    "category": "Diamonds & Sauce",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 15,
+      "3 grams": 40
+    },
+    "banner": "New"
+  },
+  {
     "name": "Magic Night",
     "category": "Flower",
     "size_options": [
@@ -119,17 +119,6 @@
       "1/4": 40,
       "1/2": 80,
       "ounce": 150
-    },
-    "banner": "New"
-  },
-  {
-    "name": "MEGA DOSE Gummies Blue Razz 1000mg",
-    "category": "Edibles",
-    "size_options": [
-      "40ct"
-    ],
-    "prices": {
-      "40ct": 34.95
     },
     "banner": "New"
   },
@@ -189,7 +178,7 @@
     "banner": "New"
   },
   {
-    "name": "Amnesia Haze Diamonds",
+    "name": "Blueberry Muffin Diamonds",
     "category": "Diamonds & Sauce",
     "size_options": [
       "1 gram",
@@ -199,19 +188,6 @@
       "1 gram": 15,
       "3 grams": 40
     }
-  },
-  {
-    "name": "Blueberry Diesel",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "thca_percentage": 97.7
   },
   {
     "name": "Cherry Pie Crumble",
@@ -290,6 +266,18 @@
     }
   },
   {
+    "name": "MEGA DOSE Gummies Blue Razz 25mg",
+    "category": "Edibles",
+    "size_options": [
+      "4ct",
+      "2ct"
+    ],
+    "prices": {
+      "4ct": 10,
+      "2ct": 6
+    }
+  },
+  {
     "name": "One Gram Carts",
     "category": "Vapes & Carts",
     "size_options": [
@@ -358,35 +346,6 @@
     }
   },
   {
-    "name": "Sour Mac",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 90,
-      "ounce": 180
-    }
-  },
-  {
-    "name": "Super Sour Diesel",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "thca_percentage": 96.1
-  },
-  {
     "name": "Tropical Cherry Snowcaps",
     "category": "Flower",
     "size_options": [
@@ -425,22 +384,6 @@
     "availability": {}
   },
   {
-    "name": "Zkittles",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    }
-  },
-  {
     "name": "Alcapulco Gold",
     "category": "Flower",
     "size_options": [
@@ -454,6 +397,19 @@
       "1/4": 48,
       "1/2": 90,
       "ounce": 180
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Amnesia Haze Diamonds",
+    "category": "Diamonds & Sauce",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 15,
+      "3 grams": 40
     },
     "banner": "Out of Stock"
   },
@@ -475,16 +431,17 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Blueberry Muffin Diamonds",
-    "category": "Diamonds & Sauce",
+    "name": "Blueberry Diesel",
+    "category": "Concentrates",
     "size_options": [
       "1 gram",
       "3 grams"
     ],
     "prices": {
-      "1 gram": 15,
-      "3 grams": 40
+      "1 gram": 10,
+      "3 grams": 25
     },
+    "thca_percentage": 97.7,
     "banner": "Out of Stock"
   },
   {
@@ -518,6 +475,19 @@
       "1/4": 32.5,
       "1/2": 65,
       "ounce": 125
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Diamond Badder",
+    "category": "Diamonds & Sauce",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
     },
     "banner": "Out of Stock"
   },
@@ -658,7 +628,55 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Sour Mac",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 90,
+      "ounce": 180
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Star Child",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Super Sour Diesel",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "thca_percentage": 96.1,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Zkittles",
     "category": "Flower",
     "size_options": [
       "1/8",
