@@ -197,14 +197,14 @@ export default function App() {
                     <p className="mt-6 text-sm text-gray-700 dark:text-white">
                         By entering, you acknowledge and agree to our{' '}
                         <a
-                            href="src/terms-of-service.html"
+                            href="terms-of-service.html"
                             className="hover:text-blue-700 dark:hover:text-blue-600"
                         >
                             Terms of Service
                         </a>{' '}
                         and{' '}
                         <a
-                            href="src/privacy-policy.html"
+                            href="privacy-policy.html"
                             className="hover:text-blue-700 dark:hover:text-blue-600"
                         >
                             Privacy Policy
@@ -922,7 +922,7 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="src/privacy-policy.html"
+                                            href="privacy-policy.html"
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Privacy Policy
@@ -930,7 +930,7 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="src/terms-of-service.html"
+                                            href="terms-of-service.html"
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Terms of Service
@@ -938,7 +938,7 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="src/cookie-policy.html"
+                                            href="cookie-policy.html"
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Cookie Policy
