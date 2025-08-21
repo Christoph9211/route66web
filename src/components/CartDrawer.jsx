@@ -45,7 +45,7 @@ export default function CartDrawer() {
             <div
                 ref={ref}
                 tabIndex="-1"
-                className={`absolute right-0 top-0 h-full w-80 bg-white shadow-xl transition-transform dark:bg-gray-800 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                className={`absolute right-0 top-1/2 transform -translate-y-1/2 h-[calc(100vh-4rem)] w-80 bg-white shadow-xl transition-transform dark:bg-gray-800 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
                 role="dialog"
                 aria-modal="true"
                 aria-label="Shopping cart"
@@ -62,7 +62,7 @@ export default function CartDrawer() {
                         <span aria-hidden="true">✕</span>
                     </button>
                 </div>
-                <div className="flex h-full flex-col justify-between">
+                <div className="flex h-3/4 flex-col justify-between">
                     <ul className="flex-1 overflow-y-auto p-4">
                         {cart.items.length === 0 && (
                             <li className="text-center text-gray-700 text-sm dark:text-gray-200">

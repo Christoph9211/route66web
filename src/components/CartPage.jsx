@@ -24,7 +24,7 @@ export default function CartPage() {
                 onClick={closeCartPage}
                 aria-hidden
             />
-            <div className="relative w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-4 shadow-xl dark:border-gray-700 dark:bg-gray-800">
+            <div className="relative overflow-y-auto max-h-3/4 w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-4 shadow-xl dark:border-gray-700 dark:bg-gray-800">
                 <div className="flex items-center justify-between">
                     <h2
                         id="cart-title"
