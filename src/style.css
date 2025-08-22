@@ -120,7 +120,7 @@
 .shadow-theme-xl { box-shadow: var(--shadow-xl); }
 
 /* High contrast mode support */
-@media (prefers-contrast: high) {
+@container (prefers-contrast: no-preference) {
   :root {
     --color-text-primary: #000000;
     --color-text-secondary: #000000;
