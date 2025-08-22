@@ -66,7 +66,7 @@ function ProductCard({ product }) {
                 <h3 className=" text-lg font-semibold text-gray-900 dark:text-white">
                     {product.name}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 dark:text-white">
                     {product.category || 'N/A'}
                 </p>
                 {product.thca_percentage ? (
@@ -74,7 +74,7 @@ function ProductCard({ product }) {
                         THCa: {product.thca_percentage}%
                     </p>
                 ) : (
-                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    <p className="text-sm font-medium text-gray-600 dark:text-white">
                         N/A
                     </p>
                 )}
@@ -83,7 +83,7 @@ function ProductCard({ product }) {
             <div className="mb-4">
                 <label
                     htmlFor={selectId}
-                    className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                    className="mb-2 block text-sm font-medium text-gray-700 dark:text-white"
                 >
                     Size:
                 </label>
@@ -102,7 +102,7 @@ function ProductCard({ product }) {
                         ))}
                     </select>
                 ) : (
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    <span className="text-sm font-medium text-gray-600 dark:text-white">
                         {selectedSize || 'N/A'}
                     </span>
                 )}
@@ -231,7 +231,7 @@ function AboutSection() {
                         <div className="mt-8">
                             <a
                                 href="#location"
-                                className="inline-flex items-center rounded-lg bg-green-600 px-6 py-3 font-medium text-white transition-colors hover:bg-green-700"
+                                className="inline-flex items-center rounded-lg bg-green-800 px-6 py-3 font-semibold text-white transition-colors hover:bg-green-900"
                             >
                                 <i
                                     className="fas fa-map-marker-alt mr-2"
@@ -250,10 +250,10 @@ function AboutSection() {
                                         aria-hidden="true"
                                     />
                                     <div className="ml-4">
-                                        <h3 className="font-semibold text-gray-900 dark:text-white">
+                                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                                             Lab Tested
                                         </h3>
-                                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                                        <p className="text-md text-gray-600 dark:text-white">
                                             All products verified
                                         </p>
                                     </div>
@@ -266,10 +266,10 @@ function AboutSection() {
                                         aria-hidden="true"
                                     />
                                     <div className="ml-4">
-                                        <h3 className="font-semibold text-gray-900 dark:text-white">
+                                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                                             Local Experts
                                         </h3>
-                                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                                        <p className="text-md text-gray-600 dark:text-white">
                                             Knowledgeable staff
                                         </p>
                                     </div>
@@ -294,7 +294,7 @@ function ContactSection() {
                     <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
                         Contact Us
                     </h2>
-                    <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                    <p className="mt-4 text-lg text-gray-600 dark:text-white">
                         Have questions? We're here to help!
                     </p>
                 </div>
@@ -310,15 +310,11 @@ function ContactSection() {
 
 function App() {
     const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    // Use navigation hooks for enhanced UX
-    const { activeSection } = useNavigation()
-    useKeyboardNavigation()
-
     useEffect(() => {
-        const loadProducts = async () => {
+        const fetchProducts = async () => {
             try {
                 const response = await fetch('/products/products.json')
                 if (!response.ok) {
@@ -330,11 +326,11 @@ function App() {
                 setError(err.message)
                 console.error('Error loading products:', err)
             } finally {
-                setLoading(false)
+                setIsLoading(false)
             }
         }
 
-        loadProducts()
+        fetchProducts()
     }, [])
 
     useEffect(() => {
@@ -345,20 +341,18 @@ function App() {
         applyAutoContrast()
     }, [products])
 
-    // Group products by category
-    const productsByCategory = products.reduce((acc, product) => {
-        const category = product.category
-        if (!acc[category]) {
-            acc[category] = []
-        }
-        acc[category].push(product)
-        return acc
-    }, {})
-
-    // Sort products within each category (New items first, then alphabetical)
-    Object.keys(productsByCategory).forEach((category) => {
-        productsByCategory[category].sort((a, b) => {
-            // Priority order: New -> Regular -> Out of Stock
+    const productsByCategory = Object.entries(
+        products.reduce((acc, product) => {
+            const category = product.category
+            if (!acc[category]) {
+                acc[category] = []
+            }
+            acc[category].push(product)
+            return acc
+        }, {})
+    ).map(([category, categoryProducts]) => ({
+        category,
+        products: categoryProducts.sort((a, b) => {
             const getRank = (product) => {
                 if (product.banner === 'New') return 0
                 if (product.banner === 'Out of Stock') return 2
@@ -373,10 +367,10 @@ function App() {
             }
 
             return a.name.localeCompare(b.name)
-        })
-    })
+        }),
+    }))
 
-    if (loading) {
+    if (isLoading) {
         return (
             <div className="flex min-h-screen items-center justify-center">
                 <div className="leaf-loader animate-spin"></div>
@@ -438,8 +432,8 @@ function App() {
                         </div>
 
                         {/* Product Categories */}
-                        {Object.entries(productsByCategory).map(
-                            ([category, categoryProducts]) => (
+                        {productsByCategory.map(
+                            ({ category, products: categoryProducts }) => (
                                 <ProductSection
                                     key={category}
                                     title={category}
