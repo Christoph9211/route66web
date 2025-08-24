@@ -1,156 +1,64 @@
 @import 'tailwindcss';
-/* Custom styles */
-/* ===== THEME VARIABLES ===== */
 :root {
-  /* Light theme colors */
   --color-primary: #059669;
   --color-primary-hover: #047857;
   --color-primary-light: #d1fae5;
-  
   --color-secondary: #3b82f6;
   --color-secondary-hover: #2563eb;
   --color-secondary-light: #dbeafe;
-  
   --color-accent: #f59e0b;
   --color-accent-hover: #d97706;
   --color-accent-light: #fef3c7;
-  
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
-  
-  /* Background colors */
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f9fafb;
   --color-bg-tertiary: #f3f4f6;
   --color-bg-elevated: #ffffff;
-  
-  /* Text colors */
   --color-text-primary: #111827;
   --color-text-secondary: #6b7280;
   --color-text-tertiary: #9ca3af;
   --color-text-inverse: #ffffff;
-  
-  /* Border colors */
   --color-border-primary: #e5e7eb;
   --color-border-secondary: #d1d5db;
   --color-border-focus: #3b82f6;
-  
-  /* Shadow colors */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-/* Dark theme colors */
 .dark {
   --color-primary: #10b981;
   --color-primary-hover: #059669;
   --color-primary-light: #064e3b;
-  
   --color-secondary: #60a5fa;
   --color-secondary-hover: #3b82f6;
   --color-secondary-light: #1e3a8a;
-  
   --color-accent: #fbbf24;
   --color-accent-hover: #f59e0b;
   --color-accent-light: #78350f;
-  
   --color-success: #34d399;
   --color-warning: #fbbf24;
   --color-error: #f87171;
-  
-  /* Background colors */
   --color-bg-primary: #111827;
   --color-bg-secondary: #1f2937;
   --color-bg-tertiary: #374151;
   --color-bg-elevated: #1f2937;
-  
-  /* Text colors */
   --color-text-primary: #f9fafb;
   --color-text-secondary: #d1d5db;
   --color-text-tertiary: #9ca3af;
   --color-text-inverse: #111827;
-  
-  /* Border colors */
   --color-border-primary: #374151;
   --color-border-secondary: #4b5563;
   --color-border-focus: #60a5fa;
-  
-  /* Shadow colors */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.6);
 }
 
-/* Theme transition class - added after initial render */
-.theme-transition,
-.theme-transition *,
-.theme-transition *:before,
-.theme-transition *:after {
-  transition: 
-    background-color 0.3s ease-in-out,
-    border-color 0.3s ease-in-out,
-    color 0.3s ease-in-out,
-    fill 0.3s ease-in-out,
-    stroke 0.3s ease-in-out,
-    box-shadow 0.3s ease-in-out !important;
-}
-
-/* Utility classes using CSS variables */
-.bg-theme-primary { background-color: var(--color-bg-primary); }
-.bg-theme-secondary { background-color: var(--color-bg-secondary); }
-.bg-theme-tertiary { background-color: var(--color-bg-tertiary); }
-.bg-theme-elevated { background-color: var(--color-bg-elevated); }
-
-.text-theme-primary { color: var(--color-text-primary); }
-.text-theme-secondary { color: var(--color-text-secondary); }
-.text-theme-tertiary { color: var(--color-text-tertiary); }
-.text-theme-inverse { color: var(--color-text-inverse); }
-
-.border-theme-primary { border-color: var(--color-border-primary); }
-.border-theme-secondary { border-color: var(--color-border-secondary); }
-.border-theme-focus { border-color: var(--color-border-focus); }
-
-.shadow-theme-sm { box-shadow: var(--shadow-sm); }
-.shadow-theme-md { box-shadow: var(--shadow-md); }
-.shadow-theme-lg { box-shadow: var(--shadow-lg); }
-.shadow-theme-xl { box-shadow: var(--shadow-xl); }
-
-/* High contrast mode support */
-@container (prefers-contrast: no-preference) {
-  :root {
-    --color-text-primary: #000000;
-    --color-text-secondary: #000000;
-    --color-bg-primary: #ffffff;
-    --color-border-primary: #000000;
-  }
-  
-  .dark {
-    --color-text-primary: #ffffff;
-    --color-text-secondary: #ffffff;
-    --color-bg-primary: #000000;
-    --color-border-primary: #ffffff;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .theme-transition,
-  .theme-transition *,
-  .theme-transition *:before,
-  .theme-transition *:after {
-    transition: none !important;
-  }
-}
-
-.product-card {
-    transition:
-        transform 0.3s,
-        box-shadow 0.3s;
-}
 /* Small banner that can appear in the corner of a product card */
 .product-banner {
     position: absolute;
@@ -164,169 +72,76 @@
     text-transform: uppercase;
     border-bottom-right-radius: 0.25rem;
 }
-/* .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-} */
 
-/* Custom cannabis leaf loader */
-.leaf-loader {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    margin: 0 auto;
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #0f0f9a;
-    border-radius: 50%;
+.theme-transition,
+.theme-transition *,
+.theme-transition *:before,
+.theme-transition *:after {
+  transition:
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out,
+    color 0.3s ease-in-out,
+    fill 0.3s ease-in-out,
+    stroke 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out !important;
 }
 
-/* Loader animation */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.bg-primary {
+  background-color: var(--color-bg-primary);
 }
 
-/* Focus styles for accessibility */
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-    outline: 2px solid #0f0f9a;
-    outline-offset: 2px;
-    transition: outline-color 0.2s ease-in-out;
+.bg-secondary {
+  background-color: var(--color-bg-secondary);
 }
 
-/* Enhanced focus styles for navigation elements */
-nav a:focus,
-nav button:focus {
-    outline: 2px solid #10b981;
-    outline-offset: 2px;
-    border-radius: 0.375rem;
+.bg-tertiary {
+  background-color: var(--color-bg-tertiary);
 }
 
-/* Improved hover transitions */
-.product-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.2s ease;
+.bg-elevated {
+  background-color: var(--color-bg-elevated);
 }
 
-.product-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+.text-primary {
+  color: var(--color-text-primary);
 }
 
-/* Navigation hover effects */
-nav a,
-nav button {
-    transition: all 0.2s ease-in-out;
+.text-secondary {
+  color: var(--color-text-secondary);
 }
 
-/* Mobile menu animations */
-@media (max-width: 768px) {
-    #mobile-menu {
-        transform-origin: top;
-    }
-    
-    #mobile-menu.max-h-0 {
-        transform: scaleY(0);
-    }
-    
-    #mobile-menu.max-h-screen {
-        transform: scaleY(1);
-    }
+.text-tertiary {
+  color: var(--color-text-tertiary);
 }
 
-/* Ensure interactive elements are clearly interactive */
-a,
-button,
-[role='button'] {
-    cursor: pointer;
-    -webkit-tap-highlight-color: rgba(16, 185, 129, 0.2);
+.text-inverse {
+  color: var(--color-text-inverse);
 }
 
-/* Improved touch targets for mobile */
-@media (max-width: 768px) {
-    nav a,
-    nav button {
-        min-height: 44px;
-        min-width: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.border-primary {
+  border-color: var(--color-border-primary);
 }
 
-/* Make product card dropdowns appear clickable */
-.product-card select,
-.product-card .dropdown,
-.product-card [role='combobox'] {
-    cursor: pointer;
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+.border-secondary {
+  border-color: var(--color-border-secondary);
 }
 
-.product-card.select-out-of-stock {
-    border-color: red;
+.border-focus {
+  border-color: var(--color-border-focus);
 }
 
-/* Loading animation improvements */
-.leaf-loader {
-    animation: spin 1s linear infinite;
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
 }
 
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-    
-    .product-card:hover {
-        transform: none;
-    }
+.shadow-md {
+  box-shadow: var(--shadow-md);
 }
 
-/* Custom focus styles for dark mode */
-@media (prefers-color-scheme: dark) {
-    a:focus,
-    button:focus,
-    input:focus,
-    select:focus,
-    textarea:focus {
-        outline-color: #10b981;
-    }
-}
-button {
-  font-weight: bold;
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
 }
 
-.add-to-cart {
-  font-weight: bold;
-}
-
-/* Enhanced focus styles for dark mode */
-.dark a:focus,
-.dark button:focus,
-.dark input:focus,
-.dark select:focus,
-.dark textarea:focus {
-    outline-color: var(--color-border-focus);
-    box-shadow: 0 0 0 2px var(--color-border-focus);
-}
-
-/* Ensure proper contrast for interactive elements */
-.dark .product-card {
-    background-color: var(--color-bg-elevated);
-    border-color: var(--color-border-primary);
-}
-
-.dark .product-card:hover {
-    box-shadow: var(--shadow-lg);
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
 }
