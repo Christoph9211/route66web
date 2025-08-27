@@ -13,7 +13,7 @@ export const businessInfo = {
     phoneLink: 'tel:+15736776418',
     email: 'route66hemp@gmail.com',
     emailLink: 'mailto:route66hemp@gmail.com',
-    website: 'https://route66hemp.com',
+    website: 'https://www.route66hemp.com',
     coordinates: {
         lat: 37.8349,
         lng: -92.09725,

@@ -7,7 +7,7 @@ function StructuredData() {
         name: 'Route 66 Hemp',
         description:
             'Premium hemp products for your wellness journey. Quality you can trust.',
-        url: 'https://route66hemp.com',
+        url: 'https://www.route66hemp.com',
         telephone: '+1-573-677-6418',
         email: 'route66hemp@gmail.com',
         address: {
@@ -46,8 +46,8 @@ function StructuredData() {
         priceRange: '$',
         currenciesAccepted: 'USD',
         paymentAccepted: 'Cash, Credit Card',
-        image: 'https://route66hemp.com/og-image.jpg',
-        logo: 'https://route66hemp.com/favicon-32x32.png',
+        image: 'https://www.route66hemp.com/og-image.jpg',
+        logo: 'https://www.route66hemp.com/favicon-32x32.png',
         sameAs: [
             'https://www.facebook.com/route66hemp',
             'https://www.instagram.com/route66hemp',
@@ -113,13 +113,13 @@ function StructuredData() {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://route66hemp.com',
+                item: 'https://www.route66hemp.com',
             },
             {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Products',
-                item: 'https://route66hemp.com',
+                item: 'https://www.route66hemp.com',
             },
         ],
     }
@@ -128,8 +128,8 @@ function StructuredData() {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Route 66 Hemp',
-        url: 'https://route66hemp.com',
-        logo: 'https://route66hemp.com/favicon-32x32.png',
+        url: 'https://www.route66hemp.com',
+        logo: 'https://www.route66hemp.com/favicon-32x32.png',
         contactPoint: {
             '@type': 'ContactPoint',
             telephone: '+1-573-677-6418',
