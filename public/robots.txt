@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://www.route66hemp.com/sitemap.xml/
