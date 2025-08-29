@@ -7,7 +7,7 @@
             "headers": [
                 {
                     "key": "Content-Security-Policy",
-                    "value": "default-src 'self'; script-src 'self' 'nonce-<random_nonce>'; style-src 'self'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'self';"
+                    "value": "default-src 'self'; script-src 'self' 'nonce-<random_nonce>' https://cdn.iubenda.com https://cs.iubenda.com https://iubenda.com https://*.consensu.org; style-src 'self'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cdn.iubenda.com https://cs.iubenda.com https://iubenda.com https://*.consensu.org; frame-src 'self' https://cdn.iubenda.com https://cs.iubenda.com https://iubenda.com https://*.consensu.org; frame-ancestors 'self';"
                 },
                 {
                     "key": "Referrer-Policy",
