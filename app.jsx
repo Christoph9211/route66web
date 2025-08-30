@@ -164,88 +164,88 @@ export default function App() {
               )
 
     if (appState.age === null) {
-      return (
-        <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-8 dark:bg-gray-900 sm:px-6 md:px-8">
-          <div className="w-full max-w-[92vw] rounded-xl bg-white/90 p-6 text-center shadow-2xl ring-1 ring-black/5 backdrop-blur-md dark:bg-gray-800/80 dark:text-white dark:ring-white/10 sm:max-w-md sm:rounded-2xl sm:p-8 md:max-w-lg md:p-10 lg:max-w-xl xl:max-w-2xl">
-            <h2 className="mb-6 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl md:text-4xl">
-              Age Verification
-            </h2>
-    
-            <div className="mb-8">
-              <i
-                className="fas fa-cannabis mb-4 text-4xl text-green-500 sm:text-5xl md:text-6xl"
-                aria-hidden="true"
-                tabIndex="-1"
-              ></i>
-              <p className="mx-auto max-w-prose text-sm text-gray-700 dark:text-gray-100 sm:text-base">
-                You must be 21 years or older to enter this website.
-              </p>
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-8 sm:px-6 md:px-8 dark:bg-gray-900">
+                <div className="w-full max-w-[92vw] rounded-xl bg-white/90 p-6 text-center shadow-2xl ring-1 ring-black/5 backdrop-blur-md sm:max-w-md sm:rounded-2xl sm:p-8 md:max-w-lg md:p-10 lg:max-w-xl xl:max-w-2xl dark:bg-gray-800/80 dark:text-white dark:ring-white/10">
+                    <h2 className="mb-6 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
+                        Age Verification
+                    </h2>
+
+                    <div className="mb-8">
+                        <i
+                            className="fas fa-cannabis mb-4 text-4xl text-green-500 sm:text-5xl md:text-6xl"
+                            aria-hidden="true"
+                            tabIndex="-1"
+                        ></i>
+                        <p className="mx-auto max-w-prose text-sm text-gray-700 sm:text-base dark:text-gray-100">
+                            You must be 21 years or older to enter this website.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col space-y-3 sm:space-y-4">
+                        <button
+                            onClick={() => handleAgeVerification(true)}
+                            className="w-full rounded-lg bg-blue-600 py-3 text-lg font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-500"
+                        >
+                            I am 21 or older
+                        </button>
+
+                        <button
+                            onClick={() => handleAgeVerification(false)}
+                            className="w-full rounded-lg bg-gray-600/90 py-3 text-lg font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:bg-gray-700/90 dark:hover:bg-gray-700"
+                        >
+                            I am under 21
+                        </button>
+                    </div>
+
+                    {/* Centered links, no leading sentence */}
+                    <div className="mt-6 flex items-center justify-center gap-4 text-xs sm:text-sm">
+                        <a
+                            href="https://www.iubenda.com/terms-and-conditions/72276024"
+                            className="iubenda-black iubenda-embed font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+                            title="Terms of Service"
+                        >
+                            Terms of Service
+                        </a>
+                        <a
+                            href="https://www.iubenda.com/privacy-policy/72276024"
+                            className="iubenda-black iubenda-embed font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+                            title="Privacy Policy"
+                        >
+                            Privacy Policy
+                        </a>
+                    </div>
+                </div>
             </div>
-    
-            <div className="flex flex-col space-y-3 sm:space-y-4">
-              <button
-                onClick={() => handleAgeVerification(true)}
-                className="w-full rounded-lg bg-blue-600 py-3 text-lg font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-500"
-              >
-                I am 21 or older
-              </button>
-    
-              <button
-                onClick={() => handleAgeVerification(false)}
-                className="w-full rounded-lg bg-gray-600/90 py-3 text-lg font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:bg-gray-700/90 dark:hover:bg-gray-700"
-              >
-                I am under 21
-              </button>
-            </div>
-    
-            {/* Centered links, no leading sentence */}
-            <div className="mt-6 flex items-center justify-center gap-4 text-xs sm:text-sm">
-              <a
-                href="https://www.iubenda.com/terms-and-conditions/72276024"
-                className="iubenda-embed font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
-                title="Terms of Service"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="https://www.iubenda.com/privacy-policy/72276024"
-                className="iubenda-embed font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
-                title="Privacy Policy"
-              >
-                Privacy Policy
-              </a>
-            </div>
-          </div>
-        </div>
-      );
+        )
     }
-    
+
     if (appState.age < 21) {
-      return (
-        <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-8 dark:bg-gray-900 sm:px-6 md:px-8">
-          <div className="w-full max-w-[92vw] rounded-xl bg-white/90 p-6 text-center shadow-2xl ring-1 ring-black/5 backdrop-blur-md dark:bg-gray-800/80 dark:text-white dark:ring-white/10 sm:max-w-md sm:rounded-2xl sm:p-8 md:max-w-lg md:p-10 lg:max-w-xl">
-            <h2 className="mb-4 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
-              Access Denied
-            </h2>
-            <p className="mx-auto mb-6 max-w-prose text-sm text-gray-700 dark:text-gray-100 sm:text-base">
-              You must be 21 or older to access this website.
-            </p>
-            <button
-              onClick={() =>
-                setAppState((prevState) => ({
-                  ...prevState,
-                  age: null,
-                }))
-              }
-              className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600"
-            >
-              Go Back
-            </button>
-          </div>
-        </div>
-      );
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-8 sm:px-6 md:px-8 dark:bg-gray-900">
+                <div className="w-full max-w-[92vw] rounded-xl bg-white/90 p-6 text-center shadow-2xl ring-1 ring-black/5 backdrop-blur-md sm:max-w-md sm:rounded-2xl sm:p-8 md:max-w-lg md:p-10 lg:max-w-xl dark:bg-gray-800/80 dark:text-white dark:ring-white/10">
+                    <h2 className="mb-4 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
+                        Access Denied
+                    </h2>
+                    <p className="mx-auto mb-6 max-w-prose text-sm text-gray-700 sm:text-base dark:text-gray-100">
+                        You must be 21 or older to access this website.
+                    </p>
+                    <button
+                        onClick={() =>
+                            setAppState((prevState) => ({
+                                ...prevState,
+                                age: null,
+                            }))
+                        }
+                        className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600"
+                    >
+                        Go Back
+                    </button>
+                </div>
+            </div>
+        )
     }
-    
+
     return (
         <div className="flex min-h-screen flex-col">
             <div id="home"></div>
@@ -927,7 +927,7 @@ export default function App() {
                                     <li>
                                         <a
                                             href="https://www.iubenda.com/privacy-policy/72276024"
-                                            className="iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="iubenda-black iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             title="Privacy Policy"
                                         >
                                             Privacy Policy
@@ -936,7 +936,7 @@ export default function App() {
                                     <li>
                                         <a
                                             href="https://www.iubenda.com/terms-and-conditions/72276024"
-                                            className="iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="iubenda-black iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Terms and Conditions
                                         </a>
@@ -944,7 +944,7 @@ export default function App() {
                                     <li>
                                         <a
                                             href="https://www.iubenda.com/privacy-policy/72276024/cookie-policy"
-                                            className="iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="iubenda-black iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             title="Cookie Policy"
                                         >
                                             Cookie Policy
@@ -1097,7 +1097,7 @@ function ProductCard({ product }) {
                 className="h-50 mb-4 w-full rounded-md object-cover"
                 // This class is for the image height and object-fit
                 onError={(e) => {
-                    // If the image fails to load, use a placeholder image
+                    {/* If the image fails to load, use a placeholder image */ }
                     e.target.onerror = null
                     e.target.src = '/assets/images/placeholder.webp'
                 }}
