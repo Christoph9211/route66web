@@ -9,10 +9,7 @@ export default defineConfig({
     // outDir defaults to "dist".  Keep or change as you like.
     rollupOptions: {
       input: {
-        main: 'index.html',
-        terms: 'terms-of-service.html',
-        privacy: 'privacy-policy.html',
-        cookie: 'cookie-policy.html'
+        main: 'index.html'
       }
     }
   }

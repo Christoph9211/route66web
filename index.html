@@ -1,25 +1,70 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <script type="text/javascript">
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Route 66 Hemp</title>
+    
+      <!-- =========================
+           IUBENDA COOKIE SOLUTION
+           Must be BEFORE any tracking scripts
+           ========================= -->
+      <script>
+        // Iubenda configuration
         var _iub = _iub || [];
-        _iub.csConfiguration = {"siteId":4190595,"cookiePolicyId":72276024,"lang":"en","storage":{"useSiteId":true}};
-        </script>
-        <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4190595.js"></script>
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RGSJT8T1EF"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-RGSJT8T1EF');
-        </script>
-
+        _iub.csConfiguration = {
+          siteId: 4190595,
+          cookiePolicyId: 72276024,
+          lang: "en",
+          googleConsentMode: "v2",
+          enableCMP: true,
+          storage: { useSiteId: true },
+          banner: {
+            position: "bottom",
+            acceptButtonDisplay: true,
+            rejectButtonDisplay: true
+          }
+        };
+      </script>
+      <!-- Autoblocking MUST be above all third-party scripts -->
+      <script src="https://cs.iubenda.com/autoblocking/4190595.js"></script>
+      <!-- GPP/US privacy stub (keep if your setup shows “Notice at collection”) -->
+      <script src="https://cdn.iubenda.com/cs/gpp/stub.js"></script>
+      <!-- Main Cookie Solution -->
+      <script async src="https://cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8"></script>
+    
+      <!-- (Optional) ensure banner sits above overlays like age gate -->
+      <style>
+        .iubenda-cs-container { z-index: 2147483647 !important; }
+      </style>
+    
+      <!-- =========================
+           GOOGLE ANALYTICS 4
+           Loads AFTER iubenda; Consent Mode defaults denied
+           ========================= -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RGSJT8T1EF"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+    
+        // Default consent (iubenda will update after user choice)
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          functionality_storage: 'denied',
+          security_storage: 'granted',
+          wait_for_update: 500
+        });
+    
+        gtag('js', new Date());
+        // Leave send_page_view false; fire after consent if you want a manual pageview
+        gtag('config', 'G-RGSJT8T1EF', { send_page_view: false });
+      </script>
+        <!-- =========================
+             END IUBENDA + GA4 SETUP
+             ========================= -->
         <link href="/src/style.css" rel="stylesheet">
         <meta
             name="description"
@@ -33,10 +78,10 @@
         <meta name="geo.placename" content="St Robert" >
         <meta name="geo.position" content="37.83490;-92.09725" >
         <meta name="ICBM" content="37.83490, -92.09725" >
-        <!-- <meta
+        <meta
             property="og:image"
-            content="https://www.route66hemp.com/og-image.jpg"
-        > -->
+            content="https://www.route66hemp.com/android-chrome-512x512.png"
+        >
         <meta property="og:site_name" content="Route 66 Hemp" >
         <meta
             property="og:title"
@@ -156,7 +201,18 @@
         </main>
         <!-- React App -->
         <script type="module" src="/app.jsx"></script>
-        <a href="https://www.iubenda.com/privacy-policy/72276024" class="iubenda-black no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-        <a href="https://www.iubenda.com/privacy-policy/72276024/cookie-policy" class="iubenda-black no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+        <!-- Load Iubenda embed once for policy link rendering -->
+        <script>
+          (function (w, d) {
+            var loader = function () {
+              var s = d.createElement('script'), tag = d.getElementsByTagName('script')[0];
+              s.src = 'https://cdn.iubenda.com/iubenda.js';
+              tag.parentNode.insertBefore(s, tag);
+            };
+            if (w.addEventListener) { w.addEventListener('load', loader, false); }
+            else if (w.attachEvent) { w.attachEvent('onload', loader); }
+            else { w.onload = loader; }
+          })(window, document);
+        </script>
     </body>
 </html>
