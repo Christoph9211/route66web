@@ -950,14 +950,6 @@ export default function App() {
                                             Cookie Policy
                                         </a>
                                     </li>
-                                    {/* <li>
-                                        <a
-                                            href="#"
-                                            className="iubenda-cs-preferences-link text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                        >
-                                            Your Privacy Choices
-                                        </a>
-                                    </li> */}
                                 </ul>
                             </div>
                         </div>
