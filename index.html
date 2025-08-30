@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
       <meta charset="UTF-8" />
@@ -27,11 +27,11 @@
         };
       </script>
       <!-- Autoblocking MUST be above all third-party scripts -->
-      <script src="https://cs.iubenda.com/autoblocking/4190595.js"></script>
+      <script data-cfasync="false" src="https://cs.iubenda.com/autoblocking/4190595.js"></script>
       <!-- GPP/US privacy stub (keep if your setup shows “Notice at collection”) -->
-      <script src="https://cdn.iubenda.com/cs/gpp/stub.js"></script>
+      <script data-cfasync="false" src="https://cdn.iubenda.com/cs/gpp/stub.js"></script>
       <!-- Main Cookie Solution -->
-      <script async src="https://cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8"></script>
+      <script data-cfasync="false" async src="https://cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8"></script>
     
       <!-- (Optional) ensure banner sits above overlays like age gate -->
       <style>
@@ -206,6 +206,7 @@
           (function (w, d) {
             var loader = function () {
               var s = d.createElement('script'), tag = d.getElementsByTagName('script')[0];
+              s.setAttribute('data-cfasync', 'false');
               s.src = 'https://cdn.iubenda.com/iubenda.js';
               tag.parentNode.insertBefore(s, tag);
             };
