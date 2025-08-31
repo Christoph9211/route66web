@@ -165,7 +165,6 @@ export default function App() {
                                     <i
                                         className="fas fa-cannabis text-white"
                                         aria-hidden="true"
-                                        tabIndex="-1"
                                     ></i>
                                 </div>
                                 <span
@@ -396,7 +395,7 @@ export default function App() {
                             aria-label="Show all products"
                             className={`rounded-full px-4 py-2 text-sm font-medium ${
                               appState.selectedCategory === 'all'
-                                ? 'bg-blue-600 text-white dark:bg-blue-500' // <-- darker primary for light mode
+                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
                                 : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
                             }`}
                           >
@@ -415,7 +414,7 @@ export default function App() {
                               aria-label={`Filter by ${category.name}`}
                               className={`rounded-full px-4 py-2 text-sm font-medium ${
                                 appState.selectedCategory === category.id
-                                  ? 'bg-blue-600 text-white dark:bg-blue-500' // <-- force high contrast
+                                  ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
                                   : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
                               }`}
                             >
