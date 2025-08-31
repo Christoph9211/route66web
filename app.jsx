@@ -8,6 +8,7 @@ import LocationContent from './src/components/LocationContent.jsx'
 import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx'
 import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx'
 import { businessInfo } from './src/utils/seoHelpers.js'
+import AgeGate from './src/components/AgeGate.jsx'
 
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
@@ -16,21 +17,12 @@ export default function App() {
     const [appState, setAppState] = React.useState({
         isMobileMenuOpen: false,
         selectedCategory: 'all',
-        age: null,
         products: [],
         categories: [],
         loading: true,
     })
 
     React.useEffect(() => {
-        const verifiedAge = localStorage.getItem('ageVerified')
-        if (verifiedAge) {
-            setAppState((prevState) => ({
-                ...prevState,
-                age: parseInt(verifiedAge),
-            }))
-        }
-
         // Fetch products from the JSON file
         fetch('products/products.json')
             .then((response) => {
@@ -131,15 +123,6 @@ export default function App() {
             })
     }, [])
 
-    const handleAgeVerification = (isOver21) => {
-        if (isOver21) {
-            setAppState((prevState) => ({ ...prevState, age: 21 }))
-            localStorage.setItem('ageVerified', '21')
-        } else {
-            setAppState((prevState) => ({ ...prevState, age: 0 }))
-        }
-    }
-
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
         setAppState((prevState) => ({
@@ -163,89 +146,11 @@ export default function App() {
                   (product) => product.category === appState.selectedCategory
               )
 
-    if (appState.age === null) {
-        return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4 dark:bg-gray-900">
-                <div className="w-full max-w-md rounded-lg bg-white p-6 text-center shadow-lg dark:bg-gray-800">
-                    <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
-                        Age Verification
-                    </h2>
-                    <div className="mb-8">
-                        <i
-                            className="fas fa-cannabis mb-4 text-5xl text-green-500"
-                            aria-hidden="true"
-                            tabIndex="-1"
-                        ></i>
-                        <p className="text-gray-900 dark:text-white">
-                            You must be 21 years or older to enter this website.
-                        </p>
-                    </div>
-                    <div className="flex flex-col space-y-4">
-                        <button
-                            onClick={() => handleAgeVerification(true)}
-                            className="w-full rounded-lg bg-blue-600 py-3 text-xl font-semibold text-white transition duration-200 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
-                        >
-                            I am 21 or older
-                        </button>
-                        <button
-                            onClick={() => handleAgeVerification(false)}
-                            className="w-full rounded-lg bg-gray-600 py-3 text-xl font-semibold text-white transition duration-200 hover:bg-blue-700 dark:bg-gray-700 dark:hover:bg-gray-600"
-                        >
-                            I am under 21
-                        </button>
-                    </div>
-                    <p className="mt-6 text-sm text-gray-700 dark:text-white">
-                        By entering, you acknowledge and agree to our{' '}
-                        <a
-                            href="terms-of-service.html"
-                            className="hover:text-blue-700 dark:hover:text-blue-600"
-                        >
-                            Terms of Service
-                        </a>{' '}
-                        and{' '}
-                        <a
-                            href="privacy-policy.html"
-                            className="hover:text-blue-700 dark:hover:text-blue-600"
-                        >
-                            Privacy Policy
-                        </a>
-                        .
-                    </p>
-                </div>
-            </div>
-        )
-    }
-
-    if (appState.age < 21) {
-        return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4 dark:bg-gray-900">
-                <div className="w-full max-w-md rounded-lg bg-white p-6 text-center shadow-lg dark:bg-gray-800">
-                    <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
-                        Access Denied
-                    </h2>
-                    <p className="mb-6 text-gray-900 dark:text-white">
-                        You must be 21 or older to access this website.
-                    </p>
-                    <button
-                        onClick={() =>
-                            setAppState((prevState) => ({
-                                ...prevState,
-                                age: null,
-                            }))
-                        }
-                        className="rounded-lg bg-blue-600 px-4 py-2 text-white transition duration-200 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
-                    >
-                        Go Back
-                    </button>
-                </div>
-            </div>
-        )
-    }
-
     return (
         <div className="flex min-h-screen flex-col">
             <div id="home"></div>
             <StructuredData />
+            <AgeGate />
             {/* Navigation */}
             <nav
                 role="navigation"

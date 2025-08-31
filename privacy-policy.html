@@ -3,15 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RGSJT8T1EF"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-RGSJT8T1EF');
-        </script>
+        <!-- GA is loaded via consent helper (analytics-consent.js) -->
         
         <title>Privacy Policy - Route 66 Hemp</title>
         <link href="src/style.css" rel="stylesheet">
@@ -531,5 +523,49 @@
             <p><strong>Legal information</strong>
             This privacy statement has been prepared based on provisions of multiple legislations. This privacy policy relates solely to this website, if not stated otherwise within this document.</p>
         </main>
+        <!-- Analytics Consent Helper (loads GA only after age+consent) -->
+        <script src="/analytics-consent.js"></script>
+
+        <!-- Cookie Banner Start -->
+        <style>
+        #cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #1a1a1a; color: #fff; padding: 12px 20px; display: none; justify-content: space-between; align-items: center; font-size: 14px; z-index: 9999; box-shadow: 0 -2px 6px rgba(0,0,0,0.3); flex-wrap: wrap; gap: 10px; }
+        #cookie-banner a { color: #66cc66; text-decoration: underline; }
+        #cookie-banner button { background: #66cc66; color: #fff; border: none; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        #cookie-banner button:hover { background: #55aa55; }
+        #cookie-banner .actions { display: flex; gap: 10px; }
+        </style>
+        <div id="cookie-banner">
+          <span>
+            We use cookies to improve your browsing experience and analyze site traffic.
+            <a href="/privacy-policy.html" target="_blank">Learn More</a>
+          </span>
+          <div class="actions">
+            <button id="cookie-accept">Accept</button>
+            <button id="cookie-decline">Decline</button>
+          </div>
+        </div>
+        <script>
+        (function () {
+          const banner    = document.getElementById("cookie-banner");
+          const acceptBtn = document.getElementById("cookie-accept");
+          const declineBtn= document.getElementById("cookie-decline");
+          const choice = localStorage.getItem("cookieConsent");
+          if (choice === "accepted" || choice === "declined") {
+            banner.style.display = "none";
+          } else {
+            if (localStorage.getItem("isAdult") === "true") banner.style.display = "flex";
+          }
+          acceptBtn.addEventListener("click", () => {
+            localStorage.setItem("cookieConsent", "accepted");
+            banner.style.display = "none";
+            if (window.tryInitAnalytics) window.tryInitAnalytics();
+          });
+          declineBtn.addEventListener("click", () => {
+            localStorage.setItem("cookieConsent", "declined");
+            banner.style.display = "none";
+          });
+        })();
+        </script>
+        <!-- Cookie Banner End -->
     </body>
 </html>
