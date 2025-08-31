@@ -380,7 +380,11 @@ export default function App() {
                                 purity.
                             </p>
                         </div>
-                        <div className="mb-8 flex flex-wrap justify-center gap-2">
+                        <div
+                          className="mb-8 flex flex-wrap justify-center gap-2"
+                          role="group"
+                          aria-label="Filter products by category"
+                        >
                           <button
                             onClick={() =>
                               setAppState((prevState) => ({
@@ -388,6 +392,8 @@ export default function App() {
                                 selectedCategory: 'all',
                               }))
                             }
+                            aria-pressed={appState.selectedCategory === 'all'}
+                            aria-label="Show all products"
                             className={`rounded-full px-4 py-2 text-sm font-medium ${
                               appState.selectedCategory === 'all'
                                 ? 'bg-blue-600 text-white dark:bg-blue-500' // <-- darker primary for light mode
@@ -405,6 +411,8 @@ export default function App() {
                                   selectedCategory: category.id,
                                 }))
                               }
+                              aria-pressed={appState.selectedCategory === category.id}
+                              aria-label={`Filter by ${category.name}`}
                               className={`rounded-full px-4 py-2 text-sm font-medium ${
                                 appState.selectedCategory === category.id
                                   ? 'bg-blue-600 text-white dark:bg-blue-500' // <-- force high contrast
