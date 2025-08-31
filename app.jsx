@@ -328,7 +328,7 @@ export default function App() {
                                                             }
                                                             className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-4 text-xl font-bold text-white hover:bg-blue-800 md:px-10 md:py-4 md:text-lg dark:bg-blue-800 dark:text-white dark:hover:bg-blue-800"
                                                         >
-                                                            Learn More
+                                                            Learn more about us
                                                         </a>
                                                     </div>
                                                 </div>
