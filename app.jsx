@@ -834,8 +834,8 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="https://www.iubenda.com/privacy-policy/72276024"
-                                            className="iubenda-black iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            href="/privacy-policy.html"
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             title="Privacy Policy"
                                         >
                                             Privacy Policy
@@ -843,16 +843,16 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="https://www.iubenda.com/terms-and-conditions/72276024"
-                                            className="iubenda-black iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            href="/terms-of-service.html"
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Terms and Conditions
                                         </a>
                                     </li>
                                     <li>
                                         <a
-                                            href="https://www.iubenda.com/privacy-policy/72276024/cookie-policy"
-                                            className="iubenda-black iubenda-embed text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            href="/cookie-policy.html"
+                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                             title="Cookie Policy"
                                         >
                                             Cookie Policy
