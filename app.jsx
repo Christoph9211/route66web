@@ -381,40 +381,39 @@ export default function App() {
                             </p>
                         </div>
                         <div className="mb-8 flex flex-wrap justify-center gap-2">
+                          <button
+                            onClick={() =>
+                              setAppState((prevState) => ({
+                                ...prevState,
+                                selectedCategory: 'all',
+                              }))
+                            }
+                            className={`rounded-full px-4 py-2 text-sm font-medium ${
+                              appState.selectedCategory === 'all'
+                                ? 'bg-blue-600 text-white dark:bg-blue-500' // <-- darker primary for light mode
+                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                            }`}
+                          >
+                            All Products
+                          </button>
+                          {appState.categories.map((category) => (
                             <button
-                                onClick={() =>
-                                    setAppState((prevState) => ({
-                                        ...prevState,
-                                        selectedCategory: 'all',
-                                    }))
-                                }
-                                className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                    appState.selectedCategory === 'all'
-                                        ? 'bg-primary text-white'
-                                        : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-600'
-                                }`}
+                              key={category.id}
+                              onClick={() =>
+                                setAppState((prevState) => ({
+                                  ...prevState,
+                                  selectedCategory: category.id,
+                                }))
+                              }
+                              className={`rounded-full px-4 py-2 text-sm font-medium ${
+                                appState.selectedCategory === category.id
+                                  ? 'bg-blue-600 text-white dark:bg-blue-500' // <-- force high contrast
+                                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                              }`}
                             >
-                                All Products
+                              {category.name}
                             </button>
-                            {appState.categories.map((category) => (
-                                <button
-                                    key={category.id}
-                                    onClick={() =>
-                                        setAppState((prevState) => ({
-                                            ...prevState,
-                                            selectedCategory: category.id,
-                                        }))
-                                    }
-                                    className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                        appState.selectedCategory ===
-                                        category.id
-                                            ? 'bg-primary text-white'
-                                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-600'
-                                    }`}
-                                >
-                                    {category.name}
-                                </button>
-                            ))}
+                          ))}
                         </div>
                         {appState.loading ? (
                             <div className="col-span-full flex items-center justify-center py-12">
