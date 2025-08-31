@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- GA is loaded via consent helper (analytics-consent.js) -->
+        
+        <title>Privacy Policy - Route 66 Hemp</title>
+        <link href="src/style.css" rel="stylesheet">
+        <link rel="canonical" href="https://www.route66hemp.com/privacy-policy/" />
+        <!-- Opinionated, self-contained typography + layout (safe if Tailwind isn't present) -->
+        <style>
+          :root {
+            --bg: #ffffff;
+            --fg: #1f2937; /* gray-800 */
+            --muted: #6b7280; /* gray-500 */
+            --link: #2563eb; /* blue-600 */
+            --border: #e5e7eb; /* gray-200 */
+            --ring: #d1d5db; /* gray-300 */
+            --maxw: 72ch;
+            color-scheme: light dark;
+          }
+          @media (prefers-color-scheme: dark) {
+            :root {
+              --bg: #0b0f14; /* near gray-900 with slight blue */
+              --fg: #e5e7eb; /* gray-200 */
+              --muted: #9ca3af; /* gray-400 */
+              --link: #60a5fa; /* blue-400 */
+              --border: #1f2937; /* gray-800 */
+              --ring: #334155; /* slate-700 */
+            }
+          }
+          html, body { height: 100%; }
+          body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+          a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+          a:hover { text-decoration-thickness: 2px; }
+          .wrap {
+            display: grid;
+            grid-template-columns: 1fr min(var(--maxw), calc(100% - 3rem)) 1fr;
+          }
+          header, main, footer {
+            grid-column: 2;
+          }
+          header {
+            padding: 2rem 0 1rem;
+            border-bottom: 1px solid var(--border);
+          }
+          h1 {
+            line-height: 1.15;
+            margin: 0 0 .25rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            font-size: clamp(1.75rem, 2.6vw + 1rem, 2.25rem);
+          }
+          .subhead {
+            margin: 0;
+            color: var(--muted);
+            font-size: .98rem;
+          }
+          .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 2rem;
+            padding: 1.5rem 0 4rem;
+          }
+          @media (min-width: 1000px) {
+            .layout {
+              grid-template-columns: 280px minmax(0, 1fr);
+              gap: 3rem;
+            }
+          }
+          /* Base TOC styles */
+          .toc {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: color-mix(in srgb, var(--bg) 92%, transparent);
+          }
+          .toc summary {
+            cursor: pointer;
+            padding: .9rem 1rem;
+            font-weight: 700;
+            list-style: none;
+          }
+          .toc summary::-webkit-details-marker { display: none; }
+
+          /* Mobile-first (collapsed) */
+          .toc > ul {
+            margin: 0;
+            padding: .25rem 1rem 1rem;
+            max-height: 60vh;            /* don’t take the whole screen */
+            overflow: auto;
+            list-style: none;
+          }
+          .toc li { margin: .25rem 0; }
+          .toc a { text-decoration: none; color: inherit; }
+          .toc a:hover { color: var(--link); text-decoration: underline; }
+          .toc a[aria-current="true"] { color: var(--link); font-weight: 700; }
+
+          /* Desktop: sticky/open sidebar */
+          @media (min-width: 1000px) {
+            .layout { grid-template-columns: 280px minmax(0,1fr); gap: 3rem; }
+            .toc {
+              position: sticky; top: 1rem; align-self: start;
+              max-height: calc(100vh - 2rem); overflow: auto;
+            }
+            /* keep it open on desktop, hide the disclosure UI */
+            .toc[open] > summary { display: none; }
+          }
+          /* Short screens: tighten TOC height */
+          @media (max-height: 640px) { .toc > ul { max-height: 50vh; } }
+      
+          /* Prose */
+          article.prose {
+            --space: 1.1rem;
+            --space-lg: 2rem;
+          }
+          article.prose > * + * { margin-top: var(--space); }
+          article.prose h2 {
+            margin-top: var(--space-lg);
+            font-size: 1.35rem; line-height: 1.25; font-weight: 800;
+            padding-top: .2rem;
+            border-top: 1px solid var(--border);
+          }
+          article.prose h3 {
+            margin-top: calc(var(--space-lg) - .25rem);
+            font-size: 1.15rem; line-height: 1.35; font-weight: 700;
+          }
+          article.prose h4 {
+            margin-top: 1rem;
+            font-size: 1.02rem; font-weight: 700;
+          }
+          article.prose p { margin: .75rem 0; }
+          article.prose ul, article.prose ol { padding-left: 1.25rem; }
+          article.prose li { margin: .35rem 0; }
+          article.prose hr {
+            border: none; border-top: 1px dashed var(--border); margin: 2rem 0;
+          }
+          article.prose code, article.prose kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: .95em;
+            background: color-mix(in srgb, var(--ring) 18%, transparent);
+            padding: .125em .3em; border-radius: .35em;
+          }
+          .note {
+            border: 1px solid var(--border);
+            background: color-mix(in srgb, var(--bg) 92%, transparent);
+            padding: .9rem 1rem;
+            border-radius: 12px;
+          }
+          address {
+            font-style: normal;
+            line-height: 1.5;
+          }
+          /* Skip link for a11y */
+          .skip {
+            position: absolute; left: -9999px;
+          }
+          .skip:focus {
+            left: 1rem; top: 1rem; background: var(--bg);
+            color: var(--fg); padding: .5rem .75rem; border-radius: .5rem;
+            outline: 2px solid var(--ring);
+          }
+          /* Anchored headings */
+          .anchor {
+            opacity: 0;
+            margin-left: .3rem;
+            text-decoration: none;
+            font-weight: 400;
+            color: var(--muted);
+          }
+          h2:hover .anchor, h3:hover .anchor, h4:hover .anchor { opacity: 1; }
+          /* Small footer */
+          footer {
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 0 3rem;
+            color: var(--muted);
+            font-size: .95rem;
+          }
+        </style>
+    </head>
+    <body>
+      <a href="#content" class="skip">Skip to content</a>
+      <div class="wrap">
+        <header>
+          <h1>Privacy Policy</h1>
+          <p class="subhead">
+            Route 66 Hemp LLC • Last updated: <time datetime="2025-08-19">August 19, 2025</time>
+          </p>
+        </header>
+    
+        <main id="content" class="layout" role="main">
+          <!-- Auto-generated Table of Contents -->
+          <details id="toc" class="toc">
+            <summary aria-controls="toc-list" aria-expanded="false">On this page</summary>
+            <ul id="toc-list"><!-- populated by JS --></ul>
+          </details>
+    
+          <!-- Main policy content -->
+          <article class="prose" id="policy">
+            <section id="intro">
+              <p>We are Route 66 Hemp LLC. This privacy policy explains how we collect, use, and protect your personal information when you use our services.</p>
+              <div class="note" role="note" aria-label="Contact">
+                <strong>Contact</strong>
+                <address>
+                  14076 State Hwy Z, St Robert, MO 65584, United States<br/>
+                  Email: <a href="mailto:route66hemp@gmail.com">route66hemp@gmail.com</a><br/>
+                  Phone: <a href="tel:+15736776418">(573) 677-6418</a>
+                </address>
+              </div>
+            </section>
+    
+            <!-- Keep your clear heading hierarchy; the JS below will anchor & index them -->
+            <h2 id="what-is-this-policy">Introduction</h2>
+            <p><strong>What is this policy about?</strong> This document explains how this website collects, uses, and protects your personal data to achieve the purposes outlined here.</p>
+            <p><strong>What is personal data?</strong> Personal data refers to information that can identify you directly or indirectly (e.g., name, email address, cookies/trackers, usage and device data).</p>
+    
+            <h2 id="types-of-data">Types of data collected</h2>
+            <ul>
+              <li>First name</li>
+              <li>Last name</li>
+              <li>Email address</li>
+              <li>Trackers</li>
+              <li>Usage data</li>
+            </ul>
+            <p>Unless stated otherwise, requested data is mandatory to provide the service. When data is optional, you may decline without impacting core functionality.</p>
+    
+            <h2 id="processing">Mode and place of processing personal data</h2>
+            <h3>Methods of processing</h3>
+            <p>We use appropriate technical and organizational measures to protect your data and process it only for stated purposes.</p>
+            <h3>Place</h3>
+            <p>Data may be processed at our offices and by service providers in other locations (including outside your country, where applicable).</p>
+            <h3>Retention time</h3>
+            <p>We keep personal data as long as necessary for the purposes collected and longer where required by law or with your consent.</p>
+    
+            <h2 id="detailed-processing">Detailed information on processing</h2>
+            <h3 id="analytics">Analytics</h3>
+            <h4>Google Analytics (Universal Analytics) – Google LLC</h4>
+            <p>Used to measure traffic and usage. See Google’s <a href="https://policies.google.com/technologies/partner-sites">Partner Policy</a> and <a href="https://business.safety.google/privacy/">Business Data</a>. Opt-out via the <a href="https://tools.google.com/dlpage/gaoptout">GA Opt-out Add-on</a>.</p>
+    
+            <h3 id="external-content">Displaying content from external platforms</h3>
+            <h4>Google Fonts – Google LLC</h4>
+            <p>Typeface delivery; may collect usage data. See links above.</p>
+    
+            <h2 id="contacting">Contacting you</h2>
+            <h3>Contact form</h3>
+            <p>By submitting the form, you allow us to use your details to reply to your request (personal data: first name, last name, email).</p>
+    
+            <h2 id="legal-basis">Legal basis of processing</h2>
+            <ul>
+              <li>Consent</li>
+              <li>Contract performance or pre-contractual steps</li>
+              <li>Legal obligation</li>
+              <li>Legitimate interests</li>
+            </ul>
+    
+            <h2 id="gdpr-rights">Your rights (GDPR)</h2>
+            <ul>
+              <li>Withdraw consent</li>
+              <li>Object to processing</li>
+              <li>Access, rectify, restrict, delete</li>
+              <li>Portability</li>
+              <li>Lodge a complaint</li>
+            </ul>
+            <hr>
+            <section id="california">
+              <h2>Further information for California residents</h2>
+            
+              <h3>About this section</h3>
+              <p>This section supplements the rest of our Privacy Policy. It is provided by the business operating this website and, where applicable, its parent, subsidiaries, and affiliates (collectively, “we,” “us,” or “our”).</p>
+            
+              <h4>Applicability</h4>
+              <p>This section applies to consumers residing in California under the California Consumer Privacy Act of 2018 (“CCPA”), as amended by the California Privacy Rights Act (“CPRA”) and related regulations. For these consumers, this section controls if it conflicts with other parts of the policy.</p>
+            
+              <h4>Definition</h4>
+              <p>“Personal information” has the meaning given in the CCPA/CPRA.</p>
+            
+              <h3>Categories of personal information we collect</h3>
+              <ul>
+                <li>We have collected the following categories of personal information:
+                  <ul>
+                    <li>Identifiers</li>
+                    <li>Internet or other electronic network activity information</li>
+                  </ul>
+                </li>
+                <li>We do not collect sensitive personal information.</li>
+                <li>We will not collect additional categories without notice.</li>
+              </ul>
+            
+              <h3>Purposes for using personal information</h3>
+              <p><strong>Business purposes.</strong> We use personal information to operate this website and its features. Processing is necessary and proportionate to the purposes for which the information was collected and limited to compatible operational uses.</p>
+              <p><strong>Commercial/legal purposes.</strong> We may also use personal information for other commercial reasons, to comply with law, and to protect our rights and interests, including before competent authorities.</p>
+              <p><strong>No incompatible use.</strong> We will not process personal information for unexpected or incompatible purposes without your consent.</p>
+            
+              <h3>Retention</h3>
+              <p>Unless otherwise stated in <em>Detailed information on the processing of personal data</em>, we retain personal information only as long as reasonably necessary for the purposes for which it was collected (or longer if required by law).</p>
+            
+              <h3>Sources of personal information</h3>
+              <p>We collect personal information directly and indirectly from you when you use this website.</p>
+              <p><strong>Direct collection:</strong> e.g., when you submit a form.</p>
+              <p><strong>Indirect collection:</strong> e.g., through your site navigation; certain data is observed/collected automatically.</p>
+              <p><strong>Third parties:</strong> we may receive personal information from service providers and partners supporting the website and its features.</p>
+            
+              <h3>How we disclose, sell, or share information</h3>
+              <p><strong>Disclosure for business purposes.</strong> We may disclose personal information to third parties (not including “service providers” or “contractors” as defined by the CCPA) as listed in <em>Detailed information on the processing of personal data</em>. Those third parties are grouped by processing purpose.</p>
+              <p><strong>Sale or sharing.</strong> “Sale” means providing personal information to a third party for monetary or other valuable consideration. “Sharing” means providing personal information to a third party for cross-context behavioral advertising (whether or not consideration is exchanged). Transfers to service providers under a compliant written contract are not “sales” or “sharing.”</p>
+            
+              <h3>Opt-out rights</h3>
+              <p>We may sell or share your personal information as described above. You have the right to opt out at any time. You can contact us using the details at the start of this document or use the privacy choices link on this website. We honor user-enabled Global Privacy Control (GPC) signals. We will use any information provided with an opt-out request solely to comply with that request and will wait at least 12 months before asking you to re-authorize sale or sharing.</p>
+            
+              <h3>Your CCPA/CPRA rights and how to exercise them</h3>
+              <p><strong>Right to know and portability.</strong> You may request that we disclose:</p>
+              <ul>
+                <li>the categories of personal information we collected about you;</li>
+                <li>the sources of that information;</li>
+                <li>the purposes for which we use it;</li>
+                <li>the categories of third parties to whom we disclose it; and</li>
+                <li>the specific pieces of personal information we collected about you.</li>
+              </ul>
+              <p>You also have the right to know what personal information we sold or shared and to whom, including two separate lists showing: (i) the categories sold or shared and the categories of third parties; and (ii) the categories disclosed for a business purpose and the categories of recipients. Disclosures generally cover the preceding 12 months (and beyond January 1, 2022 when technically feasible and not disproportionately burdensome). Electronic disclosures will be provided in a portable, readily usable format where feasible.</p>
+            
+              <p><strong>Right to delete.</strong> You may request deletion of your personal information, subject to legal exceptions (e.g., security, fraud prevention, debugging, or to fulfill transactions).</p>
+              <p><strong>Right to correct.</strong> You may request correction of inaccurate personal information we maintain about you.</p>
+              <p><strong>Right to opt out of sale/sharing and to limit use of sensitive personal information.</strong> You may opt out at any time. (We do not collect sensitive personal information.)</p>
+              <p><strong>Non-discrimination.</strong> We will not discriminate against you for exercising your rights. If certain information is necessary to provide a service, we may be unable to complete a transaction without it. Where permitted, we may offer promotions or financial incentives reasonably related to the value of your information (e.g., bona fide loyalty or rewards programs).</p>
+            
+              <h4>How to submit a request</h4>
+              <ul>
+                <li>Contact us using the details at the start of this document.</li>
+                <li>Your request must provide sufficient information to verify your identity and describe the request with enough detail for us to respond.</li>
+                <li>If we cannot verify your identity, we will not respond to the request.</li>
+                <li>You do not need an account to make a request. Any information collected to verify your request will be used only for verification and retained no longer than necessary.</li>
+                <li>Authorized agents registered with the California Secretary of State may act on your behalf. Adults may make requests for their minor children.</li>
+                <li>You may submit up to two requests within a 12-month period.</li>
+              </ul>
+            
+              <h4>Timing and our response</h4>
+              <ul>
+                <li>We will confirm receipt within 10 days and explain our process.</li>
+                <li>We will respond within 45 days. If more time is needed (up to a total of 90 days), we will tell you why and for how long.</li>
+                <li>Our response will cover the preceding 12 months; for data collected on or after January 1, 2022, you may request disclosures beyond 12 months unless impossible or disproportionately burdensome.</li>
+                <li>If we deny your request, we will explain why.</li>
+                <li>We do not charge a fee unless a request is manifestly unfounded or excessive; in such cases we may charge a reasonable fee or refuse to act and will explain our decision.</li>
+              </ul>
+            </section>
+            
+            <section id="virginia">
+              <h2>Further information for Virginia residents</h2>
+              <p>This section supplements the policy for residents of the Commonwealth of Virginia under the Virginia Consumer Data Protection Act (“VCDPA”). “Personal data” has the meaning given in the VCDPA.</p>
+            
+              <h3>Categories processed & purposes</h3>
+              <p>See <em>Detailed information on the processing of personal data</em> and <em>The purposes of processing</em> for full details. We will not process your data for incompatible purposes without your consent. You may grant or withdraw consent at any time using the contact details provided.</p>
+            
+              <h3>Types of personal data we collect</h3>
+              <ul>
+                <li>Identifiers and internet information</li>
+                <li>We do not collect sensitive data.</li>
+                <li>We will not add new categories without notice.</li>
+              </ul>
+            
+              <h3>Sharing with third parties</h3>
+              <p>We share personal data with third parties listed in <em>Detailed information on the processing of personal data</em>, grouped by processing purpose. “Third party” has the meaning in the VCDPA.</p>
+            
+              <h3>Sale</h3>
+              <p>“Sale” means exchanging personal data for monetary consideration with a third party. Disclosures to processors acting on our behalf are not sales. Other VCDPA exceptions may apply. Our uses may, in some cases, be considered a sale under the VCDPA.</p>
+            
+              <h3>Opt-out of sale</h3>
+              <p>You may opt out of the sale of your personal data at any time by contacting us using the details provided. We will use any information collected with your opt-out solely to comply with the request.</p>
+            
+              <h3>Targeted advertising</h3>
+              <p>We do not currently process personal data for targeted advertising. If we choose to do so, we will inform you in advance and honor your right to opt out.</p>
+            
+              <h3>Your VCDPA rights</h3>
+              <ul>
+                <li><strong>Access:</strong> confirm whether we process your personal data and access it.</li>
+                <li><strong>Correct:</strong> request correction of inaccurate personal data.</li>
+                <li><strong>Delete:</strong> request deletion of personal data.</li>
+                <li><strong>Portability:</strong> obtain your data in a portable, usable format where technically feasible.</li>
+                <li><strong>Opt out:</strong> of targeted advertising, sale of personal data, or profiling producing legal or similarly significant effects.</li>
+                <li><strong>Non-discrimination:</strong> we will not discriminate for exercising your rights. Where permitted, we may offer different prices or benefits related to bona fide loyalty or rewards programs.</li>
+              </ul>
+            
+              <h3>How to exercise your rights</h3>
+              <ul>
+                <li>Submit a request using the contact details provided at the start of this document.</li>
+                <li>We must verify your identity using commercially reasonable efforts; we may request additional information to authenticate you.</li>
+                <li>You do not need to create an account, though we may require you to use an existing account. Any data collected for authentication will be used only for that purpose and retained no longer than necessary.</li>
+                <li>Adults may submit requests for children under their parental authority.</li>
+              </ul>
+            
+              <h3>Timing and appeals</h3>
+              <ul>
+                <li>We will respond without undue delay and no later than 45 days; we may extend up to 90 days with notice.</li>
+                <li>If we deny your request, you may appeal using the contact details provided. We will respond in writing within 60 days with our decision and reasons. If denied, you may contact the Virginia Attorney General.</li>
+                <li>We do not charge a fee for up to two requests per year unless a request is manifestly unfounded, excessive, or repetitive.</li>
+              </ul>
+            </section>
+            
+            <section id="colorado">
+              <h2>Further information for Colorado residents</h2>
+              <p>This section supplements the policy for Colorado residents under the Colorado Privacy Act (“CPA”). “Personal data” has the meaning in the CPA.</p>
+            
+              <h3>Categories processed & purposes</h3>
+              <p>See <em>Detailed information on the processing of personal data</em> for full details. We will not process data for incompatible purposes without your consent; you may grant or withdraw consent at any time using the contact details provided.</p>
+            
+              <h3>Categories we collect</h3>
+              <ul>
+                <li>Identifiers and internet information</li>
+                <li>We do not collect sensitive data.</li>
+                <li>No new categories will be collected without notice.</li>
+              </ul>
+            
+              <h3>Sharing with third parties</h3>
+              <p>We share personal data with third parties listed in <em>Detailed information on the processing of personal data</em>, grouped by purpose. “Third party” has the meaning in the CPA.</p>
+            
+              <h3>Sale</h3>
+              <p>Our use of personal data may be considered a “sale” under the CPA (exchange for monetary or other valuable consideration). Disclosures to processors are not sales; other CPA exceptions may apply.</p>
+            
+              <h3>Opt-out of sale</h3>
+              <p>You may opt out of the sale of your personal data at any time via the contact details at the start of this document or via the privacy choices link on this website. Information collected to process an opt-out is used solely for that purpose.</p>
+            
+              <h3>Targeted advertising</h3>
+              <p>We do not currently process personal data for targeted advertising. If we choose to do so, we will inform you and honor your right to opt out. “Targeted advertising” has the meaning in the CPA and does not include contextual ads, first-party ads, direct responses to your requests, or measurement/reporting alone.</p>
+            
+              <h3>Your CPA rights</h3>
+              <ul>
+                <li>Opt out of targeted advertising, sale of personal data, or profiling with legal or similarly significant effects.</li>
+                <li>Access personal data and confirm whether we process it.</li>
+                <li>Correct inaccurate personal data.</li>
+                <li>Request deletion of personal data.</li>
+                <li>Obtain a portable copy where technically feasible.</li>
+              </ul>
+              <p>We will not increase price or decrease availability solely because you exercise your rights. Where permitted, we may offer different prices or benefits related to bona fide loyalty or rewards programs.</p>
+            
+              <h3>How to exercise your rights</h3>
+              <ul>
+                <li>Submit a request using the contact details provided.</li>
+                <li>We must verify your identity and understand which right you wish to exercise; we may request additional information.</li>
+                <li>You do not need to create an account, though we may require use of an existing account. Authentication data will be used only for that purpose and retained no longer than necessary.</li>
+                <li>Adults may submit requests for children under their parental authority.</li>
+              </ul>
+            
+              <h3>Timing and appeals</h3>
+              <ul>
+                <li>We will respond within 45 days; we may extend up to 90 days with notice.</li>
+                <li>If we deny your request, you may appeal. We will respond within 45 days with reasons. If denied, you may contact the Colorado Attorney General.</li>
+                <li>No fee for up to two requests per year.</li>
+              </ul>
+            </section>
+            
+            <section id="connecticut">
+              <h2>Further information for Connecticut residents</h2>
+              <p>This section supplements the policy for Connecticut residents under the Connecticut Data Privacy Act (“CTDPA”). “Personal data” has the meaning in the CTDPA.</p>
+            
+              <h3>Categories processed & purposes</h3>
+              <p>See <em>Detailed information on the processing of personal data</em> and <em>The purposes of processing</em> for details. We will not process data for incompatible purposes without your consent; you may grant or withdraw consent at any time.</p>
+            
+              <h3>Categories we collect</h3>
+              <ul>
+                <li>Identifiers and internet information</li>
+                <li>We do not collect sensitive data.</li>
+                <li>No new categories will be collected without notice.</li>
+              </ul>
+            
+              <h3>Sharing with third parties</h3>
+              <p>We share personal data with third parties listed in <em>Detailed information on the processing of personal data</em>, grouped by purpose. “Third party” has the meaning in the CTDPA.</p>
+            
+              <h3>Sale</h3>
+              <p>Our use of personal data may be considered a “sale” under the CTDPA (exchange for monetary or other valuable consideration). Disclosures to processors are not sales; other CTDPA exceptions may apply.</p>
+            
+              <h3>Opt-out of sale</h3>
+              <p>You may opt out at any time using the contact details provided or the privacy choices link on this website. Information used to process an opt-out is used only for that purpose.</p>
+            
+              <h3>Targeted advertising</h3>
+              <p>We do not currently process personal data for targeted advertising. If we choose to do so, we will inform you and honor your right to opt out. “Targeted advertising” has the meaning in the CTDPA and excludes contextual/first-party ads, direct responses, and measurement/reporting alone.</p>
+            
+              <h3>Your CTDPA rights</h3>
+              <ul>
+                <li>Access personal data and confirm whether we process it</li>
+                <li>Correct inaccurate personal data</li>
+                <li>Request deletion of personal data</li>
+                <li>Obtain a portable copy where technically feasible</li>
+                <li>Opt out of targeted advertising, sale of personal data, or profiling with legal or similarly significant effects</li>
+              </ul>
+              <p>We will not increase price or decrease availability solely because you exercise your rights. Where permitted, we may offer different prices or benefits related to bona fide loyalty or rewards programs.</p>
+            
+              <h3>How to exercise your rights</h3>
+              <ul>
+                <li>Submit a request using the contact details provided.</li>
+                <li>We must verify your identity and understand the right you wish to exercise; we may request additional information.</li>
+                <li>You do not need to create an account, though we may require use of an existing account. Authentication data will be used only for that purpose and retained no longer than necessary.</li>
+                <li>Adults may submit requests for children under their parental authority.</li>
+              </ul>
+            
+              <h3>Timing and appeals</h3>
+              <ul>
+                <li>We will respond within 45 days; we may extend up to 90 days with notice.</li>
+                <li>If we deny your request, you may appeal. We will respond within 45 days with reasons. If denied, you may contact the Connecticut Attorney General.</li>
+                <li>No fee for up to one request per year.</li>
+              </ul>
+            </section>
+            
+            <section id="utah">
+              <h2>Further information for Utah residents</h2>
+              <p>This section supplements the policy for Utah residents under the Utah Consumer Privacy Act (“UCPA”). “Personal data” has the meaning in the UCPA.</p>
+            
+              <h3>Categories processed & purposes</h3>
+              <p>See <em>Detailed information on the processing of personal data</em> for details.</p>
+            
+              <h3>Categories we collect</h3>
+              <ul>
+                <li>Identifiers and internet information</li>
+                <li>We do not collect sensitive data.</li>
+                <li>No new categories will be collected without notice.</li>
+              </ul>
+            
+              <h3>Sharing with third parties</h3>
+              <p>We share personal data with third parties listed in <em>Detailed information on the processing of personal data</em>, grouped by purpose. “Third party” has the meaning in the UCPA.</p>
+            
+              <h3>Sale</h3>
+              <p>Our use of personal data may be considered a “sale” under the UCPA (exchange for monetary or other valuable consideration). Disclosures to processors are not sales; other UCPA exceptions may apply.</p>
+            
+              <h3>Opt-out of sale / targeted advertising</h3>
+              <p>You may opt out of the sale of personal data and targeted advertising at any time using the contact details at the start of this document or the privacy choices link on this website. Information used to process an opt-out is used only for that purpose.</p>
+              <p>We do not currently process personal data for targeted advertising. If we choose to do so, we will inform you and honor your right to opt out. “Targeted advertising” has the meaning in the UCPA.</p>
+            
+              <h3>Your UCPA rights</h3>
+              <ul>
+                <li>Access personal data and confirm whether we process it</li>
+                <li>Request deletion of personal data</li>
+                <li>Obtain a portable copy where technically feasible</li>
+                <li>Opt out of targeted advertising or sale of personal data</li>
+              </ul>
+              <p>We will not increase price or decrease availability solely because you exercise your rights. Where permitted, we may offer different prices or benefits related to bona fide loyalty or rewards programs.</p>
+            
+              <h3>How to exercise your rights</h3>
+              <ul>
+                <li>Submit a request using the contact details provided.</li>
+                <li>We must verify your identity and the right you wish to exercise; we may request additional information. We may retain your email address to respond to your request.</li>
+                <li>Adults may submit requests for children under their parental authority.</li>
+              </ul>
+            
+              <h3>Timing</h3>
+              <ul>
+                <li>We will respond within 45 days; we may extend up to 90 days with notice.</li>
+                <li>If we deny your request, we will explain why.</li>
+                <li>No fee for up to one request per year.</li>
+              </ul>
+            </section>
+            
+            <section id="about-this-document">
+              <h2>Information about this document</h2>
+            </section>
+            
+            <section id="additional-info">
+              <h2>Additional information about data collection and processing</h2>
+              <p><strong>Legal action.</strong> We may use personal data to protect our rights in court or before authorities arising from misuse of the website or related services. We may be required to disclose personal data upon lawful request by public authorities.</p>
+              <p><strong>Additional information.</strong> We may provide further contextual notices about specific services or processing upon request.</p>
+              <p><strong>System logs and maintenance.</strong> For operation and maintenance, this website and third-party services may collect system logs or other personal data (e.g., IP address).</p>
+              <p><strong>Information not contained here.</strong> You may request more details about collection or processing at any time using the contact information at the start of this document.</p>
+              <p><strong>Changes to this policy.</strong> We may update this policy by posting changes on this page and, where feasible, within the website or via available contact details. Please check the “Last updated” date. If changes affect processing based on your consent, we will seek new consent where required.</p>
+            </section>
+            
+            <section id="definitions">
+              <h2>Definitions and legal references</h2>
+              <p><strong>Personal data (or “data”):</strong> Information that identifies or can be used to identify a natural person, directly or indirectly (e.g., name, ID number).</p>
+              <p><strong>Usage data:</strong> Information collected automatically by this website or third-party services (e.g., IP address, browser, OS, request time/method, response status, visit duration, pages visited, device details).</p>
+              <p><strong>This website:</strong> The means by which personal data is collected and processed.</p>
+              <p><strong>Service:</strong> The service provided by this website as described in the Terms of Service and on this site.</p>
+              <p><strong>European Union (EU):</strong> References include EU Member States and, unless stated otherwise, the European Economic Area.</p>
+              <p><strong>Cookie:</strong> A tracker consisting of small data stored in your browser.</p>
+              <p><strong>Tracker:</strong> Any technology (e.g., cookies, identifiers, web beacons, embedded scripts, e-tags, fingerprinting) that enables tracking or access/storage of information on your device.</p>
+              <p><strong>Legal information:</strong> This privacy statement is prepared based on multiple laws. It applies solely to this website unless stated otherwise.</p>
+            </section>
+          </article>
+        </main>
+         <footer>
+            © <span id="year"></span> Route 66 Hemp LLC • <a href="https://www.route66hemp.com/">www.route66hemp.com</a>
+          </footer>
+        <!-- Analytics Consent Helper (loads GA only after age+consent) -->
+        <script src="/analytics-consent.js"></script>
+
+        <!-- Cookie Banner Start -->
+        <style>
+        #cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #1a1a1a; color: #fff; padding: 12px 20px; display: none; justify-content: space-between; align-items: center; font-size: 14px; z-index: 9999; box-shadow: 0 -2px 6px rgba(0,0,0,0.3); flex-wrap: wrap; gap: 10px; }
+        #cookie-banner a { color: #66cc66; text-decoration: underline; }
+        #cookie-banner button { background: #66cc66; color: #fff; border: none; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        #cookie-banner button:hover { background: #55aa55; }
+        #cookie-banner .actions { display: flex; gap: 10px; }
+        </style>
+        <div id="cookie-banner">
+          <span>
+            We use cookies to improve your browsing experience and analyze site traffic.
+            <a href="/privacy-policy.html" target="_blank">Learn More</a>
+          </span>
+          <div class="actions">
+            <button id="cookie-accept">Accept</button>
+            <button id="cookie-decline">Decline</button>
+          </div>
+        </div>
+        <script>
+        (function () {
+          const banner    = document.getElementById("cookie-banner");
+          const acceptBtn = document.getElementById("cookie-accept");
+          const declineBtn= document.getElementById("cookie-decline");
+          const choice = localStorage.getItem("cookieConsent");
+          if (choice === "accepted" || choice === "declined") {
+            banner.style.display = "none";
+          } else {
+            if (localStorage.getItem("isAdult") === "true") banner.style.display = "flex";
+          }
+          acceptBtn.addEventListener("click", () => {
+            localStorage.setItem("cookieConsent", "accepted");
+            banner.style.display = "none";
+            if (window.tryInitAnalytics) window.tryInitAnalytics();
+          });
+          declineBtn.addEventListener("click", () => {
+            localStorage.setItem("cookieConsent", "declined");
+            banner.style.display = "none";
+          });
+        })();
+        </script>
+        <!-- Cookie Banner End -->
+        <script>
+          // Auto-anchor headings and build TOC
+          (function () {
+            const article = document.getElementById('policy');
+            const tocList = document.getElementById('toc-list');
+            const headings = article.querySelectorAll('h2, h3');
+            const slug = s => s.toLowerCase()
+              .replace(/[^\w\s-]/g, '')
+              .trim().replace(/\s+/g, '-')
+              .replace(/-+/g, '-');
+      
+            let currentUl = tocList;
+            let lastLevel = 2;
+      
+            headings.forEach(h => {
+              const level = parseInt(h.tagName.substring(1), 10); // 2 or 3
+              if (!h.id) { h.id = slug(h.textContent); }
+              // Add permalink anchor
+              const a = document.createElement('a');
+              a.href = '#' + h.id;
+              a.className = 'anchor';
+              a.setAttribute('aria-label', 'Permalink');
+              a.textContent = '#';
+              if (!h.querySelector('.anchor')) h.append(' ', a);
+      
+              // Nesting for H3 under previous H2
+              if (level > lastLevel) {
+                const li = currentUl.lastElementChild;
+                const sub = document.createElement('ul');
+                li && li.appendChild(sub);
+                currentUl = sub || currentUl;
+              } else if (level < lastLevel) {
+                currentUl = currentUl.parentElement.closest('ul') || tocList;
+              }
+              lastLevel = level;
+      
+              const li = document.createElement('li');
+              const link = document.createElement('a');
+              link.href = '#' + h.id;
+              link.textContent = h.textContent;
+              li.appendChild(link);
+              currentUl.appendChild(li);
+            });
+      
+            // Year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+          })();
+        </script>
+        <!-- TOC behavior: open on desktop, collapsed on mobile -->
+        <script>
+          (function () {
+            const toc = document.getElementById('toc');
+            if (!toc) return;
+            const sum = toc.querySelector('summary');
+            const mql = window.matchMedia('(min-width: 1000px)');
+
+            function sync(e){ toc.open = e.matches; sum.setAttribute('aria-expanded', String(toc.open)); }
+            if (mql.addEventListener) { mql.addEventListener('change', sync); } else { mql.addListener(sync); }
+            sync(mql);
+
+            toc.addEventListener('toggle', () => {
+              sum.setAttribute('aria-expanded', String(toc.open));
+            });
+          })();
+        </script>
+        <!-- Sync URL hash to section in view (no jump) -->
+        <script>
+          // Keep hash in sync with the section in view (no scrolling jitter)
+          (function () {
+            const sections = document.querySelectorAll('#policy h2[id], #policy h3[id]');
+            const opts = { rootMargin: '0px 0px -70% 0px', threshold: 0 };
+            let activeId = null;
+
+            const io = new IntersectionObserver(entries => {
+              entries.forEach(e => {
+                if (e.isIntersecting) {
+                  const id = e.target.id;
+                  if (id && id !== activeId) {
+                    history.replaceState(null, '', '#' + id);
+                    activeId = id;
+                    // (Optional) sync TOC highlight
+                    document.querySelectorAll('.toc a[aria-current]')
+                      .forEach(a => a.removeAttribute('aria-current'));
+                    const link = document.querySelector('.toc a[href="#' + CSS.escape(id) + '"]');
+                    if (link) link.setAttribute('aria-current', 'true');
+                  }
+                }
+              });
+            }, opts);
+
+            sections.forEach(s => io.observe(s));
+          })();
+        </script>
+    </body>
+</html>

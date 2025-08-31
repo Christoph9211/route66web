@@ -8,6 +8,7 @@ import LocationContent from './src/components/LocationContent.jsx'
 import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx'
 import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx'
 import { businessInfo } from './src/utils/seoHelpers.js'
+import AgeGate from './src/components/AgeGate.jsx'
 
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
@@ -16,21 +17,12 @@ export default function App() {
     const [appState, setAppState] = React.useState({
         isMobileMenuOpen: false,
         selectedCategory: 'all',
-        age: null,
         products: [],
         categories: [],
         loading: true,
     })
 
     React.useEffect(() => {
-        const verifiedAge = localStorage.getItem('ageVerified')
-        if (verifiedAge) {
-            setAppState((prevState) => ({
-                ...prevState,
-                age: parseInt(verifiedAge),
-            }))
-        }
-
         // Fetch products from the JSON file
         fetch('products/products.json')
             .then((response) => {
@@ -131,15 +123,6 @@ export default function App() {
             })
     }, [])
 
-    const handleAgeVerification = (isOver21) => {
-        if (isOver21) {
-            setAppState((prevState) => ({ ...prevState, age: 21 }))
-            localStorage.setItem('ageVerified', '21')
-        } else {
-            setAppState((prevState) => ({ ...prevState, age: 0 }))
-        }
-    }
-
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
         setAppState((prevState) => ({
@@ -163,93 +146,11 @@ export default function App() {
                   (product) => product.category === appState.selectedCategory
               )
 
-    if (appState.age === null) {
-        return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-8 sm:px-6 md:px-8 dark:bg-gray-900">
-                <div className="w-full max-w-[92vw] rounded-xl bg-white/90 p-6 text-center shadow-2xl ring-1 ring-black/5 backdrop-blur-md sm:max-w-md sm:rounded-2xl sm:p-8 md:max-w-lg md:p-10 lg:max-w-xl xl:max-w-2xl dark:bg-gray-800/80 dark:text-white dark:ring-white/10">
-                    <h2 className="mb-6 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-                        Age Verification
-                    </h2>
-
-                    <div className="mb-8">
-                        <i
-                            className="fas fa-cannabis mb-4 text-4xl text-green-500 sm:text-5xl md:text-6xl"
-                            aria-hidden="true"
-                            tabIndex="-1"
-                        ></i>
-                        <p className="mx-auto max-w-prose text-sm text-gray-700 sm:text-base dark:text-gray-100">
-                            You must be 21 years or older to enter this website.
-                        </p>
-                    </div>
-
-                    <div className="flex flex-col space-y-3 sm:space-y-4">
-                        <button
-                            onClick={() => handleAgeVerification(true)}
-                            className="w-full rounded-lg bg-blue-600 py-3 text-lg font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-500"
-                        >
-                            I am 21 or older
-                        </button>
-
-                        <button
-                            onClick={() => handleAgeVerification(false)}
-                            className="w-full rounded-lg bg-gray-600/90 py-3 text-lg font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:bg-gray-700/90 dark:hover:bg-gray-700"
-                        >
-                            I am under 21
-                        </button>
-                    </div>
-
-                    {/* Centered links, no leading sentence */}
-                    <div className="mt-6 flex items-center justify-center gap-4 text-xs sm:text-sm">
-                        <a
-                            href="https://www.iubenda.com/terms-and-conditions/72276024"
-                            className="iubenda-black iubenda-embed font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
-                            title="Terms of Service"
-                        >
-                            Terms of Service
-                        </a>
-                        <a
-                            href="https://www.iubenda.com/privacy-policy/72276024"
-                            className="iubenda-black iubenda-embed font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
-                            title="Privacy Policy"
-                        >
-                            Privacy Policy
-                        </a>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-    if (appState.age < 21) {
-        return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-8 sm:px-6 md:px-8 dark:bg-gray-900">
-                <div className="w-full max-w-[92vw] rounded-xl bg-white/90 p-6 text-center shadow-2xl ring-1 ring-black/5 backdrop-blur-md sm:max-w-md sm:rounded-2xl sm:p-8 md:max-w-lg md:p-10 lg:max-w-xl dark:bg-gray-800/80 dark:text-white dark:ring-white/10">
-                    <h2 className="mb-4 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
-                        Access Denied
-                    </h2>
-                    <p className="mx-auto mb-6 max-w-prose text-sm text-gray-700 sm:text-base dark:text-gray-100">
-                        You must be 21 or older to access this website.
-                    </p>
-                    <button
-                        onClick={() =>
-                            setAppState((prevState) => ({
-                                ...prevState,
-                                age: null,
-                            }))
-                        }
-                        className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600"
-                    >
-                        Go Back
-                    </button>
-                </div>
-            </div>
-        )
-    }
-
     return (
         <div className="flex min-h-screen flex-col">
             <div id="home"></div>
             <StructuredData />
+            <AgeGate />
             {/* Navigation */}
             <nav
                 role="navigation"
@@ -479,41 +380,48 @@ export default function App() {
                                 purity.
                             </p>
                         </div>
-                        <div className="mb-8 flex flex-wrap justify-center gap-2">
+                        <div
+                          className="mb-8 flex flex-wrap justify-center gap-2"
+                          role="group"
+                          aria-label="Filter products by category"
+                        >
+                          <button
+                            onClick={() =>
+                              setAppState((prevState) => ({
+                                ...prevState,
+                                selectedCategory: 'all',
+                              }))
+                            }
+                            aria-pressed={appState.selectedCategory === 'all'}
+                            aria-label="Show all products"
+                            className={`rounded-full px-4 py-2 text-sm font-medium ${
+                              appState.selectedCategory === 'all'
+                                ? 'bg-blue-600 text-white dark:bg-blue-500' // <-- darker primary for light mode
+                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                            }`}
+                          >
+                            All Products
+                          </button>
+                          {appState.categories.map((category) => (
                             <button
-                                onClick={() =>
-                                    setAppState((prevState) => ({
-                                        ...prevState,
-                                        selectedCategory: 'all',
-                                    }))
-                                }
-                                className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                    appState.selectedCategory === 'all'
-                                        ? 'bg-primary text-white'
-                                        : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-600'
-                                }`}
+                              key={category.id}
+                              onClick={() =>
+                                setAppState((prevState) => ({
+                                  ...prevState,
+                                  selectedCategory: category.id,
+                                }))
+                              }
+                              aria-pressed={appState.selectedCategory === category.id}
+                              aria-label={`Filter by ${category.name}`}
+                              className={`rounded-full px-4 py-2 text-sm font-medium ${
+                                appState.selectedCategory === category.id
+                                  ? 'bg-blue-600 text-white dark:bg-blue-500' // <-- force high contrast
+                                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                              }`}
                             >
-                                All Products
+                              {category.name}
                             </button>
-                            {appState.categories.map((category) => (
-                                <button
-                                    key={category.id}
-                                    onClick={() =>
-                                        setAppState((prevState) => ({
-                                            ...prevState,
-                                            selectedCategory: category.id,
-                                        }))
-                                    }
-                                    className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                        appState.selectedCategory ===
-                                        category.id
-                                            ? 'bg-primary text-white'
-                                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-600'
-                                    }`}
-                                >
-                                    {category.name}
-                                </button>
-                            ))}
+                          ))}
                         </div>
                         {appState.loading ? (
                             <div className="col-span-full flex items-center justify-center py-12">
