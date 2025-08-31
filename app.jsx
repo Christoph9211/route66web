@@ -234,7 +234,6 @@ export default function App() {
                                             : 'fa-bars'
                                     } text-xl`}
                                     aria-hidden="true"
-                                    tabIndex="-1"
                                 ></i>
                             </button>
                         </div>
@@ -340,7 +339,6 @@ export default function App() {
                                                         <i
                                                             className="fa-solid fa-cannabis text-9xl text-white opacity-50"
                                                             aria-hidden="true"
-                                                            tabIndex="-1"
                                                         ></i>
                                                     </div>
                                                     <div className="absolute inset-0 flex items-center justify-center bg-opacity-20">
@@ -428,7 +426,6 @@ export default function App() {
                                     <i
                                         className="fas fa-cannabis text-5xl text-blue-600 dark:text-blue-500"
                                         aria-hidden="true"
-                                        tabIndex="-1"
                                     ></i>
                                 </div>
                                 <span className="sr-only">
@@ -474,7 +471,6 @@ export default function App() {
                                                     <i
                                                         className="fas fa-leaf mb-4 text-6xl"
                                                         aria-hidden="true"
-                                                        tabIndex="-1"
                                                     ></i>
                                                     <h3 className="mb-2 text-2xl font-bold">
                                                         From Seed to Sale
@@ -544,7 +540,6 @@ export default function App() {
                                                     <i
                                                         className="fas fa-flask text-xl text-white"
                                                         aria-hidden="true"
-                                                        tabIndex="-1"
                                                     ></i>
                                                 </span>
                                             </div>
@@ -569,7 +564,6 @@ export default function App() {
                                                     <i
                                                         className="fas fa-leaf text-xl text-white"
                                                         aria-hidden="true"
-                                                        tabIndex="-1"
                                                     ></i>
                                                 </span>
                                             </div>
@@ -593,7 +587,6 @@ export default function App() {
                                                     <i
                                                         className="fas fa-users text-xl text-white"
                                                         aria-hidden="true"
-                                                        tabIndex="-1"
                                                     ></i>
                                                 </span>
                                             </div>
@@ -657,7 +650,6 @@ export default function App() {
                                     <i
                                         className="fas fa-cannabis text-white"
                                         aria-hidden="true"
-                                        tabIndex="-1"
                                     ></i>
                                 </div>
                                 <span className="text-xl font-bold text-white">
@@ -678,7 +670,6 @@ export default function App() {
                                     <i
                                         className="fab fa-facebook text-xl"
                                         aria-hidden="true"
-                                        tabIndex="-1"
                                     ></i>
                                     <span className="sr-only">Facebook</span>
                                 </a>
@@ -691,7 +682,6 @@ export default function App() {
                                     <i
                                         className="fab fa-instagram text-xl"
                                         aria-hidden="true"
-                                        tabIndex="-1"
                                     ></i>
                                     <span className="sr-only">Instagram</span>
                                 </a>
@@ -704,7 +694,6 @@ export default function App() {
                                     <i
                                         className="fab fa-twitter text-xl"
                                         aria-hidden="true"
-                                        tabIndex="-1"
                                     ></i>
                                     <span className="sr-only">Twitter</span>
                                 </a>
@@ -717,7 +706,6 @@ export default function App() {
                                     <i
                                         className="fab fa-youtube text-xl"
                                         aria-hidden="true"
-                                        tabIndex="-1"
                                     ></i>
                                     <span className="sr-only">YouTube</span>
                                 </a>
@@ -1132,7 +1120,6 @@ function ProductCard({ product }) {
                                 : 'far fa-star text-yellow-600'
                         }`}
                         aria-hidden="true"
-                        tabIndex={'-1'}
                     ></i>
                 ))}
                 <span className="ml-1 text-xs text-gray-700 dark:text-white">
