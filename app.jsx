@@ -301,33 +301,9 @@ export default function App() {
                                                     balanced lifestyle.
                                                 </p>
                                                 <div className="mt-10 flex justify-center space-x-4 sm:mt-12 lg:justify-start">
-                                                    <div className="rounded-md shadow">
-                                                        <a
-                                                            href="#products"
-                                                            onClick={(e) =>
-                                                                handleNavigation(
-                                                                    e,
-                                                                    'products'
-                                                                )
-                                                            }
-                                                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-4 text-xl font-bold text-white hover:bg-blue-800 md:px-10 md:py-4 md:text-lg dark:bg-blue-800 dark:text-white dark:hover:bg-blue-800"
-                                                        >
-                                                            Explore Products
-                                                        </a>
-                                                    </div>
-                                                    <div className="rounded-md shadow">
-                                                        <a
-                                                            href="#about"
-                                                            onClick={(e) =>
-                                                                handleNavigation(
-                                                                    e,
-                                                                    'about'
-                                                                )
-                                                            }
-                                                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-4 text-xl font-bold text-white hover:bg-blue-800 md:px-10 md:py-4 md:text-lg dark:bg-blue-800 dark:text-white dark:hover:bg-blue-800"
-                                                        >
-                                                            Learn more about us
-                                                        </a>
+                                                    <div className="flex gap-4"> 
+                                                    <a href="#products" className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-[5.5rem] md:min-h-[6rem]"> Explore Products </a>
+                                                    <a href="#about" className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-[5.5rem] md:min-h-[6rem]"> Learn more about us </a> 
                                                     </div>
                                                 </div>
                                             </div>
