@@ -9,6 +9,24 @@ import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegratio
 import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx'
 import { businessInfo } from './src/utils/seoHelpers.js'
 import AgeGate from './src/components/AgeGate.jsx'
+// Font Awesome (SVG) – import only what we use
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faCannabis,
+    faBars,
+    faXmark,
+    faFlask,
+    faLeaf,
+    faUsers,
+    faStar as faStarSolid,
+} from '@fortawesome/free-solid-svg-icons'
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons'
+import {
+    faFacebook,
+    faInstagram,
+    faTwitter,
+    faYoutube,
+} from '@fortawesome/free-brands-svg-icons'
 
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
@@ -162,10 +180,11 @@ export default function App() {
                             <div className="flex flex-shrink-0 items-center">
                                 {/* Logo */}
                                 <div className="mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-green-500">
-                                    <i
-                                        className="fas fa-cannabis text-white"
+                                    <FontAwesomeIcon
+                                        icon={faCannabis}
+                                        className="text-white"
                                         aria-hidden="true"
-                                    ></i>
+                                    />
                                 </div>
                                 <span
                                     className="text-xl font-bold text-gray-900 dark:text-white"
@@ -227,14 +246,15 @@ export default function App() {
                                     appState.isMobileMenuOpen ? 'true' : 'false'
                                 }
                             >
-                                <i
-                                    className={`fas ${
+                                <FontAwesomeIcon
+                                    icon={
                                         appState.isMobileMenuOpen
-                                            ? 'fa-times'
-                                            : 'fa-bars'
-                                    } text-xl`}
+                                            ? faXmark
+                                            : faBars
+                                    }
+                                    className="text-xl"
                                     aria-hidden="true"
-                                ></i>
+                                />
                             </button>
                         </div>
                     </div>
@@ -312,10 +332,11 @@ export default function App() {
                                             <div className="mx-auto mt-12 max-w-md sm:max-w-2xl lg:mt-0">
                                                 <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gradient-to-br from-blue-600 to-green-600 text-white shadow-xl">
                                                     <div className="absolute inset-0 flex items-center justify-center">
-                                                        <i
-                                                            className="fa-solid fa-cannabis text-9xl text-white opacity-50"
+                                                        <FontAwesomeIcon
+                                                            icon={faCannabis}
+                                                            className="text-9xl text-white opacity-50"
                                                             aria-hidden="true"
-                                                        ></i>
+                                                        />
                                                     </div>
                                                     <div className="absolute inset-0 flex items-center justify-center bg-opacity-20">
                                                         <div className="px-4 text-center text-white">
@@ -399,10 +420,11 @@ export default function App() {
                         {appState.loading ? (
                             <div className="col-span-full flex items-center justify-center py-12">
                                 <div className="leaf-loader">
-                                    <i
-                                        className="fas fa-cannabis text-5xl text-blue-600 dark:text-blue-500"
+                                    <FontAwesomeIcon
+                                        icon={faCannabis}
+                                        className="text-5xl text-blue-600 dark:text-blue-500"
                                         aria-hidden="true"
-                                    ></i>
+                                    />
                                 </div>
                                 <span className="sr-only">
                                     Loading products...
@@ -444,10 +466,11 @@ export default function App() {
                                         <div className="aspect-w-2 aspect-h-1 overflow-hidden rounded-lg shadow-xl">
                                             <div className="flex h-full w-full items-center justify-center bg-gradient-to-r from-green-800 to-green-600 p-6">
                                                 <div className="text-center text-white">
-                                                    <i
-                                                        className="fas fa-leaf mb-4 text-6xl"
+                                                    <FontAwesomeIcon
+                                                        icon={faLeaf}
+                                                        className="mb-4 text-6xl"
                                                         aria-hidden="true"
-                                                    ></i>
+                                                    />
                                                     <h3 className="mb-2 text-2xl font-bold">
                                                         From Seed to Sale
                                                     </h3>
@@ -513,10 +536,11 @@ export default function App() {
                                         <div className="-mt-6">
                                             <div>
                                                 <span className="inline-flex items-center justify-center rounded-md bg-green-500 p-3 shadow-lg">
-                                                    <i
-                                                        className="fas fa-flask text-xl text-white"
+                                                    <FontAwesomeIcon
+                                                        icon={faFlask}
+                                                        className="text-xl text-white"
                                                         aria-hidden="true"
-                                                    ></i>
+                                                    />
                                                 </span>
                                             </div>
                                             <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
@@ -537,10 +561,11 @@ export default function App() {
                                         <div className="-mt-6">
                                             <div>
                                                 <span className="inline-flex items-center justify-center rounded-md bg-green-500 p-3 shadow-lg">
-                                                    <i
-                                                        className="fas fa-leaf text-xl text-white"
+                                                    <FontAwesomeIcon
+                                                        icon={faLeaf}
+                                                        className="text-xl text-white"
                                                         aria-hidden="true"
-                                                    ></i>
+                                                    />
                                                 </span>
                                             </div>
                                             <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
@@ -560,10 +585,11 @@ export default function App() {
                                         <div className="-mt-6">
                                             <div>
                                                 <span className="inline-flex items-center justify-center rounded-md bg-green-500 p-3 shadow-lg">
-                                                    <i
-                                                        className="fas fa-users text-xl text-white"
+                                                    <FontAwesomeIcon
+                                                        icon={faUsers}
+                                                        className="text-xl text-white"
                                                         aria-hidden="true"
-                                                    ></i>
+                                                    />
                                                 </span>
                                             </div>
                                             <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
@@ -623,10 +649,11 @@ export default function App() {
                         <div className="space-y-8 xl:col-span-1">
                             <div className="flex items-center">
                                 <div className="mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-green-500">
-                                    <i
-                                        className="fas fa-cannabis text-white"
+                                    <FontAwesomeIcon
+                                        icon={faCannabis}
+                                        className="text-white"
                                         aria-hidden="true"
-                                    ></i>
+                                    />
                                 </div>
                                 <span className="text-xl font-bold text-white">
                                     {businessInfo.name}
@@ -643,10 +670,11 @@ export default function App() {
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="Facebook"
                                 >
-                                    <i
-                                        className="fab fa-facebook text-xl"
+                                    <FontAwesomeIcon
+                                        icon={faFacebook}
+                                        className="text-xl"
                                         aria-hidden="true"
-                                    ></i>
+                                    />
                                     <span className="sr-only">Facebook</span>
                                 </a>
                                 <a
@@ -655,10 +683,11 @@ export default function App() {
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="Instagram"
                                 >
-                                    <i
-                                        className="fab fa-instagram text-xl"
+                                    <FontAwesomeIcon
+                                        icon={faInstagram}
+                                        className="text-xl"
                                         aria-hidden="true"
-                                    ></i>
+                                    />
                                     <span className="sr-only">Instagram</span>
                                 </a>
                                 <a
@@ -667,10 +696,11 @@ export default function App() {
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="Twitter"
                                 >
-                                    <i
-                                        className="fab fa-twitter text-xl"
+                                    <FontAwesomeIcon
+                                        icon={faTwitter}
+                                        className="text-xl"
                                         aria-hidden="true"
-                                    ></i>
+                                    />
                                     <span className="sr-only">Twitter</span>
                                 </a>
                                 <a
@@ -679,10 +709,11 @@ export default function App() {
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="YouTube"
                                 >
-                                    <i
-                                        className="fab fa-youtube text-xl"
+                                    <FontAwesomeIcon
+                                        icon={faYoutube}
+                                        className="text-xl"
                                         aria-hidden="true"
-                                    ></i>
+                                    />
                                     <span className="sr-only">YouTube</span>
                                 </a>
                             </div>
@@ -1092,20 +1123,21 @@ function ProductCard({ product }) {
             <div className="mt-1 flex items-center">
                 {/* Render the rating stars */}
                 {[...Array(5)].map((_, i) => (
-                    <i
+                    <FontAwesomeIcon
                         key={i}
-                        className={`text-xs ${
+                        icon={
                             i <
                             Math.floor(
                                 product.rating ||
                                     (product.ratings && product.ratings[0]) ||
                                     5
                             )
-                                ? 'fas fa-star text-yellow-600'
-                                : 'far fa-star text-yellow-600'
-                        }`}
+                                ? faStarSolid
+                                : faStarRegular
+                        }
+                        className="text-xs text-yellow-600"
                         aria-hidden="true"
-                    ></i>
+                    />
                 ))}
                 <span className="ml-1 text-xs text-gray-700 dark:text-white">
                     {/* Show the rating number */}(
