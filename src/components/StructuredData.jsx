@@ -1,6 +1,86 @@
 // Structured Data Component for Local Business SEO
 
-function StructuredData() {
+function slugify(str = '') {
+    return String(str)
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+}
+
+function ProductSchema({ product, mode = 'listing' }) {
+    const canOffer = Number.isFinite(product?.price)
+    const hasAgg = product?.ratingValue && product?.reviewCount
+    const hasReview = Array.isArray(product?.reviews) && product.reviews.length > 0
+
+    if (mode !== 'detail' || (!canOffer && !hasAgg && !hasReview)) {
+        return null
+    }
+
+    const data = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: product.name,
+        url:
+          product.url ||
+          `https://www.route66hemp.com/products/${slugify(product.category)}/${slugify(product.name)}`
+        ,
+    }
+
+    if (canOffer) {
+        data.offers = {
+            '@type': 'Offer',
+            price: product.price.toFixed(2),
+            priceCurrency: product.currency || 'USD',
+            availability: product.availability || 'https://schema.org/InStock',
+            url: data.url,
+            seller: { '@type': 'Organization', name: 'Route 66 Hemp' },
+        }
+    }
+
+    if (hasAgg) {
+        data.aggregateRating = {
+            '@type': 'AggregateRating',
+            ratingValue: String(product.ratingValue),
+            reviewCount: String(product.reviewCount),
+        }
+    }
+
+    if (hasReview) {
+        data.review = product.reviews
+    }
+
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+    )
+}
+
+function ListingSchema({ items = [] }) {
+    const itemList = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: items.map((p, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url:
+              p.url ||
+              `https://www.route66hemp.com/products/${slugify(p.category)}/${slugify(p.name)}`,
+            name: p.name,
+        })),
+    }
+
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }}
+        />
+    )
+}
+
+function StructuredData({ products = [], pageMode = 'listing', product = null }) {
     const businessData = {
         '@context': 'https://schema.org',
         '@type': 'Store',
@@ -73,36 +153,6 @@ function StructuredData() {
                     'Excellent quality hemp products and knowledgeable staff. Great selection and fair prices.',
             },
         ],
-        hasOfferCatalog: {
-            '@type': 'OfferCatalog',
-            name: 'Hemp Products',
-            itemListElement: [
-                {
-                    '@type': 'Offer',
-                    itemOffered: {
-                        '@type': 'Product',
-                        name: 'CBD Flower',
-                        category: 'Hemp Products',
-                    },
-                },
-                {
-                    '@type': 'Offer',
-                    itemOffered: {
-                        '@type': 'Product',
-                        name: 'Hemp Concentrates',
-                        category: 'Hemp Products',
-                    },
-                },
-                {
-                    '@type': 'Offer',
-                    itemOffered: {
-                        '@type': 'Product',
-                        name: 'Vapes & Cartridges',
-                        category: 'Hemp Products',
-                    },
-                },
-            ],
-        },
     }
 
     const breadcrumbData = {
@@ -166,6 +216,12 @@ function StructuredData() {
                     __html: JSON.stringify(organizationData),
                 }}
             />
+            {pageMode === 'listing' && Array.isArray(products) && products.length > 0 ? (
+                <ListingSchema items={products} />
+            ) : null}
+            {pageMode === 'detail' && product ? (
+                <ProductSchema product={product} mode="detail" />
+            ) : null}
         </>
     )
 }

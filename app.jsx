@@ -149,7 +149,7 @@ export default function App() {
     return (
         <div className="flex min-h-screen flex-col">
             <div id="home"></div>
-            <StructuredData />
+            <StructuredData pageMode="listing" products={appState.products} />
             <AgeGate />
             {/* Navigation */}
             <nav
@@ -852,6 +852,14 @@ export default function App() {
 }
 
 // ProductCard component for displaying product with size dropdown and dynamic price
+function slugify(str = '') {
+    return String(str)
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+}
+
 function ProductCard({ product }) {
     // Generate combined options if both flavors and size_options exist
     let combinedOptions = []
@@ -947,6 +955,7 @@ function ProductCard({ product }) {
     // It also needs to dynamically calculate the price based on the selected flavor and size
     return (
         <div
+            id={`product-${slugify(product.category)}-${slugify(product.name)}`}
             className="product-card group relative rounded-lg bg-white p-4 shadow dark:bg-gray-700"
             // This class is for the card shadow effect
         >
