@@ -116,7 +116,7 @@ function GoogleBusinessIntegration() {
                             View on Google Maps
                         </a>
                         <a
-                            href="https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO"
+                            href="https://g.page/r/CVdnXoVBYQSVEAE/review"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center rounded-lg border-2 border-white bg-transparent px-6 py-3 font-medium text-white transition-colors hover:bg-white hover:text-blue-600"
