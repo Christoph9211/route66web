@@ -8,7 +8,7 @@ function LocalSEOFAQ() {
         },
         {
             question: 'What are your store hours in St Robert?',
-            answer: "We're open Monday-Thursday 11:00 AM - 9:00 PM, Friday-Saturday 11:00 AM - 10:00 PM, and Sunday 11:00 AM - 7:00 PM. We serve the St Robert and Central Missouri community with extended weekend hours.",
+            answer: "We're open Monday-Thursday 11:00 AM - 9:00 PM, Friday-Saturday 11:00 AM - 10:00 PM, and Sunday 10:00 AM - 6:00 PM. We serve the St Robert and Central Missouri community with extended weekend hours.",
         },
         {
             question: 'Do you serve customers from Fort Leonard Wood?',
@@ -75,7 +75,7 @@ function LocalSEOFAQ() {
                             {openIndex === index && (
                                 <div
                                     id={`faq-answer-${index}`}
-                                    className="px-6 pb-4"
+                                    className="px-6 pt-4 pb-4 border-t border-gray-200 dark:border-gray-700"
                                     role="region"
                                     aria-labelledby={`faq-question-${index}`}
                                 >
