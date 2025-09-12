@@ -1,3 +1,4 @@
+import React from 'react'
 import { useCart } from '../hooks/useCart'
 
 /**

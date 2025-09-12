@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 /**
  * Renders a quick navigation component that provides quick access to
