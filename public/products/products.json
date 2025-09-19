@@ -89,23 +89,6 @@
     "banner": "New"
   },
   {
-    "name": "Magic Night",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "New"
-  },
-  {
     "name": "Mango Mentality",
     "category": "Flower",
     "size_options": [
@@ -136,6 +119,23 @@
     "banner": "New"
   },
   {
+    "name": "Sour Tangie",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "banner": "New"
+  },
+  {
     "name": "Tropical Punch Shots 100mg",
     "category": "Edibles",
     "size_options": [
@@ -160,24 +160,6 @@
     "banner": "New"
   },
   {
-    "name": "White Widow Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 60.87,
-    "banner": "New"
-  },
-  {
     "name": "Blueberry Muffin Diamonds",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -187,6 +169,22 @@
     "prices": {
       "1 gram": 15,
       "3 grams": 40
+    }
+  },
+  {
+    "name": "Blueberry Muffin Flower",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "Ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "Ounce": 150
     }
   },
   {
@@ -206,16 +204,12 @@
     "name": "Flower Preroll",
     "category": "Other",
     "size_options": [
-      "Blue Dream",
-      "Super Boof",
       "Tropicana Cherry",
       "Chem De La Chem",
       "Grape Cream Cake",
       "Raspberry Kush"
     ],
     "prices": {
-      "Blue Dream": 7,
-      "Super Boof": 7,
       "Tropicana Cherry": 7,
       "Chem De La Chem": 5,
       "Grape Cream Cake": 5,
@@ -431,23 +425,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Blueberry Muffin Flower",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Candy Cane",
     "category": "Flower",
     "size_options": [
@@ -559,6 +536,23 @@
       "1/4": 50,
       "1/2": 100,
       "ounce": 200
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Magic Night",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
     },
     "banner": "Out of Stock"
   },
@@ -676,6 +670,24 @@
       "3 grams": 25
     },
     "thca_percentage": 96.1,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "White Widow Snowcaps",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 60.87,
     "banner": "Out of Stock"
   },
   {
