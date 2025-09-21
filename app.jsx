@@ -665,8 +665,9 @@ export default function App() {
                             </p>
                             <div className="flex space-x-6">
                                 <a
-                                    href="/"
-                                    onClick={(e) => e.preventDefault()}
+                                    href="https://www.facebook.com/profile.php?id=763575206845863"
+                                    target="_blank"
+                                    rel="noopener"
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="Facebook"
                                 >

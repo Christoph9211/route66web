@@ -129,7 +129,7 @@ function StructuredData({ products = [], pageMode = 'listing', product = null })
         image: 'https://www.route66hemp.com/og-image.jpg',
         logo: 'https://www.route66hemp.com/favicon-32x32.png',
         sameAs: [
-            'https://www.facebook.com/route66hemp',
+            'https://www.facebook.com/profile.php?id=61580782509105',
             'https://www.instagram.com/route66hemp',
             'https://www.twitter.com/route66hemp',
         ],
