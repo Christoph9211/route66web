@@ -315,7 +315,7 @@ export default function App() {
                                                 <p className="mt-3 text-base text-gray-700 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl dark:text-white">
                                                     Discover our range of
                                                     high-quality, lab-tested
-                                                    hemp products. From CBD oils
+                                                    hemp products. From THCa flower
                                                     to edibles, we have
                                                     everything you need for a
                                                     balanced lifestyle.
@@ -665,7 +665,7 @@ export default function App() {
                             </p>
                             <div className="flex space-x-6">
                                 <a
-                                    href="https://www.facebook.com/profile.php?id=763575206845863"
+                                    href="https://www.facebook.com/route66hemp/"
                                     target="_blank"
                                     rel="noopener"
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"

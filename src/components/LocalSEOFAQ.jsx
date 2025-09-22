@@ -17,7 +17,7 @@ function LocalSEOFAQ() {
         {
             question:
                 'What hemp products do you carry at your St Robert location?',
-            answer: 'Our St Robert store carries a full selection of premium hemp products including CBD flower, concentrates, diamonds & sauce, vapes & cartridges, and pre-rolls. All products are lab-tested and compliant with Missouri hemp laws.',
+            answer: 'Our St Robert store carries a full selection of premium hemp products including THCa flower, concentrates, diamonds & sauce, vapes & cartridges, and pre-rolls. All products are lab-tested and compliant with Missouri hemp laws.',
         },
         {
             question:

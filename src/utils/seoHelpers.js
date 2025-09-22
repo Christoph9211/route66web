@@ -45,7 +45,7 @@ export const generateLocalKeywords = (baseKeywords = []) => {
         'Central Missouri',
         'Route 66 State Park',
         'Hemp store St Robert',
-        'CBD St Robert MO',
+        'THCa St Robert MO',
         'Cannabis St Robert',
         'Hemp Dispensary Missouri',
         'Hemp Products Pulaski County',
