@@ -21,10 +21,10 @@ function ProductSchema({ product, mode = 'listing' }) {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name: product.name,
-        url:
-          product.url ||
-          `https://www.route66hemp.com/products/${slugify(product.category)}/${slugify(product.name)}`
-        ,
+    }
+
+    if (product?.url) {
+        data.url = product.url
     }
 
     if (canOffer) {
@@ -62,14 +62,19 @@ function ListingSchema({ items = [] }) {
     const itemList = {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        itemListElement: items.map((p, i) => ({
-            '@type': 'ListItem',
-            position: i + 1,
-            url:
-              p.url ||
-              `https://www.route66hemp.com/products/${slugify(p.category)}/${slugify(p.name)}`,
-            name: p.name,
-        })),
+        itemListElement: items.map((p, i) => {
+            const listItem = {
+                '@type': 'ListItem',
+                position: i + 1,
+                name: p.name,
+            }
+
+            if (p?.url) {
+                listItem.url = p.url
+            }
+
+            return listItem
+        }),
     }
 
     return (
@@ -227,3 +232,4 @@ function StructuredData({ products = [], pageMode = 'listing', product = null })
 }
 
 export default StructuredData
+
