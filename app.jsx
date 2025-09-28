@@ -1,13 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/react'
-import StructuredData from './src/components/StructuredData.jsx'
-import LocalBusinessInfo from './src/components/LocalBusinessInfo.jsx'
-import LocationContent from './src/components/LocationContent.jsx'
-import GoogleBusinessIntegration from './src/components/GoogleBusinessIntegration.jsx'
-import LocalSEOFAQ from './src/components/LocalSEOFAQ.jsx'
-import { businessInfo } from './src/utils/seoHelpers.js'
+import { businessInfo } from './src/utils/businessInfo.js'
 import AgeGate from './src/components/AgeGate.jsx'
 // Font Awesome (SVG) – import only what we use
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -28,8 +21,45 @@ import {
     faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 
+const StructuredData = React.lazy(() =>
+    import('./src/components/StructuredData.jsx')
+)
+const LocalBusinessInfo = React.lazy(() =>
+    import('./src/components/LocalBusinessInfo.jsx')
+)
+const LocationContent = React.lazy(() =>
+    import('./src/components/LocationContent.jsx')
+)
+const GoogleBusinessIntegration = React.lazy(() =>
+    import('./src/components/GoogleBusinessIntegration.jsx')
+)
+const LocalSEOFAQ = React.lazy(() =>
+    import('./src/components/LocalSEOFAQ.jsx')
+)
+const Analytics = React.lazy(() =>
+    import('@vercel/analytics/react').then((module) => ({
+        default: module.Analytics,
+    }))
+)
+const SpeedInsights = React.lazy(() =>
+    import('@vercel/speed-insights/react').then((module) => ({
+        default: module.SpeedInsights,
+    }))
+)
+
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
+
+const renderSectionSkeleton = (height = 'h-64') => (
+    <div
+        className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"
+        aria-hidden="true"
+    >
+        <div
+            className={`animate-pulse rounded-2xl bg-gray-200/70 dark:bg-gray-700/40 ${height}`}
+        />
+    </div>
+)
 
 export default function App() {
     const [appState, setAppState] = React.useState({
@@ -167,7 +197,12 @@ export default function App() {
     return (
         <div className="flex min-h-screen flex-col">
             <div id="home"></div>
-            <StructuredData pageMode="listing" products={appState.products} />
+            <React.Suspense fallback={null}>
+                <StructuredData
+                    pageMode="listing"
+                    products={appState.products}
+                />
+            </React.Suspense>
             <AgeGate />
             {/* Navigation */}
             <nav
@@ -609,11 +644,17 @@ export default function App() {
                     </div>
                 </div>
                 {/* Location Content */}
-                <LocationContent />
+                <React.Suspense fallback={renderSectionSkeleton('h-72')}>
+                    <LocationContent />
+                </React.Suspense>
                 {/* Google Business Integration */}
-                <GoogleBusinessIntegration />
+                <React.Suspense fallback={renderSectionSkeleton('h-80')}>
+                    <GoogleBusinessIntegration />
+                </React.Suspense>
                 {/* Local SEO FAQ */}
-                <LocalSEOFAQ />
+                <React.Suspense fallback={renderSectionSkeleton('h-72')}>
+                    <LocalSEOFAQ />
+                </React.Suspense>
                 {/* Contact Section */}
                 <div id="contact" className="bg-white py-12 dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -633,7 +674,11 @@ export default function App() {
                             className="mt-10 flex justify-center"
                         >
                             <div className="lg:w-1/2">
-                                <LocalBusinessInfo />
+                                <React.Suspense
+                                    fallback={renderSectionSkeleton('h-96')}
+                                >
+                                    <LocalBusinessInfo />
+                                </React.Suspense>
                             </div>
                         </div>
                     </div>
@@ -867,18 +912,31 @@ export default function App() {
                             legal under the 2018 Farm Bill.
                         </p>
                         <div className="mt-4 text-center">
-                            <LocalBusinessInfo
-                                variant="inline"
-                                className="text-sm text-black dark:text-white"
-                            />
+                            <React.Suspense
+                                fallback={
+                                    <span
+                                        className="inline-block h-4 w-48 animate-pulse rounded bg-gray-200/70 dark:bg-gray-700/40"
+                                        aria-hidden="true"
+                                    />
+                                }
+                            >
+                                <LocalBusinessInfo
+                                    variant="inline"
+                                    className="text-sm text-black dark:text-white"
+                                />
+                            </React.Suspense>
                         </div>
                     </div>
                 </div>
             </footer>
             {/* ... */}
-            <Analytics />
+            <React.Suspense fallback={null}>
+                <Analytics />
+            </React.Suspense>
             {/* ... */}
-            <SpeedInsights />
+            <React.Suspense fallback={null}>
+                <SpeedInsights />
+            </React.Suspense>
         </div>
     )
 }
