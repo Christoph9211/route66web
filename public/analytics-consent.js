@@ -10,6 +10,17 @@
  */
 
 (function () {
+  function getSafeLocalStorage() {
+    try {
+      return window.localStorage;
+    } catch (error) {
+      if (typeof console !== "undefined" && console.warn) {
+        console.warn("localStorage is unavailable; analytics consent state will not persist.", error);
+      }
+      return null;
+    }
+  }
+
   // --- 1) Load GA ONLY after both flags are satisfied ---
   function loadAnalytics() {
     if (window.__analyticsLoaded) return;
@@ -35,18 +46,28 @@
 
   // --- 2) Public: tryInitAnalytics (check both conditions) ---
   function tryInitAnalytics() {
-    const isAdult   = localStorage.getItem("isAdult") === "true";
-    const consentOk = localStorage.getItem("cookieConsent") === "accepted";
+    const storage = getSafeLocalStorage();
+    if (!storage) return;
+
+    const isAdult   = storage.getItem("isAdult") === "true";
+    const consentOk = storage.getItem("cookieConsent") === "accepted";
     if (isAdult && consentOk) loadAnalytics();
   }
 
   // --- 3) Public: confirmAge21 (called by your age gate) ---
   function confirmAge21() {
-    localStorage.setItem("isAdult", "true");
+    const storage = getSafeLocalStorage();
+    const banner = document.getElementById("cookie-banner");
+
+    if (!storage) {
+      if (banner) banner.style.display = "flex";
+      return;
+    }
+
+    storage.setItem("isAdult", "true");
 
     // Show cookie banner if no prior choice
-    const hasChoice = !!localStorage.getItem("cookieConsent");
-    const banner = document.getElementById("cookie-banner");
+    const hasChoice = !!storage.getItem("cookieConsent");
     if (!hasChoice && banner) banner.style.display = "flex"; // unhide (override CSS display:none)
 
     // In case consent was already accepted earlier
