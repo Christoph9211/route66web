@@ -491,7 +491,7 @@ export default function App() {
                                             Founded in 2025, Route 66 Hemp
                                             started with a simple mission: to
                                             provide high-quality hemp products
-                                            that enhance people's well-being
+                                            that enhance people’s well-being
                                             while promoting sustainable
                                             agricultural practices.
                                         </p>
@@ -515,7 +515,7 @@ export default function App() {
                                                 of mind with every purchase.
                                             </p>
                                             <p>
-                                                At Route 66 Hemp, we're a
+                                                At Route 66 Hemp, we’re a
                                                 community of hemp enthusiasts
                                                 and wellness advocates dedicated
                                                 to educating and empowering
@@ -625,7 +625,7 @@ export default function App() {
                                 Get In Touch
                             </p>
                             <p className="mt-4 max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-white">
-                                Have questions? We're here to help!
+                                Have questions? We’re here to help!
                             </p>
                         </div>
                         <div
@@ -667,7 +667,7 @@ export default function App() {
                                 <a
                                     href="https://www.facebook.com/route66hemp/"
                                     target="_blank"
-                                    rel="noopener"
+                                    rel="noopener noreferrer"
                                     className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                     aria-label="Facebook"
                                 >

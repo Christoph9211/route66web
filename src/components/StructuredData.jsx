@@ -1,13 +1,5 @@
 // Structured Data Component for Local Business SEO
 
-function slugify(str = '') {
-    return String(str)
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '')
-}
-
 function ProductSchema({ product, mode = 'listing' }) {
     const canOffer = Number.isFinite(product?.price)
     const hasAgg = product?.ratingValue && product?.reviewCount
