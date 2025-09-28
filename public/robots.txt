@@ -6,9 +6,9 @@ Sitemap: https://route66hemp.com/sitemap.xml
 
 # Allow access to important pages
 Allow: /
-Allow: /privacy-policy.html
-Allow: /terms-of-service.html
-Allow: /cookie-policy.html
+Allow: /privacy-policy/
+Allow: /terms-of-service/
+Allow: /cookie-policy/
 
 # Block access to development files
 Disallow: /*.json$
