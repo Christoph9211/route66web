@@ -148,23 +148,37 @@
           const acceptBtn = document.getElementById("cookie-accept");
           const declineBtn= document.getElementById("cookie-decline");
 
+          let storage = null;
+          try {
+            storage = window.localStorage;
+          } catch (error) {
+            if (typeof console !== "undefined" && console.warn) {
+              console.warn("localStorage is unavailable; suppressing cookie banner.", error);
+            }
+          }
+
+          if (!storage) {
+            if (banner) banner.style.display = "none";
+            return;
+          }
+
           // If user already made a choice, keep banner hidden
-          const choice = localStorage.getItem("cookieConsent");
+          const choice = storage.getItem("cookieConsent");
           if (choice === "accepted" || choice === "declined") {
             banner.style.display = "none";
           } else {
             // Only auto-show if the user already confirmed age on a prior visit
-            if (localStorage.getItem("isAdult") === "true") banner.style.display = "flex";
+            if (storage.getItem("isAdult") === "true") banner.style.display = "flex";
           }
 
           acceptBtn.addEventListener("click", () => {
-            localStorage.setItem("cookieConsent", "accepted");
+            storage.setItem("cookieConsent", "accepted");
             banner.style.display = "none";
             if (window.tryInitAnalytics) window.tryInitAnalytics(); // key hook
           });
 
           declineBtn.addEventListener("click", () => {
-            localStorage.setItem("cookieConsent", "declined");
+            storage.setItem("cookieConsent", "declined");
             banner.style.display = "none";
             // No analytics
           });

@@ -60,7 +60,7 @@
     const banner = document.getElementById("cookie-banner");
 
     if (!storage) {
-      if (banner) banner.style.display = "flex";
+      if (banner) banner.style.display = "none";
       return;
     }
 
