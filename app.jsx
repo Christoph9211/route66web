@@ -322,8 +322,8 @@ export default function App() {
                                                 </p>
                                                 <div className="mt-10 flex justify-center space-x-4 sm:mt-12 lg:justify-start">
                                                     <div className="flex gap-4"> 
-                                                    <a href="#products" className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-[5.5rem] md:min-h-[6rem]"> Explore Products </a>
-                                                    <a href="#about" className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-[5.5rem] md:min-h-[6rem]"> Learn more about us </a> 
+                                                    <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-[5.5rem] md:min-h-[6rem]"> Explore Products </a>
+                                                    <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-[5.5rem] md:min-h-[6rem]"> Learn more about us </a> 
                                                     </div>
                                                 </div>
                                             </div>
