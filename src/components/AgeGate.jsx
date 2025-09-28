@@ -1,12 +1,42 @@
 import { useEffect, useState } from "react";
 
+const shouldLogWarnings =
+  typeof import.meta !== "undefined" && import.meta.env?.MODE !== "production";
+
+function getSafeLocalStorage() {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.localStorage;
+  } catch (error) {
+    if (shouldLogWarnings) {
+      console.warn("localStorage is unavailable; age gate will not persist state.", error);
+    }
+    return null;
+  }
+}
+
 export default function AgeGate() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const isAdult = localStorage.getItem("isAdult") === "true";
+    const storage = getSafeLocalStorage();
+    const isAdult = storage?.getItem("isAdult") === "true";
     setVisible(!isAdult);
   }, []);
+
+  const handleConfirm = () => {
+    try {
+      if (typeof window !== "undefined" && typeof window.confirmAge21 === "function") {
+        window.confirmAge21();
+      }
+    } catch (error) {
+      if (shouldLogWarnings) {
+        console.warn("Failed to persist age confirmation.", error);
+      }
+    } finally {
+      setVisible(false);
+    }
+  };
 
   if (!visible) return null;
 
@@ -19,10 +49,7 @@ export default function AgeGate() {
         </p>
         <div className="flex gap-3">
           <button
-            onClick={() => {
-              if (window.confirmAge21) window.confirmAge21();
-              setVisible(false);
-            }}
+            onClick={handleConfirm}
             className="rounded-lg bg-emerald-600 px-4 py-2 font-semibold text-white hover:bg-emerald-800"
           >
             I am 21+
