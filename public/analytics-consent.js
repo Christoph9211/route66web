@@ -115,7 +115,6 @@
     tryInitAnalytics();
   }
 
-  ensureAnalyticsScript();
   applyConsentDefaults();
 
   window.tryInitAnalytics = tryInitAnalytics;
