@@ -1,60 +1,103 @@
 /**
  * analytics-consent.js
- * Wires Age→Consent→Analytics.
- * Exposes:
+ * Coordinates age gate + cookie consent with Google Analytics 4.
+ * Exposes globals:
  *   - window.confirmAge21()
  *   - window.tryInitAnalytics()
- * Depends on:
- *   - localStorage.isAdult = "true"      (set by confirmAge21)
- *   - localStorage.cookieConsent = "accepted" | "declined" (set by banner)
+ *   - window.revokeAnalyticsConsent()
+ * Relies on localStorage keys:
+ *   - isAdult = "true"
+ *   - cookieConsent = "accepted" | "declined"
  */
 
 (function () {
+  const GA_ID = "G-RGSJT8T1EF";
+  const SCRIPT_ID = "ga4-base-script";
+  const CONSENT_DENIED_STATE = {
+    ad_storage: "denied",
+    analytics_storage: "denied",
+    personalization_storage: "denied",
+    functionality_storage: "granted",
+    security_storage: "granted",
+  };
+  const CONSENT_GRANTED_STATE = {
+    ad_storage: "denied",
+    analytics_storage: "granted",
+    personalization_storage: "denied",
+    functionality_storage: "granted",
+    security_storage: "granted",
+  };
+
   function getSafeLocalStorage() {
     try {
       return window.localStorage;
     } catch (error) {
       if (typeof console !== "undefined" && console.warn) {
-        console.warn("localStorage is unavailable; analytics consent state will not persist.", error);
+        console.warn(
+          "localStorage is unavailable; analytics consent state will not persist.",
+          error
+        );
       }
       return null;
     }
   }
 
-  // --- 1) Load GA ONLY after both flags are satisfied ---
-  function loadAnalytics() {
-    if (window.__analyticsLoaded) return;
-    window.__analyticsLoaded = true;
-
-    // GA4 (using existing site ID)
-    const GA_ID = "G-RGSJT8T1EF"; // update if needed
-
-    const s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
-    document.head.appendChild(s);
-
+  function ensureDataLayer() {
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
+    if (typeof window.gtag !== "function") {
+      window.gtag = function gtag() {
+        window.dataLayer.push(arguments);
+      };
     }
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-    gtag('config', GA_ID);
   }
 
-  // --- 2) Public: tryInitAnalytics (check both conditions) ---
+  function ensureAnalyticsScript() {
+    if (document.getElementById(SCRIPT_ID)) return;
+    const script = document.createElement("script");
+    script.async = true;
+    script.id = SCRIPT_ID;
+    script.src =
+      "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
+    document.head.appendChild(script);
+  }
+
+  function applyConsentDefaults() {
+    ensureDataLayer();
+    window.gtag("consent", "default", CONSENT_DENIED_STATE);
+  }
+
+  function activateAnalytics() {
+    if (window.__analyticsActivated) return;
+    window.__analyticsActivated = true;
+
+    ensureAnalyticsScript();
+    ensureDataLayer();
+    window.gtag("consent", "update", CONSENT_GRANTED_STATE);
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID, { anonymize_ip: true });
+  }
+
+  function revokeAnalyticsConsent() {
+    if (!window.__analyticsActivated) return;
+    window.__analyticsActivated = false;
+    ensureDataLayer();
+    window.gtag("consent", "update", CONSENT_DENIED_STATE);
+  }
+
   function tryInitAnalytics() {
     const storage = getSafeLocalStorage();
     if (!storage) return;
 
-    const isAdult   = storage.getItem("isAdult") === "true";
+    const isAdult = storage.getItem("isAdult") === "true";
     const consentOk = storage.getItem("cookieConsent") === "accepted";
-    if (isAdult && consentOk) loadAnalytics();
+
+    if (isAdult && consentOk) {
+      activateAnalytics();
+    } else {
+      revokeAnalyticsConsent();
+    }
   }
 
-  // --- 3) Public: confirmAge21 (called by your age gate) ---
   function confirmAge21() {
     const storage = getSafeLocalStorage();
     const banner = document.getElementById("cookie-banner");
@@ -66,22 +109,28 @@
 
     storage.setItem("isAdult", "true");
 
-    // Show cookie banner if no prior choice
     const hasChoice = !!storage.getItem("cookieConsent");
-    if (!hasChoice && banner) banner.style.display = "flex"; // unhide (override CSS display:none)
+    if (!hasChoice && banner) banner.style.display = "flex";
 
-    // In case consent was already accepted earlier
     tryInitAnalytics();
   }
 
-  // Expose globally
+  ensureAnalyticsScript();
+  applyConsentDefaults();
+
   window.tryInitAnalytics = tryInitAnalytics;
   window.confirmAge21 = confirmAge21;
+  window.revokeAnalyticsConsent = revokeAnalyticsConsent;
 
-  // If user already confirmed age AND consented before, load immediately on page load
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", tryInitAnalytics);
   } else {
     tryInitAnalytics();
   }
+
+  window.addEventListener("storage", (event) => {
+    if (event.key === "cookieConsent" || event.key === "isAdult") {
+      tryInitAnalytics();
+    }
+  });
 })();
