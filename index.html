@@ -181,13 +181,13 @@
           acceptBtn.addEventListener("click", () => {
             storage.setItem("cookieConsent", "accepted");
             banner.style.display = "none";
-            if (window.tryInitAnalytics) window.tryInitAnalytics(); // key hook
+            if (window.tryInitAnalytics) window.tryInitAnalytics();
           });
 
           declineBtn.addEventListener("click", () => {
             storage.setItem("cookieConsent", "declined");
             banner.style.display = "none";
-            // No analytics
+            if (window.tryInitAnalytics) window.tryInitAnalytics();
           });
         })();
         </script>
