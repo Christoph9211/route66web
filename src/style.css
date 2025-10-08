@@ -17,6 +17,7 @@
     font-weight: bold;
     text-transform: uppercase;
     border-bottom-right-radius: 0.25rem;
+    z-index: 10;
 }
 /* .product-card:hover {
   transform: translateY(-5px);

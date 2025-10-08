@@ -44,8 +44,8 @@
         "rename:images": "node scripts/rename-images.js",
         "optimize:images": "node scripts/optimize-images.js",
         "bootstrap:images": "node scripts/bootstrap-images.js",
-        "generate:sitemap": "node scripts/generate-image-sitemap.js",
-        "prebuild": "npm run bootstrap:images && npm run generate:sitemap"
+        "generate:sitemap": "node scripts/generate-image-sitemap.js"
+       
     },
     "repository": {
         "type": "git",
