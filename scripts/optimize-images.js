@@ -26,8 +26,50 @@ const compressionSettings = {
     },
 }
 
+const GUARANTEED_SIZES = [1600, 1280]
+
+const FORMAT_VARIANTS = [
+    {
+        extension: 'webp',
+        apply: (pipeline) => pipeline.webp(compressionSettings.webp),
+    },
+    {
+        extension: 'avif',
+        apply: (pipeline) => pipeline.avif(compressionSettings.avif),
+    },
+    {
+        extension: 'jpg',
+        apply: (pipeline) => pipeline.jpeg(compressionSettings.jpeg),
+    },
+]
+
 const ensureDirs = async () => {
     await fs.promises.mkdir(OUTPUT_DIR, { recursive: true })
+}
+
+async function ensureGuaranteedResponsiveSizes(inputPath, outputBase, baseName) {
+    for (const size of GUARANTEED_SIZES) {
+        const sizeBase = `${outputBase}-${size}w`
+        let generatedAny = false
+
+        for (const variant of FORMAT_VARIANTS) {
+            const outputPath = `${sizeBase}.${variant.extension}`
+            if (fs.existsSync(outputPath)) {
+                continue
+            }
+
+            const pipeline = sharp(inputPath).resize(size, null, {
+                withoutEnlargement: false,
+            })
+
+            await variant.apply(pipeline).toFile(outputPath)
+            generatedAny = true
+        }
+
+        if (generatedAny) {
+            console.log(`  ✓ Generated ${size}w guaranteed set for ${baseName}`)
+        }
+    }
 }
 
 async function optimizeImage(inputPath, filename) {
@@ -55,6 +97,7 @@ async function optimizeImage(inputPath, filename) {
     console.log('  ✓ Created JPEG fallback')
 
     await generateResponsiveSizes(inputPath, OUTPUT_DIR, nameWithoutExt)
+    await ensureGuaranteedResponsiveSizes(inputPath, outputBase, nameWithoutExt)
 
     const originalSize = fs.statSync(inputPath).size
     const webpSize = fs.statSync(`${outputBase}.webp`).size
