@@ -9,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const INPUT_DIR = path.join(__dirname, '../public/assets/images/original')
 const OUTPUT_DIR = path.join(__dirname, '../public/assets/images/optimized')
+const PUBLIC_OUTPUT_DIR = path.join(__dirname, '../public/assets/images')
 
 const compressionSettings = {
     webp: {
@@ -26,8 +27,61 @@ const compressionSettings = {
     },
 }
 
+const GUARANTEED_SIZES = [1600, 1280]
+const PUBLIC_TARGET_SIZES = [1920]
+
+const FORMAT_VARIANTS = [
+    {
+        extension: 'webp',
+        apply: (pipeline) => pipeline.webp(compressionSettings.webp),
+    },
+    {
+        extension: 'avif',
+        apply: (pipeline) => pipeline.avif(compressionSettings.avif),
+    },
+    {
+        extension: 'jpg',
+        apply: (pipeline) => pipeline.jpeg(compressionSettings.jpeg),
+    },
+]
+
 const ensureDirs = async () => {
-    await fs.promises.mkdir(OUTPUT_DIR, { recursive: true })
+    await Promise.all([
+        fs.promises.mkdir(OUTPUT_DIR, { recursive: true }),
+        fs.promises.mkdir(PUBLIC_OUTPUT_DIR, { recursive: true }),
+    ])
+}
+
+async function ensureSizeSet({
+    inputPath,
+    targetDir,
+    baseName,
+    sizes,
+    label,
+    allowUpscale = false,
+}) {
+    if (!sizes.length) {
+        return
+    }
+
+    await fs.promises.mkdir(targetDir, { recursive: true })
+
+    for (const size of sizes) {
+        const sizeBase = path.join(targetDir, `${baseName}-${size}w`)
+
+        for (const variant of FORMAT_VARIANTS) {
+            const outputPath = `${sizeBase}.${variant.extension}`
+            const pipeline = sharp(inputPath).resize({
+                width: size,
+                withoutEnlargement: !allowUpscale,
+                fit: 'inside',
+            })
+
+            await variant.apply(pipeline).toFile(outputPath)
+        }
+
+        console.log(`  ✓ Generated ${size}w ${label} set for ${baseName}`)
+    }
 }
 
 async function optimizeImage(inputPath, filename) {
@@ -55,6 +109,22 @@ async function optimizeImage(inputPath, filename) {
     console.log('  ✓ Created JPEG fallback')
 
     await generateResponsiveSizes(inputPath, OUTPUT_DIR, nameWithoutExt)
+    await ensureSizeSet({
+        inputPath,
+        targetDir: OUTPUT_DIR,
+        baseName: nameWithoutExt,
+        sizes: GUARANTEED_SIZES,
+        label: 'guaranteed',
+        allowUpscale: true,
+    })
+    await ensureSizeSet({
+        inputPath,
+        targetDir: PUBLIC_OUTPUT_DIR,
+        baseName: nameWithoutExt,
+        sizes: PUBLIC_TARGET_SIZES,
+        label: 'public',
+        allowUpscale: true,
+    })
 
     const originalSize = fs.statSync(inputPath).size
     const webpSize = fs.statSync(`${outputBase}.webp`).size
