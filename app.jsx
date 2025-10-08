@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { businessInfo } from './src/utils/businessInfo.js'
 import AgeGate from './src/components/AgeGate.jsx'
+import ResponsiveImage from './src/components/ResponsiveImage.jsx'
 // Font Awesome (SVG) – import only what we use
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -61,6 +62,30 @@ const renderSectionSkeleton = (height = 'h-64') => (
     </div>
 )
 
+const generateProductAlt = (product) => {
+    if (!product || typeof product !== 'object') {
+        return 'Premium hemp product available at Route 66 Hemp in St Robert, Missouri'
+    }
+
+    const segments = []
+
+    if (product.name) {
+        segments.push(product.name)
+    }
+
+    if (product.category) {
+        segments.push(product.category)
+    }
+
+    if (product.thca_percentage) {
+        segments.push(`${product.thca_percentage}% THCa`)
+    }
+
+    segments.push('Premium Hemp Product at Route 66 Hemp, St Robert, Missouri')
+
+    return segments.join(' - ')
+}
+
 export default function App() {
     const [appState, setAppState] = React.useState({
         isMobileMenuOpen: false,
@@ -71,78 +96,181 @@ export default function App() {
     })
 
     React.useEffect(() => {
-        // Fetch products from the JSON file
-        fetch('products/products.json')
-            .then((response) => {
+        let isCancelled = false
+
+        const toArray = (value) => {
+            if (Array.isArray(value)) {
+                return value.filter((entry) => entry != null)
+            }
+            return value != null ? [value] : []
+        }
+
+        const extractSizeFromName = (name) => {
+            if (typeof name !== 'string') return null
+            const match = name.match(/ - (.+)/)
+            return match ? match[1] : null
+        }
+
+        // Legacy data exports list each variant as a separate row; rebuild them once.
+        const groupLegacyProducts = (rawProducts) => {
+            const grouped = new Map()
+
+            rawProducts.forEach((product) => {
+                const name = product.name ?? product['name'] ?? ''
+                const category = product.category ?? product['category'] ?? ''
+                const key = `${name}|${category}`
+
+                if (!grouped.has(key)) {
+                    grouped.set(key, {
+                        ...product,
+                        name,
+                        category,
+                        sizeSet: new Set(),
+                        prices: {},
+                        variantSet: new Set(),
+                        idsSet: new Set(),
+                        imageSet: new Set(),
+                        descriptionSet: new Set(),
+                        ratingSet: new Set(),
+                        urlSet: new Set(),
+                    })
+                }
+
+                const entry = grouped.get(key)
+
+                toArray(product.id).forEach((id) => {
+                    entry.idsSet.add(id)
+                })
+                toArray(product.image).forEach((image) => {
+                    entry.imageSet.add(image)
+                })
+                toArray(product.description).forEach((description) => {
+                    entry.descriptionSet.add(description)
+                })
+                toArray(product.rating).forEach((rating) => {
+                    entry.ratingSet.add(rating)
+                })
+                toArray(product.url).forEach((url) => {
+                    entry.urlSet.add(url)
+                })
+                toArray(product.variants ?? product.variant).forEach(
+                    (variant) => {
+                        entry.variantSet.add(variant)
+                    }
+                )
+
+                if (
+                    Array.isArray(product.size_options) &&
+                    product.size_options.length &&
+                    product.prices &&
+                    typeof product.prices === 'object'
+                ) {
+                    product.size_options.forEach((size) => {
+                        if (!size) return
+                        if (!entry.sizeSet.has(size)) {
+                            entry.sizeSet.add(size)
+                        }
+                        const safeKey = clean(size)
+                        if (
+                            safeKey &&
+                            Object.prototype.hasOwnProperty.call(
+                                product.prices,
+                                size
+                            )
+                        ) {
+                            entry.prices[safeKey] = product.prices[size]
+                        }
+                    })
+                } else {
+                    const inferredSize = extractSizeFromName(name)
+                    if (inferredSize) {
+                        if (!entry.sizeSet.has(inferredSize)) {
+                            entry.sizeSet.add(inferredSize)
+                        }
+                        const safeSize = clean(inferredSize)
+                        if (safeSize && product.price != null) {
+                            entry.prices[safeSize] = product.price
+                        }
+                    }
+                }
+            })
+
+            return Array.from(grouped.values()).map((entry) => {
+                const {
+                    sizeSet,
+                    variantSet,
+                    idsSet,
+                    imageSet,
+                    descriptionSet,
+                    ratingSet,
+                    urlSet,
+                    ...rest
+                } = entry
+                return {
+                    ...rest,
+                    size_options: Array.from(sizeSet),
+                    variants: Array.from(variantSet),
+                    ids: Array.from(idsSet),
+                    images: Array.from(imageSet),
+                    descriptions: Array.from(descriptionSet),
+                    ratings: Array.from(ratingSet),
+                    urls: Array.from(urlSet),
+                }
+            })
+        }
+
+        const normalizeProducts = (rawProducts) => {
+            if (!Array.isArray(rawProducts)) return []
+
+            const isStructured = rawProducts.every(
+                (product) =>
+                    Array.isArray(product.size_options) &&
+                    product.size_options.length &&
+                    product.prices &&
+                    typeof product.prices === 'object' &&
+                    Object.keys(product.prices).length
+            )
+
+            if (!isStructured) {
+                return groupLegacyProducts(rawProducts)
+            }
+
+            // Fast path: modern exports already include normalized sizes/prices.
+            return rawProducts.map((product) => ({
+                ...product,
+                size_options: Array.isArray(product.size_options)
+                    ? [...product.size_options]
+                    : toArray(product.size_options),
+                prices:
+                    product.prices && typeof product.prices === 'object'
+                        ? { ...product.prices }
+                        : {},
+                variants: toArray(product.variants ?? product.variant),
+                ids: toArray(product.ids ?? product.id),
+                images: toArray(product.images ?? product.image),
+                descriptions: toArray(
+                    product.descriptions ?? product.description
+                ),
+                ratings: toArray(product.ratings ?? product.rating),
+                urls: toArray(product.urls ?? product.url),
+            }))
+        }
+
+        const loadProducts = async () => {
+            try {
+                const response = await fetch('products/products.json')
                 if (!response.ok) {
                     throw new Error('Failed to fetch products')
                 }
-                return response.json()
-            })
-            .then((productsData) => {
-                // Group products by name and category, combining size options and prices
-                const grouped = Object.create(null) // no prototype to pollute
-                productsData.forEach((prod) => {
-                    // Use name+category as key
-                    const key =
-                        (prod.name || prod['name']) +
-                        '|' +
-                        (prod.category || prod['category'])
-                    if (!grouped[key]) {
-                        grouped[key] = {
-                            ...prod,
-                            size_options: prod.size_options
-                                ? [...prod.size_options]
-                                : prod.size_options || [],
-                            prices: prod.prices
-                                ? { ...prod.prices }
-                                : prod.prices || {},
-                            variants: [],
-                            ids: [prod.id],
-                            images: [prod.image],
-                            descriptions: [prod.description],
-                            ratings: [prod.rating],
-                            urls: [prod.url],
-                        }
-                        if (prod.size_options && prod.prices) {
-                            // Already in new format
-                        } else if (prod.name && prod.name.match(/ - (.+)/)) {
-                            // Try to extract size from name
-                            const size = prod.name.match(/ - (.+)/)[1]
-                            grouped[key].size_options = [size]
-                            const safeSize = clean(size) // drop dangerous names
-                            if (safeSize) {
-                                grouped[key].prices = { [safeSize]: prod.price }
-                            }
-                        } else {
-                            grouped[key].size_options = []
-                            grouped[key].prices = {}
-                        }
-                    } else {
-                        // Add size/price if not present
-                        if (prod.name && prod.name.match(/ - (.+)/)) {
-                            const size = prod.name.match(/ - (.+)/)[1]
-                            const safe = clean(size) // rename to avoid shadowing
-                            if (!grouped[key].size_options.includes(size)) {
-                                grouped[key].size_options.push(size)
-                                if (safe) grouped[key].prices[safe] = prod.price
-                            }
-                        }
-                        grouped[key].ids.push(prod.id)
-                        grouped[key].images.push(prod.image)
-                        grouped[key].descriptions.push(prod.description)
-                        grouped[key].ratings.push(prod.rating)
-                        grouped[key].urls.push(prod.url)
-                    }
-                })
-                const groupedProducts = Object.values(grouped)
-                // Extract unique categories from products
+                const productsData = await response.json()
+                const normalizedProducts = normalizeProducts(productsData)
                 const uniqueCategories = [
                     ...new Set(
-                        groupedProducts.map((product) => product.category)
+                        normalizedProducts
+                            .map((product) => product.category)
+                            .filter(Boolean)
                     ),
                 ]
-                // Format categories for your UI
                 const formattedCategories = uniqueCategories.map(
                     (categoryId) => {
                         const name = categoryId
@@ -155,20 +283,30 @@ export default function App() {
                         return { id: categoryId, name }
                     }
                 )
+
+                if (isCancelled) return
+
                 setAppState((prevState) => ({
                     ...prevState,
                     categories: formattedCategories,
-                    products: groupedProducts,
+                    products: normalizedProducts,
                     loading: false,
                 }))
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error('Error loading products:', error)
+                if (isCancelled) return
                 setAppState((prevState) => ({
                     ...prevState,
                     loading: false,
                 }))
-            })
+            }
+        }
+
+        loadProducts()
+
+        return () => {
+            isCancelled = true
+        }
     }, [])
 
     const handleNavigation = (e, targetId) => {
@@ -365,27 +503,15 @@ export default function App() {
                                         </div>
                                         <div className="mt-12 lg:relative lg:m-0">
                                             <div className="mx-auto mt-12 max-w-md sm:max-w-2xl lg:mt-0">
-                                                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gradient-to-br from-blue-600 to-green-600 text-white shadow-xl">
-                                                    <div className="absolute inset-0 flex items-center justify-center">
-                                                        <FontAwesomeIcon
-                                                            icon={faCannabis}
-                                                            className="text-9xl text-white opacity-50"
-                                                            aria-hidden="true"
-                                                        />
-                                                    </div>
-                                                    <div className="absolute inset-0 flex items-center justify-center bg-opacity-20">
-                                                        <div className="px-4 text-center text-white">
-                                                            <div className="mb-2 text-2xl font-bold sm:text-3xl">
-                                                                Premium Hemp
-                                                            </div>
-                                                            <div className="text-lg sm:text-xl">
-                                                                Locally Grown,
-                                                                Organically
-                                                                Harvested
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <ResponsiveImage
+                                                    src="/assets/images/route-66-hemp-storefront-st-robert"
+                                                    alt="Route 66 Hemp storefront showcasing premium hemp products in St Robert, Missouri"
+                                                    width={1280}
+                                                    height={720}
+                                                    className="w-full overflow-hidden rounded-xl shadow-xl"
+                                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                                    priority
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -1054,23 +1180,17 @@ function ProductCard({ product }) {
                     {banner}
                 </div>
             )}
-            <img
+            <ResponsiveImage
                 src={
-                    // If the product has an image, use it
                     product.image ||
-                    // If the product has an array of images, use the first one
-                    (product.images && product.images[0]) ||
-                    // If the product has no images, use a placeholder image
-                    '/assets/images/placeholder.webp'
+                    (Array.isArray(product.images) && product.images[0]) ||
+                    '/assets/images/route-66-hemp-product-placeholder'
                 }
-                alt={product.name}
+                alt={generateProductAlt(product)}
+                width={400}
+                height={400}
                 className="h-50 mb-4 w-full rounded-md object-cover"
-                // This class is for the image height and object-fit
-                onError={(e) => {
-                    {/* If the image fails to load, use a placeholder image */ }
-                    e.target.onerror = null
-                    e.target.src = '/assets/images/placeholder.webp'
-                }}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                 {product.name}

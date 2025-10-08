@@ -14,3 +14,8 @@ instructions.txt
 dist/
 public/products/json_gen_old.html
 public/privacy-policy_old.html
+patch.diff
+public/assets/images/**/*.webp
+public/assets/images/**/*.jpg
+public/assets/images/**/*.png
+public/assets/images/**/*.avif

@@ -20,6 +20,7 @@ export const generateLocalDescription = (
 
 export const generateLocalKeywords = (baseKeywords = []) => {
     const localKeywords = [
+        'dispensary',
         'St Robert MO',
         'St Robert Missouri',
         'Pulaski County',
@@ -47,7 +48,7 @@ export const getBusinessHours = () => ({
     thursday: { open: '11:00', close: '21:00' },
     friday: { open: '11:00', close: '22:00' },
     saturday: { open: '11:00', close: '22:00' },
-    sunday: { open: '11:00', close: '19:00' },
+    sunday: { open: '10:00', close: '16:00' },
 })
 
 export const isCurrentlyOpen = () => {
