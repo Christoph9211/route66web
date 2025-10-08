@@ -14,3 +14,4 @@ instructions.txt
 dist/
 public/products/json_gen_old.html
 public/privacy-policy_old.html
+patch.diff
