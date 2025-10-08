@@ -39,7 +39,7 @@ const assets = [
         accent: '#f97316',
         textColor: '#fef3c7',
         fontSize: 96,
-        sizes: [320, 640, 768, 1024, 1280, 1920],
+        sizes: [320, 640, 768, 1024, 1280, 1600, 1920],
     },
 ]
 
