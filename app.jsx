@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { businessInfo } from './src/utils/businessInfo.js'
 import AgeGate from './src/components/AgeGate.jsx'
+import ResponsiveImage from './src/components/ResponsiveImage.jsx'
 // Font Awesome (SVG) – import only what we use
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -60,6 +61,30 @@ const renderSectionSkeleton = (height = 'h-64') => (
         />
     </div>
 )
+
+const generateProductAlt = (product) => {
+    if (!product || typeof product !== 'object') {
+        return 'Premium hemp product available at Route 66 Hemp in St Robert, Missouri'
+    }
+
+    const segments = []
+
+    if (product.name) {
+        segments.push(product.name)
+    }
+
+    if (product.category) {
+        segments.push(product.category)
+    }
+
+    if (product.thca_percentage) {
+        segments.push(`${product.thca_percentage}% THCa`)
+    }
+
+    segments.push('Premium Hemp Product at Route 66 Hemp, St Robert, Missouri')
+
+    return segments.join(' - ')
+}
 
 export default function App() {
     const [appState, setAppState] = React.useState({
@@ -365,27 +390,15 @@ export default function App() {
                                         </div>
                                         <div className="mt-12 lg:relative lg:m-0">
                                             <div className="mx-auto mt-12 max-w-md sm:max-w-2xl lg:mt-0">
-                                                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gradient-to-br from-blue-600 to-green-600 text-white shadow-xl">
-                                                    <div className="absolute inset-0 flex items-center justify-center">
-                                                        <FontAwesomeIcon
-                                                            icon={faCannabis}
-                                                            className="text-9xl text-white opacity-50"
-                                                            aria-hidden="true"
-                                                        />
-                                                    </div>
-                                                    <div className="absolute inset-0 flex items-center justify-center bg-opacity-20">
-                                                        <div className="px-4 text-center text-white">
-                                                            <div className="mb-2 text-2xl font-bold sm:text-3xl">
-                                                                Premium Hemp
-                                                            </div>
-                                                            <div className="text-lg sm:text-xl">
-                                                                Locally Grown,
-                                                                Organically
-                                                                Harvested
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <ResponsiveImage
+                                                    src="/assets/images/route-66-hemp-storefront-st-robert"
+                                                    alt="Route 66 Hemp storefront showcasing premium hemp products in St Robert, Missouri"
+                                                    width={1280}
+                                                    height={720}
+                                                    className="w-full overflow-hidden rounded-xl shadow-xl"
+                                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                                    priority
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -1054,23 +1067,17 @@ function ProductCard({ product }) {
                     {banner}
                 </div>
             )}
-            <img
+            <ResponsiveImage
                 src={
-                    // If the product has an image, use it
                     product.image ||
-                    // If the product has an array of images, use the first one
-                    (product.images && product.images[0]) ||
-                    // If the product has no images, use a placeholder image
-                    '/assets/images/placeholder.webp'
+                    (Array.isArray(product.images) && product.images[0]) ||
+                    '/assets/images/route-66-hemp-product-placeholder'
                 }
-                alt={product.name}
+                alt={generateProductAlt(product)}
+                width={400}
+                height={400}
                 className="h-50 mb-4 w-full rounded-md object-cover"
-                // This class is for the image height and object-fit
-                onError={(e) => {
-                    {/* If the image fails to load, use a placeholder image */ }
-                    e.target.onerror = null
-                    e.target.src = '/assets/images/placeholder.webp'
-                }}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                 {product.name}
