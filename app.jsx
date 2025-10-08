@@ -204,12 +204,6 @@ export default function App() {
                     descriptionSet,
                     ratingSet,
                     urlSet,
-                    variants,
-                    ids,
-                    images,
-                    descriptions,
-                    ratings,
-                    urls,
                     ...rest
                 } = entry
                 return {
