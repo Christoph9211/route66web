@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.route66hemp.com/</loc>
+    <image:image>
+      <image:loc>https://www.route66hemp.com/assets/images/route-66-hemp-storefront-st-robert-1280w.webp</image:loc>
+      <image:title>Route 66 Hemp - Premium Hemp Store in St Robert, Missouri</image:title>
+      <image:caption>Storefront of Route 66 Hemp serving St Robert, Fort Leonard Wood, and Pulaski County with premium hemp products.</image:caption>
+      <image:geo_location>St Robert, Missouri</image:geo_location>
+    </image:image>
+  </url>
+</urlset>

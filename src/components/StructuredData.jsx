@@ -1,5 +1,7 @@
 // Structured Data Component for Local Business SEO
 
+const SITE_URL = 'https://www.route66hemp.com'
+
 function ProductSchema({ product, mode = 'listing' }) {
     const canOffer = Number.isFinite(product?.price)
     const hasAgg = product?.ratingValue && product?.reviewCount
@@ -9,14 +11,49 @@ function ProductSchema({ product, mode = 'listing' }) {
         return null
     }
 
+    const productName = product?.name || 'Route 66 Hemp Product'
+    const productCategory = product?.category || 'Hemp Product'
+
     const data = {
         '@context': 'https://schema.org',
         '@type': 'Product',
-        name: product.name,
+        name: productName,
     }
 
     if (product?.url) {
         data.url = product.url
+    }
+
+    if (product?.image) {
+        const imageUrl = product.image.startsWith('http')
+            ? product.image
+            : `${SITE_URL}${product.image}`
+
+        data.image = {
+            '@type': 'ImageObject',
+            url: imageUrl,
+            width: '800',
+            height: '800',
+            caption: `${productName} - ${productCategory} available at Route 66 Hemp`,
+            contentLocation: {
+                '@type': 'Place',
+                name: 'Route 66 Hemp',
+                address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: '14076 State Hwy Z',
+                    addressLocality: 'St Robert',
+                    addressRegion: 'MO',
+                    postalCode: '65584',
+                    addressCountry: 'US',
+                },
+            },
+        }
+    }
+
+    data.brand = {
+        '@type': 'Brand',
+        name: 'Route 66 Hemp',
+        logo: `${SITE_URL}/route-66-hemp-logo-512x512.png`,
     }
 
     if (canOffer) {
@@ -26,7 +63,19 @@ function ProductSchema({ product, mode = 'listing' }) {
             priceCurrency: product.currency || 'USD',
             availability: product.availability || 'https://schema.org/InStock',
             url: data.url,
-            seller: { '@type': 'Organization', name: 'Route 66 Hemp' },
+            seller: {
+                '@type': 'LocalBusiness',
+                name: 'Route 66 Hemp',
+                image: `${SITE_URL}/assets/images/route-66-hemp-storefront-st-robert-1280w.webp`,
+                address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: '14076 State Hwy Z',
+                    addressLocality: 'St Robert',
+                    addressRegion: 'MO',
+                    postalCode: '65584',
+                    addressCountry: 'US',
+                },
+            },
         }
     }
 
@@ -123,8 +172,8 @@ function StructuredData({ products = [], pageMode = 'listing', product = null })
         priceRange: '$',
         currenciesAccepted: 'USD',
         paymentAccepted: 'Cash',
-        image: 'https://www.route66hemp.com/og-image.jpg',
-        logo: 'https://www.route66hemp.com/favicon-32x32.png',
+        image: `${SITE_URL}/assets/images/route-66-hemp-og-image.jpg`,
+        logo: `${SITE_URL}/route-66-hemp-logo-512x512.png`,
         sameAs: [
             'https://www.facebook.com/route66hemp/',
             'https://www.instagram.com/route66hemp',
@@ -176,7 +225,7 @@ function StructuredData({ products = [], pageMode = 'listing', product = null })
         '@type': 'Organization',
         name: 'Route 66 Hemp',
         url: 'https://www.route66hemp.com',
-        logo: 'https://www.route66hemp.com/favicon-32x32.png',
+        logo: `${SITE_URL}/route-66-hemp-logo-512x512.png`,
         contactPoint: {
             '@type': 'ContactPoint',
             telephone: '+1-573-677-6418',
