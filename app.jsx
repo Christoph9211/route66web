@@ -92,11 +92,39 @@ export default function App() {
         selectedCategory: 'all',
         products: [],
         categories: [],
-        loading: true,
+        loading: false,
+        shouldLoadProducts: false,
+        hasLoadedProducts: false,
     })
 
     React.useEffect(() => {
+        if (typeof window === 'undefined') {
+            return
+        }
+
+        if (window.location.hash === '#products') {
+            setAppState((prevState) =>
+                prevState.shouldLoadProducts
+                    ? prevState
+                    : { ...prevState, shouldLoadProducts: true }
+            )
+        }
+    }, [])
+
+    const { shouldLoadProducts, hasLoadedProducts } = appState
+
+    React.useEffect(() => {
+        if (!shouldLoadProducts || hasLoadedProducts) {
+            return undefined
+        }
+
         let isCancelled = false
+
+        setAppState((prevState) =>
+            prevState.loading
+                ? prevState
+                : { ...prevState, loading: true }
+        )
 
         const toArray = (value) => {
             if (Array.isArray(value)) {
@@ -291,6 +319,7 @@ export default function App() {
                     categories: formattedCategories,
                     products: normalizedProducts,
                     loading: false,
+                    hasLoadedProducts: true,
                 }))
             } catch (error) {
                 console.error('Error loading products:', error)
@@ -307,6 +336,14 @@ export default function App() {
         return () => {
             isCancelled = true
         }
+    }, [shouldLoadProducts, hasLoadedProducts])
+
+    const requestProductCatalog = React.useCallback(() => {
+        setAppState((prevState) =>
+            prevState.shouldLoadProducts
+                ? prevState
+                : { ...prevState, shouldLoadProducts: true }
+        )
     }, [])
 
     const handleNavigation = (e, targetId) => {
@@ -314,6 +351,8 @@ export default function App() {
         setAppState((prevState) => ({
             ...prevState,
             isMobileMenuOpen: false,
+            shouldLoadProducts:
+                prevState.shouldLoadProducts || targetId === 'products',
         }))
         if (targetId) {
             document
@@ -535,76 +574,102 @@ export default function App() {
                                 purity.
                             </p>
                         </div>
-                        <div
-                          className="mb-8 flex flex-wrap justify-center gap-2"
-                          role="group"
-                          aria-label="Filter products by category"
-                        >
-                          <button
-                            onClick={() =>
-                              setAppState((prevState) => ({
-                                ...prevState,
-                                selectedCategory: 'all',
-                              }))
-                            }
-                            aria-pressed={appState.selectedCategory === 'all'}
-                            aria-label="Show all products"
-                            className={`rounded-full px-4 py-2 text-sm font-medium ${
-                              appState.selectedCategory === 'all'
-                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
-                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
-                            }`}
-                          >
-                            All Products
-                          </button>
-                          {appState.categories.map((category) => (
-                            <button
-                              key={category.id}
-                              onClick={() =>
-                                setAppState((prevState) => ({
-                                  ...prevState,
-                                  selectedCategory: category.id,
-                                }))
-                              }
-                              aria-pressed={appState.selectedCategory === category.id}
-                              aria-label={`Filter by ${category.name}`}
-                              className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                appState.selectedCategory === category.id
-                                  ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
-                                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
-                              }`}
-                            >
-                              {category.name}
-                            </button>
-                          ))}
-                        </div>
-                        {appState.loading ? (
-                            <div className="col-span-full flex items-center justify-center py-12">
-                                <div className="leaf-loader">
-                                    <FontAwesomeIcon
-                                        icon={faCannabis}
-                                        className="text-5xl text-blue-600 dark:text-blue-500"
-                                        aria-hidden="true"
-                                    />
+                        {appState.shouldLoadProducts ? (
+                            <>
+                                <div
+                                    className="mb-8 flex flex-wrap justify-center gap-2"
+                                    role="group"
+                                    aria-label="Filter products by category"
+                                >
+                                    <button
+                                        onClick={() =>
+                                            setAppState((prevState) => ({
+                                                ...prevState,
+                                                selectedCategory: 'all',
+                                            }))
+                                        }
+                                        aria-pressed={
+                                            appState.selectedCategory === 'all'
+                                        }
+                                        aria-label="Show all products"
+                                        className={`rounded-full px-4 py-2 text-sm font-medium ${
+                                            appState.selectedCategory === 'all'
+                                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
+                                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                        }`}
+                                    >
+                                        All Products
+                                    </button>
+                                    {appState.categories.map((category) => (
+                                        <button
+                                            key={category.id}
+                                            onClick={() =>
+                                                setAppState((prevState) => ({
+                                                    ...prevState,
+                                                    selectedCategory: category.id,
+                                                }))
+                                            }
+                                            aria-pressed={
+                                                appState.selectedCategory ===
+                                                category.id
+                                            }
+                                            aria-label={`Filter by ${category.name}`}
+                                            className={`rounded-full px-4 py-2 text-sm font-medium ${
+                                                appState.selectedCategory ===
+                                                category.id
+                                                    ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
+                                                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                            }`}
+                                        >
+                                            {category.name}
+                                        </button>
+                                    ))}
                                 </div>
-                                <span className="sr-only">
-                                    Loading products...
-                                </span>
-                            </div>
-                        ) : filteredProducts.length > 0 ? (
-                            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                {filteredProducts.map((product) => (
-                                    <ProductCard
-                                        key={product.name + product.category}
-                                        product={product}
-                                    />
-                                ))}
-                            </div>
+                                {appState.loading ? (
+                                    <div className="col-span-full flex items-center justify-center py-12">
+                                        <div className="leaf-loader">
+                                            <FontAwesomeIcon
+                                                icon={faCannabis}
+                                                className="text-5xl text-blue-600 dark:text-blue-500"
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                        <span className="sr-only">
+                                            Loading products...
+                                        </span>
+                                    </div>
+                                ) : filteredProducts.length > 0 ? (
+                                    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                                        {filteredProducts.map((product) => (
+                                            <ProductCard
+                                                key={product.name + product.category}
+                                                product={product}
+                                            />
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="col-span-full py-12 text-center">
+                                        <p className="text-gray-700 dark:text-white">
+                                            Products Coming Soon
+                                        </p>
+                                    </div>
+                                )}
+                            </>
                         ) : (
-                            <div className="col-span-full py-12 text-center">
-                                <p className="text-gray-700 dark:text-white">
-                                    Products Coming Soon
+                            <div className="mx-auto max-w-2xl rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 p-8 text-center shadow-lg dark:from-[hsl(244,100%,39%)] dark:to-[hsl(244,100%,33%)]">
+                                <p className="text-lg font-semibold text-white">
+                                    Ready to explore our latest THCa flower, edibles, and concentrates?
                                 </p>
+                                <p className="mt-2 text-sm text-blue-50">
+                                    Tap the button below when you&apos;re ready and we&apos;ll load the freshest menu straight from our shelves.
+                                </p>
+                                <button
+                                    type="button"
+                                    onClick={requestProductCatalog}
+                                    className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-600 dark:text-[hsl(244,100%,33%)]"
+                                >
+                                    View Products
+                                </button>
                             </div>
                         )}
                     </div>
