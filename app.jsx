@@ -95,7 +95,47 @@ export default function App() {
         loading: false,
         shouldLoadProducts: false,
         hasLoadedProducts: false,
+        catalogRequestVersion: 0,
+        loadError: null,
     })
+
+    const requestProductCatalog = React.useCallback(
+        (options = {}) => {
+            const { forceRetry = false } = options
+
+            setAppState((prevState) => {
+                if (prevState.hasLoadedProducts) {
+                    if (prevState.shouldLoadProducts) {
+                        return prevState
+                    }
+
+                    return { ...prevState, shouldLoadProducts: true }
+                }
+
+                if (!prevState.shouldLoadProducts) {
+                    return {
+                        ...prevState,
+                        shouldLoadProducts: true,
+                        catalogRequestVersion:
+                            prevState.catalogRequestVersion + 1,
+                        loadError: null,
+                    }
+                }
+
+                if (forceRetry || prevState.loadError) {
+                    return {
+                        ...prevState,
+                        catalogRequestVersion:
+                            prevState.catalogRequestVersion + 1,
+                        loadError: null,
+                    }
+                }
+
+                return prevState
+            })
+        },
+        []
+    )
 
     React.useEffect(() => {
         if (typeof window === 'undefined') {
@@ -103,18 +143,19 @@ export default function App() {
         }
 
         if (window.location.hash === '#products') {
-            setAppState((prevState) =>
-                prevState.shouldLoadProducts
-                    ? prevState
-                    : { ...prevState, shouldLoadProducts: true }
-            )
+            requestProductCatalog()
         }
-    }, [])
+    }, [requestProductCatalog])
 
-    const { shouldLoadProducts, hasLoadedProducts } = appState
+    const { shouldLoadProducts, hasLoadedProducts, catalogRequestVersion } =
+        appState
 
     React.useEffect(() => {
-        if (!shouldLoadProducts || hasLoadedProducts) {
+        if (
+            !shouldLoadProducts ||
+            hasLoadedProducts ||
+            catalogRequestVersion === 0
+        ) {
             return undefined
         }
 
@@ -320,6 +361,7 @@ export default function App() {
                     products: normalizedProducts,
                     loading: false,
                     hasLoadedProducts: true,
+                    loadError: null,
                 }))
             } catch (error) {
                 console.error('Error loading products:', error)
@@ -327,6 +369,8 @@ export default function App() {
                 setAppState((prevState) => ({
                     ...prevState,
                     loading: false,
+                    loadError:
+                        'Unable to load the product catalog. Please try again.',
                 }))
             }
         }
@@ -336,24 +380,20 @@ export default function App() {
         return () => {
             isCancelled = true
         }
-    }, [shouldLoadProducts, hasLoadedProducts])
-
-    const requestProductCatalog = React.useCallback(() => {
-        setAppState((prevState) =>
-            prevState.shouldLoadProducts
-                ? prevState
-                : { ...prevState, shouldLoadProducts: true }
-        )
-    }, [])
+    }, [shouldLoadProducts, hasLoadedProducts, catalogRequestVersion])
 
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
-        setAppState((prevState) => ({
-            ...prevState,
-            isMobileMenuOpen: false,
-            shouldLoadProducts:
-                prevState.shouldLoadProducts || targetId === 'products',
-        }))
+
+        setAppState((prevState) =>
+            prevState.isMobileMenuOpen
+                ? { ...prevState, isMobileMenuOpen: false }
+                : prevState
+        )
+
+        if (targetId === 'products') {
+            requestProductCatalog()
+        }
         if (targetId) {
             document
                 .getElementById(targetId)
@@ -363,6 +403,12 @@ export default function App() {
         }
         window.history.replaceState(null, '', window.location.pathname)
     }
+
+    const structuredDataProducts = React.useMemo(
+        () =>
+            appState.hasLoadedProducts ? appState.products : [],
+        [appState.hasLoadedProducts, appState.products]
+    )
 
     const filteredProducts =
         appState.selectedCategory === 'all'
@@ -377,7 +423,7 @@ export default function App() {
             <React.Suspense fallback={null}>
                 <StructuredData
                     pageMode="listing"
-                    products={appState.products}
+                    products={structuredDataProducts}
                 />
             </React.Suspense>
             <AgeGate />
@@ -637,6 +683,28 @@ export default function App() {
                                         <span className="sr-only">
                                             Loading products...
                                         </span>
+                                    </div>
+                                ) : appState.loadError ? (
+                                    <div
+                                        role="alert"
+                                        aria-live="assertive"
+                                        className="col-span-full max-w-xl rounded-2xl border border-blue-100 bg-blue-50 p-8 text-center text-blue-900 shadow-sm dark:border-blue-900/40 dark:bg-blue-900/30 dark:text-blue-100"
+                                    >
+                                        <h3 className="text-lg font-semibold">We couldn&apos;t load the menu</h3>
+                                        <p className="mt-3 text-sm">
+                                            {appState.loadError}
+                                        </p>
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                requestProductCatalog({
+                                                    forceRetry: true,
+                                                })
+                                            }
+                                            className="mt-6 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-50 dark:bg-[hsl(244,100%,39%)] dark:hover:bg-[hsl(244,100%,33%)] dark:focus-visible:ring-offset-transparent"
+                                        >
+                                            Try again
+                                        </button>
                                     </div>
                                 ) : filteredProducts.length > 0 ? (
                                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
