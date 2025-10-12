@@ -62,6 +62,177 @@ const renderSectionSkeleton = (height = 'h-64') => (
     </div>
 )
 
+const toArray = (value) => {
+    if (Array.isArray(value)) {
+        return value.filter((entry) => entry != null)
+    }
+    return value != null ? [value] : []
+}
+
+const extractSizeFromName = (name) => {
+    if (typeof name !== 'string') return null
+    const match = name.match(/ - (.+)/)
+    return match ? match[1] : null
+}
+
+const groupLegacyProducts = (rawProducts) => {
+    const grouped = new Map()
+
+    rawProducts.forEach((product) => {
+        const name = product.name ?? product['name'] ?? ''
+        const category = product.category ?? product['category'] ?? ''
+        const key = `${name}|${category}`
+
+        if (!grouped.has(key)) {
+            grouped.set(key, {
+                ...product,
+                name,
+                category,
+                sizeSet: new Set(),
+                prices: {},
+                variantSet: new Set(),
+                idsSet: new Set(),
+                imageSet: new Set(),
+                descriptionSet: new Set(),
+                ratingSet: new Set(),
+                urlSet: new Set(),
+            })
+        }
+
+        const entry = grouped.get(key)
+
+        toArray(product.id).forEach((id) => {
+            entry.idsSet.add(id)
+        })
+        toArray(product.image).forEach((image) => {
+            entry.imageSet.add(image)
+        })
+        toArray(product.description).forEach((description) => {
+            entry.descriptionSet.add(description)
+        })
+        toArray(product.rating).forEach((rating) => {
+            entry.ratingSet.add(rating)
+        })
+        toArray(product.url).forEach((url) => {
+            entry.urlSet.add(url)
+        })
+        toArray(product.variants ?? product.variant).forEach((variant) => {
+            entry.variantSet.add(variant)
+        })
+
+        if (
+            Array.isArray(product.size_options) &&
+            product.size_options.length &&
+            product.prices &&
+            typeof product.prices === 'object'
+        ) {
+            product.size_options.forEach((size) => {
+                if (!size) return
+                if (!entry.sizeSet.has(size)) {
+                    entry.sizeSet.add(size)
+                }
+                const safeKey = clean(size)
+                if (
+                    safeKey &&
+                    Object.prototype.hasOwnProperty.call(product.prices, size)
+                ) {
+                    entry.prices[safeKey] = product.prices[size]
+                }
+            })
+        } else {
+            const inferredSize = extractSizeFromName(name)
+            if (inferredSize) {
+                if (!entry.sizeSet.has(inferredSize)) {
+                    entry.sizeSet.add(inferredSize)
+                }
+                const safeSize = clean(inferredSize)
+                if (safeSize && product.price != null) {
+                    entry.prices[safeSize] = product.price
+                }
+            }
+        }
+    })
+
+    return Array.from(grouped.values()).map((entry) => {
+        const {
+            sizeSet,
+            variantSet,
+            idsSet,
+            imageSet,
+            descriptionSet,
+            ratingSet,
+            urlSet,
+            ...rest
+        } = entry
+        return {
+            ...rest,
+            size_options: Array.from(sizeSet),
+            variants: Array.from(variantSet),
+            ids: Array.from(idsSet),
+            images: Array.from(imageSet),
+            descriptions: Array.from(descriptionSet),
+            ratings: Array.from(ratingSet),
+            urls: Array.from(urlSet),
+        }
+    })
+}
+
+const normalizeProducts = (rawProducts) => {
+    if (!Array.isArray(rawProducts)) return []
+
+    const isStructured = rawProducts.every(
+        (product) =>
+            Array.isArray(product.size_options) &&
+            product.size_options.length &&
+            product.prices &&
+            typeof product.prices === 'object' &&
+            Object.keys(product.prices).length
+    )
+
+    if (!isStructured) {
+        return groupLegacyProducts(rawProducts)
+    }
+
+    // Fast path: modern exports already include normalized sizes/prices.
+    return rawProducts.map((product) => ({
+        ...product,
+        size_options: Array.isArray(product.size_options)
+            ? [...product.size_options]
+            : toArray(product.size_options),
+        prices:
+            product.prices && typeof product.prices === 'object'
+                ? { ...product.prices }
+                : {},
+        variants: toArray(product.variants ?? product.variant),
+        ids: toArray(product.ids ?? product.id),
+        images: toArray(product.images ?? product.image),
+        descriptions: toArray(product.descriptions ?? product.description),
+        ratings: toArray(product.ratings ?? product.rating),
+        urls: toArray(product.urls ?? product.url),
+    }))
+}
+
+const buildCategories = (products) =>
+    [
+        ...new Set(
+            products.map((product) => product.category).filter(Boolean)
+        ),
+    ]
+        .map((category) => {
+            const name = category
+                .replace(/-/g, ' ')
+                .replace(/\b\w/g, (match) => match.toUpperCase())
+                .trim()
+                .replace(/\s+/g, ' ')
+
+            const categoryId = slugify(category)
+
+            if (!categoryId) return null
+
+            return { id: categoryId, name }
+        })
+        .filter(Boolean)
+
 const generateProductAlt = (product) => {
     if (!product || typeof product !== 'object') {
         return 'Premium hemp product available at Route 66 Hemp in St Robert, Missouri'
@@ -92,205 +263,129 @@ export default function App() {
         selectedCategory: 'all',
         products: [],
         categories: [],
-        loading: true,
+        loading: false,
+        shouldLoadProducts: false,
+        hasLoadedProducts: false,
+        catalogRequestVersion: 0,
+        loadError: null,
     })
 
+    const [structuredDataState, setStructuredDataState] = React.useState({
+        products: [],
+        hasLoaded: false,
+    })
+
+    const productCatalogPromiseRef = React.useRef(null)
+
+    const fetchProductCatalog = React.useCallback(async () => {
+        if (!productCatalogPromiseRef.current) {
+            productCatalogPromiseRef.current = fetch('products/products.json')
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch products')
+                    }
+                    return response.json()
+                })
+                .then((productsData) => {
+                    const normalizedProducts = normalizeProducts(productsData)
+                    const categories = buildCategories(normalizedProducts)
+
+                    return {
+                        products: normalizedProducts,
+                        categories,
+                    }
+                })
+                .catch((error) => {
+                    productCatalogPromiseRef.current = null
+                    throw error
+                })
+        }
+
+        return productCatalogPromiseRef.current
+    }, [])
+
+    const requestProductCatalog = React.useCallback(
+        (options = {}) => {
+            const { forceRetry = false } = options
+
+            setAppState((prevState) => {
+                if (prevState.hasLoadedProducts) {
+                    if (prevState.shouldLoadProducts) {
+                        return prevState
+                    }
+
+                    return { ...prevState, shouldLoadProducts: true }
+                }
+
+                if (!prevState.shouldLoadProducts) {
+                    return {
+                        ...prevState,
+                        shouldLoadProducts: true,
+                        catalogRequestVersion:
+                            prevState.catalogRequestVersion + 1,
+                        loadError: null,
+                    }
+                }
+
+                if (forceRetry || prevState.loadError) {
+                    return {
+                        ...prevState,
+                        catalogRequestVersion:
+                            prevState.catalogRequestVersion + 1,
+                        loadError: null,
+                    }
+                }
+
+                return prevState
+            })
+        },
+        []
+    )
+
     React.useEffect(() => {
+        if (typeof window === 'undefined') {
+            return
+        }
+
+        if (window.location.hash === '#products') {
+            requestProductCatalog()
+        }
+    }, [requestProductCatalog])
+
+    const { shouldLoadProducts, hasLoadedProducts, catalogRequestVersion } =
+        appState
+
+    React.useEffect(() => {
+        if (
+            !shouldLoadProducts ||
+            hasLoadedProducts ||
+            catalogRequestVersion === 0
+        ) {
+            return undefined
+        }
+
         let isCancelled = false
 
-        const toArray = (value) => {
-            if (Array.isArray(value)) {
-                return value.filter((entry) => entry != null)
-            }
-            return value != null ? [value] : []
-        }
-
-        const extractSizeFromName = (name) => {
-            if (typeof name !== 'string') return null
-            const match = name.match(/ - (.+)/)
-            return match ? match[1] : null
-        }
-
-        // Legacy data exports list each variant as a separate row; rebuild them once.
-        const groupLegacyProducts = (rawProducts) => {
-            const grouped = new Map()
-
-            rawProducts.forEach((product) => {
-                const name = product.name ?? product['name'] ?? ''
-                const category = product.category ?? product['category'] ?? ''
-                const key = `${name}|${category}`
-
-                if (!grouped.has(key)) {
-                    grouped.set(key, {
-                        ...product,
-                        name,
-                        category,
-                        sizeSet: new Set(),
-                        prices: {},
-                        variantSet: new Set(),
-                        idsSet: new Set(),
-                        imageSet: new Set(),
-                        descriptionSet: new Set(),
-                        ratingSet: new Set(),
-                        urlSet: new Set(),
-                    })
-                }
-
-                const entry = grouped.get(key)
-
-                toArray(product.id).forEach((id) => {
-                    entry.idsSet.add(id)
-                })
-                toArray(product.image).forEach((image) => {
-                    entry.imageSet.add(image)
-                })
-                toArray(product.description).forEach((description) => {
-                    entry.descriptionSet.add(description)
-                })
-                toArray(product.rating).forEach((rating) => {
-                    entry.ratingSet.add(rating)
-                })
-                toArray(product.url).forEach((url) => {
-                    entry.urlSet.add(url)
-                })
-                toArray(product.variants ?? product.variant).forEach(
-                    (variant) => {
-                        entry.variantSet.add(variant)
-                    }
-                )
-
-                if (
-                    Array.isArray(product.size_options) &&
-                    product.size_options.length &&
-                    product.prices &&
-                    typeof product.prices === 'object'
-                ) {
-                    product.size_options.forEach((size) => {
-                        if (!size) return
-                        if (!entry.sizeSet.has(size)) {
-                            entry.sizeSet.add(size)
-                        }
-                        const safeKey = clean(size)
-                        if (
-                            safeKey &&
-                            Object.prototype.hasOwnProperty.call(
-                                product.prices,
-                                size
-                            )
-                        ) {
-                            entry.prices[safeKey] = product.prices[size]
-                        }
-                    })
-                } else {
-                    const inferredSize = extractSizeFromName(name)
-                    if (inferredSize) {
-                        if (!entry.sizeSet.has(inferredSize)) {
-                            entry.sizeSet.add(inferredSize)
-                        }
-                        const safeSize = clean(inferredSize)
-                        if (safeSize && product.price != null) {
-                            entry.prices[safeSize] = product.price
-                        }
-                    }
-                }
-            })
-
-            return Array.from(grouped.values()).map((entry) => {
-                const {
-                    sizeSet,
-                    variantSet,
-                    idsSet,
-                    imageSet,
-                    descriptionSet,
-                    ratingSet,
-                    urlSet,
-                    ...rest
-                } = entry
-                return {
-                    ...rest,
-                    size_options: Array.from(sizeSet),
-                    variants: Array.from(variantSet),
-                    ids: Array.from(idsSet),
-                    images: Array.from(imageSet),
-                    descriptions: Array.from(descriptionSet),
-                    ratings: Array.from(ratingSet),
-                    urls: Array.from(urlSet),
-                }
-            })
-        }
-
-        const normalizeProducts = (rawProducts) => {
-            if (!Array.isArray(rawProducts)) return []
-
-            const isStructured = rawProducts.every(
-                (product) =>
-                    Array.isArray(product.size_options) &&
-                    product.size_options.length &&
-                    product.prices &&
-                    typeof product.prices === 'object' &&
-                    Object.keys(product.prices).length
-            )
-
-            if (!isStructured) {
-                return groupLegacyProducts(rawProducts)
-            }
-
-            // Fast path: modern exports already include normalized sizes/prices.
-            return rawProducts.map((product) => ({
-                ...product,
-                size_options: Array.isArray(product.size_options)
-                    ? [...product.size_options]
-                    : toArray(product.size_options),
-                prices:
-                    product.prices && typeof product.prices === 'object'
-                        ? { ...product.prices }
-                        : {},
-                variants: toArray(product.variants ?? product.variant),
-                ids: toArray(product.ids ?? product.id),
-                images: toArray(product.images ?? product.image),
-                descriptions: toArray(
-                    product.descriptions ?? product.description
-                ),
-                ratings: toArray(product.ratings ?? product.rating),
-                urls: toArray(product.urls ?? product.url),
-            }))
-        }
+        setAppState((prevState) =>
+            prevState.loading
+                ? prevState
+                : { ...prevState, loading: true }
+        )
 
         const loadProducts = async () => {
             try {
-                const response = await fetch('products/products.json')
-                if (!response.ok) {
-                    throw new Error('Failed to fetch products')
-                }
-                const productsData = await response.json()
-                const normalizedProducts = normalizeProducts(productsData)
-                const uniqueCategories = [
-                    ...new Set(
-                        normalizedProducts
-                            .map((product) => product.category)
-                            .filter(Boolean)
-                    ),
-                ]
-                const formattedCategories = uniqueCategories.map(
-                    (categoryId) => {
-                        const name = categoryId
-                            .split('-')
-                            .map(
-                                (word) =>
-                                    word.charAt(0).toUpperCase() + word.slice(1)
-                            )
-                            .join(' ')
-                        return { id: categoryId, name }
-                    }
-                )
+                const { products: normalizedProducts, categories } =
+                    await fetchProductCatalog()
 
                 if (isCancelled) return
 
                 setAppState((prevState) => ({
                     ...prevState,
-                    categories: formattedCategories,
+                    categories,
                     products: normalizedProducts,
                     loading: false,
+                    hasLoadedProducts: true,
+                    loadError: null,
                 }))
             } catch (error) {
                 console.error('Error loading products:', error)
@@ -298,6 +393,8 @@ export default function App() {
                 setAppState((prevState) => ({
                     ...prevState,
                     loading: false,
+                    loadError:
+                        'Unable to load the product catalog. Please try again.',
                 }))
             }
         }
@@ -307,14 +404,60 @@ export default function App() {
         return () => {
             isCancelled = true
         }
-    }, [])
+    }, [
+        shouldLoadProducts,
+        hasLoadedProducts,
+        catalogRequestVersion,
+        fetchProductCatalog,
+    ])
+
+    React.useEffect(() => {
+        let isCancelled = false
+
+        const preloadStructuredData = async () => {
+            try {
+                const { products: normalizedProducts } =
+                    await fetchProductCatalog()
+
+                if (isCancelled) return
+
+                setStructuredDataState((prevState) => {
+                    if (prevState.hasLoaded) {
+                        return prevState
+                    }
+
+                    return {
+                        products: normalizedProducts,
+                        hasLoaded: true,
+                    }
+                })
+            } catch (error) {
+                console.error(
+                    'Error preloading products for structured data:',
+                    error
+                )
+            }
+        }
+
+        preloadStructuredData()
+
+        return () => {
+            isCancelled = true
+        }
+    }, [fetchProductCatalog])
 
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
-        setAppState((prevState) => ({
-            ...prevState,
-            isMobileMenuOpen: false,
-        }))
+
+        setAppState((prevState) =>
+            prevState.isMobileMenuOpen
+                ? { ...prevState, isMobileMenuOpen: false }
+                : prevState
+        )
+
+        if (targetId === 'products') {
+            requestProductCatalog()
+        }
         if (targetId) {
             document
                 .getElementById(targetId)
@@ -325,11 +468,26 @@ export default function App() {
         window.history.replaceState(null, '', window.location.pathname)
     }
 
+    const structuredDataProducts = React.useMemo(() => {
+        if (appState.hasLoadedProducts) {
+            return appState.products
+        }
+
+        return structuredDataState.hasLoaded
+            ? structuredDataState.products
+            : []
+    }, [
+        appState.hasLoadedProducts,
+        appState.products,
+        structuredDataState.hasLoaded,
+        structuredDataState.products,
+    ])
+
     const filteredProducts =
         appState.selectedCategory === 'all'
             ? appState.products
-            : appState.products.filter(
-                  (product) => product.category === appState.selectedCategory
+            : appState.products.filter((product) =>
+                  slugify(product.category) === appState.selectedCategory
               )
 
     return (
@@ -338,7 +496,7 @@ export default function App() {
             <React.Suspense fallback={null}>
                 <StructuredData
                     pageMode="listing"
-                    products={appState.products}
+                    products={structuredDataProducts}
                 />
             </React.Suspense>
             <AgeGate />
@@ -535,76 +693,124 @@ export default function App() {
                                 purity.
                             </p>
                         </div>
-                        <div
-                          className="mb-8 flex flex-wrap justify-center gap-2"
-                          role="group"
-                          aria-label="Filter products by category"
-                        >
-                          <button
-                            onClick={() =>
-                              setAppState((prevState) => ({
-                                ...prevState,
-                                selectedCategory: 'all',
-                              }))
-                            }
-                            aria-pressed={appState.selectedCategory === 'all'}
-                            aria-label="Show all products"
-                            className={`rounded-full px-4 py-2 text-sm font-medium ${
-                              appState.selectedCategory === 'all'
-                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
-                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
-                            }`}
-                          >
-                            All Products
-                          </button>
-                          {appState.categories.map((category) => (
-                            <button
-                              key={category.id}
-                              onClick={() =>
-                                setAppState((prevState) => ({
-                                  ...prevState,
-                                  selectedCategory: category.id,
-                                }))
-                              }
-                              aria-pressed={appState.selectedCategory === category.id}
-                              aria-label={`Filter by ${category.name}`}
-                              className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                appState.selectedCategory === category.id
-                                  ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
-                                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
-                              }`}
-                            >
-                              {category.name}
-                            </button>
-                          ))}
-                        </div>
-                        {appState.loading ? (
-                            <div className="col-span-full flex items-center justify-center py-12">
-                                <div className="leaf-loader">
-                                    <FontAwesomeIcon
-                                        icon={faCannabis}
-                                        className="text-5xl text-blue-600 dark:text-blue-500"
-                                        aria-hidden="true"
-                                    />
+                        {appState.shouldLoadProducts ? (
+                            <>
+                                <div
+                                    className="mb-8 flex flex-wrap justify-center gap-2"
+                                    role="group"
+                                    aria-label="Filter products by category"
+                                >
+                                    <button
+                                        onClick={() =>
+                                            setAppState((prevState) => ({
+                                                ...prevState,
+                                                selectedCategory: 'all',
+                                            }))
+                                        }
+                                        aria-pressed={
+                                            appState.selectedCategory === 'all'
+                                        }
+                                        aria-label="Show all products"
+                                        className={`rounded-full px-4 py-2 text-sm font-medium ${
+                                            appState.selectedCategory === 'all'
+                                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
+                                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                        }`}
+                                    >
+                                        All Products
+                                    </button>
+                                    {appState.categories.map((category) => (
+                                        <button
+                                            key={category.id}
+                                            onClick={() =>
+                                                setAppState((prevState) => ({
+                                                    ...prevState,
+                                                    selectedCategory: category.id,
+                                                }))
+                                            }
+                                            aria-pressed={
+                                                appState.selectedCategory ===
+                                                category.id
+                                            }
+                                            aria-label={`Filter by ${category.name}`}
+                                            className={`rounded-full px-4 py-2 text-sm font-medium ${
+                                                appState.selectedCategory ===
+                                                category.id
+                                                    ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
+                                                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                            }`}
+                                        >
+                                            {category.name}
+                                        </button>
+                                    ))}
                                 </div>
-                                <span className="sr-only">
-                                    Loading products...
-                                </span>
-                            </div>
-                        ) : filteredProducts.length > 0 ? (
-                            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                {filteredProducts.map((product) => (
-                                    <ProductCard
-                                        key={product.name + product.category}
-                                        product={product}
-                                    />
-                                ))}
-                            </div>
+                                {appState.loading ? (
+                                    <div className="col-span-full flex items-center justify-center py-12">
+                                        <div className="leaf-loader">
+                                            <FontAwesomeIcon
+                                                icon={faCannabis}
+                                                className="text-5xl text-blue-600 dark:text-blue-500"
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                        <span className="sr-only">
+                                            Loading products...
+                                        </span>
+                                    </div>
+                                ) : appState.loadError ? (
+                                    <div
+                                        role="alert"
+                                        aria-live="assertive"
+                                        className="col-span-full max-w-xl rounded-2xl border border-blue-100 bg-blue-50 p-8 text-center text-blue-900 shadow-sm dark:border-blue-900/40 dark:bg-blue-900/30 dark:text-blue-100"
+                                    >
+                                        <h3 className="text-lg font-semibold">We couldn&apos;t load the menu</h3>
+                                        <p className="mt-3 text-sm">
+                                            {appState.loadError}
+                                        </p>
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                requestProductCatalog({
+                                                    forceRetry: true,
+                                                })
+                                            }
+                                            className="mt-6 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-50 dark:bg-[hsl(244,100%,39%)] dark:hover:bg-[hsl(244,100%,33%)] dark:focus-visible:ring-offset-transparent"
+                                        >
+                                            Try again
+                                        </button>
+                                    </div>
+                                ) : filteredProducts.length > 0 ? (
+                                    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                                        {filteredProducts.map((product) => (
+                                            <ProductCard
+                                                key={product.name + product.category}
+                                                product={product}
+                                            />
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="col-span-full py-12 text-center">
+                                        <p className="text-gray-700 dark:text-white">
+                                            Products Coming Soon
+                                        </p>
+                                    </div>
+                                )}
+                            </>
                         ) : (
-                            <div className="col-span-full py-12 text-center">
-                                <p className="text-gray-700 dark:text-white">
-                                    Products Coming Soon
+                            <div className="mx-auto max-w-2xl rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 p-8 text-center shadow-lg dark:from-[hsl(244,100%,39%)] dark:to-[hsl(244,100%,33%)]">
+                                <p className="text-lg font-semibold text-white">
+                                    Ready to explore our latest THCa flower, edibles, and concentrates?
                                 </p>
+                                <p className="mt-2 text-sm text-blue-50">
+                                    Tap the button below when you&apos;re ready and we&apos;ll load the freshest menu straight from our shelves.
+                                </p>
+                                <button
+                                    type="button"
+                                    onClick={requestProductCatalog}
+                                    className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-600 dark:text-[hsl(244,100%,33%)]"
+                                >
+                                    View Products
+                                </button>
                             </div>
                         )}
                     </div>
@@ -826,7 +1032,7 @@ export default function App() {
                                         aria-hidden="true"
                                     />
                                 </div>
-                                <span className="text-xl font-bold text-white">
+                                <span className="text-xl font-bold text-black dark:text-white">
                                     {businessInfo.name}
                                 </span>
                             </div>
