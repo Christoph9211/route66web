@@ -489,8 +489,8 @@ export default function App() {
     const filteredProducts =
         appState.selectedCategory === 'all'
             ? appState.products
-            : appState.products.filter(
-                  (product) => product.category === appState.selectedCategory
+            : appState.products.filter((product) =>
+                  slugify(product.category) === appState.selectedCategory
               )
 
     return (
