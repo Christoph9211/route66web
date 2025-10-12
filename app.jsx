@@ -225,10 +225,7 @@ const buildCategories = (products) =>
                 .trim()
                 .replace(/\s+/g, ' ')
 
-            const categoryId = category
-                .toLowerCase()
-                .replace(/\s+/g, '-')
-                .replace(/[^a-z0-9-]/g, '')
+            const categoryId = slugify(category)
 
             if (!categoryId) return null
 
