@@ -62,6 +62,180 @@ const renderSectionSkeleton = (height = 'h-64') => (
     </div>
 )
 
+const toArray = (value) => {
+    if (Array.isArray(value)) {
+        return value.filter((entry) => entry != null)
+    }
+    return value != null ? [value] : []
+}
+
+const extractSizeFromName = (name) => {
+    if (typeof name !== 'string') return null
+    const match = name.match(/ - (.+)/)
+    return match ? match[1] : null
+}
+
+const groupLegacyProducts = (rawProducts) => {
+    const grouped = new Map()
+
+    rawProducts.forEach((product) => {
+        const name = product.name ?? product['name'] ?? ''
+        const category = product.category ?? product['category'] ?? ''
+        const key = `${name}|${category}`
+
+        if (!grouped.has(key)) {
+            grouped.set(key, {
+                ...product,
+                name,
+                category,
+                sizeSet: new Set(),
+                prices: {},
+                variantSet: new Set(),
+                idsSet: new Set(),
+                imageSet: new Set(),
+                descriptionSet: new Set(),
+                ratingSet: new Set(),
+                urlSet: new Set(),
+            })
+        }
+
+        const entry = grouped.get(key)
+
+        toArray(product.id).forEach((id) => {
+            entry.idsSet.add(id)
+        })
+        toArray(product.image).forEach((image) => {
+            entry.imageSet.add(image)
+        })
+        toArray(product.description).forEach((description) => {
+            entry.descriptionSet.add(description)
+        })
+        toArray(product.rating).forEach((rating) => {
+            entry.ratingSet.add(rating)
+        })
+        toArray(product.url).forEach((url) => {
+            entry.urlSet.add(url)
+        })
+        toArray(product.variants ?? product.variant).forEach((variant) => {
+            entry.variantSet.add(variant)
+        })
+
+        if (
+            Array.isArray(product.size_options) &&
+            product.size_options.length &&
+            product.prices &&
+            typeof product.prices === 'object'
+        ) {
+            product.size_options.forEach((size) => {
+                if (!size) return
+                if (!entry.sizeSet.has(size)) {
+                    entry.sizeSet.add(size)
+                }
+                const safeKey = clean(size)
+                if (
+                    safeKey &&
+                    Object.prototype.hasOwnProperty.call(product.prices, size)
+                ) {
+                    entry.prices[safeKey] = product.prices[size]
+                }
+            })
+        } else {
+            const inferredSize = extractSizeFromName(name)
+            if (inferredSize) {
+                if (!entry.sizeSet.has(inferredSize)) {
+                    entry.sizeSet.add(inferredSize)
+                }
+                const safeSize = clean(inferredSize)
+                if (safeSize && product.price != null) {
+                    entry.prices[safeSize] = product.price
+                }
+            }
+        }
+    })
+
+    return Array.from(grouped.values()).map((entry) => {
+        const {
+            sizeSet,
+            variantSet,
+            idsSet,
+            imageSet,
+            descriptionSet,
+            ratingSet,
+            urlSet,
+            ...rest
+        } = entry
+        return {
+            ...rest,
+            size_options: Array.from(sizeSet),
+            variants: Array.from(variantSet),
+            ids: Array.from(idsSet),
+            images: Array.from(imageSet),
+            descriptions: Array.from(descriptionSet),
+            ratings: Array.from(ratingSet),
+            urls: Array.from(urlSet),
+        }
+    })
+}
+
+const normalizeProducts = (rawProducts) => {
+    if (!Array.isArray(rawProducts)) return []
+
+    const isStructured = rawProducts.every(
+        (product) =>
+            Array.isArray(product.size_options) &&
+            product.size_options.length &&
+            product.prices &&
+            typeof product.prices === 'object' &&
+            Object.keys(product.prices).length
+    )
+
+    if (!isStructured) {
+        return groupLegacyProducts(rawProducts)
+    }
+
+    // Fast path: modern exports already include normalized sizes/prices.
+    return rawProducts.map((product) => ({
+        ...product,
+        size_options: Array.isArray(product.size_options)
+            ? [...product.size_options]
+            : toArray(product.size_options),
+        prices:
+            product.prices && typeof product.prices === 'object'
+                ? { ...product.prices }
+                : {},
+        variants: toArray(product.variants ?? product.variant),
+        ids: toArray(product.ids ?? product.id),
+        images: toArray(product.images ?? product.image),
+        descriptions: toArray(product.descriptions ?? product.description),
+        ratings: toArray(product.ratings ?? product.rating),
+        urls: toArray(product.urls ?? product.url),
+    }))
+}
+
+const buildCategories = (products) =>
+    [
+        ...new Set(
+            products.map((product) => product.category).filter(Boolean)
+        ),
+    ]
+        .map((category) => {
+            const name = category
+                .replace(/-/g, ' ')
+                .replace(/\b\w/g, (match) => match.toUpperCase())
+                .trim()
+                .replace(/\s+/g, ' ')
+
+            const categoryId = category
+                .toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^a-z0-9-]/g, '')
+
+            if (!categoryId) return null
+
+            return { id: categoryId, name }
+        })
+        .filter(Boolean)
+
 const generateProductAlt = (product) => {
     if (!product || typeof product !== 'object') {
         return 'Premium hemp product available at Route 66 Hemp in St Robert, Missouri'
@@ -98,6 +272,40 @@ export default function App() {
         catalogRequestVersion: 0,
         loadError: null,
     })
+
+    const [structuredDataState, setStructuredDataState] = React.useState({
+        products: [],
+        hasLoaded: false,
+    })
+
+    const productCatalogPromiseRef = React.useRef(null)
+
+    const fetchProductCatalog = React.useCallback(async () => {
+        if (!productCatalogPromiseRef.current) {
+            productCatalogPromiseRef.current = fetch('products/products.json')
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch products')
+                    }
+                    return response.json()
+                })
+                .then((productsData) => {
+                    const normalizedProducts = normalizeProducts(productsData)
+                    const categories = buildCategories(normalizedProducts)
+
+                    return {
+                        products: normalizedProducts,
+                        categories,
+                    }
+                })
+                .catch((error) => {
+                    productCatalogPromiseRef.current = null
+                    throw error
+                })
+        }
+
+        return productCatalogPromiseRef.current
+    }, [])
 
     const requestProductCatalog = React.useCallback(
         (options = {}) => {
@@ -167,197 +375,16 @@ export default function App() {
                 : { ...prevState, loading: true }
         )
 
-        const toArray = (value) => {
-            if (Array.isArray(value)) {
-                return value.filter((entry) => entry != null)
-            }
-            return value != null ? [value] : []
-        }
-
-        const extractSizeFromName = (name) => {
-            if (typeof name !== 'string') return null
-            const match = name.match(/ - (.+)/)
-            return match ? match[1] : null
-        }
-
-        // Legacy data exports list each variant as a separate row; rebuild them once.
-        const groupLegacyProducts = (rawProducts) => {
-            const grouped = new Map()
-
-            rawProducts.forEach((product) => {
-                const name = product.name ?? product['name'] ?? ''
-                const category = product.category ?? product['category'] ?? ''
-                const key = `${name}|${category}`
-
-                if (!grouped.has(key)) {
-                    grouped.set(key, {
-                        ...product,
-                        name,
-                        category,
-                        sizeSet: new Set(),
-                        prices: {},
-                        variantSet: new Set(),
-                        idsSet: new Set(),
-                        imageSet: new Set(),
-                        descriptionSet: new Set(),
-                        ratingSet: new Set(),
-                        urlSet: new Set(),
-                    })
-                }
-
-                const entry = grouped.get(key)
-
-                toArray(product.id).forEach((id) => {
-                    entry.idsSet.add(id)
-                })
-                toArray(product.image).forEach((image) => {
-                    entry.imageSet.add(image)
-                })
-                toArray(product.description).forEach((description) => {
-                    entry.descriptionSet.add(description)
-                })
-                toArray(product.rating).forEach((rating) => {
-                    entry.ratingSet.add(rating)
-                })
-                toArray(product.url).forEach((url) => {
-                    entry.urlSet.add(url)
-                })
-                toArray(product.variants ?? product.variant).forEach(
-                    (variant) => {
-                        entry.variantSet.add(variant)
-                    }
-                )
-
-                if (
-                    Array.isArray(product.size_options) &&
-                    product.size_options.length &&
-                    product.prices &&
-                    typeof product.prices === 'object'
-                ) {
-                    product.size_options.forEach((size) => {
-                        if (!size) return
-                        if (!entry.sizeSet.has(size)) {
-                            entry.sizeSet.add(size)
-                        }
-                        const safeKey = clean(size)
-                        if (
-                            safeKey &&
-                            Object.prototype.hasOwnProperty.call(
-                                product.prices,
-                                size
-                            )
-                        ) {
-                            entry.prices[safeKey] = product.prices[size]
-                        }
-                    })
-                } else {
-                    const inferredSize = extractSizeFromName(name)
-                    if (inferredSize) {
-                        if (!entry.sizeSet.has(inferredSize)) {
-                            entry.sizeSet.add(inferredSize)
-                        }
-                        const safeSize = clean(inferredSize)
-                        if (safeSize && product.price != null) {
-                            entry.prices[safeSize] = product.price
-                        }
-                    }
-                }
-            })
-
-            return Array.from(grouped.values()).map((entry) => {
-                const {
-                    sizeSet,
-                    variantSet,
-                    idsSet,
-                    imageSet,
-                    descriptionSet,
-                    ratingSet,
-                    urlSet,
-                    ...rest
-                } = entry
-                return {
-                    ...rest,
-                    size_options: Array.from(sizeSet),
-                    variants: Array.from(variantSet),
-                    ids: Array.from(idsSet),
-                    images: Array.from(imageSet),
-                    descriptions: Array.from(descriptionSet),
-                    ratings: Array.from(ratingSet),
-                    urls: Array.from(urlSet),
-                }
-            })
-        }
-
-        const normalizeProducts = (rawProducts) => {
-            if (!Array.isArray(rawProducts)) return []
-
-            const isStructured = rawProducts.every(
-                (product) =>
-                    Array.isArray(product.size_options) &&
-                    product.size_options.length &&
-                    product.prices &&
-                    typeof product.prices === 'object' &&
-                    Object.keys(product.prices).length
-            )
-
-            if (!isStructured) {
-                return groupLegacyProducts(rawProducts)
-            }
-
-            // Fast path: modern exports already include normalized sizes/prices.
-            return rawProducts.map((product) => ({
-                ...product,
-                size_options: Array.isArray(product.size_options)
-                    ? [...product.size_options]
-                    : toArray(product.size_options),
-                prices:
-                    product.prices && typeof product.prices === 'object'
-                        ? { ...product.prices }
-                        : {},
-                variants: toArray(product.variants ?? product.variant),
-                ids: toArray(product.ids ?? product.id),
-                images: toArray(product.images ?? product.image),
-                descriptions: toArray(
-                    product.descriptions ?? product.description
-                ),
-                ratings: toArray(product.ratings ?? product.rating),
-                urls: toArray(product.urls ?? product.url),
-            }))
-        }
-
         const loadProducts = async () => {
             try {
-                const response = await fetch('products/products.json')
-                if (!response.ok) {
-                    throw new Error('Failed to fetch products')
-                }
-                const productsData = await response.json()
-                const normalizedProducts = normalizeProducts(productsData)
-                const uniqueCategories = [
-                    ...new Set(
-                        normalizedProducts
-                            .map((product) => product.category)
-                            .filter(Boolean)
-                    ),
-                ]
-                const formattedCategories = uniqueCategories.map(
-                    (categoryId) => {
-                        const name = categoryId
-                            .split('-')
-                            .map(
-                                (word) =>
-                                    word.charAt(0).toUpperCase() + word.slice(1)
-                            )
-                            .join(' ')
-                        return { id: categoryId, name }
-                    }
-                )
+                const { products: normalizedProducts, categories } =
+                    await fetchProductCatalog()
 
                 if (isCancelled) return
 
                 setAppState((prevState) => ({
                     ...prevState,
-                    categories: formattedCategories,
+                    categories,
                     products: normalizedProducts,
                     loading: false,
                     hasLoadedProducts: true,
@@ -380,7 +407,47 @@ export default function App() {
         return () => {
             isCancelled = true
         }
-    }, [shouldLoadProducts, hasLoadedProducts, catalogRequestVersion])
+    }, [
+        shouldLoadProducts,
+        hasLoadedProducts,
+        catalogRequestVersion,
+        fetchProductCatalog,
+    ])
+
+    React.useEffect(() => {
+        let isCancelled = false
+
+        const preloadStructuredData = async () => {
+            try {
+                const { products: normalizedProducts } =
+                    await fetchProductCatalog()
+
+                if (isCancelled) return
+
+                setStructuredDataState((prevState) => {
+                    if (prevState.hasLoaded) {
+                        return prevState
+                    }
+
+                    return {
+                        products: normalizedProducts,
+                        hasLoaded: true,
+                    }
+                })
+            } catch (error) {
+                console.error(
+                    'Error preloading products for structured data:',
+                    error
+                )
+            }
+        }
+
+        preloadStructuredData()
+
+        return () => {
+            isCancelled = true
+        }
+    }, [fetchProductCatalog])
 
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
@@ -404,11 +471,20 @@ export default function App() {
         window.history.replaceState(null, '', window.location.pathname)
     }
 
-    const structuredDataProducts = React.useMemo(
-        () =>
-            appState.hasLoadedProducts ? appState.products : [],
-        [appState.hasLoadedProducts, appState.products]
-    )
+    const structuredDataProducts = React.useMemo(() => {
+        if (appState.hasLoadedProducts) {
+            return appState.products
+        }
+
+        return structuredDataState.hasLoaded
+            ? structuredDataState.products
+            : []
+    }, [
+        appState.hasLoadedProducts,
+        appState.products,
+        structuredDataState.hasLoaded,
+        structuredDataState.products,
+    ])
 
     const filteredProducts =
         appState.selectedCategory === 'all'
