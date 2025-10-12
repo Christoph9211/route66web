@@ -92,11 +92,80 @@ export default function App() {
         selectedCategory: 'all',
         products: [],
         categories: [],
-        loading: true,
+        loading: false,
+        shouldLoadProducts: false,
+        hasLoadedProducts: false,
+        catalogRequestVersion: 0,
+        loadError: null,
     })
 
+    const requestProductCatalog = React.useCallback(
+        (options = {}) => {
+            const { forceRetry = false } = options
+
+            setAppState((prevState) => {
+                if (prevState.hasLoadedProducts) {
+                    if (prevState.shouldLoadProducts) {
+                        return prevState
+                    }
+
+                    return { ...prevState, shouldLoadProducts: true }
+                }
+
+                if (!prevState.shouldLoadProducts) {
+                    return {
+                        ...prevState,
+                        shouldLoadProducts: true,
+                        catalogRequestVersion:
+                            prevState.catalogRequestVersion + 1,
+                        loadError: null,
+                    }
+                }
+
+                if (forceRetry || prevState.loadError) {
+                    return {
+                        ...prevState,
+                        catalogRequestVersion:
+                            prevState.catalogRequestVersion + 1,
+                        loadError: null,
+                    }
+                }
+
+                return prevState
+            })
+        },
+        []
+    )
+
     React.useEffect(() => {
+        if (typeof window === 'undefined') {
+            return
+        }
+
+        if (window.location.hash === '#products') {
+            requestProductCatalog()
+        }
+    }, [requestProductCatalog])
+
+    const { shouldLoadProducts, hasLoadedProducts, catalogRequestVersion } =
+        appState
+
+    React.useEffect(() => {
+        if (
+            !shouldLoadProducts ||
+            hasLoadedProducts ||
+            catalogRequestVersion === 0
+        ) {
+            return undefined
+        }
+
         let isCancelled = false
+
+        setAppState((prevState) =>
+            prevState.loading
+                ? prevState
+                : { ...prevState, loading: true }
+        )
 
         const toArray = (value) => {
             if (Array.isArray(value)) {
@@ -291,6 +360,8 @@ export default function App() {
                     categories: formattedCategories,
                     products: normalizedProducts,
                     loading: false,
+                    hasLoadedProducts: true,
+                    loadError: null,
                 }))
             } catch (error) {
                 console.error('Error loading products:', error)
@@ -298,6 +369,8 @@ export default function App() {
                 setAppState((prevState) => ({
                     ...prevState,
                     loading: false,
+                    loadError:
+                        'Unable to load the product catalog. Please try again.',
                 }))
             }
         }
@@ -307,14 +380,20 @@ export default function App() {
         return () => {
             isCancelled = true
         }
-    }, [])
+    }, [shouldLoadProducts, hasLoadedProducts, catalogRequestVersion])
 
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
-        setAppState((prevState) => ({
-            ...prevState,
-            isMobileMenuOpen: false,
-        }))
+
+        setAppState((prevState) =>
+            prevState.isMobileMenuOpen
+                ? { ...prevState, isMobileMenuOpen: false }
+                : prevState
+        )
+
+        if (targetId === 'products') {
+            requestProductCatalog()
+        }
         if (targetId) {
             document
                 .getElementById(targetId)
@@ -324,6 +403,12 @@ export default function App() {
         }
         window.history.replaceState(null, '', window.location.pathname)
     }
+
+    const structuredDataProducts = React.useMemo(
+        () =>
+            appState.hasLoadedProducts ? appState.products : [],
+        [appState.hasLoadedProducts, appState.products]
+    )
 
     const filteredProducts =
         appState.selectedCategory === 'all'
@@ -338,7 +423,7 @@ export default function App() {
             <React.Suspense fallback={null}>
                 <StructuredData
                     pageMode="listing"
-                    products={appState.products}
+                    products={structuredDataProducts}
                 />
             </React.Suspense>
             <AgeGate />
@@ -535,76 +620,124 @@ export default function App() {
                                 purity.
                             </p>
                         </div>
-                        <div
-                          className="mb-8 flex flex-wrap justify-center gap-2"
-                          role="group"
-                          aria-label="Filter products by category"
-                        >
-                          <button
-                            onClick={() =>
-                              setAppState((prevState) => ({
-                                ...prevState,
-                                selectedCategory: 'all',
-                              }))
-                            }
-                            aria-pressed={appState.selectedCategory === 'all'}
-                            aria-label="Show all products"
-                            className={`rounded-full px-4 py-2 text-sm font-medium ${
-                              appState.selectedCategory === 'all'
-                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
-                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
-                            }`}
-                          >
-                            All Products
-                          </button>
-                          {appState.categories.map((category) => (
-                            <button
-                              key={category.id}
-                              onClick={() =>
-                                setAppState((prevState) => ({
-                                  ...prevState,
-                                  selectedCategory: category.id,
-                                }))
-                              }
-                              aria-pressed={appState.selectedCategory === category.id}
-                              aria-label={`Filter by ${category.name}`}
-                              className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                appState.selectedCategory === category.id
-                                  ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
-                                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
-                              }`}
-                            >
-                              {category.name}
-                            </button>
-                          ))}
-                        </div>
-                        {appState.loading ? (
-                            <div className="col-span-full flex items-center justify-center py-12">
-                                <div className="leaf-loader">
-                                    <FontAwesomeIcon
-                                        icon={faCannabis}
-                                        className="text-5xl text-blue-600 dark:text-blue-500"
-                                        aria-hidden="true"
-                                    />
+                        {appState.shouldLoadProducts ? (
+                            <>
+                                <div
+                                    className="mb-8 flex flex-wrap justify-center gap-2"
+                                    role="group"
+                                    aria-label="Filter products by category"
+                                >
+                                    <button
+                                        onClick={() =>
+                                            setAppState((prevState) => ({
+                                                ...prevState,
+                                                selectedCategory: 'all',
+                                            }))
+                                        }
+                                        aria-pressed={
+                                            appState.selectedCategory === 'all'
+                                        }
+                                        aria-label="Show all products"
+                                        className={`rounded-full px-4 py-2 text-sm font-medium ${
+                                            appState.selectedCategory === 'all'
+                                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
+                                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                        }`}
+                                    >
+                                        All Products
+                                    </button>
+                                    {appState.categories.map((category) => (
+                                        <button
+                                            key={category.id}
+                                            onClick={() =>
+                                                setAppState((prevState) => ({
+                                                    ...prevState,
+                                                    selectedCategory: category.id,
+                                                }))
+                                            }
+                                            aria-pressed={
+                                                appState.selectedCategory ===
+                                                category.id
+                                            }
+                                            aria-label={`Filter by ${category.name}`}
+                                            className={`rounded-full px-4 py-2 text-sm font-medium ${
+                                                appState.selectedCategory ===
+                                                category.id
+                                                    ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
+                                                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                            }`}
+                                        >
+                                            {category.name}
+                                        </button>
+                                    ))}
                                 </div>
-                                <span className="sr-only">
-                                    Loading products...
-                                </span>
-                            </div>
-                        ) : filteredProducts.length > 0 ? (
-                            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                {filteredProducts.map((product) => (
-                                    <ProductCard
-                                        key={product.name + product.category}
-                                        product={product}
-                                    />
-                                ))}
-                            </div>
+                                {appState.loading ? (
+                                    <div className="col-span-full flex items-center justify-center py-12">
+                                        <div className="leaf-loader">
+                                            <FontAwesomeIcon
+                                                icon={faCannabis}
+                                                className="text-5xl text-blue-600 dark:text-blue-500"
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                        <span className="sr-only">
+                                            Loading products...
+                                        </span>
+                                    </div>
+                                ) : appState.loadError ? (
+                                    <div
+                                        role="alert"
+                                        aria-live="assertive"
+                                        className="col-span-full max-w-xl rounded-2xl border border-blue-100 bg-blue-50 p-8 text-center text-blue-900 shadow-sm dark:border-blue-900/40 dark:bg-blue-900/30 dark:text-blue-100"
+                                    >
+                                        <h3 className="text-lg font-semibold">We couldn&apos;t load the menu</h3>
+                                        <p className="mt-3 text-sm">
+                                            {appState.loadError}
+                                        </p>
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                requestProductCatalog({
+                                                    forceRetry: true,
+                                                })
+                                            }
+                                            className="mt-6 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-50 dark:bg-[hsl(244,100%,39%)] dark:hover:bg-[hsl(244,100%,33%)] dark:focus-visible:ring-offset-transparent"
+                                        >
+                                            Try again
+                                        </button>
+                                    </div>
+                                ) : filteredProducts.length > 0 ? (
+                                    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                                        {filteredProducts.map((product) => (
+                                            <ProductCard
+                                                key={product.name + product.category}
+                                                product={product}
+                                            />
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="col-span-full py-12 text-center">
+                                        <p className="text-gray-700 dark:text-white">
+                                            Products Coming Soon
+                                        </p>
+                                    </div>
+                                )}
+                            </>
                         ) : (
-                            <div className="col-span-full py-12 text-center">
-                                <p className="text-gray-700 dark:text-white">
-                                    Products Coming Soon
+                            <div className="mx-auto max-w-2xl rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 p-8 text-center shadow-lg dark:from-[hsl(244,100%,39%)] dark:to-[hsl(244,100%,33%)]">
+                                <p className="text-lg font-semibold text-white">
+                                    Ready to explore our latest THCa flower, edibles, and concentrates?
                                 </p>
+                                <p className="mt-2 text-sm text-blue-50">
+                                    Tap the button below when you&apos;re ready and we&apos;ll load the freshest menu straight from our shelves.
+                                </p>
+                                <button
+                                    type="button"
+                                    onClick={requestProductCatalog}
+                                    className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-600 dark:text-[hsl(244,100%,33%)]"
+                                >
+                                    View Products
+                                </button>
                             </div>
                         )}
                     </div>
