@@ -1032,7 +1032,7 @@ export default function App() {
                                         aria-hidden="true"
                                     />
                                 </div>
-                                <span className="text-xl font-bold text-white">
+                                <span className="text-xl font-bold text-black dark:text-white">
                                     {businessInfo.name}
                                 </span>
                             </div>
