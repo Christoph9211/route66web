@@ -1,5 +1,77 @@
 [
   {
+    "name": "Bat Breath",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 19,
+    "banner": "New"
+  },
+  {
+    "name": "Blue Sunset Sherbert",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 15,
+      "1/4": 30,
+      "1/2": 60,
+      "ounce": 115
+    },
+    "thca_percentage": 19,
+    "banner": "New"
+  },
+  {
+    "name": "Cake Face",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 27,
+    "banner": "New"
+  },
+  {
+    "name": "Candy Punch",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 18,
+    "banner": "New"
+  },
+  {
     "name": "Cherry Punch Snowcaps",
     "category": "Flower",
     "size_options": [
@@ -18,6 +90,71 @@
     "banner": "New"
   },
   {
+    "name": "Citrus Fuel",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 20.8,
+    "banner": "New"
+  },
+  {
+    "name": "Columbian Gold",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 18,
+    "banner": "New"
+  },
+  {
+    "name": "Cosmic Runtz",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 22,
+    "banner": "New"
+  },
+  {
+    "name": "Cotton Candy Lemonade 25mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 8
+    },
+    "banner": "New"
+  },
+  {
     "name": "Cotton Candy Lemonade Shots 100mg",
     "category": "Edibles",
     "size_options": [
@@ -25,17 +162,6 @@
     ],
     "prices": {
       "2oz Bottle": 9.99
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Euphoria - Gummies Grape 250mg",
-    "category": "Edibles",
-    "size_options": [
-      "10ct"
-    ],
-    "prices": {
-      "10ct": 25
     },
     "banner": "New"
   },
@@ -58,7 +184,43 @@
     "banner": "New"
   },
   {
-    "name": "Girls Scout Cookie Snowcaps",
+    "name": "Frosted Frappe",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 22.26,
+    "banner": "New"
+  },
+  {
+    "name": "Green Goddess",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 18,
+    "banner": "New"
+  },
+  {
+    "name": "GSC Snowcaps",
     "category": "Flower",
     "size_options": [
       "1/8",
@@ -76,20 +238,25 @@
     "banner": "New"
   },
   {
-    "name": "Ice Cream Cake Diamonds",
-    "category": "Diamonds & Sauce",
+    "name": "Ice Cream Cake",
+    "category": "Flower",
     "size_options": [
-      "1 gram",
-      "3 grams"
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
     ],
     "prices": {
-      "1 gram": 15,
-      "3 grams": 40
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
     },
+    "thca_percentage": 22,
     "banner": "New"
   },
   {
-    "name": "Mango Mentality",
+    "name": "Italian Ice",
     "category": "Flower",
     "size_options": [
       "1/8",
@@ -103,6 +270,162 @@
       "1/2": 80,
       "ounce": 150
     },
+    "thca_percentage": 28,
+    "banner": "New"
+  },
+  {
+    "name": "Jolly Green Giant",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 24,
+    "banner": "New"
+  },
+  {
+    "name": "L.A. Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 20,
+    "banner": "New"
+  },
+  {
+    "name": "Lava Freeze",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 23,
+    "banner": "New"
+  },
+  {
+    "name": "Lemon Skunk",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "thca_percentage": 19,
+    "banner": "New"
+  },
+  {
+    "name": "Mac 1",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 21,
+    "banner": "New"
+  },
+  {
+    "name": "Mimosa",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "thca_percentage": 19,
+    "banner": "New"
+  },
+  {
+    "name": "Moon Water Soda - Fizzy Punch 30mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 9
+    },
+    "banner": "New"
+  },
+  {
+    "name": "OG Chem",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "thca_percentage": 20,
+    "banner": "New"
+  },
+  {
+    "name": "Papaya Punch",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 25,
     "banner": "New"
   },
   {
@@ -116,6 +439,53 @@
       "1 gram": 10,
       "3 grams": 25
     },
+    "banner": "New"
+  },
+  {
+    "name": "Purple Punch",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 20,
+    "banner": "New"
+  },
+  {
+    "name": "Salted Caramel Cold Brew 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 8
+    },
+    "banner": "New"
+  },
+  {
+    "name": "San Fernando OG",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "thca_percentage": 20,
     "banner": "New"
   },
   {
@@ -136,6 +506,42 @@
     "banner": "New"
   },
   {
+    "name": "Super Lavender Butter",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "thca_percentage": 17.35,
+    "banner": "New"
+  },
+  {
+    "name": "Tropical Cherry",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "thca_percentage": 21,
+    "banner": "New"
+  },
+  {
     "name": "Tropical Punch Shots 100mg",
     "category": "Edibles",
     "size_options": [
@@ -147,16 +553,39 @@
     "banner": "New"
   },
   {
-    "name": "Wedding Cake Crumble",
-    "category": "Concentrates",
+    "name": "UK Cheese",
+    "category": "Flower",
     "size_options": [
-      "1 gram",
-      "3 grams"
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
     ],
     "prices": {
-      "1 gram": 10,
-      "3 grams": 25
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
     },
+    "thca_percentage": 20,
+    "banner": "New"
+  },
+  {
+    "name": "Watermelon Skittlez",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 18,
+      "1/4": 32.5,
+      "1/2": 65,
+      "ounce": 125
+    },
+    "thca_percentage": 24,
     "banner": "New"
   },
   {
@@ -201,6 +630,16 @@
     "thca_percentage": 97.1
   },
   {
+    "name": "Euphoria - Gummies Grape 250mg",
+    "category": "Edibles",
+    "size_options": [
+      "10ct"
+    ],
+    "prices": {
+      "10ct": 25
+    }
+  },
+  {
     "name": "Flower Preroll",
     "category": "Other",
     "size_options": [
@@ -230,6 +669,18 @@
     "thca_percentage": 97.1
   },
   {
+    "name": "Ice Cream Cake Diamonds",
+    "category": "Diamonds & Sauce",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 15,
+      "3 grams": 40
+    }
+  },
+  {
     "name": "Infused Prerolls",
     "category": "Other",
     "size_options": [
@@ -243,6 +694,22 @@
       "Benson Arbor Tropic Lemon Hash Infused": 20,
       "Benson Arbor Sweets Hash Infused": 20,
       "Benson Arbor South Fork Kush Hash Infused": 20
+    }
+  },
+  {
+    "name": "Mango Mentality",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
     }
   },
   {
@@ -362,6 +829,18 @@
       "Sunset Sherbet": 30
     },
     "availability": {}
+  },
+  {
+    "name": "Wedding Cake Crumble",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    }
   },
   {
     "name": "Alcapulco Gold",

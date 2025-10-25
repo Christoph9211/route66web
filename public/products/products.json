@@ -72,24 +72,6 @@
     "banner": "New"
   },
   {
-    "name": "Cherry Punch Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 50.9,
-    "banner": "New"
-  },
-  {
     "name": "Citrus Fuel",
     "category": "Flower",
     "size_options": [
@@ -166,24 +148,6 @@
     "banner": "New"
   },
   {
-    "name": "Forbidden Runtz",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 29.8,
-    "banner": "New"
-  },
-  {
     "name": "Frosted Frappe",
     "category": "Flower",
     "size_options": [
@@ -238,24 +202,6 @@
     "banner": "New"
   },
   {
-    "name": "Ice Cream Cake",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "thca_percentage": 22,
-    "banner": "New"
-  },
-  {
     "name": "Italian Ice",
     "category": "Flower",
     "size_options": [
@@ -292,24 +238,6 @@
     "banner": "New"
   },
   {
-    "name": "L.A. Kush",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 20,
-    "banner": "New"
-  },
-  {
     "name": "Lava Freeze",
     "category": "Flower",
     "size_options": [
@@ -325,24 +253,6 @@
       "ounce": 200
     },
     "thca_percentage": 23,
-    "banner": "New"
-  },
-  {
-    "name": "Lemon Skunk",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "thca_percentage": 19,
     "banner": "New"
   },
   {
@@ -411,24 +321,6 @@
     "banner": "New"
   },
   {
-    "name": "Papaya Punch",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 25,
-    "banner": "New"
-  },
-  {
     "name": "Pineapple Express Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -471,24 +363,6 @@
     "banner": "New"
   },
   {
-    "name": "San Fernando OG",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "thca_percentage": 20,
-    "banner": "New"
-  },
-  {
     "name": "Sour Tangie",
     "category": "Flower",
     "size_options": [
@@ -524,24 +398,6 @@
     "banner": "New"
   },
   {
-    "name": "Tropical Cherry",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 21,
-    "banner": "New"
-  },
-  {
     "name": "Tropical Punch Shots 100mg",
     "category": "Edibles",
     "size_options": [
@@ -568,24 +424,6 @@
       "ounce": 125
     },
     "thca_percentage": 20,
-    "banner": "New"
-  },
-  {
-    "name": "Watermelon Skittlez",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "thca_percentage": 24,
     "banner": "New"
   },
   {
@@ -669,18 +507,6 @@
     "thca_percentage": 97.1
   },
   {
-    "name": "Ice Cream Cake Diamonds",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 15,
-      "3 grams": 40
-    }
-  },
-  {
     "name": "Infused Prerolls",
     "category": "Other",
     "size_options": [
@@ -694,22 +520,6 @@
       "Benson Arbor Tropic Lemon Hash Infused": 20,
       "Benson Arbor Sweets Hash Infused": 20,
       "Benson Arbor South Fork Kush Hash Infused": 20
-    }
-  },
-  {
-    "name": "Mango Mentality",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
     }
   },
   {
@@ -793,23 +603,6 @@
     }
   },
   {
-    "name": "Tropical Cherry Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 64.54
-  },
-  {
     "name": "Two Gram Vapes",
     "category": "Vapes & Carts",
     "size_options": [
@@ -843,36 +636,6 @@
     }
   },
   {
-    "name": "Alcapulco Gold",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 28,
-      "1/4": 48,
-      "1/2": 90,
-      "ounce": 180
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Amnesia Haze Diamonds",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 15,
-      "3 grams": 40
-    },
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Blue Dream Living Soil",
     "category": "Flower",
     "size_options": [
@@ -904,40 +667,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Candy Cane",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Death Star",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Diamond Badder",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -947,142 +676,6 @@
     "prices": {
       "1 gram": 10,
       "3 grams": 25
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Dosido",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Gelonade",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Green Crack",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Green Crack Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Magic Night",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Orange Creamsicle Living Soil",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Point Break",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Skywalker",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
     },
     "banner": "Out of Stock"
   },
@@ -1121,23 +714,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Star Child",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Super Sour Diesel",
     "category": "Concentrates",
     "size_options": [
@@ -1167,23 +743,6 @@
       "ounce": 200
     },
     "thca_percentage": 60.87,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Zkittles",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
     "banner": "Out of Stock"
   }
 ]
