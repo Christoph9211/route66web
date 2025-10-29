@@ -14,12 +14,7 @@
       "1/2": 80,
       "ounce": 150
     },
-    "koronaIds": {
-      "1/8": 1299,
-      "1/4": 1300,
-      "1/2": 1301,
-      "ounce": 1302
-    },
+    "koronaIds": {},
     "banner": "New"
   },
   {
@@ -61,12 +56,7 @@
       "1/2": 80,
       "ounce": 150
     },
-    "koronaIds": {
-      "1/8": 1303,
-      "1/4": 1304,
-      "1/2": 1305,
-      "ounce": 1306
-    },
+    "koronaIds": {},
     "banner": "New"
   },
   {
@@ -250,9 +240,7 @@
     "prices": {
       "2.5 grams": 35
     },
-    "koronaIds": {
-      "2.5 grams": 1307
-    },
+    "koronaIds": {},
     "banner": "New"
   },
   {
@@ -432,9 +420,7 @@
     "prices": {
       "1 gram": 35
     },
-    "koronaIds": {
-      "1 gram": 1308
-    },
+    "koronaIds": {},
     "banner": "New"
   },
   {
@@ -490,12 +476,7 @@
       "1/2": 80,
       "ounce": 150
     },
-    "koronaIds": {
-      "1/8": 1309,
-      "1/4": 1310,
-      "1/2": 1311,
-      "ounce": 1312
-    },
+    "koronaIds": {},
     "banner": "New"
   },
   {
@@ -577,13 +558,7 @@
       "trainwreck (hybrid)": 1286,
       "tropical cherries (sativa)": 1287,
       "wedding cake (indica)": 1288,
-      "white fire zkittles (hybrid)": 1289,
-      "cranberry haze": 1313,
-      "exotic kush": 1314,
-      "mango tango": 1315,
-      "avatar og": 1316,
-      "baked alien": 1317,
-      "blue walker": 1318
+      "white fire zkittles (hybrid)": 1289
     },
     "banner": "New"
   },
@@ -630,16 +605,7 @@
       "sour diesel live resin (hybrid)": 1292,
       "sour pebbles (sativa)": 1293,
       "cherry cookies (indica)": 1294,
-      "lemon cake live resin (sativa)": 1295,
-      "sour pebbles": 1319,
-      "unicorn berry": 1320,
-      "fruit spirit": 1321,
-      "blazed - firework frenzy": 1322,
-      "blazed - purple stardust": 1323,
-      "blazed - silly sunset": 1324,
-      "blazed - unicorn magic": 1325,
-      "gelato": 1326,
-      "strawberry cough": 1327
+      "lemon cake live resin (sativa)": 1295
     },
     "banner": "New",
     "availability": {}
@@ -806,13 +772,7 @@
       "green crack": 1198,
       "bruce banner": 1296,
       "alaskan thunder f***": 1297,
-      "northern lights": 1298,
-      "blueberry muffin": 1328,
-      "peaches & cream": 1329,
-      "strawberry cheesecake": 1330,
-      "space cake": 1331,
-      "strawberry milk": 1332,
-      "watermelon og": 1333
+      "northern lights": 1298
     },
     "banner": "New",
     "availability": {}
