@@ -15,13 +15,7 @@
       "ounce": 150
     },
     "thca_percentage": 19,
-    "banner": "New",
-    "koronaIds": {
-      "1/2": 1022,
-      "1/4": 1021,
-      "ounce": 1023,
-      "1/8": 1020
-    }
+    "banner": "New"
   },
   {
     "name": "Blue Sunset Sherbert",
@@ -39,13 +33,7 @@
       "ounce": 115
     },
     "thca_percentage": 19,
-    "banner": "New",
-    "koronaIds": {
-      "1/8": 1024,
-      "1/4": 1025,
-      "ounce": 1027,
-      "1/2": 1026
-    }
+    "banner": "New"
   },
   {
     "name": "Cake Face",
@@ -63,13 +51,7 @@
       "ounce": 200
     },
     "thca_percentage": 27,
-    "banner": "New",
-    "koronaIds": {
-      "1/2": 1030,
-      "ounce": 1031,
-      "1/4": 1029,
-      "1/8": 1028
-    }
+    "banner": "New"
   },
   {
     "name": "Candy Punch",
@@ -87,13 +69,7 @@
       "ounce": 150
     },
     "thca_percentage": 18,
-    "banner": "New",
-    "koronaIds": {
-      "1/2": 1034,
-      "1/4": 1033,
-      "1/8": 1032,
-      "ounce": 1035
-    }
+    "banner": "New"
   },
   {
     "name": "Citrus Fuel",
@@ -111,13 +87,7 @@
       "ounce": 200
     },
     "thca_percentage": 20.8,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1041,
-      "ounce": 1043,
-      "1/8": 1040,
-      "1/2": 1042
-    }
+    "banner": "New"
   },
   {
     "name": "Columbian Gold",
@@ -135,13 +105,7 @@
       "ounce": 150
     },
     "thca_percentage": 18,
-    "banner": "New",
-    "koronaIds": {
-      "1/2": 1046,
-      "ounce": 1047,
-      "1/8": 1044,
-      "1/4": 1045
-    }
+    "banner": "New"
   },
   {
     "name": "Cosmic Runtz",
@@ -159,13 +123,7 @@
       "ounce": 150
     },
     "thca_percentage": 22,
-    "banner": "New",
-    "koronaIds": {
-      "ounce": 1051,
-      "1/4": 1049,
-      "1/8": 1048,
-      "1/2": 1050
-    }
+    "banner": "New"
   },
   {
     "name": "Cotton Candy Lemonade 25mg",
@@ -176,10 +134,7 @@
     "prices": {
       "12 oz can": 8
     },
-    "banner": "New",
-    "koronaIds": {
-      "12 oz can": 1052
-    }
+    "banner": "New"
   },
   {
     "name": "Cotton Candy Lemonade Shots 100mg",
@@ -190,10 +145,7 @@
     "prices": {
       "2oz Bottle": 9.99
     },
-    "banner": "New",
-    "koronaIds": {
-      "2oz bottle": 1053
-    }
+    "banner": "New"
   },
   {
     "name": "Frosted Frappe",
@@ -211,13 +163,7 @@
       "ounce": 200
     },
     "thca_percentage": 22.26,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1059,
-      "ounce": 1061,
-      "1/2": 1060,
-      "1/8": 1058
-    }
+    "banner": "New"
   },
   {
     "name": "Green Goddess",
@@ -235,13 +181,7 @@
       "ounce": 200
     },
     "thca_percentage": 18,
-    "banner": "New",
-    "koronaIds": {
-      "1/2": 1064,
-      "1/8": 1062,
-      "1/4": 1063,
-      "ounce": 1065
-    }
+    "banner": "New"
   },
   {
     "name": "GSC Snowcaps",
@@ -259,13 +199,7 @@
       "ounce": 200
     },
     "thca_percentage": 63.09,
-    "banner": "New",
-    "koronaIds": {
-      "1/2": 1068,
-      "1/4": 1067,
-      "1/8": 1066,
-      "ounce": 1069
-    }
+    "banner": "New"
   },
   {
     "name": "Italian Ice",
@@ -283,13 +217,7 @@
       "ounce": 150
     },
     "thca_percentage": 28,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1075,
-      "1/2": 1076,
-      "1/8": 1074,
-      "ounce": 1077
-    }
+    "banner": "New"
   },
   {
     "name": "Jolly Green Giant",
@@ -307,13 +235,7 @@
       "ounce": 150
     },
     "thca_percentage": 24,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1079,
-      "1/8": 1078,
-      "ounce": 1081,
-      "1/2": 1080
-    }
+    "banner": "New"
   },
   {
     "name": "Lava Freeze",
@@ -331,13 +253,7 @@
       "ounce": 200
     },
     "thca_percentage": 23,
-    "banner": "New",
-    "koronaIds": {
-      "ounce": 1089,
-      "1/8": 1086,
-      "1/2": 1088,
-      "1/4": 1087
-    }
+    "banner": "New"
   },
   {
     "name": "Mac 1",
@@ -355,13 +271,7 @@
       "ounce": 150
     },
     "thca_percentage": 21,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1095,
-      "1/2": 1096,
-      "ounce": 1097,
-      "1/8": 1094
-    }
+    "banner": "New"
   },
   {
     "name": "Mimosa",
@@ -379,13 +289,7 @@
       "ounce": 125
     },
     "thca_percentage": 19,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1099,
-      "ounce": 1101,
-      "1/2": 1100,
-      "1/8": 1098
-    }
+    "banner": "New"
   },
   {
     "name": "Moon Water Soda - Fizzy Punch 30mg",
@@ -396,10 +300,7 @@
     "prices": {
       "12 oz can": 9
     },
-    "banner": "New",
-    "koronaIds": {
-      "12 oz can": 1102
-    }
+    "banner": "New"
   },
   {
     "name": "OG Chem",
@@ -417,13 +318,7 @@
       "ounce": 125
     },
     "thca_percentage": 20,
-    "banner": "New",
-    "koronaIds": {
-      "1/8": 1103,
-      "1/4": 1104,
-      "1/2": 1105,
-      "ounce": 1106
-    }
+    "banner": "New"
   },
   {
     "name": "Pineapple Express Crumble",
@@ -436,11 +331,7 @@
       "1 gram": 10,
       "3 grams": 25
     },
-    "banner": "New",
-    "koronaIds": {
-      "3 grams": 1112,
-      "1 gram": 1111
-    }
+    "banner": "New"
   },
   {
     "name": "Purple Punch",
@@ -458,13 +349,7 @@
       "ounce": 150
     },
     "thca_percentage": 20,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1114,
-      "1/2": 1115,
-      "ounce": 1116,
-      "1/8": 1113
-    }
+    "banner": "New"
   },
   {
     "name": "Salted Caramel Cold Brew 25 mg",
@@ -475,10 +360,7 @@
     "prices": {
       "12 oz can": 8
     },
-    "banner": "New",
-    "koronaIds": {
-      "12 oz can": 1117
-    }
+    "banner": "New"
   },
   {
     "name": "Sour Tangie",
@@ -495,13 +377,7 @@
       "1/2": 80,
       "ounce": 150
     },
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1123,
-      "ounce": 1125,
-      "1/2": 1124,
-      "1/8": 1122
-    }
+    "banner": "New"
   },
   {
     "name": "Super Lavender Butter",
@@ -519,13 +395,7 @@
       "ounce": 200
     },
     "thca_percentage": 17.35,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1127,
-      "1/2": 1128,
-      "1/8": 1126,
-      "ounce": 1129
-    }
+    "banner": "New"
   },
   {
     "name": "Tropical Punch Shots 100mg",
@@ -536,10 +406,7 @@
     "prices": {
       "2oz Bottle": 9.99
     },
-    "banner": "New",
-    "koronaIds": {
-      "2oz bottle": 1134
-    }
+    "banner": "New"
   },
   {
     "name": "UK Cheese",
@@ -557,13 +424,7 @@
       "ounce": 125
     },
     "thca_percentage": 20,
-    "banner": "New",
-    "koronaIds": {
-      "1/8": 1135,
-      "1/4": 1136,
-      "1/2": 1137,
-      "ounce": 1138
-    }
+    "banner": "New"
   },
   {
     "name": "Blueberry Muffin Diamonds",
@@ -575,10 +436,6 @@
     "prices": {
       "1 gram": 15,
       "3 grams": 40
-    },
-    "koronaIds": {
-      "3 grams": 1144,
-      "1 gram": 1143
     }
   },
   {
@@ -595,12 +452,6 @@
       "1/4": 40,
       "1/2": 80,
       "Ounce": 150
-    },
-    "koronaIds": {
-      "ounce": 1148,
-      "1/2": 1147,
-      "1/4": 1146,
-      "1/8": 1145
     }
   },
   {
@@ -614,11 +465,7 @@
       "1 gram": 10,
       "3 grams": 30
     },
-    "thca_percentage": 97.1,
-    "koronaIds": {
-      "3 grams": 1150,
-      "1 gram": 1149
-    }
+    "thca_percentage": 97.1
   },
   {
     "name": "Euphoria - Gummies Grape 250mg",
@@ -628,9 +475,6 @@
     ],
     "prices": {
       "10ct": 25
-    },
-    "koronaIds": {
-      "10ct": 1151
     }
   },
   {
@@ -647,12 +491,6 @@
       "Chem De La Chem": 5,
       "Grape Cream Cake": 5,
       "Raspberry Kush": 5
-    },
-    "koronaIds": {
-      "tropicana cherry": 1152,
-      "chem de la chem": 1153,
-      "raspberry kush": 1155,
-      "grape cream cake": 1154
     }
   },
   {
@@ -666,27 +504,7 @@
       "1 gram": 10,
       "3 grams": 25
     },
-    "thca_percentage": 97.1,
-    "koronaIds": {
-      "3 grams": 1157,
-      "1 gram": 1156
-    }
-  },
-  {
-    "name": "Ice Cream Cake Diamonds",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 15,
-      "3 grams": 40
-    },
-    "koronaIds": {
-      "3 grams": 1159,
-      "1 gram": 1158
-    }
+    "thca_percentage": 97.1
   },
   {
     "name": "Infused Prerolls",
@@ -702,12 +520,6 @@
       "Benson Arbor Tropic Lemon Hash Infused": 20,
       "Benson Arbor Sweets Hash Infused": 20,
       "Benson Arbor South Fork Kush Hash Infused": 20
-    },
-    "koronaIds": {
-      "benson arbor tropic lemon hash infused": 1161,
-      "benson arbor sweets hash infused": 1162,
-      "benson arbor blueberry muffin hash infused": 1160,
-      "benson arbor south fork kush hash infused": 1163
     }
   },
   {
@@ -720,10 +532,6 @@
     "prices": {
       "4ct": 10,
       "2ct": 6
-    },
-    "koronaIds": {
-      "2ct": 1169,
-      "4ct": 1168
     }
   },
   {
@@ -759,21 +567,6 @@
       "Tropical Cherries (Sativa)": 16,
       "Wedding Cake (Indica)": 18,
       "White Fire Zkittles (Hybrid)": 16
-    },
-    "koronaIds": {
-      "blue walker (sativa)": 1277,
-      "bomb pop (indica)": 1278,
-      "cranberry haze (sativa)": 1279,
-      "cherry cookies (indica)": 1280,
-      "cherry pie (sativa)": 1281,
-      "gelato (hybrid)": 1282,
-      "lemon cake (hybrid)": 1283,
-      "mango tango (indica)": 1284,
-      "purple haze (sativa)": 1285,
-      "trainwreck (hybrid)": 1286,
-      "tropical cherries (sativa)": 1287,
-      "wedding cake (indica)": 1288,
-      "white fire zkittles (hybrid)": 1289
     }
   },
   {
@@ -795,15 +588,7 @@
       "Cherry Cookies (Indica)": 30,
       "Lemon Cake Live Resin (Sativa)": 20
     },
-    "availability": {},
-    "koronaIds": {
-      "blueberry muffin live resin (indica)": 1290,
-      "chocolate diesel live resin (sativa)": 1291,
-      "sour diesel live resin (hybrid)": 1292,
-      "sour pebbles (sativa)": 1293,
-      "cherry cookies (indica)": 1294,
-      "lemon cake live resin (sativa)": 1295
-    }
+    "availability": {}
   },
   {
     "name": "Saucy Diamonds",
@@ -815,10 +600,6 @@
     "prices": {
       "1 gram": 15,
       "3 grams": 40
-    },
-    "koronaIds": {
-      "1 gram": 1189,
-      "3 grams": 1190
     }
   },
   {
@@ -840,15 +621,7 @@
       "Grape Ape": 30,
       "Sunset Sherbet": 30
     },
-    "availability": {},
-    "koronaIds": {
-      "chem dawg": 1196,
-      "sunset sherbet": 1200,
-      "bacio-gelato": 1195,
-      "cherry cookies": 1197,
-      "grape ape": 1199,
-      "green crack": 1198
-    }
+    "availability": {}
   },
   {
     "name": "Wedding Cake Crumble",
@@ -860,11 +633,24 @@
     "prices": {
       "1 gram": 10,
       "3 grams": 25
-    },
-    "koronaIds": {
-      "1 gram": 1201,
-      "3 grams": 1202
     }
+  },
+  {
+    "name": "Blue Dream Living Soil",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 25,
+      "1/4": 50,
+      "1/2": 100,
+      "ounce": 200
+    },
+    "banner": "Out of Stock"
   },
   {
     "name": "Blueberry Diesel",
@@ -878,11 +664,7 @@
       "3 grams": 25
     },
     "thca_percentage": 97.7,
-    "banner": "Out of Stock",
-    "koronaIds": {
-      "3 grams": 1214,
-      "1 gram": 1213
-    }
+    "banner": "Out of Stock"
   },
   {
     "name": "Diamond Badder",
@@ -895,11 +677,7 @@
       "1 gram": 10,
       "3 grams": 25
     },
-    "banner": "Out of Stock",
-    "koronaIds": {
-      "3 grams": 1224,
-      "1 gram": 1223
-    }
+    "banner": "Out of Stock"
   },
   {
     "name": "Super Sour Diesel",
@@ -913,11 +691,7 @@
       "3 grams": 25
     },
     "thca_percentage": 96.1,
-    "banner": "Out of Stock",
-    "koronaIds": {
-      "1 gram": 1269,
-      "3 grams": 1270
-    }
+    "banner": "Out of Stock"
   },
   {
     "name": "White Widow Snowcaps",
@@ -935,12 +709,6 @@
       "ounce": 200
     },
     "thca_percentage": 60.87,
-    "banner": "Out of Stock",
-    "koronaIds": {
-      "1/4": 1272,
-      "ounce": 1274,
-      "1/2": 1273,
-      "1/8": 1271
-    }
+    "banner": "Out of Stock"
   }
 ]
