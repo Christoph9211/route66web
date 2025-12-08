@@ -508,7 +508,7 @@ export default function App() {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between">
                         <div className="flex items-center">
-                            <div className="flex flex-shrink-0 items-center">
+                            <div className="flex shrink-0 items-center">
                                 {/* Logo */}
                                 <div className="mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-green-500">
                                     <FontAwesomeIcon
@@ -627,9 +627,9 @@ export default function App() {
             </nav>
             <section>
                 {/* Hero Section */}
-                <div className="relative overflow-hidden bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+                <div className="relative overflow-hidden bg-linear-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                     <div className="mx-auto max-w-7xl">
-                        <div className="relative z-10 bg-gradient-to-r from-white via-gray-50 to-gray-100 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+                        <div className="relative z-10 bg-linear-to-r from-white via-gray-50 to-gray-100 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                             <div className="pt-10 sm:pt-16 lg:overflow-hidden lg:pb-14 lg:pt-8">
                                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                                     <div className="lg:grid lg:grid-cols-2 lg:gap-8">
@@ -653,8 +653,8 @@ export default function App() {
                                                 </p>
                                                 <div className="mt-10 flex justify-center space-x-4 sm:mt-12 lg:justify-start">
                                                     <div className="flex gap-4"> 
-                                                    <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-[5.5rem] md:min-h-[6rem]"> Explore Products </a>
-                                                    <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-[5.5rem] md:min-h-[6rem]"> Learn more about us </a> 
+                                                    <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24"> Explore Products </a>
+                                                    <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24"> Learn more about us </a> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -797,7 +797,7 @@ export default function App() {
                                 )}
                             </>
                         ) : (
-                            <div className="mx-auto max-w-2xl rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 p-8 text-center shadow-lg dark:from-[hsl(244,100%,39%)] dark:to-[hsl(244,100%,33%)]">
+                            <div className="mx-auto max-w-2xl rounded-2xl bg-linear-to-r from-blue-600 to-blue-500 p-8 text-center shadow-lg dark:from-[hsl(244,100%,39%)] dark:to-[hsl(244,100%,33%)]">
                                 <p className="text-lg font-semibold text-white">
                                     Ready to explore our latest THCa flower, edibles, and concentrates?
                                 </p>
@@ -831,7 +831,7 @@ export default function App() {
                                 <div className="relative lg:col-start-2 lg:row-start-1">
                                     <div className="relative mx-auto text-base lg:max-w-none">
                                         <div className="aspect-w-2 aspect-h-1 overflow-hidden rounded-lg shadow-xl">
-                                            <div className="flex h-full w-full items-center justify-center bg-gradient-to-r from-green-800 to-green-600 p-6">
+                                            <div className="flex h-full w-full items-center justify-center bg-linear-to-r from-green-800 to-green-600 p-6">
                                                 <div className="text-center text-white">
                                                     <FontAwesomeIcon
                                                         icon={faLeaf}
@@ -1019,7 +1019,7 @@ export default function App() {
             {/* Footer */}
             <footer
                 role="contentinfo"
-                className="relative overflow-hidden bg-gradient-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+                className="relative overflow-hidden bg-linear-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
             >
                 <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
                     <div className="xl:grid xl:grid-cols-3 xl:gap-8">
