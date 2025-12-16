@@ -526,18 +526,6 @@
     "name": "One Gram Carts",
     "category": "Vapes & Carts",
     "size_options": [
-      "Bomb Pop (Indica)",
-      "Cranberry Haze (Sativa)",
-      "Cherry Cookies (Indica)",
-      "Cherry Pie (Sativa)",
-      "Gelato (Hybrid)",
-      "Lemon Cake (Hybrid)",
-      "Mango Tango (Indica)",
-      "Purple Haze (Sativa)",
-      "Trainwreck (Hybrid)",
-      "Tropical Cherries (Sativa)",
-      "Wedding Cake (Indica)",
-      "White Fire Zkittles (Hybrid)",
       "Cranberry Haze",
       "Exotic Kush",
       "Mango Tango",
@@ -546,18 +534,6 @@
       "Blue Walker"
     ],
     "prices": {
-      "Bomb Pop (Indica)": 16,
-      "Cranberry Haze (Sativa)": 24,
-      "Cherry Cookies (Indica)": 16,
-      "Cherry Pie (Sativa)": 16,
-      "Gelato (Hybrid)": 18,
-      "Lemon Cake (Hybrid)": 18,
-      "Mango Tango (Indica)": 24,
-      "Purple Haze (Sativa)": 16,
-      "Trainwreck (Hybrid)": 18,
-      "Tropical Cherries (Sativa)": 16,
-      "Wedding Cake (Indica)": 18,
-      "White Fire Zkittles (Hybrid)": 16,
       "Cranberry Haze": 18,
       "Exotic Kush": 18,
       "Mango Tango": 18,
@@ -566,18 +542,6 @@
       "Blue Walker": 18
     },
     "koronaIds": {
-      "bomb pop (indica)": 1278,
-      "cranberry haze (sativa)": 1279,
-      "cherry cookies (indica)": 1280,
-      "cherry pie (sativa)": 1281,
-      "gelato (hybrid)": 1282,
-      "lemon cake (hybrid)": 1283,
-      "mango tango (indica)": 1284,
-      "purple haze (sativa)": 1285,
-      "trainwreck (hybrid)": 1286,
-      "tropical cherries (sativa)": 1287,
-      "wedding cake (indica)": 1288,
-      "white fire zkittles (hybrid)": 1289,
       "cranberry haze": 1313,
       "exotic kush": 1314,
       "mango tango": 1315,
@@ -591,12 +555,6 @@
     "name": "One Gram Disposable",
     "category": "Vapes & Carts",
     "size_options": [
-      "Blueberry Muffin Live Resin (Indica)",
-      "Chocolate Diesel Live Resin (Sativa)",
-      "Sour Diesel Live Resin (Hybrid)",
-      "Sour Pebbles (Sativa)",
-      "Cherry Cookies (Indica)",
-      "Lemon Cake Live Resin (Sativa)",
       "Sour Pebbles",
       "Unicorn Berry",
       "Fruit Spirit",
@@ -608,12 +566,6 @@
       "Strawberry Cough"
     ],
     "prices": {
-      "Blueberry Muffin Live Resin (Indica)": 20,
-      "Chocolate Diesel Live Resin (Sativa)": 20,
-      "Sour Diesel Live Resin (Hybrid)": 35,
-      "Sour Pebbles (Sativa)": 30,
-      "Cherry Cookies (Indica)": 30,
-      "Lemon Cake Live Resin (Sativa)": 20,
       "Sour Pebbles": 25.99,
       "Unicorn Berry": 25.99,
       "Fruit Spirit": 25.99,
@@ -625,12 +577,6 @@
       "Strawberry Cough": 35
     },
     "koronaIds": {
-      "blueberry muffin live resin (indica)": 1290,
-      "chocolate diesel live resin (sativa)": 1291,
-      "sour diesel live resin (hybrid)": 1292,
-      "sour pebbles (sativa)": 1293,
-      "cherry cookies (indica)": 1294,
-      "lemon cake live resin (sativa)": 1295,
       "sour pebbles": 1319,
       "unicorn berry": 1320,
       "fruit spirit": 1321,
@@ -764,46 +710,31 @@
     "name": "Two Gram Vapes",
     "category": "Vapes & Carts",
     "size_options": [
-      "Bacio-Gelato",
-      "Chem Dawg",
-      "Cherry Cookies",
-      "Green Crack",
-      "Grape Ape",
       "Sunset Sherbet",
       "Bruce Banner",
       "Alaskan Thunder F***",
       "Northern Lights",
-      "Blueberry Muffin",
-      "Peaches & Cream",
-      "Strawberry Cheesecake",
-      "Space Cake",
+      "Watermelon OG",
       "Strawberry Milk",
-      "Watermelon OG"
+      "Space Cake",
+      "Strawberry Cheesecake",
+      "Peaches & Cream",
+      "Blueberry Muffin"
     ],
     "prices": {
-      "Bacio-Gelato": 30,
-      "Chem Dawg": 30,
-      "Cherry Cookies": 30,
-      "Green Crack": 30,
-      "Grape Ape": 30,
       "Sunset Sherbet": 30,
       "Bruce Banner": 30,
       "Alaskan Thunder F***": 30,
       "Northern Lights": 30,
-      "Blueberry Muffin": 30,
-      "Peaches & Cream": 30,
-      "Strawberry Cheesecake": 30,
-      "Space Cake": 25.99,
-      "Strawberry Milk": 25.99,
-      "Watermelon OG": 25.99
+      "Watermelon OG": 35.99,
+      "Strawberry Milk": 35.99,
+      "Space Cake": 35.99,
+      "Strawberry Cheesecake": 35.99,
+      "Peaches & Cream": 35.99,
+      "Blueberry Muffin": 35.99
     },
     "koronaIds": {
-      "chem dawg": 1196,
       "sunset sherbet": 1200,
-      "bacio-gelato": 1195,
-      "cherry cookies": 1197,
-      "grape ape": 1199,
-      "green crack": 1198,
       "bruce banner": 1296,
       "alaskan thunder f***": 1297,
       "northern lights": 1298,
@@ -1085,30 +1016,6 @@
     "koronaIds": {
       "1 gram": 1269,
       "3 grams": 1270
-    }
-  },
-  {
-    "name": "White Widow Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 60.87,
-    "banner": "Out of Stock",
-    "koronaIds": {
-      "1/4": 1272,
-      "ounce": 1274,
-      "1/2": 1273,
-      "1/8": 1271
     }
   }
 ]
