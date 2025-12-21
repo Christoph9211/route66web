@@ -294,6 +294,30 @@
     "banner": "New"
   },
   {
+    "name": "Moon Water Riptide - Berry Twist 60mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 12
+    },
+    "koronaIds": {},
+    "banner": "New"
+  },
+  {
+    "name": "Moon Water Soda - Berry Twist 30mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz"
+    ],
+    "prices": {
+      "12 oz": 10
+    },
+    "koronaIds": {},
+    "banner": "New"
+  },
+  {
     "name": "Moon Water Soda - Fizzy Punch 30mg",
     "category": "Edibles",
     "size_options": [
@@ -306,6 +330,18 @@
     "koronaIds": {
       "12 oz can": 1102
     }
+  },
+  {
+    "name": "Nitro Salted Caramel Cold Brew 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz"
+    ],
+    "prices": {
+      "12 oz": 8
+    },
+    "koronaIds": {},
+    "banner": "New"
   },
   {
     "name": "One Gram Carts",
