@@ -232,6 +232,27 @@
     }
   },
   {
+    "name": "Infused Prerolls",
+    "category": "Other",
+    "size_options": [
+      "Benson Arbor Blueberry Muffin Hash Infused",
+      "Benson Arbor South Fork Kush Hash Infused",
+      "Benson Arbor Florida Wedding Hash Infused",
+      "Benson Arbor Pineapple Passion Hash Infused"
+    ],
+    "prices": {
+      "Benson Arbor Blueberry Muffin Hash Infused": 20,
+      "Benson Arbor South Fork Kush Hash Infused": 20,
+      "Benson Arbor Florida Wedding Hash Infused": 20,
+      "Benson Arbor Pineapple Passion Hash Infused": 20
+    },
+    "koronaIds": {
+      "benson arbor blueberry muffin hash infused": 1160,
+      "benson arbor south fork kush hash infused": 1163
+    },
+    "banner": "New"
+  },
+  {
     "name": "Lava Freeze",
     "category": "Flower",
     "size_options": [
@@ -642,28 +663,6 @@
     "koronaIds": {
       "3 grams": 1159,
       "1 gram": 1158
-    }
-  },
-  {
-    "name": "Infused Prerolls",
-    "category": "Other",
-    "size_options": [
-      "Benson Arbor Blueberry Muffin Hash Infused",
-      "Benson Arbor Tropic Lemon Hash Infused",
-      "Benson Arbor Sweets Hash Infused",
-      "Benson Arbor South Fork Kush Hash Infused"
-    ],
-    "prices": {
-      "Benson Arbor Blueberry Muffin Hash Infused": 20,
-      "Benson Arbor Tropic Lemon Hash Infused": 20,
-      "Benson Arbor Sweets Hash Infused": 20,
-      "Benson Arbor South Fork Kush Hash Infused": 20
-    },
-    "koronaIds": {
-      "benson arbor tropic lemon hash infused": 1161,
-      "benson arbor sweets hash infused": 1162,
-      "benson arbor blueberry muffin hash infused": 1160,
-      "benson arbor south fork kush hash infused": 1163
     }
   },
   {

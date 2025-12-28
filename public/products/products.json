@@ -23,6 +23,22 @@
     "banner": "New"
   },
   {
+    "name": "Apricot Haze",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "koronaIds": {},
+    "banner": "New"
+  },
+  {
     "name": "Blackberry Superboof",
     "category": "Flower",
     "size_options": [
@@ -68,6 +84,22 @@
       "ounce": 1027,
       "1/2": 1026
     }
+  },
+  {
+    "name": "Bubblegum Cherries",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "koronaIds": {},
+    "banner": "New"
   },
   {
     "name": "Citrus Fuel",
@@ -208,6 +240,22 @@
     }
   },
   {
+    "name": "Green Crack",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "koronaIds": {},
+    "banner": "New"
+  },
+  {
     "name": "GSC Snowcaps",
     "category": "Flower",
     "size_options": [
@@ -238,13 +286,17 @@
       "Benson Arbor Blueberry Muffin Hash Infused",
       "Benson Arbor South Fork Kush Hash Infused",
       "Benson Arbor Florida Wedding Hash Infused",
-      "Benson Arbor Pineapple Passion Hash Infused"
+      "Benson Arbor Pineapple Passion Hash Infused",
+      "Benson Arbor Sweets Hash Infused",
+      "Benson Harbor Tropic Lemons Hash Infused"
     ],
     "prices": {
       "Benson Arbor Blueberry Muffin Hash Infused": 20,
       "Benson Arbor South Fork Kush Hash Infused": 20,
       "Benson Arbor Florida Wedding Hash Infused": 20,
-      "Benson Arbor Pineapple Passion Hash Infused": 20
+      "Benson Arbor Pineapple Passion Hash Infused": 20,
+      "Benson Arbor Sweets Hash Infused": 20,
+      "Benson Harbor Tropic Lemons Hash Infused": 20
     },
     "koronaIds": {
       "benson arbor blueberry muffin hash infused": 1160,
@@ -464,6 +516,22 @@
     }
   },
   {
+    "name": "Sex Panther",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "koronaIds": {},
+    "banner": "New"
+  },
+  {
     "name": "Sour Tangie",
     "category": "Flower",
     "size_options": [
@@ -541,6 +609,20 @@
     },
     "banner": "New",
     "availability": {}
+  },
+  {
+    "name": "White Strawnana Live Resin Gummies - 50 mg per",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 12,
+      "2 count": 6
+    },
+    "koronaIds": {},
+    "banner": "New"
   },
   {
     "name": "Blueberry Muffin Diamonds",
