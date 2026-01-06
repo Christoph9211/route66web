@@ -39,7 +39,7 @@ const assets = [
         accent: '#fcd34d', // amber-300
         textColor: '#ecfdf5', // emerald-50
         fontSize: 96,
-        sizes: [320, 400, 640, 768],
+        sizes: [320, 400, 640, 768, 1024, 1280, 1600, 1920],
     },
     {
         baseName: 'route-66-hemp-edibles-placeholder',
@@ -52,7 +52,7 @@ const assets = [
         accent: '#f472b6', // pink-400
         textColor: '#f5f3ff', // violet-50
         fontSize: 96,
-        sizes: [320, 400, 640, 768],
+        sizes: [320, 400, 640, 768, 1024, 1280, 1600, 1920],
     },
     {
         baseName: 'route-66-hemp-concentrates-placeholder',
@@ -65,7 +65,7 @@ const assets = [
         accent: '#78350f', // amber-900
         textColor: '#fffbeb', // amber-50
         fontSize: 96,
-        sizes: [320, 400, 640, 768],
+        sizes: [320, 400, 640, 768, 1024, 1280, 1600, 1920],
     },
     {
         baseName: 'route-66-hemp-vapes-placeholder',
@@ -78,7 +78,7 @@ const assets = [
         accent: '#cffafe', // cyan-100
         textColor: '#ecfeff', // cyan-50
         fontSize: 96,
-        sizes: [320, 400, 640, 768],
+        sizes: [320, 400, 640, 768, 1024, 1280, 1600, 1920],
     },
     {
         baseName: 'route-66-hemp-diamonds-placeholder',
@@ -91,7 +91,7 @@ const assets = [
         accent: '#93c5fd', // blue-300
         textColor: '#eff6ff', // blue-50
         fontSize: 96,
-        sizes: [320, 400, 640, 768],
+        sizes: [320, 400, 640, 768, 1024, 1280, 1600, 1920],
     },
 ]
 

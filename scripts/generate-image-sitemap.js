@@ -28,14 +28,25 @@ function normaliseImagePath(imagePath) {
         return imagePath
     }
 
-    return `${SITE_URL}${imagePath}`
+    const normalisedPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`
+    return `${SITE_URL}${normalisedPath}`
 }
 
 function slugify(value) {
-    return value
+    return String(value ?? '')
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '')
+}
+
+function normaliseCategory(value) {
+    if (typeof value === 'string' && value.trim()) {
+        return value
+    }
+    if (typeof value === 'number' && Number.isFinite(value)) {
+        return String(value)
+    }
+    return 'products'
 }
 
 function generateImageSitemap() {
@@ -47,7 +58,7 @@ function generateImageSitemap() {
     xml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <image:image>\n      <image:loc>${SITE_URL}/assets/images/route-66-hemp-storefront-st-robert-1280w.webp</image:loc>\n      <image:title>Route 66 Hemp - Premium Hemp Store in St Robert, Missouri</image:title>\n      <image:caption>Storefront of Route 66 Hemp serving St Robert, Fort Leonard Wood, and Pulaski County with premium hemp products.</image:caption>\n      <image:geo_location>St Robert, Missouri</image:geo_location>\n    </image:image>\n  </url>\n`
 
     const grouped = products.reduce((acc, product) => {
-        const category = product.category || 'products'
+        const category = normaliseCategory(product?.category)
         if (!acc[category]) {
             acc[category] = []
         }
@@ -65,9 +76,10 @@ function generateImageSitemap() {
             const productName = product.name || 'Route 66 Hemp Product'
             const productSlug = slugify(productName)
             const categorySlug = slugify(category)
-            const caption = product.description
-                ? escapeXml(product.description)
+            const captionText = product.description
+                ? product.description
                 : `Premium ${productName} ${category.toLowerCase()} available at Route 66 Hemp in St Robert, Missouri`
+            const caption = escapeXml(captionText)
 
             xml += `  <url>\n    <loc>${SITE_URL}/#product-${categorySlug}-${productSlug}</loc>\n    <image:image>\n      <image:loc>${escapeXml(imageUrl)}</image:loc>\n      <image:title>${escapeXml(`${productName} - ${category} | Route 66 Hemp`)}</image:title>\n      <image:caption>${caption}</image:caption>\n      <image:geo_location>St Robert, Missouri</image:geo_location>\n    </image:image>\n  </url>\n`
         })
