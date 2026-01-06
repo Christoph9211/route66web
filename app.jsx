@@ -540,28 +540,28 @@ export default function App() {
                             <a
                                 href="#home"
                                 onClick={(e) => handleNavigation(e)}
-                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
+                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
                                 Home
                             </a>
                             <a
                                 href="#products"
                                 onClick={(e) => handleNavigation(e, 'products')}
-                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
+                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
                                 Products
                             </a>
                             <a
                                 href="#about"
                                 onClick={(e) => handleNavigation(e, 'about')}
-                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
+                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
                                 About
                             </a>
                             <a
                                 href="#contact"
                                 onClick={(e) => handleNavigation(e, 'contact')}
-                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-blue-600 dark:text-white"
+                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
                                 Contact
                             </a>
@@ -577,7 +577,7 @@ export default function App() {
                                             !prevState.isMobileMenuOpen,
                                     }))
                                 }
-                                className="inline-flex items-center justify-center rounded-md p-2 text-gray-900 hover:text-blue-600 focus:outline-none dark:text-blue-500"
+                                className="inline-flex items-center justify-center rounded-md p-2 text-gray-900 hover:text-emerald-600 focus:outline-none dark:text-emerald-500"
                                 aria-label={
                                     appState.isMobileMenuOpen
                                         ? 'Close main menu'
@@ -606,28 +606,28 @@ export default function App() {
                             <a
                                 href="#home"
                                 onClick={(e) => handleNavigation(e)}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
                                 Home
                             </a>
                             <a
                                 href="#products"
                                 onClick={(e) => handleNavigation(e, 'products')}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
                                 Products
                             </a>
                             <a
                                 href="#about"
                                 onClick={(e) => handleNavigation(e, 'about')}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
                                 About
                             </a>
                             <a
                                 href="#contact"
                                 onClick={(e) => handleNavigation(e, 'contact')}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600 dark:text-white"
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
                                 Contact
                             </a>
@@ -649,7 +649,7 @@ export default function App() {
                                                     <span>
                                                         Premium Hemp Products
                                                     </span>
-                                                    <span className="block text-blue-600 dark:text-green-500">
+                                                    <span className="block text-emerald-600 dark:text-emerald-500">
                                                         For Your Wellness
                                                     </span>
                                                 </h1>
@@ -663,8 +663,8 @@ export default function App() {
                                                 </p>
                                                 <div className="mt-10 flex justify-center space-x-4 sm:mt-12 lg:justify-start">
                                                     <div className="flex gap-4">
-                                                        <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24"> Explore Products </a>
-                                                        <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24"> Learn more about us </a>
+                                                        <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-emerald-600 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24 shadow-lg transition-transform hover:scale-105"> Explore Products </a>
+                                                        <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-emerald-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24 shadow-lg transition-transform hover:scale-105"> Learn more about us </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -692,7 +692,7 @@ export default function App() {
                 <div id="products" className="bg-white py-12 dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-8 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-black dark:text-green-300">
+                            <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
                                 Products
                             </h2>
                             <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
@@ -722,7 +722,7 @@ export default function App() {
                                         }
                                         aria-label="Show all products"
                                         className={`rounded-full px-4 py-2 text-sm font-medium ${appState.selectedCategory === 'all'
-                                            ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
+                                            ? 'bg-emerald-600 text-white dark:bg-emerald-600'
                                             : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
                                             }`}
                                     >
@@ -744,7 +744,7 @@ export default function App() {
                                             aria-label={`Filter by ${category.name}`}
                                             className={`rounded-full px-4 py-2 text-sm font-medium ${appState.selectedCategory ===
                                                 category.id
-                                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
+                                                ? 'bg-emerald-600 text-white dark:bg-emerald-600' // <-- force high contrast
                                                 : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
                                                 }`}
                                         >
@@ -757,7 +757,7 @@ export default function App() {
                                         <div className="leaf-loader">
                                             <FontAwesomeIcon
                                                 icon={faCannabis}
-                                                className="text-5xl text-blue-600 dark:text-blue-500"
+                                                className="text-5xl text-emerald-600 dark:text-emerald-500"
                                                 aria-hidden="true"
                                             />
                                         </div>
@@ -769,7 +769,7 @@ export default function App() {
                                     <div
                                         role="alert"
                                         aria-live="assertive"
-                                        className="col-span-full max-w-xl rounded-2xl border border-blue-100 bg-blue-50 p-8 text-center text-blue-900 shadow-sm dark:border-blue-900/40 dark:bg-blue-900/30 dark:text-blue-100"
+                                        className="col-span-full max-w-xl rounded-2xl border border-emerald-100 bg-emerald-50 p-8 text-center text-emerald-900 shadow-sm dark:border-emerald-900/40 dark:bg-emerald-900/30 dark:text-emerald-100"
                                     >
                                         <h3 className="text-lg font-semibold">We couldn&apos;t load the menu</h3>
                                         <p className="mt-3 text-sm">
@@ -782,7 +782,7 @@ export default function App() {
                                                     forceRetry: true,
                                                 })
                                             }
-                                            className="mt-6 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-50 dark:bg-[hsl(244,100%,39%)] dark:hover:bg-[hsl(244,100%,33%)] dark:focus-visible:ring-offset-transparent"
+                                            className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-emerald-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-50 dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:focus-visible:ring-offset-transparent"
                                         >
                                             Try again
                                         </button>
@@ -805,17 +805,17 @@ export default function App() {
                                 )}
                             </>
                         ) : (
-                            <div className="mx-auto max-w-2xl rounded-2xl bg-linear-to-r from-blue-600 to-blue-500 p-8 text-center shadow-lg dark:from-[hsl(244,100%,39%)] dark:to-[hsl(244,100%,33%)]">
+                            <div className="mx-auto max-w-2xl rounded-2xl bg-linear-to-r from-emerald-600 to-emerald-500 p-8 text-center shadow-lg dark:from-emerald-700 dark:to-emerald-600">
                                 <p className="text-lg font-semibold text-white">
                                     Ready to explore our latest THCa flower, edibles, and concentrates?
                                 </p>
-                                <p className="mt-2 text-sm text-blue-50">
+                                <p className="mt-2 text-sm text-emerald-50">
                                     Tap the button below when you&apos;re ready and we&apos;ll load the freshest menu straight from our shelves.
                                 </p>
                                 <button
                                     type="button"
                                     onClick={requestProductCatalog}
-                                    className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-600 dark:text-[hsl(244,100%,33%)]"
+                                    className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600 dark:text-emerald-700"
                                 >
                                     View Products
                                 </button>
@@ -827,7 +827,7 @@ export default function App() {
                 <div id="about" className="bg-white py-12 dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-10 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-black dark:text-green-300">
+                            <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
                                 About Us
                             </h2>
                             <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
@@ -999,7 +999,7 @@ export default function App() {
                 <div id="contact" className="bg-white py-12 dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-10 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-black dark:text-green-300">
+                            <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
                                 Contact Us
                             </h2>
                             <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
@@ -1053,7 +1053,7 @@ export default function App() {
                                     href="https://www.facebook.com/route66hemp/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                    className="text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                     aria-label="Facebook"
                                 >
                                     <FontAwesomeIcon
@@ -1075,7 +1075,7 @@ export default function App() {
                                         <a
                                             href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
                                             Edibles
                                         </a>
@@ -1084,7 +1084,7 @@ export default function App() {
                                         <a
                                             href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
-                                            className="text-black text-base hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-black text-base hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
                                             Concentrates
                                         </a>
@@ -1093,7 +1093,7 @@ export default function App() {
                                         <a
                                             href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
                                             Flower
                                         </a>
@@ -1109,7 +1109,7 @@ export default function App() {
                                         <a
                                             href="#about"
                                             onClick={(e) => handleNavigation(e, 'about')}
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
                                             About Us
                                         </a>
@@ -1125,7 +1125,7 @@ export default function App() {
                                         <a
                                             href="#contact"
                                             onClick={(e) => handleNavigation(e, 'contact')}
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
                                             Contact Us
                                         </a>
@@ -1134,7 +1134,7 @@ export default function App() {
                                         <a
                                             href="#faq"
                                             onClick={(e) => handleNavigation(e, 'faq')}
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
                                             FAQs
                                         </a>
@@ -1149,7 +1149,7 @@ export default function App() {
                                     <li>
                                         <a
                                             href="/privacy-policy/"
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                             title="Privacy Policy"
                                         >
                                             Privacy Policy
@@ -1158,7 +1158,7 @@ export default function App() {
                                     <li>
                                         <a
                                             href="/terms-of-service/"
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
                                             Terms and Conditions
                                         </a>
@@ -1166,7 +1166,7 @@ export default function App() {
                                     <li>
                                         <a
                                             href="/cookie-policy/"
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                             title="Cookie Policy"
                                         >
                                             Cookie Policy
@@ -1216,7 +1216,7 @@ export default function App() {
                 <button
                     type="button"
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all duration-300 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 dark:bg-[hsl(244,100%,39%)] dark:hover:bg-[hsl(244,100%,33%)]"
+                    className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg transition-all duration-300 hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 dark:bg-emerald-600 dark:hover:bg-emerald-500"
                     aria-label="Back to top"
                 >
                     <FontAwesomeIcon icon={faChevronUp} className="text-xl" aria-hidden="true" />
@@ -1331,7 +1331,7 @@ function ProductCard({ product }) {
     return (
         <div
             id={`product-${slugify(product.category)}-${slugify(product.name)}`}
-            className="product-card group relative rounded-lg bg-white p-4 shadow dark:bg-gray-700"
+            className="product-card group relative rounded-lg bg-white p-4 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-gray-700"
         // This class is for the card shadow effect
         >
             {banner && (
