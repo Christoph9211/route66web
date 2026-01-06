@@ -1235,6 +1235,15 @@ function slugify(str = '') {
         .replace(/^-+|-+$/g, '')
 }
 
+const getPlaceholderImage = (category = '') => {
+    const lowerCat = category ? category.toLowerCase() : '';
+    if (lowerCat.includes('flower')) return '/assets/images/placeholders/flower.png';
+    if (lowerCat.includes('edible') || lowerCat.includes('gumm')) return '/assets/images/placeholders/edibles.png';
+    if (lowerCat.includes('concentrate') || lowerCat.includes('wax') || lowerCat.includes('dab') || lowerCat.includes('crumble')) return '/assets/images/placeholders/concentrates.png';
+    if (lowerCat.includes('vape') || lowerCat.includes('cart') || lowerCat.includes('disposable')) return '/assets/images/placeholders/vape.png';
+    return '/assets/images/placeholders/flower.png'; // Fallback to flower as distinct generic or stick to an existing one
+}
+
 function ProductCard({ product }) {
     // Generate combined options if both flavors and size_options exist
     let combinedOptions = []
@@ -1339,18 +1348,25 @@ function ProductCard({ product }) {
                     {banner}
                 </div>
             )}
-            <ResponsiveImage
-                src={
-                    product.image ||
-                    (Array.isArray(product.images) && product.images[0]) ||
-                    '/assets/images/route-66-hemp-product-placeholder'
-                }
-                alt={generateProductAlt(product)}
-                width={400}
-                height={400}
-                className="h-50 mb-4 w-full rounded-md object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
+            {product.image || (Array.isArray(product.images) && product.images[0]) ? (
+                <ResponsiveImage
+                    src={product.image || product.images[0]}
+                    alt={generateProductAlt(product)}
+                    width={400}
+                    height={400}
+                    className="h-50 mb-4 w-full rounded-md object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+            ) : (
+                <img
+                    src={getPlaceholderImage(product.category)}
+                    alt={generateProductAlt(product)}
+                    width={400}
+                    height={400}
+                    className="h-50 mb-4 w-full rounded-md object-cover"
+                    loading="lazy"
+                />
+            )}
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                 {product.name}
             </h3>
