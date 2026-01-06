@@ -1235,6 +1235,24 @@ function slugify(str = '') {
         .replace(/^-+|-+$/g, '')
 }
 
+
+const getPlaceholderForCategory = (category) => {
+    switch (category) {
+        case 'Flower':
+            return '/assets/images/route-66-hemp-flower-placeholder'
+        case 'Edibles':
+            return '/assets/images/route-66-hemp-edibles-placeholder'
+        case 'Concentrates':
+            return '/assets/images/route-66-hemp-concentrates-placeholder'
+        case 'Vapes & Carts':
+            return '/assets/images/route-66-hemp-vapes-placeholder'
+        case 'Diamonds & Sauce':
+            return '/assets/images/route-66-hemp-diamonds-placeholder'
+        default:
+            return '/assets/images/route-66-hemp-product-placeholder'
+    }
+}
+
 function ProductCard({ product }) {
     // Generate combined options if both flavors and size_options exist
     let combinedOptions = []
@@ -1343,8 +1361,9 @@ function ProductCard({ product }) {
                 src={
                     product.image ||
                     (Array.isArray(product.images) && product.images[0]) ||
-                    '/assets/images/route-66-hemp-product-placeholder'
+                    getPlaceholderForCategory(product.category)
                 }
+
                 alt={generateProductAlt(product)}
                 width={400}
                 height={400}

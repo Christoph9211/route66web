@@ -41,6 +41,71 @@ const assets = [
         fontSize: 96,
         sizes: [320, 640, 768, 1024, 1280, 1600, 1920],
     },
+    {
+        baseName: 'route-66-hemp-flower-placeholder',
+        width: 1200,
+        height: 1200,
+        textLines: ['Route 66 Hemp', 'Premium Flower'],
+        description: 'Placeholder for Flower products',
+        background: '#064e3b', // emerald-900
+        gradient: '#10b981', // emerald-500
+        accent: '#fcd34d', // amber-300
+        textColor: '#ecfdf5', // emerald-50
+        fontSize: 96,
+        sizes: [320, 640, 768],
+    },
+    {
+        baseName: 'route-66-hemp-edibles-placeholder',
+        width: 1200,
+        height: 1200,
+        textLines: ['Route 66 Hemp', 'Artisan Edibles'],
+        description: 'Placeholder for Edible products',
+        background: '#4c1d95', // violet-900
+        gradient: '#8b5cf6', // violet-500
+        accent: '#f472b6', // pink-400
+        textColor: '#f5f3ff', // violet-50
+        fontSize: 96,
+        sizes: [320, 640, 768],
+    },
+    {
+        baseName: 'route-66-hemp-concentrates-placeholder',
+        width: 1200,
+        height: 1200,
+        textLines: ['Route 66 Hemp', 'Concentrates'],
+        description: 'Placeholder for Concentrate products',
+        background: '#ea580c', // orange-600
+        gradient: '#fbbf24', // amber-400
+        accent: '#78350f', // amber-900
+        textColor: '#fffbeb', // amber-50
+        fontSize: 96,
+        sizes: [320, 640, 768],
+    },
+    {
+        baseName: 'route-66-hemp-vapes-placeholder',
+        width: 1200,
+        height: 1200,
+        textLines: ['Route 66 Hemp', 'Premium Vapes'],
+        description: 'Placeholder for Vape products',
+        background: '#0e7490', // cyan-700
+        gradient: '#22d3ee', // cyan-400
+        accent: '#cffafe', // cyan-100
+        textColor: '#ecfeff', // cyan-50
+        fontSize: 96,
+        sizes: [320, 640, 768],
+    },
+    {
+        baseName: 'route-66-hemp-diamonds-placeholder',
+        width: 1200,
+        height: 1200,
+        textLines: ['Route 66 Hemp', 'Diamonds & Sauce'],
+        description: 'Placeholder for Diamonds & Sauce products',
+        background: '#1e3a8a', // blue-900
+        gradient: '#60a5fa', // blue-400
+        accent: '#93c5fd', // blue-300
+        textColor: '#eff6ff', // blue-50
+        fontSize: 96,
+        sizes: [320, 640, 768],
+    },
 ]
 
 const buildSvg = ({
@@ -60,10 +125,18 @@ const buildSvg = ({
     const startY = height / 2 - totalTextHeight / 2 + lineHeight / 2
     const accentHeight = Math.round(height * 0.18)
 
+    const escape = (str) =>
+        str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&apos;')
+
     const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc">
-  <title>${baseName.replace(/-/g, ' ')}</title>
-  <desc>${description}</desc>
+  <title>${escape(baseName.replace(/-/g, ' '))}</title>
+  <desc>${escape(description)}</desc>
   <defs>
     <linearGradient id="${baseName}-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="${background}" />
@@ -74,11 +147,18 @@ const buildSvg = ({
   <rect width="${width}" height="${accentHeight}" y="${height - accentHeight}" fill="${accent}" opacity="0.85" />
   <g fill="${textColor}" font-family="'Segoe UI', 'Inter', 'Helvetica', 'Arial', sans-serif" font-size="${fontSize}" font-weight="600" text-anchor="middle">
     ${textLines
-        .map(
-            (line, index) =>
-                `<text x="${width / 2}" y="${startY + index * lineHeight}" dominant-baseline="middle">${line}</text>`
-        )
-        .join('\n    ')}
+            .map(
+                (line, index) => {
+                    const escapedLine = line
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&apos;')
+                    return `<text x="${width / 2}" y="${startY + index * lineHeight}" dominant-baseline="middle">${escapedLine}</text>`
+                }
+            )
+            .join('\n    ')}
   </g>
 </svg>`
 
