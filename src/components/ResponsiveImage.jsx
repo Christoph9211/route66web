@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-const DEFAULT_SIZES = [320, 640, 768, 1024, 1280, 1920]
+const DEFAULT_SIZES = [320, 400, 640, 768, 1024, 1280, 1920]
 const FALLBACK_BASE = '/assets/images/route-66-hemp-product-placeholder'
 
 const STRIP_PATTERN = /(-\d+w)?\.[^/.]+$/

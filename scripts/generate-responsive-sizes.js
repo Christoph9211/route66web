@@ -2,7 +2,7 @@ import sharp from 'sharp'
 import fs from 'fs'
 import path from 'path'
 
-const SIZES = [320, 640, 768, 1024, 1280, 1600, 1920]
+const SIZES = [320, 400, 640, 768, 1024, 1280, 1600, 1920]
 
 async function generateResponsiveSizes(inputPath, outputDir, baseName) {
     const image = sharp(inputPath)

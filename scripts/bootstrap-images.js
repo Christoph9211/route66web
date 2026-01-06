@@ -16,19 +16,6 @@ const ensureDir = (dir) => {
 
 const assets = [
     {
-        baseName: 'route-66-hemp-storefront-st-robert',
-        width: 1920,
-        height: 1080,
-        textLines: ['Route 66 Hemp', 'St Robert • Missouri'],
-        description: 'Stylised storefront placeholder for Route 66 Hemp in St Robert, Missouri',
-        background: '#0f172a',
-        gradient: '#1d4ed8',
-        accent: '#16a34a',
-        textColor: '#f8fafc',
-        fontSize: 120,
-        sizes: [320, 640, 768, 1024, 1280, 1600, 1920],
-    },
-    {
         baseName: 'route-66-hemp-product-placeholder',
         width: 1200,
         height: 1200,
@@ -39,7 +26,7 @@ const assets = [
         accent: '#f97316',
         textColor: '#fef3c7',
         fontSize: 96,
-        sizes: [320, 640, 768, 1024, 1280, 1600, 1920],
+        sizes: [320, 400, 640, 768, 1024, 1280, 1600, 1920],
     },
     {
         baseName: 'route-66-hemp-flower-placeholder',
@@ -52,7 +39,7 @@ const assets = [
         accent: '#fcd34d', // amber-300
         textColor: '#ecfdf5', // emerald-50
         fontSize: 96,
-        sizes: [320, 640, 768],
+        sizes: [320, 400, 640, 768],
     },
     {
         baseName: 'route-66-hemp-edibles-placeholder',
@@ -65,7 +52,7 @@ const assets = [
         accent: '#f472b6', // pink-400
         textColor: '#f5f3ff', // violet-50
         fontSize: 96,
-        sizes: [320, 640, 768],
+        sizes: [320, 400, 640, 768],
     },
     {
         baseName: 'route-66-hemp-concentrates-placeholder',
@@ -78,7 +65,7 @@ const assets = [
         accent: '#78350f', // amber-900
         textColor: '#fffbeb', // amber-50
         fontSize: 96,
-        sizes: [320, 640, 768],
+        sizes: [320, 400, 640, 768],
     },
     {
         baseName: 'route-66-hemp-vapes-placeholder',
@@ -91,7 +78,7 @@ const assets = [
         accent: '#cffafe', // cyan-100
         textColor: '#ecfeff', // cyan-50
         fontSize: 96,
-        sizes: [320, 640, 768],
+        sizes: [320, 400, 640, 768],
     },
     {
         baseName: 'route-66-hemp-diamonds-placeholder',
@@ -104,7 +91,7 @@ const assets = [
         accent: '#93c5fd', // blue-300
         textColor: '#eff6ff', // blue-50
         fontSize: 96,
-        sizes: [320, 640, 768],
+        sizes: [320, 400, 640, 768],
     },
 ]
 
@@ -177,17 +164,17 @@ const createRasterVariants = async (asset) => {
             {
                 extension: 'webp',
                 action: (instance) =>
-                    instance.webp({ quality: 82, effort: 6 }),
+                    instance.webp({ quality: 75, effort: 6 }),
             },
             {
                 extension: 'avif',
                 action: (instance) =>
-                    instance.avif({ quality: 70, effort: 5 }),
+                    instance.avif({ quality: 50, effort: 5 }),
             },
             {
                 extension: 'jpg',
                 action: (instance) =>
-                    instance.jpeg({ quality: 88, progressive: true }),
+                    instance.jpeg({ quality: 75, progressive: true }),
             },
         ]
 
@@ -206,46 +193,6 @@ const createRasterVariants = async (asset) => {
 
             await variant.action(pipeline).toFile(filePath)
         }
-    }
-}
-
-const createOgImage = async (asset) => {
-    const width = 1200
-    const height = 630
-    const fileNameBase = path.join(OUTPUT_DIR, 'route-66-hemp-og-image')
-
-    const ogSvg = buildSvg({
-        ...asset,
-        width,
-        height,
-        fontSize: 88,
-        textLines: ['Route 66 Hemp', 'Premium Hemp Products'],
-        description:
-            'Social sharing image for Route 66 Hemp featuring location and branding',
-    })
-
-    const variants = [
-        {
-            extension: 'jpg',
-            action: (instance) =>
-                instance.jpeg({ quality: 90, progressive: true }),
-        },
-        {
-            extension: 'webp',
-            action: (instance) => instance.webp({ quality: 85, effort: 6 }),
-        },
-    ]
-
-    for (const variant of variants) {
-        const outputPath = `${fileNameBase}.${variant.extension}`
-
-        if (fs.existsSync(outputPath)) {
-            continue
-        }
-
-        const pipeline = sharp(ogSvg).resize(width, height, { fit: 'cover' })
-
-        await variant.action(pipeline).toFile(outputPath)
     }
 }
 
@@ -277,7 +224,6 @@ const main = async () => {
         await createRasterVariants(asset)
     }
 
-    await createOgImage(assets[0])
     await createBlurPlaceholder()
 
     console.log('✅ Image placeholders generated in public/assets/images')

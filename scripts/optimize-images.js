@@ -13,15 +13,15 @@ const PUBLIC_OUTPUT_DIR = path.join(__dirname, '../public/assets/images')
 
 const compressionSettings = {
     webp: {
-        quality: 85,
+        quality: 75,
         effort: 6,
     },
     avif: {
-        quality: 80,
+        quality: 50,
         effort: 6,
     },
     jpeg: {
-        quality: 85,
+        quality: 75,
         progressive: true,
         mozjpeg: true,
     },
@@ -108,7 +108,7 @@ async function optimizeImage(inputPath, filename) {
         .toFile(`${outputBase}.jpg`)
     console.log('  ✓ Created JPEG fallback')
 
-    await generateResponsiveSizes(inputPath, OUTPUT_DIR, nameWithoutExt)
+    await generateResponsiveSizes(inputPath, PUBLIC_OUTPUT_DIR, nameWithoutExt)
     await ensureSizeSet({
         inputPath,
         targetDir: OUTPUT_DIR,
