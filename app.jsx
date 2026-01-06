@@ -13,13 +13,11 @@ import {
     faLeaf,
     faUsers,
     faStar as faStarSolid,
+    faChevronUp,
 } from '@fortawesome/free-solid-svg-icons'
 import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons'
 import {
     faFacebook,
-    faInstagram,
-    faTwitter,
-    faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 
 const StructuredData = React.lazy(() =>
@@ -275,6 +273,8 @@ export default function App() {
         hasLoaded: false,
     })
 
+    const [showBackToTop, setShowBackToTop] = React.useState(false)
+
     const productCatalogPromiseRef = React.useRef(null)
 
     const fetchProductCatalog = React.useCallback(async () => {
@@ -351,6 +351,16 @@ export default function App() {
             requestProductCatalog()
         }
     }, [requestProductCatalog])
+
+    // Back to top button scroll handler
+    React.useEffect(() => {
+        const handleScroll = () => {
+            setShowBackToTop(window.scrollY > 400)
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
     const { shouldLoadProducts, hasLoadedProducts, catalogRequestVersion } =
         appState
@@ -487,8 +497,8 @@ export default function App() {
         appState.selectedCategory === 'all'
             ? appState.products
             : appState.products.filter((product) =>
-                  slugify(product.category) === appState.selectedCategory
-              )
+                slugify(product.category) === appState.selectedCategory
+            )
 
     return (
         <div className="flex min-h-screen flex-col">
@@ -652,9 +662,9 @@ export default function App() {
                                                     balanced lifestyle.
                                                 </p>
                                                 <div className="mt-10 flex justify-center space-x-4 sm:mt-12 lg:justify-start">
-                                                    <div className="flex gap-4"> 
-                                                    <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24"> Explore Products </a>
-                                                    <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24"> Learn more about us </a> 
+                                                    <div className="flex gap-4">
+                                                        <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24"> Explore Products </a>
+                                                        <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-blue-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24"> Learn more about us </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -711,11 +721,10 @@ export default function App() {
                                             appState.selectedCategory === 'all'
                                         }
                                         aria-label="Show all products"
-                                        className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                            appState.selectedCategory === 'all'
-                                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
-                                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
-                                        }`}
+                                        className={`rounded-full px-4 py-2 text-sm font-medium ${appState.selectedCategory === 'all'
+                                            ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]'
+                                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                            }`}
                                     >
                                         All Products
                                     </button>
@@ -733,12 +742,11 @@ export default function App() {
                                                 category.id
                                             }
                                             aria-label={`Filter by ${category.name}`}
-                                            className={`rounded-full px-4 py-2 text-sm font-medium ${
-                                                appState.selectedCategory ===
+                                            className={`rounded-full px-4 py-2 text-sm font-medium ${appState.selectedCategory ===
                                                 category.id
-                                                    ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
-                                                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
-                                            }`}
+                                                ? 'bg-blue-600 text-white dark:bg-[hsl(244,100%,39%)]' // <-- force high contrast
+                                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                                }`}
                                         >
                                             {category.name}
                                         </button>
@@ -1055,45 +1063,6 @@ export default function App() {
                                     />
                                     <span className="sr-only">Facebook</span>
                                 </a>
-                                <a
-                                    href="/"
-                                    onClick={(e) => e.preventDefault()}
-                                    className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                    aria-label="Instagram"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faInstagram}
-                                        className="text-xl"
-                                        aria-hidden="true"
-                                    />
-                                    <span className="sr-only">Instagram</span>
-                                </a>
-                                <a
-                                    href="/"
-                                    onClick={(e) => e.preventDefault()}
-                                    className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                    aria-label="Twitter"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faTwitter}
-                                        className="text-xl"
-                                        aria-hidden="true"
-                                    />
-                                    <span className="sr-only">Twitter</span>
-                                </a>
-                                <a
-                                    href="/"
-                                    onClick={(e) => e.preventDefault()}
-                                    className="text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                    aria-label="YouTube"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faYoutube}
-                                        className="text-xl"
-                                        aria-hidden="true"
-                                    />
-                                    <span className="sr-only">YouTube</span>
-                                </a>
                             </div>
                         </div>
                         <div className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
@@ -1104,8 +1073,8 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#products"
+                                            onClick={(e) => handleNavigation(e, 'products')}
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Edibles
@@ -1113,29 +1082,20 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
-                                            className="ttext-black text-base hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+                                            href="#products"
+                                            onClick={(e) => handleNavigation(e, 'products')}
+                                            className="text-black text-base hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Concentrates
                                         </a>
                                     </li>
                                     <li>
                                         <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#products"
+                                            onClick={(e) => handleNavigation(e, 'products')}
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Flower
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                        >
-                                            Accessories
                                         </a>
                                     </li>
                                 </ul>
@@ -1147,29 +1107,11 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#about"
+                                            onClick={(e) => handleNavigation(e, 'about')}
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             About Us
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                        >
-                                            Careers
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
-                                            className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
-                                        >
-                                            Partners
                                         </a>
                                     </li>
                                 </ul>
@@ -1181,8 +1123,8 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#contact"
+                                            onClick={(e) => handleNavigation(e, 'contact')}
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             Contact Us
@@ -1190,8 +1132,8 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="/"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#faq"
+                                            onClick={(e) => handleNavigation(e, 'faq')}
                                             className="text-base text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
                                         >
                                             FAQs
@@ -1269,6 +1211,17 @@ export default function App() {
             <React.Suspense fallback={null}>
                 <SpeedInsights />
             </React.Suspense>
+            {/* Back to top button */}
+            {showBackToTop && (
+                <button
+                    type="button"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all duration-300 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 dark:bg-[hsl(244,100%,39%)] dark:hover:bg-[hsl(244,100%,33%)]"
+                    aria-label="Back to top"
+                >
+                    <FontAwesomeIcon icon={faChevronUp} className="text-xl" aria-hidden="true" />
+                </button>
+            )}
         </div>
     )
 }
@@ -1379,7 +1332,7 @@ function ProductCard({ product }) {
         <div
             id={`product-${slugify(product.category)}-${slugify(product.name)}`}
             className="product-card group relative rounded-lg bg-white p-4 shadow dark:bg-gray-700"
-            // This class is for the card shadow effect
+        // This class is for the card shadow effect
         >
             {banner && (
                 <div className="product-banner" aria-label={banner}>
@@ -1512,11 +1465,11 @@ function ProductCard({ product }) {
                         key={i}
                         icon={
                             i <
-                            Math.floor(
-                                product.rating ||
+                                Math.floor(
+                                    product.rating ||
                                     (product.ratings && product.ratings[0]) ||
                                     5
-                            )
+                                )
                                 ? faStarSolid
                                 : faStarRegular
                         }
