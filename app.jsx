@@ -677,7 +677,7 @@ export default function App() {
                                                     width={1280}
                                                     height={720}
                                                     className="w-full overflow-hidden rounded-xl shadow-xl"
-                                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                                    sizes="(max-width: 640px) min(28rem, calc(100vw - 2rem)), (max-width: 1024px) min(42rem, calc(100vw - 3rem)), min(39rem, calc(50vw - 3rem))"
                                                     priority
                                                 />
                                             </div>
