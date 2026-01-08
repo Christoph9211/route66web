@@ -27,6 +27,8 @@
     functionality_storage: "granted",
     security_storage: "granted",
   };
+  let activationHandle = null;
+  let activationHandleType = null;
 
   function getSafeLocalStorage() {
     try {
@@ -77,7 +79,42 @@
     window.gtag("config", GA_ID, { anonymize_ip: true });
   }
 
+  function clearScheduledActivation() {
+    if (activationHandle === null) return;
+    if (
+      activationHandleType === "idle" &&
+      typeof window.cancelIdleCallback === "function"
+    ) {
+      window.cancelIdleCallback(activationHandle);
+    } else {
+      window.clearTimeout(activationHandle);
+    }
+    activationHandle = null;
+    activationHandleType = null;
+  }
+
+  function scheduleActivateAnalytics() {
+    if (window.__analyticsActivated || activationHandle !== null) return;
+
+    const runActivation = () => {
+      activationHandle = null;
+      activationHandleType = null;
+      activateAnalytics();
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      activationHandleType = "idle";
+      activationHandle = window.requestIdleCallback(runActivation, {
+        timeout: 2000,
+      });
+    } else {
+      activationHandleType = "timeout";
+      activationHandle = window.setTimeout(runActivation, 1500);
+    }
+  }
+
   function revokeAnalyticsConsent() {
+    clearScheduledActivation();
     if (!window.__analyticsActivated) return;
     window.__analyticsActivated = false;
     ensureDataLayer();
@@ -92,7 +129,7 @@
     const consentOk = storage.getItem("cookieConsent") === "accepted";
 
     if (isAdult && consentOk) {
-      activateAnalytics();
+      scheduleActivateAnalytics();
     } else {
       revokeAnalyticsConsent();
     }

@@ -504,7 +504,7 @@ export default function App() {
             {/* Navigation */}
             <nav
                 role="navigation"
-                className="sticky top-0 z-50 bg-white/90 shadow-md backdrop-blur dark:bg-gray-900/90"
+                className="sticky top-0 z-50 bg-white/90 shadow-md md:backdrop-blur dark:bg-gray-900/90"
             >
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between">
