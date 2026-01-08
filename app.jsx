@@ -273,8 +273,6 @@ export default function App() {
         hasLoaded: false,
     })
 
-    const [showBackToTop, setShowBackToTop] = React.useState(false)
-
     const productCatalogPromiseRef = React.useRef(null)
 
     const fetchProductCatalog = React.useCallback(async () => {
@@ -351,16 +349,6 @@ export default function App() {
             requestProductCatalog()
         }
     }, [requestProductCatalog])
-
-    // Back to top button scroll handler
-    React.useEffect(() => {
-        const handleScroll = () => {
-            setShowBackToTop(window.scrollY > 400)
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true })
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
 
     const { shouldLoadProducts, hasLoadedProducts, catalogRequestVersion } =
         appState
@@ -493,12 +481,15 @@ export default function App() {
         structuredDataState.products,
     ])
 
-    const filteredProducts =
-        appState.selectedCategory === 'all'
-            ? appState.products
-            : appState.products.filter((product) =>
+    const filteredProducts = React.useMemo(() => {
+        if (appState.selectedCategory === 'all') {
+            return appState.products
+        }
+        return appState.products.filter(
+            (product) =>
                 slugify(product.category) === appState.selectedCategory
-            )
+        )
+    }, [appState.products, appState.selectedCategory])
 
     return (
         <div className="flex min-h-screen flex-col">
@@ -1213,19 +1204,67 @@ export default function App() {
                 <SpeedInsights />
             </React.Suspense>
             {/* Back to top button */}
-            {showBackToTop && (
-                <button
-                    type="button"
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg transition-all duration-300 hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 dark:bg-emerald-600 dark:hover:bg-emerald-500"
-                    aria-label="Back to top"
-                >
-                    <FontAwesomeIcon icon={faChevronUp} className="text-xl" aria-hidden="true" />
-                </button>
-            )}
+            <BackToTopButton />
         </div>
     )
 }
+
+const BackToTopButton = React.memo(function BackToTopButton() {
+    const [visible, setVisible] = React.useState(false)
+    const rafIdRef = React.useRef(null)
+    const lastVisibleRef = React.useRef(false)
+
+    React.useEffect(() => {
+        if (typeof window === 'undefined') {
+            return undefined
+        }
+
+        const updateVisibility = () => {
+            rafIdRef.current = null
+            const nextVisible = window.scrollY > 400
+            if (lastVisibleRef.current !== nextVisible) {
+                lastVisibleRef.current = nextVisible
+                setVisible(nextVisible)
+            }
+        }
+
+        const handleScroll = () => {
+            if (rafIdRef.current != null) {
+                return
+            }
+            rafIdRef.current = window.requestAnimationFrame(updateVisibility)
+        }
+
+        updateVisibility()
+        window.addEventListener('scroll', handleScroll, { passive: true })
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            if (rafIdRef.current != null) {
+                window.cancelAnimationFrame(rafIdRef.current)
+            }
+        }
+    }, [])
+
+    if (!visible) return null
+
+    return (
+        <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg transition-all duration-300 hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+            aria-label="Back to top"
+        >
+            <FontAwesomeIcon
+                icon={faChevronUp}
+                className="text-xl"
+                aria-hidden="true"
+            />
+        </button>
+    )
+})
+
+BackToTopButton.displayName = 'BackToTopButton'
 
 // ProductCard component for displaying product with size dropdown and dynamic price
 function slugify(str = '') {
@@ -1254,30 +1293,26 @@ const getPlaceholderForCategory = (category) => {
     }
 }
 
-function ProductCard({ product }) {
+const ProductCard = React.memo(function ProductCard({ product }) {
     // Generate combined options if both flavors and size_options exist
-    let combinedOptions = []
-    if (
-        // Do we have flavors?
-        product.flavors &&
-        // Are there any flavors?
-        product.flavors.length > 0 &&
-        // Do we have size options?
-        product.size_options &&
-        // Are there any size options?
-        product.size_options.length > 0
-    ) {
-        // Combine each flavor with each size option
-        combinedOptions = product.flavors.flatMap((flavor) =>
-            product.size_options.map((size) => ({
-                // Create a label that's the combination of flavor and size
-                label: `${flavor} - ${size}`,
-                // Store the flavor and size for later use
-                flavor,
-                size,
-            }))
-        )
-    }
+    const combinedOptions = React.useMemo(() => {
+        if (
+            product.flavors &&
+            product.flavors.length > 0 &&
+            product.size_options &&
+            product.size_options.length > 0
+        ) {
+            // Combine each flavor with each size option
+            return product.flavors.flatMap((flavor) =>
+                product.size_options.map((size) => ({
+                    label: `${flavor} - ${size}`,
+                    flavor,
+                    size,
+                }))
+            )
+        }
+        return []
+    }, [product.flavors, product.size_options])
 
     // State for combined selection
     const [selectedCombo, setSelectedCombo] = React.useState(
@@ -1507,7 +1542,9 @@ function ProductCard({ product }) {
             </div>
         </div>
     )
-}
+})
+
+ProductCard.displayName = 'ProductCard'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(<App />)
