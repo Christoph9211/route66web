@@ -267,30 +267,6 @@
     }
   },
   {
-    "name": "Mac 1",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 21,
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1095,
-      "1/2": 1096,
-      "ounce": 1097,
-      "1/8": 1094
-    }
-  },
-  {
     "name": "Mendo Purp Rosin",
     "category": "Concentrates",
     "size_options": [
@@ -690,6 +666,29 @@
     }
   },
   {
+    "name": "Mac 1",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "koronaIds": {
+      "1/4": 1095,
+      "1/2": 1096,
+      "ounce": 1097,
+      "1/8": 1094
+    },
+    "thca_percentage": 21
+  },
+  {
     "name": "MEGA DOSE Gummies Blue Razz 25mg",
     "category": "Edibles",
     "size_options": [
@@ -720,45 +719,6 @@
       "1 gram": 1201,
       "3 grams": 1202
     }
-  },
-  {
-    "name": "Alaskan Thunder F***",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "koronaIds": {
-      "1/8": 1299,
-      "1/4": 1300,
-      "1/2": 1301,
-      "ounce": 1302
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Apricot Haze",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "koronaIds": {},
-    "banner": "Out of Stock"
   },
   {
     "name": "Bat Breath",
@@ -856,30 +816,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Candy Punch",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "koronaIds": {
-      "1/2": 1034,
-      "1/4": 1033,
-      "1/8": 1032,
-      "ounce": 1035
-    },
-    "thca_percentage": 18,
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Cosmic Runtz",
     "category": "Flower",
     "size_options": [
@@ -919,78 +855,6 @@
       "3 grams": 1224,
       "1 gram": 1223
     }
-  },
-  {
-    "name": "Green Goddess",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "koronaIds": {
-      "1/2": 1064,
-      "1/8": 1062,
-      "1/4": 1063,
-      "ounce": 1065
-    },
-    "thca_percentage": 18,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Italian Ice",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "koronaIds": {
-      "1/4": 1075,
-      "1/2": 1076,
-      "1/8": 1074,
-      "ounce": 1077
-    },
-    "thca_percentage": 28,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Jolly Green Giant",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "koronaIds": {
-      "1/4": 1079,
-      "1/8": 1078,
-      "ounce": 1081,
-      "1/2": 1080
-    },
-    "thca_percentage": 24,
-    "banner": "Out of Stock"
   },
   {
     "name": "Mimosa",
@@ -1040,30 +904,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "OG Chem",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "koronaIds": {
-      "1/8": 1103,
-      "1/4": 1104,
-      "1/2": 1105,
-      "ounce": 1106
-    },
-    "thca_percentage": 20,
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Purple Punch",
     "category": "Flower",
     "size_options": [
@@ -1088,22 +928,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Sex Panther",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "koronaIds": {},
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Sour Tangie",
     "category": "Flower",
     "size_options": [
@@ -1124,54 +948,6 @@
       "1/2": 1124,
       "1/8": 1122
     },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Super Lavender Butter",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "koronaIds": {
-      "1/4": 1127,
-      "1/2": 1128,
-      "1/8": 1126,
-      "ounce": 1129
-    },
-    "thca_percentage": 17.35,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "UK Cheese",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "koronaIds": {
-      "1/8": 1135,
-      "1/4": 1136,
-      "1/2": 1137,
-      "ounce": 1138
-    },
-    "thca_percentage": 20,
     "banner": "Out of Stock"
   }
 ]
