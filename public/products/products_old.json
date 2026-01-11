@@ -106,6 +106,34 @@
     "banner": "New"
   },
   {
+    "name": "Flower Preroll",
+    "category": "Other",
+    "size_options": [
+      "Road Dog",
+      "Donny Burger",
+      "Apex Hybrid",
+      "Mendo Runtz",
+      "Horchata",
+      "Gelato Mintz",
+      "Hawaiian Sunrise",
+      "Jet Fuel Gelato",
+      "Where's My Bike"
+    ],
+    "prices": {
+      "Road Dog": 6,
+      "Donny Burger": 6,
+      "Apex Hybrid": 5,
+      "Mendo Runtz": 5,
+      "Horchata": 5,
+      "Gelato Mintz": 5,
+      "Hawaiian Sunrise": 5,
+      "Jet Fuel Gelato": 5,
+      "Where's My Bike": 6
+    },
+    "koronaIds": {},
+    "banner": "New"
+  },
+  {
     "name": "Frosted Frappe",
     "category": "Flower",
     "size_options": [
@@ -178,7 +206,9 @@
       "Benson Arbor Florida Wedding Hash Infused",
       "Benson Arbor Pineapple Passion Hash Infused",
       "Benson Arbor Sweets Hash Infused",
-      "Benson Harbor Tropic Lemons Hash Infused"
+      "Benson Harbor Tropic Lemons Hash Infused",
+      "Hash Infused Blueberry Muffin",
+      "Hash Infused Rock Candy"
     ],
     "prices": {
       "Benson Arbor Blueberry Muffin Hash Infused": 20,
@@ -186,7 +216,9 @@
       "Benson Arbor Florida Wedding Hash Infused": 20,
       "Benson Arbor Pineapple Passion Hash Infused": 20,
       "Benson Arbor Sweets Hash Infused": 20,
-      "Benson Harbor Tropic Lemons Hash Infused": 20
+      "Benson Harbor Tropic Lemons Hash Infused": 20,
+      "Hash Infused Blueberry Muffin": 10,
+      "Hash Infused Rock Candy": 10
     },
     "koronaIds": {
       "benson arbor blueberry muffin hash infused": 1160,
@@ -541,28 +573,6 @@
     },
     "koronaIds": {
       "10ct": 1151
-    }
-  },
-  {
-    "name": "Flower Preroll",
-    "category": "Other",
-    "size_options": [
-      "Tropicana Cherry",
-      "Chem De La Chem",
-      "Grape Cream Cake",
-      "Raspberry Kush"
-    ],
-    "prices": {
-      "Tropicana Cherry": 7,
-      "Chem De La Chem": 5,
-      "Grape Cream Cake": 5,
-      "Raspberry Kush": 5
-    },
-    "koronaIds": {
-      "tropicana cherry": 1152,
-      "chem de la chem": 1153,
-      "raspberry kush": 1155,
-      "grape cream cake": 1154
     }
   },
   {

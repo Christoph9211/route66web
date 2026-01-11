@@ -1,5 +1,20 @@
 [
   {
+    "name": "Biscotti Crumble",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "koronaIds": {},
+    "thca_percentage": 99,
+    "banner": "New"
+  },
+  {
     "name": "Bubblegum Cherries",
     "category": "Flower",
     "size_options": [
@@ -92,20 +107,6 @@
     }
   },
   {
-    "name": "Durban Poison Crumble",
-    "category": "Concentrates",
-    "size_options": [
-      "2.5 grams"
-    ],
-    "prices": {
-      "2.5 grams": 35
-    },
-    "koronaIds": {
-      "2.5 grams": 1307
-    },
-    "banner": "New"
-  },
-  {
     "name": "Flower Preroll",
     "category": "Other",
     "size_options": [
@@ -156,6 +157,21 @@
       "1/2": 1060,
       "1/8": 1058
     }
+  },
+  {
+    "name": "Garlic Cookies Crumble",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "koronaIds": {},
+    "thca_percentage": 99.2,
+    "banner": "New"
   },
   {
     "name": "Green Crack",
@@ -281,11 +297,12 @@
       "1 gram"
     ],
     "prices": {
-      "1 gram": 35
+      "1 gram": 30
     },
     "koronaIds": {
       "1 gram": 1308
     },
+    "thca_percentage": 90,
     "banner": "New"
   },
   {
@@ -407,6 +424,21 @@
     "availability": {}
   },
   {
+    "name": "Orangutan Sugar",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "koronaIds": {},
+    "thca_percentage": 85,
+    "banner": "New"
+  },
+  {
     "name": "Pineapple Express Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -436,6 +468,24 @@
     "koronaIds": {
       "12 oz can": 1117
     }
+  },
+  {
+    "name": "Strawberry Diesel Crumble",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "koronaIds": {
+      "1 gram": 1269,
+      "3 grams": 1270
+    },
+    "thca_percentage": 98.39,
+    "banner": "New"
   },
   {
     "name": "Tropical Punch Shots 100mg",
@@ -508,6 +558,23 @@
     "banner": "New"
   },
   {
+    "name": "Blueberry Diesel",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "koronaIds": {
+      "3 grams": 1214,
+      "1 gram": 1213
+    },
+    "thca_percentage": 97.7
+  },
+  {
     "name": "Blueberry Muffin Diamonds",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -563,6 +630,20 @@
     }
   },
   {
+    "name": "Durban Poison Crumble",
+    "category": "Concentrates",
+    "size_options": [
+      "2.5 grams"
+    ],
+    "prices": {
+      "2.5 grams": 35
+    },
+    "koronaIds": {
+      "2.5 grams": 1307
+    },
+    "thca_percentage": 90
+  },
+  {
     "name": "Euphoria - Gummies Grape 250mg",
     "category": "Edibles",
     "size_options": [
@@ -593,7 +674,7 @@
     }
   },
   {
-    "name": "Ice Cream Cake Diamonds",
+    "name": "Ice Cream Cake Saucy Diamonds",
     "category": "Diamonds & Sauce",
     "size_options": [
       "1 gram",
@@ -622,22 +703,6 @@
     "koronaIds": {
       "2ct": 1169,
       "4ct": 1168
-    }
-  },
-  {
-    "name": "Saucy Diamonds",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 15,
-      "3 grams": 40
-    },
-    "koronaIds": {
-      "1 gram": 1189,
-      "3 grams": 1190
     }
   },
   {
@@ -765,24 +830,6 @@
     },
     "thca_percentage": 19,
     "banner": "Out of Stock"
-  },
-  {
-    "name": "Blueberry Diesel",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "thca_percentage": 97.7,
-    "banner": "Out of Stock",
-    "koronaIds": {
-      "3 grams": 1214,
-      "1 gram": 1213
-    }
   },
   {
     "name": "Cake Face",
@@ -1102,24 +1149,6 @@
     },
     "thca_percentage": 17.35,
     "banner": "Out of Stock"
-  },
-  {
-    "name": "Super Sour Diesel",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "thca_percentage": 96.1,
-    "banner": "Out of Stock",
-    "koronaIds": {
-      "1 gram": 1269,
-      "3 grams": 1270
-    }
   },
   {
     "name": "UK Cheese",
