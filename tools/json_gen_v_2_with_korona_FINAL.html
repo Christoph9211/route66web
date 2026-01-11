@@ -390,6 +390,36 @@
                 return product
             }
 
+            const loadProducts = (data = [], options = {}) => {
+                const { alertOnRemove = false } = options
+                const normalized = data.map((p) => normalizeProductSchema(p))
+                const valid = []
+                const removed = []
+                normalized.forEach((p) => {
+                    const sizes = Array.isArray(p.size_options)
+                        ? p.size_options
+                        : []
+                    if (sizes.length === 0) {
+                        removed.push(p)
+                        return
+                    }
+                    valid.push(p)
+                })
+                if (removed.length > 0) {
+                    const message = `${removed.length} products were skipped because they have no size options.`
+                    if (alertOnRemove) {
+                        alert(message)
+                    } else {
+                        console.warn(message)
+                    }
+                }
+                products.splice(0, products.length, ...valid)
+                deletedProducts.length = 0
+                recomputeNextKoronaId()
+                refreshCategoryList()
+                renderTable()
+            }
+
             const recomputeNextKoronaId = () => {
                 let max = DEFAULT_KORONA_START
                 const collect = (list = []) =>
@@ -635,15 +665,7 @@
                 if (!stored) return
                 try {
                     const data = JSON.parse(stored)
-                    if (Array.isArray(data)) {
-                        const normalized = data.map((p) =>
-                            normalizeProductSchema(p)
-                        )
-                        products.splice(0, products.length, ...normalized)
-                        recomputeNextKoronaId()
-                        refreshCategoryList()
-                        renderTable()
-                    }
+                    if (Array.isArray(data)) loadProducts(data)
                 } catch (err) {
                     console.error('Failed to parse stored products', err)
                 }
@@ -753,13 +775,7 @@
                         const data = JSON.parse(ev.target.result)
                         if (!Array.isArray(data))
                             throw new Error('JSON root must be array')
-                        const normalized = data.map((p) =>
-                            normalizeProductSchema(p)
-                        )
-                        products.splice(0, products.length, ...normalized)
-                        recomputeNextKoronaId()
-                        refreshCategoryList()
-                        renderTable()
+                        loadProducts(data, { alertOnRemove: true })
                         alert(`Loaded ${data.length} products.`)
                     } catch (err) {
                         alert('Failed to parse JSON: ' + err.message)
@@ -1304,6 +1320,9 @@
                 const availabilityRaw = form.availability.value.trim()
 
                 // 2. Convert the size/price grid into the structure we store
+                if (sizePricePairs.length === 0) {
+                    return alert('Please add at least one size and price.')
+                }
                 const sizeOptions = sizePricePairs.map((p) => p.size)
                 const prices = Object.fromEntries(
                     sizePricePairs.map((p) => [p.size, p.price])
