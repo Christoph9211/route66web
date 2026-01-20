@@ -56,15 +56,6 @@ const SECTION_ROUTES = {
     contact: { id: 'contact', path: '/contact/' },
     faq: { id: 'faq', path: '/faq/' },
 }
-const normalizeSection = (value) => {
-    if (!value) return ''
-    return value
-        .replace(/^#/, '')
-        .replace(/^\/+/, '')
-        .replace(/\/+$/, '')
-        .trim()
-        .toLowerCase()
-}
 
 const renderSectionSkeleton = (height = 'h-64') => (
     <div
@@ -321,10 +312,11 @@ export default function App() {
     })
 
     const productCatalogPromiseRef = React.useRef(null)
+    const productCatalogUrl = `${import.meta.env.BASE_URL}products/products.json`
 
     const fetchProductCatalog = React.useCallback(async () => {
         if (!productCatalogPromiseRef.current) {
-            productCatalogPromiseRef.current = fetch('products/products.json')
+            productCatalogPromiseRef.current = fetch(productCatalogUrl)
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch products')
@@ -347,7 +339,7 @@ export default function App() {
         }
 
         return productCatalogPromiseRef.current
-    }, [])
+    }, [productCatalogUrl])
 
     const requestProductCatalog = React.useCallback(
         (options = {}) => {
