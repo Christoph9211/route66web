@@ -119,5 +119,47 @@
                 }
             ]
         }
+    ],
+    "rewrites": [
+        {
+            "source": "/home",
+            "destination": "/"
+        },
+        {
+            "source": "/home/",
+            "destination": "/"
+        },
+        {
+            "source": "/products",
+            "destination": "/"
+        },
+        {
+            "source": "/products/",
+            "destination": "/"
+        },
+        {
+            "source": "/about",
+            "destination": "/"
+        },
+        {
+            "source": "/about/",
+            "destination": "/"
+        },
+        {
+            "source": "/contact",
+            "destination": "/"
+        },
+        {
+            "source": "/contact/",
+            "destination": "/"
+        },
+        {
+            "source": "/faq",
+            "destination": "/"
+        },
+        {
+            "source": "/faq/",
+            "destination": "/"
+        }
     ]
 }
