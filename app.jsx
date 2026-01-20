@@ -48,6 +48,22 @@ const SpeedInsights = React.lazy(() =>
 
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
+const SECTION_ROUTES = {
+    home: { id: null, path: '/' },
+    products: { id: 'products', path: '/products/' },
+    about: { id: 'about', path: '/about/' },
+    contact: { id: 'contact', path: '/contact/' },
+    faq: { id: 'faq', path: '/faq/' },
+}
+const normalizeSection = (value) => {
+    if (!value) return ''
+    return value
+        .replace(/^#/, '')
+        .replace(/^\/+/, '')
+        .replace(/\/+$/, '')
+        .trim()
+        .toLowerCase()
+}
 
 const renderSectionSkeleton = (height = 'h-64') => (
     <div
@@ -347,8 +363,39 @@ export default function App() {
             return
         }
 
-        if (window.location.hash === '#products') {
+        const hashSegment = normalizeSection(window.location.hash)
+        const pathSegment = normalizeSection(window.location.pathname)
+        const hashTarget = hashSegment ? SECTION_ROUTES[hashSegment] : null
+        const pathTarget = pathSegment ? SECTION_ROUTES[pathSegment] : null
+        const targetKey = hashTarget
+            ? hashSegment
+            : pathTarget
+            ? pathSegment
+            : null
+        const target = hashTarget || pathTarget
+
+        if (!target || !targetKey) {
+            return
+        }
+
+        if (target.path && window.location.pathname !== target.path) {
+            const nextUrl = `${target.path}${window.location.search}`
+            window.history.replaceState(null, '', nextUrl)
+        }
+
+        if (targetKey === 'products') {
             requestProductCatalog()
+        }
+
+        if (targetKey === 'home') {
+            window.scrollTo({ top: 0, behavior: 'auto' })
+            return
+        }
+
+        if (target.id) {
+            document
+                .getElementById(target.id)
+                ?.scrollIntoView({ behavior: 'auto' })
         }
     }, [requestProductCatalog])
 
@@ -458,6 +505,8 @@ export default function App() {
 
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
+        const routeKey = targetId || 'home'
+        const targetRoute = SECTION_ROUTES[routeKey]
 
         setAppState((prevState) =>
             prevState.isMobileMenuOpen
@@ -475,7 +524,12 @@ export default function App() {
         } else {
             window.scrollTo({ top: 0, behavior: 'smooth' })
         }
-        window.history.replaceState(null, '', window.location.pathname)
+        if (targetRoute?.path) {
+            const nextUrl = `${targetRoute.path}${window.location.search}`
+            window.history.replaceState(null, '', nextUrl)
+        } else {
+            window.history.replaceState(null, '', window.location.pathname)
+        }
     }
 
     const structuredDataProducts = React.useMemo(() => {
@@ -992,9 +1046,11 @@ export default function App() {
                     <GoogleBusinessIntegration />
                 </React.Suspense>
                 {/* Local SEO FAQ */}
-                <React.Suspense fallback={renderSectionSkeleton('h-72')}>
-                    <LocalSEOFAQ />
-                </React.Suspense>
+                <div id="faq">
+                    <React.Suspense fallback={renderSectionSkeleton('h-72')}>
+                        <LocalSEOFAQ />
+                    </React.Suspense>
+                </div>
                 {/* Contact Section */}
                 <div id="contact" className="bg-white py-12 dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
