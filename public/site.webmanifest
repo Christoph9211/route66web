@@ -1,9 +1,6 @@
 {
     "name": "Route 66 Hemp",
     "short_name": "Route66Hemp",
-    "description": "Premium hemp products for your wellness journey in St Robert, Missouri",
-    "start_url": "/",
-    "scope": "/",
     "icons": [
         {
             "src": "/route-66-hemp-logo-192x192.png",
@@ -16,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#10b981",
+    "theme_color": "#5D5CDE",
     "background_color": "#FFFFFF",
     "display": "standalone"
 }
