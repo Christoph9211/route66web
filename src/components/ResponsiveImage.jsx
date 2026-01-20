@@ -36,6 +36,7 @@ function ResponsiveImage({
     sizes = '(max-width: 768px) 100vw, (max-width: 1024px) 75vw, 50vw',
     priority = false,
     fallbackBase = FALLBACK_BASE,
+    srcSetWidths = null,
 }) {
     const [isLoaded, setIsLoaded] = useState(false)
     const [hasError, setHasError] = useState(false)
@@ -51,14 +52,21 @@ function ResponsiveImage({
         return normalised || fallbackBase
     }, [fallbackBase, isExternal, src])
 
+    const resolvedWidths = useMemo(() => {
+        if (Array.isArray(srcSetWidths) && srcSetWidths.length) {
+            return srcSetWidths
+        }
+        return DEFAULT_SIZES
+    }, [srcSetWidths])
+
     const srcSets = useMemo(() => {
         if (isExternal || hasError) return null
         return {
-            avif: buildSrcSet(baseName, 'avif', DEFAULT_SIZES),
-            webp: buildSrcSet(baseName, 'webp', DEFAULT_SIZES),
-            jpeg: buildSrcSet(baseName, 'jpg', DEFAULT_SIZES),
+            avif: buildSrcSet(baseName, 'avif', resolvedWidths),
+            webp: buildSrcSet(baseName, 'webp', resolvedWidths),
+            jpeg: buildSrcSet(baseName, 'jpg', resolvedWidths),
         }
-    }, [baseName, isExternal, hasError])
+    }, [baseName, isExternal, hasError, resolvedWidths])
 
     const mergedClassName = `${className} ${isLoaded ? 'loaded' : 'loading'} ${hasError ? 'error' : ''}`.trim()
 

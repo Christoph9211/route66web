@@ -136,28 +136,12 @@
                 accept="application/json"
                 class="hidden"
             />
-            <input
-                id="articles-file-input"
-                type="file"
-                accept=".csv,text/csv"
-                class="hidden"
-            />
             <button id="load-btn" class="btn">Import products.json</button>
-            <button id="load-articles-btn" class="btn">
-                Import articles.csv
-            </button>
             <button id="download-all-btn" class="btn" disabled>
                 Download updated JSON
             </button>
             <button id="download-csv-btn" class="btn" disabled>
                 Download updated CSV
-            </button>
-        
-            <button id="download-korona-btn" class="btn" disabled>
-                Download Korona POS CSV
-            </button>
-            <button id="download-deletions-btn" class="btn btn-danger" disabled>
-                Download Deletions CSV
             </button>
         </div>
 
@@ -299,28 +283,17 @@
         <script>
             // ------------------ State & Constants ------------------
             const products = []
-            const deletedProducts = []
             let editIndex = null
             const LOCAL_KEY = 'products'
-            const DEFAULT_KORONA_START = 1000
-            let nextKoronaId = DEFAULT_KORONA_START
 
             // Size-price temp list for current form session
             let sizePricePairs = [] // [{size, price}]
 
             // ------------------ DOM Refs ------------------
             const fileInput = document.getElementById('file-input')
-            const articlesFileInput = document.getElementById(
-                'articles-file-input'
-            )
             const loadBtn = document.getElementById('load-btn')
-            const loadArticlesBtn = document.getElementById(
-                'load-articles-btn'
-            )
             const downloadAllBtn = document.getElementById('download-all-btn')
             const downloadCsvBtn = document.getElementById('download-csv-btn')
-            const downloadKoronaBtn = document.getElementById('download-korona-btn')
-            const downloadDeletionsBtn = document.getElementById('download-deletions-btn')
             const form = document.getElementById('product-form')
             const table = document.getElementById('products-table')
             const tbody = table.querySelector('tbody')
@@ -347,19 +320,11 @@
             ]
 
             // ------------------ Utility Helpers ------------------
-            const koronaSizeKey = (size) =>
-                String(size ?? '')
-                    .trim()
-                    .toLowerCase()
-
             const normalizeProductSchema = (product = {}) => {
                 if (!product || typeof product !== 'object') return product
 
-                // Legacy support if persisted with snake_case key
-                if (!product.koronaIds && product.korona_ids) {
-                    product.koronaIds = product.korona_ids
-                    delete product.korona_ids
-                }
+                if (product.koronaIds) delete product.koronaIds
+                if (product.korona_ids) delete product.korona_ids
 
                 if (!Array.isArray(product.size_options))
                     product.size_options = []
@@ -367,195 +332,26 @@
                 if (!product.prices || typeof product.prices !== 'object')
                     product.prices = {}
 
-                const validSizeKeys = new Set(
-                    (product.size_options || []).map((size) =>
-                        koronaSizeKey(size)
-                    )
-                )
-                if (!product.koronaIds || typeof product.koronaIds !== 'object') {
-                    product.koronaIds = {}
-                } else {
-                    const normalized = {}
-                    Object.entries(product.koronaIds).forEach(([key, val]) => {
-                        const normKey = koronaSizeKey(key)
-                        const num = Number(val)
-                        if (
-                            Number.isFinite(num) &&
-                            (validSizeKeys.size === 0 || validSizeKeys.has(normKey))
-                        )
-                            normalized[normKey] = num
-                    })
-                    product.koronaIds = normalized
-                }
                 return product
             }
 
-            const recomputeNextKoronaId = () => {
-                let max = DEFAULT_KORONA_START
-                const collect = (list = []) =>
-                    list.forEach((p) => {
-                        if (!p || typeof p !== 'object') return
-                        if (!p.koronaIds || typeof p.koronaIds !== 'object') return
-                        Object.values(p.koronaIds).forEach((val) => {
-                            const num = Number(val)
-                            if (Number.isFinite(num) && num > max) max = num
-                        })
-                    })
-                collect(products)
-                collect(deletedProducts)
-                nextKoronaId = max
-            }
-
-            const ensureKoronaId = (product, size) => {
-                if (!product || !size) return null
-                if (!product.koronaIds || typeof product.koronaIds !== 'object')
-                    product.koronaIds = {}
-                const key = koronaSizeKey(size)
-                const existing = Number(product.koronaIds[key])
-                if (Number.isFinite(existing)) return existing
-
-                if (!Number.isFinite(nextKoronaId))
-                    nextKoronaId = DEFAULT_KORONA_START
-                // guard in case something reset the counter lower than current max
-                if (nextKoronaId < DEFAULT_KORONA_START)
-                    nextKoronaId = DEFAULT_KORONA_START
-
-                nextKoronaId += 1
-                product.koronaIds[key] = nextKoronaId
-                return product.koronaIds[key]
-            }
-
-            const ensureKoronaIdsForProduct = (product) => {
-                if (!product || !Array.isArray(product.size_options)) return
-                product.size_options.forEach((size) => ensureKoronaId(product, size))
-            }
-
-            const getKoronaId = (product, size) => {
-                if (!product || !product.koronaIds) return null
-                const val = product.koronaIds[koronaSizeKey(size)]
-                const num = Number(val)
-                return Number.isFinite(num) ? num : null
-            }
-
-            const setKoronaId = (product, size, koronaNo) => {
-                if (!product || !size) return
-                if (!product.koronaIds || typeof product.koronaIds !== 'object')
-                    product.koronaIds = {}
-                product.koronaIds[koronaSizeKey(size)] = Number(koronaNo)
-            }
-
-            const normalizeNameKey = (s = '') =>
-                String(s || '')
-                    .trim()
-                    .toLowerCase()
-
-            const parseArticlesCsv = (text = '') => {
-                const lines = String(text || '')
-                    .split(/\r?\n/)
-                    .map((line) => line.trim())
-                    .filter(Boolean)
-                const records = []
-                lines.forEach((line, idx) => {
-                    if (idx === 0 && line.toLowerCase().includes('article'))
-                        return
-                    const cols = line.split(';')
-                    if (cols.length < 2) return
-                    const articleNoRaw = cols[0].trim()
-                    const articleNo = Number(articleNoRaw)
-                    if (!Number.isFinite(articleNo) || articleNo <= 0) return
-                    const nameField = (cols[1] || '').trim()
-                    if (!nameField) return
-                    const match = nameField.match(/^(.*)\(([^)]+)\)\s*$/)
-                    if (!match) return
-                    const name = match[1].trim()
-                    const size = match[2].trim()
-                    if (!name || !size) return
-                    records.push({ articleNo, name, size })
+            const escapeHtml = (value = '') =>
+                String(value ?? '').replace(/[&<>"']/g, (ch) => {
+                    switch (ch) {
+                        case '&':
+                            return '&amp;'
+                        case '<':
+                            return '&lt;'
+                        case '>':
+                            return '&gt;'
+                        case '"':
+                            return '&quot;'
+                        case "'":
+                            return '&#39;'
+                        default:
+                            return ch
+                    }
                 })
-                return records
-            }
-
-            const applyArticlesRecords = (records = []) => {
-                if (!Array.isArray(records) || records.length === 0)
-                    return { matched: 0, unmatched: [] }
-
-                const buildNameIndex = (list = []) => {
-                    const map = new Map()
-                    list.forEach((p) => {
-                        if (!p || typeof p !== 'object') return
-                        const key = normalizeNameKey(p.name)
-                        if (!key) return
-                        if (!map.has(key)) map.set(key, [])
-                        map.get(key).push(p)
-                    })
-                    return map
-                }
-
-                const productsIndex = buildNameIndex(products)
-                const deletedIndex = buildNameIndex(deletedProducts)
-                let matched = 0
-                const unmatched = []
-
-                const tryApply = (productList = [], sizeKey, articleNo, recordSize) => {
-                    let localMatches = 0
-                    const recordSig = sizeToSuffix(recordSize || '').toUpperCase()
-                    const simplifiedRecordKey = sizeKey.replace(/\s+/g, '')
-                    productList.forEach((product) => {
-                        if (!product.size_options) return
-                        const matchedSize = product.size_options.find((sz) => {
-                            const key = koronaSizeKey(sz)
-                            if (key === sizeKey) return true
-                            const sig = sizeToSuffix(sz || '').toUpperCase()
-                            if (sig && recordSig && sig === recordSig) return true
-                            const simpleKey = key.replace(/\s+/g, '')
-                            if (
-                                simpleKey &&
-                                simplifiedRecordKey &&
-                                simpleKey === simplifiedRecordKey
-                            )
-                                return true
-                            return false
-                        })
-                        if (!matchedSize) return
-                        setKoronaId(product, matchedSize, articleNo)
-                        localMatches += 1
-                    })
-                    return localMatches
-                }
-
-                records.forEach((record) => {
-                    const nameKey = normalizeNameKey(record.name)
-                    const sizeKey = koronaSizeKey(record.size)
-                    let applied = 0
-                    const productMatches = productsIndex.get(nameKey)
-                    if (productMatches)
-                        applied += tryApply(
-                            productMatches,
-                            sizeKey,
-                            record.articleNo,
-                            record.size
-                        )
-                    const deletedMatches = deletedIndex.get(nameKey)
-                    if (deletedMatches)
-                        applied += tryApply(
-                            deletedMatches,
-                            sizeKey,
-                            record.articleNo,
-                            record.size
-                        )
-
-                    if (applied > 0) matched += applied
-                    else unmatched.push(record)
-                })
-
-                if (matched > 0) {
-                    persistToLocalStorage()
-                    recomputeNextKoronaId()
-                    renderTable()
-                }
-
-                return { matched, unmatched }
-            }
 
             const getRank = (p) => {
                 if (p.banner === 'New') return 0
@@ -640,7 +436,6 @@
                             normalizeProductSchema(p)
                         )
                         products.splice(0, products.length, ...normalized)
-                        recomputeNextKoronaId()
                         refreshCategoryList()
                         renderTable()
                     }
@@ -659,10 +454,14 @@
                 sizePriceTable.classList.remove('hidden')
                 sizePriceTbody.innerHTML = ''
                 sizePricePairs.forEach((sp, idx) => {
+                    const price = Number(sp.price)
+                    const priceValue = Number.isFinite(price)
+                        ? price.toFixed(2)
+                        : ''
                     const row = document.createElement('tr')
-                    row.innerHTML = `<td>${sp.size}</td><td>$${sp.price.toFixed(
-                        2
-                    )}</td><td><button class="btn btn-sm btn-danger" data-spidx="${idx}">✕</button></td>`
+                    row.innerHTML = `<td><input type="text" data-field="size" data-spidx="${idx}" value="${escapeHtml(
+                        sp.size
+                    )}"></td><td><input type="number" step="0.01" min="0" data-field="price" data-spidx="${idx}" value="${priceValue}"></td><td><button class="btn btn-sm btn-danger" data-spidx="${idx}">✕</button></td>`
                     sizePriceTbody.appendChild(row)
                 })
             }
@@ -693,6 +492,46 @@
                 renderSizePriceTable()
             })
 
+            sizePriceTbody.addEventListener('change', (e) => {
+                const input = e.target.closest('input[data-spidx][data-field]')
+                if (!input) return
+                const idx = parseInt(input.dataset.spidx, 10)
+                if (!Number.isFinite(idx) || !sizePricePairs[idx]) return
+                const field = input.dataset.field
+
+                if (field === 'size') {
+                    const size = input.value.trim()
+                    if (!size) {
+                        alert('Please enter a size label')
+                        input.value = sizePricePairs[idx].size
+                        return
+                    }
+                    if (sizePricePairs.some((p, i) => i !== idx && p.size === size)) {
+                        alert('Size already added!')
+                        input.value = sizePricePairs[idx].size
+                        return
+                    }
+                    sizePricePairs[idx].size = size
+                    input.value = size
+                    return
+                }
+
+                if (field === 'price') {
+                    const priceVal = input.value.trim()
+                    const price = Number(priceVal)
+                    if (!priceVal || !Number.isFinite(price)) {
+                        alert('Please enter a valid price')
+                        const fallback = Number(sizePricePairs[idx].price)
+                        input.value = Number.isFinite(fallback)
+                            ? fallback.toFixed(2)
+                            : ''
+                        return
+                    }
+                    sizePricePairs[idx].price = price
+                    input.value = price.toFixed(2)
+                }
+            })
+
             // ------------------ Products Table Rendering ------------------
             const renderTable = () => {
                 products.sort((a, b) => {
@@ -710,16 +549,12 @@
                     table.classList.add('hidden')
                     downloadAllBtn.disabled = true
                     downloadCsvBtn.disabled = true
-                    downloadKoronaBtn.disabled = true
-                    downloadDeletionsBtn.disabled = deletedProducts.length === 0
                     return
                 }
 
                 table.classList.remove('hidden')
                 downloadAllBtn.disabled = false
                 downloadCsvBtn.disabled = false
-                downloadKoronaBtn.disabled = false
-                downloadDeletionsBtn.disabled = deletedProducts.length === 0
 
                 tbody.innerHTML = ''
                 products.forEach((p, idx) => {
@@ -735,6 +570,7 @@
             <td>${p.banner || ''}</td>
             <td class="actions">
               <button class="btn btn-sm" data-action="edit" data-idx="${idx}">Edit</button>
+              <button class="btn btn-sm" data-action="duplicate" data-idx="${idx}">Duplicate</button>
               <button class="btn btn-sm btn-danger" data-action="delete" data-idx="${idx}">Delete</button>
             </td>`
                     tbody.appendChild(tr)
@@ -757,71 +593,12 @@
                             normalizeProductSchema(p)
                         )
                         products.splice(0, products.length, ...normalized)
-                        recomputeNextKoronaId()
                         refreshCategoryList()
                         renderTable()
                         alert(`Loaded ${data.length} products.`)
                     } catch (err) {
                         alert('Failed to parse JSON: ' + err.message)
                     }
-                }
-                reader.readAsText(file)
-            })
-
-            loadArticlesBtn.addEventListener('click', () =>
-                articlesFileInput.click()
-            )
-
-            articlesFileInput.addEventListener('change', (e) => {
-                const file = e.target.files[0]
-                if (!file) return
-                const reader = new FileReader()
-                reader.onload = (ev) => {
-                    try {
-                        const csvText = ev.target.result
-                        const records = parseArticlesCsv(csvText)
-                        if (!records || records.length === 0) {
-                            alert(
-                                'No valid rows found in articles.csv. Expected "article number" and "article name (size)".'
-                            )
-                            return
-                        }
-                        const { matched, unmatched } =
-                            applyArticlesRecords(records)
-                        if (matched === 0) {
-                            alert(
-                                'No matching products were found for the provided articles.csv.'
-                            )
-                        } else {
-                            const unmatchedCount = unmatched.length
-                            const lines = [
-                                `Applied Korona numbers to ${matched} product size(s).`,
-                            ]
-                            if (unmatchedCount > 0) {
-                                lines.push(
-                                    `Could not match ${unmatchedCount} row(s). Check product names and sizes:`
-                                )
-                                const sample = unmatched
-                                    .slice(0, 5)
-                                    .map(
-                                        (row) =>
-                                            `- ${row.name} (${row.size}) -> ${row.articleNo}`
-                                    )
-                                lines.push(...sample)
-                                if (unmatchedCount > sample.length)
-                                    lines.push('... (more)')
-                            }
-                            alert(lines.join('\n'))
-                        }
-                    } catch (err) {
-                        alert('Failed to import articles.csv: ' + err.message)
-                    } finally {
-                        articlesFileInput.value = ''
-                    }
-                }
-                reader.onerror = () => {
-                    alert('Failed to read articles.csv file.')
-                    articlesFileInput.value = ''
                 }
                 reader.readAsText(file)
             })
@@ -838,401 +615,7 @@
                 a.click()
                 URL.revokeObjectURL(url)
             })
-
             // ------------------ Export CSV ------------------
-            // ------------------ Export Korona POS CSV ------------------
-            const commodityGroups = [
-                { nr: 1,  key: 'FLW',         name: 'Flower' },
-                { nr: 2,  key: 'FLW-REG',     name: 'Regular Flower' },
-                { nr: 3,  key: 'FLW-SNOW',    name: 'Snowcaps (Coated Flower)' },
-                { nr: 4,  key: 'FLW-PREROLL', name: 'Prerolls (Flower)' },
-                { nr: 5,  key: 'CON',         name: 'Concentrates & Extracts' },
-                { nr: 6,  key: 'CON-CRUM',    name: 'Crumble & Wax' },
-                { nr: 7,  key: 'CON-DIAM',    name: 'Diamonds & Sauce' },
-                { nr: 8,  key: 'CON-OTHER',   name: 'Other Concentrates' },
-                { nr: 9,  key: 'CON-PREINF',  name: 'Pre-Rolls (Infused)' },
-                { nr: 10, key: 'VAPE',        name: 'Vapes & Cartridges' },
-                { nr: 11, key: 'VAPE-CARTS',  name: 'Cartridges ' },
-                { nr: 12, key: 'VAPE-DISP',   name: 'Disposables ' },
-                { nr: 13, key: 'EDIB',        name: 'Edibles' },
-                { nr: 14, key: 'EDIB-GUM',    name: 'Gummies' },
-                { nr: 15, key: 'EDIB-SHOT',   name: 'Shots & Drinks' },
-                { nr: 16, key: 'ACC',         name: 'Accessories' },
-                { nr: 17, key: 'ACC-SMOKE',   name: 'Smoking Accessories' },
-                { nr: 18, key: 'ACC-VAPE',    name: 'Vaporizers' },
-                { nr: 19, key: 'ACC-BATT',    name: 'Vaporizer Batteries' },
-                { nr: 20, key: 'ACC-GLASS',   name: 'Glass & Rigs' },
-            ];
-            const commodityByKey = Object.fromEntries(commodityGroups.map(c => [c.key, c]));
-            const beverageHints = ['drink','shot','soda','can','lemonade','beverage','tea','juice','coffee','seltzer','sparkling','tonic','elixir','spritzer', '12 oz can','12oz','12oz can','cold brew','brew'];
-            const isTwelveOzCan = (s='') => {
-                const n = String(s || '').toLowerCase();
-                return /(\b12\s*oz\s*can\b|\b12oz\s*can\b|\b12\s*oz\b.*\bcan\b)/.test(n);
-            };
-            const ensureSubCommodity = (comm, nameLower='') => {
-                if (!comm) return commodityByKey['FLW-REG'];
-                const parents = new Set(['FLW','CON','VAPE','EDIB','ACC']);
-                if (!parents.has(comm.key) && ![1,5,10,13,16,21].includes(Number(comm.nr))) return comm;
-                switch (comm.key) {
-                    case 'FLW':  return commodityByKey['FLW-REG'];
-                    case 'CON':  return commodityByKey['CON-OTHER'];
-                    case 'VAPE': return (nameLower.includes('disp') || nameLower.includes('disposable'))
-                                        ? commodityByKey['VAPE-DISP'] : commodityByKey['VAPE-CARTS'];
-                    case 'EDIB': {
-                        const isDrink = beverageHints.some(k => nameLower.includes(k)) || isTwelveOzCan(nameLower);
-                        return isDrink ? commodityByKey['EDIB-SHOT'] : commodityByKey['EDIB-GUM'];
-                    }
-                    case 'ACC':  return commodityByKey['ACC-SMOKE'];
-                    default:     return comm;
-                }
-            };
-
-            const sizeSuffixMap = {
-                '1/8': '3.5G', '1/4': '7G', '1/2': '14G', 'ounce': '28G', '1 oz': '28G',
-                '1 gram': '1G', '2 grams': '2G', '3 grams': '3G', '0.5 gram': '0.5G',
-                'half gram': '0.5G', '2g': '2G', '3g': '3G',
-                '12 oz can': '12OZ', '12oz can': '12OZ', '12oz': '12OZ', '2oz bottle': '2OZ', '2 oz bottle': '2OZ',
-            };
-
-            const clean = (s='') => String(s || '').trim();
-            const normalizeForCode = (s = '', { allowDot = false } = {}) =>
-                String(s || '')
-                    .toUpperCase()
-                    .replace(allowDot ? /[^A-Z0-9\.]+/g : /[^A-Z0-9]+/g, '')
-                    .slice(0, 128);
-
-            const MAX_CODE_LEN = 32;
-            const STOPWORDS = new Set(['THE','AND','OF','OR','WITH','FT','BY','FOR','IN','ON','A','AN']);
-
-            const abbreviateName = (nameRaw) => {
-                const raw = String(nameRaw || '').toUpperCase();
-                let tokens = raw.split(/[^A-Z0-9]+/).filter(Boolean);
-                const filtered = tokens.filter(t => !STOPWORDS.has(t));
-                if (filtered.length > 0) tokens = filtered;
-                return tokens.join('');
-            };
-
-            const vowelStrip = (s) => {
-                return s.replace(/[A-Z0-9]+/g, chunk => {
-                    if (chunk.length <= 3) return chunk;
-                    const head = chunk[0];
-                    const tail = chunk.slice(1).replace(/[AEIOU]/g, '');
-                    return head + tail;
-                });
-            };
-
-            const shrinkToFit = (commodityKey, namePart, sizeSuffix) => {
-                const build = (nm) => `${commodityKey}-${nm}-${sizeSuffix}`;
-                let candidate = build(namePart);
-                if (candidate.length <= MAX_CODE_LEN) return candidate;
-
-                let nm = vowelStrip(namePart);
-                candidate = build(nm);
-                if (candidate.length <= MAX_CODE_LEN) return candidate;
-
-                nm = nm.replace(/[AEIOU]+/g, '');
-                candidate = build(nm);
-                if (candidate.length <= MAX_CODE_LEN) return candidate;
-
-                const reserve = commodityKey.length + 1 + 1 + sizeSuffix.length;
-                const maxNameLen = Math.max(1, MAX_CODE_LEN - reserve);
-                nm = nm.slice(0, maxNameLen);
-                candidate = build(nm);
-                return candidate.slice(0, MAX_CODE_LEN);
-            };
-
-            const sizeToSuffix = (sizeRaw='') => {
-                const k = clean(sizeRaw).toLowerCase();
-                return sizeSuffixMap[k] || k.toUpperCase().replace(/\s+/g, '');
-            };
-
-            const pickCommodity = (p) => {
-                const cat = clean(p.category).toLowerCase();
-                const name = clean(p.name).toLowerCase();
-                let key = null;
-                if (cat.includes('flower')) {
-                    if (name.includes('snow')) key = 'FLW-SNOW';
-                    else if (name.includes('pre') && name.includes('roll')) key = 'FLW-PREROLL';
-                    else key = 'FLW-REG';
-                } else if (cat.includes('concentrate') || cat.includes('extract')) {
-                    if (name.includes('crumble') || name.includes('wax')) key = 'CON-CRUM';
-                    else if (name.includes('diamond') || name.includes('sauce')) key = 'CON-DIAM';
-                    else if ((name.includes('pre') && name.includes('roll')) && (name.includes('infused') || name.includes('live'))) key = 'CON-PREINF';
-                    else key = 'CON-OTHER';
-                } else if (cat.includes('vape') || cat.includes('cart')) {
-                    if (name.includes('disp') || name.includes('disposable')) key = 'VAPE-DISP';
-                    else key = 'VAPE-CARTS';
-                } else if (cat.includes('edib') || cat.includes('gumm') || cat.includes('drink') || cat.includes('shot')) {
-                    const isDrink = beverageHints.some(k => name.includes(k) || cat.includes(k)) || isTwelveOzCan(name);
-                    key = isDrink ? 'EDIB-SHOT' : 'EDIB-GUM';
-                } else if (cat.includes('access')) {
-                    if (name.includes('battery')) key = 'ACC-BATT';
-                    else if (name.includes('glass') || name.includes('rig')) key = 'ACC-GLASS';
-                    else if (name.includes('vape') || name.includes('cart')) key = 'ACC-VAPE';
-                    else key = 'ACC-SMOKE';
-                } else {
-                    if (name.includes('cart') || name.includes('vape')) key = 'VAPE-CARTS';
-                    else if (name.includes('gumm') || name.includes('edib')) key = 'EDIB-GUM';
-                    else if (name.includes('drink') || name.includes('shot') || name.includes('soda') || name.includes('lemonade')) key = 'EDIB-SHOT';
-                    else key = 'FLW-REG';
-                }
-                const chosen = commodityByKey[key] || commodityByKey['FLW-REG'];
-                return ensureSubCommodity(chosen, name);
-            };
-
-            const toKoronaRows = (products = []) => {
-                const rows = []
-                recomputeNextKoronaId()
-                products.forEach((p) => {
-                    ensureKoronaIdsForProduct(p)
-                    ;(p.size_options || []).forEach((size) => {
-                        const suffix = normalizeForCode(sizeToSuffix(size), {
-                            allowDot: true,
-                        })
-                        let comm = pickCommodity(p)
-                        comm = ensureSubCommodity(
-                            comm,
-                            String(p.name || '').toLowerCase()
-                        )
-                        const nameAbbr = abbreviateName(p.name)
-                        const code = shrinkToFit(
-                            comm.key,
-                            normalizeForCode(nameAbbr),
-                            suffix
-                        )
-                        const price =
-                            p.prices &&
-                            (p.prices[size] ?? p.prices[String(size).trim()])
-                        const priceNum = Number(price ?? 0)
-                        const koronaNo = ensureKoronaId(p, size)
-                        rows.push([
-                            0,
-                            koronaNo ?? '',
-                            code,
-                            '',
-                            `${p.name} (${size})`,
-                            `${p.name} (${size})`,
-                            1,
-                            '',
-                            comm.nr,
-                            comm.name,
-                            priceNum || '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            '',
-                            1,
-                        ])
-                    })
-                })
-                return rows
-            }
-
-            const koronaHeader = [
-                'Status','No','Code','PLU','Name','Receipt Text','Sector','Alt. Sector',
-                'Commodity Group','Com. Gr. Name','Price 1','Price 2','Price 3','Price 4','Price 5',
-                'Box Code 1','Box Amount 1','Box Code 2','Box Amount 2','Box Code 3','Box Amount 3','Assortment'
-            ];
-
-            const escapeField = (val) => {
-                if (val === null || val === undefined) return '';
-                const s = String(val);
-                return /[;"\n]/.test(s) ? `"${s.replace(/\"/g,'""')}"` : s;
-            };
-
-            downloadKoronaBtn.addEventListener('click', () => {
-                const sorted = [...products].sort((a, b) => {
-                    const ra = getRank(a), rb = getRank(b);
-                    if (ra !== rb) return ra - rb;
-                    return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
-                });
-                const rows = toKoronaRows(sorted);
-                persistToLocalStorage();
-                const lines = [koronaHeader.join(';')];
-                rows.forEach(r => lines.push(r.map(escapeField).join(';')));
-                const blob = new Blob([lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'korona_products.csv';
-                a.click();
-                URL.revokeObjectURL(url);
-            });
-
-            downloadDeletionsBtn.addEventListener('click', () => {
-                if (deletedProducts.length === 0) {
-                    alert('No deleted products to export.');
-                    return;
-                }
-
-                const rows = [];
-                const missingEntries = [];
-
-                const buildDeletionRows = () => {
-                    rows.length = 0;
-                    missingEntries.length = 0;
-                    deletedProducts.forEach((p) => {
-                        (p.size_options || []).forEach((size) => {
-                            const koronaNo = getKoronaId(p, size);
-                            if (koronaNo === null || koronaNo === undefined) {
-                                missingEntries.push({
-                                    product: p,
-                                    size,
-                                    label: `${p.name} (${size})`,
-                                });
-                                return;
-                            }
-                            const suffix = normalizeForCode(sizeToSuffix(size), {
-                                allowDot: true,
-                            });
-                            let comm = pickCommodity(p);
-                            comm = ensureSubCommodity(
-                                comm,
-                                String(p.name || '').toLowerCase()
-                            );
-                            const nameAbbr = abbreviateName(p.name);
-                            const code = shrinkToFit(
-                                comm.key,
-                                normalizeForCode(nameAbbr),
-                                suffix
-                            );
-                            rows.push([
-                                1,
-                                Number(koronaNo),
-                                code,
-                                '',
-                                `${p.name} (${size})`,
-                                `${p.name} (${size})`,
-                                1,
-                                '',
-                                comm.nr,
-                                comm.name,
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                '',
-                                1,
-                            ]);
-                        });
-                    });
-                };
-
-                const gatherExistingKoronaNumbers = () => {
-                    const set = new Set();
-                    const addFromList = (list = []) => {
-                        list.forEach((p) => {
-                            if (!p || typeof p !== 'object') return;
-                            if (!p.koronaIds || typeof p.koronaIds !== 'object')
-                                return;
-                            Object.values(p.koronaIds).forEach((val) => {
-                                const num = Number(val);
-                                if (Number.isFinite(num)) set.add(num);
-                            });
-                        });
-                    };
-                    addFromList(products);
-                    addFromList(deletedProducts);
-                    return set;
-                };
-
-                buildDeletionRows();
-
-                if (missingEntries.length > 0) {
-                    const listText = missingEntries
-                        .map((entry) => `- ${entry.label}`)
-                        .join('\n');
-                    const proceed = confirm(
-                        `Some deleted items do not have Korona numbers assigned:\n${listText}\n\nClick OK to enter the numbers manually now. Click Cancel to stop the export.`
-                    );
-                    if (!proceed) {
-                        alert('Export cancelled. No file generated.');
-                        return;
-                    }
-                    const usedKoronaNumbers = gatherExistingKoronaNumbers();
-                    for (const entry of missingEntries) {
-                        while (true) {
-                            const input = prompt(
-                                `Enter Korona number for ${entry.label}:`,
-                                ''
-                            );
-                            if (input === null) {
-                                alert('Export cancelled. No file generated.');
-                                return;
-                            }
-                            const cleaned = input.trim();
-                            if (!cleaned) {
-                                alert('Please enter a value.');
-                                continue;
-                            }
-                            const num = Number(cleaned);
-                            if (
-                                !Number.isFinite(num) ||
-                                !Number.isInteger(num) ||
-                                num <= 0
-                            ) {
-                                alert(
-                                    'Korona numbers must be positive whole numbers.'
-                                );
-                                continue;
-                            }
-                            if (usedKoronaNumbers.has(num)) {
-                                alert(
-                                    `Korona number ${num} is already in use. Please enter a different number.`
-                                );
-                                continue;
-                            }
-                            if (
-                                !entry.product.koronaIds ||
-                                typeof entry.product.koronaIds !== 'object'
-                            ) {
-                                entry.product.koronaIds = {};
-                            }
-                            entry.product.koronaIds[
-                                koronaSizeKey(entry.size)
-                            ] = num;
-                            usedKoronaNumbers.add(num);
-                            break;
-                        }
-                    }
-                    persistToLocalStorage();
-                    recomputeNextKoronaId();
-                    buildDeletionRows();
-                    if (missingEntries.length > 0) {
-                        alert(
-                            'Export cancelled. Some entries still do not have Korona numbers.'
-                        );
-                        return;
-                    }
-                }
-
-                const lines = [koronaHeader.join(';')];
-                rows.forEach((r) => lines.push(r.map(escapeField).join(';')));
-                const blob = new Blob([lines.join('\r\n')], {
-                    type: 'text/csv;charset=utf-8',
-                });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'korona_deletions.csv';
-                a.click();
-                URL.revokeObjectURL(url);
-
-                alert(`Exported ${rows.length} deletion rows.`);
-            });
-
             downloadCsvBtn.addEventListener('click', () => {
                 const sorted = [...products].sort((a, b) => {
                     const ra = getRank(a)
@@ -1328,19 +711,6 @@
 
                 // 4. Insert or update
                 if (editIndex !== null) {
-                    const existing = products[editIndex]
-                    if (existing && existing.koronaIds) {
-                        const retained = {}
-                        Object.entries(existing.koronaIds).forEach(
-                            ([key, val]) => {
-                                const hasSize = product.size_options.some(
-                                    (size) => koronaSizeKey(size) === key
-                                )
-                                if (hasSize) retained[key] = val
-                            }
-                        )
-                        product.koronaIds = retained
-                    }
                     products[editIndex] = product
                 } else {
                     products.push(product)
@@ -1370,9 +740,40 @@
 
                 if (action === 'delete') {
                     if (confirm(`Delete product "${products[idx].name}"?`)) {
-                        const removed = products.splice(idx, 1)[0]
-                        if (removed) deletedProducts.push(removed)
+                        products.splice(idx, 1)
                         renderTable()
+                    }
+                    return
+                }
+                if (action === 'duplicate') {
+                    const prod = products[idx]
+                    if (!prod) return
+
+                    // 1. Basic fields
+                    form.name.value = prod.name
+                    form.category.value = prod.category
+                    form.thca.value = prod.thca_percentage ?? ''
+                    form.banner.value = prod.banner ?? ''
+                    form.availability.value = prod.availability
+                        ? JSON.stringify(prod.availability, null, 2)
+                        : ''
+
+                    // 2. Rebuild the size/price grid
+                    sizePricePairs = prod.size_options.map((sz) => ({
+                        size: sz,
+                        price: prod.prices[sz],
+                    }))
+                    renderSizePriceTable()
+
+                    // 3. Switch the UI to "duplicate" mode
+                    editIndex = null
+                    submitBtn.textContent = 'Add Product'
+                    formTitle.textContent = 'Duplicate Product'
+                    cancelEditBtn.classList.remove('hidden')
+                    try {
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                    } catch {
+                        window.scrollTo(0, 0)
                     }
                     return
                 }
@@ -1400,6 +801,11 @@
                     submitBtn.textContent = 'Save Changes'
                     formTitle.textContent = `Edit Product (#${idx + 1})`
                     cancelEditBtn.classList.remove('hidden')
+                    try {
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                    } catch {
+                        window.scrollTo(0, 0)
+                    }
                 }
             })
 
@@ -1418,3 +824,6 @@
         </script>
     </body>
 </html>
+
+
+

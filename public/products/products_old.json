@@ -1,73 +1,19 @@
 [
   {
-    "name": "Alaskan Thunder F***",
+    "name": "Bubblegum Cherries",
     "category": "Flower",
     "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
     ],
     "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
     },
-    "koronaIds": {
-      "1/8": 1299,
-      "1/4": 1300,
-      "1/2": 1301,
-      "ounce": 1302
-    },
+    "koronaIds": {},
     "banner": "New"
-  },
-  {
-    "name": "Blackberry Superboof",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "koronaIds": {
-      "1/8": 1303,
-      "1/4": 1304,
-      "1/2": 1305,
-      "ounce": 1306
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Blue Sunset Sherbert",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 15,
-      "1/4": 30,
-      "1/2": 60,
-      "ounce": 115
-    },
-    "thca_percentage": 19,
-    "banner": "New",
-    "koronaIds": {
-      "1/8": 1024,
-      "1/4": 1025,
-      "ounce": 1027,
-      "1/2": 1026
-    }
   },
   {
     "name": "Citrus Fuel",
@@ -115,30 +61,6 @@
       "ounce": 1047,
       "1/8": 1044,
       "1/4": 1045
-    }
-  },
-  {
-    "name": "Cosmic Runtz",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 22,
-    "banner": "New",
-    "koronaIds": {
-      "ounce": 1051,
-      "1/4": 1049,
-      "1/8": 1048,
-      "1/2": 1050
     }
   },
   {
@@ -208,6 +130,22 @@
     }
   },
   {
+    "name": "Green Crack",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "koronaIds": {},
+    "banner": "New"
+  },
+  {
     "name": "GSC Snowcaps",
     "category": "Flower",
     "size_options": [
@@ -238,13 +176,17 @@
       "Benson Arbor Blueberry Muffin Hash Infused",
       "Benson Arbor South Fork Kush Hash Infused",
       "Benson Arbor Florida Wedding Hash Infused",
-      "Benson Arbor Pineapple Passion Hash Infused"
+      "Benson Arbor Pineapple Passion Hash Infused",
+      "Benson Arbor Sweets Hash Infused",
+      "Benson Harbor Tropic Lemons Hash Infused"
     ],
     "prices": {
       "Benson Arbor Blueberry Muffin Hash Infused": 20,
       "Benson Arbor South Fork Kush Hash Infused": 20,
       "Benson Arbor Florida Wedding Hash Infused": 20,
-      "Benson Arbor Pineapple Passion Hash Infused": 20
+      "Benson Arbor Pineapple Passion Hash Infused": 20,
+      "Benson Arbor Sweets Hash Infused": 20,
+      "Benson Harbor Tropic Lemons Hash Infused": 20
     },
     "koronaIds": {
       "benson arbor blueberry muffin hash infused": 1160,
@@ -464,29 +406,6 @@
     }
   },
   {
-    "name": "Sour Tangie",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "New",
-    "koronaIds": {
-      "1/4": 1123,
-      "ounce": 1125,
-      "1/2": 1124,
-      "1/8": 1122
-    }
-  },
-  {
     "name": "Tropical Punch Shots 100mg",
     "category": "Edibles",
     "size_options": [
@@ -541,6 +460,20 @@
     },
     "banner": "New",
     "availability": {}
+  },
+  {
+    "name": "White Strawnana Live Resin Gummies - 50 mg per",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 12,
+      "2 count": 6
+    },
+    "koronaIds": {},
+    "banner": "New"
   },
   {
     "name": "Blueberry Muffin Diamonds",
@@ -714,6 +647,45 @@
     }
   },
   {
+    "name": "Alaskan Thunder F***",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "koronaIds": {
+      "1/8": 1299,
+      "1/4": 1300,
+      "1/2": 1301,
+      "ounce": 1302
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Apricot Haze",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "koronaIds": {},
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Bat Breath",
     "category": "Flower",
     "size_options": [
@@ -733,6 +705,53 @@
       "1/4": 1021,
       "ounce": 1023,
       "1/8": 1020
+    },
+    "thca_percentage": 19,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Blackberry Superboof",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "koronaIds": {
+      "1/8": 1303,
+      "1/4": 1304,
+      "1/2": 1305,
+      "ounce": 1306
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Blue Sunset Sherbert",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 15,
+      "1/4": 30,
+      "1/2": 60,
+      "ounce": 115
+    },
+    "koronaIds": {
+      "1/8": 1024,
+      "1/4": 1025,
+      "ounce": 1027,
+      "1/2": 1026
     },
     "thca_percentage": 19,
     "banner": "Out of Stock"
@@ -801,6 +820,30 @@
       "ounce": 1035
     },
     "thca_percentage": 18,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Cosmic Runtz",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "koronaIds": {
+      "ounce": 1051,
+      "1/4": 1049,
+      "1/8": 1048,
+      "1/2": 1050
+    },
+    "thca_percentage": 22,
     "banner": "Out of Stock"
   },
   {
@@ -985,6 +1028,45 @@
       "1/8": 1113
     },
     "thca_percentage": 20,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Sex Panther",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "koronaIds": {},
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Sour Tangie",
+    "category": "Flower",
+    "size_options": [
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
+    ],
+    "prices": {
+      "1/8": 20,
+      "1/4": 40,
+      "1/2": 80,
+      "ounce": 150
+    },
+    "koronaIds": {
+      "1/4": 1123,
+      "ounce": 1125,
+      "1/2": 1124,
+      "1/8": 1122
+    },
     "banner": "Out of Stock"
   },
   {
