@@ -1,6 +1,40 @@
 {
     "cleanUrls": true,
     "trailingSlash": true,
+    "rewrites": [
+        {
+            "source": "/products",
+            "destination": "/"
+        },
+        {
+            "source": "/products/",
+            "destination": "/"
+        },
+        {
+            "source": "/about",
+            "destination": "/"
+        },
+        {
+            "source": "/about/",
+            "destination": "/"
+        },
+        {
+            "source": "/contact",
+            "destination": "/"
+        },
+        {
+            "source": "/contact/",
+            "destination": "/"
+        },
+        {
+            "source": "/faq",
+            "destination": "/"
+        },
+        {
+            "source": "/faq/",
+            "destination": "/"
+        }
+    ],
     "headers": [
         {
             "source": "/(.*)",
