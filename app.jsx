@@ -256,6 +256,30 @@ const generateProductAlt = (product) => {
     return segments.join(' - ')
 }
 
+const getAvailabilityRank = (product) => {
+    const labels = []
+
+    if (product?.banner) {
+        labels.push(product.banner)
+    }
+
+    if (product?.availability && typeof product.availability === 'object') {
+        labels.push(...Object.values(product.availability))
+    }
+
+    const labelText = labels.join(' ').toLowerCase()
+
+    if (labelText.includes('new')) {
+        return 2
+    }
+
+    if (labelText.includes('out of stock') || labelText.includes('sold out')) {
+        return 0
+    }
+
+    return 1
+}
+
 export default function App() {
     const [appState, setAppState] = React.useState({
         isMobileMenuOpen: false,
@@ -271,7 +295,7 @@ export default function App() {
 
     // Product filtering state
     const [searchQuery, setSearchQuery] = React.useState('')
-    const [sortOption, setSortOption] = React.useState('name-asc')
+    const [sortOption, setSortOption] = React.useState('availability-desc')
     const [priceLimits, setPriceLimits] = React.useState([0, 0])
     const [priceRangeSelected, setPriceRangeSelected] = React.useState([0, 0])
 
@@ -574,6 +598,14 @@ export default function App() {
         // Sort items by the selected option
         const sorted = [...items]
         switch (sortOption) {
+            case 'availability-desc':
+                sorted.sort((a, b) => {
+                    const rankDiff =
+                        getAvailabilityRank(b) - getAvailabilityRank(a)
+                    if (rankDiff !== 0) return rankDiff
+                    return a.name.localeCompare(b.name)
+                })
+                break
             case 'name-desc':
                 sorted.sort((a, b) => b.name.localeCompare(a.name))
                 break
@@ -953,6 +985,9 @@ export default function App() {
                                                 }
                                                 className="w-full rounded-md border border-gray-300 p-2 text-gray-900 focus:border-emerald-500 focus:ring-emerald-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                                             >
+                                                <option value="availability-desc">
+                                                    New first
+                                                </option>
                                                 <option value="name-asc">
                                                     Name (A–Z)
                                                 </option>
