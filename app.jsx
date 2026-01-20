@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { businessInfo } from './src/utils/businessInfo.js'
-import { normalizePathname } from './src/utils/normalizePathname.js'
 import AgeGate from './src/components/AgeGate.jsx'
 import ResponsiveImage from './src/components/ResponsiveImage.jsx'
 // Font Awesome (SVG) – import only what we use
@@ -49,22 +48,6 @@ const SpeedInsights = React.lazy(() =>
 
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
-const SECTION_ROUTES = {
-    home: { id: null, path: '/' },
-    products: { id: 'products', path: '/products/' },
-    about: { id: 'about', path: '/about/' },
-    contact: { id: 'contact', path: '/contact/' },
-    faq: { id: 'faq', path: '/faq/' },
-}
-const normalizeSection = (value) => {
-    if (!value) return ''
-    return value
-        .replace(/^#/, '')
-        .replace(/^\/+/, '')
-        .replace(/\/+$/, '')
-        .trim()
-        .toLowerCase()
-}
 
 const renderSectionSkeleton = (height = 'h-64') => (
     <div
@@ -272,29 +255,6 @@ const generateProductAlt = (product) => {
     return segments.join(' - ')
 }
 
-const getAvailabilityRank = (product) => {
-    const labels = []
-
-    if (product?.banner) {
-        labels.push(product.banner)
-    }
-
-    if (product?.availability && typeof product.availability === 'object') {
-        labels.push(...Object.values(product.availability))
-    }
-
-    const labelText = labels.join(' ').toLowerCase()
-
-    if (labelText.includes('new')) {
-        return 2
-    }
-
-    if (labelText.includes('out of stock') || labelText.includes('sold out')) {
-        return 0
-    }
-
-    return 1
-}
 
 export default function App() {
     const [appState, setAppState] = React.useState({
@@ -308,12 +268,6 @@ export default function App() {
         catalogRequestVersion: 0,
         loadError: null,
     })
-
-    // Product filtering state
-    const [searchQuery, setSearchQuery] = React.useState('')
-    const [sortOption, setSortOption] = React.useState('availability-desc')
-    const [priceLimits, setPriceLimits] = React.useState([0, 0])
-    const [priceRangeSelected, setPriceRangeSelected] = React.useState([0, 0])
 
     const [structuredDataState, setStructuredDataState] = React.useState({
         products: [],
@@ -392,42 +346,9 @@ export default function App() {
             return
         }
 
-        // Handle initial page load based on pathname
-        const path = normalizePathname(window.location.pathname)
-        if (path === 'products') {
+        if (window.location.hash === '#products') {
             requestProductCatalog()
-            document.getElementById('products')?.scrollIntoView()
-        } else if (path && ['about', 'contact', 'faq'].includes(path)) {
-            document.getElementById(path)?.scrollIntoView()
         }
-
-        // Also check for legacy hash URLs and redirect
-        if (window.location.hash) {
-            const hashPath = normalizePathname(window.location.hash.replace('#', ''))
-            if (hashPath === 'products') {
-                requestProductCatalog()
-            }
-            if (hashPath) {
-                document.getElementById(hashPath)?.scrollIntoView()
-                window.history.replaceState(null, '', `/${hashPath}`)
-            }
-        }
-
-        // Handle browser back/forward navigation
-        const handlePopState = () => {
-            const newPath = normalizePathname(window.location.pathname)
-            if (newPath === 'products') {
-                requestProductCatalog()
-                document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })
-            } else if (newPath && ['about', 'contact', 'faq'].includes(newPath)) {
-                document.getElementById(newPath)?.scrollIntoView({ behavior: 'smooth' })
-            } else if (!newPath) {
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-            }
-        }
-
-        window.addEventListener('popstate', handlePopState)
-        return () => window.removeEventListener('popstate', handlePopState)
     }, [requestProductCatalog])
 
     const { shouldLoadProducts, hasLoadedProducts, catalogRequestVersion } =
@@ -526,8 +447,6 @@ export default function App() {
 
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
-        const routeKey = targetId || 'home'
-        const targetRoute = SECTION_ROUTES[routeKey]
 
         setAppState((prevState) =>
             prevState.isMobileMenuOpen
@@ -542,18 +461,10 @@ export default function App() {
             document
                 .getElementById(targetId)
                 ?.scrollIntoView({ behavior: 'smooth' })
-            // Update URL without hash
-            window.history.pushState(null, '', `/${targetId}`)
         } else {
             window.scrollTo({ top: 0, behavior: 'smooth' })
-            window.history.pushState(null, '', '/')
         }
-        if (targetRoute?.path) {
-            const nextUrl = `${targetRoute.path}${window.location.search}`
-            window.history.replaceState(null, '', nextUrl)
-        } else {
-            window.history.replaceState(null, '', window.location.pathname)
-        }
+        window.history.replaceState(null, '', window.location.pathname)
     }
 
     const structuredDataProducts = React.useMemo(() => {
@@ -571,101 +482,15 @@ export default function App() {
         structuredDataState.products,
     ])
 
-    // Compute price limits when products load
-    React.useEffect(() => {
-        if (appState.products.length) {
-            const prices = appState.products.flatMap((p) =>
-                Object.values(p.prices || {})
-            )
-            if (prices.length) {
-                const min = Math.min(...prices)
-                const max = Math.max(...prices)
-                setPriceLimits([min, max])
-                setPriceRangeSelected([min, max])
-            }
+    const filteredProducts = React.useMemo(() => {
+        if (appState.selectedCategory === 'all') {
+            return appState.products
         }
-    }, [appState.products])
-
-    // Compute filtered & sorted list of products
-    const visibleProducts = React.useMemo(() => {
-        let items = appState.products
-
-        // Filter by category
-        if (appState.selectedCategory !== 'all') {
-            items = items.filter(
-                (product) =>
-                    slugify(product.category) === appState.selectedCategory
-            )
-        }
-
-        // Filter by search query (name or description)
-        if (searchQuery.trim() !== '') {
-            const q = searchQuery.trim().toLowerCase()
-            items = items.filter(
-                (p) =>
-                    p.name.toLowerCase().includes(q) ||
-                    (p.description && p.description.toLowerCase().includes(q))
-            )
-        }
-
-        // Filter by price range
-        if (priceLimits[1] > 0) {
-            items = items.filter((p) =>
-                Object.values(p.prices || {}).some(
-                    (price) =>
-                        price >= priceRangeSelected[0] &&
-                        price <= priceRangeSelected[1]
-                )
-            )
-        }
-
-        // Sort items by the selected option
-        const sorted = [...items]
-        switch (sortOption) {
-            case 'availability-desc':
-                sorted.sort((a, b) => {
-                    const rankDiff =
-                        getAvailabilityRank(b) - getAvailabilityRank(a)
-                    if (rankDiff !== 0) return rankDiff
-                    return a.name.localeCompare(b.name)
-                })
-                break
-            case 'name-desc':
-                sorted.sort((a, b) => b.name.localeCompare(a.name))
-                break
-            case 'price-asc':
-                sorted.sort(
-                    (a, b) =>
-                        Math.min(...Object.values(a.prices || {})) -
-                        Math.min(...Object.values(b.prices || {}))
-                )
-                break
-            case 'price-desc':
-                sorted.sort(
-                    (a, b) =>
-                        Math.max(...Object.values(b.prices || {})) -
-                        Math.max(...Object.values(a.prices || {}))
-                )
-                break
-            case 'rating-desc':
-                sorted.sort(
-                    (a, b) =>
-                        (b.rating ?? b.ratings?.[0] ?? 0) -
-                        (a.rating ?? a.ratings?.[0] ?? 0)
-                )
-                break
-            default: // 'name-asc'
-                sorted.sort((a, b) => a.name.localeCompare(b.name))
-        }
-        return sorted
-    }, [
-        appState.products,
-        appState.selectedCategory,
-        searchQuery,
-        priceRangeSelected,
-        priceLimits,
-        sortOption,
-    ])
+        return appState.products.filter(
+            (product) =>
+                slugify(product.category) === appState.selectedCategory
+        )
+    }, [appState.products, appState.selectedCategory])
 
     return (
         <div className="flex min-h-screen flex-col">
@@ -705,28 +530,28 @@ export default function App() {
                         {/* Desktop menu */}
                         <div className="hidden md:flex md:items-center md:space-x-6">
                             <a
-                                href="/"
+                                href="#home"
                                 onClick={(e) => handleNavigation(e)}
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
                                 Home
                             </a>
                             <a
-                                href="/products"
+                                href="#products"
                                 onClick={(e) => handleNavigation(e, 'products')}
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
                                 Products
                             </a>
                             <a
-                                href="/about"
+                                href="#about"
                                 onClick={(e) => handleNavigation(e, 'about')}
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
                                 About
                             </a>
                             <a
-                                href="/contact"
+                                href="#contact"
                                 onClick={(e) => handleNavigation(e, 'contact')}
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
@@ -771,28 +596,28 @@ export default function App() {
                     <div className="md:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                             <a
-                                href="/"
+                                href="#home"
                                 onClick={(e) => handleNavigation(e)}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
                                 Home
                             </a>
                             <a
-                                href="/products"
+                                href="#products"
                                 onClick={(e) => handleNavigation(e, 'products')}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
                                 Products
                             </a>
                             <a
-                                href="/about"
+                                href="#about"
                                 onClick={(e) => handleNavigation(e, 'about')}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
                                 About
                             </a>
                             <a
-                                href="/contact"
+                                href="#contact"
                                 onClick={(e) => handleNavigation(e, 'contact')}
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
@@ -830,8 +655,8 @@ export default function App() {
                                                 </p>
                                                 <div className="mt-10 flex justify-center space-x-4 sm:mt-12 lg:justify-start">
                                                     <div className="flex gap-4">
-                                                        <a href="/products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-emerald-600 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24 shadow-lg transition-transform hover:scale-105"> Explore Products </a>
-                                                        <a href="/about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-emerald-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24 shadow-lg transition-transform hover:scale-105"> Learn more about us </a>
+                                                        <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-emerald-600 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24 shadow-lg transition-transform hover:scale-105"> Explore Products </a>
+                                                        <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-emerald-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24 shadow-lg transition-transform hover:scale-105"> Learn more about us </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -920,118 +745,6 @@ export default function App() {
                                         </button>
                                     ))}
                                 </div>
-
-                                {/* Product Filtering Controls */}
-                                <div className="mb-8 space-y-4 rounded-lg bg-gray-50 p-4 dark:bg-gray-700/50">
-                                    {/* Search box */}
-                                    <div>
-                                        <label
-                                            htmlFor="product-search"
-                                            className="mb-1 block text-sm font-medium text-gray-700 dark:text-white"
-                                        >
-                                            Search Products
-                                        </label>
-                                        <input
-                                            id="product-search"
-                                            type="text"
-                                            placeholder="Search products…"
-                                            value={searchQuery}
-                                            onChange={(e) =>
-                                                setSearchQuery(e.target.value)
-                                            }
-                                            className="w-full rounded-md border border-gray-300 p-2 text-gray-900 focus:border-emerald-500 focus:ring-emerald-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                                        />
-                                    </div>
-
-                                    <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
-                                        {/* Price range slider */}
-                                        <div className="flex-1">
-                                            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-white">
-                                                Price range: ${priceRangeSelected[0].toFixed(0)} – ${priceRangeSelected[1].toFixed(0)}
-                                            </label>
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs text-gray-500 dark:text-gray-400">
-                                                    ${priceLimits[0].toFixed(0)}
-                                                </span>
-                                                <input
-                                                    type="range"
-                                                    min={priceLimits[0]}
-                                                    max={priceLimits[1]}
-                                                    value={priceRangeSelected[0]}
-                                                    onInput={(e) =>
-                                                        setPriceRangeSelected([
-                                                            Math.min(
-                                                                Number(e.target.value),
-                                                                priceRangeSelected[1]
-                                                            ),
-                                                            priceRangeSelected[1],
-                                                        ])
-                                                    }
-                                                    className="h-2 flex-1 cursor-pointer appearance-none rounded-lg bg-gray-200 accent-emerald-600 dark:bg-gray-600"
-                                                    aria-label="Minimum price"
-                                                />
-                                                <input
-                                                    type="range"
-                                                    min={priceLimits[0]}
-                                                    max={priceLimits[1]}
-                                                    value={priceRangeSelected[1]}
-                                                    onInput={(e) =>
-                                                        setPriceRangeSelected([
-                                                            priceRangeSelected[0],
-                                                            Math.max(
-                                                                Number(e.target.value),
-                                                                priceRangeSelected[0]
-                                                            ),
-                                                        ])
-                                                    }
-                                                    className="h-2 flex-1 cursor-pointer appearance-none rounded-lg bg-gray-200 accent-emerald-600 dark:bg-gray-600"
-                                                    aria-label="Maximum price"
-                                                />
-                                                <span className="text-xs text-gray-500 dark:text-gray-400">
-                                                    ${priceLimits[1].toFixed(0)}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        {/* Sort dropdown */}
-                                        <div className="sm:w-48">
-                                            <label
-                                                htmlFor="product-sort"
-                                                className="mb-1 block text-sm font-medium text-gray-700 dark:text-white"
-                                            >
-                                                Sort by
-                                            </label>
-                                            <select
-                                                id="product-sort"
-                                                value={sortOption}
-                                                onChange={(e) =>
-                                                    setSortOption(e.target.value)
-                                                }
-                                                className="w-full rounded-md border border-gray-300 p-2 text-gray-900 focus:border-emerald-500 focus:ring-emerald-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                                            >
-                                                <option value="availability-desc">
-                                                    Newest
-                                                </option>
-                                                <option value="name-asc">
-                                                    Name (A–Z)
-                                                </option>
-                                                <option value="name-desc">
-                                                    Name (Z–A)
-                                                </option>
-                                                <option value="price-asc">
-                                                    Price (Low–High)
-                                                </option>
-                                                <option value="price-desc">
-                                                    Price (High–Low)
-                                                </option>
-                                                <option value="rating-desc">
-                                                    Rating (High–Low)
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 {appState.loading ? (
                                     <div className="col-span-full flex items-center justify-center py-12">
                                         <div className="leaf-loader">
@@ -1067,9 +780,9 @@ export default function App() {
                                             Try again
                                         </button>
                                     </div>
-                                ) : visibleProducts.length > 0 ? (
+                                ) : filteredProducts.length > 0 ? (
                                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                        {visibleProducts.map((product) => (
+                                        {filteredProducts.map((product) => (
                                             <ProductCard
                                                 key={product.name + product.category}
                                                 product={product}
@@ -1079,7 +792,7 @@ export default function App() {
                                 ) : (
                                     <div className="col-span-full py-12 text-center">
                                         <p className="text-gray-700 dark:text-white">
-                                            No products match your filters.
+                                            Products Coming Soon
                                         </p>
                                     </div>
                                 )}
@@ -1355,7 +1068,7 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="/products"
+                                            href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
                                             className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
@@ -1364,7 +1077,7 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="/products"
+                                            href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
                                             className="text-black text-base hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
@@ -1373,7 +1086,7 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="/products"
+                                            href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
                                             className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
@@ -1389,7 +1102,7 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="/about"
+                                            href="#about"
                                             onClick={(e) => handleNavigation(e, 'about')}
                                             className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
@@ -1405,7 +1118,7 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="/contact"
+                                            href="#contact"
                                             onClick={(e) => handleNavigation(e, 'contact')}
                                             className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
@@ -1414,7 +1127,7 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="/faq"
+                                            href="#faq"
                                             onClick={(e) => handleNavigation(e, 'faq')}
                                             className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
                                         >
