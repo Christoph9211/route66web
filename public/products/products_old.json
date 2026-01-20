@@ -862,12 +862,6 @@
       "1/2": 80,
       "ounce": 150
     },
-    "koronaIds": {
-      "ounce": 1051,
-      "1/4": 1049,
-      "1/8": 1048,
-      "1/2": 1050
-    },
     "thca_percentage": 22,
     "banner": "Out of Stock"
   },
@@ -882,11 +876,7 @@
       "1 gram": 10,
       "3 grams": 25
     },
-    "banner": "Out of Stock",
-    "koronaIds": {
-      "3 grams": 1224,
-      "1 gram": 1223
-    }
+    "banner": "Out of Stock"
   },
   {
     "name": "Green Goddess",
