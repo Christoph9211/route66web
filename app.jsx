@@ -986,7 +986,7 @@ export default function App() {
                                                 className="w-full rounded-md border border-gray-300 p-2 text-gray-900 focus:border-emerald-500 focus:ring-emerald-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                                             >
                                                 <option value="availability-desc">
-                                                    New first
+                                                    Newest
                                                 </option>
                                                 <option value="name-asc">
                                                     Name (A–Z)
