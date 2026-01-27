@@ -68,42 +68,6 @@
     "banner": "New"
   },
   {
-    "name": "Citrus Fuel",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 20.8,
-    "banner": "New"
-  },
-  {
-    "name": "Columbian Gold",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 18,
-    "banner": "New"
-  },
-  {
     "name": "Cotton Candy Lemonade 25mg",
     "category": "Edibles",
     "size_options": [
@@ -234,24 +198,6 @@
     "banner": "New"
   },
   {
-    "name": "Frosted Frappe",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 22.26,
-    "banner": "New"
-  },
-  {
     "name": "Garlic Cookies Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -279,39 +225,6 @@
     "banner": "New"
   },
   {
-    "name": "Green Crack",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "New"
-  },
-  {
-    "name": "GSC Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 63.09,
-    "banner": "New"
-  },
-  {
     "name": "Infused Prerolls",
     "category": "Other",
     "size_options": [
@@ -334,24 +247,6 @@
       "Hash Infused Blueberry Muffin": 10,
       "Hash Infused Rock Candy": 10
     },
-    "banner": "New"
-  },
-  {
-    "name": "Lava Freeze",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 23,
     "banner": "New"
   },
   {
@@ -381,10 +276,10 @@
     "name": "Moon Water Soda - Berry Twist 30mg",
     "category": "Edibles",
     "size_options": [
-      "12 oz"
+      "12 oz can"
     ],
     "prices": {
-      "12 oz": 10
+      "12 oz can": 10
     },
     "banner": "New"
   },
@@ -396,17 +291,6 @@
     ],
     "prices": {
       "12 oz can": 9
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Nitro Salted Caramel Cold Brew 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "12 oz"
-    ],
-    "prices": {
-      "12 oz": 8
     },
     "banner": "New"
   },
@@ -508,17 +392,6 @@
     "banner": "New"
   },
   {
-    "name": "Salted Caramel Cold Brew 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "12 oz can"
-    ],
-    "prices": {
-      "12 oz can": 8
-    },
-    "banner": "New"
-  },
-  {
     "name": "Strawberry Diesel Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -530,17 +403,6 @@
       "3 grams": 25
     },
     "thca_percentage": 98.39,
-    "banner": "New"
-  },
-  {
-    "name": "Tropical Punch Shots 100mg",
-    "category": "Edibles",
-    "size_options": [
-      "2oz Bottle"
-    ],
-    "prices": {
-      "2oz Bottle": 9.99
-    },
     "banner": "New"
   },
   {
@@ -615,15 +477,13 @@
     "name": "Blueberry Muffin Flower",
     "category": "Flower",
     "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
+      "1/8 oz",
+      "1/4 oz",
       "Ounce"
     ],
     "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
+      "1/8 oz": 20,
+      "1/4 oz": 40,
       "Ounce": 150
     }
   },
@@ -639,6 +499,36 @@
       "3 grams": 30
     },
     "thca_percentage": 97.1
+  },
+  {
+    "name": "Citrus Fuel",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50,
+      "ounce": 200
+    },
+    "thca_percentage": 20.8
+  },
+  {
+    "name": "Columbian Gold",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "ounce": 150
+    },
+    "thca_percentage": 18
   },
   {
     "name": "Durban Poison Crumble",
@@ -662,6 +552,21 @@
     }
   },
   {
+    "name": "Frosted Frappe",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50,
+      "ounce": 200
+    },
+    "thca_percentage": 22.26
+  },
+  {
     "name": "Granddaddy Purple Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -673,6 +578,35 @@
       "3 grams": 25
     },
     "thca_percentage": 97.1
+  },
+  {
+    "name": "Green Crack",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    }
+  },
+  {
+    "name": "GSC Snowcaps",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50,
+      "ounce": 200
+    },
+    "thca_percentage": 63.09
   },
   {
     "name": "Ice Cream Cake Saucy Diamonds",
@@ -687,18 +621,31 @@
     }
   },
   {
-    "name": "Mac 1",
+    "name": "Lava Freeze",
     "category": "Flower",
     "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
+      "1/8 oz",
+      "1/4 oz",
       "ounce"
     ],
     "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
+      "1/8 oz": 25,
+      "1/4 oz": 50,
+      "ounce": 200
+    },
+    "thca_percentage": 23
+  },
+  {
+    "name": "Mac 1",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
       "ounce": 150
     },
     "thca_percentage": 21
@@ -716,6 +663,36 @@
     }
   },
   {
+    "name": "Nitro Salted Caramel Cold Brew 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 8
+    }
+  },
+  {
+    "name": "Salted Caramel Cold Brew 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 8
+    }
+  },
+  {
+    "name": "Tropical Punch Shots 100mg",
+    "category": "Edibles",
+    "size_options": [
+      "2oz Bottle"
+    ],
+    "prices": {
+      "2oz Bottle": 9.99
+    }
+  },
+  {
     "name": "Wedding Cake Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -728,92 +705,18 @@
     }
   },
   {
-    "name": "Bat Breath",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 19,
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Blackberry Superboof",
     "category": "Flower",
     "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
+      "1/8 oz",
+      "1/4 oz",
       "ounce"
     ],
     "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
+      "1/8 oz": 20,
+      "1/4 oz": 40,
       "ounce": 150
     },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Blue Sunset Sherbert",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 15,
-      "1/4": 30,
-      "1/2": 60,
-      "ounce": 115
-    },
-    "thca_percentage": 19,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Cake Face",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 27,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Cosmic Runtz",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 22,
     "banner": "Out of Stock"
   },
   {
@@ -826,76 +729,6 @@
     "prices": {
       "1 gram": 10,
       "3 grams": 25
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Mimosa",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "thca_percentage": 19,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Northern Lights",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Purple Punch",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 20,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Sour Tangie",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
     },
     "banner": "Out of Stock"
   }
