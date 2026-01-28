@@ -383,6 +383,7 @@ export default function App() {
         loadError: null,
     })
     const [isFiltering, startFiltering] = React.useTransition()
+    const [visibleCount, setVisibleCount] = React.useState(PRODUCTS_PAGE_SIZE)
 
     const [structuredDataState, setStructuredDataState] = React.useState({
         products: [],
@@ -607,6 +608,14 @@ export default function App() {
         )
     }, [appState.products, appState.selectedCategory])
     const deferredProducts = React.useDeferredValue(filteredProducts)
+    const visibleProducts = React.useMemo(
+        () => deferredProducts.slice(0, visibleCount),
+        [deferredProducts, visibleCount]
+    )
+
+    React.useEffect(() => {
+        setVisibleCount(PRODUCTS_PAGE_SIZE)
+    }, [appState.selectedCategory, deferredProducts.length])
 
     const handleCategorySelect = React.useCallback((categoryId) => {
         startFiltering(() => {
@@ -897,14 +906,40 @@ export default function App() {
                                         </button>
                                     </div>
                                 ) : deferredProducts.length > 0 ? (
-                                    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                        {deferredProducts.map((product) => (
-                                            <ProductCard
-                                                key={product.name + product.category}
-                                                product={product}
-                                            />
-                                        ))}
-                                    </div>
+                                    <>
+                                        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                                            {visibleProducts.map((product) => (
+                                                <ProductCard
+                                                    key={product.name + product.category}
+                                                    product={product}
+                                                />
+                                            ))}
+                                        </div>
+                                        {deferredProducts.length >
+                                        visibleProducts.length ? (
+                                            <div className="mt-10 text-center">
+                                                <button
+                                                    type="button"
+                                                    onClick={() =>
+                                                        startFiltering(() =>
+                                                            setVisibleCount(
+                                                                (count) =>
+                                                                    count +
+                                                                    PRODUCTS_PAGE_SIZE
+                                                            )
+                                                        )
+                                                    }
+                                                    className="inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 dark:border-emerald-700/60 dark:bg-gray-900 dark:text-emerald-200 dark:hover:bg-gray-800"
+                                                >
+                                                    Load more products
+                                                </button>
+                                                <p className="mt-3 text-xs text-gray-500 dark:text-gray-300">
+                                                    Showing {visibleProducts.length} of{' '}
+                                                    {deferredProducts.length}
+                                                </p>
+                                            </div>
+                                        ) : null}
+                                    </>
                                 ) : (
                                     <div className="col-span-full py-12 text-center">
                                         <p className="text-gray-700 dark:text-white">
@@ -1419,6 +1454,8 @@ const getPlaceholderForCategory = (category) => {
             return '/assets/images/route-66-hemp-product-placeholder'
     }
 }
+
+const PRODUCTS_PAGE_SIZE = 12
 
 const ProductCard = React.memo(function ProductCard({ product }) {
     // Generate combined options if both flavors and size_options exist

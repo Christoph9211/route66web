@@ -4,6 +4,8 @@
     transition:
         transform 0.3s,
         box-shadow 0.3s;
+    content-visibility: auto;
+    contain-intrinsic-size: 320px 520px;
 }
 /* Small banner that can appear in the corner of a product card */
 .product-banner {
