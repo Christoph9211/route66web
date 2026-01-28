@@ -382,6 +382,7 @@ export default function App() {
         catalogRequestVersion: 0,
         loadError: null,
     })
+    const [isFiltering, startFiltering] = React.useTransition()
 
     const [structuredDataState, setStructuredDataState] = React.useState({
         products: [],
@@ -605,6 +606,17 @@ export default function App() {
                 slugify(product.category) === appState.selectedCategory
         )
     }, [appState.products, appState.selectedCategory])
+    const deferredProducts = React.useDeferredValue(filteredProducts)
+
+    const handleCategorySelect = React.useCallback((categoryId) => {
+        startFiltering(() => {
+            setAppState((prevState) =>
+                prevState.selectedCategory === categoryId
+                    ? prevState
+                    : { ...prevState, selectedCategory: categoryId }
+            )
+        })
+    }, [startFiltering])
 
     return (
         <div className="flex min-h-screen flex-col">
@@ -818,12 +830,7 @@ export default function App() {
                                     aria-label="Filter products by category"
                                 >
                                     <button
-                                        onClick={() =>
-                                            setAppState((prevState) => ({
-                                                ...prevState,
-                                                selectedCategory: 'all',
-                                            }))
-                                        }
+                                        onClick={() => handleCategorySelect('all')}
                                         aria-pressed={
                                             appState.selectedCategory === 'all'
                                         }
@@ -838,12 +845,7 @@ export default function App() {
                                     {appState.categories.map((category) => (
                                         <button
                                             key={category.id}
-                                            onClick={() =>
-                                                setAppState((prevState) => ({
-                                                    ...prevState,
-                                                    selectedCategory: category.id,
-                                                }))
-                                            }
+                                            onClick={() => handleCategorySelect(category.id)}
                                             aria-pressed={
                                                 appState.selectedCategory ===
                                                 category.id
@@ -894,9 +896,9 @@ export default function App() {
                                             Try again
                                         </button>
                                     </div>
-                                ) : filteredProducts.length > 0 ? (
+                                ) : deferredProducts.length > 0 ? (
                                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                        {filteredProducts.map((product) => (
+                                        {deferredProducts.map((product) => (
                                             <ProductCard
                                                 key={product.name + product.category}
                                                 product={product}
@@ -908,6 +910,14 @@ export default function App() {
                                         <p className="text-gray-700 dark:text-white">
                                             Products Coming Soon
                                         </p>
+                                    </div>
+                                )}
+                                {isFiltering && (
+                                    <div
+                                        className="mt-6 text-center text-sm text-gray-500 dark:text-gray-300"
+                                        aria-live="polite"
+                                    >
+                                        Updating products...
                                     </div>
                                 )}
                             </>
