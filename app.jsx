@@ -382,6 +382,8 @@ export default function App() {
         catalogRequestVersion: 0,
         loadError: null,
     })
+    const [isFiltering, startFiltering] = React.useTransition()
+    const [visibleCount, setVisibleCount] = React.useState(PRODUCTS_PAGE_SIZE)
 
     const [structuredDataState, setStructuredDataState] = React.useState({
         products: [],
@@ -605,6 +607,25 @@ export default function App() {
                 slugify(product.category) === appState.selectedCategory
         )
     }, [appState.products, appState.selectedCategory])
+    const deferredProducts = React.useDeferredValue(filteredProducts)
+    const visibleProducts = React.useMemo(
+        () => deferredProducts.slice(0, visibleCount),
+        [deferredProducts, visibleCount]
+    )
+
+    React.useEffect(() => {
+        setVisibleCount(PRODUCTS_PAGE_SIZE)
+    }, [appState.selectedCategory, deferredProducts.length])
+
+    const handleCategorySelect = React.useCallback((categoryId) => {
+        startFiltering(() => {
+            setAppState((prevState) =>
+                prevState.selectedCategory === categoryId
+                    ? prevState
+                    : { ...prevState, selectedCategory: categoryId }
+            )
+        })
+    }, [startFiltering])
 
     return (
         <div className="flex min-h-screen flex-col">
@@ -818,12 +839,7 @@ export default function App() {
                                     aria-label="Filter products by category"
                                 >
                                     <button
-                                        onClick={() =>
-                                            setAppState((prevState) => ({
-                                                ...prevState,
-                                                selectedCategory: 'all',
-                                            }))
-                                        }
+                                        onClick={() => handleCategorySelect('all')}
                                         aria-pressed={
                                             appState.selectedCategory === 'all'
                                         }
@@ -838,12 +854,7 @@ export default function App() {
                                     {appState.categories.map((category) => (
                                         <button
                                             key={category.id}
-                                            onClick={() =>
-                                                setAppState((prevState) => ({
-                                                    ...prevState,
-                                                    selectedCategory: category.id,
-                                                }))
-                                            }
+                                            onClick={() => handleCategorySelect(category.id)}
                                             aria-pressed={
                                                 appState.selectedCategory ===
                                                 category.id
@@ -894,20 +905,54 @@ export default function App() {
                                             Try again
                                         </button>
                                     </div>
-                                ) : filteredProducts.length > 0 ? (
-                                    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                        {filteredProducts.map((product) => (
-                                            <ProductCard
-                                                key={product.name + product.category}
-                                                product={product}
-                                            />
-                                        ))}
-                                    </div>
+                                ) : deferredProducts.length > 0 ? (
+                                    <>
+                                        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                                            {visibleProducts.map((product) => (
+                                                <ProductCard
+                                                    key={product.name + product.category}
+                                                    product={product}
+                                                />
+                                            ))}
+                                        </div>
+                                        {deferredProducts.length >
+                                        visibleProducts.length ? (
+                                            <div className="mt-10 text-center">
+                                                <button
+                                                    type="button"
+                                                    onClick={() =>
+                                                        startFiltering(() =>
+                                                            setVisibleCount(
+                                                                (count) =>
+                                                                    count +
+                                                                    PRODUCTS_PAGE_SIZE
+                                                            )
+                                                        )
+                                                    }
+                                                    className="inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 dark:border-emerald-700/60 dark:bg-gray-900 dark:text-emerald-200 dark:hover:bg-gray-800"
+                                                >
+                                                    Load more products
+                                                </button>
+                                                <p className="mt-3 text-xs text-gray-500 dark:text-gray-300">
+                                                    Showing {visibleProducts.length} of{' '}
+                                                    {deferredProducts.length}
+                                                </p>
+                                            </div>
+                                        ) : null}
+                                    </>
                                 ) : (
                                     <div className="col-span-full py-12 text-center">
                                         <p className="text-gray-700 dark:text-white">
                                             Products Coming Soon
                                         </p>
+                                    </div>
+                                )}
+                                {isFiltering && (
+                                    <div
+                                        className="mt-6 text-center text-sm text-gray-500 dark:text-gray-300"
+                                        aria-live="polite"
+                                    >
+                                        Updating products...
                                     </div>
                                 )}
                             </>
@@ -1409,6 +1454,8 @@ const getPlaceholderForCategory = (category) => {
             return '/assets/images/route-66-hemp-product-placeholder'
     }
 }
+
+const PRODUCTS_PAGE_SIZE = 12
 
 const ProductCard = React.memo(function ProductCard({ product }) {
     // Generate combined options if both flavors and size_options exist
