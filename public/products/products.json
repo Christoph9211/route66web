@@ -198,24 +198,6 @@
     "banner": "New"
   },
   {
-    "name": "Frosted Frappe",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 22.26,
-    "banner": "New"
-  },
-  {
     "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
     "category": "Edibles",
     "size_options": [
@@ -240,19 +222,6 @@
       "3 grams": 25
     },
     "thca_percentage": 99.2,
-    "banner": "New"
-  },
-  {
-    "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
-    },
     "banner": "New"
   },
   {
