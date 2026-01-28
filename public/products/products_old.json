@@ -14,6 +14,32 @@
     "banner": "New"
   },
   {
+    "name": "Black Raspberry Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Blue Razz Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    },
+    "banner": "New"
+  },
+  {
     "name": "Bubblegum Cherries",
     "category": "Flower",
     "size_options": [
@@ -25,6 +51,19 @@
       "1/8 oz": 20,
       "1/4 oz": 40,
       "1 oz": 150
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Citrus Cola Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
     },
     "banner": "New"
   },
@@ -76,6 +115,19 @@
     "banner": "New"
   },
   {
+    "name": "Cotton Candy Lemonade Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    },
+    "banner": "New"
+  },
+  {
     "name": "Cotton Candy Lemonade Shots 100mg",
     "category": "Edibles",
     "size_options": [
@@ -83,6 +135,72 @@
     ],
     "prices": {
       "2oz Bottle": 9.99
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Apple Lemonade 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Blue Raspberry 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Sour Cherry Lemon 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Sour Orange Lemon Lime 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Sour Strawberry Raspberry 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Unicorn Blood- Fruit Punch 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
     },
     "banner": "New"
   },
@@ -98,7 +216,8 @@
       "Gelato Mintz",
       "Hawaiian Sunrise",
       "Jet Fuel Gelato",
-      "Where's My Bike"
+      "Where's My Bike",
+      "Rainbow Sherbert"
     ],
     "prices": {
       "Road Dog": 6,
@@ -109,7 +228,8 @@
       "Gelato Mintz": 5,
       "Hawaiian Sunrise": 5,
       "Jet Fuel Gelato": 5,
-      "Where's My Bike": 6
+      "Where's My Bike": 6,
+      "Rainbow Sherbert": 5
     },
     "banner": "New"
   },
@@ -143,6 +263,19 @@
       "3 grams": 25
     },
     "thca_percentage": 99.2,
+    "banner": "New"
+  },
+  {
+    "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    },
     "banner": "New"
   },
   {
@@ -222,24 +355,6 @@
     "banner": "New"
   },
   {
-    "name": "Mac 1",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 21,
-    "banner": "New"
-  },
-  {
     "name": "Mendo Purp Rosin",
     "category": "Concentrates",
     "size_options": [
@@ -304,7 +419,8 @@
       "Mango Tango",
       "Avatar OG",
       "Baked Alien",
-      "Blue Walker"
+      "Blue Walker",
+      "Maui Wowie"
     ],
     "prices": {
       "Cranberry Haze": 18,
@@ -312,7 +428,8 @@
       "Mango Tango": 18,
       "Avatar OG": 18,
       "Baked Alien": 18,
-      "Blue Walker": 18
+      "Blue Walker": 18,
+      "Maui Wowie": 40
     },
     "banner": "New"
   },
@@ -328,7 +445,10 @@
       "Blazed - Silly Sunset",
       "Blazed - Unicorn Magic",
       "Gelato",
-      "Strawberry Cough"
+      "Strawberry Cough",
+      "Live Rosin Strawberry Wine",
+      "Live Rosin Bubba Kush",
+      "Live Rosin Chauffeur"
     ],
     "prices": {
       "Sour Pebbles": 25.99,
@@ -339,7 +459,10 @@
       "Blazed - Silly Sunset": 29.99,
       "Blazed - Unicorn Magic": 29.99,
       "Gelato": 35,
-      "Strawberry Cough": 35
+      "Strawberry Cough": 35,
+      "Live Rosin Strawberry Wine": 40,
+      "Live Rosin Bubba Kush": 35,
+      "Live Rosin Chauffeur": 40
     },
     "banner": "New",
     "availability": {}
@@ -372,6 +495,19 @@
     "banner": "New"
   },
   {
+    "name": "Pink Lemonade Live Resin Gummies -50 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 12,
+      "2 count": 6
+    },
+    "banner": "New"
+  },
+  {
     "name": "Salted Caramel Cold Brew 25 mg",
     "category": "Edibles",
     "size_options": [
@@ -383,35 +519,17 @@
     "banner": "New"
   },
   {
-    "name": "Sex Panther",
-    "category": "Flower",
+    "name": "Strawberry Diesel Crumble",
+    "category": "Concentrates",
     "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
+      "1 gram",
+      "3 grams"
     ],
     "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
+      "1 gram": 10,
+      "3 grams": 25
     },
-    "banner": "New"
-  },
-  {
-    "name": "Sour Tangie",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
+    "thca_percentage": 98.39,
     "banner": "New"
   },
   {
@@ -445,9 +563,9 @@
       "Bruce Banner": 30,
       "Alaskan Thunder F***": 30,
       "Northern Lights": 30,
-      "Watermelon OG": 35.99,
+      "Watermelon OG": 30,
       "Strawberry Milk": 35.99,
-      "Space Cake": 35.99,
+      "Space Cake": 30,
       "Strawberry Cheesecake": 35.99,
       "Peaches & Cream": 35.99,
       "Blueberry Muffin": 35.99
@@ -456,7 +574,7 @@
     "availability": {}
   },
   {
-    "name": "White Strawnana Live Resin Gummies - 50 mg per",
+    "name": "White Strawnana Watermelon Live Resin Gummies - 50 mg",
     "category": "Edibles",
     "size_options": [
       "4 count",
@@ -581,112 +699,18 @@
     }
   },
   {
-    "name": "Wedding Cake Crumble",
-    "category": "Concentrates",
+    "name": "Alaskan Thunder F***",
+    "category": "Flower",
     "size_options": [
-      "1 gram",
-      "3 grams"
+      "1/8",
+      "1/4",
+      "1/2",
+      "ounce"
     ],
     "prices": {
       "1 gram": 10,
       "3 grams": 25
     }
-  },
-  {
-    "name": "Alaskan Thunder F***",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Apricot Haze",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Alaskan Thunder F***",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Apricot Haze",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Alaskan Thunder F***",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Apricot Haze",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "Out of Stock"
   },
   {
     "name": "Bat Breath",
@@ -777,39 +801,22 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Blackberry Superboof",
-    "category": "Flower",
+    "name": "Blueberry Diesel",
+    "category": "Concentrates",
     "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
+      "1 gram",
+      "3 grams"
     ],
     "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
+      "1 gram": 10,
+      "3 grams": 25
     },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Blue Sunset Sherbert",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 15,
-      "1/4": 30,
-      "1/2": 60,
-      "ounce": 115
-    },
-    "thca_percentage": 19,
-    "banner": "Out of Stock"
+    "thca_percentage": 97.7,
+    "banner": "Out of Stock",
+    "koronaIds": {
+      "3 grams": 1214,
+      "1 gram": 1213
+    }
   },
   {
     "name": "Cake Face",
@@ -827,24 +834,6 @@
       "ounce": 200
     },
     "thca_percentage": 27,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Candy Punch",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 18,
     "banner": "Out of Stock"
   },
   {
@@ -876,60 +865,6 @@
       "1 gram": 10,
       "3 grams": 25
     },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Green Goddess",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 18,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Italian Ice",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 28,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Jolly Green Giant",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 20,
-      "1/4": 40,
-      "1/2": 80,
-      "ounce": 150
-    },
-    "thca_percentage": 24,
     "banner": "Out of Stock"
   },
   {
@@ -968,24 +903,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "OG Chem",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "thca_percentage": 20,
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Purple Punch",
     "category": "Flower",
     "size_options": [
@@ -1004,21 +921,6 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Sex Panther",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Sour Tangie",
     "category": "Flower",
     "size_options": [
@@ -1033,42 +935,6 @@
       "1/2": 80,
       "ounce": 150
     },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Super Lavender Butter",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 25,
-      "1/4": 50,
-      "1/2": 100,
-      "ounce": 200
-    },
-    "thca_percentage": 17.35,
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "UK Cheese",
-    "category": "Flower",
-    "size_options": [
-      "1/8",
-      "1/4",
-      "1/2",
-      "ounce"
-    ],
-    "prices": {
-      "1/8": 18,
-      "1/4": 32.5,
-      "1/2": 65,
-      "ounce": 125
-    },
-    "thca_percentage": 20,
     "banner": "Out of Stock"
   }
 ]

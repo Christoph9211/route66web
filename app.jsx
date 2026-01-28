@@ -49,6 +49,118 @@ const SpeedInsights = React.lazy(() =>
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
 
+const SIZE_GROUP_ORDER = {
+    mass: 0,
+    volume: 1,
+    count: 2,
+    unknown: 3,
+}
+
+const SIZE_UNIT_FACTORS = {
+    mg: { group: 'mass', factor: 0.001 },
+    g: { group: 'mass', factor: 1 },
+    gram: { group: 'mass', factor: 1 },
+    grams: { group: 'mass', factor: 1 },
+    oz: { group: 'mass', factor: 28.3495 },
+    ounce: { group: 'mass', factor: 28.3495 },
+    ounces: { group: 'mass', factor: 28.3495 },
+    lb: { group: 'mass', factor: 453.592 },
+    lbs: { group: 'mass', factor: 453.592 },
+    pound: { group: 'mass', factor: 453.592 },
+    pounds: { group: 'mass', factor: 453.592 },
+    ml: { group: 'volume', factor: 1 },
+    milliliter: { group: 'volume', factor: 1 },
+    milliliters: { group: 'volume', factor: 1 },
+    l: { group: 'volume', factor: 1000 },
+    liter: { group: 'volume', factor: 1000 },
+    litre: { group: 'volume', factor: 1000 },
+    liters: { group: 'volume', factor: 1000 },
+    litres: { group: 'volume', factor: 1000 },
+    ct: { group: 'count', factor: 1 },
+    count: { group: 'count', factor: 1 },
+    pack: { group: 'count', factor: 1 },
+    pk: { group: 'count', factor: 1 },
+    pcs: { group: 'count', factor: 1 },
+    pieces: { group: 'count', factor: 1 },
+}
+
+const parseSizeOption = (value) => {
+    if (typeof value !== 'string') {
+        return { group: 'unknown', normalized: null }
+    }
+
+    const normalized = value.toLowerCase().replace(/,/g, '').trim()
+    const fractionMatch = normalized.match(/(\d+)\s*\/\s*(\d+)/)
+    const numberMatch = normalized.match(/(\d+(?:\.\d+)?)/)
+
+    let numeric = null
+    if (fractionMatch) {
+        const numerator = Number(fractionMatch[1])
+        const denominator = Number(fractionMatch[2])
+        if (Number.isFinite(numerator) && Number.isFinite(denominator) && denominator !== 0) {
+            numeric = numerator / denominator
+        }
+    } else if (numberMatch) {
+        numeric = Number(numberMatch[1])
+    }
+
+    if (!Number.isFinite(numeric)) {
+        return { group: 'unknown', normalized: null }
+    }
+
+    const unitMatch = normalized.match(
+        /(mg|g|gram|grams|oz|ounce|ounces|lb|lbs|pound|pounds|ml|milliliter|milliliters|l|liter|litre|liters|litres|ct|count|pack|pk|pcs|pieces)/
+    )
+    const unit = unitMatch ? unitMatch[1] : null
+
+    if (unit && SIZE_UNIT_FACTORS[unit]) {
+        const { group, factor } = SIZE_UNIT_FACTORS[unit]
+        return { group, normalized: numeric * factor }
+    }
+
+    if (fractionMatch && numeric > 0 && numeric <= 1) {
+        return { group: 'mass', normalized: numeric * SIZE_UNIT_FACTORS.oz.factor }
+    }
+
+    return { group: 'unknown', normalized: numeric }
+}
+
+const sortSizeOptions = (options) => {
+    if (!Array.isArray(options)) return []
+
+    return options
+        .map((size, index) => {
+            const parsed = parseSizeOption(size)
+            return {
+                size,
+                index,
+                group: parsed.group ?? 'unknown',
+                normalized: parsed.normalized,
+            }
+        })
+        .sort((a, b) => {
+            const groupA = SIZE_GROUP_ORDER[a.group] ?? SIZE_GROUP_ORDER.unknown
+            const groupB = SIZE_GROUP_ORDER[b.group] ?? SIZE_GROUP_ORDER.unknown
+            if (groupA !== groupB) return groupA - groupB
+
+            const aHasValue = Number.isFinite(a.normalized)
+            const bHasValue = Number.isFinite(b.normalized)
+            if (aHasValue && bHasValue && a.normalized !== b.normalized) {
+                return a.normalized - b.normalized
+            }
+            if (aHasValue !== bHasValue) {
+                return aHasValue ? -1 : 1
+            }
+
+            const alpha = String(a.size).localeCompare(String(b.size), undefined, {
+                numeric: true,
+                sensitivity: 'base',
+            })
+            return alpha || a.index - b.index
+        })
+        .map(({ size }) => size)
+}
+
 const renderSectionSkeleton = (height = 'h-64') => (
     <div
         className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"
@@ -164,7 +276,7 @@ const groupLegacyProducts = (rawProducts) => {
         } = entry
         return {
             ...rest,
-            size_options: Array.from(sizeSet),
+            size_options: sortSizeOptions(Array.from(sizeSet)),
             variants: Array.from(variantSet),
             ids: Array.from(idsSet),
             images: Array.from(imageSet),
@@ -194,9 +306,11 @@ const normalizeProducts = (rawProducts) => {
     // Fast path: modern exports already include normalized sizes/prices.
     return rawProducts.map((product) => ({
         ...product,
-        size_options: Array.isArray(product.size_options)
-            ? [...product.size_options]
-            : toArray(product.size_options),
+        size_options: sortSizeOptions(
+            Array.isArray(product.size_options)
+                ? [...product.size_options]
+                : toArray(product.size_options)
+        ),
         prices:
             product.prices && typeof product.prices === 'object'
                 ? { ...product.prices }
