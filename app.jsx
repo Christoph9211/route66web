@@ -383,7 +383,16 @@ export default function App() {
         loadError: null,
     })
     const [isFiltering, startFiltering] = React.useTransition()
-    const [visibleCount, setVisibleCount] = React.useState(PRODUCTS_PAGE_SIZE)
+    const getPageSize = React.useCallback(() => {
+        if (typeof window === 'undefined') return PRODUCTS_PAGE_SIZE
+        return window.matchMedia('(max-width: 640px)').matches
+            ? MOBILE_PAGE_SIZE
+            : PRODUCTS_PAGE_SIZE
+    }, [])
+    const [pageSize, setPageSize] = React.useState(getPageSize)
+    const [visibleCount, setVisibleCount] = React.useState(() =>
+        Math.max(pageSize, 1)
+    )
 
     const [structuredDataState, setStructuredDataState] = React.useState({
         products: [],
@@ -614,8 +623,26 @@ export default function App() {
     )
 
     React.useEffect(() => {
-        setVisibleCount(PRODUCTS_PAGE_SIZE)
-    }, [appState.selectedCategory, deferredProducts.length])
+        setVisibleCount(pageSize)
+    }, [appState.selectedCategory, deferredProducts.length, pageSize])
+
+    React.useEffect(() => {
+        if (typeof window === 'undefined') return undefined
+
+        const mediaQuery = window.matchMedia('(max-width: 640px)')
+        const handleChange = () => {
+            setPageSize(getPageSize())
+        }
+
+        handleChange()
+        if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleChange)
+            return () => mediaQuery.removeEventListener('change', handleChange)
+        }
+
+        mediaQuery.addListener(handleChange)
+        return () => mediaQuery.removeListener(handleChange)
+    }, [getPageSize])
 
     const handleCategorySelect = React.useCallback((categoryId) => {
         startFiltering(() => {
@@ -925,7 +952,7 @@ export default function App() {
                                                             setVisibleCount(
                                                                 (count) =>
                                                                     count +
-                                                                    PRODUCTS_PAGE_SIZE
+                                                                    pageSize
                                                             )
                                                         )
                                                     }
@@ -1456,6 +1483,7 @@ const getPlaceholderForCategory = (category) => {
 }
 
 const PRODUCTS_PAGE_SIZE = 12
+const MOBILE_PAGE_SIZE = 8
 
 const ProductCard = React.memo(function ProductCard({ product }) {
     // Generate combined options if both flavors and size_options exist
