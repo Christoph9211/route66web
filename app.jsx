@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { businessInfo } from './src/utils/businessInfo.js'
 import AgeGate from './src/components/AgeGate.jsx'
+import ErrorBoundary from './src/components/ErrorBoundary.jsx'
 import ResponsiveImage from './src/components/ResponsiveImage.jsx'
 // Font Awesome (SVG) – import only what we use
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -943,7 +944,7 @@ export default function App() {
                                             ))}
                                         </div>
                                         {deferredProducts.length >
-                                        visibleProducts.length ? (
+                                            visibleProducts.length ? (
                                             <div className="mt-10 text-center">
                                                 <button
                                                     type="button"
@@ -1739,4 +1740,8 @@ const ProductCard = React.memo(function ProductCard({ product }) {
 ProductCard.displayName = 'ProductCard'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<App />)
+root.render(
+    <ErrorBoundary>
+        <App />
+    </ErrorBoundary>
+)

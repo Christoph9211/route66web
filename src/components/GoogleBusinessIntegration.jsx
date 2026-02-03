@@ -1,5 +1,10 @@
 // Google Business Profile integration suggestions and review display
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckCircle, faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons'
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
+
 function GoogleBusinessIntegration() {
     const reviews = [
         {
@@ -61,22 +66,22 @@ function GoogleBusinessIntegration() {
                                             {review.author}
                                         </span>
                                         {review.verified && (
-                                            <i
-                                                className="fas fa-check-circle ml-1 text-xs text-blue-500"
-                                                aria-hidden="true"
+                                            <FontAwesomeIcon
+                                                icon={faCheckCircle}
+                                                className="ml-1 text-xs text-blue-500"
                                             />
                                         )}
                                     </div>
                                     <div className="flex items-center">
                                         {[...Array(5)].map((_, i) => (
-                                            <i
+                                            <FontAwesomeIcon
                                                 key={i}
-                                                className={`text-xs ${
+                                                icon={
                                                     i < review.rating
-                                                        ? 'fas fa-star text-yellow-500'
-                                                        : 'far fa-star text-yellow-500'
-                                                }`}
-                                                aria-hidden="true"
+                                                        ? faStarSolid
+                                                        : faStarRegular
+                                                }
+                                                className="text-xs text-yellow-500"
                                             />
                                         ))}
                                         <span className="ml-2 text-xs text-black dark:text-white">
@@ -109,9 +114,9 @@ function GoogleBusinessIntegration() {
                             className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-medium text-blue-600 transition-colors hover:bg-gray-100"
                             aria-label="View on Google Maps"
                         >
-                            <i
-                                className="fab fa-google mr-2"
-                                aria-hidden="true"
+                            <FontAwesomeIcon
+                                icon={faGoogle}
+                                className="mr-2"
                             />
                             View on Google Maps
                         </a>
@@ -122,9 +127,9 @@ function GoogleBusinessIntegration() {
                             className="inline-flex items-center rounded-lg border-2 border-white bg-transparent px-6 py-3 font-medium text-white transition-colors hover:bg-white hover:text-blue-600"
                             aria-label="Leave a review for Route 66 Hemp"
                         >
-                            <i
-                                className="fas fa-star mr-2"
-                                aria-hidden="true"
+                            <FontAwesomeIcon
+                                icon={faStarSolid}
+                                className="mr-2"
                             />
                             Leave a Review
                         </a>

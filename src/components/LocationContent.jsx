@@ -1,5 +1,16 @@
 // Location-specific content component for local SEO
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faMapMarkedAlt,
+    faCheckCircle,
+    faLandmark,
+    faMapPin,
+    faUsers,
+    faShippingFast,
+    faHandshake,
+} from '@fortawesome/free-solid-svg-icons'
+
 function LocationContent() {
     const locationData = {
         city: 'St Robert',
@@ -43,9 +54,9 @@ function LocationContent() {
                 <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
                     <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
                         <h3 className="mb-4 text-xl font-bold dark:text-white">
-                            <i
-                                className="fas fa-map-marked-alt mr-2 text-green-600"
-                                aria-hidden="true"
+                            <FontAwesomeIcon
+                                icon={faMapMarkedAlt}
+                                className="mr-2 text-green-600"
                             />
                             Areas We Serve
                         </h3>
@@ -63,25 +74,25 @@ function LocationContent() {
                                     key={area}
                                     className="flex items-center text-sm text-gray-600 dark:text-white"
                                 >
-                                    <i
-                                        className="fas fa-check-circle mr-2 text-xs text-green-600"
-                                        aria-hidden="true"
+                                    <FontAwesomeIcon
+                                        icon={faCheckCircle}
+                                        className="mr-2 text-xs text-green-600"
                                     />
                                     {area}
                                 </div>
                             )) || (
-                                <p className="text-gray-700 dark:text-white">
-                                    No nearby areas available.
-                                </p>
-                            )}
+                                    <p className="text-gray-700 dark:text-white">
+                                        No nearby areas available.
+                                    </p>
+                                )}
                         </div>
                     </div>
 
                     <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
                         <h3 className="mb-4 text-xl font-bold dark:text-white">
-                            <i
-                                className="fas fa-landmark mr-2 text-green-600"
-                                aria-hidden="true"
+                            <FontAwesomeIcon
+                                icon={faLandmark}
+                                className="mr-2 text-green-600"
                             />
                             Near Local Landmarks
                         </h3>
@@ -96,17 +107,17 @@ function LocationContent() {
                                     key={landmark}
                                     className="flex items-center text-sm text-gray-600 dark:text-white"
                                 >
-                                    <i
-                                        className="fas fa-map-pin mr-2 text-xs text-green-600"
-                                        aria-hidden="true"
+                                    <FontAwesomeIcon
+                                        icon={faMapPin}
+                                        className="mr-2 text-xs text-green-600"
                                     />
                                     {landmark}
                                 </div>
                             )) || (
-                                <p className="text-gray-700 dark:text-white">
-                                    No landmarks available.
-                                </p>
-                            )}
+                                    <p className="text-gray-700 dark:text-white">
+                                        No landmarks available.
+                                    </p>
+                                )}
                         </div>
                     </div>
                 </div>
@@ -119,9 +130,9 @@ function LocationContent() {
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                         <div className="text-center">
                             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-600">
-                                <i
-                                    className="fas fa-users text-2xl text-white"
-                                    aria-hidden="true"
+                                <FontAwesomeIcon
+                                    icon={faUsers}
+                                    className="text-2xl text-white"
                                 />
                             </div>
                             <h4 className="mb-2 text-lg font-semibold dark:text-white">
@@ -136,9 +147,9 @@ function LocationContent() {
                         </div>
                         <div className="text-center">
                             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-600">
-                                <i
-                                    className="fas fa-shipping-fast text-2xl text-white"
-                                    aria-hidden="true"
+                                <FontAwesomeIcon
+                                    icon={faShippingFast}
+                                    className="text-2xl text-white"
                                 />
                             </div>
                             <h4 className="mb-2 text-lg font-semibold dark:text-white">
@@ -152,9 +163,9 @@ function LocationContent() {
                         </div>
                         <div className="text-center">
                             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-600">
-                                <i
-                                    className="fas fa-handshake text-2xl text-white"
-                                    aria-hidden="true"
+                                <FontAwesomeIcon
+                                    icon={faHandshake}
+                                    className="text-2xl text-white"
                                 />
                             </div>
                             <h4 className="mb-2 text-lg font-semibold dark:text-white">

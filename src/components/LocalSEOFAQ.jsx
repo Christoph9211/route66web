@@ -1,14 +1,22 @@
 // FAQ component with local SEO focus
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faPhone,
+    faChevronUp,
+    faChevronDown,
+} from '@fortawesome/free-solid-svg-icons'
+import { businessInfo } from '../utils/businessInfo.js'
+
 function LocalSEOFAQ() {
     const faqs = [
         {
             question: 'Where is Route 66 Hemp located in St Robert?',
-            answer: "Route 66 Hemp is located at 14076 State Hwy Z, St Robert, MO 65584. We're conveniently located near Fort Leonard Wood and easily accessible from Waynesville and surrounding Pulaski County areas.",
+            answer: `${businessInfo.name} is located at ${businessInfo.address.street}, ${businessInfo.address.city}, ${businessInfo.address.state} ${businessInfo.address.zip}. We're conveniently located near Fort Leonard Wood and easily accessible from Waynesville and surrounding Pulaski County areas.`,
         },
         {
             question: 'What are your store hours in St Robert?',
-            answer: "We're open Monday-Thursday 11:00 AM - 9:00 PM, Friday-Saturday 11:00 AM - 10:00 PM, and Sunday 10:00 AM - 6:00 PM. We serve the St Robert and Central Missouri community with extended weekend hours.",
+            answer: `We're open Monday-Thursday ${businessInfo.hoursDisplay['Monday - Thursday']}, Friday-Saturday ${businessInfo.hoursDisplay['Friday - Saturday']}, and Sunday ${businessInfo.hoursDisplay['Sunday']}. We serve the St Robert and Central Missouri community with extended weekend hours.`,
         },
         {
             question: 'Do you serve customers from Fort Leonard Wood?',
@@ -63,13 +71,13 @@ function LocalSEOFAQ() {
                                 <span className="pr-4 font-medium dark:text-white">
                                     {faq.question}
                                 </span>
-                                <i
-                                    className={`fas ${
+                                <FontAwesomeIcon
+                                    icon={
                                         openIndex === index
-                                            ? 'fa-chevron-up'
-                                            : 'fa-chevron-down'
-                                    } text-secondary flex-shrink-0`}
-                                    aria-hidden="true"
+                                            ? faChevronUp
+                                            : faChevronDown
+                                    }
+                                    className="text-secondary flex-shrink-0"
                                 />
                             </button>
                             {openIndex === index && (
@@ -96,7 +104,7 @@ function LocalSEOFAQ() {
                         href="tel:+15736776418"
                         className="inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-opacity-90"
                     >
-                        <i className="fas fa-phone mr-2" aria-hidden="true" />
+                        <FontAwesomeIcon icon={faPhone} className="mr-2" />
                         Call (573) 677-6418
                     </a>
                 </div>

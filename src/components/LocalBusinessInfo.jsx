@@ -1,23 +1,14 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faMapMarkerAlt,
+    faPhoneAlt,
+    faEnvelope,
+    faClock,
+} from '@fortawesome/free-solid-svg-icons'
+import { businessInfo } from '../utils/businessInfo'
+
 function LocalBusinessInfo({ variant = 'full', className = '' }) {
-    const businessInfo = {
-        name: 'Route 66 Hemp',
-        address: {
-            street: '14076 State Hwy Z',
-            city: 'St Robert',
-            state: 'MO',
-            zip: '65584',
-            full: '14076 State Hwy Z, St Robert, MO 65584',
-        },
-        phone: '+1 (573) 677-6418',
-        phoneLink: 'tel:+15736776418',
-        email: 'route66hemp@gmail.com',
-        emailLink: 'mailto:route66hemp@gmail.com',
-        hours: {
-            'Monday - Thursday': '11:00 AM - 9:00 PM',
-            'Friday - Saturday': '11:00 AM - 10:00 PM',
-            Sunday: '11:00 AM - 7:00 PM',
-        },
-    }
+
 
     // ----------------------
     // Variant: Minimal (small footer / sidebar usage)
@@ -71,9 +62,9 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
                     {/* Address */}
                     <div className="mb-6 flex flex-col items-center">
                         <div className="mb-2 flex-shrink-0">
-                            <i
-                                className="fas fa-map-marker-alt text-xl text-green-600"
-                                aria-hidden="true"
+                            <FontAwesomeIcon
+                                icon={faMapMarkerAlt}
+                                className="text-xl text-green-600"
                             />
                         </div>
                         <div className="text-center text-base text-gray-700 dark:text-white">
@@ -92,9 +83,9 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
                     {/* Phone */}
                     <div className="mb-6 flex flex-col items-center">
                         <div className="mb-2 flex-shrink-0">
-                            <i
-                                className="fas fa-phone-alt text-xl text-green-600"
-                                aria-hidden="true"
+                            <FontAwesomeIcon
+                                icon={faPhoneAlt}
+                                className="text-xl text-green-600"
                             />
                         </div>
                         <div className="text-base text-gray-700 dark:text-white">
@@ -110,9 +101,9 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
                     {/* Email */}
                     <div className="mb-6 flex flex-col items-center">
                         <div className="mb-2 flex-shrink-0">
-                            <i
-                                className="fas fa-envelope text-xl text-green-600"
-                                aria-hidden="true"
+                            <FontAwesomeIcon
+                                icon={faEnvelope}
+                                className="text-xl text-green-600"
                             />
                         </div>
                         <div className="text-base text-gray-700 dark:text-white">
@@ -128,16 +119,16 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
                     {/* Hours */}
                     <div className="flex flex-col items-center">
                         <div className="mb-2 flex-shrink-0">
-                            <i
-                                className="fas fa-clock text-xl text-green-600"
-                                aria-hidden="true"
+                            <FontAwesomeIcon
+                                icon={faClock}
+                                className="text-xl text-green-600"
                             />
                         </div>
                         <div className="text-center text-base text-gray-700 dark:text-white">
                             <p className="mb-2 font-medium dark:text-white">
                                 Store Hours:
                             </p>
-                            {Object.entries(businessInfo.hours).map(
+                            {Object.entries(businessInfo.hoursDisplay).map(
                                 ([days, hours]) => (
                                     <p key={days}>
                                         {days}: {hours}
