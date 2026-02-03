@@ -1,5 +1,11 @@
 // FAQ component with local SEO focus
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faPhone,
+    faChevronUp,
+    faChevronDown,
+} from '@fortawesome/free-solid-svg-icons'
 function LocalSEOFAQ() {
     const faqs = [
         {
@@ -63,13 +69,13 @@ function LocalSEOFAQ() {
                                 <span className="pr-4 font-medium dark:text-white">
                                     {faq.question}
                                 </span>
-                                <i
-                                    className={`fas ${
+                                <FontAwesomeIcon
+                                    icon={
                                         openIndex === index
-                                            ? 'fa-chevron-up'
-                                            : 'fa-chevron-down'
-                                    } text-secondary flex-shrink-0`}
-                                    aria-hidden="true"
+                                            ? faChevronUp
+                                            : faChevronDown
+                                    }
+                                    className="text-secondary flex-shrink-0"
                                 />
                             </button>
                             {openIndex === index && (
@@ -96,7 +102,7 @@ function LocalSEOFAQ() {
                         href="tel:+15736776418"
                         className="inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-opacity-90"
                     >
-                        <i className="fas fa-phone mr-2" aria-hidden="true" />
+                        <FontAwesomeIcon icon={faPhone} className="mr-2" />
                         Call (573) 677-6418
                     </a>
                 </div>
