@@ -1,5 +1,6 @@
 // Structured Data Component for Local Business SEO
 
+import { businessInfo } from '../utils/businessInfo'
 const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.route66hemp.com'
 
 function ProductSchema({ product, mode = 'listing' }) {
@@ -40,10 +41,10 @@ function ProductSchema({ product, mode = 'listing' }) {
                 name: 'Route 66 Hemp',
                 address: {
                     '@type': 'PostalAddress',
-                    streetAddress: '14076 State Hwy Z',
-                    addressLocality: 'St Robert',
-                    addressRegion: 'MO',
-                    postalCode: '65584',
+                    streetAddress: businessInfo.address.street,
+                    addressLocality: businessInfo.address.city,
+                    addressRegion: businessInfo.address.state,
+                    postalCode: businessInfo.address.zip,
                     addressCountry: 'US',
                 },
             },
@@ -69,10 +70,10 @@ function ProductSchema({ product, mode = 'listing' }) {
                 image: `${SITE_URL}/assets/images/route-66-hemp-storefront-st-robert-1280w.webp`,
                 address: {
                     '@type': 'PostalAddress',
-                    streetAddress: '14076 State Hwy Z',
-                    addressLocality: 'St Robert',
-                    addressRegion: 'MO',
-                    postalCode: '65584',
+                    streetAddress: businessInfo.address.street,
+                    addressLocality: businessInfo.address.city,
+                    addressRegion: businessInfo.address.state,
+                    postalCode: businessInfo.address.zip,
                     addressCountry: 'US',
                 },
             },
@@ -130,43 +131,43 @@ function StructuredData({ products = [], pageMode = 'listing', product = null })
     const businessData = {
         '@context': 'https://schema.org',
         '@type': 'Store',
-        name: 'Route 66 Hemp',
+        name: businessInfo.name,
         description:
             'Premium hemp products for your wellness journey. Quality you can trust.',
-        url: 'https://www.route66hemp.com',
-        telephone: '+1-573-677-6418',
-        email: 'route66hemp@gmail.com',
+        url: businessInfo.website,
+        telephone: businessInfo.phone,
+        email: businessInfo.email,
         address: {
             '@type': 'PostalAddress',
-            streetAddress: '14076 State Hwy Z',
-            addressLocality: 'St Robert',
-            addressRegion: 'MO',
-            postalCode: '65584',
+            streetAddress: businessInfo.address.street,
+            addressLocality: businessInfo.address.city,
+            addressRegion: businessInfo.address.state,
+            postalCode: businessInfo.address.zip,
             addressCountry: 'US',
         },
         geo: {
             '@type': 'GeoCoordinates',
-            latitude: '37.83490',
-            longitude: '-92.09725',
+            latitude: String(businessInfo.coordinates.lat),
+            longitude: String(businessInfo.coordinates.lng),
         },
         openingHoursSpecification: [
             {
                 '@type': 'OpeningHoursSpecification',
                 dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-                opens: '11:00',
-                closes: '21:00',
+                opens: businessInfo.hours.monday.open,
+                closes: businessInfo.hours.monday.close,
             },
             {
                 '@type': 'OpeningHoursSpecification',
                 dayOfWeek: ['Friday', 'Saturday'],
-                opens: '11:00',
-                closes: '22:00',
+                opens: businessInfo.hours.friday.open,
+                closes: businessInfo.hours.friday.close,
             },
             {
                 '@type': 'OpeningHoursSpecification',
                 dayOfWeek: 'Sunday',
-                opens: '10:00',
-                closes: '18:00',
+                opens: businessInfo.hours.sunday.open,
+                closes: businessInfo.hours.sunday.close,
             },
         ],
         priceRange: '$',
@@ -223,21 +224,21 @@ function StructuredData({ products = [], pageMode = 'listing', product = null })
     const organizationData = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: 'Route 66 Hemp',
-        url: 'https://www.route66hemp.com',
+        name: businessInfo.name,
+        url: businessInfo.website,
         logo: `${SITE_URL}/route-66-hemp-logo-512x512.png`,
         contactPoint: {
             '@type': 'ContactPoint',
-            telephone: '+1-573-677-6418',
+            telephone: businessInfo.phone,
             contactType: 'customer service',
             availableLanguage: 'English',
         },
         address: {
             '@type': 'PostalAddress',
-            streetAddress: '14076 State Hwy Z',
-            addressLocality: 'St Robert',
-            addressRegion: 'MO',
-            postalCode: '65584',
+            streetAddress: businessInfo.address.street,
+            addressLocality: businessInfo.address.city,
+            addressRegion: businessInfo.address.state,
+            postalCode: businessInfo.address.zip,
             addressCountry: 'US',
         },
     }

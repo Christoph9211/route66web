@@ -5,27 +5,10 @@ import {
     faEnvelope,
     faClock,
 } from '@fortawesome/free-solid-svg-icons'
+import { businessInfo } from '../utils/businessInfo'
 
 function LocalBusinessInfo({ variant = 'full', className = '' }) {
-    const businessInfo = {
-        name: 'Route 66 Hemp',
-        address: {
-            street: '14076 State Hwy Z',
-            city: 'St Robert',
-            state: 'MO',
-            zip: '65584',
-            full: '14076 State Hwy Z, St Robert, MO 65584',
-        },
-        phone: '+1 (573) 677-6418',
-        phoneLink: 'tel:+15736776418',
-        email: 'route66hemp@gmail.com',
-        emailLink: 'mailto:route66hemp@gmail.com',
-        hours: {
-            'Monday - Thursday': '11:00 AM - 9:00 PM',
-            'Friday - Saturday': '11:00 AM - 10:00 PM',
-            Sunday: '10:00 AM - 6:00 PM',
-        },
-    }
+
 
     // ----------------------
     // Variant: Minimal (small footer / sidebar usage)
@@ -145,7 +128,7 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
                             <p className="mb-2 font-medium dark:text-white">
                                 Store Hours:
                             </p>
-                            {Object.entries(businessInfo.hours).map(
+                            {Object.entries(businessInfo.hoursDisplay).map(
                                 ([days, hours]) => (
                                     <p key={days}>
                                         {days}: {hours}

@@ -41,15 +41,7 @@ export const generateLocalKeywords = (baseKeywords = []) => {
 export const formatPhoneForDisplay = () => businessInfo.phoneFormatted
 export const formatPhoneForTel = () => businessInfo.phoneLink
 
-export const getBusinessHours = () => ({
-    monday: { open: '11:00', close: '21:00' },
-    tuesday: { open: '11:00', close: '21:00' },
-    wednesday: { open: '11:00', close: '21:00' },
-    thursday: { open: '11:00', close: '21:00' },
-    friday: { open: '11:00', close: '22:00' },
-    saturday: { open: '11:00', close: '22:00' },
-    sunday: { open: '10:00', close: '18:00' },
-})
+export const getBusinessHours = () => businessInfo.hours
 
 export const isCurrentlyOpen = () => {
     const now = new Date()
