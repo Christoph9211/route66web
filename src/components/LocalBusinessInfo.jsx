@@ -15,7 +15,7 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
         hours: {
             'Monday - Thursday': '11:00 AM - 9:00 PM',
             'Friday - Saturday': '11:00 AM - 10:00 PM',
-            Sunday: '11:00 AM - 7:00 PM',
+            Sunday: '10:00 AM - 6:00 PM',
         },
     }
 
