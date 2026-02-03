@@ -73,7 +73,14 @@
     </main>
 
     <!-- Your app bundle -->
+    <!-- Your app bundle -->
     <script type="module" src="/app.jsx"></script>
+
+    <!-- Inject Environment Variables for Public Scripts -->
+    <script>
+        window.VITE_GA_ID = "%VITE_GA_ID%";
+    </script>
+
     <!-- Analytics Consent Helper (loads GA only after age+consent) -->
     <script src="/analytics-consent.js"></script>
 

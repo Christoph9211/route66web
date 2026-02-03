@@ -11,7 +11,7 @@
  */
 
 (function () {
-  const GA_ID = "G-RGSJT8T1EF";
+  const GA_ID = window.VITE_GA_ID || "G-RGSJT8T1EF";
   const SCRIPT_ID = "ga4-base-script";
   const CONSENT_DENIED_STATE = {
     ad_storage: "denied",

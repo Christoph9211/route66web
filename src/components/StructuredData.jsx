@@ -1,6 +1,6 @@
 // Structured Data Component for Local Business SEO
 
-const SITE_URL = 'https://www.route66hemp.com'
+const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.route66hemp.com'
 
 function ProductSchema({ product, mode = 'listing' }) {
     const canOffer = Number.isFinite(product?.price)
