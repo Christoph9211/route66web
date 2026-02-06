@@ -73,6 +73,12 @@
                 margin-bottom: 0.25rem;
                 color: var(--primary-dark);
             }
+            .helper-text {
+                display: block;
+                font-size: 0.85rem;
+                color: var(--gray-600);
+                margin-bottom: 0.25rem;
+            }
             input[type='text'],
             input[type='number'],
             textarea,
@@ -242,10 +248,12 @@
             </div>
 
             <div class="form-group">
-                <label for="availability"
-                    >Availability {"JSON object": true} or {"JSON object":
-                    false} (only for "Vapes & Carts" and "Other")</label
-                >
+                <label for="availability">
+                    Availability (JSON object, e.g. {"Super Boof": true})
+                </label>
+                <small class="helper-text">
+                    Only needed for “Vapes &amp; Carts” and “Other”.
+                </small>
                 <textarea
                     id="availability"
                     name="availability"
@@ -856,5 +864,4 @@
         </script>
     </body>
 </html>
-
 
