@@ -619,12 +619,7 @@
                         const data = JSON.parse(ev.target.result)
                         if (!Array.isArray(data))
                             throw new Error('JSON root must be array')
-                        const normalized = data.map((p) =>
-                            normalizeProductSchema(p)
-                        )
-                        products.splice(0, products.length, ...normalized)
-                        refreshCategoryList()
-                        renderTable()
+                        loadProducts(data, { alertOnRemove: true })
                         alert(`Loaded ${data.length} products.`)
                     } catch (err) {
                         alert('Failed to parse JSON: ' + err.message)
@@ -857,6 +852,5 @@
         </script>
     </body>
 </html>
-
 
 
