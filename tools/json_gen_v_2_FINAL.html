@@ -846,6 +846,10 @@
             cancelEditBtn.addEventListener('click', () => {
                 form.reset()
                 form.banner.value = ''
+                sizePricePairs = []
+                renderSizePriceTable()
+                sizeInput.value = ''
+                priceInput.value = ''
                 editIndex = null
                 submitBtn.textContent = 'Add Product'
                 formTitle.textContent = 'Add New Product'
@@ -857,6 +861,5 @@
         </script>
     </body>
 </html>
-
 
 
