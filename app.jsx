@@ -843,7 +843,6 @@ export default function App() {
                                                     height={720}
                                                     className="w-full overflow-hidden rounded-2xl border border-white/60 shadow-[0_24px_60px_-24px_rgba(15,23,42,0.35)] dark:border-slate-700/50"
                                                     sizes="(max-width: 640px) min(28rem, calc(100vw - 2rem - 2px)), (max-width: 1024px) min(42rem, calc(100vw - 3rem)), min(39rem, calc(50vw - 3rem))"
-                                                    srcSetWidths={[320, 400, 640, 760, 768, 1024, 1280, 1600, 1920]}
                                                     priority
                                                 />
                                             </div>

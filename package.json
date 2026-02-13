@@ -48,6 +48,8 @@
         "test": "vitest",
         "test:run": "vitest run",
         "format": "prettier --write .",
+        "generate:image-manifest": "node scripts/generate-responsive-image-manifest.js",
+        "validate:images": "node scripts/validate-responsive-assets.js",
         "rename:images": "node scripts/rename-images.js",
         "optimize:images": "node scripts/optimize-images.js",
         "bootstrap:images": "node scripts/bootstrap-images.js",
