@@ -792,23 +792,23 @@ export default function App() {
             </nav>
             <section>
                 {/* Hero Section */}
-                <div className="relative overflow-hidden bg-linear-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+                <div className="relative overflow-hidden bg-[radial-gradient(120%_120%_at_0%_0%,#ECFDF5_0%,#F8FAFC_55%,#FFFFFF_100%)] dark:bg-[radial-gradient(120%_120%_at_0%_0%,#064E3B_0%,#0F172A_55%,#020617_100%)]">
                     <div className="mx-auto max-w-7xl">
-                        <div className="relative z-10 bg-linear-to-r from-white via-gray-50 to-gray-100 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+                        <div className="relative z-10 bg-[radial-gradient(120%_120%_at_0%_0%,#ECFDF5_0%,#F8FAFC_55%,#FFFFFF_100%)] pb-8 sm:pb-16 md:pb-20 lg:w-full lg:pb-28 xl:pb-32 dark:bg-[radial-gradient(120%_120%_at_0%_0%,#064E3B_0%,#0F172A_55%,#020617_100%)]">
                             <div className="pt-10 sm:pt-16 lg:overflow-hidden lg:pb-14 lg:pt-8">
                                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                                     <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                                         <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
                                             <div className="lg:py-24">
-                                                <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl dark:text-white">
+                                                <h1 className="mt-4 text-4xl font-bold leading-tight tracking-[-0.02em] text-slate-900 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-7xl dark:text-white">
                                                     <span>
                                                         Premium Hemp Products
                                                     </span>
-                                                    <span className="block text-emerald-600 dark:text-emerald-500">
+                                                    <span className="block text-emerald-700 dark:text-emerald-300">
                                                         For Your Wellness
                                                     </span>
                                                 </h1>
-                                                <p className="mt-3 text-base text-gray-700 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl dark:text-white">
+                                                <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 sm:mt-6 sm:text-lg xl:text-xl dark:text-slate-300">
                                                     Discover our range of
                                                     high-quality, lab-tested
                                                     hemp products. From THCa flower
@@ -816,10 +816,10 @@ export default function App() {
                                                     everything you need for a
                                                     balanced lifestyle.
                                                 </p>
-                                                <div className="mt-10 flex justify-center space-x-4 sm:mt-12 lg:justify-start">
-                                                    <div className="flex gap-4">
-                                                        <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="flex-1 flex h-full items-center justify-center rounded-md bg-emerald-600 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24 shadow-lg transition-transform hover:scale-105"> Explore Products </a>
-                                                        <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="flex-1 flex h-full items-center justify-center rounded-md bg-emerald-500 p-4 font-bold text-white text-lg md:text-xl text-center leading-tight min-h-22 md:min-h-24 shadow-lg transition-transform hover:scale-105"> Learn more about us </a>
+                                                <div className="mt-10 flex justify-center sm:mt-12 lg:justify-start">
+                                                    <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                                                        <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="inline-flex items-center justify-center rounded-xl bg-emerald-700 px-8 py-4 text-base font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"> Explore Products </a>
+                                                        <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="inline-flex items-center justify-center rounded-xl border border-emerald-200 bg-white px-8 py-4 text-base font-semibold text-emerald-700 shadow-sm transition-colors hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-emerald-700 dark:bg-transparent dark:text-emerald-300 dark:hover:bg-emerald-900/30"> Learn more about us </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -831,7 +831,7 @@ export default function App() {
                                                     alt="Route 66 Hemp storefront showcasing premium hemp products in St Robert, Missouri"
                                                     width={1280}
                                                     height={720}
-                                                    className="w-full overflow-hidden rounded-xl shadow-xl"
+                                                    className="w-full overflow-hidden rounded-2xl border border-white/60 shadow-[0_24px_60px_-24px_rgba(15,23,42,0.35)] dark:border-slate-700/50"
                                                     sizes="(max-width: 640px) min(28rem, calc(100vw - 2rem - 2px)), (max-width: 1024px) min(42rem, calc(100vw - 3rem)), min(39rem, calc(50vw - 3rem))"
                                                     srcSetWidths={[320, 400, 640, 760, 768, 1024, 1280, 1600, 1920]}
                                                     priority
@@ -845,16 +845,16 @@ export default function App() {
                     </div>
                 </div>
                 {/* Products Section */}
-                <div id="products" className="bg-white py-12 dark:bg-gray-800">
+                <div id="products" className="bg-slate-50 py-16 dark:bg-slate-900">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-8 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300">
                                 Products
                             </h2>
-                            <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+                            <p className="mt-3 text-3xl font-bold leading-snug tracking-[-0.01em] text-slate-900 sm:text-5xl dark:text-white">
                                 Explore Our Collection
                             </p>
-                            <p className="mt-4 max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-white">
+                            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 lg:mx-auto dark:text-slate-300">
                                 Our products are lab tested for quality and
                                 purity.
                             </p>
@@ -862,7 +862,7 @@ export default function App() {
                         {appState.shouldLoadProducts ? (
                             <>
                                 <div
-                                    className="mb-8 flex flex-wrap justify-center gap-2"
+                                    className="mb-10 flex flex-wrap justify-center gap-3"
                                     role="group"
                                     aria-label="Filter products by category"
                                 >
@@ -872,9 +872,9 @@ export default function App() {
                                             appState.selectedCategory === 'all'
                                         }
                                         aria-label="Show all products"
-                                        className={`rounded-full px-4 py-2 text-sm font-medium ${appState.selectedCategory === 'all'
-                                            ? 'bg-emerald-600 text-white dark:bg-emerald-600'
-                                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                        className={`rounded-full border px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${appState.selectedCategory === 'all'
+                                            ? 'border-emerald-700 bg-emerald-600 text-white shadow-sm dark:border-emerald-500 dark:bg-emerald-500 dark:text-slate-950'
+                                            : 'border-slate-300 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600'
                                             }`}
                                     >
                                         All Products
@@ -888,10 +888,10 @@ export default function App() {
                                                 category.id
                                             }
                                             aria-label={`Filter by ${category.name}`}
-                                            className={`rounded-full px-4 py-2 text-sm font-medium ${appState.selectedCategory ===
+                                            className={`rounded-full border px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${appState.selectedCategory ===
                                                 category.id
-                                                ? 'bg-emerald-600 text-white dark:bg-emerald-600' // <-- force high contrast
-                                                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500'
+                                                ? 'border-emerald-700 bg-emerald-600 text-white shadow-sm dark:border-emerald-500 dark:bg-emerald-500 dark:text-slate-950'
+                                                : 'border-slate-300 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600'
                                                 }`}
                                         >
                                             {category.name}
@@ -935,7 +935,7 @@ export default function App() {
                                     </div>
                                 ) : deferredProducts.length > 0 ? (
                                     <>
-                                        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                                        <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                                             {visibleProducts.map((product) => (
                                                 <ProductCard
                                                     key={product.name + product.category}
@@ -957,7 +957,7 @@ export default function App() {
                                                             )
                                                         )
                                                     }
-                                                    className="inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 dark:border-emerald-700/60 dark:bg-gray-900 dark:text-emerald-200 dark:hover:bg-gray-800"
+                                                    className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
                                                 >
                                                     Load more products
                                                 </button>
@@ -985,17 +985,17 @@ export default function App() {
                                 )}
                             </>
                         ) : (
-                            <div className="mx-auto max-w-2xl rounded-2xl bg-linear-to-r from-emerald-600 to-emerald-500 p-8 text-center shadow-lg dark:from-emerald-700 dark:to-emerald-600">
+                            <div className="mx-auto max-w-2xl rounded-2xl bg-linear-to-r from-emerald-800 to-emerald-700 p-8 text-center shadow-lg dark:from-emerald-900 dark:to-emerald-800">
                                 <p className="text-lg font-semibold text-white">
                                     Ready to explore our latest THCa flower, edibles, and concentrates?
                                 </p>
-                                <p className="mt-2 text-sm text-emerald-50">
+                                <p className="mt-2 text-sm text-emerald-100">
                                     Tap the button below when you&apos;re ready and we&apos;ll load the freshest menu straight from our shelves.
                                 </p>
                                 <button
                                     type="button"
                                     onClick={requestProductCatalog}
-                                    className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600 dark:text-emerald-700"
+                                    className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-emerald-800 shadow hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-800 dark:text-emerald-800"
                                 >
                                     View Products
                                 </button>
@@ -1007,10 +1007,10 @@ export default function App() {
                 <div id="about" className="bg-white py-12 dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-10 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                            <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">
                                 About Us
                             </h2>
-                            <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+                            <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-gray-900 sm:text-4xl dark:text-white">
                                 Our Story
                             </p>
                         </div>
@@ -1181,10 +1181,10 @@ export default function App() {
                 <div id="contact" className="bg-white py-12 dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-10 lg:text-center">
-                            <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                            <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">
                                 Contact Us
                             </h2>
-                            <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+                            <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-gray-900 sm:text-4xl dark:text-white">
                                 Get In Touch
                             </p>
                             <p className="mt-4 max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-white">
@@ -1209,24 +1209,24 @@ export default function App() {
             {/* Footer */}
             <footer
                 role="contentinfo"
-                className="relative overflow-hidden bg-linear-to-r from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+                className="relative overflow-hidden bg-slate-950"
             >
-                <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+                <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
                     <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                         <div className="space-y-8 xl:col-span-1">
                             <div className="flex items-center">
-                                <div className="mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-green-500">
+                                <div className="mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600">
                                     <FontAwesomeIcon
                                         icon={faCannabis}
                                         className="text-white"
                                         aria-hidden="true"
                                     />
                                 </div>
-                                <span className="text-xl font-bold text-black dark:text-white">
+                                <span className="text-xl font-bold text-white">
                                     {businessInfo.name}
                                 </span>
                             </div>
-                            <p className="text-base text-black dark:text-white">
+                            <p className="text-sm text-slate-300">
                                 Premium hemp products for your wellness journey.
                                 Quality you can trust.
                             </p>
@@ -1235,7 +1235,7 @@ export default function App() {
                                     href="https://www.facebook.com/route66hemp/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                    className="text-slate-300 transition-colors hover:text-emerald-300"
                                     aria-label="Facebook"
                                 >
                                     <FontAwesomeIcon
@@ -1249,7 +1249,7 @@ export default function App() {
                         </div>
                         <div className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
                             <div>
-                                <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
                                     Products
                                 </h3>
                                 <ul className="mt-4 space-y-4">
@@ -1257,7 +1257,7 @@ export default function App() {
                                         <a
                                             href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
-                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                         >
                                             Edibles
                                         </a>
@@ -1266,7 +1266,7 @@ export default function App() {
                                         <a
                                             href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
-                                            className="text-black text-base hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                         >
                                             Concentrates
                                         </a>
@@ -1275,7 +1275,7 @@ export default function App() {
                                         <a
                                             href="#products"
                                             onClick={(e) => handleNavigation(e, 'products')}
-                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                         >
                                             Flower
                                         </a>
@@ -1283,7 +1283,7 @@ export default function App() {
                                 </ul>
                             </div>
                             <div className="mt-12 md:mt-0">
-                                <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
                                     Company
                                 </h3>
                                 <ul className="mt-4 space-y-4">
@@ -1291,7 +1291,7 @@ export default function App() {
                                         <a
                                             href="#about"
                                             onClick={(e) => handleNavigation(e, 'about')}
-                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                         >
                                             About Us
                                         </a>
@@ -1299,7 +1299,7 @@ export default function App() {
                                 </ul>
                             </div>
                             <div className="mt-12 md:mt-0">
-                                <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
                                     Support
                                 </h3>
                                 <ul className="mt-4 space-y-4">
@@ -1307,7 +1307,7 @@ export default function App() {
                                         <a
                                             href="#contact"
                                             onClick={(e) => handleNavigation(e, 'contact')}
-                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                         >
                                             Contact Us
                                         </a>
@@ -1316,7 +1316,7 @@ export default function App() {
                                         <a
                                             href="#faq"
                                             onClick={(e) => handleNavigation(e, 'faq')}
-                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                         >
                                             FAQs
                                         </a>
@@ -1324,14 +1324,14 @@ export default function App() {
                                 </ul>
                             </div>
                             <div className="mt-12 md:mt-0">
-                                <h3 className="text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
                                     Legal
                                 </h3>
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
                                             href="/privacy-policy/"
-                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                             title="Privacy Policy"
                                         >
                                             Privacy Policy
@@ -1340,7 +1340,7 @@ export default function App() {
                                     <li>
                                         <a
                                             href="/terms-of-service/"
-                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                         >
                                             Terms and Conditions
                                         </a>
@@ -1348,7 +1348,7 @@ export default function App() {
                                     <li>
                                         <a
                                             href="/cookie-policy/"
-                                            className="text-base text-black hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+                                            className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                             title="Cookie Policy"
                                         >
                                             Cookie Policy
@@ -1358,12 +1358,12 @@ export default function App() {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-12 border-t border-gray-700 pt-8">
-                        <p className="text-center text-base text-black dark:text-white">
+                    <div className="mt-12 border-t border-slate-800 pt-8">
+                        <p className="text-center text-sm text-slate-400">
                             &copy; 2025 {businessInfo.name}. All rights
                             reserved.
                         </p>
-                        <p className="mt-2 text-center text-sm text-black dark:text-white">
+                        <p className="mt-2 text-center text-sm text-slate-400">
                             All products contain less than 0.3% THC and are
                             legal under the 2018 Farm Bill.
                         </p>
@@ -1378,7 +1378,7 @@ export default function App() {
                             >
                                 <LocalBusinessInfo
                                     variant="inline"
-                                    className="text-sm text-black dark:text-white"
+                                    className="text-sm text-slate-400"
                                 />
                             </React.Suspense>
                         </div>
@@ -1578,7 +1578,7 @@ const ProductCard = React.memo(function ProductCard({ product }) {
     return (
         <div
             id={`product-${slugify(product.category)}-${slugify(product.name)}`}
-            className="product-card group relative rounded-lg bg-white p-4 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-gray-700"
+            className="product-card group relative rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
         // This class is for the card shadow effect
         >
             {banner && (
@@ -1596,7 +1596,7 @@ const ProductCard = React.memo(function ProductCard({ product }) {
                 alt={generateProductAlt(product)}
                 width={400}
                 height={400}
-                className="h-50 mb-4 w-full rounded-md object-cover"
+                className="mb-5 h-52 w-full rounded-xl object-cover"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -1620,7 +1620,7 @@ const ProductCard = React.memo(function ProductCard({ product }) {
                     </label>
                     <select
                         id={`combo-${product.name}`}
-                        className="w-full rounded border border-gray-300 p-2 dark:bg-gray-800 dark:text-white"
+                        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
                         value={selectedCombo ? selectedCombo.label : ''}
                         onChange={(e) => {
                             // When the user selects a new option, update the selectedCombo state
@@ -1657,7 +1657,7 @@ const ProductCard = React.memo(function ProductCard({ product }) {
                         </label>
                         <select
                             id={`size-${product.name}`}
-                            className="w-full rounded border border-gray-300 p-2 font-semibold dark:bg-gray-800 dark:text-white"
+                            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
                             value={selectedSize}
                             onChange={(e) => setSelectedSize(e.target.value)}
                             aria-label={
@@ -1689,7 +1689,7 @@ const ProductCard = React.memo(function ProductCard({ product }) {
                         </label>
                         <select
                             id={`flavor-${product.name}`}
-                            className="w-full rounded border border-gray-300 p-2 dark:bg-gray-800 dark:text-white"
+                            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
                             value={selectedFlavor}
                             onChange={(e) => setSelectedFlavor(e.target.value)}
                             aria-label="Select flavor"

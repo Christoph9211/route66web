@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import AgeGate from '../AgeGate.jsx'
 
@@ -37,5 +37,26 @@ describe('AgeGate', () => {
         expect(
             screen.queryByRole('heading', { name: /are you 21 or older/i })
         ).not.toBeInTheDocument()
+    })
+
+    it('keeps keyboard focus within the dialog while visible', async () => {
+        const user = userEvent.setup()
+        render(
+            <>
+                <AgeGate />
+                <a href="#outside">Outside link</a>
+            </>
+        )
+
+        const confirmButton = await screen.findByRole('button', {
+            name: /i am 21\+/i,
+        })
+        const leaveLink = screen.getByRole('link', { name: /no, take me back/i })
+
+        await waitFor(() => expect(confirmButton).toHaveFocus())
+        await user.tab()
+        expect(leaveLink).toHaveFocus()
+        await user.tab()
+        expect(confirmButton).toHaveFocus()
     })
 })

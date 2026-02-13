@@ -1,0 +1,193 @@
+- main [ref=e2]:
+  - generic [ref=e4]:
+    - dialog "Are you 21 or older?" [ref=e6]:
+      - heading "Are you 21 or older?" [level=2] [ref=e7]
+      - paragraph [ref=e8]: You must be of legal age to enter this site.
+      - generic [ref=e9]:
+        - button "I am 21+" [active] [ref=e10] [cursor=pointer]
+        - link "No, take me back" [ref=e11] [cursor=pointer]:
+          - /url: https://www.google.com
+      - paragraph [ref=e12]: By confirming, you certify that you are of legal age in your jurisdiction.
+    - navigation [ref=e13]:
+      - generic [ref=e15]:
+        - generic [ref=e17]:
+          - img [ref=e19]
+          - generic [ref=e21]: Route 66 Hemp
+        - generic [ref=e22]:
+          - link "Home" [ref=e23] [cursor=pointer]:
+            - /url: "#home"
+          - link "Products" [ref=e24] [cursor=pointer]:
+            - /url: "#products"
+          - link "About" [ref=e25] [cursor=pointer]:
+            - /url: "#about"
+          - link "Contact" [ref=e26] [cursor=pointer]:
+            - /url: "#contact"
+    - generic [ref=e27]:
+      - generic [ref=e33]:
+        - generic [ref=e35]:
+          - heading "Premium Hemp Products For Your Wellness" [level=1] [ref=e36]:
+            - text: Premium Hemp Products
+            - generic [ref=e37]: For Your Wellness
+          - paragraph [ref=e38]: Discover our range of high-quality, lab-tested hemp products. From THCa flower to edibles, we have everything you need for a balanced lifestyle.
+          - generic [ref=e40]:
+            - link "Explore Products" [ref=e41] [cursor=pointer]:
+              - /url: "#products"
+            - link "Learn more about us" [ref=e42] [cursor=pointer]:
+              - /url: "#about"
+        - img "Route 66 Hemp storefront showcasing premium hemp products in St Robert, Missouri" [ref=e46]
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "Products" [level=2] [ref=e50]
+          - paragraph [ref=e51]: Explore Our Collection
+          - paragraph [ref=e52]: Our products are lab tested for quality and purity.
+        - generic [ref=e53]:
+          - paragraph [ref=e54]: Ready to explore our latest THCa flower, edibles, and concentrates?
+          - paragraph [ref=e55]: Tap the button below when you're ready and we'll load the freshest menu straight from our shelves.
+          - button "View Products" [ref=e56] [cursor=pointer]
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - heading "About Us" [level=2] [ref=e60]
+          - paragraph [ref=e61]: Our Story
+        - generic [ref=e63]:
+          - generic [ref=e68]:
+            - img [ref=e69]
+            - heading "From Seed to Sale" [level=3] [ref=e71]
+            - paragraph [ref=e72]: We control every step of the process to ensure the highest quality products
+          - generic [ref=e74]:
+            - paragraph [ref=e75]: "Founded in 2025, Route 66 Hemp started with a simple mission: to provide high-quality hemp products that enhance people’s well-being while promoting sustainable agricultural practices."
+            - generic [ref=e76]:
+              - paragraph [ref=e77]: Our team of experts carefully selects the finest hemp strains and works closely with local farmers who share our commitment to organic growing methods and environmental stewardship.
+              - paragraph [ref=e78]: We pride ourselves on transparency. All our products undergo rigorous third-party testing to ensure purity, potency, and safety. The test results are readily available to our customers, giving you peace of mind with every purchase.
+              - paragraph [ref=e79]: At Route 66 Hemp, we’re a community of hemp enthusiasts and wellness advocates dedicated to educating and empowering individuals to make informed choices about their health and wellness journey.
+        - generic [ref=e81]:
+          - generic [ref=e84]:
+            - img [ref=e87]
+            - heading "Lab Tested" [level=3] [ref=e89]
+            - paragraph [ref=e90]: All our products are tested by third-party labs for potency, pesticides, and purity to ensure you get only the highest quality.
+          - generic [ref=e93]:
+            - img [ref=e96]
+            - heading "Organically Grown" [level=3] [ref=e98]
+            - paragraph [ref=e99]: Our hemp is grown free from harmful pesticides and chemicals, resulting in a cleaner, better product.
+          - generic [ref=e102]:
+            - img [ref=e105]
+            - heading "Expert Guidance" [level=3] [ref=e107]
+            - paragraph [ref=e108]: Our knowledgeable staff is here to help you find the right products for your specific needs and answer any questions.
+      - generic [ref=e110]:
+        - generic [ref=e111]:
+          - heading "Serving St Robert & Surrounding Areas" [level=2] [ref=e112]
+          - paragraph [ref=e113]: Your Local Hemp Store in Central Missouri
+          - paragraph [ref=e114]: Proudly serving the St Robert, Missouri community with premium hemp products since 2025.
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - heading "Areas We Serve" [level=3] [ref=e117]:
+              - img [ref=e118]
+              - text: Areas We Serve
+            - paragraph [ref=e120]: Located conveniently on State Highway Z in St Robert, we serve customers throughout Pulaski County and the greater Central Missouri area.
+            - generic [ref=e121]:
+              - generic [ref=e122]:
+                - img [ref=e123]
+                - text: Fort Leonard Wood
+              - generic [ref=e125]:
+                - img [ref=e126]
+                - text: Waynesville
+              - generic [ref=e128]:
+                - img [ref=e129]
+                - text: Rolla
+              - generic [ref=e131]:
+                - img [ref=e132]
+                - text: Lebanon
+              - generic [ref=e134]:
+                - img [ref=e135]
+                - text: Crocker
+          - generic [ref=e137]:
+            - heading "Near Local Landmarks" [level=3] [ref=e138]:
+              - img [ref=e139]
+              - text: Near Local Landmarks
+            - paragraph [ref=e141]: "Find us easily near these well-known St Robert and Central Missouri landmarks:"
+            - generic [ref=e142]:
+              - generic [ref=e143]:
+                - img [ref=e144]
+                - text: Fort Leonard Wood Military Base
+              - generic [ref=e146]:
+                - img [ref=e147]
+                - text: Route 66 State Park
+              - generic [ref=e149]:
+                - img [ref=e150]
+                - text: Gasconade River
+              - generic [ref=e152]:
+                - img [ref=e153]
+                - text: Mark Twain National Forest
+        - generic [ref=e155]:
+          - heading "Why Choose Route 66 Hemp in St Robert?" [level=3] [ref=e156]
+          - generic [ref=e157]:
+            - generic [ref=e158]:
+              - img [ref=e160]
+              - heading "Local Expertise" [level=4] [ref=e162]
+              - paragraph [ref=e163]: As a locally-owned business in St Robert, we understand our community’s needs and preferences.
+            - generic [ref=e164]:
+              - img [ref=e166]
+              - heading "Convenient Location" [level=4] [ref=e168]
+              - paragraph [ref=e169]: Easy access from Fort Leonard Wood, Waynesville, and throughout Pulaski County.
+            - generic [ref=e170]:
+              - img [ref=e172]
+              - heading "Community Focused" [level=4] [ref=e174]
+              - paragraph [ref=e175]: Committed to supporting the St Robert community with quality products and service.
+      - generic [ref=e183]:
+        - heading "Contact Us" [level=2] [ref=e184]
+        - paragraph [ref=e185]: Get In Touch
+        - paragraph [ref=e186]: Have questions? We’re here to help!
+    - contentinfo [ref=e191]:
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - generic [ref=e195]:
+              - img [ref=e197]
+              - generic [ref=e199]: Route 66 Hemp
+            - paragraph [ref=e200]: Premium hemp products for your wellness journey. Quality you can trust.
+            - link "Facebook" [ref=e202] [cursor=pointer]:
+              - /url: https://www.facebook.com/route66hemp/
+              - img [ref=e203]
+              - generic [ref=e205]: Facebook
+          - generic [ref=e206]:
+            - generic [ref=e207]:
+              - heading "Products" [level=3] [ref=e208]
+              - list [ref=e209]:
+                - listitem [ref=e210]:
+                  - link "Edibles" [ref=e211] [cursor=pointer]:
+                    - /url: "#products"
+                - listitem [ref=e212]:
+                  - link "Concentrates" [ref=e213] [cursor=pointer]:
+                    - /url: "#products"
+                - listitem [ref=e214]:
+                  - link "Flower" [ref=e215] [cursor=pointer]:
+                    - /url: "#products"
+            - generic [ref=e216]:
+              - heading "Company" [level=3] [ref=e217]
+              - list [ref=e218]:
+                - listitem [ref=e219]:
+                  - link "About Us" [ref=e220] [cursor=pointer]:
+                    - /url: "#about"
+            - generic [ref=e221]:
+              - heading "Support" [level=3] [ref=e222]
+              - list [ref=e223]:
+                - listitem [ref=e224]:
+                  - link "Contact Us" [ref=e225] [cursor=pointer]:
+                    - /url: "#contact"
+                - listitem [ref=e226]:
+                  - link "FAQs" [ref=e227] [cursor=pointer]:
+                    - /url: "#faq"
+            - generic [ref=e228]:
+              - heading "Legal" [level=3] [ref=e229]
+              - list [ref=e230]:
+                - listitem [ref=e231]:
+                  - link "Privacy Policy" [ref=e232] [cursor=pointer]:
+                    - /url: /privacy-policy/
+                - listitem [ref=e233]:
+                  - link "Terms and Conditions" [ref=e234] [cursor=pointer]:
+                    - /url: /terms-of-service/
+                - listitem [ref=e235]:
+                  - link "Cookie Policy" [ref=e236] [cursor=pointer]:
+                    - /url: /cookie-policy/
+        - generic [ref=e237]:
+          - paragraph [ref=e238]: © 2025 Route 66 Hemp. All rights reserved.
+          - paragraph [ref=e239]: All products contain less than 0.3% THC and are legal under the 2018 Farm Bill.
