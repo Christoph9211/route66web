@@ -121,7 +121,7 @@ function ResponsiveImage({
         )
     }
 
-    const resolvedSrc = errorStage >= 2 ? placeholderSrc : fallbackSrc
+    const resolvedSrc = errorStage > 0 ? placeholderSrc : fallbackSrc
 
     return (
         <picture>
