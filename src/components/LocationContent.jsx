@@ -36,15 +36,15 @@ function LocationContent() {
         <div className="bg-gray-50 py-12 dark:bg-gray-900">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 lg:text-center">
-                    <h2 className="dark:text-secondary text-base font-semibold uppercase tracking-wide text-green-300">
+                    <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">
                         Serving {locationData?.city || 'our area'} & Surrounding
                         Areas
                     </h2>
-                    <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight sm:text-4xl dark:text-white">
+                    <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-gray-900 sm:text-4xl dark:text-white">
                         Your Local Hemp Store in{' '}
                         {locationData?.region || 'your region'}
                     </p>
-                    <p className="mt-4 max-w-2xl text-xl text-white lg:mx-auto dark:text-white">
+                    <p className="mt-4 max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-white">
                         Proudly serving the {locationData?.city || 'community'},{' '}
                         {locationData?.state || 'state'} community with premium
                         hemp products since 2025.

@@ -3,6 +3,25 @@ import fs from 'fs'
 import path from 'path'
 
 const SIZES = [320, 400, 640, 768, 1024, 1280, 1600, 1920]
+const EXTENSIONS = ['webp', 'avif', 'jpg']
+
+async function removeStaleSizeSet(outputDir, baseName, size) {
+    let removedCount = 0
+
+    for (const extension of EXTENSIONS) {
+        const staleFilePath = path.join(outputDir, `${baseName}-${size}w.${extension}`)
+        try {
+            await fs.promises.unlink(staleFilePath)
+            removedCount += 1
+        } catch (error) {
+            if (error.code !== 'ENOENT') {
+                throw error
+            }
+        }
+    }
+
+    return removedCount
+}
 
 async function generateResponsiveSizes(inputPath, outputDir, baseName) {
     const image = sharp(inputPath)
@@ -12,6 +31,12 @@ async function generateResponsiveSizes(inputPath, outputDir, baseName) {
 
     for (const size of SIZES) {
         if (metadata.width && size > metadata.width) {
+            const removedCount = await removeStaleSizeSet(outputDir, baseName, size)
+            if (removedCount > 0) {
+                console.log(
+                    `  Removed ${removedCount} stale file(s) for ${size}w responsive set of ${baseName}`
+                )
+            }
             continue
         }
 

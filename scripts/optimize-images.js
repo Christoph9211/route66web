@@ -4,6 +4,7 @@ import path from 'path'
 import process from 'node:process'
 import { fileURLToPath } from 'url'
 import { generateResponsiveSizes } from './generate-responsive-sizes.js'
+import { writeResponsiveImageManifest } from './generate-responsive-image-manifest.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -28,7 +29,7 @@ const compressionSettings = {
 }
 
 const GUARANTEED_SIZES = [1600, 1280]
-const PUBLIC_TARGET_SIZES = [1920]
+const PUBLIC_TARGET_SIZES = [1600, 1920]
 
 const FORMAT_VARIANTS = [
     {
@@ -159,6 +160,7 @@ async function processAllImages() {
         await optimizeImage(filePath, file)
     }
 
+    await writeResponsiveImageManifest({ imagesDir: PUBLIC_OUTPUT_DIR })
     console.log(`✅ Optimized ${imageFiles.length} images!`)
 }
 

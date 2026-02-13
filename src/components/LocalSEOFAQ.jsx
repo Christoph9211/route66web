@@ -51,7 +51,7 @@ function LocalSEOFAQ() {
                     <h2 className="text-2xl font-semibold uppercase tracking-wide text-green-600 dark:text-green-400">
                         Frequently Asked Questions
                     </h2>
-                    <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight sm:text-4xl dark:text-white">
+                    <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight sm:text-4xl dark:text-white">
                         About Route 66 Hemp in St Robert
                     </p>
                 </div>

@@ -359,8 +359,6 @@
                     }
                 }
                 products.splice(0, products.length, ...valid)
-                deletedProducts.length = 0
-                recomputeNextKoronaId()
                 refreshCategoryList()
                 renderTable()
             }
@@ -619,12 +617,7 @@
                         const data = JSON.parse(ev.target.result)
                         if (!Array.isArray(data))
                             throw new Error('JSON root must be array')
-                        const normalized = data.map((p) =>
-                            normalizeProductSchema(p)
-                        )
-                        products.splice(0, products.length, ...normalized)
-                        refreshCategoryList()
-                        renderTable()
+                        loadProducts(data, { alertOnRemove: true })
                         alert(`Loaded ${data.length} products.`)
                     } catch (err) {
                         alert('Failed to parse JSON: ' + err.message)
@@ -846,6 +839,10 @@
             cancelEditBtn.addEventListener('click', () => {
                 form.reset()
                 form.banner.value = ''
+                sizePricePairs = []
+                renderSizePriceTable()
+                sizeInput.value = ''
+                priceInput.value = ''
                 editIndex = null
                 submitBtn.textContent = 'Add Product'
                 formTitle.textContent = 'Add New Product'
@@ -857,6 +854,5 @@
         </script>
     </body>
 </html>
-
 
 
