@@ -46,6 +46,9 @@ const SpeedInsights = React.lazy(() =>
         default: module.SpeedInsights,
     }))
 )
+const ENABLE_VERCEL_OBSERVABILITY =
+    import.meta.env.PROD &&
+    import.meta.env.VITE_ENABLE_VERCEL_OBSERVABILITY === 'true'
 
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
@@ -404,10 +407,17 @@ export default function App() {
 
     const fetchProductCatalog = React.useCallback(async () => {
         if (!productCatalogPromiseRef.current) {
-            productCatalogPromiseRef.current = fetch('products/products.json')
-                .then((response) => {
+            productCatalogPromiseRef.current = fetch('/products/products.json')
+                .then(async (response) => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch products')
+                    }
+                    const contentType = response.headers.get('content-type') ?? ''
+                    if (!contentType.includes('application/json')) {
+                        const bodyPreview = (await response.text()).slice(0, 120)
+                        throw new Error(
+                            `Expected JSON product catalog but received "${contentType || 'unknown'}": ${bodyPreview}`
+                        )
                     }
                     return response.json()
                 })
@@ -1386,13 +1396,17 @@ export default function App() {
                 </div>
             </footer>
             {/* ... */}
-            <React.Suspense fallback={null}>
-                <Analytics />
-            </React.Suspense>
-            {/* ... */}
-            <React.Suspense fallback={null}>
-                <SpeedInsights />
-            </React.Suspense>
+            {ENABLE_VERCEL_OBSERVABILITY ? (
+                <>
+                    <React.Suspense fallback={null}>
+                        <Analytics />
+                    </React.Suspense>
+                    {/* ... */}
+                    <React.Suspense fallback={null}>
+                        <SpeedInsights />
+                    </React.Suspense>
+                </>
+            ) : null}
             {/* Back to top button */}
             <BackToTopButton />
         </div>

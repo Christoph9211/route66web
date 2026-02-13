@@ -28,7 +28,7 @@ const compressionSettings = {
 }
 
 const GUARANTEED_SIZES = [1600, 1280]
-const PUBLIC_TARGET_SIZES = [1920]
+const PUBLIC_TARGET_SIZES = [1600, 1920]
 
 const FORMAT_VARIANTS = [
     {

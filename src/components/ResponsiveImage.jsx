@@ -39,7 +39,7 @@ function ResponsiveImage({
     srcSetWidths = null,
 }) {
     const [isLoaded, setIsLoaded] = useState(false)
-    const [hasError, setHasError] = useState(false)
+    const [errorStage, setErrorStage] = useState(0)
 
     const isExternal = useMemo(() => {
         if (typeof src !== 'string') return false
@@ -60,31 +60,28 @@ function ResponsiveImage({
     }, [srcSetWidths])
 
     const srcSets = useMemo(() => {
-        if (isExternal || hasError) return null
+        if (isExternal || errorStage > 0) return null
         return {
             avif: buildSrcSet(baseName, 'avif', resolvedWidths),
             webp: buildSrcSet(baseName, 'webp', resolvedWidths),
             jpeg: buildSrcSet(baseName, 'jpg', resolvedWidths),
         }
-    }, [baseName, isExternal, hasError, resolvedWidths])
+    }, [baseName, isExternal, errorStage, resolvedWidths])
 
-    const mergedClassName = `${className} ${isLoaded ? 'loaded' : 'loading'} ${hasError ? 'error' : ''}`.trim()
+    const mergedClassName = `${className} ${isLoaded ? 'loaded' : 'loading'} ${errorStage > 0 ? 'error' : ''}`.trim()
 
-    const handleError = (event) => {
-        const target = event?.target
-        if (target) {
-            target.onerror = null
-            setHasError(true)
-            // Use a specific, guaranteed size for the fallback to avoid further issues
-            target.src = `${FALLBACK_BASE}-640w.webp`
-            setIsLoaded(false)
-        }
+    const fallbackSrc = `${baseName}-640w.jpg`
+    const placeholderSrc = `${fallbackBase}-640w.webp`
+
+    const handleError = () => {
+        setIsLoaded(false)
+        setErrorStage((currentStage) => Math.min(currentStage + 1, 2))
     }
 
     if (isExternal) {
         return (
             <img
-                src={src}
+                src={errorStage > 0 ? placeholderSrc : src}
                 alt={alt}
                 width={width}
                 height={height}
@@ -98,11 +95,11 @@ function ResponsiveImage({
         )
     }
 
-    const fallbackSrc = `${baseName}-640w.jpg`
+    const resolvedSrc = errorStage >= 2 ? placeholderSrc : fallbackSrc
 
     return (
         <picture>
-            {!hasError && srcSets && (
+            {!errorStage && srcSets && (
                 <>
                     <source type="image/avif" srcSet={srcSets.avif} sizes={sizes} />
                     <source type="image/webp" srcSet={srcSets.webp} sizes={sizes} />
@@ -110,7 +107,7 @@ function ResponsiveImage({
                 </>
             )}
             <img
-                src={hasError ? `${FALLBACK_BASE}-640w.webp` : fallbackSrc}
+                src={resolvedSrc}
                 alt={alt}
                 width={width}
                 height={height}

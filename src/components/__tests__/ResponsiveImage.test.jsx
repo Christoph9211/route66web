@@ -31,10 +31,17 @@ describe('ResponsiveImage', () => {
         )
     })
 
-    it('falls back when an error occurs', () => {
+    it('falls back to base image, then placeholder when errors persist', () => {
         render(<ResponsiveImage src="/assets/images/sample" alt="Error" />)
 
         const img = screen.getByAltText('Error')
+        fireEvent.error(img)
+
+        expect(img).toHaveAttribute(
+            'src',
+            '/assets/images/sample-640w.jpg'
+        )
+
         fireEvent.error(img)
 
         expect(img).toHaveAttribute(
