@@ -27,19 +27,6 @@
     "banner": "New"
   },
   {
-    "name": "Blue Razz Live Resin Gummies - 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
-    },
-    "banner": "New"
-  },
-  {
     "name": "Bubblegum Cherries",
     "category": "Flower",
     "size_options": [
@@ -68,17 +55,6 @@
     "banner": "New"
   },
   {
-    "name": "Cotton Candy Lemonade 25mg",
-    "category": "Edibles",
-    "size_options": [
-      "12 oz can"
-    ],
-    "prices": {
-      "12 oz can": 8
-    },
-    "banner": "New"
-  },
-  {
     "name": "Cotton Candy Lemonade Live Resin Gummies - 25 mg",
     "category": "Edibles",
     "size_options": [
@@ -88,17 +64,6 @@
     "prices": {
       "4 count": 10,
       "2 count": 5
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Cotton Candy Lemonade Shots 100mg",
-    "category": "Edibles",
-    "size_options": [
-      "2oz Bottle"
-    ],
-    "prices": {
-      "2oz Bottle": 9.99
     },
     "banner": "New"
   },
@@ -198,19 +163,6 @@
     "banner": "New"
   },
   {
-    "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
-    },
-    "banner": "New"
-  },
-  {
     "name": "Garlic Cookies Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -222,6 +174,19 @@
       "3 grams": 25
     },
     "thca_percentage": 99.2,
+    "banner": "New"
+  },
+  {
+    "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    },
     "banner": "New"
   },
   {
@@ -246,6 +211,17 @@
       "Benson Harbor Tropic Lemons Hash Infused": 20,
       "Hash Infused Blueberry Muffin": 10,
       "Hash Infused Rock Candy": 10
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Live Rosin Blueberry Muffin Badder",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram"
+    ],
+    "prices": {
+      "1 gram": 40
     },
     "banner": "New"
   },
@@ -280,17 +256,6 @@
     ],
     "prices": {
       "12 oz can": 10
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Moon Water Soda - Fizzy Punch 30mg",
-    "category": "Edibles",
-    "size_options": [
-      "12 oz can"
-    ],
-    "prices": {
-      "12 oz can": 9
     },
     "banner": "New"
   },
@@ -392,6 +357,19 @@
     "banner": "New"
   },
   {
+    "name": "Space Junky",
+    "category": "Concentrates",
+    "size_options": [
+      "1 Gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 Gram": 10,
+      "3 grams": 25
+    },
+    "banner": "New"
+  },
+  {
     "name": "Strawberry Diesel Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -403,6 +381,18 @@
       "3 grams": 25
     },
     "thca_percentage": 98.39,
+    "banner": "New"
+  },
+  {
+    "name": "Superboof",
+    "category": "Concentrates",
+    "size_options": [
+      "3 grams"
+    ],
+    "prices": {
+      "3 grams": 25
+    },
+    "thca_percentage": 96.18,
     "banner": "New"
   },
   {
@@ -447,6 +437,18 @@
       "2 count": 6
     },
     "banner": "New"
+  },
+  {
+    "name": "Blue Razz Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    }
   },
   {
     "name": "Blueberry Diesel",
@@ -529,6 +531,26 @@
       "ounce": 150
     },
     "thca_percentage": 18
+  },
+  {
+    "name": "Cotton Candy Lemonade 25mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 8
+    }
+  },
+  {
+    "name": "Cotton Candy Lemonade Shots 100mg",
+    "category": "Edibles",
+    "size_options": [
+      "2oz Bottle"
+    ],
+    "prices": {
+      "2oz Bottle": 9.99
+    }
   },
   {
     "name": "Durban Poison Crumble",
@@ -660,6 +682,16 @@
     "prices": {
       "4ct": 10,
       "2ct": 6
+    }
+  },
+  {
+    "name": "Moon Water Soda - Fizzy Punch 30mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 9
     }
   },
   {
