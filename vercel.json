@@ -129,27 +129,27 @@
         },
         {
             "source": "/dispensary-st-robert-mo",
-            "destination": "/"
+            "destination": "/dispensary-st-robert-mo"
         },
         {
             "source": "/dispensary-st-robert-mo/",
-            "destination": "/"
+            "destination": "/dispensary-st-robert-mo"
         },
         {
             "source": "/dispensary-near-fort-leonard-wood",
-            "destination": "/"
+            "destination": "/dispensary-near-fort-leonard-wood"
         },
         {
             "source": "/dispensary-near-fort-leonard-wood/",
-            "destination": "/"
+            "destination": "/dispensary-near-fort-leonard-wood"
         },
         {
             "source": "/route-66-dispensary-st-robert-mo",
-            "destination": "/"
+            "destination": "/route-66-dispensary-st-robert-mo"
         },
         {
             "source": "/route-66-dispensary-st-robert-mo/",
-            "destination": "/"
+            "destination": "/route-66-dispensary-st-robert-mo"
         }
     ]
 }
