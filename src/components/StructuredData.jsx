@@ -3,6 +3,9 @@
 import { businessInfo } from '../utils/businessInfo'
 import { localSeoFaqs } from './localSeoFaqData.js'
 const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.route66hemp.com'
+const GOOGLE_MAPS_URL =
+    'https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO'
+const GOOGLE_BUSINESS_PROFILE_URL = 'https://g.page/r/CVdnXoVBYQSVEAE'
 
 function ProductSchema({ product, mode = 'listing' }) {
     const canOffer = Number.isFinite(product?.price)
@@ -179,32 +182,31 @@ function StructuredData({
         priceRange: '$',
         currenciesAccepted: 'USD',
         paymentAccepted: 'Cash',
-        image: `${SITE_URL}/assets/images/route-66-hemp-og-image.jpg`,
+        image: 'https://www.route66hemp.com/assets/images/route-66-hemp-og-image.jpg',
         logo: `${SITE_URL}/route-66-hemp-logo-512x512.png`,
+        hasMap: GOOGLE_MAPS_URL,
+        areaServed: [
+            {
+                '@type': 'City',
+                name: 'St Robert',
+            },
+            {
+                '@type': 'City',
+                name: 'Waynesville',
+            },
+            {
+                '@type': 'AdministrativeArea',
+                name: 'Pulaski County',
+            },
+            {
+                '@type': 'Place',
+                name: 'Fort Leonard Wood',
+            },
+        ],
         sameAs: [
             'https://www.facebook.com/route66hemp/',
             'https://www.instagram.com/route66hemp',
-            'https://www.twitter.com/route66hemp',
-        ],
-        aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '4.4',
-            reviewCount: '8',
-        },
-        review: [
-            {
-                '@type': 'Review',
-                author: {
-                    '@type': 'Person',
-                    name: 'Sarah Johnson',
-                },
-                reviewRating: {
-                    '@type': 'Rating',
-                    ratingValue: '5',
-                },
-                reviewBody:
-                    'Excellent quality hemp products and knowledgeable staff. Great selection and fair prices.',
-            },
+            GOOGLE_BUSINESS_PROFILE_URL,
         ],
     }
 
@@ -302,4 +304,3 @@ function StructuredData({
 }
 
 export default StructuredData
-
