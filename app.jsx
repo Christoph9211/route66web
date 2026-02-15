@@ -812,10 +812,10 @@ export default function App() {
                                             <div className="lg:py-24">
                                                 <h1 className="mt-4 text-4xl font-bold leading-tight tracking-[-0.02em] text-slate-900 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-7xl dark:text-white">
                                                     <span>
-                                                        Premium Hemp Products
+                                                        Route 66 Hemp Dispensary
                                                     </span>
                                                     <span className="block text-emerald-700 dark:text-emerald-300">
-                                                        For Your Wellness
+                                                        Serving St Robert, MO
                                                     </span>
                                                 </h1>
                                                 <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 sm:mt-6 sm:text-lg xl:text-xl dark:text-slate-300">
