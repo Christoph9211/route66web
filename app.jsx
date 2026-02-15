@@ -521,7 +521,7 @@ const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
                     <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Hours & Contact</h2>
                     <p className="mt-3 text-slate-700 dark:text-slate-300">Monday - Thursday: {businessInfo.hoursDisplay['Monday - Thursday']}; Friday - Saturday: {businessInfo.hoursDisplay['Friday - Saturday']}; Sunday: {businessInfo.hoursDisplay.Sunday}</p>
                     <p className="mt-2 text-slate-700 dark:text-slate-300">
-                        Call <a className="text-emerald-700 hover:underline" href={businessInfo.phoneLink}>{businessInfo.phoneFormatted}</a> or visit us at {businessInfo.address.full}.
+                        Call <a className="text-emerald-700 hover:underline dark:text-emerald-300 dark:hover:text-emerald-200" href={businessInfo.phoneLink}>{businessInfo.phoneFormatted}</a> or visit us at {businessInfo.address.full}.
                     </p>
                     <a href="/#contact" className="mt-4 inline-block rounded-lg bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800">Contact Route 66 Hemp</a>
                 </section>
