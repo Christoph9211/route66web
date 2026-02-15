@@ -36,19 +36,6 @@ const GoogleBusinessIntegration = React.lazy(() =>
 const LocalSEOFAQ = React.lazy(() =>
     import('./src/components/LocalSEOFAQ.jsx')
 )
-const Analytics = React.lazy(() =>
-    import('@vercel/analytics/react').then((module) => ({
-        default: module.Analytics,
-    }))
-)
-const SpeedInsights = React.lazy(() =>
-    import('@vercel/speed-insights/react').then((module) => ({
-        default: module.SpeedInsights,
-    }))
-)
-const ENABLE_VERCEL_OBSERVABILITY =
-    import.meta.env.PROD &&
-    import.meta.env.VITE_ENABLE_VERCEL_OBSERVABILITY === 'true'
 
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
@@ -854,22 +841,10 @@ export default function App() {
         })
     }, [startFiltering])
 
-    const observabilityNodes = ENABLE_VERCEL_OBSERVABILITY ? (
-        <>
-            <React.Suspense fallback={null}>
-                <Analytics />
-            </React.Suspense>
-            <React.Suspense fallback={null}>
-                <SpeedInsights />
-            </React.Suspense>
-        </>
-    ) : null
-
     if (localLandingPage) {
         return (
             <>
                 <LocalLandingPage page={localLandingPage} />
-                {observabilityNodes}
             </>
         )
     }
@@ -1630,7 +1605,6 @@ export default function App() {
                     </div>
                 </div>
             </footer>
-            {observabilityNodes}
             {/* Back to top button */}
             <BackToTopButton />
         </div>
