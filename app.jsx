@@ -528,6 +528,12 @@ const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
 
 
 export default function App() {
+    const currentPath =
+        typeof window !== 'undefined'
+            ? window.location.pathname.replace(/\/$/, '') || '/'
+            : '/'
+    const localLandingPage = LOCAL_LANDING_PAGES[currentPath]
+
     const [appState, setAppState] = React.useState({
         isMobileMenuOpen: false,
         selectedCategory: 'all',
@@ -631,6 +637,10 @@ export default function App() {
     )
 
     React.useEffect(() => {
+        if (localLandingPage) {
+            return
+        }
+
         if (typeof window === 'undefined') {
             return
         }
@@ -638,12 +648,16 @@ export default function App() {
         if (window.location.hash === '#products') {
             requestProductCatalog()
         }
-    }, [requestProductCatalog])
+    }, [localLandingPage, requestProductCatalog])
 
     const { shouldLoadProducts, hasLoadedProducts, catalogRequestVersion } =
         appState
 
     React.useEffect(() => {
+        if (localLandingPage) {
+            return undefined
+        }
+
         if (
             !shouldLoadProducts ||
             hasLoadedProducts ||
@@ -697,9 +711,14 @@ export default function App() {
         hasLoadedProducts,
         catalogRequestVersion,
         fetchProductCatalog,
+        localLandingPage,
     ])
 
     React.useEffect(() => {
+        if (localLandingPage) {
+            return undefined
+        }
+
         let isCancelled = false
 
         const preloadStructuredData = async () => {
@@ -732,7 +751,7 @@ export default function App() {
         return () => {
             isCancelled = true
         }
-    }, [fetchProductCatalog])
+    }, [fetchProductCatalog, localLandingPage])
 
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
@@ -817,12 +836,6 @@ export default function App() {
             )
         })
     }, [startFiltering])
-
-    const currentPath =
-        typeof window !== 'undefined'
-            ? window.location.pathname.replace(/\/$/, '') || '/'
-            : '/'
-    const localLandingPage = LOCAL_LANDING_PAGES[currentPath]
 
     if (localLandingPage) {
         return <LocalLandingPage page={localLandingPage} />
