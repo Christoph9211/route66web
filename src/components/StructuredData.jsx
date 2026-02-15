@@ -142,7 +142,7 @@ function StructuredData({
         '@type': 'Store',
         name: businessInfo.name,
         description:
-            'Premium hemp products for your wellness journey. Quality you can trust.',
+            'Lab-tested THCa and hemp products in St Robert, MO near Fort Leonard Wood, with transparent product information and local in-store service.',
         url: businessInfo.website,
         telephone: businessInfo.phone,
         email: businessInfo.email,

@@ -351,7 +351,7 @@ const buildCategories = (products) =>
 
 const generateProductAlt = (product) => {
     if (!product || typeof product !== 'object') {
-        return 'Premium hemp product available at Route 66 Hemp in St Robert, Missouri'
+        return 'Lab-tested hemp product available at Route 66 Hemp in St Robert, Missouri'
     }
 
     const segments = []
@@ -368,7 +368,7 @@ const generateProductAlt = (product) => {
         segments.push(`${product.thca_percentage}% THCa`)
     }
 
-    segments.push('Premium Hemp Product at Route 66 Hemp, St Robert, Missouri')
+    segments.push('Lab-Tested Hemp Product at Route 66 Hemp, St Robert, Missouri')
 
     return segments.join(' - ')
 }
@@ -406,45 +406,45 @@ const setCanonicalHref = (href) => {
 const LOCAL_LANDING_PAGES = {
     '/dispensary-st-robert-mo': {
         slug: 'dispensary-st-robert-mo',
-        title: 'Dispensary in St Robert, MO | Route 66 Hemp',
+        title: 'THCa Dispensary in St Robert, MO | Route 66 Hemp',
         description:
-            'Route 66 Hemp is a local dispensary in St Robert, MO with easy parking, quick access from I-44, and hemp products for daily wellness.',
-        h1: 'Your St Robert, MO Dispensary Stop on Route 66',
+            'Route 66 Hemp is a THCa and hemp dispensary in St Robert, MO near I-44 with lab-tested flower, edibles, concentrates, and vapes.',
+        h1: 'THCa Dispensary in St Robert, MO',
         intent: 'dispensary in st robert mo',
         directions:
-            'From I-44, take Exit 161 toward St Robert and follow Missouri State Hwy Z. We are at 14076 State Hwy Z, just minutes from central St Robert.',
+            'From I-44, take Exit 161 toward St Robert, then follow Missouri State Hwy Z to 14076 State Hwy Z for quick in-store shopping.',
         parking:
-            'On-site parking is directly in front of the storefront with easy in-and-out access for quick pickups.',
+            'Storefront parking is directly in front of the entrance with easy in-and-out access for fast pickup stops.',
         neighborhoods:
-            'We regularly serve shoppers from St Robert, Waynesville, Dixon, and nearby Pulaski County communities.',
+            'We serve St Robert, Waynesville, Dixon, and nearby Pulaski County communities looking for reliable THCa and hemp products.',
     },
     '/dispensary-near-fort-leonard-wood': {
         slug: 'dispensary-near-fort-leonard-wood',
-        title: 'Dispensary Near Fort Leonard Wood | Route 66 Hemp',
+        title: 'Dispensary Near Fort Leonard Wood in St Robert, MO | Route 66 Hemp',
         description:
-            'Looking for a dispensary near Fort Leonard Wood? Route 66 Hemp in St Robert offers convenient hours, fast directions, and trusted hemp options.',
-        h1: 'Convenient Dispensary Near Fort Leonard Wood',
+            'Looking for a dispensary near Fort Leonard Wood? Route 66 Hemp in St Robert offers fast access, clear product info, and lab-tested THCa options.',
+        h1: 'Trusted Dispensary Near Fort Leonard Wood',
         intent: 'dispensary near fort leonard wood',
         directions:
-            'From Fort Leonard Wood gates, head toward St Robert via Missouri Ave and Old Route 66, then continue to State Hwy Z for a short drive to our store.',
+            'From Fort Leonard Wood, head toward St Robert via Missouri Ave and Old Route 66, then continue to State Hwy Z for a short drive to our storefront.',
         parking:
-            'Our lot has accessible spaces and straightforward parking for service members, families, and local residents.',
+            'Our lot includes accessible spaces and straightforward parking for service members, families, and local residents.',
         neighborhoods:
-            'Guests visit us from Fort Leonard Wood housing areas, St Robert, Waynesville, and neighboring Pulaski County towns.',
+            'Customers visit us from Fort Leonard Wood housing areas, St Robert, Waynesville, and surrounding Pulaski County towns.',
     },
     '/route-66-dispensary-st-robert-mo': {
         slug: 'route-66-dispensary-st-robert-mo',
-        title: 'Route 66 Dispensary in St Robert, MO | Route 66 Hemp',
+        title: 'Route 66 Hemp Dispensary in St Robert, MO | Near Fort Leonard Wood',
         description:
-            'Route 66 Hemp is a Route 66 dispensary in St Robert, MO offering lab-tested flower, edibles, and concentrates with local guidance and service.',
-        h1: 'Route 66 Dispensary in St Robert, Missouri',
+            'Route 66 Hemp is a Route 66 dispensary in St Robert, MO with lab-tested THCa flower, edibles, concentrates, and expert in-store guidance.',
+        h1: 'Route 66 Hemp Dispensary in St Robert, Missouri',
         intent: 'route 66 dispensary st robert mo',
         directions:
-            'Traveling historic Route 66? We are located a short turn from the main corridor at 14076 State Hwy Z in St Robert, MO.',
+            'Traveling historic Route 66? We are a short turn from the main corridor at 14076 State Hwy Z in St Robert, MO.',
         parking:
-            'Dedicated storefront parking makes it easy to stop in while commuting through St Robert or exploring Route 66 landmarks.',
+            'Dedicated storefront parking makes it easy to stop while commuting through St Robert or exploring Route 66 landmarks.',
         neighborhoods:
-            'We serve Route 66 travelers plus locals from St Robert, Waynesville, and the greater Fort Leonard Wood area.',
+            'We serve Route 66 travelers and local shoppers from St Robert, Waynesville, and the greater Fort Leonard Wood area.',
     },
 }
 
@@ -507,27 +507,27 @@ const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
                 <p className="mt-4 text-lg text-slate-700 dark:text-slate-300">{page.description}</p>
 
                 <section className="mt-8 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
-                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Directions & Parking</h2>
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Directions, Parking, and Store Access</h2>
                     <p className="mt-3 text-slate-700 dark:text-slate-300">{page.directions}</p>
                     <p className="mt-3 text-slate-700 dark:text-slate-300">{page.parking}</p>
                 </section>
 
                 <section className="mt-6 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
-                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Neighborhoods We Serve</h2>
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Areas We Serve in Pulaski County</h2>
                     <p className="mt-3 text-slate-700 dark:text-slate-300">{page.neighborhoods}</p>
                 </section>
 
                 <section className="mt-6 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
-                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Hours & Contact</h2>
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Store Hours, Phone, and Address</h2>
                     <p className="mt-3 text-slate-700 dark:text-slate-300">Monday - Thursday: {businessInfo.hoursDisplay['Monday - Thursday']}; Friday - Saturday: {businessInfo.hoursDisplay['Friday - Saturday']}; Sunday: {businessInfo.hoursDisplay.Sunday}</p>
                     <p className="mt-2 text-slate-700 dark:text-slate-300">
                         Call <a className="text-emerald-700 hover:underline dark:text-emerald-300 dark:hover:text-emerald-200" href={businessInfo.phoneLink}>{businessInfo.phoneFormatted}</a> or visit us at {businessInfo.address.full}.
                     </p>
-                    <a href="/#contact" className="mt-4 inline-block rounded-lg bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800">Contact Route 66 Hemp</a>
+                    <a href="/#contact" className="mt-4 inline-block rounded-lg bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800">Call or Visit Route 66 Hemp</a>
                 </section>
 
                 <section className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-900 dark:bg-emerald-950/40">
-                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white">More Local Pages</h2>
+                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white">More Local Dispensary Pages</h2>
                     <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
                         {Object.values(LOCAL_LANDING_PAGES).map((landingPage) => (
                             <li key={landingPage.slug}>
@@ -944,7 +944,7 @@ export default function App() {
                                 href="/dispensary-st-robert-mo/"
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
-                                Local Pages
+                                Local Dispensary Pages
                             </a>
                         </div>
                         {/* Mobile menu button */}
@@ -1016,7 +1016,7 @@ export default function App() {
                                 href="/dispensary-st-robert-mo/"
                                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
                             >
-                                Local Pages
+                                Local Dispensary Pages
                             </a>
                         </div>
                     </div>
@@ -1034,24 +1034,23 @@ export default function App() {
                                             <div className="lg:py-24">
                                                 <h1 className="mt-4 text-4xl font-bold leading-tight tracking-[-0.02em] text-slate-900 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-7xl dark:text-white">
                                                     <span>
-                                                        Route 66 Hemp Dispensary
+                                                        THCa & Hemp Dispensary
                                                     </span>
                                                     <span className="block text-emerald-700 dark:text-emerald-300">
-                                                        Serving St Robert, MO
+                                                        In St Robert, MO Near Fort Leonard Wood
                                                     </span>
                                                 </h1>
                                                 <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 sm:mt-6 sm:text-lg xl:text-xl dark:text-slate-300">
-                                                    Discover our range of
-                                                    high-quality, lab-tested
-                                                    hemp products. From THCa flower
-                                                    to edibles, we have
-                                                    everything you need for a
-                                                    balanced lifestyle.
+                                                    Shop lab-tested THCa flower,
+                                                    edibles, concentrates, and
+                                                    vapes with clear pricing,
+                                                    straightforward guidance,
+                                                    and fast in-store service.
                                                 </p>
                                                 <div className="mt-10 flex justify-center sm:mt-12 lg:justify-start">
                                                     <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                                                        <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="inline-flex items-center justify-center rounded-xl bg-emerald-700 px-8 py-4 text-base font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"> Explore Products </a>
-                                                        <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="inline-flex items-center justify-center rounded-xl border border-emerald-200 bg-white px-8 py-4 text-base font-semibold text-emerald-700 shadow-sm transition-colors hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-emerald-700 dark:bg-transparent dark:text-emerald-300 dark:hover:bg-emerald-900/30"> Learn more about us </a>
+                                                        <a href="#products" onClick={(e) => handleNavigation(e, 'products')} className="inline-flex items-center justify-center rounded-xl bg-emerald-700 px-8 py-4 text-base font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"> Shop THCa Products </a>
+                                                        <a href="#about" onClick={(e) => handleNavigation(e, 'about')} className="inline-flex items-center justify-center rounded-xl border border-emerald-200 bg-white px-8 py-4 text-base font-semibold text-emerald-700 shadow-sm transition-colors hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-emerald-700 dark:bg-transparent dark:text-emerald-300 dark:hover:bg-emerald-900/30"> Why local shoppers choose us </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1077,9 +1076,9 @@ export default function App() {
                 </div>
                 <section id="local-pages" className="bg-emerald-50/70 py-12 dark:bg-emerald-950/20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Find Local Dispensary Info by Area</h2>
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Choose a Local Dispensary Page</h2>
                         <p className="mt-3 max-w-3xl text-slate-700 dark:text-slate-300">
-                            Browse our area-specific pages for driving routes, parking tips, neighborhoods served, and direct contact details.
+                            Compare directions, parking details, service areas, and contact info for St Robert and Fort Leonard Wood visitors.
                         </p>
                         <div className="mt-4 flex flex-wrap gap-4">
                             <a href="/dispensary-st-robert-mo/" className="text-emerald-700 hover:underline dark:text-emerald-300">Dispensary in St Robert, MO</a>
@@ -1096,11 +1095,12 @@ export default function App() {
                                 Products
                             </h2>
                             <p className="mt-3 text-3xl font-bold leading-snug tracking-[-0.01em] text-slate-900 sm:text-5xl dark:text-white">
-                                Explore Our Collection
+                                Lab-Tested THCa and Hemp Product Menu
                             </p>
                             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 lg:mx-auto dark:text-slate-300">
-                                Our products are lab tested for quality and
-                                purity.
+                                Browse flower, edibles, concentrates, vapes,
+                                and more with clear categories, options, and
+                                pricing.
                             </p>
                         </div>
                         {appState.shouldLoadProducts ? (
@@ -1161,7 +1161,7 @@ export default function App() {
                                         aria-live="assertive"
                                         className="col-span-full max-w-xl rounded-2xl border border-emerald-100 bg-emerald-50 p-8 text-center text-emerald-900 shadow-sm dark:border-emerald-900/40 dark:bg-emerald-900/30 dark:text-emerald-100"
                                     >
-                                        <h3 className="text-lg font-semibold">We couldn&apos;t load the menu</h3>
+                                        <h3 className="text-lg font-semibold">We couldn&apos;t load today&apos;s product menu</h3>
                                         <p className="mt-3 text-sm">
                                             {appState.loadError}
                                         </p>
@@ -1215,7 +1215,7 @@ export default function App() {
                                 ) : (
                                     <div className="col-span-full py-12 text-center">
                                         <p className="text-gray-700 dark:text-white">
-                                            Products Coming Soon
+                                            No products match this filter right now.
                                         </p>
                                     </div>
                                 )}
@@ -1224,24 +1224,24 @@ export default function App() {
                                         className="mt-6 text-center text-sm text-gray-500 dark:text-gray-300"
                                         aria-live="polite"
                                     >
-                                        Updating products...
+                                        Refreshing product list...
                                     </div>
                                 )}
                             </>
                         ) : (
                             <div className="mx-auto max-w-2xl rounded-2xl bg-linear-to-r from-emerald-800 to-emerald-700 p-8 text-center shadow-lg dark:from-emerald-900 dark:to-emerald-800">
                                 <p className="text-lg font-semibold text-white">
-                                    Ready to explore our latest THCa flower, edibles, and concentrates?
+                                    Ready to browse today&apos;s in-store THCa and hemp menu?
                                 </p>
                                 <p className="mt-2 text-sm text-emerald-100">
-                                    Tap the button below when you&apos;re ready and we&apos;ll load the freshest menu straight from our shelves.
+                                    Tap below to load our latest product availability, category options, and pricing.
                                 </p>
                                 <button
                                     type="button"
                                     onClick={requestProductCatalog}
                                     className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-emerald-800 shadow hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-800 dark:text-emerald-800"
                                 >
-                                    View Products
+                                    Load Product Menu
                                 </button>
                             </div>
                         )}
@@ -1252,10 +1252,10 @@ export default function App() {
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-10 lg:text-center">
                             <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">
-                                About Us
+                                Why Route 66 Hemp
                             </h2>
                             <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                                Our Story
+                                Local Team. Verified Quality.
                             </p>
                         </div>
                         <div className="mt-10">
@@ -1271,13 +1271,13 @@ export default function App() {
                                                         aria-hidden="true"
                                                     />
                                                     <h3 className="mb-2 text-2xl font-bold">
-                                                        From Seed to Sale
+                                                        Source-to-Shelf Standards
                                                     </h3>
                                                     <p className="text-lg">
-                                                        We control every step of
-                                                        the process to ensure
-                                                        the highest quality
-                                                        products
+                                                        We focus on consistent
+                                                        quality, transparent
+                                                        testing, and reliable
+                                                        in-store guidance.
                                                     </p>
                                                 </div>
                                             </div>
@@ -1287,40 +1287,33 @@ export default function App() {
                                 <div className="mt-10 lg:col-start-1 lg:row-start-1 lg:mt-0">
                                     <div className="mx-auto max-w-prose text-base lg:max-w-none">
                                         <p className="text-lg text-gray-700 dark:text-white">
-                                            Founded in 2025, Route 66 Hemp
-                                            started with a simple mission: to
-                                            provide high-quality hemp products
-                                            that enhance people’s well-being
-                                            while promoting sustainable
-                                            agricultural practices.
+                                            Route 66 Hemp was built to make
+                                            hemp shopping easier for St Robert
+                                            and Fort Leonard Wood communities.
+                                            Our mission is simple: offer
+                                            reliable products, clear info, and
+                                            respectful service.
                                         </p>
                                         <div className="prose prose-indigo dark:prose-invert mt-5 text-gray-700 dark:text-white">
                                             <p>
-                                                Our team of experts carefully
-                                                selects the finest hemp strains
-                                                and works closely with local
-                                                farmers who share our commitment
-                                                to organic growing methods and
-                                                environmental stewardship.
+                                                We curate products from trusted
+                                                growers and manufacturers that
+                                                follow strict standards for
+                                                consistency, purity, and legal
+                                                compliance.
                                             </p>
                                             <p>
-                                                We pride ourselves on
-                                                transparency. All our products
-                                                undergo rigorous third-party
-                                                testing to ensure purity,
-                                                potency, and safety. The test
-                                                results are readily available to
-                                                our customers, giving you peace
-                                                of mind with every purchase.
+                                                Every product is backed by
+                                                third-party lab testing so you
+                                                can review cannabinoid content,
+                                                potency, and quality before you
+                                                buy.
                                             </p>
                                             <p>
-                                                At Route 66 Hemp, we’re a
-                                                community of hemp enthusiasts
-                                                and wellness advocates dedicated
-                                                to educating and empowering
-                                                individuals to make informed
-                                                choices about their health and
-                                                wellness journey.
+                                                Our staff helps new and
+                                                returning shoppers compare
+                                                formats, strengths, and product
+                                                types to find the right fit.
                                             </p>
                                         </div>
                                     </div>
@@ -1343,14 +1336,13 @@ export default function App() {
                                                 </span>
                                             </div>
                                             <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                                Lab Tested
+                                                Third-Party Lab Verified
                                             </h3>
                                             <p className="mt-5 text-base text-gray-700 dark:text-white">
-                                                All our products are tested by
-                                                third-party labs for potency,
-                                                pesticides, and purity to ensure
-                                                you get only the highest
-                                                quality.
+                                                We prioritize products with
+                                                accessible lab results so you
+                                                can verify cannabinoid content
+                                                and quality.
                                             </p>
                                         </div>
                                     </div>
@@ -1368,13 +1360,13 @@ export default function App() {
                                                 </span>
                                             </div>
                                             <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                                Organically Grown
+                                                Carefully Sourced Hemp
                                             </h3>
                                             <p className="mt-5 text-base text-gray-700 dark:text-white">
-                                                Our hemp is grown free from
-                                                harmful pesticides and
-                                                chemicals, resulting in a
-                                                cleaner, better product.
+                                                Our menu focuses on trusted
+                                                suppliers known for dependable
+                                                standards and consistent
+                                                inventory quality.
                                             </p>
                                         </div>
                                     </div>
@@ -1392,13 +1384,13 @@ export default function App() {
                                                 </span>
                                             </div>
                                             <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                                Expert Guidance
+                                                In-Store Product Guidance
                                             </h3>
                                             <p className="mt-5 text-base text-gray-700 dark:text-white">
-                                                Our knowledgeable staff is here
-                                                to help you find the right
-                                                products for your specific needs
-                                                and answer any questions.
+                                                Our team can walk you through
+                                                categories, strengths, and
+                                                formats so you can shop with
+                                                confidence.
                                             </p>
                                         </div>
                                     </div>
@@ -1429,10 +1421,10 @@ export default function App() {
                                 Contact Us
                             </h2>
                             <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                                Get In Touch
+                                Visit Route 66 Hemp Today
                             </p>
                             <p className="mt-4 max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-white">
-                                Have questions? We’re here to help!
+                                Questions about products, directions, or store hours? Call us or stop in.
                             </p>
                         </div>
                         <div
@@ -1471,8 +1463,8 @@ export default function App() {
                                 </span>
                             </div>
                             <p className="text-sm text-slate-300">
-                                Premium hemp products for your wellness journey.
-                                Quality you can trust.
+                                Lab-tested THCa flower, edibles,
+                                concentrates, and vapes in St Robert, MO.
                             </p>
                             <div className="flex space-x-6">
                                 <a
@@ -1541,13 +1533,13 @@ export default function App() {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">St Robert Dispensary Page</a>
+                                        <a href="/dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Dispensary in St Robert, MO</a>
                                     </li>
                                     <li>
-                                        <a href="/dispensary-near-fort-leonard-wood/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Near Fort Leonard Wood</a>
+                                        <a href="/dispensary-near-fort-leonard-wood/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Dispensary Near Fort Leonard Wood</a>
                                     </li>
                                     <li>
-                                        <a href="/route-66-dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Route 66 Dispensary</a>
+                                        <a href="/route-66-dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Route 66 Hemp Dispensary</a>
                                     </li>
                                 </ul>
                             </div>

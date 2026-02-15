@@ -20,10 +20,10 @@ function LocalSEOFAQ() {
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 text-center">
                     <h2 className="text-2xl font-semibold uppercase tracking-wide text-green-600 dark:text-green-400">
-                        Frequently Asked Questions
+                        Local Hemp Dispensary FAQ
                     </h2>
                     <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight sm:text-4xl dark:text-white">
-                        About Route 66 Hemp in St Robert
+                        Route 66 Hemp in St Robert, MO
                     </p>
                 </div>
 
@@ -69,14 +69,14 @@ function LocalSEOFAQ() {
 
                 <div className="mt-10 text-center">
                     <p className="mb-4 font-semibold text-black dark:text-white">
-                        Have more questions about our St Robert hemp store?
+                        Need help choosing products or planning your visit?
                     </p>
                     <a
                         href="tel:+15736776418"
                         className="inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-opacity-90"
                     >
                         <FontAwesomeIcon icon={faPhone} className="mr-2" />
-                        Call (573) 677-6418
+                        Call Route 66 Hemp: (573) 677-6418
                     </a>
                 </div>
             </div>

@@ -37,17 +37,20 @@ function LocationContent() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 lg:text-center">
                     <h2 className="text-base font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">
-                        Serving {locationData?.city || 'our area'} & Surrounding
-                        Areas
+                        Serving {locationData?.city || 'our area'} and
+                        Surrounding Communities
                     </h2>
                     <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                        Your Local Hemp Store in{' '}
+                        Local Hemp Dispensary Access in{' '}
                         {locationData?.region || 'your region'}
                     </p>
                     <p className="mt-4 max-w-2xl text-xl text-gray-700 lg:mx-auto dark:text-white">
-                        Proudly serving the {locationData?.city || 'community'},{' '}
-                        {locationData?.state || 'state'} community with premium
-                        hemp products since 2025.
+                        Route 66 Hemp serves
+                        {' '}
+                        {locationData?.city || 'community'},{' '}
+                        {locationData?.state || 'state'}, Fort Leonard Wood,
+                        and nearby Pulaski County areas with lab-tested THCa
+                        and hemp products.
                     </p>
                 </div>
 
@@ -61,12 +64,11 @@ function LocationContent() {
                             Areas We Serve
                         </h3>
                         <p className="mb-4 text-gray-700 dark:text-white">
-                            Located conveniently on State Highway Z in{' '}
-                            {locationData?.city || 'your city'}, we serve
-                            customers throughout{' '}
+                            Our storefront on State Highway Z in{' '}
+                            {locationData?.city || 'your city'} is an easy
+                            stop for shoppers across{' '}
                             {locationData?.county || 'your county'} and the
-                            greater {locationData?.region || 'your region'}{' '}
-                            area.
+                            greater {locationData?.region || 'your region'}.
                         </p>
                         <div className="grid grid-cols-2 gap-2">
                             {locationData?.nearbyAreas?.map((area) => (
@@ -94,12 +96,13 @@ function LocationContent() {
                                 icon={faLandmark}
                                 className="mr-2 text-green-600"
                             />
-                            Near Local Landmarks
+                            Easy to Find Near Local Landmarks
                         </h3>
                         <p className="mb-4 text-gray-700 dark:text-white">
-                            Find us easily near these well-known{' '}
+                            Use these familiar{' '}
                             {locationData?.city || 'city'} and{' '}
-                            {locationData?.region || 'region'} landmarks:
+                            {locationData?.region || 'region'} landmarks for
+                            quick directions to our store:
                         </p>
                         <div className="space-y-2">
                             {locationData?.landmarks?.map((landmark) => (
@@ -124,7 +127,7 @@ function LocationContent() {
 
                 <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-gray-800">
                     <h3 className="mb-6 text-center text-2xl font-bold dark:text-white">
-                        Why Choose Route 66 Hemp in{' '}
+                        Why Local Shoppers Choose Route 66 Hemp in{' '}
                         {locationData?.city || 'our city'}?
                     </h3>
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -139,10 +142,10 @@ function LocationContent() {
                                 Local Expertise
                             </h4>
                             <p className="text-sm text-gray-700 dark:text-white">
-                                As a locally-owned business in{' '}
-                                {locationData?.city || 'our city'}, we
-                                understand our community’s needs and
-                                preferences.
+                                As a locally focused team in{' '}
+                                {locationData?.city || 'our city'}, we help
+                                customers compare THCa and hemp options based
+                                on experience level and preferences.
                             </p>
                         </div>
                         <div className="text-center">
@@ -156,8 +159,8 @@ function LocationContent() {
                                 Convenient Location
                             </h4>
                             <p className="text-sm text-gray-700 dark:text-white">
-                                Easy access from Fort Leonard Wood, Waynesville,
-                                and throughout{' '}
+                                Easy access from Fort Leonard Wood,
+                                Waynesville, and communities across{' '}
                                 {locationData?.county || 'our county'}.
                             </p>
                         </div>
@@ -172,9 +175,9 @@ function LocationContent() {
                                 Community Focused
                             </h4>
                             <p className="text-sm text-gray-700 dark:text-white">
-                                Committed to supporting the{' '}
-                                {locationData?.city || 'our city'} community
-                                with quality products and service.
+                                We are committed to dependable service,
+                                transparent product information, and a better
+                                local shopping experience.
                             </p>
                         </div>
                     </div>

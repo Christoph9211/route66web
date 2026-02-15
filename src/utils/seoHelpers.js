@@ -13,26 +13,27 @@ export const generateLocalDescription = (
     includeLocation = true
 ) => {
     const location = includeLocation
-        ? ` Located in St Robert, Missouri, serving Pulaski County and surrounding areas.`
+        ? ` Located in St Robert, Missouri near Fort Leonard Wood, serving Pulaski County and surrounding communities.`
         : ''
     return `${baseDescription}${location}`
 }
 
 export const generateLocalKeywords = (baseKeywords = []) => {
     const localKeywords = [
-        'dispensary',
+        'THCa dispensary',
         'St Robert MO',
         'St Robert Missouri',
         'Pulaski County',
         'Fort Leonard Wood',
         'Waynesville MO',
         'Central Missouri',
-        'Route 66 State Park',
+        'Route 66',
         'Hemp store St Robert',
         'THCa St Robert MO',
-        'Cannabis St Robert',
+        'THCa flower St Robert',
         'Hemp Dispensary Missouri',
-        'Hemp Products Pulaski County',
+        'Hemp products Pulaski County',
+        'Dispensary near Fort Leonard Wood',
     ]
 
     return [...baseKeywords, ...localKeywords]
