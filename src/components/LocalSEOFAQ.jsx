@@ -48,7 +48,7 @@ function LocalSEOFAQ() {
                                             ? faChevronUp
                                             : faChevronDown
                                     }
-                                    className="text-secondary flex-shrink-0"
+                                    className="text-secondary shrink-0"
                                 />
                             </button>
                             {openIndex === index && (
