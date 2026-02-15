@@ -1,6 +1,7 @@
 // Structured Data Component for Local Business SEO
 
 import { businessInfo } from '../utils/businessInfo'
+import { localSeoFaqs } from './localSeoFaqData.js'
 const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.route66hemp.com'
 
 function ProductSchema({ product, mode = 'listing' }) {
@@ -127,7 +128,12 @@ function ListingSchema({ items = [] }) {
     )
 }
 
-function StructuredData({ products = [], pageMode = 'listing', product = null }) {
+function StructuredData({
+    products = [],
+    pageMode = 'listing',
+    product = null,
+    includeFaqSchema = false,
+}) {
     const businessData = {
         '@context': 'https://schema.org',
         '@type': 'Store',
@@ -221,6 +227,20 @@ function StructuredData({ products = [], pageMode = 'listing', product = null })
         ],
     }
 
+
+    const faqData = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: localSeoFaqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+            },
+        })),
+    }
+
     const organizationData = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
@@ -268,6 +288,14 @@ function StructuredData({ products = [], pageMode = 'listing', product = null })
             ) : null}
             {pageMode === 'detail' && product ? (
                 <ProductSchema product={product} mode="detail" />
+            ) : null}
+            {includeFaqSchema ? (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(faqData),
+                    }}
+                />
             ) : null}
         </>
     )
