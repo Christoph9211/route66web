@@ -14,6 +14,9 @@ export default defineConfig({
                 privacy: 'privacy-policy.html',
                 terms: 'terms-of-service.html',
                 cookie: 'cookie-policy.html',
+                dispensaryStRobert: 'dispensary-st-robert-mo.html',
+                dispensaryNearFortLeonardWood: 'dispensary-near-fort-leonard-wood.html',
+                route66DispensaryStRobert: 'route-66-dispensary-st-robert-mo.html',
             },
             output: {
                 manualChunks(id) {
