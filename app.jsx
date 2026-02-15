@@ -672,6 +672,7 @@ export default function App() {
                 <StructuredData
                     pageMode="listing"
                     products={structuredDataProducts}
+                    includeFaqSchema
                 />
             </React.Suspense>
             <AgeGate />
