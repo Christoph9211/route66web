@@ -523,7 +523,7 @@ const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
                     <p className="mt-2 text-slate-700 dark:text-slate-300">
                         Call <a className="text-emerald-700 hover:underline" href={businessInfo.phoneLink}>{businessInfo.phoneFormatted}</a> or visit us at {businessInfo.address.full}.
                     </p>
-                    <a href="/contact/" className="mt-4 inline-block rounded-lg bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800">Contact Route 66 Hemp</a>
+                    <a href="/#contact" className="mt-4 inline-block rounded-lg bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800">Contact Route 66 Hemp</a>
                 </section>
 
                 <section className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-900 dark:bg-emerald-950/40">
