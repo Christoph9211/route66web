@@ -7,17 +7,17 @@ describe('GoogleBusinessIntegration', () => {
         render(<GoogleBusinessIntegration />)
 
         expect(
-            screen.getByRole('heading', { name: /customer reviews/i })
+            screen.getByRole('heading', { name: /google reviews/i })
         ).toBeInTheDocument()
         expect(screen.getByText(/best place in this area/i)).toBeInTheDocument()
         expect(
-            screen.getByRole('link', { name: /view on google maps/i })
+            screen.getByRole('link', { name: /open google maps/i })
         ).toHaveAttribute(
             'href',
             'https://www.google.com/maps/search/Route+66+Hemp+St+Robert+MO'
         )
         expect(
-            screen.getByRole('link', { name: /leave a review/i })
+            screen.getByRole('link', { name: /write a google review/i })
         ).toHaveAttribute('href', 'https://g.page/r/CVdnXoVBYQSVEAE/review')
     })
 })
