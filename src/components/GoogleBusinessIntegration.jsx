@@ -115,7 +115,7 @@ function GoogleBusinessIntegration() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-medium text-blue-600 transition-colors hover:bg-gray-100"
-                            aria-label="View on Google Maps"
+                            aria-label="Open Google Maps"
                         >
                             <FontAwesomeIcon
                                 icon={faGoogle}
@@ -128,7 +128,7 @@ function GoogleBusinessIntegration() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center rounded-lg border-2 border-white bg-transparent px-6 py-3 font-medium text-white transition-colors hover:bg-white hover:text-blue-600"
-                            aria-label="Leave a review for Route 66 Hemp"
+                            aria-label="Write a Google Review"
                         >
                             <FontAwesomeIcon
                                 icon={faStarSolid}
