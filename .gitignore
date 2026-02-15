@@ -21,3 +21,4 @@ patch.diff
 # public/assets/images/**/*.avif                                                                                                                                                
 output/playwright/ 
 .playwright-cli
+.env.*
