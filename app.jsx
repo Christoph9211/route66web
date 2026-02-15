@@ -1583,7 +1583,7 @@ export default function App() {
                                 <ul className="mt-4 space-y-4">
                                     <li>
                                         <a
-                                            href="/privacy-policy/"
+                                            href="/privacy-policy"
                                             className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                             title="Privacy Policy"
                                         >
@@ -1592,7 +1592,7 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="/terms-of-service/"
+                                            href="/terms-of-service"
                                             className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                         >
                                             Terms and Conditions
@@ -1600,7 +1600,7 @@ export default function App() {
                                     </li>
                                     <li>
                                         <a
-                                            href="/cookie-policy/"
+                                            href="/cookie-policy"
                                             className="text-sm text-slate-300 transition-colors hover:text-emerald-300"
                                             title="Cookie Policy"
                                         >

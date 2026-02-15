@@ -150,6 +150,30 @@
         {
             "source": "/route-66-dispensary-st-robert-mo/",
             "destination": "/route-66-dispensary-st-robert-mo.html"
+        },
+        {
+            "source": "/privacy-policy",
+            "destination": "/privacy-policy.html"
+        },
+        {
+            "source": "/privacy-policy/",
+            "destination": "/privacy-policy.html"
+        },
+        {
+            "source": "/terms-of-service",
+            "destination": "/terms-of-service.html"
+        },
+        {
+            "source": "/terms-of-service/",
+            "destination": "/terms-of-service.html"
+        },
+        {
+            "source": "/cookie-policy",
+            "destination": "/cookie-policy.html"
+        },
+        {
+            "source": "/cookie-policy/",
+            "destination": "/cookie-policy.html"
         }
     ]
 }
