@@ -375,6 +375,34 @@ const generateProductAlt = (product) => {
 
 const SITE_URL = 'https://www.route66hemp.com'
 
+const upsertMetaBy = (attribute, key, content) => {
+    let meta = document.head.querySelector(`meta[${attribute}="${key}"]`)
+    if (!meta) {
+        meta = document.createElement('meta')
+        meta.setAttribute(attribute, key)
+        document.head.appendChild(meta)
+    }
+    meta.setAttribute('content', content)
+}
+
+const setMetaByName = (name, content) => {
+    upsertMetaBy('name', name, content)
+}
+
+const setMetaByProperty = (property, content) => {
+    upsertMetaBy('property', property, content)
+}
+
+const setCanonicalHref = (href) => {
+    let canonicalLink = document.head.querySelector('link[rel="canonical"]')
+    if (!canonicalLink) {
+        canonicalLink = document.createElement('link')
+        canonicalLink.setAttribute('rel', 'canonical')
+        document.head.appendChild(canonicalLink)
+    }
+    canonicalLink.setAttribute('href', href)
+}
+
 const LOCAL_LANDING_PAGES = {
     '/dispensary-st-robert-mo': {
         slug: 'dispensary-st-robert-mo',
@@ -424,26 +452,15 @@ const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
     React.useEffect(() => {
         document.title = page.title
 
-        const setMeta = (name, content) => {
-            let el = document.head.querySelector(`meta[name="${name}"]`)
-            if (!el) {
-                el = document.createElement('meta')
-                el.setAttribute('name', name)
-                document.head.appendChild(el)
-            }
-            el.setAttribute('content', content)
-        }
-
-        setMeta('description', page.description)
-
         const canonicalHref = `${SITE_URL}/${page.slug}/`
-        let canonicalLink = document.head.querySelector('link[rel="canonical"]')
-        if (!canonicalLink) {
-            canonicalLink = document.createElement('link')
-            canonicalLink.setAttribute('rel', 'canonical')
-            document.head.appendChild(canonicalLink)
-        }
-        canonicalLink.setAttribute('href', canonicalHref)
+        setMetaByName('description', page.description)
+        setMetaByProperty('og:title', page.title)
+        setMetaByProperty('og:description', page.description)
+        setMetaByProperty('og:url', canonicalHref)
+        setMetaByProperty('og:type', 'website')
+        setMetaByName('twitter:title', page.title)
+        setMetaByName('twitter:description', page.description)
+        setCanonicalHref(canonicalHref)
     }, [page])
 
     const localBusinessSchema = {
@@ -837,8 +854,24 @@ export default function App() {
         })
     }, [startFiltering])
 
+    const observabilityNodes = ENABLE_VERCEL_OBSERVABILITY ? (
+        <>
+            <React.Suspense fallback={null}>
+                <Analytics />
+            </React.Suspense>
+            <React.Suspense fallback={null}>
+                <SpeedInsights />
+            </React.Suspense>
+        </>
+    ) : null
+
     if (localLandingPage) {
-        return <LocalLandingPage page={localLandingPage} />
+        return (
+            <>
+                <LocalLandingPage page={localLandingPage} />
+                {observabilityNodes}
+            </>
+        )
     }
 
     return (
@@ -1605,18 +1638,7 @@ export default function App() {
                     </div>
                 </div>
             </footer>
-            {/* ... */}
-            {ENABLE_VERCEL_OBSERVABILITY ? (
-                <>
-                    <React.Suspense fallback={null}>
-                        <Analytics />
-                    </React.Suspense>
-                    {/* ... */}
-                    <React.Suspense fallback={null}>
-                        <SpeedInsights />
-                    </React.Suspense>
-                </>
-            ) : null}
+            {observabilityNodes}
             {/* Back to top button */}
             <BackToTopButton />
         </div>
