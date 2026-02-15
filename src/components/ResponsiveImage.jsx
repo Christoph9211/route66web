@@ -121,7 +121,9 @@ function ResponsiveImage({
         )
     }
 
-    const resolvedSrc = errorStage > 0 ? placeholderSrc : fallbackSrc
+    // For local images, first retry with plain <img> fallback (no <source> set),
+    // then escalate to placeholder if that also errors.
+    const resolvedSrc = errorStage > 1 ? placeholderSrc : fallbackSrc
 
     return (
         <picture>

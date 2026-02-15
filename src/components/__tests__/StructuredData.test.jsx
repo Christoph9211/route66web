@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/react'
 import StructuredData from '../StructuredData.jsx'
+import { localSeoFaqs } from '../localSeoFaqData.js'
 
 describe('StructuredData', () => {
     it('renders core business schema scripts', () => {
@@ -44,5 +45,16 @@ describe('StructuredData', () => {
         const productSchema = JSON.parse(scripts[3].innerHTML)
         expect(productSchema['@type']).toBe('Product')
         expect(productSchema.offers.price).toBe('12.50')
+    })
+
+    it('renders FAQPage schema with exact visible answer text', () => {
+        const { container } = render(<StructuredData includeFaqSchema />)
+        const scripts = container.querySelectorAll('script[type="application/ld+json"]')
+        const faqSchema = JSON.parse(scripts[3].innerHTML)
+
+        expect(faqSchema['@type']).toBe('FAQPage')
+        expect(faqSchema.mainEntity).toHaveLength(localSeoFaqs.length)
+        expect(faqSchema.mainEntity[0].name).toBe(localSeoFaqs[0].question)
+        expect(faqSchema.mainEntity[0].acceptedAnswer.text).toBe(localSeoFaqs[0].answer)
     })
 })

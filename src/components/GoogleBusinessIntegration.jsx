@@ -12,6 +12,7 @@ function GoogleBusinessIntegration() {
             author: 'Ray',
             rating: 5,
             text: "Best place in this area to go for quality cannabis, awesome customer service, and great pricing!! The owners are super friendly down to earth people with all around good vibes! Definitely check them out next time you're in need or if you're looking to try something new.",
+            date: 'Google review',
             verified: true,
         },
         {
@@ -19,6 +20,7 @@ function GoogleBusinessIntegration() {
             author: 'Jessica',
             rating: 5,
             text: 'Great place with REALLY good pricing AND quality! Everyone there has been so friendly and down to the earth, you will definitely feel welcome and will want to come back! This is my new favorite spot!',
+            date: 'Google review',
             verified: true,
         },
         {
@@ -26,6 +28,7 @@ function GoogleBusinessIntegration() {
             author: 'Lauren',
             rating: 5,
             text: 'Love this place! Great products, friendly people!',
+            date: 'Google review',
             verified: true,
         },
     ]
@@ -35,10 +38,10 @@ function GoogleBusinessIntegration() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mb-10 lg:text-center">
                     <h2 className="text-2xl font-semibold uppercase tracking-wide text-green-600 dark:text-green-400">
-                        Customer Reviews
+                        Google Reviews
                     </h2>
                     <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight sm:text-4xl dark:text-white">
-                        What Our St Robert Customers Say
+                        What St Robert Shoppers Say
                     </p>
                 </div>
 
@@ -50,7 +53,7 @@ function GoogleBusinessIntegration() {
                             className="rounded-lg bg-gray-50 p-6 dark:bg-gray-800"
                         >
                             <div className="mb-3 flex items-center">
-                                <div className="flex-shrink-0">
+                                <div className="shrink-0">
                                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600">
                                         <span className="text-sm font-semibold text-white">
                                             {review.author
@@ -98,13 +101,13 @@ function GoogleBusinessIntegration() {
                 </div>
 
                 {/* Google Business Profile CTA */}
-                <div className="rounded-lg bg-gradient-to-br from-blue-800 to-blue-900 p-8 text-center">
+                <div className="rounded-lg bg-linear-to-br from-blue-800 to-blue-900 p-8 text-center">
                     <h3 className="mb-4 text-2xl font-bold text-white dark:text-white">
-                        Find Us on Google Maps
+                        Find Route 66 Hemp on Google
                     </h3>
                     <p className="mb-6 text-white dark:text-white">
-                        Get directions, see our hours, read reviews, and stay
-                        updated with our latest posts.
+                        Get directions, check store hours, and read the latest
+                        feedback from local customers.
                     </p>
                     <div className="flex flex-col justify-center gap-4 sm:flex-row">
                         <a
@@ -112,26 +115,26 @@ function GoogleBusinessIntegration() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-medium text-blue-600 transition-colors hover:bg-gray-100"
-                            aria-label="View on Google Maps"
+                            aria-label="Open Google Maps"
                         >
                             <FontAwesomeIcon
                                 icon={faGoogle}
                                 className="mr-2"
                             />
-                            View on Google Maps
+                            Open Google Maps
                         </a>
                         <a
                             href="https://g.page/r/CVdnXoVBYQSVEAE/review"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center rounded-lg border-2 border-white bg-transparent px-6 py-3 font-medium text-white transition-colors hover:bg-white hover:text-blue-600"
-                            aria-label="Leave a review for Route 66 Hemp"
+                            aria-label="Write a Google Review"
                         >
                             <FontAwesomeIcon
                                 icon={faStarSolid}
                                 className="mr-2"
                             />
-                            Leave a Review
+                            Write a Google Review
                         </a>
                     </div>
                 </div>

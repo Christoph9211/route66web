@@ -18,4 +18,6 @@ patch.diff
 # public/assets/images/**/*.webp
 # public/assets/images/**/*.jpg
 # public/assets/images/**/*.png
-# public/assets/images/**/*.avif
+# public/assets/images/**/*.avif                                                                                                                                                
+output/playwright/ 
+.playwright-cli

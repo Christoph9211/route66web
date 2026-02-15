@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "link[imagesrcset]",
+          "link[imagesizes]"
+        ]
+      }
+    ],
+    "no-inline-styles": "off"
+  }
+}

@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
@@ -6,12 +5,6 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [react(), tailwindcss()],
-    test: {
-        environment: 'jsdom',
-        setupFiles: './src/test/setupTests.js',
-        globals: true,
-        css: true,
-    },
     build: {
         // outDir defaults to "dist".  Keep or change as you like.
         cssCodeSplit: true,
@@ -21,6 +14,9 @@ export default defineConfig({
                 privacy: 'privacy-policy.html',
                 terms: 'terms-of-service.html',
                 cookie: 'cookie-policy.html',
+                dispensaryStRobert: 'dispensary-st-robert-mo.html',
+                dispensaryNearFortLeonardWood: 'dispensary-near-fort-leonard-wood.html',
+                route66DispensaryStRobert: 'route-66-dispensary-st-robert-mo.html',
             },
             output: {
                 manualChunks(id) {

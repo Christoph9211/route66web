@@ -36,7 +36,7 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
     if (variant === 'inline') {
         return (
             <span className={className}>
-                {businessInfo.name} • {businessInfo.address.city},{' '}
+                {businessInfo.name} - {businessInfo.address.city},{' '}
                 {businessInfo.address.state} •
                 <a
                     href={businessInfo.phoneLink}
@@ -55,13 +55,13 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
         <div className={`space-y-4 ${className}`}>
             <div>
                 <h3 className="mb-4 text-lg font-medium dark:text-white">
-                    Store Information
+                    Route 66 Hemp Store Information
                 </h3>
 
                 <div className="rounded-lg bg-gray-50 p-6 shadow dark:bg-gray-700">
                     {/* Address */}
                     <div className="mb-6 flex flex-col items-center">
-                        <div className="mb-2 flex-shrink-0">
+                        <div className="mb-2 shrink-0">
                             <FontAwesomeIcon
                                 icon={faMapMarkerAlt}
                                 className="text-xl text-green-600"
@@ -71,6 +71,7 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
                             <div className="font-medium dark:text-white">
                                 {businessInfo.name}
                             </div>
+                            <p>THCa and hemp products in St Robert, MO</p>
                             <p>{businessInfo.address.street}</p>
                             <p>
                                 {businessInfo.address.city},{' '}
@@ -82,7 +83,7 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
 
                     {/* Phone */}
                     <div className="mb-6 flex flex-col items-center">
-                        <div className="mb-2 flex-shrink-0">
+                        <div className="mb-2 shrink-0">
                             <FontAwesomeIcon
                                 icon={faPhoneAlt}
                                 className="text-xl text-green-600"
@@ -100,7 +101,7 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
 
                     {/* Email */}
                     <div className="mb-6 flex flex-col items-center">
-                        <div className="mb-2 flex-shrink-0">
+                        <div className="mb-2 shrink-0">
                             <FontAwesomeIcon
                                 icon={faEnvelope}
                                 className="text-xl text-green-600"
@@ -118,7 +119,7 @@ function LocalBusinessInfo({ variant = 'full', className = '' }) {
 
                     {/* Hours */}
                     <div className="flex flex-col items-center">
-                        <div className="mb-2 flex-shrink-0">
+                        <div className="mb-2 shrink-0">
                             <FontAwesomeIcon
                                 icon={faClock}
                                 className="text-xl text-green-600"
