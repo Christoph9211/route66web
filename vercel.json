@@ -126,6 +126,30 @@
         {
             "source": "/faq/",
             "destination": "/"
+        },
+        {
+            "source": "/dispensary-st-robert-mo",
+            "destination": "/"
+        },
+        {
+            "source": "/dispensary-st-robert-mo/",
+            "destination": "/"
+        },
+        {
+            "source": "/dispensary-near-fort-leonard-wood",
+            "destination": "/"
+        },
+        {
+            "source": "/dispensary-near-fort-leonard-wood/",
+            "destination": "/"
+        },
+        {
+            "source": "/route-66-dispensary-st-robert-mo",
+            "destination": "/"
+        },
+        {
+            "source": "/route-66-dispensary-st-robert-mo/",
+            "destination": "/"
         }
     ]
 }

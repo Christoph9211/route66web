@@ -373,6 +373,159 @@ const generateProductAlt = (product) => {
     return segments.join(' - ')
 }
 
+const SITE_URL = 'https://www.route66hemp.com'
+
+const LOCAL_LANDING_PAGES = {
+    '/dispensary-st-robert-mo': {
+        slug: 'dispensary-st-robert-mo',
+        title: 'Dispensary in St Robert, MO | Route 66 Hemp',
+        description:
+            'Route 66 Hemp is a local dispensary in St Robert, MO with easy parking, quick access from I-44, and hemp products for daily wellness.',
+        h1: 'Your St Robert, MO Dispensary Stop on Route 66',
+        intent: 'dispensary in st robert mo',
+        directions:
+            'From I-44, take Exit 161 toward St Robert and follow Missouri State Hwy Z. We are at 14076 State Hwy Z, just minutes from central St Robert.',
+        parking:
+            'On-site parking is directly in front of the storefront with easy in-and-out access for quick pickups.',
+        neighborhoods:
+            'We regularly serve shoppers from St Robert, Waynesville, Dixon, and nearby Pulaski County communities.',
+    },
+    '/dispensary-near-fort-leonard-wood': {
+        slug: 'dispensary-near-fort-leonard-wood',
+        title: 'Dispensary Near Fort Leonard Wood | Route 66 Hemp',
+        description:
+            'Looking for a dispensary near Fort Leonard Wood? Route 66 Hemp in St Robert offers convenient hours, fast directions, and trusted hemp options.',
+        h1: 'Convenient Dispensary Near Fort Leonard Wood',
+        intent: 'dispensary near fort leonard wood',
+        directions:
+            'From Fort Leonard Wood gates, head toward St Robert via Missouri Ave and Old Route 66, then continue to State Hwy Z for a short drive to our store.',
+        parking:
+            'Our lot has accessible spaces and straightforward parking for service members, families, and local residents.',
+        neighborhoods:
+            'Guests visit us from Fort Leonard Wood housing areas, St Robert, Waynesville, and neighboring Pulaski County towns.',
+    },
+    '/route-66-dispensary-st-robert-mo': {
+        slug: 'route-66-dispensary-st-robert-mo',
+        title: 'Route 66 Dispensary in St Robert, MO | Route 66 Hemp',
+        description:
+            'Route 66 Hemp is a Route 66 dispensary in St Robert, MO offering lab-tested flower, edibles, and concentrates with local guidance and service.',
+        h1: 'Route 66 Dispensary in St Robert, Missouri',
+        intent: 'route 66 dispensary st robert mo',
+        directions:
+            'Traveling historic Route 66? We are located a short turn from the main corridor at 14076 State Hwy Z in St Robert, MO.',
+        parking:
+            'Dedicated storefront parking makes it easy to stop in while commuting through St Robert or exploring Route 66 landmarks.',
+        neighborhoods:
+            'We serve Route 66 travelers plus locals from St Robert, Waynesville, and the greater Fort Leonard Wood area.',
+    },
+}
+
+const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
+    React.useEffect(() => {
+        document.title = page.title
+
+        const setMeta = (name, content) => {
+            let el = document.head.querySelector(`meta[name="${name}"]`)
+            if (!el) {
+                el = document.createElement('meta')
+                el.setAttribute('name', name)
+                document.head.appendChild(el)
+            }
+            el.setAttribute('content', content)
+        }
+
+        setMeta('description', page.description)
+
+        const canonicalHref = `${SITE_URL}/${page.slug}/`
+        let canonicalLink = document.head.querySelector('link[rel="canonical"]')
+        if (!canonicalLink) {
+            canonicalLink = document.createElement('link')
+            canonicalLink.setAttribute('rel', 'canonical')
+            document.head.appendChild(canonicalLink)
+        }
+        canonicalLink.setAttribute('href', canonicalHref)
+    }, [page])
+
+    const localBusinessSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: businessInfo.name,
+        url: `${SITE_URL}/${page.slug}/`,
+        image: `${SITE_URL}/assets/images/route-66-hemp-storefront-st-robert-1280w.webp`,
+        telephone: businessInfo.phone,
+        priceRange: '$$',
+        address: {
+            '@type': 'PostalAddress',
+            streetAddress: businessInfo.address.street,
+            addressLocality: businessInfo.address.city,
+            addressRegion: businessInfo.address.state,
+            postalCode: businessInfo.address.zip,
+            addressCountry: 'US',
+        },
+        openingHoursSpecification: Object.entries(businessInfo.hours).map(
+            ([day, hours]) => ({
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: `https://schema.org/${day.charAt(0).toUpperCase()}${day.slice(1)}`,
+                opens: hours.open,
+                closes: hours.close,
+            })
+        ),
+    }
+
+    return (
+        <div className="flex min-h-screen flex-col bg-gray-50 dark:bg-gray-900">
+            <AgeGate />
+            <nav className="bg-white shadow-sm dark:bg-gray-900">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+                    <a href="/" className="text-lg font-bold text-slate-900 dark:text-white">{businessInfo.name}</a>
+                    <div className="flex gap-4 text-sm">
+                        <a href="/" className="text-slate-600 hover:text-emerald-600 dark:text-slate-300">Home</a>
+                        <a href="/dispensary-st-robert-mo/" className="text-slate-600 hover:text-emerald-600 dark:text-slate-300">St Robert</a>
+                        <a href="/dispensary-near-fort-leonard-wood/" className="text-slate-600 hover:text-emerald-600 dark:text-slate-300">Fort Leonard Wood</a>
+                    </div>
+                </div>
+            </nav>
+            <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-12 sm:px-6 lg:px-8">
+                <h1 className="text-4xl font-bold text-slate-900 dark:text-white">{page.h1}</h1>
+                <p className="mt-4 text-lg text-slate-700 dark:text-slate-300">{page.description}</p>
+
+                <section className="mt-8 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Directions & Parking</h2>
+                    <p className="mt-3 text-slate-700 dark:text-slate-300">{page.directions}</p>
+                    <p className="mt-3 text-slate-700 dark:text-slate-300">{page.parking}</p>
+                </section>
+
+                <section className="mt-6 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Neighborhoods We Serve</h2>
+                    <p className="mt-3 text-slate-700 dark:text-slate-300">{page.neighborhoods}</p>
+                </section>
+
+                <section className="mt-6 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Hours & Contact</h2>
+                    <p className="mt-3 text-slate-700 dark:text-slate-300">Monday - Thursday: {businessInfo.hoursDisplay['Monday - Thursday']}; Friday - Saturday: {businessInfo.hoursDisplay['Friday - Saturday']}; Sunday: {businessInfo.hoursDisplay.Sunday}</p>
+                    <p className="mt-2 text-slate-700 dark:text-slate-300">
+                        Call <a className="text-emerald-700 hover:underline" href={businessInfo.phoneLink}>{businessInfo.phoneFormatted}</a> or visit us at {businessInfo.address.full}.
+                    </p>
+                    <a href="/contact/" className="mt-4 inline-block rounded-lg bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800">Contact Route 66 Hemp</a>
+                </section>
+
+                <section className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-900 dark:bg-emerald-950/40">
+                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white">More Local Pages</h2>
+                    <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
+                        {Object.values(LOCAL_LANDING_PAGES).map((landingPage) => (
+                            <li key={landingPage.slug}>
+                                <a href={`/${landingPage.slug}/`} className="text-emerald-700 hover:underline dark:text-emerald-300">{landingPage.h1}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+            </main>
+        </div>
+    )
+})
+
 
 export default function App() {
     const [appState, setAppState] = React.useState({
@@ -665,6 +818,16 @@ export default function App() {
         })
     }, [startFiltering])
 
+    const currentPath =
+        typeof window !== 'undefined'
+            ? window.location.pathname.replace(/\/$/, '') || '/'
+            : '/'
+    const localLandingPage = LOCAL_LANDING_PAGES[currentPath]
+
+    if (localLandingPage) {
+        return <LocalLandingPage page={localLandingPage} />
+    }
+
     return (
         <div className="flex min-h-screen flex-col">
             <div id="home"></div>
@@ -730,6 +893,12 @@ export default function App() {
                                 className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
                             >
                                 Contact
+                            </a>
+                            <a
+                                href="/dispensary-st-robert-mo/"
+                                className="px-3 py-2 text-sm font-medium text-gray-900 transition duration-150 hover:text-emerald-600 dark:text-white"
+                            >
+                                Local Pages
                             </a>
                         </div>
                         {/* Mobile menu button */}
@@ -797,6 +966,12 @@ export default function App() {
                             >
                                 Contact
                             </a>
+                            <a
+                                href="/dispensary-st-robert-mo/"
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:text-emerald-600 dark:text-white"
+                            >
+                                Local Pages
+                            </a>
                         </div>
                     </div>
                 )}
@@ -854,6 +1029,19 @@ export default function App() {
                         </div>
                     </div>
                 </div>
+                <section id="local-pages" className="bg-emerald-50/70 py-12 dark:bg-emerald-950/20">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Find Local Dispensary Info by Area</h2>
+                        <p className="mt-3 max-w-3xl text-slate-700 dark:text-slate-300">
+                            Browse our area-specific pages for driving routes, parking tips, neighborhoods served, and direct contact details.
+                        </p>
+                        <div className="mt-4 flex flex-wrap gap-4">
+                            <a href="/dispensary-st-robert-mo/" className="text-emerald-700 hover:underline dark:text-emerald-300">Dispensary in St Robert, MO</a>
+                            <a href="/dispensary-near-fort-leonard-wood/" className="text-emerald-700 hover:underline dark:text-emerald-300">Dispensary Near Fort Leonard Wood</a>
+                            <a href="/route-66-dispensary-st-robert-mo/" className="text-emerald-700 hover:underline dark:text-emerald-300">Route 66 Dispensary St Robert, MO</a>
+                        </div>
+                    </div>
+                </section>
                 {/* Products Section */}
                 <div id="products" className="bg-slate-50 py-16 dark:bg-slate-900">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -1305,6 +1493,15 @@ export default function App() {
                                         >
                                             About Us
                                         </a>
+                                    </li>
+                                    <li>
+                                        <a href="/dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">St Robert Dispensary Page</a>
+                                    </li>
+                                    <li>
+                                        <a href="/dispensary-near-fort-leonard-wood/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Near Fort Leonard Wood</a>
+                                    </li>
+                                    <li>
+                                        <a href="/route-66-dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Route 66 Dispensary</a>
                                     </li>
                                 </ul>
                             </div>
