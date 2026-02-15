@@ -9,7 +9,7 @@ node_modules/
 # Ignore all .tmp files
 *.tmp
 .vscode/
-
+.vercel
 instructions.txt
 dist/
 public/products/json_gen_old.html
