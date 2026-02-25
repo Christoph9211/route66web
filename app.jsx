@@ -4,6 +4,9 @@ import { businessInfo } from './src/utils/businessInfo.js'
 import AgeGate from './src/components/AgeGate.jsx'
 import ErrorBoundary from './src/components/ErrorBoundary.jsx'
 import ResponsiveImage from './src/components/ResponsiveImage.jsx'
+import AdSlot from './src/components/AdSlot.jsx'
+import { AD_SLOT_IDS } from './src/constants/adSlots.js'
+import { isSponsorAdsFeatureEnabled } from './src/utils/adEligibility.js'
 // Font Awesome (SVG) – import only what we use
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -537,6 +540,7 @@ export default function App() {
             ? window.location.pathname.replace(/\/$/, '') || '/'
             : '/'
     const localLandingPage = LOCAL_LANDING_PAGES[currentPath]
+    const sponsorAdsEnabled = isSponsorAdsFeatureEnabled()
 
     const [appState, setAppState] = React.useState({
         isMobileMenuOpen: false,
@@ -1222,6 +1226,16 @@ export default function App() {
                         )}
                     </div>
                 </div>
+                {sponsorAdsEnabled && (
+                    <div className="bg-white pb-4 dark:bg-gray-800">
+                        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                            <AdSlot
+                                slotId={AD_SLOT_IDS.homeMidBanner}
+                                variant="banner"
+                            />
+                        </div>
+                    </div>
+                )}
                 {/* About Section */}
                 <div id="about" className="bg-white py-12 dark:bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -1404,15 +1418,23 @@ export default function App() {
                         </div>
                         <div
                             id="store-info"
-                            className="mt-10 flex justify-center"
+                            className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-start"
                         >
-                            <div className="lg:w-1/2">
+                            <div className="lg:col-span-2 lg:justify-self-center lg:w-full lg:max-w-2xl">
                                 <React.Suspense
                                     fallback={renderSectionSkeleton('h-96')}
                                 >
                                     <LocalBusinessInfo />
                                 </React.Suspense>
                             </div>
+                            {sponsorAdsEnabled && (
+                                <aside className="lg:col-span-1">
+                                    <AdSlot
+                                        slotId={AD_SLOT_IDS.sidebarCard}
+                                        variant="card"
+                                    />
+                                </aside>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -1578,6 +1600,20 @@ export default function App() {
                             </div>
                         </div>
                     </div>
+                    {sponsorAdsEnabled && (
+                        <div className="mt-12">
+                            <p className="text-center text-xs text-slate-400">
+                                Advertising disclosure: sponsored placements on
+                                this site are paid promotions and are labeled as
+                                sponsored.
+                            </p>
+                            <AdSlot
+                                slotId={AD_SLOT_IDS.footerStrip}
+                                variant="strip"
+                                className="mt-4"
+                            />
+                        </div>
+                    )}
                     <div className="mt-12 border-t border-slate-800 pt-8">
                         <p className="text-center text-sm text-slate-400">
                             &copy; 2025 {businessInfo.name}. All rights

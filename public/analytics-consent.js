@@ -13,6 +13,7 @@
 (function () {
   const GA_ID = window.VITE_GA_ID || "G-RGSJT8T1EF";
   const SCRIPT_ID = "ga4-base-script";
+  const AD_ELIGIBILITY_EVENT = "route66:ad-eligibility-change";
   const CONSENT_DENIED_STATE = {
     ad_storage: "denied",
     analytics_storage: "denied",
@@ -61,6 +62,20 @@
     script.src =
       "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
     document.head.appendChild(script);
+  }
+
+  function emitAdEligibilityState(detail) {
+    try {
+      window.dispatchEvent(
+        new CustomEvent(AD_ELIGIBILITY_EVENT, {
+          detail: detail || null,
+        })
+      );
+    } catch (error) {
+      if (typeof console !== "undefined" && console.warn) {
+        console.warn("Unable to dispatch ad eligibility event.", error);
+      }
+    }
   }
 
   function applyConsentDefaults() {
@@ -123,10 +138,23 @@
 
   function tryInitAnalytics() {
     const storage = getSafeLocalStorage();
-    if (!storage) return;
+    if (!storage) {
+      emitAdEligibilityState({
+        isAdult: false,
+        cookieConsent: null,
+        canShowAds: false,
+      });
+      return;
+    }
 
+    const cookieConsent = storage.getItem("cookieConsent");
     const isAdult = storage.getItem("isAdult") === "true";
-    const consentOk = storage.getItem("cookieConsent") === "accepted";
+    const consentOk = cookieConsent === "accepted";
+    emitAdEligibilityState({
+      isAdult: isAdult,
+      cookieConsent: cookieConsent,
+      canShowAds: isAdult && consentOk,
+    });
 
     if (isAdult && consentOk) {
       scheduleActivateAnalytics();
