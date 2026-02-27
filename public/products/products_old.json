@@ -1,5 +1,28 @@
 [
   {
+    "name": "Apple Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/8 oz": 18
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Big Foot Glue",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20
+    },
+    "thca_percentage": 26,
+    "banner": "New"
+  },
+  {
     "name": "Biscotti Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -64,6 +87,19 @@
     "prices": {
       "4 count": 10,
       "2 count": 5
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Cranberry Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 18,
+      "1/4 oz": 36
     },
     "banner": "New"
   },
@@ -146,7 +182,14 @@
       "Hawaiian Sunrise",
       "Jet Fuel Gelato",
       "Where's My Bike",
-      "Rainbow Sherbert"
+      "Rainbow Sherbert",
+      "Pemex",
+      "Chem dog",
+      "Bubblegum Cherries",
+      "Bubblewhip #1",
+      "Kings Sour",
+      "Lunar Cheese",
+      "Gas Runtz"
     ],
     "prices": {
       "Road Dog": 6,
@@ -158,7 +201,14 @@
       "Hawaiian Sunrise": 5,
       "Jet Fuel Gelato": 5,
       "Where's My Bike": 6,
-      "Rainbow Sherbert": 5
+      "Rainbow Sherbert": 5,
+      "Pemex": 5,
+      "Chem dog": 5,
+      "Bubblegum Cherries": 5,
+      "Bubblewhip #1": 5,
+      "Kings Sour": 6,
+      "Lunar Cheese": 5,
+      "Gas Runtz": 6
     },
     "banner": "New"
   },
@@ -174,6 +224,17 @@
       "3 grams": 25
     },
     "thca_percentage": 99.2,
+    "banner": "New"
+  },
+  {
+    "name": "Grape Gas",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/8 oz": 18
+    },
     "banner": "New"
   },
   {
@@ -200,7 +261,11 @@
       "Benson Arbor Sweets Hash Infused",
       "Benson Harbor Tropic Lemons Hash Infused",
       "Hash Infused Blueberry Muffin",
-      "Hash Infused Rock Candy"
+      "Hash Infused Rock Candy",
+      "Infused Gas Monkey",
+      "Infused Blueberry Muffin",
+      "Infused Pineapple Passion",
+      "Diamond Blue Dream Cannager"
     ],
     "prices": {
       "Benson Arbor Blueberry Muffin Hash Infused": 20,
@@ -210,7 +275,11 @@
       "Benson Arbor Sweets Hash Infused": 20,
       "Benson Harbor Tropic Lemons Hash Infused": 20,
       "Hash Infused Blueberry Muffin": 10,
-      "Hash Infused Rock Candy": 10
+      "Hash Infused Rock Candy": 10,
+      "Infused Gas Monkey": 10,
+      "Infused Blueberry Muffin": 10,
+      "Infused Pineapple Passion": 10,
+      "Diamond Blue Dream Cannager": 20
     },
     "banner": "New"
   },
@@ -328,6 +397,19 @@
       "3 grams": 25
     },
     "thca_percentage": 85,
+    "banner": "New"
+  },
+  {
+    "name": "Pemmex",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/4 oz": 40,
+      "1/8 oz": 20
+    },
     "banner": "New"
   },
   {

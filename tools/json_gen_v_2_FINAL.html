@@ -143,6 +143,7 @@
                 class="hidden"
             />
             <button id="load-btn" class="btn">Import products.json</button>
+            <button id="merge-btn" class="btn">Merge products.json</button>
             <button id="download-all-btn" class="btn" disabled>
                 Download updated JSON
             </button>
@@ -296,10 +297,12 @@
 
             // Size-price temp list for current form session
             let sizePricePairs = [] // [{size, price}]
+            let importMode = 'replace'
 
             // ------------------ DOM Refs ------------------
             const fileInput = document.getElementById('file-input')
             const loadBtn = document.getElementById('load-btn')
+            const mergeBtn = document.getElementById('merge-btn')
             const downloadAllBtn = document.getElementById('download-all-btn')
             const downloadCsvBtn = document.getElementById('download-csv-btn')
             const form = document.getElementById('product-form')
@@ -343,8 +346,36 @@
                 return product
             }
 
+            const productMergeKey = (product = {}) =>
+                `${String(product.name || '')
+                    .trim()
+                    .toLowerCase()}::${String(product.category || '')
+                    .trim()
+                    .toLowerCase()}`
+
+            const mergeProductRecords = (existing = {}, incoming = {}) => {
+                const existingSizes = Array.isArray(existing.size_options)
+                    ? existing.size_options
+                    : []
+                const incomingSizes = Array.isArray(incoming.size_options)
+                    ? incoming.size_options
+                    : []
+
+                return normalizeProductSchema({
+                    ...existing,
+                    ...incoming,
+                    prices: {
+                        ...(existing.prices || {}),
+                        ...(incoming.prices || {}),
+                    },
+                    size_options: Array.from(
+                        new Set([...existingSizes, ...incomingSizes])
+                    ),
+                })
+            }
+
             const loadProducts = (data = [], options = {}) => {
-                const { alertOnRemove = false } = options
+                const { alertOnRemove = false, merge = false } = options
                 const normalized = data.map((p) => normalizeProductSchema(p))
                 const valid = []
                 const removed = []
@@ -366,9 +397,42 @@
                         console.warn(message)
                     }
                 }
-                products.splice(0, products.length, ...valid)
+
+                let addedCount = 0
+                let updatedCount = 0
+                if (merge) {
+                    const indexByKey = new Map(
+                        products.map((p, idx) => [productMergeKey(p), idx])
+                    )
+                    valid.forEach((incoming) => {
+                        const key = productMergeKey(incoming)
+                        if (indexByKey.has(key)) {
+                            const idx = indexByKey.get(key)
+                            products[idx] = mergeProductRecords(
+                                products[idx],
+                                incoming
+                            )
+                            updatedCount += 1
+                        } else {
+                            products.push(incoming)
+                            indexByKey.set(key, products.length - 1)
+                            addedCount += 1
+                        }
+                    })
+                } else {
+                    products.splice(0, products.length, ...valid)
+                    addedCount = valid.length
+                }
                 refreshCategoryList()
                 renderTable()
+
+                return {
+                    sourceCount: data.length,
+                    validCount: valid.length,
+                    addedCount,
+                    updatedCount,
+                    merge,
+                }
             }
 
             const escapeHtml = (value = '') =>
@@ -614,7 +678,15 @@
             }
 
             // ------------------ Import JSON ------------------
-            loadBtn.addEventListener('click', () => fileInput.click())
+            loadBtn.addEventListener('click', () => {
+                importMode = 'replace'
+                fileInput.click()
+            })
+
+            mergeBtn.addEventListener('click', () => {
+                importMode = 'merge'
+                fileInput.click()
+            })
 
             fileInput.addEventListener('change', (e) => {
                 const file = e.target.files[0]
@@ -625,10 +697,21 @@
                         const data = JSON.parse(ev.target.result)
                         if (!Array.isArray(data))
                             throw new Error('JSON root must be array')
-                        loadProducts(data, { alertOnRemove: true })
-                        alert(`Loaded ${data.length} products.`)
+                        const summary = loadProducts(data, {
+                            alertOnRemove: true,
+                            merge: importMode === 'merge',
+                        })
+                        if (summary.merge) {
+                            alert(
+                                `Merged ${summary.sourceCount} products. Added ${summary.addedCount}, updated ${summary.updatedCount}.`
+                            )
+                        } else {
+                            alert(`Loaded ${summary.validCount} products.`)
+                        }
                     } catch (err) {
                         alert('Failed to parse JSON: ' + err.message)
+                    } finally {
+                        fileInput.value = ''
                     }
                 }
                 reader.readAsText(file)
