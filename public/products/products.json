@@ -1,12 +1,14 @@
 [
   {
-    "name": "Apple Kush",
+    "name": "Afternoon Delight",
     "category": "Flower",
     "size_options": [
-      "1/8 oz"
+      "1/8 oz",
+      "1/4 oz"
     ],
     "prices": {
-      "1/8 oz": 18
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -14,10 +16,12 @@
     "name": "Big Foot Glue",
     "category": "Flower",
     "size_options": [
-      "1/8 oz"
+      "1/8 oz",
+      "1/4 oz"
     ],
     "prices": {
-      "1/8 oz": 20
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "thca_percentage": 26,
     "banner": "New"
@@ -50,43 +54,28 @@
     "banner": "New"
   },
   {
-    "name": "Bubblegum Cherries",
+    "name": "Blue Gelatti Snowcaps",
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz",
-      "1 oz"
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Chocolate Diesel Flower",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
     ],
     "prices": {
       "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Citrus Cola Live Resin Gummies - 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Cotton Candy Lemonade Live Resin Gummies - 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
+      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -100,6 +89,19 @@
     "prices": {
       "1/8 oz": 18,
       "1/4 oz": 36
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fanta Airheads",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -221,6 +223,20 @@
     "banner": "New"
   },
   {
+    "name": "Frosted Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "thca_percentage": 22.26,
+    "banner": "New"
+  },
+  {
     "name": "Garlic Cookies Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -232,6 +248,17 @@
       "3 grams": 25
     },
     "thca_percentage": 99.2,
+    "banner": "New"
+  },
+  {
+    "name": "Gods Breath THCa Dripper",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram"
+    ],
+    "prices": {
+      "1 gram": 36
+    },
     "banner": "New"
   },
   {
@@ -308,28 +335,6 @@
       "1 gram": 30
     },
     "thca_percentage": 90,
-    "banner": "New"
-  },
-  {
-    "name": "Moon Water Riptide - Berry Twist 60mg",
-    "category": "Edibles",
-    "size_options": [
-      "12 oz can"
-    ],
-    "prices": {
-      "12 oz can": 12
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Moon Water Soda - Berry Twist 30mg",
-    "category": "Edibles",
-    "size_options": [
-      "12 oz can"
-    ],
-    "prices": {
-      "12 oz can": 10
-    },
     "banner": "New"
   },
   {
@@ -417,19 +422,6 @@
     "banner": "New"
   },
   {
-    "name": "Pineapple Express Crumble",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "banner": "New"
-  },
-  {
     "name": "Pink Lemonade Live Resin Gummies -50 mg",
     "category": "Edibles",
     "size_options": [
@@ -443,6 +435,19 @@
     "banner": "New"
   },
   {
+    "name": "Purple Lemonade",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "New"
+  },
+  {
     "name": "Rosin Thumbprint - Strawberry Cough Cold Cure Live Rosin x Life Hack Rosin Jam",
     "category": "Concentrates",
     "size_options": [
@@ -452,6 +457,17 @@
       "4 gram": 160
     },
     "thca_percentage": 85.1,
+    "banner": "New"
+  },
+  {
+    "name": "Sour Diesel THCa Dripper",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram"
+    ],
+    "prices": {
+      "1 gram": 36
+    },
     "banner": "New"
   },
   {
@@ -578,13 +594,11 @@
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz",
-      "Ounce"
+      "1/4 oz"
     ],
     "prices": {
       "1/8 oz": 20,
-      "1/4 oz": 40,
-      "Ounce": 150
+      "1/4 oz": 40
     }
   },
   {
@@ -601,34 +615,16 @@
     "thca_percentage": 97.1
   },
   {
-    "name": "Citrus Fuel",
-    "category": "Flower",
+    "name": "Citrus Cola Live Resin Gummies - 25 mg",
+    "category": "Edibles",
     "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "ounce"
+      "4 count",
+      "2 count"
     ],
     "prices": {
-      "1/8 oz": 25,
-      "1/4 oz": 50,
-      "ounce": 200
-    },
-    "thca_percentage": 20.8
-  },
-  {
-    "name": "Columbian Gold",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "ounce"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "ounce": 150
-    },
-    "thca_percentage": 18
+      "4 count": 10,
+      "2 count": 5
+    }
   },
   {
     "name": "Cotton Candy Lemonade 25mg",
@@ -638,6 +634,18 @@
     ],
     "prices": {
       "12 oz can": 8
+    }
+  },
+  {
+    "name": "Cotton Candy Lemonade Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
     }
   },
   {
@@ -676,13 +684,11 @@
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz",
-      "ounce"
+      "1/4 oz"
     ],
     "prices": {
       "1/8 oz": 25,
-      "1/4 oz": 50,
-      "ounce": 200
+      "1/4 oz": 50
     },
     "thca_percentage": 22.26
   },
@@ -700,31 +706,15 @@
     "thca_percentage": 97.1
   },
   {
-    "name": "Green Crack",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    }
-  },
-  {
     "name": "GSC Snowcaps",
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz",
-      "ounce"
+      "1/4 oz"
     ],
     "prices": {
       "1/8 oz": 25,
-      "1/4 oz": 50,
-      "ounce": 200
+      "1/4 oz": 50
     },
     "thca_percentage": 63.09
   },
@@ -741,32 +731,15 @@
     }
   },
   {
-    "name": "Lava Freeze",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "ounce"
-    ],
-    "prices": {
-      "1/8 oz": 25,
-      "1/4 oz": 50,
-      "ounce": 200
-    },
-    "thca_percentage": 23
-  },
-  {
     "name": "Mac 1",
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz",
-      "ounce"
+      "1/4 oz"
     ],
     "prices": {
       "1/8 oz": 20,
-      "1/4 oz": 40,
-      "ounce": 150
+      "1/4 oz": 40
     },
     "thca_percentage": 21
   },
@@ -780,6 +753,26 @@
     "prices": {
       "4ct": 10,
       "2ct": 6
+    }
+  },
+  {
+    "name": "Moon Water Riptide - Berry Twist 60mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 12
+    }
+  },
+  {
+    "name": "Moon Water Soda - Berry Twist 30mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 10
     }
   },
   {
@@ -850,8 +843,36 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Bubblegum Cherries",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Diamond Badder",
     "category": "Diamonds & Sauce",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Pineapple Express Crumble",
+    "category": "Concentrates",
     "size_options": [
       "1 gram",
       "3 grams"
