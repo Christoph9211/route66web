@@ -13,15 +13,24 @@
     "banner": "New"
   },
   {
+    "name": "Apple Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/8 oz": 18
+    },
+    "banner": "New"
+  },
+  {
     "name": "Big Foot Glue",
     "category": "Flower",
     "size_options": [
-      "1/8 oz",
-      "1/4 oz"
+      "1/8 oz"
     ],
     "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
+      "1/8 oz": 20
     },
     "thca_percentage": 26,
     "banner": "New"
@@ -41,28 +50,150 @@
     "banner": "New"
   },
   {
-    "name": "Blue Gelatti Snowcaps",
+    "name": "Black Ice",
     "category": "Flower",
     "size_options": [
-      "1/8 oz",
-      "1/4 oz"
+      "1/4 oz",
+      "1/8 oz"
     ],
     "prices": {
-      "1/8 oz": 25,
-      "1/4 oz": 50
+      "1/4 oz": 40,
+      "1/8 oz": 20
     },
     "banner": "New"
   },
   {
-    "name": "Fanta Airheads",
+    "name": "Black Raspberry Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Bubblegum Cherries",
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz"
+      "1/4 oz",
+      "1 oz"
     ],
     "prices": {
       "1/8 oz": 20,
-      "1/4 oz": 40
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Citrus Cola Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Cotton Candy Lemonade Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Dantes Inferno",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/4 oz": 50,
+      "1/8 oz": 25,
+      "1 oz": 200
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Apple Lemonade 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Blue Raspberry 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Sour Cherry Lemon 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Sour Orange Lemon Lime 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Sour Strawberry Raspberry 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Fat Boys - Unicorn Blood- Fruit Punch 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
     },
     "banner": "New"
   },
@@ -76,20 +207,23 @@
       "Mendo Runtz",
       "Horchata",
       "Gelato Mintz",
-      "Hawaiian Sunrise",
       "Jet Fuel Gelato",
       "Where's My Bike",
-      "Rainbow Sherbert",
       "Pemex",
       "Bubblewhip #1",
       "Kings Sour",
+      "Lunar Cheese",
       "Gas Runtz",
       "Grape Candy",
       "Red Velvet",
       "Fanta Airhead",
       "Big Foot Glue",
-      "White Peaches",
-      "Street Runtz"
+      "Pineapple Macroon",
+      "Amaretto Runtz",
+      "Street Runtz",
+      "Afternoon Delight",
+      "Blue Cheese",
+      "White Peaches"
     ],
     "prices": {
       "Road Dog": 6,
@@ -98,35 +232,24 @@
       "Mendo Runtz": 5,
       "Horchata": 5,
       "Gelato Mintz": 5,
-      "Hawaiian Sunrise": 5,
       "Jet Fuel Gelato": 5,
       "Where's My Bike": 6,
-      "Rainbow Sherbert": 5,
       "Pemex": 5,
       "Bubblewhip #1": 5,
       "Kings Sour": 6,
+      "Lunar Cheese": 5,
       "Gas Runtz": 6,
       "Grape Candy": 5,
       "Red Velvet": 5,
       "Fanta Airhead": 5,
       "Big Foot Glue": 5,
-      "White Peaches": 5,
-      "Street Runtz": 5
+      "Pineapple Macroon": 5,
+      "Amaretto Runtz": 5,
+      "Street Runtz": 5,
+      "Afternoon Delight": 5,
+      "Blue Cheese": 5,
+      "White Peaches": 5
     },
-    "banner": "New"
-  },
-  {
-    "name": "Frosted Kush",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
-    },
-    "thca_percentage": 22.26,
     "banner": "New"
   },
   {
@@ -144,13 +267,17 @@
     "banner": "New"
   },
   {
-    "name": "Gods Breath THCa Dripper",
-    "category": "Concentrates",
+    "name": "Gorilla Breath",
+    "category": "Flower",
     "size_options": [
-      "1 gram"
+      "1/4 oz",
+      "1/8 oz",
+      "1 oz"
     ],
     "prices": {
-      "1 gram": 36
+      "1/4 oz": 40,
+      "1/8 oz": 20,
+      "1 oz": 150
     },
     "banner": "New"
   },
@@ -162,6 +289,19 @@
     ],
     "prices": {
       "1/8 oz": 18
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
     },
     "banner": "New"
   },
@@ -215,6 +355,28 @@
       "1 gram": 30
     },
     "thca_percentage": 90,
+    "banner": "New"
+  },
+  {
+    "name": "Moon Water Riptide - Berry Twist 60mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 12
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Moon Water Soda - Berry Twist 30mg",
+    "category": "Edibles",
+    "size_options": [
+      "12 oz can"
+    ],
+    "prices": {
+      "12 oz can": 10
+    },
     "banner": "New"
   },
   {
@@ -302,7 +464,20 @@
     "banner": "New"
   },
   {
-    "name": "Purple Lemonade",
+    "name": "Pineapple Express Crumble",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Pineapple Macroon",
     "category": "Flower",
     "size_options": [
       "1/8 oz",
@@ -311,6 +486,19 @@
     "prices": {
       "1/8 oz": 20,
       "1/4 oz": 40
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Pink Lemonade Live Resin Gummies -50 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 12,
+      "2 count": 6
     },
     "banner": "New"
   },
@@ -324,17 +512,6 @@
       "4 gram": 160
     },
     "thca_percentage": 85.1,
-    "banner": "New"
-  },
-  {
-    "name": "Sour Diesel THCa Dripper",
-    "category": "Concentrates",
-    "size_options": [
-      "1 gram"
-    ],
-    "prices": {
-      "1 gram": 36
-    },
     "banner": "New"
   },
   {
@@ -362,6 +539,33 @@
       "3 grams": 25
     },
     "thca_percentage": 98.39,
+    "banner": "New"
+  },
+  {
+    "name": "Street Runtz",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Superboof",
+    "category": "Concentrates",
+    "size_options": [
+      "3 grams"
+    ],
+    "prices": {
+      "3 grams": 25
+    },
+    "thca_percentage": 96.18,
     "banner": "New"
   },
   {
@@ -399,25 +603,28 @@
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz"
+      "1/4 oz",
+      "1 oz"
     ],
     "prices": {
       "1/8 oz": 20,
-      "1/4 oz": 40
+      "1/4 oz": 40,
+      "1 oz": 150
     },
     "banner": "New"
   },
   {
-    "name": "Black Raspberry Live Resin Gummies - 25 mg",
+    "name": "White Strawnana Watermelon Live Resin Gummies - 50 mg",
     "category": "Edibles",
     "size_options": [
       "4 count",
       "2 count"
     ],
     "prices": {
-      "4 count": 10,
-      "2 count": 5
-    }
+      "4 count": 12,
+      "2 count": 6
+    },
+    "banner": "New"
   },
   {
     "name": "Blue Razz Live Resin Gummies - 25 mg",
@@ -461,11 +668,13 @@
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz"
+      "1/4 oz",
+      "Ounce"
     ],
     "prices": {
       "1/8 oz": 20,
-      "1/4 oz": 40
+      "1/4 oz": 40,
+      "Ounce": 150
     }
   },
   {
@@ -482,16 +691,34 @@
     "thca_percentage": 97.1
   },
   {
-    "name": "Citrus Cola Live Resin Gummies - 25 mg",
-    "category": "Edibles",
+    "name": "Citrus Fuel",
+    "category": "Flower",
     "size_options": [
-      "4 count",
-      "2 count"
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
     ],
     "prices": {
-      "4 count": 10,
-      "2 count": 5
-    }
+      "1/8 oz": 25,
+      "1/4 oz": 50,
+      "ounce": 200
+    },
+    "thca_percentage": 20.8
+  },
+  {
+    "name": "Columbian Gold",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "ounce": 150
+    },
+    "thca_percentage": 18
   },
   {
     "name": "Cotton Candy Lemonade 25mg",
@@ -501,18 +728,6 @@
     ],
     "prices": {
       "12 oz can": 8
-    }
-  },
-  {
-    "name": "Cotton Candy Lemonade Live Resin Gummies - 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
     }
   },
   {
@@ -559,75 +774,17 @@
     }
   },
   {
-    "name": "Fat Boys - Apple Lemonade 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
-    }
-  },
-  {
-    "name": "Fat Boys - Blue Raspberry 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
-    }
-  },
-  {
-    "name": "Fat Boys - Sour Cherry Lemon 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    }
-  },
-  {
-    "name": "Fat Boys - Sour Orange Lemon Lime 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    }
-  },
-  {
-    "name": "Fat Boys - Sour Strawberry Raspberry 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    }
-  },
-  {
-    "name": "Fat Boys - Unicorn Blood- Fruit Punch 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
-    }
-  },
-  {
     "name": "Frosted Frappe",
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz"
+      "1/4 oz",
+      "ounce"
     ],
     "prices": {
       "1/8 oz": 25,
-      "1/4 oz": 50
+      "1/4 oz": 50,
+      "ounce": 200
     },
     "thca_percentage": 22.26
   },
@@ -645,15 +802,17 @@
     "thca_percentage": 97.1
   },
   {
-    "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
-    "category": "Edibles",
+    "name": "Green Crack",
+    "category": "Flower",
     "size_options": [
-      "4 count",
-      "2 count"
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
     ],
     "prices": {
-      "4 count": 10,
-      "2 count": 5
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
     }
   },
   {
@@ -661,11 +820,13 @@
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz"
+      "1/4 oz",
+      "ounce"
     ],
     "prices": {
       "1/8 oz": 25,
-      "1/4 oz": 50
+      "1/4 oz": 50,
+      "ounce": 200
     },
     "thca_percentage": 63.09
   },
@@ -682,15 +843,32 @@
     }
   },
   {
+    "name": "Lava Freeze",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50,
+      "ounce": 200
+    },
+    "thca_percentage": 23
+  },
+  {
     "name": "Mac 1",
     "category": "Flower",
     "size_options": [
       "1/8 oz",
-      "1/4 oz"
+      "1/4 oz",
+      "ounce"
     ],
     "prices": {
       "1/8 oz": 20,
-      "1/4 oz": 40
+      "1/4 oz": 40,
+      "ounce": 150
     },
     "thca_percentage": 21
   },
@@ -704,26 +882,6 @@
     "prices": {
       "4ct": 10,
       "2ct": 6
-    }
-  },
-  {
-    "name": "Moon Water Riptide - Berry Twist 60mg",
-    "category": "Edibles",
-    "size_options": [
-      "12 oz can"
-    ],
-    "prices": {
-      "12 oz can": 12
-    }
-  },
-  {
-    "name": "Moon Water Soda - Berry Twist 30mg",
-    "category": "Edibles",
-    "size_options": [
-      "12 oz can"
-    ],
-    "prices": {
-      "12 oz can": 10
     }
   },
   {
@@ -747,18 +905,6 @@
     }
   },
   {
-    "name": "Pink Lemonade Live Resin Gummies -50 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 12,
-      "2 count": 6
-    }
-  },
-  {
     "name": "Salted Caramel Cold Brew 25 mg",
     "category": "Edibles",
     "size_options": [
@@ -767,17 +913,6 @@
     "prices": {
       "12 oz can": 8
     }
-  },
-  {
-    "name": "Superboof",
-    "category": "Concentrates",
-    "size_options": [
-      "3 grams"
-    ],
-    "prices": {
-      "3 grams": 25
-    },
-    "thca_percentage": 96.18
   },
   {
     "name": "Tropical Punch Shots 100mg",
@@ -802,18 +937,6 @@
     }
   },
   {
-    "name": "White Strawnana Watermelon Live Resin Gummies - 50 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 12,
-      "2 count": 6
-    }
-  },
-  {
     "name": "Blackberry Superboof",
     "category": "Flower",
     "size_options": [
@@ -829,36 +952,8 @@
     "banner": "Out of Stock"
   },
   {
-    "name": "Bubblegum Cherries",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "Out of Stock"
-  },
-  {
     "name": "Diamond Badder",
     "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 10,
-      "3 grams": 25
-    },
-    "banner": "Out of Stock"
-  },
-  {
-    "name": "Pineapple Express Crumble",
-    "category": "Concentrates",
     "size_options": [
       "1 gram",
       "3 grams"
