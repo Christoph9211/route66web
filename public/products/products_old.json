@@ -41,19 +41,6 @@
     "banner": "New"
   },
   {
-    "name": "Black Raspberry Live Resin Gummies - 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
-    },
-    "banner": "New"
-  },
-  {
     "name": "Blue Gelatti Snowcaps",
     "category": "Flower",
     "size_options": [
@@ -67,32 +54,6 @@
     "banner": "New"
   },
   {
-    "name": "Chocolate Diesel Flower",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Cranberry Kush",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 18,
-      "1/4 oz": 36
-    },
-    "banner": "New"
-  },
-  {
     "name": "Fanta Airheads",
     "category": "Flower",
     "size_options": [
@@ -102,72 +63,6 @@
     "prices": {
       "1/8 oz": 20,
       "1/4 oz": 40
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Apple Lemonade 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Blue Raspberry 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Sour Cherry Lemon 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Sour Orange Lemon Lime 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Sour Strawberry Raspberry 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Unicorn Blood- Fruit Punch 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
     },
     "banner": "New"
   },
@@ -186,16 +81,15 @@
       "Where's My Bike",
       "Rainbow Sherbert",
       "Pemex",
-      "Chem dog",
-      "Bubblegum Cherries",
       "Bubblewhip #1",
       "Kings Sour",
-      "Lunar Cheese",
       "Gas Runtz",
       "Grape Candy",
       "Red Velvet",
       "Fanta Airhead",
-      "Big Foot Glue"
+      "Big Foot Glue",
+      "White Peaches",
+      "Street Runtz"
     ],
     "prices": {
       "Road Dog": 6,
@@ -209,16 +103,15 @@
       "Where's My Bike": 6,
       "Rainbow Sherbert": 5,
       "Pemex": 5,
-      "Chem dog": 5,
-      "Bubblegum Cherries": 5,
       "Bubblewhip #1": 5,
       "Kings Sour": 6,
-      "Lunar Cheese": 5,
       "Gas Runtz": 6,
       "Grape Candy": 5,
       "Red Velvet": 5,
       "Fanta Airhead": 5,
-      "Big Foot Glue": 5
+      "Big Foot Glue": 5,
+      "White Peaches": 5,
+      "Street Runtz": 5
     },
     "banner": "New"
   },
@@ -269,19 +162,6 @@
     ],
     "prices": {
       "1/8 oz": 18
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
     },
     "banner": "New"
   },
@@ -422,19 +302,6 @@
     "banner": "New"
   },
   {
-    "name": "Pink Lemonade Live Resin Gummies -50 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 12,
-      "2 count": 6
-    },
-    "banner": "New"
-  },
-  {
     "name": "Purple Lemonade",
     "category": "Flower",
     "size_options": [
@@ -498,18 +365,6 @@
     "banner": "New"
   },
   {
-    "name": "Superboof",
-    "category": "Concentrates",
-    "size_options": [
-      "3 grams"
-    ],
-    "prices": {
-      "3 grams": 25
-    },
-    "thca_percentage": 96.18,
-    "banner": "New"
-  },
-  {
     "name": "Two Gram Vapes",
     "category": "Vapes & Carts",
     "size_options": [
@@ -540,17 +395,29 @@
     "availability": {}
   },
   {
-    "name": "White Strawnana Watermelon Live Resin Gummies - 50 mg",
+    "name": "White Peaches",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Black Raspberry Live Resin Gummies - 25 mg",
     "category": "Edibles",
     "size_options": [
       "4 count",
       "2 count"
     ],
     "prices": {
-      "4 count": 12,
-      "2 count": 6
-    },
-    "banner": "New"
+      "4 count": 10,
+      "2 count": 5
+    }
   },
   {
     "name": "Blue Razz Live Resin Gummies - 25 mg",
@@ -659,6 +526,18 @@
     }
   },
   {
+    "name": "Cranberry Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 18,
+      "1/4 oz": 36
+    }
+  },
+  {
     "name": "Durban Poison Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -677,6 +556,66 @@
     ],
     "prices": {
       "10ct": 25
+    }
+  },
+  {
+    "name": "Fat Boys - Apple Lemonade 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
+    }
+  },
+  {
+    "name": "Fat Boys - Blue Raspberry 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
+    }
+  },
+  {
+    "name": "Fat Boys - Sour Cherry Lemon 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    }
+  },
+  {
+    "name": "Fat Boys - Sour Orange Lemon Lime 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    }
+  },
+  {
+    "name": "Fat Boys - Sour Strawberry Raspberry 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    }
+  },
+  {
+    "name": "Fat Boys - Unicorn Blood- Fruit Punch 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
     }
   },
   {
@@ -704,6 +643,18 @@
       "3 grams": 25
     },
     "thca_percentage": 97.1
+  },
+  {
+    "name": "Green Apple Live Resin Gummies - 75 mg CBD + 25 mg THCa",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    }
   },
   {
     "name": "GSC Snowcaps",
@@ -796,6 +747,18 @@
     }
   },
   {
+    "name": "Pink Lemonade Live Resin Gummies -50 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 12,
+      "2 count": 6
+    }
+  },
+  {
     "name": "Salted Caramel Cold Brew 25 mg",
     "category": "Edibles",
     "size_options": [
@@ -804,6 +767,17 @@
     "prices": {
       "12 oz can": 8
     }
+  },
+  {
+    "name": "Superboof",
+    "category": "Concentrates",
+    "size_options": [
+      "3 grams"
+    ],
+    "prices": {
+      "3 grams": 25
+    },
+    "thca_percentage": 96.18
   },
   {
     "name": "Tropical Punch Shots 100mg",
@@ -825,6 +799,18 @@
     "prices": {
       "1 gram": 10,
       "3 grams": 25
+    }
+  },
+  {
+    "name": "White Strawnana Watermelon Live Resin Gummies - 50 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 12,
+      "2 count": 6
     }
   },
   {
