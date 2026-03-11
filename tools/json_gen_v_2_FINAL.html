@@ -252,8 +252,9 @@
                 <label for="availability">
                     Availability (JSON object, e.g. {"Super Boof": true})
                 </label>
-                <small class="helper-text">
-                    Only needed for “Vapes &amp; Carts” and “Other”.
+                <small id="availability-helper" class="helper-text">
+                    Usually leave this blank. If you provide a value, it must
+                    be a JSON object.
                 </small>
                 <textarea
                     id="availability"
@@ -293,11 +294,11 @@
             // ------------------ State & Constants ------------------
             const products = []
             let editIndex = null
-            const LOCAL_KEY = 'products'
 
             // Size-price temp list for current form session
             let sizePricePairs = [] // [{size, price}]
             let importMode = 'replace'
+            let editProductExtras = {}
 
             // ------------------ DOM Refs ------------------
             const fileInput = document.getElementById('file-input')
@@ -312,6 +313,13 @@
             const formTitle = document.getElementById('form-title')
             const submitBtn = document.getElementById('submit-btn')
             const cancelEditBtn = document.getElementById('cancel-edit-btn')
+            const availabilityHelper =
+                document.getElementById('availability-helper')
+            const nameField = document.getElementById('name')
+            const categoryField = document.getElementById('category')
+            const thcaField = document.getElementById('thca')
+            const bannerField = document.getElementById('banner')
+            const availabilityField = document.getElementById('availability')
 
             // size‑price specific refs
             const sizeInput = document.getElementById('size-input')
@@ -329,6 +337,16 @@
                 'Other',
                 'Vapes & Carts',
             ]
+            const availabilityCategories = new Set(['Other', 'Vapes & Carts'])
+            const managedProductFields = new Set([
+                'name',
+                'category',
+                'size_options',
+                'prices',
+                'thca_percentage',
+                'banner',
+                'availability',
+            ])
 
             // ------------------ Utility Helpers ------------------
             const normalizeProductSchema = (product = {}) => {
@@ -435,6 +453,43 @@
                 }
             }
 
+            const isPlainObject = (value) =>
+                value !== null &&
+                typeof value === 'object' &&
+                !Array.isArray(value)
+
+            const getUnmanagedProductFields = (product = {}) =>
+                Object.fromEntries(
+                    Object.entries(product || {}).filter(
+                        ([key]) => !managedProductFields.has(key)
+                    )
+                )
+
+            const updateAvailabilityHelperText = () => {
+                const category = categoryField.value.trim()
+                availabilityHelper.textContent = availabilityCategories.has(
+                    category
+                )
+                    ? 'Optional for this category. Use a JSON object keyed by option name when you need per-option availability, for example {"Super Boof": true}.'
+                    : 'Usually leave this blank. If you provide a value, it must be a JSON object, not an array or a string.'
+            }
+
+            const parseAvailabilityInput = (rawValue) => {
+                if (!rawValue) return { value: undefined }
+
+                try {
+                    const value = JSON.parse(rawValue)
+                    if (!isPlainObject(value)) {
+                        return {
+                            error: 'Availability must be a JSON object, e.g. {"Super Boof": true}',
+                        }
+                    }
+                    return { value }
+                } catch {
+                    return { error: 'Availability must be valid JSON' }
+                }
+            }
+
             const escapeHtml = (value = '') =>
                 String(value ?? '').replace(/[&<>"']/g, (ch) => {
                     switch (ch) {
@@ -491,18 +546,8 @@
                     })
             }
 
-            // Persist products to localStorage (helper)
-            const persistToLocalStorage = () => {
-                try {
-                    localStorage.setItem(LOCAL_KEY, JSON.stringify(products))
-                } catch (err) {
-                    console.error('Unable to save to localStorage', err)
-                }
-            }
-
-            // Attempt to auto‑save to a file using the File System Access API
+            // Attempt to save to a file using the File System Access API
             const autoSaveToFile = async () => {
-                persistToLocalStorage()
                 if (!('showSaveFilePicker' in window)) return
                 try {
                     if (navigator.storage && navigator.storage.persist) {
@@ -522,25 +567,6 @@
                     await writable.close()
                 } catch (err) {
                     console.log('Auto‑save skipped', err)
-                }
-            }
-
-            // Hydrate products from localStorage on page‑load (if available)
-            const hydrateFromLocalStorage = () => {
-                const stored = localStorage.getItem(LOCAL_KEY)
-                if (!stored) return
-                try {
-                    const data = JSON.parse(stored)
-                    if (Array.isArray(data)) {
-                        const normalized = data.map((p) =>
-                            normalizeProductSchema(p)
-                        )
-                        products.splice(0, products.length, ...normalized)
-                        refreshCategoryList()
-                        renderTable()
-                    }
-                } catch (err) {
-                    console.error('Failed to parse stored products', err)
                 }
             }
 
@@ -642,8 +668,6 @@
                         sensitivity: 'base',
                     })
                 })
-
-                persistToLocalStorage()
 
                 if (products.length === 0) {
                     table.classList.add('hidden')
@@ -794,15 +818,20 @@
                 e.preventDefault()
 
                 // 1. Gather the basics
-                const name = form.name.value.trim()
-                const category = form.category.value.trim()
-                const thcaRaw = form.thca.value.trim()
-                const bannerVal = form.banner.value
-                const availabilityRaw = form.availability.value.trim()
+                const name = nameField.value.trim()
+                const category = categoryField.value.trim()
+                const thcaRaw = thcaField.value.trim()
+                const bannerVal = bannerField.value
+                const availabilityRaw = availabilityField.value.trim()
+                const availabilityResult =
+                    parseAvailabilityInput(availabilityRaw)
 
                 // 2. Convert the size/price grid into the structure we store
                 if (sizePricePairs.length === 0) {
                     return alert('Please add at least one size and price.')
+                }
+                if (availabilityResult.error) {
+                    return alert(availabilityResult.error)
                 }
                 const sizeOptions = sizePricePairs.map((p) => p.size)
                 const prices = Object.fromEntries(
@@ -811,6 +840,7 @@
 
                 // 3. Build the product record
                 let product = normalizeProductSchema({
+                    ...editProductExtras,
                     name,
                     category,
                     size_options: sizeOptions,
@@ -818,12 +848,8 @@
                 })
                 if (thcaRaw) product.thca_percentage = parseFloat(thcaRaw)
                 if (bannerVal) product.banner = bannerVal
-                if (availabilityRaw) {
-                    try {
-                        product.availability = JSON.parse(availabilityRaw)
-                    } catch {
-                        return alert('Availability must be valid JSON')
-                    }
+                if (availabilityResult.value !== undefined) {
+                    product.availability = availabilityResult.value
                 }
 
                 // 4. Insert or update
@@ -839,11 +865,13 @@
                 form.reset()
                 sizePricePairs = [] // clear the grid for the next entry
                 renderSizePriceTable()
-                form.banner.value = ''
+                bannerField.value = ''
+                editProductExtras = {}
                 editIndex = null
                 submitBtn.textContent = 'Add Product'
                 formTitle.textContent = 'Add New Product'
                 cancelEditBtn.classList.add('hidden')
+                updateAvailabilityHelperText()
 
                 await autoSaveToFile()
             })
@@ -867,13 +895,14 @@
                     if (!prod) return
 
                     // 1. Basic fields
-                    form.name.value = prod.name
-                    form.category.value = prod.category
-                    form.thca.value = prod.thca_percentage ?? ''
-                    form.banner.value = prod.banner ?? ''
-                    form.availability.value = prod.availability
+                    nameField.value = prod.name
+                    categoryField.value = prod.category
+                    thcaField.value = prod.thca_percentage ?? ''
+                    bannerField.value = prod.banner ?? ''
+                    availabilityField.value = prod.availability
                         ? JSON.stringify(prod.availability, null, 2)
                         : ''
+                    editProductExtras = {}
 
                     // 2. Rebuild the size/price grid
                     sizePricePairs = prod.size_options.map((sz) => ({
@@ -887,6 +916,7 @@
                     submitBtn.textContent = 'Add Product'
                     formTitle.textContent = 'Duplicate Product'
                     cancelEditBtn.classList.remove('hidden')
+                    updateAvailabilityHelperText()
                     try {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                     } catch {
@@ -898,13 +928,14 @@
                     const prod = products[idx]
 
                     // 1. Basic fields
-                    form.name.value = prod.name
-                    form.category.value = prod.category
-                    form.thca.value = prod.thca_percentage ?? ''
-                    form.banner.value = prod.banner ?? ''
-                    form.availability.value = prod.availability
+                    nameField.value = prod.name
+                    categoryField.value = prod.category
+                    thcaField.value = prod.thca_percentage ?? ''
+                    bannerField.value = prod.banner ?? ''
+                    availabilityField.value = prod.availability
                         ? JSON.stringify(prod.availability, null, 2)
                         : ''
+                    editProductExtras = getUnmanagedProductFields(prod)
 
                     // 2. Rebuild the size/price grid
                     sizePricePairs = prod.size_options.map((sz) => ({
@@ -918,6 +949,7 @@
                     submitBtn.textContent = 'Save Changes'
                     formTitle.textContent = `Edit Product (#${idx + 1})`
                     cancelEditBtn.classList.remove('hidden')
+                    updateAvailabilityHelperText()
                     try {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                     } catch {
@@ -929,19 +961,22 @@
             // ------------------ Cancel Edit ------------------
             cancelEditBtn.addEventListener('click', () => {
                 form.reset()
-                form.banner.value = ''
+                bannerField.value = ''
                 sizePricePairs = []
                 renderSizePriceTable()
                 sizeInput.value = ''
                 priceInput.value = ''
+                editProductExtras = {}
                 editIndex = null
                 submitBtn.textContent = 'Add Product'
                 formTitle.textContent = 'Add New Product'
                 cancelEditBtn.classList.add('hidden')
+                updateAvailabilityHelperText()
             })
 
             // ------------------ Init ------------------
-            hydrateFromLocalStorage()
+            categoryField.addEventListener('change', updateAvailabilityHelperText)
+            updateAvailabilityHelperText()
         </script>
     </body>
 </html>
