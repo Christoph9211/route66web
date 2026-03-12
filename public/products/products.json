@@ -13,17 +13,6 @@
     "banner": "New"
   },
   {
-    "name": "Apple Kush",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz"
-    ],
-    "prices": {
-      "1/8 oz": 18
-    },
-    "banner": "New"
-  },
-  {
     "name": "Big Foot Glue",
     "category": "Flower",
     "size_options": [
@@ -203,14 +192,11 @@
     "size_options": [
       "Road Dog",
       "Donny Burger",
-      "Apex Hybrid",
-      "Mendo Runtz",
       "Horchata",
       "Gelato Mintz",
       "Jet Fuel Gelato",
       "Where's My Bike",
       "Pemex",
-      "Bubblewhip #1",
       "Kings Sour",
       "Lunar Cheese",
       "Gas Runtz",
@@ -222,20 +208,19 @@
       "Amaretto Runtz",
       "Street Runtz",
       "Afternoon Delight",
-      "Blue Cheese",
-      "White Peaches"
+      "White Peaches",
+      "Lemon Drop",
+      "Space Rocks",
+      "Secret Cookies"
     ],
     "prices": {
       "Road Dog": 6,
       "Donny Burger": 6,
-      "Apex Hybrid": 5,
-      "Mendo Runtz": 5,
       "Horchata": 5,
       "Gelato Mintz": 5,
       "Jet Fuel Gelato": 5,
       "Where's My Bike": 6,
       "Pemex": 5,
-      "Bubblewhip #1": 5,
       "Kings Sour": 6,
       "Lunar Cheese": 5,
       "Gas Runtz": 6,
@@ -247,8 +232,10 @@
       "Amaretto Runtz": 5,
       "Street Runtz": 5,
       "Afternoon Delight": 5,
-      "Blue Cheese": 5,
-      "White Peaches": 5
+      "White Peaches": 5,
+      "Lemon Drop": 5,
+      "Space Rocks": 5,
+      "Secret Cookies": 5
     },
     "banner": "New"
   },
@@ -314,7 +301,6 @@
       "Infused Gas Monkey",
       "Infused Blueberry Muffin",
       "Infused Pineapple Passion",
-      "Diamond Blue Dream Cannager",
       "Diamond Blue Dream-Green Crack Cannagar",
       "Diamond Gelato-Gary Payton Cannagar",
       "Diamond Northern Lights-GDP Cannagar",
@@ -326,7 +312,6 @@
       "Infused Gas Monkey": 10,
       "Infused Blueberry Muffin": 10,
       "Infused Pineapple Passion": 10,
-      "Diamond Blue Dream Cannager": 20,
       "Diamond Blue Dream-Green Crack Cannagar": 20,
       "Diamond Gelato-Gary Payton Cannagar": 20,
       "Diamond Northern Lights-GDP Cannagar": 20,
@@ -572,28 +557,12 @@
     "name": "Two Gram Vapes",
     "category": "Vapes & Carts",
     "size_options": [
-      "Sunset Sherbet",
       "Bruce Banner",
-      "Alaskan Thunder F***",
-      "Northern Lights",
-      "Watermelon OG",
-      "Strawberry Milk",
-      "Space Cake",
-      "Strawberry Cheesecake",
-      "Peaches & Cream",
-      "Blueberry Muffin"
+      "Alaskan Thunder F***"
     ],
     "prices": {
-      "Sunset Sherbet": 30,
       "Bruce Banner": 30,
-      "Alaskan Thunder F***": 30,
-      "Northern Lights": 30,
-      "Watermelon OG": 30,
-      "Strawberry Milk": 35.99,
-      "Space Cake": 30,
-      "Strawberry Cheesecake": 35.99,
-      "Peaches & Cream": 35.99,
-      "Blueberry Muffin": 35.99
+      "Alaskan Thunder F***": 30
     },
     "banner": "New",
     "availability": {}
