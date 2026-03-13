@@ -618,7 +618,7 @@ const ProductCard = React.memo(function ProductCard({ product }) {
 
 ProductCard.displayName = 'ProductCard'
 
-export default function ProductCatalogSection() {
+export default function ProductCatalogSection({ onProductsLoaded }) {
     const [catalogState, setCatalogState] = React.useState({
         selectedCategory: 'all',
         products: [],
@@ -655,6 +655,7 @@ export default function ProductCatalogSection() {
                     loading: false,
                     loadError: null,
                 }))
+                onProductsLoaded?.(products)
             } catch (error) {
                 if (isCancelled) return
 
@@ -673,7 +674,7 @@ export default function ProductCatalogSection() {
         return () => {
             isCancelled = true
         }
-    }, [requestVersion])
+    }, [onProductsLoaded, requestVersion])
 
     React.useEffect(() => {
         if (

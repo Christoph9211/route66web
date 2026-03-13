@@ -37,6 +37,12 @@ function createJsonResponse(payload) {
     }
 }
 
+function getStructuredDataEntries(container) {
+    return Array.from(
+        container.querySelectorAll('script[type="application/ld+json"]')
+    ).map((node) => JSON.parse(node.innerHTML))
+}
+
 describe('App product catalog loading', () => {
     beforeEach(() => {
         window.localStorage.clear()
@@ -59,9 +65,7 @@ describe('App product catalog loading', () => {
             ).toBeGreaterThanOrEqual(3)
         })
 
-        const scripts = Array.from(
-            container.querySelectorAll('script[type="application/ld+json"]')
-        ).map((node) => JSON.parse(node.innerHTML))
+        const scripts = getStructuredDataEntries(container)
 
         expect(globalThis.fetch).not.toHaveBeenCalled()
         expect(scripts.some((entry) => entry['@type'] === 'ItemList')).toBe(false)
@@ -122,20 +126,75 @@ describe('App product catalog loading', () => {
         const user = userEvent.setup()
         globalThis.fetch.mockResolvedValue(createJsonResponse(sampleProducts))
 
-        render(<App />)
+        const { container } = render(<App />)
         await user.click(screen.getByRole('button', { name: 'Load Product Menu' }))
 
         expect(await screen.findByText('Sample Flower')).toBeInTheDocument()
         expect(globalThis.fetch).toHaveBeenCalledTimes(1)
+
+        await waitFor(() => {
+            const scripts = getStructuredDataEntries(container)
+            const listingSchema = scripts.find((entry) => entry['@type'] === 'ItemList')
+
+            expect(listingSchema).toBeDefined()
+            expect(listingSchema.itemListElement).toHaveLength(sampleProducts.length)
+            expect(listingSchema.itemListElement[0].name).toBe('Sample Flower')
+        })
     })
 
     it('auto-loads the product catalog when the page opens on #products', async () => {
         window.history.replaceState(null, '', '/#products')
         globalThis.fetch.mockResolvedValue(createJsonResponse(sampleProducts))
 
-        render(<App />)
+        const { container } = render(<App />)
 
         expect(await screen.findByText('Sample Flower')).toBeInTheDocument()
         expect(globalThis.fetch).toHaveBeenCalledTimes(1)
+
+        await waitFor(() => {
+            const listingSchema = getStructuredDataEntries(container).find(
+                (entry) => entry['@type'] === 'ItemList'
+            )
+
+            expect(listingSchema).toBeDefined()
+            expect(listingSchema.itemListElement[1].name).toBe('Sample Edible')
+        })
+    })
+
+    it('renders listing schema after retrying a failed product load', async () => {
+        const user = userEvent.setup()
+        globalThis.fetch = vi
+            .fn()
+            .mockRejectedValueOnce(new Error('network down'))
+            .mockResolvedValueOnce(createJsonResponse(sampleProducts))
+
+        const { container } = render(<App />)
+
+        await user.click(screen.getByRole('button', { name: 'Load Product Menu' }))
+
+        expect(
+            await screen.findByRole('heading', {
+                name: "We couldn't load today's product menu",
+            })
+        ).toBeInTheDocument()
+        expect(
+            getStructuredDataEntries(container).some(
+                (entry) => entry['@type'] === 'ItemList'
+            )
+        ).toBe(false)
+
+        await user.click(screen.getByRole('button', { name: 'Try again' }))
+
+        expect(await screen.findByText('Sample Flower')).toBeInTheDocument()
+
+        await waitFor(() => {
+            const listingSchema = getStructuredDataEntries(container).find(
+                (entry) => entry['@type'] === 'ItemList'
+            )
+
+            expect(listingSchema).toBeDefined()
+            expect(listingSchema.itemListElement[0].name).toBe('Sample Flower')
+        })
+        expect(globalThis.fetch).toHaveBeenCalledTimes(2)
     })
 })

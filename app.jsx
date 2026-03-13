@@ -247,11 +247,17 @@ export default function App() {
         isMobileMenuOpen: false,
         isProductCatalogRequested: false,
     })
+    const [structuredDataProducts, setStructuredDataProducts] = React.useState([])
     const requestProductCatalog = React.useCallback(() => {
         setAppState((prevState) =>
             prevState.isProductCatalogRequested
                 ? prevState
                 : { ...prevState, isProductCatalogRequested: true }
+        )
+    }, [])
+    const handleProductsLoaded = React.useCallback((products) => {
+        setStructuredDataProducts((prevProducts) =>
+            prevProducts === products ? prevProducts : products
         )
     }, [])
 
@@ -303,7 +309,10 @@ export default function App() {
         <div className="flex min-h-screen flex-col">
             <div id="home"></div>
             <React.Suspense fallback={null}>
-                <StructuredData includeFaqSchema />
+                <StructuredData
+                    includeFaqSchema
+                    products={structuredDataProducts}
+                />
             </React.Suspense>
             <AgeGate />
             {/* Navigation */}
@@ -515,7 +524,9 @@ export default function App() {
                             <React.Suspense
                                 fallback={renderSectionSkeleton('h-[32rem]')}
                             >
-                                <ProductCatalogSection />
+                                <ProductCatalogSection
+                                    onProductsLoaded={handleProductsLoaded}
+                                />
                             </React.Suspense>
                         ) : (
                             <div className="mx-auto max-w-2xl rounded-2xl bg-linear-to-r from-emerald-800 to-emerald-700 p-8 text-center shadow-lg dark:from-emerald-900 dark:to-emerald-800">
