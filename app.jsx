@@ -13,10 +13,8 @@ import {
     faFlask,
     faLeaf,
     faUsers,
-    faStar as faStarSolid,
     faChevronUp,
 } from '@fortawesome/free-solid-svg-icons'
-import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons'
 import {
     faFacebook,
 } from '@fortawesome/free-brands-svg-icons'
@@ -36,121 +34,9 @@ const GoogleBusinessIntegration = React.lazy(() =>
 const LocalSEOFAQ = React.lazy(() =>
     import('./src/components/LocalSEOFAQ.jsx')
 )
-
-const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
-const clean = (k) => (DANGEROUS.has(k) ? undefined : k)
-
-const SIZE_GROUP_ORDER = {
-    mass: 0,
-    volume: 1,
-    count: 2,
-    unknown: 3,
-}
-
-const SIZE_UNIT_FACTORS = {
-    mg: { group: 'mass', factor: 0.001 },
-    g: { group: 'mass', factor: 1 },
-    gram: { group: 'mass', factor: 1 },
-    grams: { group: 'mass', factor: 1 },
-    oz: { group: 'mass', factor: 28.3495 },
-    ounce: { group: 'mass', factor: 28.3495 },
-    ounces: { group: 'mass', factor: 28.3495 },
-    lb: { group: 'mass', factor: 453.592 },
-    lbs: { group: 'mass', factor: 453.592 },
-    pound: { group: 'mass', factor: 453.592 },
-    pounds: { group: 'mass', factor: 453.592 },
-    ml: { group: 'volume', factor: 1 },
-    milliliter: { group: 'volume', factor: 1 },
-    milliliters: { group: 'volume', factor: 1 },
-    l: { group: 'volume', factor: 1000 },
-    liter: { group: 'volume', factor: 1000 },
-    litre: { group: 'volume', factor: 1000 },
-    liters: { group: 'volume', factor: 1000 },
-    litres: { group: 'volume', factor: 1000 },
-    ct: { group: 'count', factor: 1 },
-    count: { group: 'count', factor: 1 },
-    pack: { group: 'count', factor: 1 },
-    pk: { group: 'count', factor: 1 },
-    pcs: { group: 'count', factor: 1 },
-    pieces: { group: 'count', factor: 1 },
-}
-
-const parseSizeOption = (value) => {
-    if (typeof value !== 'string') {
-        return { group: 'unknown', normalized: null }
-    }
-
-    const normalized = value.toLowerCase().replace(/,/g, '').trim()
-    const fractionMatch = normalized.match(/(\d+)\s*\/\s*(\d+)/)
-    const numberMatch = normalized.match(/(\d+(?:\.\d+)?)/)
-
-    let numeric = null
-    if (fractionMatch) {
-        const numerator = Number(fractionMatch[1])
-        const denominator = Number(fractionMatch[2])
-        if (Number.isFinite(numerator) && Number.isFinite(denominator) && denominator !== 0) {
-            numeric = numerator / denominator
-        }
-    } else if (numberMatch) {
-        numeric = Number(numberMatch[1])
-    }
-
-    if (!Number.isFinite(numeric)) {
-        return { group: 'unknown', normalized: null }
-    }
-
-    const unitMatch = normalized.match(
-        /(mg|g|gram|grams|oz|ounce|ounces|lb|lbs|pound|pounds|ml|milliliter|milliliters|l|liter|litre|liters|litres|ct|count|pack|pk|pcs|pieces)/
-    )
-    const unit = unitMatch ? unitMatch[1] : null
-
-    if (unit && SIZE_UNIT_FACTORS[unit]) {
-        const { group, factor } = SIZE_UNIT_FACTORS[unit]
-        return { group, normalized: numeric * factor }
-    }
-
-    if (fractionMatch && numeric > 0 && numeric <= 1) {
-        return { group: 'mass', normalized: numeric * SIZE_UNIT_FACTORS.oz.factor }
-    }
-
-    return { group: 'unknown', normalized: numeric }
-}
-
-const sortSizeOptions = (options) => {
-    if (!Array.isArray(options)) return []
-
-    return options
-        .map((size, index) => {
-            const parsed = parseSizeOption(size)
-            return {
-                size,
-                index,
-                group: parsed.group ?? 'unknown',
-                normalized: parsed.normalized,
-            }
-        })
-        .sort((a, b) => {
-            const groupA = SIZE_GROUP_ORDER[a.group] ?? SIZE_GROUP_ORDER.unknown
-            const groupB = SIZE_GROUP_ORDER[b.group] ?? SIZE_GROUP_ORDER.unknown
-            if (groupA !== groupB) return groupA - groupB
-
-            const aHasValue = Number.isFinite(a.normalized)
-            const bHasValue = Number.isFinite(b.normalized)
-            if (aHasValue && bHasValue && a.normalized !== b.normalized) {
-                return a.normalized - b.normalized
-            }
-            if (aHasValue !== bHasValue) {
-                return aHasValue ? -1 : 1
-            }
-
-            const alpha = String(a.size).localeCompare(String(b.size), undefined, {
-                numeric: true,
-                sensitivity: 'base',
-            })
-            return alpha || a.index - b.index
-        })
-        .map(({ size }) => size)
-}
+const ProductCatalogSection = React.lazy(() =>
+    import('./src/components/ProductCatalogSection.jsx')
+)
 
 const renderSectionSkeleton = (height = 'h-64') => (
     <div
@@ -163,202 +49,6 @@ const renderSectionSkeleton = (height = 'h-64') => (
     </div>
 )
 
-const toArray = (value) => {
-    if (Array.isArray(value)) {
-        return value.filter((entry) => entry != null)
-    }
-    return value != null ? [value] : []
-}
-
-const extractSizeFromName = (name) => {
-    if (typeof name !== 'string') return null
-    const match = name.match(/ - (.+)/)
-    return match ? match[1] : null
-}
-
-const groupLegacyProducts = (rawProducts) => {
-    const grouped = new Map()
-
-    rawProducts.forEach((product) => {
-        const name = product.name ?? product['name'] ?? ''
-        const category = product.category ?? product['category'] ?? ''
-        const key = `${name}|${category}`
-
-        if (!grouped.has(key)) {
-            grouped.set(key, {
-                ...product,
-                name,
-                category,
-                sizeSet: new Set(),
-                prices: {},
-                variantSet: new Set(),
-                idsSet: new Set(),
-                imageSet: new Set(),
-                descriptionSet: new Set(),
-                ratingSet: new Set(),
-                urlSet: new Set(),
-            })
-        }
-
-        const entry = grouped.get(key)
-
-        toArray(product.id).forEach((id) => {
-            entry.idsSet.add(id)
-        })
-        toArray(product.image).forEach((image) => {
-            entry.imageSet.add(image)
-        })
-        toArray(product.description).forEach((description) => {
-            entry.descriptionSet.add(description)
-        })
-        toArray(product.rating).forEach((rating) => {
-            entry.ratingSet.add(rating)
-        })
-        toArray(product.url).forEach((url) => {
-            entry.urlSet.add(url)
-        })
-        toArray(product.variants ?? product.variant).forEach((variant) => {
-            entry.variantSet.add(variant)
-        })
-
-        if (
-            Array.isArray(product.size_options) &&
-            product.size_options.length &&
-            product.prices &&
-            typeof product.prices === 'object'
-        ) {
-            product.size_options.forEach((size) => {
-                if (!size) return
-                if (!entry.sizeSet.has(size)) {
-                    entry.sizeSet.add(size)
-                }
-                const safeKey = clean(size)
-                if (
-                    safeKey &&
-                    Object.prototype.hasOwnProperty.call(product.prices, size)
-                ) {
-                    entry.prices[safeKey] = product.prices[size]
-                }
-            })
-        } else {
-            const inferredSize = extractSizeFromName(name)
-            if (inferredSize) {
-                if (!entry.sizeSet.has(inferredSize)) {
-                    entry.sizeSet.add(inferredSize)
-                }
-                const safeSize = clean(inferredSize)
-                if (safeSize && product.price != null) {
-                    entry.prices[safeSize] = product.price
-                }
-            }
-        }
-    })
-
-    return Array.from(grouped.values()).map((entry) => {
-        const {
-            sizeSet,
-            variantSet,
-            idsSet,
-            imageSet,
-            descriptionSet,
-            ratingSet,
-            urlSet,
-            ...rest
-        } = entry
-        return {
-            ...rest,
-            size_options: sortSizeOptions(Array.from(sizeSet)),
-            variants: Array.from(variantSet),
-            ids: Array.from(idsSet),
-            images: Array.from(imageSet),
-            descriptions: Array.from(descriptionSet),
-            ratings: Array.from(ratingSet),
-            urls: Array.from(urlSet),
-        }
-    })
-}
-
-const normalizeProducts = (rawProducts) => {
-    if (!Array.isArray(rawProducts)) return []
-
-    const isStructured = rawProducts.every(
-        (product) =>
-            Array.isArray(product.size_options) &&
-            product.size_options.length &&
-            product.prices &&
-            typeof product.prices === 'object' &&
-            Object.keys(product.prices).length
-    )
-
-    if (!isStructured) {
-        return groupLegacyProducts(rawProducts)
-    }
-
-    // Fast path: modern exports already include normalized sizes/prices.
-    return rawProducts.map((product) => ({
-        ...product,
-        size_options: sortSizeOptions(
-            Array.isArray(product.size_options)
-                ? [...product.size_options]
-                : toArray(product.size_options)
-        ),
-        prices:
-            product.prices && typeof product.prices === 'object'
-                ? { ...product.prices }
-                : {},
-        variants: toArray(product.variants ?? product.variant),
-        ids: toArray(product.ids ?? product.id),
-        images: toArray(product.images ?? product.image),
-        descriptions: toArray(product.descriptions ?? product.description),
-        ratings: toArray(product.ratings ?? product.rating),
-        urls: toArray(product.urls ?? product.url),
-    }))
-}
-
-const buildCategories = (products) =>
-    [
-        ...new Set(
-            products.map((product) => product.category).filter(Boolean)
-        ),
-    ]
-        .map((category) => {
-            const name = category
-                .replace(/-/g, ' ')
-                .replace(/\b\w/g, (match) => match.toUpperCase())
-                .trim()
-                .replace(/\s+/g, ' ')
-
-            const categoryId = slugify(category)
-
-            if (!categoryId) return null
-
-            return { id: categoryId, name }
-        })
-        .filter(Boolean)
-
-const generateProductAlt = (product) => {
-    if (!product || typeof product !== 'object') {
-        return 'Lab-tested hemp product available at Route 66 Hemp in St Robert, Missouri'
-    }
-
-    const segments = []
-
-    if (product.name) {
-        segments.push(product.name)
-    }
-
-    if (product.category) {
-        segments.push(product.category)
-    }
-
-    if (product.thca_percentage) {
-        segments.push(`${product.thca_percentage}% THCa`)
-    }
-
-    segments.push('Lab-Tested Hemp Product at Route 66 Hemp, St Robert, Missouri')
-
-    return segments.join(' - ')
-}
 
 const SITE_URL = 'https://www.route66hemp.com'
 
@@ -434,6 +124,21 @@ const LOCAL_LANDING_PAGES = {
             'We serve Route 66 travelers and local shoppers from St Robert, Waynesville, and the greater Fort Leonard Wood area.',
     },
 }
+
+const LOCAL_PAGE_LINKS = [
+    {
+        href: '/dispensary-st-robert-mo/',
+        label: 'Dispensary in St Robert, MO',
+    },
+    {
+        href: '/dispensary-near-fort-leonard-wood/',
+        label: 'Dispensary Near Fort Leonard Wood',
+    },
+    {
+        href: '/route-66-dispensary-st-robert-mo/',
+        label: 'Route 66 Dispensary St Robert, MO',
+    },
+]
 
 const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
     React.useEffect(() => {
@@ -516,9 +221,9 @@ const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
                 <section className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-900 dark:bg-emerald-950/40">
                     <h2 className="text-lg font-semibold text-slate-900 dark:text-white">More Local Dispensary Pages</h2>
                     <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
-                        {Object.values(LOCAL_LANDING_PAGES).map((landingPage) => (
-                            <li key={landingPage.slug}>
-                                <a href={`/${landingPage.slug}/`} className="text-emerald-700 hover:underline dark:text-emerald-300">{landingPage.h1}</a>
+                        {LOCAL_PAGE_LINKS.map((landingPage) => (
+                            <li key={landingPage.href}>
+                                <a href={landingPage.href} className="text-emerald-700 hover:underline dark:text-emerald-300">{landingPage.label}</a>
                             </li>
                         ))}
                     </ul>
@@ -540,105 +245,21 @@ export default function App() {
 
     const [appState, setAppState] = React.useState({
         isMobileMenuOpen: false,
-        selectedCategory: 'all',
-        products: [],
-        categories: [],
-        loading: false,
-        shouldLoadProducts: false,
-        hasLoadedProducts: false,
-        catalogRequestVersion: 0,
-        loadError: null,
+        isProductCatalogRequested: false,
     })
-    const [isFiltering, startFiltering] = React.useTransition()
-    const getPageSize = React.useCallback(() => {
-        if (typeof window === 'undefined') return PRODUCTS_PAGE_SIZE
-        return window.matchMedia('(max-width: 640px)').matches
-            ? MOBILE_PAGE_SIZE
-            : PRODUCTS_PAGE_SIZE
+    const [structuredDataProducts, setStructuredDataProducts] = React.useState([])
+    const requestProductCatalog = React.useCallback(() => {
+        setAppState((prevState) =>
+            prevState.isProductCatalogRequested
+                ? prevState
+                : { ...prevState, isProductCatalogRequested: true }
+        )
     }, [])
-    const [pageSize, setPageSize] = React.useState(getPageSize)
-    const [visibleCount, setVisibleCount] = React.useState(() =>
-        Math.max(pageSize, 1)
-    )
-
-    const [structuredDataState, setStructuredDataState] = React.useState({
-        products: [],
-        hasLoaded: false,
-    })
-
-    const productCatalogPromiseRef = React.useRef(null)
-
-    const fetchProductCatalog = React.useCallback(async () => {
-        if (!productCatalogPromiseRef.current) {
-            productCatalogPromiseRef.current = fetch('/products/products.json')
-                .then(async (response) => {
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch products')
-                    }
-                    const contentType = response.headers.get('content-type') ?? ''
-                    if (!contentType.includes('application/json')) {
-                        const bodyPreview = (await response.text()).slice(0, 120)
-                        throw new Error(
-                            `Expected JSON product catalog but received "${contentType || 'unknown'}": ${bodyPreview}`
-                        )
-                    }
-                    return response.json()
-                })
-                .then((productsData) => {
-                    const normalizedProducts = normalizeProducts(productsData)
-                    const categories = buildCategories(normalizedProducts)
-
-                    return {
-                        products: normalizedProducts,
-                        categories,
-                    }
-                })
-                .catch((error) => {
-                    productCatalogPromiseRef.current = null
-                    throw error
-                })
-        }
-
-        return productCatalogPromiseRef.current
+    const handleProductsLoaded = React.useCallback((products) => {
+        setStructuredDataProducts((prevProducts) =>
+            prevProducts === products ? prevProducts : products
+        )
     }, [])
-
-    const requestProductCatalog = React.useCallback(
-        (options = {}) => {
-            const { forceRetry = false } = options
-
-            setAppState((prevState) => {
-                if (prevState.hasLoadedProducts) {
-                    if (prevState.shouldLoadProducts) {
-                        return prevState
-                    }
-
-                    return { ...prevState, shouldLoadProducts: true }
-                }
-
-                if (!prevState.shouldLoadProducts) {
-                    return {
-                        ...prevState,
-                        shouldLoadProducts: true,
-                        catalogRequestVersion:
-                            prevState.catalogRequestVersion + 1,
-                        loadError: null,
-                    }
-                }
-
-                if (forceRetry || prevState.loadError) {
-                    return {
-                        ...prevState,
-                        catalogRequestVersion:
-                            prevState.catalogRequestVersion + 1,
-                        loadError: null,
-                    }
-                }
-
-                return prevState
-            })
-        },
-        []
-    )
 
     React.useEffect(() => {
         if (localLandingPage) {
@@ -653,109 +274,6 @@ export default function App() {
             requestProductCatalog()
         }
     }, [localLandingPage, requestProductCatalog])
-
-    const { shouldLoadProducts, hasLoadedProducts, catalogRequestVersion } =
-        appState
-
-    React.useEffect(() => {
-        if (localLandingPage) {
-            return undefined
-        }
-
-        if (
-            !shouldLoadProducts ||
-            hasLoadedProducts ||
-            catalogRequestVersion === 0
-        ) {
-            return undefined
-        }
-
-        let isCancelled = false
-
-        setAppState((prevState) =>
-            prevState.loading
-                ? prevState
-                : { ...prevState, loading: true }
-        )
-
-        const loadProducts = async () => {
-            try {
-                const { products: normalizedProducts, categories } =
-                    await fetchProductCatalog()
-
-                if (isCancelled) return
-
-                setAppState((prevState) => ({
-                    ...prevState,
-                    categories,
-                    products: normalizedProducts,
-                    loading: false,
-                    hasLoadedProducts: true,
-                    loadError: null,
-                }))
-            } catch (error) {
-                console.error('Error loading products:', error)
-                if (isCancelled) return
-                setAppState((prevState) => ({
-                    ...prevState,
-                    loading: false,
-                    loadError:
-                        'Unable to load the product catalog. Please try again.',
-                }))
-            }
-        }
-
-        loadProducts()
-
-        return () => {
-            isCancelled = true
-        }
-    }, [
-        shouldLoadProducts,
-        hasLoadedProducts,
-        catalogRequestVersion,
-        fetchProductCatalog,
-        localLandingPage,
-    ])
-
-    React.useEffect(() => {
-        if (localLandingPage) {
-            return undefined
-        }
-
-        let isCancelled = false
-
-        const preloadStructuredData = async () => {
-            try {
-                const { products: normalizedProducts } =
-                    await fetchProductCatalog()
-
-                if (isCancelled) return
-
-                setStructuredDataState((prevState) => {
-                    if (prevState.hasLoaded) {
-                        return prevState
-                    }
-
-                    return {
-                        products: normalizedProducts,
-                        hasLoaded: true,
-                    }
-                })
-            } catch (error) {
-                console.error(
-                    'Error preloading products for structured data:',
-                    error
-                )
-            }
-        }
-
-        preloadStructuredData()
-
-        return () => {
-            isCancelled = true
-        }
-    }, [fetchProductCatalog, localLandingPage])
 
     const handleNavigation = (e, targetId) => {
         e.preventDefault()
@@ -779,68 +297,6 @@ export default function App() {
         window.history.replaceState(null, '', window.location.pathname)
     }
 
-    const structuredDataProducts = React.useMemo(() => {
-        if (appState.hasLoadedProducts) {
-            return appState.products
-        }
-
-        return structuredDataState.hasLoaded
-            ? structuredDataState.products
-            : []
-    }, [
-        appState.hasLoadedProducts,
-        appState.products,
-        structuredDataState.hasLoaded,
-        structuredDataState.products,
-    ])
-
-    const filteredProducts = React.useMemo(() => {
-        if (appState.selectedCategory === 'all') {
-            return appState.products
-        }
-        return appState.products.filter(
-            (product) =>
-                slugify(product.category) === appState.selectedCategory
-        )
-    }, [appState.products, appState.selectedCategory])
-    const deferredProducts = React.useDeferredValue(filteredProducts)
-    const visibleProducts = React.useMemo(
-        () => deferredProducts.slice(0, visibleCount),
-        [deferredProducts, visibleCount]
-    )
-
-    React.useEffect(() => {
-        setVisibleCount(pageSize)
-    }, [appState.selectedCategory, deferredProducts.length, pageSize])
-
-    React.useEffect(() => {
-        if (typeof window === 'undefined') return undefined
-
-        const mediaQuery = window.matchMedia('(max-width: 640px)')
-        const handleChange = () => {
-            setPageSize(getPageSize())
-        }
-
-        handleChange()
-        if (mediaQuery.addEventListener) {
-            mediaQuery.addEventListener('change', handleChange)
-            return () => mediaQuery.removeEventListener('change', handleChange)
-        }
-
-        mediaQuery.addListener(handleChange)
-        return () => mediaQuery.removeListener(handleChange)
-    }, [getPageSize])
-
-    const handleCategorySelect = React.useCallback((categoryId) => {
-        startFiltering(() => {
-            setAppState((prevState) =>
-                prevState.selectedCategory === categoryId
-                    ? prevState
-                    : { ...prevState, selectedCategory: categoryId }
-            )
-        })
-    }, [startFiltering])
-
     if (localLandingPage) {
         return (
             <>
@@ -854,9 +310,8 @@ export default function App() {
             <div id="home"></div>
             <React.Suspense fallback={null}>
                 <StructuredData
-                    pageMode="listing"
-                    products={structuredDataProducts}
                     includeFaqSchema
+                    products={structuredDataProducts}
                 />
             </React.Suspense>
             <AgeGate />
@@ -1049,19 +504,6 @@ export default function App() {
                         </div>
                     </div>
                 </div>
-                <section id="local-pages" className="bg-emerald-50/70 py-12 dark:bg-emerald-950/20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Choose a Local Dispensary Page</h2>
-                        <p className="mt-3 max-w-3xl text-slate-700 dark:text-slate-300">
-                            Compare directions, parking details, service areas, and contact info for St Robert and Fort Leonard Wood visitors.
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-4">
-                            <a href="/dispensary-st-robert-mo/" className="text-emerald-700 hover:underline dark:text-emerald-300">Dispensary in St Robert, MO</a>
-                            <a href="/dispensary-near-fort-leonard-wood/" className="text-emerald-700 hover:underline dark:text-emerald-300">Dispensary Near Fort Leonard Wood</a>
-                            <a href="/route-66-dispensary-st-robert-mo/" className="text-emerald-700 hover:underline dark:text-emerald-300">Route 66 Dispensary St Robert, MO</a>
-                        </div>
-                    </div>
-                </section>
                 {/* Products Section */}
                 <div id="products" className="bg-slate-50 py-16 dark:bg-slate-900">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -1078,131 +520,14 @@ export default function App() {
                                 pricing.
                             </p>
                         </div>
-                        {appState.shouldLoadProducts ? (
-                            <>
-                                <div
-                                    className="mb-10 flex flex-wrap justify-center gap-3"
-                                    role="group"
-                                    aria-label="Filter products by category"
-                                >
-                                    <button
-                                        onClick={() => handleCategorySelect('all')}
-                                        aria-pressed={
-                                            appState.selectedCategory === 'all'
-                                        }
-                                        aria-label="Show all products"
-                                        className={`rounded-full border px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${appState.selectedCategory === 'all'
-                                            ? 'border-emerald-700 bg-emerald-600 text-white shadow-sm dark:border-emerald-500 dark:bg-emerald-500 dark:text-slate-950'
-                                            : 'border-slate-300 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600'
-                                            }`}
-                                    >
-                                        All Products
-                                    </button>
-                                    {appState.categories.map((category) => (
-                                        <button
-                                            key={category.id}
-                                            onClick={() => handleCategorySelect(category.id)}
-                                            aria-pressed={
-                                                appState.selectedCategory ===
-                                                category.id
-                                            }
-                                            aria-label={`Filter by ${category.name}`}
-                                            className={`rounded-full border px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${appState.selectedCategory ===
-                                                category.id
-                                                ? 'border-emerald-700 bg-emerald-600 text-white shadow-sm dark:border-emerald-500 dark:bg-emerald-500 dark:text-slate-950'
-                                                : 'border-slate-300 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600'
-                                                }`}
-                                        >
-                                            {category.name}
-                                        </button>
-                                    ))}
-                                </div>
-                                {appState.loading ? (
-                                    <div className="col-span-full flex items-center justify-center py-12">
-                                        <div className="leaf-loader">
-                                            <FontAwesomeIcon
-                                                icon={faCannabis}
-                                                className="text-5xl text-emerald-600 dark:text-emerald-500"
-                                                aria-hidden="true"
-                                            />
-                                        </div>
-                                        <span className="sr-only">
-                                            Loading products...
-                                        </span>
-                                    </div>
-                                ) : appState.loadError ? (
-                                    <div
-                                        role="alert"
-                                        aria-live="assertive"
-                                        className="col-span-full max-w-xl rounded-2xl border border-emerald-100 bg-emerald-50 p-8 text-center text-emerald-900 shadow-sm dark:border-emerald-900/40 dark:bg-emerald-900/30 dark:text-emerald-100"
-                                    >
-                                        <h3 className="text-lg font-semibold">We couldn&apos;t load today&apos;s product menu</h3>
-                                        <p className="mt-3 text-sm">
-                                            {appState.loadError}
-                                        </p>
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                requestProductCatalog({
-                                                    forceRetry: true,
-                                                })
-                                            }
-                                            className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-emerald-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-50 dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:focus-visible:ring-offset-transparent"
-                                        >
-                                            Try again
-                                        </button>
-                                    </div>
-                                ) : deferredProducts.length > 0 ? (
-                                    <>
-                                        <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                            {visibleProducts.map((product) => (
-                                                <ProductCard
-                                                    key={product.name + product.category}
-                                                    product={product}
-                                                />
-                                            ))}
-                                        </div>
-                                        {deferredProducts.length >
-                                            visibleProducts.length ? (
-                                            <div className="mt-10 text-center">
-                                                <button
-                                                    type="button"
-                                                    onClick={() =>
-                                                        startFiltering(() =>
-                                                            setVisibleCount(
-                                                                (count) =>
-                                                                    count +
-                                                                    pageSize
-                                                            )
-                                                        )
-                                                    }
-                                                    className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
-                                                >
-                                                    Load more products
-                                                </button>
-                                                <p className="mt-3 text-xs text-gray-500 dark:text-gray-300">
-                                                    Showing {visibleProducts.length} of{' '}
-                                                    {deferredProducts.length}
-                                                </p>
-                                            </div>
-                                        ) : null}
-                                    </>
-                                ) : (
-                                    <div className="col-span-full py-12 text-center">
-                                        <p className="text-gray-700 dark:text-white">
-                                            No products match this filter right now.
-                                        </p>
-                                    </div>
-                                )}
-                                {isFiltering && (
-                                    <div
-                                        className="mt-6 text-center text-sm text-gray-500 dark:text-gray-300"
-                                        aria-live="polite"
-                                    >
-                                        Refreshing product list...
-                                    </div>
-                                )}
-                            </>
+                        {appState.isProductCatalogRequested ? (
+                            <React.Suspense
+                                fallback={renderSectionSkeleton('h-[32rem]')}
+                            >
+                                <ProductCatalogSection
+                                    onProductsLoaded={handleProductsLoaded}
+                                />
+                            </React.Suspense>
                         ) : (
                             <div className="mx-auto max-w-2xl rounded-2xl bg-linear-to-r from-emerald-800 to-emerald-700 p-8 text-center shadow-lg dark:from-emerald-900 dark:to-emerald-800">
                                 <p className="text-lg font-semibold text-white">
@@ -1378,6 +703,33 @@ export default function App() {
                 <React.Suspense fallback={renderSectionSkeleton('h-72')}>
                     <LocationContent />
                 </React.Suspense>
+                <section
+                    id="local-pages"
+                    className="bg-emerald-50/60 py-12 dark:bg-emerald-950/15"
+                >
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                                Explore Local Dispensary Pages
+                            </h2>
+                            <p className="mt-3 text-slate-700 dark:text-slate-300">
+                                Compare directions, local access, and Fort Leonard
+                                Wood convenience before you visit.
+                            </p>
+                        </div>
+                        <div className="mt-8 grid gap-4 md:grid-cols-3">
+                            {LOCAL_PAGE_LINKS.map((link) => (
+                                <a
+                                    key={link.href}
+                                    href={link.href}
+                                    className="rounded-2xl border border-emerald-100 bg-white px-5 py-4 text-sm font-semibold text-emerald-800 shadow-sm transition-colors hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-emerald-900/40 dark:bg-slate-900 dark:text-emerald-300 dark:hover:bg-emerald-950/30"
+                                >
+                                    {link.label}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </section>
                 {/* Google Business Integration */}
                 <React.Suspense fallback={renderSectionSkeleton('h-80')}>
                     <GoogleBusinessIntegration />
@@ -1507,15 +859,11 @@ export default function App() {
                                             About Us
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Dispensary in St Robert, MO</a>
-                                    </li>
-                                    <li>
-                                        <a href="/dispensary-near-fort-leonard-wood/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Dispensary Near Fort Leonard Wood</a>
-                                    </li>
-                                    <li>
-                                        <a href="/route-66-dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Route 66 Hemp Dispensary</a>
-                                    </li>
+                                    {LOCAL_PAGE_LINKS.map((link) => (
+                                        <li key={link.href}>
+                                            <a href={link.href} className="text-sm text-slate-300 transition-colors hover:text-emerald-300">{link.label}</a>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                             <div className="mt-12 md:mt-0">
@@ -1668,292 +1016,13 @@ const BackToTopButton = React.memo(function BackToTopButton() {
 
 BackToTopButton.displayName = 'BackToTopButton'
 
-// ProductCard component for displaying product with size dropdown and dynamic price
-function slugify(str = '') {
-    return String(str)
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '')
+const rootElement = document.getElementById('root')
+
+if (rootElement) {
+    const root = ReactDOM.createRoot(rootElement)
+    root.render(
+        <ErrorBoundary>
+            <App />
+        </ErrorBoundary>
+    )
 }
-
-
-const getPlaceholderForCategory = (category) => {
-    switch (category) {
-        case 'Flower':
-            return '/assets/images/route-66-hemp-flower-placeholder'
-        case 'Edibles':
-            return '/assets/images/route-66-hemp-edibles-placeholder'
-        case 'Concentrates':
-            return '/assets/images/route-66-hemp-concentrates-placeholder'
-        case 'Vapes & Carts':
-            return '/assets/images/route-66-hemp-vapes-placeholder'
-        case 'Diamonds & Sauce':
-            return '/assets/images/route-66-hemp-diamonds-placeholder'
-        default:
-            return '/assets/images/route-66-hemp-product-placeholder'
-    }
-}
-
-const PRODUCTS_PAGE_SIZE = 12
-const MOBILE_PAGE_SIZE = 8
-
-const ProductCard = React.memo(function ProductCard({ product }) {
-    // Generate combined options if both flavors and size_options exist
-    const combinedOptions = React.useMemo(() => {
-        if (
-            product.flavors &&
-            product.flavors.length > 0 &&
-            product.size_options &&
-            product.size_options.length > 0
-        ) {
-            // Combine each flavor with each size option
-            return product.flavors.flatMap((flavor) =>
-                product.size_options.map((size) => ({
-                    label: `${flavor} - ${size}`,
-                    flavor,
-                    size,
-                }))
-            )
-        }
-        return []
-    }, [product.flavors, product.size_options])
-
-    // State for combined selection
-    const [selectedCombo, setSelectedCombo] = React.useState(
-        combinedOptions.length > 0 ? combinedOptions[0] : null
-    )
-    // Fallback for only size or only flavor
-    const [selectedSize, setSelectedSize] = React.useState(
-        !combinedOptions.length &&
-            product.size_options &&
-            product.size_options.length > 0
-            ? product.size_options[0]
-            : null
-    )
-    const [selectedFlavor, setSelectedFlavor] = React.useState(
-        !combinedOptions.length && product.flavors && product.flavors.length > 0
-            ? product.flavors[0]
-            : null
-    )
-
-    // Determine price
-    let price = product.price
-    if (combinedOptions.length > 0 && selectedCombo) {
-        // If we have combined options, check if the price is defined for the selected size
-        if (
-            product.prices &&
-            product.prices[selectedCombo.size] !== undefined
-        ) {
-            price = product.prices[selectedCombo.size]
-        }
-    } else if (
-        selectedSize &&
-        product.prices &&
-        product.prices[selectedSize] !== undefined
-    ) {
-        // If we have a selected size, check if the price is defined for that size
-        price = product.prices[selectedSize]
-    } else if (!selectedSize && selectedFlavor && product.price) {
-        // If we have a selected flavor but no selected size, use the default price
-        price = product.price
-    }
-
-    // Determine banner based on selected variant
-    let banner = product.banner
-    let bannerKey = null
-    if (combinedOptions.length > 0 && selectedCombo) {
-        bannerKey = selectedCombo.label
-    } else if (selectedSize) {
-        bannerKey = selectedSize
-    } else if (selectedFlavor) {
-        bannerKey = selectedFlavor
-    }
-    if (bannerKey && product.availability) {
-        if (product.availability[bannerKey]) {
-            banner = product.availability[bannerKey]
-        } else if (selectedCombo && product.availability[selectedCombo.size]) {
-            banner = product.availability[selectedCombo.size]
-        } else if (selectedFlavor && product.availability[selectedFlavor]) {
-            banner = product.availability[selectedFlavor]
-        } else if (selectedSize && product.availability[selectedSize]) {
-            banner = product.availability[selectedSize]
-        }
-    }
-
-    // Render a product card with the given product data
-    // This component is complicated because it needs to handle three different cases:
-    // 1. The product has both flavors and size options
-    // 2. The product has only flavors
-    // 3. The product has only size options
-    // It also needs to dynamically calculate the price based on the selected flavor and size
-    return (
-        <div
-            id={`product-${slugify(product.category)}-${slugify(product.name)}`}
-            className="product-card group relative rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
-        // This class is for the card shadow effect
-        >
-            {banner && (
-                <div className="product-banner" aria-label={banner}>
-                    {banner}
-                </div>
-            )}
-            <ResponsiveImage
-                src={
-                    product.image ||
-                    (Array.isArray(product.images) && product.images[0]) ||
-                    getPlaceholderForCategory(product.category)
-                }
-
-                alt={generateProductAlt(product)}
-                width={400}
-                height={400}
-                className="mb-5 h-52 w-full rounded-xl object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                {product.name}
-            </h3>
-            <p className="mt-1 text-sm font-semibold text-black dark:text-white">
-                {product.category}
-            </p>
-            <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-white">
-                {product.description ||
-                    (product.descriptions && product.descriptions[0])}
-            </p>
-            {/* Combined dropdown for flavor + size */}
-            {combinedOptions.length > 0 && (
-                <div className="mt-2">
-                    <label
-                        htmlFor={`combo-${product.name}`}
-                        className="mb-1 block text-xs font-semibold text-black dark:text-white"
-                    >
-                        Flavor & Size:
-                    </label>
-                    <select
-                        id={`combo-${product.name}`}
-                        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
-                        value={selectedCombo ? selectedCombo.label : ''}
-                        onChange={(e) => {
-                            // When the user selects a new option, update the selectedCombo state
-                            const combo = combinedOptions.find(
-                                (opt) => opt.label === e.target.value
-                            )
-                            setSelectedCombo(combo)
-                        }}
-                        aria-label="Select flavor and size"
-                    >
-                        {combinedOptions.map((opt) => (
-                            <option key={opt.label} value={opt.label}>
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            )}
-            {/* Size dropdown (if no flavors) */}
-            {!combinedOptions.length &&
-                product.size_options &&
-                product.size_options.length > 0 && (
-                    <div className="mt-2">
-                        <label
-                            htmlFor={`size-${product.name}`}
-                            className="mb-1 block text-xs font-semibold text-black dark:text-white"
-                        >
-                            {/* Use 'Strain' for Vapes & Carts and Other, otherwise 'Size' */}
-                            {['Vapes & Carts', 'Other'].includes(
-                                product.category
-                            )
-                                ? 'Strain:'
-                                : 'Size:'}
-                        </label>
-                        <select
-                            id={`size-${product.name}`}
-                            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
-                            value={selectedSize}
-                            onChange={(e) => setSelectedSize(e.target.value)}
-                            aria-label={
-                                ['Vapes & Carts', 'Other'].includes(
-                                    product.category
-                                )
-                                    ? 'Select strain'
-                                    : 'Select size'
-                            }
-                        >
-                            {product.size_options.map((size) => (
-                                <option key={size} value={size}>
-                                    {size}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                )}
-            {/* Flavor dropdown (if no sizes) */}
-            {!combinedOptions.length &&
-                product.flavors &&
-                product.flavors.length > 0 && (
-                    <div className="mt-2">
-                        <label
-                            htmlFor={`flavor-${product.name}`}
-                            className="mb-1 block text-xs text-gray-600 dark:text-white"
-                        >
-                            Flavor:
-                        </label>
-                        <select
-                            id={`flavor-${product.name}`}
-                            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
-                            value={selectedFlavor}
-                            onChange={(e) => setSelectedFlavor(e.target.value)}
-                            aria-label="Select flavor"
-                        >
-                            {product.flavors.map((flavor) => (
-                                <option key={flavor} value={flavor}>
-                                    {flavor}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                )}
-            <p className="mt-2 font-medium text-gray-900 dark:text-white">
-                {/* Dynamically calculate the price based on the selected flavor and size */}
-                ${price ? price.toFixed(2) : 'N/A'}
-            </p>
-            <div className="mt-1 flex items-center">
-                {/* Render the rating stars */}
-                {[...Array(5)].map((_, i) => (
-                    <FontAwesomeIcon
-                        key={i}
-                        icon={
-                            i <
-                                Math.floor(
-                                    product.rating ||
-                                    (product.ratings && product.ratings[0]) ||
-                                    5
-                                )
-                                ? faStarSolid
-                                : faStarRegular
-                        }
-                        className="text-xs text-yellow-600"
-                        aria-hidden="true"
-                    />
-                ))}
-                <span className="ml-1 text-xs text-gray-700 dark:text-white">
-                    {/* Show the rating number */}(
-                    {product.rating ||
-                        (product.ratings && product.ratings[0]) ||
-                        5}
-                    )
-                </span>
-            </div>
-        </div>
-    )
-})
-
-ProductCard.displayName = 'ProductCard'
-
-const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(
-    <ErrorBoundary>
-        <App />
-    </ErrorBoundary>
-)
