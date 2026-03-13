@@ -16,10 +16,12 @@
     "name": "Big Foot Glue",
     "category": "Flower",
     "size_options": [
-      "1/8 oz"
+      "1/8 oz",
+      "1/4 oz"
     ],
     "prices": {
-      "1/8 oz": 20
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "thca_percentage": 26,
     "banner": "New"
@@ -52,19 +54,6 @@
     "banner": "New"
   },
   {
-    "name": "Black Raspberry Live Resin Gummies - 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
-    },
-    "banner": "New"
-  },
-  {
     "name": "Bubblegum Cherries",
     "category": "Flower",
     "size_options": [
@@ -80,32 +69,6 @@
     "banner": "New"
   },
   {
-    "name": "Citrus Cola Live Resin Gummies - 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Cotton Candy Lemonade Live Resin Gummies - 25 mg",
-    "category": "Edibles",
-    "size_options": [
-      "4 count",
-      "2 count"
-    ],
-    "prices": {
-      "4 count": 10,
-      "2 count": 5
-    },
-    "banner": "New"
-  },
-  {
     "name": "Dantes Inferno",
     "category": "Flower",
     "size_options": [
@@ -117,72 +80,6 @@
       "1/4 oz": 50,
       "1/8 oz": 25,
       "1 oz": 200
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Apple Lemonade 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Blue Raspberry 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Sour Cherry Lemon 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Sour Orange Lemon Lime 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Sour Strawberry Raspberry 200mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 13.49
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Fat Boys - Unicorn Blood- Fruit Punch 100mg THCa + 100mg caffeine",
-    "category": "Edibles",
-    "size_options": [
-      "16 oz can"
-    ],
-    "prices": {
-      "16 oz can": 12.49
     },
     "banner": "New"
   },
@@ -596,6 +493,18 @@
     "banner": "New"
   },
   {
+    "name": "Black Raspberry Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    }
+  },
+  {
     "name": "Blue Razz Live Resin Gummies - 25 mg",
     "category": "Edibles",
     "size_options": [
@@ -660,6 +569,18 @@
     "thca_percentage": 97.1
   },
   {
+    "name": "Citrus Cola Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
+    }
+  },
+  {
     "name": "Citrus Fuel",
     "category": "Flower",
     "size_options": [
@@ -697,6 +618,18 @@
     ],
     "prices": {
       "12 oz can": 8
+    }
+  },
+  {
+    "name": "Cotton Candy Lemonade Live Resin Gummies - 25 mg",
+    "category": "Edibles",
+    "size_options": [
+      "4 count",
+      "2 count"
+    ],
+    "prices": {
+      "4 count": 10,
+      "2 count": 5
     }
   },
   {
@@ -740,6 +673,66 @@
     ],
     "prices": {
       "10ct": 25
+    }
+  },
+  {
+    "name": "Fat Boys - Apple Lemonade 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
+    }
+  },
+  {
+    "name": "Fat Boys - Blue Raspberry 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
+    }
+  },
+  {
+    "name": "Fat Boys - Sour Cherry Lemon 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    }
+  },
+  {
+    "name": "Fat Boys - Sour Orange Lemon Lime 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    }
+  },
+  {
+    "name": "Fat Boys - Sour Strawberry Raspberry 200mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 13.49
+    }
+  },
+  {
+    "name": "Fat Boys - Unicorn Blood- Fruit Punch 100mg THCa + 100mg caffeine",
+    "category": "Edibles",
+    "size_options": [
+      "16 oz can"
+    ],
+    "prices": {
+      "16 oz can": 12.49
     }
   },
   {

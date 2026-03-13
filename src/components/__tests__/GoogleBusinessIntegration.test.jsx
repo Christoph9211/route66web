@@ -10,8 +10,8 @@ describe('GoogleBusinessIntegration', () => {
             screen.getByRole('heading', { name: /google reviews/i })
         ).toBeInTheDocument()
         expect(screen.getByText(/best place in this area/i)).toBeInTheDocument()
-        expect(screen.getByText('Bri Bunch')).toBeInTheDocument()
-        expect(screen.getByText('Jennifer Hoffman')).toBeInTheDocument()
+        expect(screen.getByText('Bri B.')).toBeInTheDocument()
+        expect(screen.getByText('Jennifer H.')).toBeInTheDocument()
         expect(
             screen.getByRole('link', { name: /open google maps/i })
         ).toHaveAttribute(
