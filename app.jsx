@@ -125,6 +125,21 @@ const LOCAL_LANDING_PAGES = {
     },
 }
 
+const LOCAL_PAGE_LINKS = [
+    {
+        href: '/dispensary-st-robert-mo/',
+        label: 'Dispensary in St Robert, MO',
+    },
+    {
+        href: '/dispensary-near-fort-leonard-wood/',
+        label: 'Dispensary Near Fort Leonard Wood',
+    },
+    {
+        href: '/route-66-dispensary-st-robert-mo/',
+        label: 'Route 66 Dispensary St Robert, MO',
+    },
+]
+
 const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
     React.useEffect(() => {
         document.title = page.title
@@ -206,9 +221,9 @@ const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
                 <section className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-900 dark:bg-emerald-950/40">
                     <h2 className="text-lg font-semibold text-slate-900 dark:text-white">More Local Dispensary Pages</h2>
                     <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
-                        {Object.values(LOCAL_LANDING_PAGES).map((landingPage) => (
-                            <li key={landingPage.slug}>
-                                <a href={`/${landingPage.slug}/`} className="text-emerald-700 hover:underline dark:text-emerald-300">{landingPage.h1}</a>
+                        {LOCAL_PAGE_LINKS.map((landingPage) => (
+                            <li key={landingPage.href}>
+                                <a href={landingPage.href} className="text-emerald-700 hover:underline dark:text-emerald-300">{landingPage.label}</a>
                             </li>
                         ))}
                     </ul>
@@ -480,19 +495,6 @@ export default function App() {
                         </div>
                     </div>
                 </div>
-                <section id="local-pages" className="bg-emerald-50/70 py-12 dark:bg-emerald-950/20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Choose a Local Dispensary Page</h2>
-                        <p className="mt-3 max-w-3xl text-slate-700 dark:text-slate-300">
-                            Compare directions, parking details, service areas, and contact info for St Robert and Fort Leonard Wood visitors.
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-4">
-                            <a href="/dispensary-st-robert-mo/" className="text-emerald-700 hover:underline dark:text-emerald-300">Dispensary in St Robert, MO</a>
-                            <a href="/dispensary-near-fort-leonard-wood/" className="text-emerald-700 hover:underline dark:text-emerald-300">Dispensary Near Fort Leonard Wood</a>
-                            <a href="/route-66-dispensary-st-robert-mo/" className="text-emerald-700 hover:underline dark:text-emerald-300">Route 66 Dispensary St Robert, MO</a>
-                        </div>
-                    </div>
-                </section>
                 {/* Products Section */}
                 <div id="products" className="bg-slate-50 py-16 dark:bg-slate-900">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -690,6 +692,33 @@ export default function App() {
                 <React.Suspense fallback={renderSectionSkeleton('h-72')}>
                     <LocationContent />
                 </React.Suspense>
+                <section
+                    id="local-pages"
+                    className="bg-emerald-50/60 py-12 dark:bg-emerald-950/15"
+                >
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                                Explore Local Dispensary Pages
+                            </h2>
+                            <p className="mt-3 text-slate-700 dark:text-slate-300">
+                                Compare directions, local access, and Fort Leonard
+                                Wood convenience before you visit.
+                            </p>
+                        </div>
+                        <div className="mt-8 grid gap-4 md:grid-cols-3">
+                            {LOCAL_PAGE_LINKS.map((link) => (
+                                <a
+                                    key={link.href}
+                                    href={link.href}
+                                    className="rounded-2xl border border-emerald-100 bg-white px-5 py-4 text-sm font-semibold text-emerald-800 shadow-sm transition-colors hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-emerald-900/40 dark:bg-slate-900 dark:text-emerald-300 dark:hover:bg-emerald-950/30"
+                                >
+                                    {link.label}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </section>
                 {/* Google Business Integration */}
                 <React.Suspense fallback={renderSectionSkeleton('h-80')}>
                     <GoogleBusinessIntegration />
@@ -819,15 +848,11 @@ export default function App() {
                                             About Us
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Dispensary in St Robert, MO</a>
-                                    </li>
-                                    <li>
-                                        <a href="/dispensary-near-fort-leonard-wood/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Dispensary Near Fort Leonard Wood</a>
-                                    </li>
-                                    <li>
-                                        <a href="/route-66-dispensary-st-robert-mo/" className="text-sm text-slate-300 transition-colors hover:text-emerald-300">Route 66 Hemp Dispensary</a>
-                                    </li>
+                                    {LOCAL_PAGE_LINKS.map((link) => (
+                                        <li key={link.href}>
+                                            <a href={link.href} className="text-sm text-slate-300 transition-colors hover:text-emerald-300">{link.label}</a>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                             <div className="mt-12 md:mt-0">

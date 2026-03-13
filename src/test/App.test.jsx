@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, beforeEach, afterEach, expect, it, vi } from 'vitest'
 import App from '../../app.jsx'
@@ -67,6 +67,54 @@ describe('App product catalog loading', () => {
         expect(scripts.some((entry) => entry['@type'] === 'ItemList')).toBe(false)
         expect(
             screen.getByRole('button', { name: 'Load Product Menu' })
+        ).toBeInTheDocument()
+    })
+
+    it('renders the local-page links after the location content section', async () => {
+        render(<App />)
+
+        const localPagesHeading = await screen.findByRole('heading', {
+            name: 'Explore Local Dispensary Pages',
+        })
+        const locationHeading = screen.getByRole('heading', {
+            name: 'Serving St Robert and Surrounding Communities',
+        })
+        const reviewsHeading = screen.getByRole('heading', {
+            name: 'Google Reviews',
+        })
+
+        expect(
+            screen.queryByRole('heading', {
+                name: 'Choose a Local Dispensary Page',
+            })
+        ).not.toBeInTheDocument()
+
+        const localPagesSection = localPagesHeading.closest('section')
+        expect(localPagesSection).not.toBeNull()
+        expect(
+            locationHeading.compareDocumentPosition(localPagesSection) &
+                Node.DOCUMENT_POSITION_FOLLOWING
+        ).toBeTruthy()
+        expect(
+            localPagesSection.compareDocumentPosition(reviewsHeading) &
+                Node.DOCUMENT_POSITION_FOLLOWING
+        ).toBeTruthy()
+
+        const scopedQueries = within(localPagesSection)
+        expect(
+            scopedQueries.getByRole('link', {
+                name: 'Dispensary in St Robert, MO',
+            })
+        ).toBeInTheDocument()
+        expect(
+            scopedQueries.getByRole('link', {
+                name: 'Dispensary Near Fort Leonard Wood',
+            })
+        ).toBeInTheDocument()
+        expect(
+            scopedQueries.getByRole('link', {
+                name: 'Route 66 Dispensary St Robert, MO',
+            })
         ).toBeInTheDocument()
     })
 
