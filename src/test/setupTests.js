@@ -37,3 +37,33 @@ if (
         configurable: true,
     })
 }
+
+if (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia !== 'function'
+) {
+    Object.defineProperty(window, 'matchMedia', {
+        writable: true,
+        configurable: true,
+        value: (query) => ({
+            matches: false,
+            media: query,
+            onchange: null,
+            addListener() {},
+            removeListener() {},
+            addEventListener() {},
+            removeEventListener() {},
+            dispatchEvent() {
+                return false
+            },
+        }),
+    })
+}
+
+if (
+    typeof window !== 'undefined' &&
+    typeof window.HTMLElement !== 'undefined' &&
+    typeof window.HTMLElement.prototype.scrollIntoView !== 'function'
+) {
+    window.HTMLElement.prototype.scrollIntoView = function scrollIntoView() {}
+}
