@@ -11,7 +11,9 @@
  */
 
 (function () {
-  const GA_ID = window.VITE_GA_ID || "G-RGSJT8T1EF";
+  const DEFAULT_GA_ID = "G-RGSJT8T1EF";
+  const GOOGLE_TAG_ID_PATTERN = /^(?:G|GT|AW|DC)-[A-Z0-9]+$/;
+  const GA_ID = resolveGoogleTagId();
   const SCRIPT_ID = "ga4-base-script";
   const CONSENT_DENIED_STATE = {
     ad_storage: "denied",
@@ -29,6 +31,17 @@
   };
   let activationHandle = null;
   let activationHandleType = null;
+
+  function resolveGoogleTagId() {
+    const configuredId =
+      typeof window.VITE_GA_ID === "string" ? window.VITE_GA_ID.trim() : "";
+
+    if (GOOGLE_TAG_ID_PATTERN.test(configuredId)) {
+      return configuredId;
+    }
+
+    return DEFAULT_GA_ID;
+  }
 
   function getSafeLocalStorage() {
     try {
