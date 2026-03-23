@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THCa Dispensary in St Robert, MO | Route 66 Hemp Near Fort Leonard Wood</title>
 
-    <!-- GA is now loaded via consent helper (analytics-consent.js) -->
+    <!-- Google tag consent bootstrap -->
 
     <link href="/src/style.css" rel="stylesheet">
 
@@ -73,6 +73,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
     </noscript>
 
+    <script>
+        window.VITE_GA_ID = "%VITE_GA_ID%";
+    </script>
+    <script src="/analytics-consent.js"></script>
 </head>
 
 <body class="bg-gray-50 font-sans antialiased dark:bg-gray-900">
@@ -83,14 +87,6 @@
     <!-- Your app bundle -->
     <!-- Your app bundle -->
     <script type="module" src="/app.jsx"></script>
-
-    <!-- Inject Environment Variables for Public Scripts -->
-    <script>
-        window.VITE_GA_ID = "%VITE_GA_ID%";
-    </script>
-
-    <!-- Analytics Consent Helper (loads GA only after age+consent) -->
-    <script src="/analytics-consent.js"></script>
 
     <!-- Cookie Banner Start -->
     <style>

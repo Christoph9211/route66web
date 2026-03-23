@@ -11,7 +11,10 @@
  */
 
 (function () {
-  const GA_ID = window.VITE_GA_ID || "G-RGSJT8T1EF";
+  const DEFAULT_GA_ID = "G-RGSJT8T1EF";
+  const GOOGLE_TAG_ID_PATTERN = /^(?:G|GT|AW|DC)-[A-Z0-9]+$/;
+  const googleTagConfig = resolveGoogleTagConfig();
+  const GA_ID = googleTagConfig.id;
   const SCRIPT_ID = "ga4-base-script";
   const CONSENT_DENIED_STATE = {
     ad_storage: "denied",
@@ -29,6 +32,29 @@
   };
   let activationHandle = null;
   let activationHandleType = null;
+
+  function resolveGoogleTagConfig() {
+    const configuredId =
+      typeof window.VITE_GA_ID === "string" ? window.VITE_GA_ID.trim() : "";
+
+    if (GOOGLE_TAG_ID_PATTERN.test(configuredId)) {
+      return {
+        id: configuredId,
+        usedFallback: false,
+      };
+    }
+
+    return {
+      id: DEFAULT_GA_ID,
+      usedFallback: true,
+    };
+  }
+
+  if (googleTagConfig.usedFallback && typeof console !== "undefined" && console.warn) {
+    console.warn(
+      "VITE_GA_ID is missing or invalid; falling back to the default Google tag ID."
+    );
+  }
 
   function getSafeLocalStorage() {
     try {
