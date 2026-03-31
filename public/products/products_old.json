@@ -54,6 +54,46 @@
     "banner": "New"
   },
   {
+    "name": "Blue Cheese",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/4 oz": 30,
+      "1/8 oz": 15
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Blue Gelatti Snowcaps",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50
+    },
+    "thca_percentage": 67,
+    "banner": "New"
+  },
+  {
+    "name": "Blue Halo",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/4 oz": 32.5,
+      "1/8 oz": 18
+    },
+    "banner": "New"
+  },
+  {
     "name": "Bubblegum Cherries",
     "category": "Flower",
     "size_options": [
@@ -65,6 +105,19 @@
       "1/8 oz": 20,
       "1/4 oz": 40,
       "1 oz": 150
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Candy Fumes",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -137,6 +190,19 @@
     "banner": "New"
   },
   {
+    "name": "Frosted Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "New"
+  },
+  {
     "name": "Garlic Cookies Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -148,6 +214,19 @@
       "3 grams": 25
     },
     "thca_percentage": 99.2,
+    "banner": "New"
+  },
+  {
+    "name": "GMO",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
     "banner": "New"
   },
   {
@@ -172,8 +251,22 @@
       "1/8 oz"
     ],
     "prices": {
-      "1/8 oz": 18
+      "1/8 oz": 20
     },
+    "banner": "New"
+  },
+  {
+    "name": "Grape Jelly Rancher Snowcaps",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50
+    },
+    "thca_percentage": 69,
     "banner": "New"
   },
   {
@@ -186,6 +279,19 @@
     "prices": {
       "4 count": 10,
       "2 count": 5
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Horchata",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -213,6 +319,32 @@
       "Diamond Gelato-Gary Payton Cannagar": 20,
       "Diamond Northern Lights-GDP Cannagar": 20,
       "Hash Infused Jet Fighter": 10
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Jelly Cake",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Lemon Cherry Gelato",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/4 oz": 32.5,
+      "1/8 oz": 18
     },
     "banner": "New"
   },
@@ -258,6 +390,19 @@
     ],
     "prices": {
       "12 oz can": 10
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Moraccan Peach",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -381,6 +526,19 @@
     "prices": {
       "4 count": 12,
       "2 count": 6
+    },
+    "banner": "New"
+  },
+  {
+    "name": "Rainbow Sherbert",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -776,21 +934,6 @@
       "1/4 oz": 40,
       "1 oz": 150
     }
-  },
-  {
-    "name": "GSC Snowcaps",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "ounce"
-    ],
-    "prices": {
-      "1/8 oz": 25,
-      "1/4 oz": 50,
-      "ounce": 200
-    },
-    "thca_percentage": 63.09
   },
   {
     "name": "Ice Cream Cake Saucy Diamonds",
