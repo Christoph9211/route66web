@@ -555,6 +555,19 @@
     "banner": "New"
   },
   {
+    "name": "Runtz Crumble",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "banner": "New"
+  },
+  {
     "name": "Space Junky",
     "category": "Concentrates",
     "size_options": [
@@ -609,15 +622,42 @@
     "banner": "New"
   },
   {
+    "name": "Train Wreck",
+    "category": "Concentrates",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 10,
+      "3 grams": 25
+    },
+    "banner": "New"
+  },
+  {
     "name": "Two Gram Vapes",
     "category": "Vapes & Carts",
     "size_options": [
-      "Bruce Banner",
-      "Alaskan Thunder F***"
+      "Unicorn Burps",
+      "Watermelon OG",
+      "Strawberry Milk",
+      "Bubble Gum Blitz",
+      "Citrus Circus",
+      "Lime Lite",
+      "Peaches & Cream",
+      "Strawberry Cheesecake",
+      "Space Cake"
     ],
     "prices": {
-      "Bruce Banner": 30,
-      "Alaskan Thunder F***": 30
+      "Unicorn Burps": 35.99,
+      "Watermelon OG": 29.99,
+      "Strawberry Milk": 29.99,
+      "Bubble Gum Blitz": 35.99,
+      "Citrus Circus": 35.99,
+      "Lime Lite": 35.99,
+      "Peaches & Cream": 35.99,
+      "Strawberry Cheesecake": 35.99,
+      "Space Cake": 29.99
     },
     "banner": "New",
     "availability": {}
@@ -686,18 +726,6 @@
       "3 grams": 25
     },
     "thca_percentage": 97.7
-  },
-  {
-    "name": "Blueberry Muffin Diamonds",
-    "category": "Diamonds & Sauce",
-    "size_options": [
-      "1 gram",
-      "3 grams"
-    ],
-    "prices": {
-      "1 gram": 15,
-      "3 grams": 40
-    }
   },
   {
     "name": "Blueberry Muffin Flower",
@@ -1053,6 +1081,19 @@
       "1/8 oz": 20,
       "1/4 oz": 40,
       "ounce": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Blueberry Muffin Diamonds",
+    "category": "Diamonds & Sauce",
+    "size_options": [
+      "1 gram",
+      "3 grams"
+    ],
+    "prices": {
+      "1 gram": 15,
+      "3 grams": 40
     },
     "banner": "Out of Stock"
   },
