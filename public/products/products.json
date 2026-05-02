@@ -1,32 +1,5 @@
 [
   {
-    "name": "Afternoon Delight",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Big Foot Glue",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
-    },
-    "thca_percentage": 26,
-    "banner": "New"
-  },
-  {
     "name": "Biscotti Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -41,28 +14,32 @@
     "banner": "New"
   },
   {
-    "name": "Black Ice",
+    "name": "Black Cherry Funk",
     "category": "Flower",
     "size_options": [
       "1/4 oz",
-      "1/8 oz"
+      "1/8 oz",
+      "1 oz"
     ],
     "prices": {
-      "1/4 oz": 40,
-      "1/8 oz": 20
+      "1/4 oz": 50,
+      "1/8 oz": 25,
+      "1 oz": 200
     },
     "banner": "New"
   },
   {
-    "name": "Blue Cheese",
+    "name": "Blackberry Superboof",
     "category": "Flower",
     "size_options": [
       "1/4 oz",
-      "1/8 oz"
+      "1/8 oz",
+      "1 oz"
     ],
     "prices": {
-      "1/4 oz": 30,
-      "1/8 oz": 15
+      "1/4 oz": 50,
+      "1/8 oz": 25,
+      "1 oz": 200
     },
     "banner": "New"
   },
@@ -94,21 +71,6 @@
     "banner": "New"
   },
   {
-    "name": "Bubblegum Cherries",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "New"
-  },
-  {
     "name": "Candy Fumes",
     "category": "Flower",
     "size_options": [
@@ -122,17 +84,15 @@
     "banner": "New"
   },
   {
-    "name": "Dantes Inferno",
+    "name": "Candy Land Snowcaps",
     "category": "Flower",
     "size_options": [
-      "1/4 oz",
       "1/8 oz",
-      "1 oz"
+      "1/4 oz"
     ],
     "prices": {
-      "1/4 oz": 50,
       "1/8 oz": 25,
-      "1 oz": 200
+      "1/4 oz": 50
     },
     "banner": "New"
   },
@@ -190,19 +150,6 @@
     "banner": "New"
   },
   {
-    "name": "Frosted Kush",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
-    },
-    "banner": "New"
-  },
-  {
     "name": "Garlic Cookies Crumble",
     "category": "Concentrates",
     "size_options": [
@@ -226,21 +173,6 @@
     "prices": {
       "1/8 oz": 20,
       "1/4 oz": 40
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Gorilla Breath",
-    "category": "Flower",
-    "size_options": [
-      "1/4 oz",
-      "1/8 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/4 oz": 40,
-      "1/8 oz": 20,
-      "1 oz": 150
     },
     "banner": "New"
   },
@@ -283,19 +215,6 @@
     "banner": "New"
   },
   {
-    "name": "Horchata",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
-    },
-    "banner": "New"
-  },
-  {
     "name": "Infused Prerolls",
     "category": "Other",
     "size_options": [
@@ -319,19 +238,6 @@
       "Diamond Gelato-Gary Payton Cannagar": 20,
       "Diamond Northern Lights-GDP Cannagar": 20,
       "Hash Infused Jet Fighter": 10
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Jelly Cake",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -526,19 +432,6 @@
     "prices": {
       "4 count": 12,
       "2 count": 6
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Rainbow Sherbert",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -767,21 +660,6 @@
     }
   },
   {
-    "name": "Citrus Fuel",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "ounce"
-    ],
-    "prices": {
-      "1/8 oz": 25,
-      "1/4 oz": 50,
-      "ounce": 200
-    },
-    "thca_percentage": 20.8
-  },
-  {
     "name": "Columbian Gold",
     "category": "Flower",
     "size_options": [
@@ -991,21 +869,6 @@
     "thca_percentage": 23
   },
   {
-    "name": "Mac 1",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "ounce"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "ounce": 150
-    },
-    "thca_percentage": 21
-  },
-  {
     "name": "MEGA DOSE Gummies Blue Razz 25mg",
     "category": "Edibles",
     "size_options": [
@@ -1070,6 +933,46 @@
     }
   },
   {
+    "name": "Afternoon Delight",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Big Foot Glue",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "thca_percentage": 26,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Black Ice",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/4 oz": 40,
+      "1/8 oz": 20
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Blackberry Superboof",
     "category": "Flower",
     "size_options": [
@@ -1081,6 +984,19 @@
       "1/8 oz": 20,
       "1/4 oz": 40,
       "ounce": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Blue Cheese",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/4 oz": 30,
+      "1/8 oz": 15
     },
     "banner": "Out of Stock"
   },
@@ -1098,6 +1014,52 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Bubblegum Cherries",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Citrus Fuel",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50,
+      "ounce": 200
+    },
+    "thca_percentage": 20.8,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Dantes Inferno",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/4 oz": 50,
+      "1/8 oz": 25,
+      "1 oz": 200
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Diamond Badder",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -1107,6 +1069,89 @@
     "prices": {
       "1 gram": 10,
       "3 grams": 25
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Frosted Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Gorilla Breath",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/4 oz": 40,
+      "1/8 oz": 20,
+      "1 oz": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Horchata",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Jelly Cake",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Mac 1",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "ounce": 150
+    },
+    "thca_percentage": 21,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Rainbow Sherbert",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
     },
     "banner": "Out of Stock"
   }
