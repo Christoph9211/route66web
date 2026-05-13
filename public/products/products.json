@@ -58,19 +58,6 @@
     "banner": "New"
   },
   {
-    "name": "Blue Halo",
-    "category": "Flower",
-    "size_options": [
-      "1/4 oz",
-      "1/8 oz"
-    ],
-    "prices": {
-      "1/4 oz": 32.5,
-      "1/8 oz": 18
-    },
-    "banner": "New"
-  },
-  {
     "name": "Candy Fumes",
     "category": "Flower",
     "size_options": [
@@ -242,19 +229,6 @@
     "banner": "New"
   },
   {
-    "name": "Lemon Cherry Gelato",
-    "category": "Flower",
-    "size_options": [
-      "1/4 oz",
-      "1/8 oz"
-    ],
-    "prices": {
-      "1/4 oz": 32.5,
-      "1/8 oz": 18
-    },
-    "banner": "New"
-  },
-  {
     "name": "Live Rosin Blueberry Muffin Badder",
     "category": "Concentrates",
     "size_options": [
@@ -296,19 +270,6 @@
     ],
     "prices": {
       "12 oz can": 10
-    },
-    "banner": "New"
-  },
-  {
-    "name": "Moraccan Peach",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
     },
     "banner": "New"
   },
@@ -410,19 +371,6 @@
     "banner": "New"
   },
   {
-    "name": "Pineapple Macroon",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40
-    },
-    "banner": "New"
-  },
-  {
     "name": "Pink Lemonade Live Resin Gummies -50 mg",
     "category": "Edibles",
     "size_options": [
@@ -488,21 +436,6 @@
     "banner": "New"
   },
   {
-    "name": "Street Runtz",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "New"
-  },
-  {
     "name": "Superboof",
     "category": "Concentrates",
     "size_options": [
@@ -554,21 +487,6 @@
     },
     "banner": "New",
     "availability": {}
-  },
-  {
-    "name": "White Peaches",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    },
-    "banner": "New"
   },
   {
     "name": "White Strawnana Watermelon Live Resin Gummies - 50 mg",
@@ -660,21 +578,6 @@
     }
   },
   {
-    "name": "Columbian Gold",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "ounce"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "ounce": 150
-    },
-    "thca_percentage": 18
-  },
-  {
     "name": "Cotton Candy Lemonade 25mg",
     "category": "Edibles",
     "size_options": [
@@ -704,18 +607,6 @@
     ],
     "prices": {
       "2oz Bottle": 9.99
-    }
-  },
-  {
-    "name": "Cranberry Kush",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz"
-    ],
-    "prices": {
-      "1/8 oz": 18,
-      "1/4 oz": 36
     }
   },
   {
@@ -828,20 +719,6 @@
     "thca_percentage": 97.1
   },
   {
-    "name": "Green Crack",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "1 oz"
-    ],
-    "prices": {
-      "1/8 oz": 20,
-      "1/4 oz": 40,
-      "1 oz": 150
-    }
-  },
-  {
     "name": "Ice Cream Cake Saucy Diamonds",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -852,21 +729,6 @@
       "1 gram": 15,
       "3 grams": 40
     }
-  },
-  {
-    "name": "Lava Freeze",
-    "category": "Flower",
-    "size_options": [
-      "1/8 oz",
-      "1/4 oz",
-      "ounce"
-    ],
-    "prices": {
-      "1/8 oz": 25,
-      "1/4 oz": 50,
-      "ounce": 200
-    },
-    "thca_percentage": 23
   },
   {
     "name": "MEGA DOSE Gummies Blue Razz 25mg",
@@ -1001,6 +863,19 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Blue Halo",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/4 oz": 32.5,
+      "1/8 oz": 18
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Blueberry Muffin Diamonds",
     "category": "Diamonds & Sauce",
     "size_options": [
@@ -1042,6 +917,35 @@
       "ounce": 200
     },
     "thca_percentage": 20.8,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Columbian Gold",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "ounce": 150
+    },
+    "thca_percentage": 18,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Cranberry Kush",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 18,
+      "1/4 oz": 36
+    },
     "banner": "Out of Stock"
   },
   {
@@ -1101,6 +1005,21 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Green Crack",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Horchata",
     "category": "Flower",
     "size_options": [
@@ -1127,6 +1046,35 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Lava Freeze",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "ounce"
+    ],
+    "prices": {
+      "1/8 oz": 25,
+      "1/4 oz": 50,
+      "ounce": 200
+    },
+    "thca_percentage": 22.99,
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Lemon Cherry Gelato",
+    "category": "Flower",
+    "size_options": [
+      "1/4 oz",
+      "1/8 oz"
+    ],
+    "prices": {
+      "1/4 oz": 32.5,
+      "1/8 oz": 18
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Mac 1",
     "category": "Flower",
     "size_options": [
@@ -1143,6 +1091,32 @@
     "banner": "Out of Stock"
   },
   {
+    "name": "Moraccan Peach",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Pineapple Macroon",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40
+    },
+    "banner": "Out of Stock"
+  },
+  {
     "name": "Rainbow Sherbert",
     "category": "Flower",
     "size_options": [
@@ -1152,6 +1126,36 @@
     "prices": {
       "1/8 oz": 20,
       "1/4 oz": 40
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "Street Runtz",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
+    },
+    "banner": "Out of Stock"
+  },
+  {
+    "name": "White Peaches",
+    "category": "Flower",
+    "size_options": [
+      "1/8 oz",
+      "1/4 oz",
+      "1 oz"
+    ],
+    "prices": {
+      "1/8 oz": 20,
+      "1/4 oz": 40,
+      "1 oz": 150
     },
     "banner": "Out of Stock"
   }
