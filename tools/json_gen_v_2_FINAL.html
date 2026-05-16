@@ -9,8 +9,13 @@
                 --primary: #0d6efd; /* bright blue */
                 --primary-dark: #084298; /* darker blue for hover / headers */
                 --danger: #b91c1c; /* deep red */
+                --success: #047857;
+                --warning: #b45309;
+                --surface: #f8fafc;
                 --gray-200: #cbd5e1; /* darker light‑gray for better border contrast */
+                --gray-300: #94a3b8;
                 --gray-600: #334155; /* text gray */
+                --gray-800: #1e293b;
                 --white: #ffffff;
             }
             * {
@@ -26,7 +31,7 @@
                     Arial,
                     sans-serif;
                 margin: 1rem auto;
-                max-width: 900px;
+                max-width: 1280px;
                 padding: 0 1rem;
                 color: var(--gray-600);
                 background: var(--white);
@@ -46,6 +51,10 @@
                 color: var(--white);
                 transition: background 0.15s ease-in-out;
             }
+            .btn:disabled {
+                cursor: not-allowed;
+                opacity: 0.55;
+            }
             .btn:hover,
             .btn:focus-visible {
                 background: var(--primary-dark);
@@ -61,6 +70,144 @@
             .btn-sm {
                 padding: 0.25rem 0.5rem;
                 font-size: 0.875rem;
+            }
+            .btn-secondary {
+                background: var(--gray-600);
+            }
+            .btn-secondary:hover,
+            .btn-secondary:focus-visible {
+                background: var(--gray-800);
+            }
+            .btn-warning {
+                background: var(--warning);
+            }
+            .btn-warning:hover,
+            .btn-warning:focus-visible {
+                background: #92400e;
+            }
+            .toolbar {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+                align-items: center;
+                flex-wrap: wrap;
+                border: 1px solid var(--gray-200);
+                border-radius: 0.5rem;
+                background: rgba(255, 255, 255, 0.96);
+                padding: 0.75rem;
+                box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+                margin-bottom: 1rem;
+            }
+            .toolbar-actions,
+            .quick-actions,
+            .filter-grid,
+            .bulk-actions,
+            .preset-buttons {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            .status-bar {
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                align-items: center;
+                color: var(--gray-800);
+                font-size: 0.95rem;
+                font-weight: 600;
+            }
+            .status-pill {
+                border: 1px solid var(--gray-200);
+                border-radius: 999px;
+                background: var(--surface);
+                padding: 0.25rem 0.6rem;
+            }
+            .status-pill.dirty {
+                border-color: #f59e0b;
+                color: #92400e;
+                background: #fffbeb;
+            }
+            .workbench {
+                display: grid;
+                grid-template-columns: minmax(320px, 0.42fr) minmax(520px, 1fr);
+                gap: 1rem;
+                align-items: start;
+            }
+            .panel {
+                border: 1px solid var(--gray-200);
+                border-radius: 0.5rem;
+                background: var(--white);
+                padding: 1rem;
+            }
+            .panel h2 {
+                margin-top: 0;
+            }
+            .panel-header {
+                display: flex;
+                justify-content: space-between;
+                gap: 0.75rem;
+                align-items: center;
+                flex-wrap: wrap;
+                margin-bottom: 0.75rem;
+            }
+            .form-row {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.75rem;
+            }
+            .size-entry {
+                display: grid;
+                grid-template-columns: minmax(120px, 1fr) minmax(100px, 0.6fr) auto;
+                gap: 0.5rem;
+                align-items: end;
+            }
+            .table-wrap {
+                max-height: 70vh;
+                overflow: auto;
+                border: 1px solid var(--gray-200);
+                border-radius: 0.5rem;
+            }
+            .table-wrap table {
+                border: 0;
+            }
+            .row-muted {
+                color: #64748b;
+            }
+            .validation-list {
+                margin: 0.5rem 0 0;
+                padding-left: 1.2rem;
+                font-size: 0.9rem;
+            }
+            .validation-list li {
+                margin: 0.25rem 0;
+            }
+            .validation-error {
+                color: var(--danger);
+            }
+            .validation-warning {
+                color: var(--warning);
+            }
+            .empty-state {
+                border: 1px dashed var(--gray-300);
+                border-radius: 0.5rem;
+                padding: 1rem;
+                text-align: center;
+                background: var(--surface);
+            }
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
             }
 
             /* Form controls */
@@ -89,6 +236,10 @@
                 padding: 0.5rem;
                 font: inherit;
                 color: var(--gray-600);
+            }
+            input[type='checkbox'] {
+                width: 1rem;
+                height: 1rem;
             }
             input:focus,
             textarea:focus,
@@ -119,6 +270,7 @@
             .actions {
                 display: flex;
                 gap: 0.25rem;
+                flex-wrap: wrap;
             }
             .hidden {
                 display: none !important;
@@ -130,165 +282,261 @@
                 background: var(--primary-dark); /* retain existing colour */
                 z-index: 1; /* stay above table rows */
             }
+            @media (max-width: 900px) {
+                .workbench {
+                    grid-template-columns: 1fr;
+                }
+                .toolbar {
+                    position: static;
+                }
+                .form-row,
+                .size-entry {
+                    grid-template-columns: 1fr;
+                }
+            }
         </style>
     </head>
     <body>
         <h1>Products.json Manager</h1>
 
-        <div style="text-align: center; margin-bottom: 1rem">
+        <div class="toolbar" aria-label="Product manager actions">
             <input
                 id="file-input"
                 type="file"
                 accept="application/json"
                 class="hidden"
             />
-            <button id="load-btn" class="btn">Import products.json</button>
-            <button id="merge-btn" class="btn">Merge products.json</button>
-            <button id="download-all-btn" class="btn" disabled>
-                Download updated JSON
-            </button>
-            <button id="download-csv-btn" class="btn" disabled>
-                Download updated CSV
-            </button>
+            <div class="toolbar-actions">
+                <button id="load-btn" class="btn">Import products.json</button>
+                <button id="merge-btn" class="btn">Merge products.json</button>
+                <button id="download-all-btn" class="btn" disabled>
+                    Download JSON
+                </button>
+                <button id="copy-json-btn" class="btn btn-secondary" disabled>
+                    Copy JSON
+                </button>
+                <button id="download-csv-btn" class="btn btn-secondary" disabled>
+                    Download CSV
+                </button>
+                <button id="export-selected-btn" class="btn btn-secondary" disabled>
+                    Export Selected
+                </button>
+            </div>
+            <div class="status-bar" aria-live="polite">
+                <span id="catalog-count" class="status-pill">0 products</span>
+                <span id="visible-count" class="status-pill">0 shown</span>
+                <span id="selected-count" class="status-pill">0 selected</span>
+                <span id="validation-count" class="status-pill">0 issues</span>
+                <span id="dirty-indicator" class="status-pill">Saved</span>
+            </div>
         </div>
 
-        <h2 id="form-title">Add New Product</h2>
-        <form id="product-form" autocomplete="on">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" required />
-            </div>
-
-            <div class="form-group">
-                <label for="category">Category</label>
-                <select id="category" name="category" required>
-                    <option value="Concentrates">Concentrates</option>
-                    <option value="Diamonds & Sauce">Diamonds & Sauce</option>
-                    <option value="Edibles">Edibles</option>
-                    <option value="Flower">Flower</option>
-                    <option value="Other">Other</option>
-                    <option value="Vapes & Carts">Vapes & Carts</option>
-                </select>
-                <!-- <input
-          id="category"
-          name="category"
-          type="text"
-          list="category-list"
-          required
-        /> -->
-                <datalist id="category-list"></datalist>
-            </div>
-
-            <!-- Size / Price grid -->
-            <div id="size-price-section" class="form-group">
-                <label>Sizes & Prices</label>
-                <div
-                    style="
-                        display: flex;
-                        gap: 0.5rem;
-                        align-items: flex-end;
-                        flex-wrap: wrap;
-                    "
-                >
-                    <div style="flex: 1 1 150px; min-width: 120px">
-                        <label for="size-input">Size</label>
-                        <input
-                            id="size-input"
-                            type="text"
-                            placeholder="1 gram"
-                        />
-                    </div>
-                    <div style="flex: 1 1 150px; min-width: 120px">
-                        <label for="price-input">Price ($)</label>
-                        <input
-                            id="price-input"
-                            type="number"
-                            step="0.01"
-                            placeholder="10.00"
-                        />
-                    </div>
-                    <button
-                        type="button"
-                        id="add-size-btn"
-                        class="btn btn-sm"
-                        style="height: 2.5rem"
-                    >
-                        +
+        <main class="workbench">
+            <section class="panel" aria-labelledby="form-title">
+                <div class="panel-header">
+                    <h2 id="form-title">Add New Product</h2>
+                    <button type="button" id="clear-form-btn" class="btn btn-sm btn-secondary">
+                        Clear Form
                     </button>
                 </div>
-                <table
-                    id="size-price-table"
-                    style="margin-top: 0.5rem"
-                    class="hidden"
-                >
-                    <thead>
-                        <tr>
-                            <th>Size</th>
-                            <th>Price ($)</th>
-                            <th style="width: 1px"></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+                <form id="product-form" autocomplete="on">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" required />
+                    </div>
 
-            <div class="form-group">
-                <label for="thca">THCa % (optional)</label>
-                <input id="thca" name="thca" type="number" step="0.01" />
-            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category" required>
+                                <option value="Concentrates">Concentrates</option>
+                                <option value="Diamonds & Sauce">Diamonds & Sauce</option>
+                                <option value="Edibles">Edibles</option>
+                                <option value="Flower">Flower</option>
+                                <option value="Other">Other</option>
+                                <option value="Vapes & Carts">Vapes & Carts</option>
+                            </select>
+                            <datalist id="category-list"></datalist>
+                        </div>
+                        <div class="form-group">
+                            <label for="banner">Banner Flag</label>
+                            <select id="banner" name="banner">
+                                <option value="">-- none --</option>
+                                <option value="Out of Stock">Out of Stock</option>
+                                <option value="Coming Soon">Coming Soon</option>
+                                <option value="New">New</option>
+                                <option value="Special">Special</option>
+                            </select>
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                <label for="banner">Banner Flag (optional)</label>
-                <select id="banner" name="banner">
-                    <option value="">-- none --</option>
-                    <option value="Out of Stock">Out of Stock</option>
-                    <option value="Coming Soon">Coming Soon</option>
-                    <option value="New">New</option>
-                    <option value="Special">Special</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="thca">THCa % (optional)</label>
+                        <input id="thca" name="thca" type="number" step="0.01" />
+                    </div>
 
-            <div class="form-group">
-                <label for="availability">
-                    Availability (JSON object, e.g. {"Super Boof": true})
-                </label>
-                <small id="availability-helper" class="helper-text">
-                    Usually leave this blank. If you provide a value, it must
-                    be a JSON object.
-                </small>
-                <textarea
-                    id="availability"
-                    name="availability"
-                    rows="2"
-                    placeholder='{"Super Boof": true}'
-                ></textarea>
-            </div>
+                    <div id="size-price-section" class="form-group">
+                        <label>Sizes & Prices</label>
+                        <div class="preset-buttons" id="preset-buttons" aria-label="Quick size presets"></div>
+                        <div class="size-entry" style="margin-top: 0.5rem">
+                            <div>
+                                <label for="size-input">Size</label>
+                                <input
+                                    id="size-input"
+                                    type="text"
+                                    list="size-suggestions"
+                                    placeholder="1 gram"
+                                />
+                                <datalist id="size-suggestions"></datalist>
+                            </div>
+                            <div>
+                                <label for="price-input">Price ($)</label>
+                                <input
+                                    id="price-input"
+                                    type="number"
+                                    step="0.01"
+                                    min="0"
+                                    placeholder="10.00"
+                                />
+                            </div>
+                            <button type="button" id="add-size-btn" class="btn btn-sm">
+                                Add
+                            </button>
+                        </div>
+                        <table
+                            id="size-price-table"
+                            style="margin-top: 0.5rem"
+                            class="hidden"
+                        >
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Price ($)</th>
+                                    <th style="width: 1px"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
 
-            <div style="text-align: center; margin-top: 1rem">
-                <button type="submit" id="submit-btn" class="btn">
-                    Add Product
-                </button>
-                <button type="reset" id="cancel-edit-btn" class="btn hidden">
-                    Cancel
-                </button>
-            </div>
-        </form>
+                    <div class="form-group">
+                        <label for="availability">
+                            Availability (JSON object, e.g. {"Super Boof": true})
+                        </label>
+                        <small id="availability-helper" class="helper-text">
+                            Usually leave this blank. If you provide a value, it must
+                            be a JSON object.
+                        </small>
+                        <textarea
+                            id="availability"
+                            name="availability"
+                            rows="2"
+                            placeholder='{"Super Boof": true}'
+                        ></textarea>
+                    </div>
 
-        <h2>Current Products</h2>
-        <table id="products-table" class="hidden">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Sizes</th>
-                    <th>Prices</th>
-                    <th>Banner</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+                    <div class="quick-actions" style="margin-top: 1rem">
+                        <button type="submit" id="submit-btn" class="btn">
+                            Add Product
+                        </button>
+                        <button type="reset" id="cancel-edit-btn" class="btn btn-secondary hidden">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+
+                <div style="margin-top: 1rem">
+                    <strong>Validation</strong>
+                    <ul id="validation-list" class="validation-list">
+                        <li class="row-muted">Import or add products to check the menu.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="panel" aria-labelledby="products-title">
+                <div class="panel-header">
+                    <h2 id="products-title">Current Products</h2>
+                    <div class="bulk-actions">
+                        <select id="bulk-banner" title="Bulk banner action">
+                            <option value="">Bulk banner...</option>
+                            <option value="__clear">Clear banner</option>
+                            <option value="Out of Stock">Out of Stock</option>
+                            <option value="Coming Soon">Coming Soon</option>
+                            <option value="New">New</option>
+                            <option value="Special">Special</option>
+                        </select>
+                        <select id="bulk-category" title="Bulk category action">
+                            <option value="">Bulk category...</option>
+                            <option value="Concentrates">Concentrates</option>
+                            <option value="Diamonds & Sauce">Diamonds & Sauce</option>
+                            <option value="Edibles">Edibles</option>
+                            <option value="Flower">Flower</option>
+                            <option value="Other">Other</option>
+                            <option value="Vapes & Carts">Vapes & Carts</option>
+                        </select>
+                        <button type="button" id="bulk-duplicate-btn" class="btn btn-sm btn-secondary" disabled>
+                            Duplicate
+                        </button>
+                        <button type="button" id="bulk-delete-btn" class="btn btn-sm btn-danger" disabled>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filter-grid" style="margin-bottom: 0.75rem">
+                    <label class="sr-only" for="search-input">Search products</label>
+                    <input id="search-input" type="text" placeholder="Search name, category, size..." />
+                    <label class="sr-only" for="filter-category">Filter by category</label>
+                    <select id="filter-category" title="Filter by category">
+                        <option value="">All categories</option>
+                    </select>
+                    <label class="sr-only" for="filter-banner">Filter by banner</label>
+                    <select id="filter-banner" title="Filter by banner">
+                        <option value="">All banners</option>
+                        <option value="__none">No banner</option>
+                        <option value="Out of Stock">Out of Stock</option>
+                        <option value="Coming Soon">Coming Soon</option>
+                        <option value="New">New</option>
+                        <option value="Special">Special</option>
+                    </select>
+                    <label>
+                        <input id="filter-missing-thca" type="checkbox" />
+                        Missing THCa
+                    </label>
+                    <label>
+                        <input id="filter-missing-prices" type="checkbox" />
+                        Price issues
+                    </label>
+                </div>
+
+                <div id="empty-state" class="empty-state">
+                    Import products.json or add a product to start editing.
+                </div>
+                <div class="table-wrap hidden" id="products-table-wrap">
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input
+                                        id="select-visible"
+                                        type="checkbox"
+                                        aria-label="Select visible products"
+                                    />
+                                </th>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Sizes</th>
+                                <th>Prices</th>
+                                <th>Banner</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
 
         <script>
             // ------------------ State & Constants ------------------
@@ -299,20 +547,29 @@
             let sizePricePairs = [] // [{size, price}]
             let importMode = 'replace'
             let editProductExtras = {}
+            let selectedProductIndexes = new Set()
+            let visibleProductIndexes = []
+            let hasUnsavedChanges = false
 
             // ------------------ DOM Refs ------------------
             const fileInput = document.getElementById('file-input')
             const loadBtn = document.getElementById('load-btn')
             const mergeBtn = document.getElementById('merge-btn')
             const downloadAllBtn = document.getElementById('download-all-btn')
+            const copyJsonBtn = document.getElementById('copy-json-btn')
             const downloadCsvBtn = document.getElementById('download-csv-btn')
+            const exportSelectedBtn =
+                document.getElementById('export-selected-btn')
             const form = document.getElementById('product-form')
             const table = document.getElementById('products-table')
+            const tableWrap = document.getElementById('products-table-wrap')
+            const emptyState = document.getElementById('empty-state')
             const tbody = table.querySelector('tbody')
             const categoryList = document.getElementById('category-list')
             const formTitle = document.getElementById('form-title')
             const submitBtn = document.getElementById('submit-btn')
             const cancelEditBtn = document.getElementById('cancel-edit-btn')
+            const clearFormBtn = document.getElementById('clear-form-btn')
             const availabilityHelper =
                 document.getElementById('availability-helper')
             const nameField = document.getElementById('name')
@@ -320,6 +577,25 @@
             const thcaField = document.getElementById('thca')
             const bannerField = document.getElementById('banner')
             const availabilityField = document.getElementById('availability')
+            const catalogCount = document.getElementById('catalog-count')
+            const visibleCount = document.getElementById('visible-count')
+            const selectedCount = document.getElementById('selected-count')
+            const validationCount = document.getElementById('validation-count')
+            const dirtyIndicator = document.getElementById('dirty-indicator')
+            const validationList = document.getElementById('validation-list')
+            const searchInput = document.getElementById('search-input')
+            const filterCategory = document.getElementById('filter-category')
+            const filterBanner = document.getElementById('filter-banner')
+            const filterMissingThca =
+                document.getElementById('filter-missing-thca')
+            const filterMissingPrices =
+                document.getElementById('filter-missing-prices')
+            const bulkBanner = document.getElementById('bulk-banner')
+            const bulkCategory = document.getElementById('bulk-category')
+            const bulkDuplicateBtn =
+                document.getElementById('bulk-duplicate-btn')
+            const bulkDeleteBtn = document.getElementById('bulk-delete-btn')
+            const selectVisible = document.getElementById('select-visible')
 
             // size‑price specific refs
             const sizeInput = document.getElementById('size-input')
@@ -327,6 +603,8 @@
             const addSizeBtn = document.getElementById('add-size-btn')
             const sizePriceTable = document.getElementById('size-price-table')
             const sizePriceTbody = sizePriceTable.querySelector('tbody')
+            const presetButtons = document.getElementById('preset-buttons')
+            const sizeSuggestions = document.getElementById('size-suggestions')
 
             // Default categories for datalist
             const defaultCategories = [
@@ -338,6 +616,25 @@
                 'Vapes & Carts',
             ]
             const availabilityCategories = new Set(['Other', 'Vapes & Carts'])
+            const defaultPresetsByCategory = {
+                Flower: [
+                    { size: '1/8 oz', price: 25 },
+                    { size: '1/4 oz', price: 50 },
+                    { size: '1 oz', price: 200 },
+                ],
+                Concentrates: [
+                    { size: '1 gram', price: 10 },
+                    { size: '3 grams', price: 25 },
+                ],
+                'Diamonds & Sauce': [
+                    { size: '1 gram', price: 10 },
+                    { size: '3 grams', price: 25 },
+                ],
+                Edibles: [
+                    { size: '2 count', price: 5 },
+                    { size: '4 count', price: 10 },
+                ],
+            }
             const managedProductFields = new Set([
                 'name',
                 'category',
@@ -441,8 +738,13 @@
                     products.splice(0, products.length, ...valid)
                     addedCount = valid.length
                 }
+                selectedProductIndexes = new Set()
                 refreshCategoryList()
+                refreshCategoryControls()
+                refreshSizeSuggestions()
+                renderPresetButtons()
                 renderTable()
+                setDirty(true)
 
                 return {
                     sourceCount: data.length,
@@ -508,6 +810,396 @@
                     }
                 })
 
+            const normalizeSearch = (value = '') =>
+                String(value ?? '').trim().toLowerCase()
+
+            const isValidPrice = (value) => {
+                const price = Number(value)
+                return Number.isFinite(price) && price >= 0
+            }
+
+            const productHasPriceIssues = (product = {}) => {
+                const sizes = Array.isArray(product.size_options)
+                    ? product.size_options
+                    : []
+                if (sizes.length === 0) return true
+                return sizes.some(
+                    (size) =>
+                        !product.prices ||
+                        !Object.prototype.hasOwnProperty.call(
+                            product.prices,
+                            size
+                        ) ||
+                        !isValidPrice(product.prices[size])
+                )
+            }
+
+            const setDirty = (dirty = true) => {
+                hasUnsavedChanges = dirty
+                dirtyIndicator.textContent = dirty ? 'Unsaved changes' : 'Saved'
+                dirtyIndicator.classList.toggle('dirty', dirty)
+            }
+
+            const getSortedProductEntries = () =>
+                products
+                    .map((product, index) => ({ product, index }))
+                    .sort((a, b) => {
+                        const ra = getRank(a.product)
+                        const rb = getRank(b.product)
+                        if (ra !== rb) return ra - rb
+                        return String(a.product.name || '').localeCompare(
+                            String(b.product.name || ''),
+                            undefined,
+                            { sensitivity: 'base' }
+                        )
+                    })
+
+            const getFilterState = () => ({
+                search: normalizeSearch(searchInput.value),
+                category: filterCategory.value,
+                banner: filterBanner.value,
+                missingThca: filterMissingThca.checked,
+                missingPrices: filterMissingPrices.checked,
+            })
+
+            const productMatchesFilters = (product = {}, filters = {}) => {
+                if (filters.category && product.category !== filters.category) {
+                    return false
+                }
+                if (filters.banner === '__none' && product.banner) {
+                    return false
+                }
+                if (
+                    filters.banner &&
+                    filters.banner !== '__none' &&
+                    product.banner !== filters.banner
+                ) {
+                    return false
+                }
+                if (
+                    filters.missingThca &&
+                    (product.thca_percentage || product.thca_percentage === 0)
+                ) {
+                    return false
+                }
+                if (filters.missingPrices && !productHasPriceIssues(product)) {
+                    return false
+                }
+                if (filters.search) {
+                    const haystack = [
+                        product.name,
+                        product.category,
+                        product.banner,
+                        ...(Array.isArray(product.size_options)
+                            ? product.size_options
+                            : []),
+                    ]
+                        .map(normalizeSearch)
+                        .join(' ')
+                    return haystack.includes(filters.search)
+                }
+                return true
+            }
+
+            const getFilteredProductEntries = () => {
+                const filters = getFilterState()
+                return getSortedProductEntries().filter(({ product }) =>
+                    productMatchesFilters(product, filters)
+                )
+            }
+
+            const getSelectedIndexes = () =>
+                Array.from(selectedProductIndexes)
+                    .filter((idx) => products[idx])
+                    .sort((a, b) => a - b)
+
+            const validateProducts = (items = products) => {
+                const issues = []
+                const seen = new Map()
+
+                items.forEach((product, index) => {
+                    const label =
+                        product.name || `Product ${index + 1}`
+                    const sizes = Array.isArray(product.size_options)
+                        ? product.size_options
+                        : []
+
+                    if (!String(product.name || '').trim()) {
+                        issues.push({
+                            severity: 'error',
+                            message: `Row ${index + 1}: product name is required.`,
+                        })
+                    }
+                    if (!String(product.category || '').trim()) {
+                        issues.push({
+                            severity: 'error',
+                            message: `${label}: category is required.`,
+                        })
+                    }
+                    if (sizes.length === 0) {
+                        issues.push({
+                            severity: 'error',
+                            message: `${label}: add at least one size option.`,
+                        })
+                    }
+                    sizes.forEach((size) => {
+                        if (
+                            !product.prices ||
+                            !Object.prototype.hasOwnProperty.call(
+                                product.prices,
+                                size
+                            ) ||
+                            !isValidPrice(product.prices[size])
+                        ) {
+                            issues.push({
+                                severity: 'error',
+                                message: `${label}: "${size}" needs a valid price.`,
+                            })
+                        }
+                    })
+                    if (
+                        product.availability !== undefined &&
+                        !isPlainObject(product.availability)
+                    ) {
+                        issues.push({
+                            severity: 'error',
+                            message: `${label}: availability must be a JSON object.`,
+                        })
+                    }
+
+                    const key = productMergeKey(product)
+                    if (key !== '::') {
+                        if (!seen.has(key)) seen.set(key, [])
+                        seen.get(key).push(label)
+                    }
+                })
+
+                seen.forEach((labels) => {
+                    if (labels.length > 1) {
+                        issues.push({
+                            severity: 'warning',
+                            message: `Duplicate product/category: ${labels.join(', ')}.`,
+                        })
+                    }
+                })
+
+                return issues
+            }
+
+            const renderValidation = () => {
+                const issues = validateProducts(products)
+                const errors = issues.filter(
+                    (issue) => issue.severity === 'error'
+                ).length
+                const warnings = issues.length - errors
+
+                validationCount.textContent =
+                    issues.length === 0
+                        ? '0 issues'
+                        : `${errors} errors, ${warnings} warnings`
+                validationCount.classList.toggle('dirty', issues.length > 0)
+
+                validationList.innerHTML = ''
+                if (products.length === 0) {
+                    validationList.innerHTML =
+                        '<li class="row-muted">Import or add products to check the menu.</li>'
+                    return issues
+                }
+                if (issues.length === 0) {
+                    validationList.innerHTML =
+                        '<li class="row-muted">No blocking issues found.</li>'
+                    return issues
+                }
+
+                issues.slice(0, 8).forEach((issue) => {
+                    const li = document.createElement('li')
+                    li.className =
+                        issue.severity === 'error'
+                            ? 'validation-error'
+                            : 'validation-warning'
+                    li.textContent = issue.message
+                    validationList.appendChild(li)
+                })
+                if (issues.length > 8) {
+                    const li = document.createElement('li')
+                    li.className = 'row-muted'
+                    li.textContent = `${issues.length - 8} more issues hidden. Use filters to narrow the list.`
+                    validationList.appendChild(li)
+                }
+
+                return issues
+            }
+
+            const enableExportButtons = (enabled) => {
+                downloadAllBtn.disabled = !enabled
+                copyJsonBtn.disabled = !enabled
+                downloadCsvBtn.disabled = !enabled
+            }
+
+            const updateStatusBar = () => {
+                const selected = getSelectedIndexes()
+                catalogCount.textContent = `${products.length} product${
+                    products.length === 1 ? '' : 's'
+                }`
+                visibleCount.textContent = `${visibleProductIndexes.length} shown`
+                selectedCount.textContent = `${selected.length} selected`
+                const hasSelection = selected.length > 0
+                bulkDuplicateBtn.disabled = !hasSelection
+                bulkDeleteBtn.disabled = !hasSelection
+                exportSelectedBtn.disabled = !hasSelection
+                selectVisible.checked =
+                    visibleProductIndexes.length > 0 &&
+                    visibleProductIndexes.every((idx) =>
+                        selectedProductIndexes.has(idx)
+                    )
+                selectVisible.indeterminate =
+                    visibleProductIndexes.some((idx) =>
+                        selectedProductIndexes.has(idx)
+                    ) && !selectVisible.checked
+            }
+
+            const refreshCategoryControls = () => {
+                const categories = Array.from(
+                    new Set([
+                        ...defaultCategories,
+                        ...products.map((p) => p.category).filter(Boolean),
+                    ])
+                ).sort()
+
+                const currentFilter = filterCategory.value
+                filterCategory.innerHTML =
+                    '<option value="">All categories</option>'
+                categories.forEach((category) => {
+                    const option = document.createElement('option')
+                    option.value = category
+                    option.textContent = category
+                    filterCategory.appendChild(option)
+                })
+                if (categories.includes(currentFilter)) {
+                    filterCategory.value = currentFilter
+                }
+            }
+
+            const refreshSizeSuggestions = () => {
+                const sizes = new Set()
+                Object.values(defaultPresetsByCategory)
+                    .flat()
+                    .forEach((preset) => sizes.add(preset.size))
+                products.forEach((product) => {
+                    ;(product.size_options || []).forEach((size) =>
+                        sizes.add(size)
+                    )
+                })
+
+                sizeSuggestions.innerHTML = ''
+                Array.from(sizes)
+                    .sort((a, b) =>
+                        String(a).localeCompare(String(b), undefined, {
+                            numeric: true,
+                            sensitivity: 'base',
+                        })
+                    )
+                    .forEach((size) => {
+                        const option = document.createElement('option')
+                        option.value = size
+                        sizeSuggestions.appendChild(option)
+                    })
+            }
+
+            const getCatalogPresetsForCategory = (category) => {
+                const pricesBySize = new Map()
+                products
+                    .filter((product) => product.category === category)
+                    .forEach((product) => {
+                        ;(product.size_options || []).forEach((size) => {
+                            if (!pricesBySize.has(size)) {
+                                pricesBySize.set(size, new Map())
+                            }
+                            const price = product.prices?.[size]
+                            if (isValidPrice(price)) {
+                                const countByPrice = pricesBySize.get(size)
+                                countByPrice.set(
+                                    Number(price),
+                                    (countByPrice.get(Number(price)) || 0) + 1
+                                )
+                            }
+                        })
+                    })
+
+                return Array.from(pricesBySize.entries()).map(
+                    ([size, priceCounts]) => {
+                        const [price] = Array.from(priceCounts.entries()).sort(
+                            (a, b) => b[1] - a[1] || a[0] - b[0]
+                        )[0] || [0]
+                        return { size, price }
+                    }
+                )
+            }
+
+            const getPresetsForCategory = (category) => {
+                const defaults = defaultPresetsByCategory[category] || []
+                const catalogPresets = getCatalogPresetsForCategory(category)
+                const merged = new Map()
+                ;[...defaults, ...catalogPresets].forEach((preset) => {
+                    if (!merged.has(preset.size)) {
+                        merged.set(preset.size, preset)
+                    }
+                })
+                return Array.from(merged.values()).slice(0, 12)
+            }
+
+            const addSizePricePair = (size, price) => {
+                const cleanSize = String(size || '').trim()
+                const cleanPrice = Number(price)
+                if (!cleanSize) return { error: 'Please enter a size label' }
+                if (!isValidPrice(cleanPrice)) {
+                    return { error: 'Please enter a valid price' }
+                }
+                if (sizePricePairs.some((p) => p.size === cleanSize)) {
+                    return { error: 'Size already added!' }
+                }
+                sizePricePairs.push({ size: cleanSize, price: cleanPrice })
+                renderSizePriceTable()
+                return { ok: true }
+            }
+
+            const renderPresetButtons = () => {
+                const presets = getPresetsForCategory(categoryField.value)
+                presetButtons.innerHTML = ''
+                if (presets.length === 0) {
+                    const span = document.createElement('span')
+                    span.className = 'helper-text'
+                    span.textContent =
+                        'Add rows manually or import products to build quick presets.'
+                    presetButtons.appendChild(span)
+                    return
+                }
+                presets.forEach((preset) => {
+                    const button = document.createElement('button')
+                    button.type = 'button'
+                    button.className = 'btn btn-sm btn-secondary'
+                    button.dataset.presetSize = preset.size
+                    button.dataset.presetPrice = String(preset.price)
+                    button.textContent = `${preset.size} - $${Number(
+                        preset.price
+                    ).toFixed(2)}`
+                    presetButtons.appendChild(button)
+                })
+            }
+
+            const downloadJson = (items, filename = 'products.json') => {
+                const blob = new Blob([JSON.stringify(items, null, 2)], {
+                    type: 'application/json',
+                })
+                const url = URL.createObjectURL(blob)
+                const a = document.createElement('a')
+                a.href = url
+                a.download = filename
+                a.click()
+                URL.revokeObjectURL(url)
+                setDirty(false)
+            }
+
             const getRank = (p) => {
                 if (p.banner === 'New') return 0
                 if (p.banner === 'Out of Stock') return 2
@@ -546,30 +1238,6 @@
                     })
             }
 
-            // Attempt to save to a file using the File System Access API
-            const autoSaveToFile = async () => {
-                if (!('showSaveFilePicker' in window)) return
-                try {
-                    if (navigator.storage && navigator.storage.persist) {
-                        await navigator.storage.persist()
-                    }
-                    const handle = await showSaveFilePicker({
-                        suggestedName: 'products.json',
-                        types: [
-                            {
-                                description: 'JSON file',
-                                accept: { 'application/json': ['.json'] },
-                            },
-                        ],
-                    })
-                    const writable = await handle.createWritable()
-                    await writable.write(JSON.stringify(products, null, 2))
-                    await writable.close()
-                } catch (err) {
-                    console.log('Auto‑save skipped', err)
-                }
-            }
-
             // ------------------ Size‑Price Grid Rendering ------------------
             const renderSizePriceTable = () => {
                 if (sizePricePairs.length === 0) {
@@ -596,18 +1264,22 @@
             addSizeBtn.addEventListener('click', () => {
                 const size = sizeInput.value.trim()
                 const priceVal = priceInput.value.trim()
-                const price = parseFloat(priceVal)
-                if (!size) return alert('Please enter a size label')
-                if (!priceVal || isNaN(price))
-                    return alert('Please enter a valid price')
-                // Prevent duplicates
-                if (sizePricePairs.some((p) => p.size === size)) {
-                    return alert('Size already added!')
+                const result = addSizePricePair(size, priceVal)
+                if (result.error) {
+                    return alert(result.error)
                 }
-                sizePricePairs.push({ size, price })
                 sizeInput.value = ''
                 priceInput.value = ''
-                renderSizePriceTable()
+            })
+
+            presetButtons.addEventListener('click', (e) => {
+                const button = e.target.closest('button[data-preset-size]')
+                if (!button) return
+                const result = addSizePricePair(
+                    button.dataset.presetSize,
+                    button.dataset.presetPrice
+                )
+                if (result.error) alert(result.error)
             })
 
             sizePriceTbody.addEventListener('click', (e) => {
@@ -660,38 +1332,50 @@
 
             // ------------------ Products Table Rendering ------------------
             const renderTable = () => {
-                products.sort((a, b) => {
-                    const ra = getRank(a)
-                    const rb = getRank(b)
-                    if (ra !== rb) return ra - rb
-                    return a.name.localeCompare(b.name, undefined, {
-                        sensitivity: 'base',
-                    })
-                })
-
                 if (products.length === 0) {
-                    table.classList.add('hidden')
-                    downloadAllBtn.disabled = true
-                    downloadCsvBtn.disabled = true
+                    tableWrap.classList.add('hidden')
+                    emptyState.classList.remove('hidden')
+                    enableExportButtons(false)
+                    selectedProductIndexes = new Set()
+                    visibleProductIndexes = []
+                    renderValidation()
+                    updateStatusBar()
                     return
                 }
 
-                table.classList.remove('hidden')
-                downloadAllBtn.disabled = false
-                downloadCsvBtn.disabled = false
+                const entries = getFilteredProductEntries()
+                visibleProductIndexes = entries.map(({ index }) => index)
+                selectedProductIndexes = new Set(
+                    getSelectedIndexes().filter((idx) => products[idx])
+                )
+                tableWrap.classList.toggle('hidden', entries.length === 0)
+                emptyState.classList.toggle('hidden', entries.length > 0)
+                emptyState.textContent =
+                    entries.length === 0
+                        ? 'No products match the current filters.'
+                        : 'Import products.json or add a product to start editing.'
+                enableExportButtons(true)
 
                 tbody.innerHTML = ''
-                products.forEach((p, idx) => {
+                entries.forEach(({ product: p, index: idx }, rowIndex) => {
                     const tr = document.createElement('tr')
                     tr.innerHTML = `
-            <td>${idx + 1}</td>
-            <td>${p.name}</td>
-            <td>${p.category}</td>
-            <td>${p.size_options.join(', ')}</td>
-            <td>${Object.entries(p.prices)
-                .map(([k, v]) => `${k}: $${v}`)
+            <td><input type="checkbox" data-action="select" data-idx="${idx}" ${
+                selectedProductIndexes.has(idx) ? 'checked' : ''
+            } aria-label="Select ${escapeHtml(p.name)}"></td>
+            <td>${rowIndex + 1}</td>
+            <td>${escapeHtml(p.name)}</td>
+            <td>${escapeHtml(p.category)}</td>
+            <td>${(p.size_options || []).map(escapeHtml).join(', ')}</td>
+            <td>${Object.entries(p.prices || {})
+                .map(
+                    ([k, v]) =>
+                        `${escapeHtml(k)}: $${escapeHtml(
+                            isValidPrice(v) ? Number(v).toFixed(2) : v
+                        )}`
+                )
                 .join('<br>')}</td>
-            <td>${p.banner || ''}</td>
+            <td>${escapeHtml(p.banner || '')}</td>
             <td class="actions">
               <button class="btn btn-sm" data-action="edit" data-idx="${idx}">Edit</button>
               <button class="btn btn-sm" data-action="duplicate" data-idx="${idx}">Duplicate</button>
@@ -699,6 +1383,8 @@
             </td>`
                     tbody.appendChild(tr)
                 })
+                renderValidation()
+                updateStatusBar()
             }
 
             // ------------------ Import JSON ------------------
@@ -743,26 +1429,52 @@
 
             // ------------------ Export JSON ------------------
             downloadAllBtn.addEventListener('click', () => {
-                const blob = new Blob([JSON.stringify(products, null, 2)], {
-                    type: 'application/json',
-                })
-                const url = URL.createObjectURL(blob)
-                const a = document.createElement('a')
-                a.href = url
-                a.download = 'products.json'
-                a.click()
-                URL.revokeObjectURL(url)
+                const errors = validateProducts(products).filter(
+                    (issue) => issue.severity === 'error'
+                )
+                if (errors.length > 0) {
+                    return alert(
+                        `Fix ${errors.length} validation error${
+                            errors.length === 1 ? '' : 's'
+                        } before exporting JSON.`
+                    )
+                }
+                downloadJson(products)
             })
+
+            copyJsonBtn.addEventListener('click', async () => {
+                const errors = validateProducts(products).filter(
+                    (issue) => issue.severity === 'error'
+                )
+                if (errors.length > 0) {
+                    return alert(
+                        `Fix ${errors.length} validation error${
+                            errors.length === 1 ? '' : 's'
+                        } before copying JSON.`
+                    )
+                }
+                try {
+                    await navigator.clipboard.writeText(
+                        JSON.stringify(products, null, 2)
+                    )
+                    setDirty(false)
+                    alert('Copied products JSON to clipboard.')
+                } catch {
+                    alert('Clipboard copy is not available in this browser.')
+                }
+            })
+
+            exportSelectedBtn.addEventListener('click', () => {
+                const selected = getSelectedIndexes().map((idx) => products[idx])
+                if (selected.length === 0) return
+                downloadJson(selected, 'products-selected.json')
+            })
+
             // ------------------ Export CSV ------------------
             downloadCsvBtn.addEventListener('click', () => {
-                const sorted = [...products].sort((a, b) => {
-                    const ra = getRank(a)
-                    const rb = getRank(b)
-                    if (ra !== rb) return ra - rb
-                    return a.name.localeCompare(b.name, undefined, {
-                        sensitivity: 'base',
-                    })
-                })
+                const sorted = getSortedProductEntries().map(
+                    ({ product }) => product
+                )
 
                 const header = [
                     'Name',
@@ -814,7 +1526,7 @@
             })
 
             // ------------------ Form Submit ------------------
-            form.addEventListener('submit', async (e) => {
+            form.addEventListener('submit', (e) => {
                 e.preventDefault()
 
                 // 1. Gather the basics
@@ -829,6 +1541,9 @@
                 // 2. Convert the size/price grid into the structure we store
                 if (sizePricePairs.length === 0) {
                     return alert('Please add at least one size and price.')
+                }
+                if (sizePricePairs.some((p) => !p.size || !isValidPrice(p.price))) {
+                    return alert('Every size row needs a label and valid price.')
                 }
                 if (availabilityResult.error) {
                     return alert(availabilityResult.error)
@@ -861,6 +1576,8 @@
 
                 // 5. House-keeping
                 refreshCategoryList()
+                refreshCategoryControls()
+                refreshSizeSuggestions()
                 renderTable()
                 form.reset()
                 sizePricePairs = [] // clear the grid for the next entry
@@ -872,13 +1589,26 @@
                 formTitle.textContent = 'Add New Product'
                 cancelEditBtn.classList.add('hidden')
                 updateAvailabilityHelperText()
-
-                await autoSaveToFile()
+                renderPresetButtons()
+                setDirty(true)
             })
 
             // ------------------ Table Actions ------------------
             tbody.addEventListener('click', (e) => {
                 const btn = e.target.closest('button[data-action]')
+                const checkbox = e.target.closest(
+                    'input[data-action="select"][data-idx]'
+                )
+                if (checkbox) {
+                    const idx = parseInt(checkbox.dataset.idx, 10)
+                    if (checkbox.checked) {
+                        selectedProductIndexes.add(idx)
+                    } else {
+                        selectedProductIndexes.delete(idx)
+                    }
+                    updateStatusBar()
+                    return
+                }
                 if (!btn) return
                 const idx = parseInt(btn.dataset.idx, 10)
                 const action = btn.dataset.action
@@ -886,7 +1616,14 @@
                 if (action === 'delete') {
                     if (confirm(`Delete product "${products[idx].name}"?`)) {
                         products.splice(idx, 1)
+                        selectedProductIndexes.delete(idx)
+                        selectedProductIndexes = new Set(
+                            getSelectedIndexes().map((selectedIdx) =>
+                                selectedIdx > idx ? selectedIdx - 1 : selectedIdx
+                            )
+                        )
                         renderTable()
+                        setDirty(true)
                     }
                     return
                 }
@@ -917,6 +1654,7 @@
                     formTitle.textContent = 'Duplicate Product'
                     cancelEditBtn.classList.remove('hidden')
                     updateAvailabilityHelperText()
+                    renderPresetButtons()
                     try {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                     } catch {
@@ -950,6 +1688,7 @@
                     formTitle.textContent = `Edit Product (#${idx + 1})`
                     cancelEditBtn.classList.remove('hidden')
                     updateAvailabilityHelperText()
+                    renderPresetButtons()
                     try {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                     } catch {
@@ -972,12 +1711,140 @@
                 formTitle.textContent = 'Add New Product'
                 cancelEditBtn.classList.add('hidden')
                 updateAvailabilityHelperText()
+                renderPresetButtons()
+            })
+
+            clearFormBtn.addEventListener('click', () => {
+                form.reset()
+                bannerField.value = ''
+                availabilityField.value = ''
+                sizePricePairs = []
+                renderSizePriceTable()
+                sizeInput.value = ''
+                priceInput.value = ''
+                editProductExtras = {}
+                editIndex = null
+                submitBtn.textContent = 'Add Product'
+                formTitle.textContent = 'Add New Product'
+                cancelEditBtn.classList.add('hidden')
+                updateAvailabilityHelperText()
+                renderPresetButtons()
+            })
+
+            ;[
+                searchInput,
+                filterCategory,
+                filterBanner,
+                filterMissingThca,
+                filterMissingPrices,
+            ].forEach((control) => {
+                control.addEventListener('input', renderTable)
+                control.addEventListener('change', renderTable)
+            })
+
+            selectVisible.addEventListener('change', () => {
+                if (selectVisible.checked) {
+                    visibleProductIndexes.forEach((idx) =>
+                        selectedProductIndexes.add(idx)
+                    )
+                } else {
+                    visibleProductIndexes.forEach((idx) =>
+                        selectedProductIndexes.delete(idx)
+                    )
+                }
+                renderTable()
+            })
+
+            bulkBanner.addEventListener('change', () => {
+                const value = bulkBanner.value
+                if (!value) return
+                getSelectedIndexes().forEach((idx) => {
+                    if (value === '__clear') {
+                        delete products[idx].banner
+                    } else {
+                        products[idx].banner = value
+                    }
+                })
+                bulkBanner.value = ''
+                renderTable()
+                setDirty(true)
+            })
+
+            bulkCategory.addEventListener('change', () => {
+                const value = bulkCategory.value
+                if (!value) return
+                getSelectedIndexes().forEach((idx) => {
+                    products[idx].category = value
+                })
+                bulkCategory.value = ''
+                refreshCategoryList()
+                refreshCategoryControls()
+                renderTable()
+                setDirty(true)
+            })
+
+            bulkDuplicateBtn.addEventListener('click', () => {
+                const selected = getSelectedIndexes()
+                selected.forEach((idx) => {
+                    const source = products[idx]
+                    if (!source) return
+                    const copy = normalizeProductSchema({
+                        name: `${source.name} Copy`,
+                        category: source.category,
+                        size_options: [...(source.size_options || [])],
+                        prices: { ...(source.prices || {}) },
+                    })
+                    if (source.thca_percentage !== undefined) {
+                        copy.thca_percentage = source.thca_percentage
+                    }
+                    if (source.banner) copy.banner = source.banner
+                    if (source.availability) {
+                        copy.availability = { ...source.availability }
+                    }
+                    products.push(copy)
+                })
+                selectedProductIndexes = new Set()
+                refreshCategoryList()
+                refreshCategoryControls()
+                refreshSizeSuggestions()
+                renderTable()
+                setDirty(true)
+            })
+
+            bulkDeleteBtn.addEventListener('click', () => {
+                const selected = getSelectedIndexes()
+                if (selected.length === 0) return
+                if (
+                    !confirm(
+                        `Delete ${selected.length} selected product${
+                            selected.length === 1 ? '' : 's'
+                        }?`
+                    )
+                ) {
+                    return
+                }
+                selected
+                    .sort((a, b) => b - a)
+                    .forEach((idx) => products.splice(idx, 1))
+                selectedProductIndexes = new Set()
+                refreshCategoryList()
+                refreshCategoryControls()
+                refreshSizeSuggestions()
+                renderTable()
+                setDirty(true)
             })
 
             // ------------------ Init ------------------
-            categoryField.addEventListener('change', updateAvailabilityHelperText)
+            categoryField.addEventListener('change', () => {
+                updateAvailabilityHelperText()
+                renderPresetButtons()
+            })
+            refreshCategoryList()
+            refreshCategoryControls()
+            refreshSizeSuggestions()
+            renderPresetButtons()
+            renderTable()
             updateAvailabilityHelperText()
         </script>
     </body>
 </html>
-

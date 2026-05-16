@@ -21,9 +21,18 @@ window.__jsonGenTestHooks = {
     mergeProductRecords,
     parseAvailabilityInput,
     updateAvailabilityHelperText,
+    validateProducts,
+    getFilteredProductEntries,
+    getPresetsForCategory,
+    addSizePricePair,
     getProducts: () => products,
     getForm: () => form,
     getAvailabilityHelperText: () => availabilityHelper.textContent,
+    getSizePricePairs: () => sizePricePairs,
+    setSelectedIndexes: (indexes) => {
+        selectedProductIndexes = new Set(indexes)
+        renderTable()
+    },
     setSizePricePairs: (pairs) => {
         sizePricePairs = pairs
     },
@@ -36,6 +45,7 @@ window.__jsonGenTestHooks = {
         url: 'http://localhost',
         beforeParse(window) {
             window.alert = vi.fn()
+            window.confirm = vi.fn(() => true)
             window.scrollTo = vi.fn()
             if (preloadedLocalStorage) {
                 window.localStorage.setItem(
@@ -276,6 +286,205 @@ describe('json_gen_v_2_FINAL merge', () => {
             })
             expect(duplicatedProduct).not.toHaveProperty('legacy_id')
             expect(duplicatedProduct).not.toHaveProperty('upstream_meta')
+        } finally {
+            ctx.close()
+        }
+    })
+
+    it('validates missing prices and duplicate product/category keys', () => {
+        const ctx = setupJsonManager()
+
+        try {
+            const { hooks } = ctx
+            hooks.loadProducts([
+                {
+                    name: 'Blue Dream',
+                    category: 'Flower',
+                    size_options: ['1g'],
+                    prices: {},
+                },
+                {
+                    name: ' blue dream ',
+                    category: 'flower',
+                    size_options: ['1g'],
+                    prices: { '1g': 10 },
+                },
+            ])
+
+            const issues = hooks.validateProducts(hooks.getProducts())
+            expect(issues).toEqual(
+                expect.arrayContaining([
+                    expect.objectContaining({
+                        severity: 'error',
+                        message: expect.stringContaining('needs a valid price'),
+                    }),
+                    expect.objectContaining({
+                        severity: 'warning',
+                        message: expect.stringContaining(
+                            'Duplicate product/category'
+                        ),
+                    }),
+                ])
+            )
+        } finally {
+            ctx.close()
+        }
+    })
+
+    it('filters by search text, category, banner, missing THCa, and price issues', () => {
+        const ctx = setupJsonManager()
+
+        try {
+            const { hooks, window } = ctx
+            hooks.loadProducts([
+                {
+                    name: 'Blue Dream',
+                    category: 'Flower',
+                    size_options: ['1g'],
+                    prices: { '1g': 10 },
+                    banner: 'New',
+                    thca_percentage: 25,
+                },
+                {
+                    name: 'Lemon Cart',
+                    category: 'Vapes & Carts',
+                    size_options: ['Super Lemon'],
+                    prices: {},
+                },
+            ])
+
+            const search = window.document.querySelector('#search-input')
+            const category = window.document.querySelector('#filter-category')
+            const banner = window.document.querySelector('#filter-banner')
+            const missingThca = window.document.querySelector(
+                '#filter-missing-thca'
+            )
+            const missingPrices = window.document.querySelector(
+                '#filter-missing-prices'
+            )
+
+            search.value = 'lemon'
+            expect(hooks.getFilteredProductEntries()).toHaveLength(1)
+            expect(hooks.getFilteredProductEntries()[0].product.name).toBe(
+                'Lemon Cart'
+            )
+
+            search.value = ''
+            category.value = 'Flower'
+            expect(hooks.getFilteredProductEntries()[0].product.name).toBe(
+                'Blue Dream'
+            )
+
+            category.value = ''
+            banner.value = '__none'
+            expect(hooks.getFilteredProductEntries()[0].product.name).toBe(
+                'Lemon Cart'
+            )
+
+            banner.value = ''
+            missingThca.checked = true
+            expect(hooks.getFilteredProductEntries()[0].product.name).toBe(
+                'Lemon Cart'
+            )
+
+            missingThca.checked = false
+            missingPrices.checked = true
+            expect(hooks.getFilteredProductEntries()[0].product.name).toBe(
+                'Lemon Cart'
+            )
+        } finally {
+            ctx.close()
+        }
+    })
+
+    it('adds category preset size and price rows', () => {
+        const ctx = setupJsonManager()
+
+        try {
+            const { hooks } = ctx
+            const flowerPresets = hooks.getPresetsForCategory('Flower')
+            expect(flowerPresets).toEqual(
+                expect.arrayContaining([
+                    expect.objectContaining({ size: '1/8 oz', price: 25 }),
+                    expect.objectContaining({ size: '1/4 oz', price: 50 }),
+                ])
+            )
+
+            const result = hooks.addSizePricePair(
+                flowerPresets[0].size,
+                flowerPresets[0].price
+            )
+            expect(result).toEqual({ ok: true })
+            expect(hooks.getSizePricePairs()).toEqual([
+                {
+                    size: flowerPresets[0].size,
+                    price: flowerPresets[0].price,
+                },
+            ])
+        } finally {
+            ctx.close()
+        }
+    })
+
+    it('bulk updates banners only for selected products', () => {
+        const ctx = setupJsonManager()
+
+        try {
+            const { hooks, window } = ctx
+            hooks.loadProducts([
+                {
+                    name: 'Blue Dream',
+                    category: 'Flower',
+                    size_options: ['1g'],
+                    prices: { '1g': 10 },
+                },
+                {
+                    name: 'Lemon Haze',
+                    category: 'Flower',
+                    size_options: ['1g'],
+                    prices: { '1g': 11 },
+                },
+            ])
+            hooks.setSelectedIndexes([0])
+
+            const bulkBanner = window.document.querySelector('#bulk-banner')
+            bulkBanner.value = 'Out of Stock'
+            bulkBanner.dispatchEvent(new window.Event('change'))
+
+            expect(hooks.getProducts()[0].banner).toBe('Out of Stock')
+            expect(hooks.getProducts()[1]).not.toHaveProperty('banner')
+        } finally {
+            ctx.close()
+        }
+    })
+
+    it('escapes imported product text when rendering the table', () => {
+        const ctx = setupJsonManager()
+
+        try {
+            const { hooks, window } = ctx
+            hooks.loadProducts([
+                {
+                    name: '<img src=x onerror=alert(1)>',
+                    category: 'Flower',
+                    size_options: ['1g<script>bad()</script>'],
+                    prices: { '1g<script>bad()</script>': 10 },
+                    banner: '<b>New</b>',
+                },
+            ])
+
+            const tableHtml =
+                window.document.querySelector('#products-table tbody')
+                    .innerHTML
+            expect(tableHtml).toContain('&lt;img')
+            expect(tableHtml).toContain('&lt;script&gt;')
+            expect(tableHtml).toContain('&lt;b&gt;New&lt;/b&gt;')
+            expect(
+                window.document.querySelector('#products-table tbody img')
+            ).toBeNull()
+            expect(
+                window.document.querySelector('#products-table tbody script')
+            ).toBeNull()
         } finally {
             ctx.close()
         }
