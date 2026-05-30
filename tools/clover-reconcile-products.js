@@ -440,14 +440,20 @@ export const variantKey = (item) =>
 const siteVariantRows = (products) =>
     products.flatMap((product) =>
         (Array.isArray(product.size_options) ? product.size_options : []).map(
-            (size) => ({
-                name: product.name,
-                nameKey: normalizeLookup(product.name),
-                category: product.category,
-                size,
-                price: normalizePrice(product.prices?.[size]),
-                product,
-            })
+            (size) => {
+                const normalizedSize = isKnownSize(size)
+                    ? normalizeSize(size)
+                    : size
+                return {
+                    name: product.name,
+                    nameKey: normalizeLookup(product.name),
+                    category: product.category,
+                    size: normalizedSize,
+                    sourceSize: size,
+                    price: normalizePrice(product.prices?.[size]),
+                    product,
+                }
+            }
         )
     )
 
@@ -557,15 +563,14 @@ export const reconcileProducts = (siteProducts, cloverItemsMap) => {
             likelySiteMatches: closeMatches(clover, siteProductCandidates),
         }))
 
-    const categoryMismatches = cloverItems
-        .map((clover) => ({
-            clover,
-            siteProduct: siteProductsByKey.get(
-                `${clover.nameKey}::${clover.category}`
-            ),
-        }))
-        .filter(({ siteProduct }) => !siteProduct)
-        .map(({ clover }) => {
+    const categoryMismatches = [
+        ...new Map(cloverItems.map((clover) => [clover.nameKey, clover])).values(),
+    ]
+        .filter(
+            (clover) =>
+                !siteProductsByKey.has(`${clover.nameKey}::${clover.category}`)
+        )
+        .map((clover) => {
             const sameName = siteProducts.find(
                 (product) => normalizeLookup(product.name) === clover.nameKey
             )
