@@ -10,6 +10,8 @@ import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons'
 const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const DESKTOP_PAGE_SIZE = 8
 const MOBILE_PAGE_SIZE = 4
+const OUT_OF_STOCK_LABEL = 'Out of Stock'
+const OUT_OF_STOCK_LIMIT_PER_CATEGORY = 3
 const SIZE_GROUP_ORDER = {
     mass: 0,
     volume: 1,
@@ -312,6 +314,78 @@ const buildCategories = (products) =>
             return { id: categoryId, name }
         })
         .filter(Boolean)
+
+const isOutOfStockValue = (value) =>
+    String(value ?? '').trim().toLowerCase() ===
+    OUT_OF_STOCK_LABEL.toLowerCase()
+
+const isAvailabilityOptionOutOfStock = (availability, keys) =>
+    keys.some((key) => key && isOutOfStockValue(availability?.[key]))
+
+const getAvailabilityOptionKeys = (product) => {
+    const sizes = Array.isArray(product.size_options)
+        ? product.size_options.filter(Boolean)
+        : []
+    const flavors = Array.isArray(product.flavors)
+        ? product.flavors.filter(Boolean)
+        : []
+
+    if (sizes.length && flavors.length) {
+        return flavors.flatMap((flavor) =>
+            sizes.map((size) => [`${flavor} - ${size}`, size, flavor])
+        )
+    }
+
+    if (sizes.length) return sizes.map((size) => [size])
+    if (flavors.length) return flavors.map((flavor) => [flavor])
+    return []
+}
+
+const isProductOutOfStock = (product) => {
+    if (isOutOfStockValue(product.banner)) return true
+    if (!product.availability || typeof product.availability !== 'object') {
+        return false
+    }
+
+    const options = getAvailabilityOptionKeys(product)
+    return (
+        options.length > 0 &&
+        options.every((keys) =>
+            isAvailabilityOptionOutOfStock(product.availability, keys)
+        )
+    )
+}
+
+const limitOutOfStockProducts = (products, selectedCategory) => {
+    const inStockProducts = []
+    const outOfStockProducts = []
+
+    products.forEach((product) => {
+        if (isProductOutOfStock(product)) {
+            outOfStockProducts.push(product)
+        } else {
+            inStockProducts.push(product)
+        }
+    })
+
+    if (selectedCategory !== 'all') {
+        return [
+            ...inStockProducts,
+            ...outOfStockProducts.slice(0, OUT_OF_STOCK_LIMIT_PER_CATEGORY),
+        ]
+    }
+
+    const outOfStockCounts = new Map()
+    const cappedOutOfStockProducts = outOfStockProducts.filter((product) => {
+        const category = product.category || ''
+        const count = outOfStockCounts.get(category) || 0
+        if (count >= OUT_OF_STOCK_LIMIT_PER_CATEGORY) return false
+        outOfStockCounts.set(category, count + 1)
+        return true
+    })
+
+    return [...inStockProducts, ...cappedOutOfStockProducts]
+}
 
 const generateProductAlt = (product) => {
     if (!product || typeof product !== 'object') {
@@ -699,7 +773,7 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
         return () => mediaQuery.removeListener(handleChange)
     }, [])
 
-    const filteredProducts = React.useMemo(() => {
+    const categoryProducts = React.useMemo(() => {
         if (catalogState.selectedCategory === 'all') {
             return catalogState.products
         }
@@ -709,6 +783,15 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
                 slugify(product.category) === catalogState.selectedCategory
         )
     }, [catalogState.products, catalogState.selectedCategory])
+
+    const filteredProducts = React.useMemo(
+        () =>
+            limitOutOfStockProducts(
+                categoryProducts,
+                catalogState.selectedCategory
+            ),
+        [categoryProducts, catalogState.selectedCategory]
+    )
 
     const deferredProducts = React.useDeferredValue(filteredProducts)
     const visibleProducts = React.useMemo(

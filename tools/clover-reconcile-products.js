@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
@@ -465,6 +464,9 @@ const byProductKey = (products) =>
         ])
     )
 
+const isCloverItemUnavailable = (item) =>
+    item.hidden || (item.quantity !== null && item.quantity <= 0)
+
 const closeMatches = (needle, haystack, limit = 3) => {
     const scored = haystack
         .map((candidate) => ({
@@ -604,11 +606,28 @@ export const reconcileProducts = (siteProducts, cloverItemsMap) => {
 
 export const buildNextProducts = (siteProducts, cloverItemsMap) => {
     const currentProducts = byProductKey(siteProducts)
+    const cloverProductStatus = new Map()
     const grouped = new Map()
 
     for (const item of cloverItemsMap.values()) {
         const productKey = `${item.nameKey}::${item.category}`
+        const status = cloverProductStatus.get(productKey) || {
+            hasAvailableVariant: false,
+        }
+        if (!isCloverItemUnavailable(item)) {
+            status.hasAvailableVariant = true
+        }
+        cloverProductStatus.set(productKey, status)
+    }
+
+    for (const item of cloverItemsMap.values()) {
+        const productKey = `${item.nameKey}::${item.category}`
         const existing = currentProducts.get(productKey)
+        const shouldPublishNewProduct =
+            existing || cloverProductStatus.get(productKey)?.hasAvailableVariant
+
+        if (!shouldPublishNewProduct) continue
+
         const name = existing?.name || item.name
         const key = `${normalizeLookup(name)}::${item.category}`
         if (!grouped.has(key)) {
@@ -628,7 +647,7 @@ export const buildNextProducts = (siteProducts, cloverItemsMap) => {
         }
         product.prices[item.size] = item.price
 
-        if (item.hidden || item.quantity <= 0) {
+        if (isCloverItemUnavailable(item)) {
             product.availability = {
                 ...(product.availability || {}),
                 [item.size]: 'Out of Stock',

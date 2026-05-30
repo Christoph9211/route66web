@@ -370,6 +370,93 @@ describe('Clover product reconciliation', () => {
         expect(nextProducts[0]).not.toHaveProperty('_review')
     })
 
+    it('does not publish brand-new Clover-only products when every variant is unavailable', () => {
+        const cloverRows = [
+            {
+                ...baseRow,
+                Name: 'Hidden Clover Only (1/8)',
+                Price: 20,
+                'Hidden?': 'Yes',
+            },
+            {
+                ...baseRow,
+                Name: 'Zero Quantity Clover Only (1/4)',
+                Price: 40,
+                Quantity: 0,
+            },
+            {
+                ...baseRow,
+                Name: 'Negative Quantity Clover Only (1/2)',
+                Price: 80,
+                Quantity: -1,
+            },
+        ]
+
+        const nextProducts = buildNextProducts([], normalizeCloverRows(cloverRows))
+
+        expect(nextProducts).toHaveLength(0)
+    })
+
+    it('preserves existing website products even when Clover says they are unavailable', () => {
+        const siteProducts = [
+            {
+                name: 'Blackberry Superboof',
+                category: 'Flower',
+                size_options: ['1/8 oz'],
+                prices: { '1/8 oz': 25 },
+                banner: 'New',
+            },
+        ]
+        const cloverRows = [
+            {
+                ...baseRow,
+                Name: 'Blackberry Superboof (1/8)',
+                Price: 20,
+                Quantity: 0,
+            },
+        ]
+
+        const nextProducts = buildNextProducts(
+            siteProducts,
+            normalizeCloverRows(cloverRows)
+        )
+
+        expect(nextProducts).toHaveLength(1)
+        expect(nextProducts[0]).toMatchObject({
+            name: 'Blackberry Superboof',
+            banner: 'New',
+            availability: { '1/8 oz': 'Out of Stock' },
+        })
+    })
+
+    it('publishes brand-new Clover products with at least one available variant', () => {
+        const cloverRows = [
+            {
+                ...baseRow,
+                Name: 'Mixed Clover Only (1/8)',
+                Price: 20,
+                Quantity: 0,
+            },
+            {
+                ...baseRow,
+                Name: 'Mixed Clover Only (1/4)',
+                Price: 40,
+                Quantity: 5,
+            },
+        ]
+
+        const nextProducts = buildNextProducts([], normalizeCloverRows(cloverRows))
+
+        expect(nextProducts).toHaveLength(1)
+        expect(nextProducts[0]).toMatchObject({
+            name: 'Mixed Clover Only',
+            category: 'Flower',
+            size_options: ['1/8 oz', '1/4 oz'],
+            prices: { '1/8 oz': 20, '1/4 oz': 40 },
+            availability: { '1/8 oz': 'Out of Stock' },
+        })
+    })
+
     it('clears stale availability when Clover says a matched size is active', () => {
         const siteProducts = [
             {
