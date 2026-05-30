@@ -20,6 +20,7 @@ patch.diff
 # public/assets/images/**/*.png
 # public/assets/images/**/*.avif                                                                                                                                                
 output/playwright/ 
+output/product-reconciliation/
 .playwright-cli
 .env.*
 !.env.example

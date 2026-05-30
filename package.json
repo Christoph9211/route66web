@@ -48,6 +48,7 @@
         "test": "vitest",
         "test:run": "vitest run",
         "format": "prettier --write .",
+        "reconcile:products": "node tools/clover-reconcile-products.js",
         "generate:image-manifest": "node scripts/generate-responsive-image-manifest.js",
         "validate:images": "node scripts/validate-responsive-assets.js",
         "rename:images": "node scripts/rename-images.js",
