@@ -4,6 +4,7 @@ import { businessInfo } from './src/utils/businessInfo.js'
 import AgeGate from './src/components/AgeGate.jsx'
 import ErrorBoundary from './src/components/ErrorBoundary.jsx'
 import ResponsiveImage from './src/components/ResponsiveImage.jsx'
+import StructuredData from './src/components/StructuredData.jsx'
 // Font Awesome (SVG) – import only what we use
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -19,9 +20,6 @@ import {
     faFacebook,
 } from '@fortawesome/free-brands-svg-icons'
 
-const StructuredData = React.lazy(() =>
-    import('./src/components/StructuredData.jsx')
-)
 const LocalBusinessInfo = React.lazy(() =>
     import('./src/components/LocalBusinessInfo.jsx')
 )
@@ -308,12 +306,10 @@ export default function App() {
     return (
         <div className="flex min-h-screen flex-col">
             <div id="home"></div>
-            <React.Suspense fallback={null}>
-                <StructuredData
-                    includeFaqSchema
-                    products={structuredDataProducts}
-                />
-            </React.Suspense>
+            <StructuredData
+                includeFaqSchema
+                products={structuredDataProducts}
+            />
             <AgeGate />
             {/* Navigation */}
             <nav
