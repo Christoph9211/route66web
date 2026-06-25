@@ -7,7 +7,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons'
 
-const DANGEROUS = new Set(['__proto__', 'prototype', 'constructor'])
 const DESKTOP_PAGE_SIZE = 8
 const MOBILE_PAGE_SIZE = 4
 const OUT_OF_STOCK_LABEL = 'Out of Stock'
@@ -47,21 +46,12 @@ const SIZE_UNIT_FACTORS = {
     pieces: { group: 'count', factor: 1 },
 }
 
-const clean = (key) => (DANGEROUS.has(key) ? undefined : key)
-
 function slugify(str = '') {
     return String(str)
         .toLowerCase()
         .trim()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '')
-}
-
-const toArray = (value) => {
-    if (Array.isArray(value)) {
-        return value.filter((entry) => entry != null)
-    }
-    return value != null ? [value] : []
 }
 
 const parseSizeOption = (value) => {
@@ -126,10 +116,8 @@ const sortSizeOptions = (options) => {
             }
         })
         .sort((a, b) => {
-            const groupA =
-                SIZE_GROUP_ORDER[a.group] ?? SIZE_GROUP_ORDER.unknown
-            const groupB =
-                SIZE_GROUP_ORDER[b.group] ?? SIZE_GROUP_ORDER.unknown
+            const groupA = SIZE_GROUP_ORDER[a.group] ?? SIZE_GROUP_ORDER.unknown
+            const groupB = SIZE_GROUP_ORDER[b.group] ?? SIZE_GROUP_ORDER.unknown
             if (groupA !== groupB) return groupA - groupB
 
             const aHasValue = Number.isFinite(a.normalized)
@@ -141,165 +129,36 @@ const sortSizeOptions = (options) => {
                 return aHasValue ? -1 : 1
             }
 
-            const alpha = String(a.size).localeCompare(String(b.size), undefined, {
-                numeric: true,
-                sensitivity: 'base',
-            })
+            const alpha = String(a.size).localeCompare(
+                String(b.size),
+                undefined,
+                {
+                    numeric: true,
+                    sensitivity: 'base',
+                }
+            )
             return alpha || a.index - b.index
         })
         .map(({ size }) => size)
 }
 
-const extractSizeFromName = (name) => {
-    if (typeof name !== 'string') return null
-    const match = name.match(/ - (.+)/)
-    return match ? match[1] : null
-}
-
-const groupLegacyProducts = (rawProducts) => {
-    const grouped = new Map()
-
-    rawProducts.forEach((product) => {
-        const name = product.name ?? product['name'] ?? ''
-        const category = product.category ?? product['category'] ?? ''
-        const key = `${name}|${category}`
-
-        if (!grouped.has(key)) {
-            grouped.set(key, {
-                ...product,
-                name,
-                category,
-                sizeSet: new Set(),
-                prices: {},
-                variantSet: new Set(),
-                idsSet: new Set(),
-                imageSet: new Set(),
-                descriptionSet: new Set(),
-                ratingSet: new Set(),
-                urlSet: new Set(),
-            })
-        }
-
-        const entry = grouped.get(key)
-
-        toArray(product.id).forEach((id) => {
-            entry.idsSet.add(id)
-        })
-        toArray(product.image).forEach((image) => {
-            entry.imageSet.add(image)
-        })
-        toArray(product.description).forEach((description) => {
-            entry.descriptionSet.add(description)
-        })
-        toArray(product.rating).forEach((rating) => {
-            entry.ratingSet.add(rating)
-        })
-        toArray(product.url).forEach((url) => {
-            entry.urlSet.add(url)
-        })
-        toArray(product.variants ?? product.variant).forEach((variant) => {
-            entry.variantSet.add(variant)
-        })
-
-        if (
-            Array.isArray(product.size_options) &&
-            product.size_options.length &&
-            product.prices &&
-            typeof product.prices === 'object'
-        ) {
-            product.size_options.forEach((size) => {
-                if (!size) return
-                if (!entry.sizeSet.has(size)) {
-                    entry.sizeSet.add(size)
-                }
-                const safeKey = clean(size)
-                if (
-                    safeKey &&
-                    Object.prototype.hasOwnProperty.call(product.prices, size)
-                ) {
-                    entry.prices[safeKey] = product.prices[size]
-                }
-            })
-        } else {
-            const inferredSize = extractSizeFromName(name)
-            if (inferredSize) {
-                if (!entry.sizeSet.has(inferredSize)) {
-                    entry.sizeSet.add(inferredSize)
-                }
-                const safeSize = clean(inferredSize)
-                if (safeSize && product.price != null) {
-                    entry.prices[safeSize] = product.price
-                }
-            }
-        }
-    })
-
-    return Array.from(grouped.values()).map((entry) => {
-        const {
-            sizeSet,
-            variantSet,
-            idsSet,
-            imageSet,
-            descriptionSet,
-            ratingSet,
-            urlSet,
-            ...rest
-        } = entry
-        return {
-            ...rest,
-            size_options: sortSizeOptions(Array.from(sizeSet)),
-            variants: Array.from(variantSet),
-            ids: Array.from(idsSet),
-            images: Array.from(imageSet),
-            descriptions: Array.from(descriptionSet),
-            ratings: Array.from(ratingSet),
-            urls: Array.from(urlSet),
-        }
-    })
-}
-
 const normalizeProducts = (rawProducts) => {
     if (!Array.isArray(rawProducts)) return []
-
-    const isStructured = rawProducts.every(
-        (product) =>
-            Array.isArray(product.size_options) &&
-            product.size_options.length &&
-            product.prices &&
-            typeof product.prices === 'object' &&
-            Object.keys(product.prices).length
-    )
-
-    if (!isStructured) {
-        return groupLegacyProducts(rawProducts)
-    }
 
     return rawProducts.map((product) => ({
         ...product,
         size_options: sortSizeOptions(
-            Array.isArray(product.size_options)
-                ? [...product.size_options]
-                : toArray(product.size_options)
+            Array.isArray(product.size_options) ? [...product.size_options] : []
         ),
         prices:
             product.prices && typeof product.prices === 'object'
                 ? { ...product.prices }
                 : {},
-        variants: toArray(product.variants ?? product.variant),
-        ids: toArray(product.ids ?? product.id),
-        images: toArray(product.images ?? product.image),
-        descriptions: toArray(product.descriptions ?? product.description),
-        ratings: toArray(product.ratings ?? product.rating),
-        urls: toArray(product.urls ?? product.url),
     }))
 }
 
 const buildCategories = (products) =>
-    [
-        ...new Set(
-            products.map((product) => product.category).filter(Boolean)
-        ),
-    ]
+    [...new Set(products.map((product) => product.category).filter(Boolean))]
         .map((category) => {
             const name = category
                 .replace(/-/g, ' ')
@@ -316,8 +175,9 @@ const buildCategories = (products) =>
         .filter(Boolean)
 
 const isOutOfStockValue = (value) =>
-    String(value ?? '').trim().toLowerCase() ===
-    OUT_OF_STOCK_LABEL.toLowerCase()
+    String(value ?? '')
+        .trim()
+        .toLowerCase() === OUT_OF_STOCK_LABEL.toLowerCase()
 
 const isAvailabilityOptionOutOfStock = (availability, keys) =>
     keys.some((key) => key && isOutOfStockValue(availability?.[key]))
@@ -406,7 +266,9 @@ const generateProductAlt = (product) => {
         segments.push(`${product.thca_percentage}% THCa`)
     }
 
-    segments.push('Lab-Tested Hemp Product at Route 66 Hemp, St Robert, Missouri')
+    segments.push(
+        'Lab-Tested Hemp Product at Route 66 Hemp, St Robert, Missouri'
+    )
 
     return segments.join(' - ')
 }
@@ -615,9 +477,13 @@ const ProductCard = React.memo(function ProductCard({ product }) {
                         id={`size-${product.name}`}
                         className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
                         value={selectedSize ?? ''}
-                        onChange={(event) => setSelectedSize(event.target.value)}
+                        onChange={(event) =>
+                            setSelectedSize(event.target.value)
+                        }
                         aria-label={
-                            ['Vapes & Carts', 'Other'].includes(product.category)
+                            ['Vapes & Carts', 'Other'].includes(
+                                product.category
+                            )
                                 ? 'Select strain'
                                 : 'Select size'
                         }
@@ -701,7 +567,6 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
         loadError: null,
     })
     const [requestVersion, setRequestVersion] = React.useState(0)
-    const [isFiltering, startFiltering] = React.useTransition()
     const [pageSize, setPageSize] = React.useState(getPageSize)
     const [visibleCount, setVisibleCount] = React.useState(() =>
         Math.max(getPageSize(), 1)
@@ -793,28 +658,22 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
         [categoryProducts, catalogState.selectedCategory]
     )
 
-    const deferredProducts = React.useDeferredValue(filteredProducts)
     const visibleProducts = React.useMemo(
-        () => deferredProducts.slice(0, visibleCount),
-        [deferredProducts, visibleCount]
+        () => filteredProducts.slice(0, visibleCount),
+        [filteredProducts, visibleCount]
     )
 
     React.useEffect(() => {
         setVisibleCount(pageSize)
-    }, [catalogState.selectedCategory, deferredProducts.length, pageSize])
+    }, [catalogState.selectedCategory, filteredProducts.length, pageSize])
 
-    const handleCategorySelect = React.useCallback(
-        (categoryId) => {
-            startFiltering(() => {
-                setCatalogState((prevState) =>
-                    prevState.selectedCategory === categoryId
-                        ? prevState
-                        : { ...prevState, selectedCategory: categoryId }
-                )
-            })
-        },
-        [startFiltering]
-    )
+    const handleCategorySelect = React.useCallback((categoryId) => {
+        setCatalogState((prevState) =>
+            prevState.selectedCategory === categoryId
+                ? prevState
+                : { ...prevState, selectedCategory: categoryId }
+        )
+    }, [])
 
     return (
         <>
@@ -841,7 +700,9 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
                         key={category.id}
                         type="button"
                         onClick={() => handleCategorySelect(category.id)}
-                        aria-pressed={catalogState.selectedCategory === category.id}
+                        aria-pressed={
+                            catalogState.selectedCategory === category.id
+                        }
                         aria-label={`Filter by ${category.name}`}
                         className={`rounded-full border px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${
                             catalogState.selectedCategory === category.id
@@ -877,14 +738,16 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
                     <button
                         type="button"
                         onClick={() =>
-                            setRequestVersion((currentVersion) => currentVersion + 1)
+                            setRequestVersion(
+                                (currentVersion) => currentVersion + 1
+                            )
                         }
                         className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-emerald-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-50 dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:focus-visible:ring-offset-transparent"
                     >
                         Try again
                     </button>
                 </div>
-            ) : deferredProducts.length > 0 ? (
+            ) : filteredProducts.length > 0 ? (
                 <>
                     <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                         {visibleProducts.map((product) => (
@@ -894,16 +757,12 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
                             />
                         ))}
                     </div>
-                    {deferredProducts.length > visibleProducts.length ? (
+                    {filteredProducts.length > visibleProducts.length ? (
                         <div className="mt-10 text-center">
                             <button
                                 type="button"
                                 onClick={() =>
-                                    startFiltering(() =>
-                                        setVisibleCount(
-                                            (count) => count + pageSize
-                                        )
-                                    )
+                                    setVisibleCount((count) => count + pageSize)
                                 }
                                 className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
                             >
@@ -911,7 +770,7 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
                             </button>
                             <p className="mt-3 text-xs text-gray-500 dark:text-gray-300">
                                 Showing {visibleProducts.length} of{' '}
-                                {deferredProducts.length}
+                                {filteredProducts.length}
                             </p>
                         </div>
                     ) : null}
@@ -923,14 +782,6 @@ export default function ProductCatalogSection({ onProductsLoaded }) {
                     </p>
                 </div>
             )}
-            {isFiltering ? (
-                <div
-                    className="mt-6 text-center text-sm text-gray-500 dark:text-gray-300"
-                    aria-live="polite"
-                >
-                    Refreshing product list...
-                </div>
-            ) : null}
         </>
     )
 }

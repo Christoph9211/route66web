@@ -10,8 +10,6 @@
         "@fortawesome/free-solid-svg-icons": "^7.1.0",
         "@fortawesome/react-fontawesome": "^3.1.1",
         "@tailwindcss/vite": "^4.1.17",
-        "@vercel/analytics": "^1.6.1",
-        "@vercel/speed-insights": "^1.3.1",
         "jiti": "^2.6.1",
         "react": "^19.2.1",
         "react-dom": "^19.2.1",
@@ -55,7 +53,6 @@
         "optimize:images": "node scripts/optimize-images.js",
         "bootstrap:images": "node scripts/bootstrap-images.js",
         "generate:sitemap": "node scripts/generate-image-sitemap.js"
-       
     },
     "repository": {
         "type": "git",

@@ -27,8 +27,13 @@ const normaliseBaseName = (value) => {
 }
 
 const sanitiseWidths = (value) =>
-    [...new Set(value.map((entry) => Number(entry)).filter((entry) => Number.isFinite(entry) && entry > 0))]
-        .sort((a, b) => a - b)
+    [
+        ...new Set(
+            value
+                .map((entry) => Number(entry))
+                .filter((entry) => Number.isFinite(entry) && entry > 0)
+        ),
+    ].sort((a, b) => a - b)
 
 function ResponsiveImage({
     src,
@@ -40,7 +45,6 @@ function ResponsiveImage({
     sizes = '(max-width: 768px) 100vw, (max-width: 1024px) 75vw, 50vw',
     priority = false,
     fallbackBase = FALLBACK_BASE,
-    srcSetWidths = null,
 }) {
     const [isLoaded, setIsLoaded] = useState(false)
     const [errorStage, setErrorStage] = useState(0)
@@ -62,10 +66,6 @@ function ResponsiveImage({
     }, [baseName])
 
     const resolvedWidths = useMemo(() => {
-        if (Array.isArray(srcSetWidths) && srcSetWidths.length) {
-            return sanitiseWidths(srcSetWidths)
-        }
-
         if (isExternal) {
             return []
         }
@@ -76,10 +76,11 @@ function ResponsiveImage({
         }
 
         return sanitiseWidths(manifestWidths)
-    }, [isExternal, manifestKey, srcSetWidths])
+    }, [isExternal, manifestKey])
 
     const srcSets = useMemo(() => {
-        if (isExternal || errorStage > 0 || resolvedWidths.length === 0) return null
+        if (isExternal || errorStage > 0 || resolvedWidths.length === 0)
+            return null
         return {
             avif: buildSrcSet(baseName, 'avif', resolvedWidths),
             webp: buildSrcSet(baseName, 'webp', resolvedWidths),
@@ -87,7 +88,8 @@ function ResponsiveImage({
         }
     }, [baseName, errorStage, isExternal, resolvedWidths])
 
-    const mergedClassName = `${className} ${isLoaded ? 'loaded' : 'loading'} ${errorStage > 0 ? 'error' : ''}`.trim()
+    const mergedClassName =
+        `${className} ${isLoaded ? 'loaded' : 'loading'} ${errorStage > 0 ? 'error' : ''}`.trim()
 
     const fallbackWidth = useMemo(() => {
         if (!resolvedWidths.length) {
@@ -129,9 +131,21 @@ function ResponsiveImage({
         <picture>
             {!errorStage && srcSets && (
                 <>
-                    <source type="image/avif" srcSet={srcSets.avif} sizes={sizes} />
-                    <source type="image/webp" srcSet={srcSets.webp} sizes={sizes} />
-                    <source type="image/jpeg" srcSet={srcSets.jpeg} sizes={sizes} />
+                    <source
+                        type="image/avif"
+                        srcSet={srcSets.avif}
+                        sizes={sizes}
+                    />
+                    <source
+                        type="image/webp"
+                        srcSet={srcSets.webp}
+                        sizes={sizes}
+                    />
+                    <source
+                        type="image/jpeg"
+                        srcSet={srcSets.jpeg}
+                        sizes={sizes}
+                    />
                 </>
             )}
             <img

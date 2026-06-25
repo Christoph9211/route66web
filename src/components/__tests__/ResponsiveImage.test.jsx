@@ -36,28 +36,14 @@ describe('ResponsiveImage', () => {
 
     it('does not render responsive sources when no manifest entry exists', () => {
         const { container } = render(
-            <ResponsiveImage src="/assets/images/unknown-local-image" alt="Unknown" />
+            <ResponsiveImage
+                src="/assets/images/unknown-local-image"
+                alt="Unknown"
+            />
         )
 
         const sources = container.querySelectorAll('source')
         expect(sources.length).toBe(0)
-    })
-
-    it('uses explicit srcSetWidths overrides when provided', () => {
-        const { container } = render(
-            <ResponsiveImage
-                src="/assets/images/custom-image"
-                alt="Override"
-                srcSetWidths={[320, 640]}
-            />
-        )
-
-        const avifSource = container.querySelector('source[type="image/avif"]')
-        expect(avifSource).not.toBeNull()
-        expect(avifSource).toHaveAttribute(
-            'srcset',
-            '/assets/images/custom-image-320w.avif 320w, /assets/images/custom-image-640w.avif 640w'
-        )
     })
 
     it('falls back to base image, then placeholder when errors persist', () => {
@@ -66,10 +52,7 @@ describe('ResponsiveImage', () => {
         const img = screen.getByAltText('Error')
         fireEvent.error(img)
 
-        expect(img).toHaveAttribute(
-            'src',
-            '/assets/images/sample-640w.jpg'
-        )
+        expect(img).toHaveAttribute('src', '/assets/images/sample-640w.jpg')
 
         fireEvent.error(img)
 
