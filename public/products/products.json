@@ -10,8 +10,7 @@
       "1 gram": 10,
       "3 grams": 25
     },
-    "thca_percentage": 99,
-    "banner": "New"
+    "thca_percentage": 99
   },
   {
     "name": "Black Cherry Funk",
@@ -81,22 +80,16 @@
       "1/8 oz": 25,
       "1/4 oz": 50
     },
-    "banner": "New"
+    "banner": "Out of Stock"
   },
   {
     "name": "Flower Preroll",
     "category": "Other",
     "size_options": [
-      "Where's My Kush #4",
-      "Kings Sour",
-      "Tropic Oranges",
-      "Florida Kush #3"
+      "Gelato #41"
     ],
     "prices": {
-      "Where's My Kush #4": 6,
-      "Kings Sour": 6,
-      "Tropic Oranges": 6,
-      "Florida Kush #3": 6
+      "Gelato #41": 5
     },
     "banner": "New"
   },
@@ -111,8 +104,7 @@
       "1 gram": 10,
       "3 grams": 25
     },
-    "thca_percentage": 99.2,
-    "banner": "New"
+    "thca_percentage": 99.2
   },
   {
     "name": "GMO",
@@ -151,8 +143,7 @@
     "prices": {
       "4 count": 10,
       "2 count": 5
-    },
-    "banner": "New"
+    }
   },
   {
     "name": "Infused Prerolls",
@@ -181,8 +172,7 @@
     ],
     "prices": {
       "1 gram": 40
-    },
-    "banner": "New"
+    }
   },
   {
     "name": "Moon Water Riptide - Berry Twist 60mg",
@@ -192,8 +182,7 @@
     ],
     "prices": {
       "12 oz can": 12
-    },
-    "banner": "New"
+    }
   },
   {
     "name": "Moon Water Soda - Berry Twist 30mg",
@@ -203,8 +192,7 @@
     ],
     "prices": {
       "12 oz can": 10
-    },
-    "banner": "New"
+    }
   },
   {
     "name": "One Gram Carts",
@@ -240,11 +228,8 @@
       "Blazed - Purple Stardust",
       "Blazed - Silly Sunset",
       "Blazed - Unicorn Magic",
-      "Gelato",
-      "Strawberry Cough",
-      "Live Rosin Strawberry Wine",
-      "Live Rosin Bubba Kush",
-      "Live Rosin Chauffeur"
+      "Live Rosin Strawberry Cough",
+      "Live Rosin Bubba Kush"
     ],
     "prices": {
       "Sour Pebbles": 25.99,
@@ -254,11 +239,8 @@
       "Blazed - Purple Stardust": 29.99,
       "Blazed - Silly Sunset": 29.99,
       "Blazed - Unicorn Magic": 29.99,
-      "Gelato": 35,
-      "Strawberry Cough": 35,
-      "Live Rosin Strawberry Wine": 40,
-      "Live Rosin Bubba Kush": 35,
-      "Live Rosin Chauffeur": 40
+      "Live Rosin Strawberry Cough": 40,
+      "Live Rosin Bubba Kush": 40
     },
     "banner": "New",
     "availability": {}
@@ -313,8 +295,7 @@
     "prices": {
       "4 count": 12,
       "2 count": 6
-    },
-    "banner": "New"
+    }
   },
   {
     "name": "Rosin Thumbprint - Strawberry Cough Cold Cure Live Rosin x Life Hack Rosin Jam",
