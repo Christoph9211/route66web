@@ -624,11 +624,15 @@
                 ],
                 Concentrates: [
                     { size: '1 gram', price: 10 },
+                    { size: '1 gram', price: 18 },
                     { size: '3 grams', price: 25 },
+                    { size: '3 grams', price: 32.5 },
                 ],
                 'Diamonds & Sauce': [
                     { size: '1 gram', price: 10 },
+                    { size: '1 gram', price: 18 },
                     { size: '3 grams', price: 25 },
+                    { size: '3 grams', price: 32.5 },
                 ],
                 Edibles: [
                     { size: '2 count', price: 5 },
@@ -1141,8 +1145,9 @@
                 const catalogPresets = getCatalogPresetsForCategory(category)
                 const merged = new Map()
                 ;[...defaults, ...catalogPresets].forEach((preset) => {
-                    if (!merged.has(preset.size)) {
-                        merged.set(preset.size, preset)
+                    const key = `${preset.size}||${preset.price}`
+                    if (!merged.has(key)) {
+                        merged.set(key, preset)
                     }
                 })
                 return Array.from(merged.values()).slice(0, 12)
