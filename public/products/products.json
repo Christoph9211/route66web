@@ -86,10 +86,18 @@
     "name": "Flower Preroll",
     "category": "Other",
     "size_options": [
-      "Gelato #41"
+      "Gelato #41",
+      "Where's My Kush #4",
+      "Kings Sour",
+      "Tropic Oranges",
+      "Florida Kush #3"
     ],
     "prices": {
-      "Gelato #41": 5
+      "Gelato #41": 5,
+      "Where's My Kush #4": 6,
+      "Kings Sour": 6,
+      "Tropic Oranges": 6,
+      "Florida Kush #3": 6
     },
     "banner": "New"
   },
