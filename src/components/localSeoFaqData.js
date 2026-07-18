@@ -7,7 +7,7 @@ export const localSeoFaqs = [
     },
     {
         question: 'What are your store hours in St Robert?',
-        answer: `Our current hours are Monday-Thursday ${businessInfo.hoursDisplay['Monday - Thursday']}, Friday-Saturday ${businessInfo.hoursDisplay['Friday - Saturday']}, and Sunday ${businessInfo.hoursDisplay['Sunday']}. For the most up-to-date schedule, call before visiting.`,
+        answer: `Our current hours are Monday-Thursday ${businessInfo.hoursDisplay['Monday - Thursday']}, Friday ${businessInfo.hoursDisplay.Friday}, Saturday ${businessInfo.hoursDisplay.Saturday}, and Sunday ${businessInfo.hoursDisplay.Sunday}. For the most up-to-date schedule, call before visiting.`,
     },
     {
         question: 'Do you serve customers from Fort Leonard Wood?',
