@@ -209,7 +209,7 @@ const LocalLandingPage = React.memo(function LocalLandingPage({ page }) {
 
                 <section className="mt-6 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
                     <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Store Hours, Phone, and Address</h2>
-                    <p className="mt-3 text-slate-700 dark:text-slate-300">Monday - Thursday: {businessInfo.hoursDisplay['Monday - Thursday']}; Friday - Saturday: {businessInfo.hoursDisplay['Friday - Saturday']}; Sunday: {businessInfo.hoursDisplay.Sunday}</p>
+                    <p className="mt-3 text-slate-700 dark:text-slate-300">Monday - Thursday: {businessInfo.hoursDisplay['Monday - Thursday']}; Friday: {businessInfo.hoursDisplay.Friday}; Saturday: {businessInfo.hoursDisplay.Saturday}; Sunday: {businessInfo.hoursDisplay.Sunday}</p>
                     <p className="mt-2 text-slate-700 dark:text-slate-300">
                         Call <a className="text-emerald-700 hover:underline dark:text-emerald-300 dark:hover:text-emerald-200" href={businessInfo.phoneLink}>{businessInfo.phoneFormatted}</a> or visit us at {businessInfo.address.full}.
                     </p>
