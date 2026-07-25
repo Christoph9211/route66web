@@ -162,15 +162,16 @@ function StructuredData({
         openingHoursSpecification: [
             {
                 '@type': 'OpeningHoursSpecification',
-                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                dayOfWeek: [
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday',
+                ],
                 opens: businessInfo.hours.monday.open,
                 closes: businessInfo.hours.monday.close,
-            },
-            {
-                '@type': 'OpeningHoursSpecification',
-                dayOfWeek: ['Friday', 'Saturday'],
-                opens: businessInfo.hours.friday.open,
-                closes: businessInfo.hours.friday.close,
             },
             {
                 '@type': 'OpeningHoursSpecification',
