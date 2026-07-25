@@ -64,6 +64,110 @@ window.__jsonGenTestHooks = {
 }
 
 describe('json_gen_v_2_FINAL merge', () => {
+    it('rejects merging a draft before the base catalog is loaded', () => {
+        const ctx = setupJsonManager()
+
+        try {
+            expect(() =>
+                ctx.hooks.loadProducts(
+                    [
+                        {
+                            name: 'Flower Preroll',
+                            category: 'Other',
+                            size_options: ['Gelato #41'],
+                            prices: { 'Gelato #41': 5 },
+                        },
+                    ],
+                    { merge: true }
+                )
+            ).toThrow(
+                'Import the current products.json before merging a draft.'
+            )
+            expect(ctx.hooks.getProducts()).toHaveLength(0)
+        } finally {
+            ctx.close()
+        }
+    })
+
+    it.each([
+        ['Flower Preroll', 'Other'],
+        ['Infused Prerolls', 'Other'],
+        ['One Gram Carts', 'Vapes & Carts'],
+        ['One Gram Disposable', 'Vapes & Carts'],
+        ['Two Gram Vapes', 'Vapes & Carts'],
+    ])('appends variants to grouped product %s', (name, category) => {
+        const ctx = setupJsonManager()
+
+        try {
+            ctx.hooks.loadProducts([
+                {
+                    name,
+                    category,
+                    size_options: ['Existing Variant'],
+                    prices: { 'Existing Variant': 10 },
+                    banner: 'New',
+                },
+            ])
+            ctx.hooks.loadProducts(
+                [
+                    {
+                        name,
+                        category,
+                        size_options: ['New Variant'],
+                        prices: { 'New Variant': 12 },
+                    },
+                ],
+                { merge: true }
+            )
+
+            expect(ctx.hooks.getProducts()[0]).toMatchObject({
+                size_options: ['Existing Variant', 'New Variant'],
+                prices: {
+                    'Existing Variant': 10,
+                    'New Variant': 12,
+                },
+                banner: 'New',
+            })
+        } finally {
+            ctx.close()
+        }
+    })
+
+    it('deduplicates grouped variants case-insensitively and updates the price', () => {
+        const ctx = setupJsonManager()
+
+        try {
+            ctx.hooks.loadProducts([
+                {
+                    name: 'Flower Preroll',
+                    category: 'Other',
+                    size_options: ['Gelato #41'],
+                    prices: { 'Gelato #41': 5 },
+                },
+            ])
+            ctx.hooks.loadProducts(
+                [
+                    {
+                        name: 'Flower Preroll',
+                        category: 'Other',
+                        size_options: ['gelato #41'],
+                        prices: { 'gelato #41': 6 },
+                    },
+                ],
+                { merge: true }
+            )
+
+            expect(ctx.hooks.getProducts()[0].size_options).toEqual([
+                'Gelato #41',
+            ])
+            expect(ctx.hooks.getProducts()[0].prices).toEqual({
+                'Gelato #41': 6,
+            })
+        } finally {
+            ctx.close()
+        }
+    })
+
     it('merges matching products and appends non-matching products', () => {
         const ctx = setupJsonManager()
 

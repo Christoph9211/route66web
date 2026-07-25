@@ -39,24 +39,16 @@ describe('AgeGate', () => {
         ).not.toBeInTheDocument()
     })
 
-    it('keeps keyboard focus within the dialog while visible', async () => {
-        const user = userEvent.setup()
-        render(
-            <>
-                <AgeGate />
-                <a href="#outside">Outside link</a>
-            </>
-        )
+    it('opens a native dialog and prevents cancel dismissal', async () => {
+        render(<AgeGate />)
 
-        const confirmButton = await screen.findByRole('button', {
-            name: /i am 21\+/i,
-        })
-        const leaveLink = screen.getByRole('link', { name: /no, take me back/i })
+        const dialog = await screen.findByRole('dialog')
+        await waitFor(() => expect(dialog).toHaveAttribute('open'))
 
-        await waitFor(() => expect(confirmButton).toHaveFocus())
-        await user.tab()
-        expect(leaveLink).toHaveFocus()
-        await user.tab()
-        expect(confirmButton).toHaveFocus()
+        const cancelEvent = new Event('cancel', { cancelable: true })
+        dialog.dispatchEvent(cancelEvent)
+
+        expect(cancelEvent.defaultPrevented).toBe(true)
+        expect(dialog).toHaveAttribute('open')
     })
 })

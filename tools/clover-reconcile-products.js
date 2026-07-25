@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
@@ -440,14 +439,20 @@ export const variantKey = (item) =>
 const siteVariantRows = (products) =>
     products.flatMap((product) =>
         (Array.isArray(product.size_options) ? product.size_options : []).map(
-            (size) => ({
-                name: product.name,
-                nameKey: normalizeLookup(product.name),
-                category: product.category,
-                size,
-                price: normalizePrice(product.prices?.[size]),
-                product,
-            })
+            (size) => {
+                const normalizedSize = isKnownSize(size)
+                    ? normalizeSize(size)
+                    : size
+                return {
+                    name: product.name,
+                    nameKey: normalizeLookup(product.name),
+                    category: product.category,
+                    size: normalizedSize,
+                    sourceSize: size,
+                    price: normalizePrice(product.prices?.[size]),
+                    product,
+                }
+            }
         )
     )
 
@@ -458,6 +463,9 @@ const byProductKey = (products) =>
             product,
         ])
     )
+
+const isCloverItemUnavailable = (item) =>
+    item.hidden || (item.quantity !== null && item.quantity <= 0)
 
 const closeMatches = (needle, haystack, limit = 3) => {
     const scored = haystack
@@ -557,15 +565,14 @@ export const reconcileProducts = (siteProducts, cloverItemsMap) => {
             likelySiteMatches: closeMatches(clover, siteProductCandidates),
         }))
 
-    const categoryMismatches = cloverItems
-        .map((clover) => ({
-            clover,
-            siteProduct: siteProductsByKey.get(
-                `${clover.nameKey}::${clover.category}`
-            ),
-        }))
-        .filter(({ siteProduct }) => !siteProduct)
-        .map(({ clover }) => {
+    const categoryMismatches = [
+        ...new Map(cloverItems.map((clover) => [clover.nameKey, clover])).values(),
+    ]
+        .filter(
+            (clover) =>
+                !siteProductsByKey.has(`${clover.nameKey}::${clover.category}`)
+        )
+        .map((clover) => {
             const sameName = siteProducts.find(
                 (product) => normalizeLookup(product.name) === clover.nameKey
             )
@@ -599,11 +606,28 @@ export const reconcileProducts = (siteProducts, cloverItemsMap) => {
 
 export const buildNextProducts = (siteProducts, cloverItemsMap) => {
     const currentProducts = byProductKey(siteProducts)
+    const cloverProductStatus = new Map()
     const grouped = new Map()
 
     for (const item of cloverItemsMap.values()) {
         const productKey = `${item.nameKey}::${item.category}`
+        const status = cloverProductStatus.get(productKey) || {
+            hasAvailableVariant: false,
+        }
+        if (!isCloverItemUnavailable(item)) {
+            status.hasAvailableVariant = true
+        }
+        cloverProductStatus.set(productKey, status)
+    }
+
+    for (const item of cloverItemsMap.values()) {
+        const productKey = `${item.nameKey}::${item.category}`
         const existing = currentProducts.get(productKey)
+        const shouldPublishNewProduct =
+            existing || cloverProductStatus.get(productKey)?.hasAvailableVariant
+
+        if (!shouldPublishNewProduct) continue
+
         const name = existing?.name || item.name
         const key = `${normalizeLookup(name)}::${item.category}`
         if (!grouped.has(key)) {
@@ -623,7 +647,7 @@ export const buildNextProducts = (siteProducts, cloverItemsMap) => {
         }
         product.prices[item.size] = item.price
 
-        if (item.hidden || item.quantity <= 0) {
+        if (isCloverItemUnavailable(item)) {
             product.availability = {
                 ...(product.availability || {}),
                 [item.size]: 'Out of Stock',

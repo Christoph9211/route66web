@@ -308,7 +308,9 @@
             />
             <div class="toolbar-actions">
                 <button id="load-btn" class="btn">Import products.json</button>
-                <button id="merge-btn" class="btn">Merge products.json</button>
+                <button id="merge-btn" class="btn">
+                    Merge into loaded catalog
+                </button>
                 <button id="download-all-btn" class="btn" disabled>
                     Download JSON
                 </button>
@@ -619,16 +621,23 @@
             const defaultPresetsByCategory = {
                 Flower: [
                     { size: '1/8 oz', price: 25 },
+                    { size: '1/8 oz', price: 18 },
                     { size: '1/4 oz', price: 50 },
+                    { size: '1/4 oz', price: 32.5 },
                     { size: '1 oz', price: 200 },
+                    { size: '1 oz', price: 125 },
                 ],
                 Concentrates: [
                     { size: '1 gram', price: 10 },
+                    { size: '1 gram', price: 18 },
                     { size: '3 grams', price: 25 },
+                    { size: '3 grams', price: 32.5 },
                 ],
                 'Diamonds & Sauce': [
                     { size: '1 gram', price: 10 },
+                    { size: '1 gram', price: 18 },
                     { size: '3 grams', price: 25 },
+                    { size: '3 grams', price: 32.5 },
                 ],
                 Edibles: [
                     { size: '2 count', price: 5 },
@@ -675,22 +684,41 @@
                 const incomingSizes = Array.isArray(incoming.size_options)
                     ? incoming.size_options
                     : []
+                const sizeByKey = new Map(
+                    existingSizes.map((size) => [
+                        String(size).trim().toLowerCase(),
+                        size,
+                    ])
+                )
+                incomingSizes.forEach((size) => {
+                    const key = String(size).trim().toLowerCase()
+                    if (!sizeByKey.has(key)) sizeByKey.set(key, size)
+                })
+                const prices = { ...(existing.prices || {}) }
+                Object.entries(incoming.prices || {}).forEach(
+                    ([size, price]) => {
+                        prices[
+                            sizeByKey.get(String(size).trim().toLowerCase()) ||
+                                size
+                        ] = price
+                    }
+                )
 
                 return normalizeProductSchema({
                     ...existing,
                     ...incoming,
-                    prices: {
-                        ...(existing.prices || {}),
-                        ...(incoming.prices || {}),
-                    },
-                    size_options: Array.from(
-                        new Set([...existingSizes, ...incomingSizes])
-                    ),
+                    prices,
+                    size_options: Array.from(sizeByKey.values()),
                 })
             }
 
             const loadProducts = (data = [], options = {}) => {
                 const { alertOnRemove = false, merge = false } = options
+                if (merge && products.length === 0) {
+                    throw new Error(
+                        'Import the current products.json before merging a draft.'
+                    )
+                }
                 const normalized = data.map((p) => normalizeProductSchema(p))
                 const valid = []
                 const removed = []
@@ -1141,8 +1169,9 @@
                 const catalogPresets = getCatalogPresetsForCategory(category)
                 const merged = new Map()
                 ;[...defaults, ...catalogPresets].forEach((preset) => {
-                    if (!merged.has(preset.size)) {
-                        merged.set(preset.size, preset)
+                    const key = `${preset.size}||${preset.price}`
+                    if (!merged.has(key)) {
+                        merged.set(key, preset)
                     }
                 })
                 return Array.from(merged.values()).slice(0, 12)

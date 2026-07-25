@@ -15,31 +15,15 @@ export default defineConfig({
                 terms: 'terms-of-service.html',
                 cookie: 'cookie-policy.html',
                 dispensaryStRobert: 'dispensary-st-robert-mo.html',
-                dispensaryNearFortLeonardWood: 'dispensary-near-fort-leonard-wood.html',
-                route66DispensaryStRobert: 'route-66-dispensary-st-robert-mo.html',
-            },
-            output: {
-                manualChunks(id) {
-                    if (id.includes('node_modules')) {
-                        if (id.includes('react')) {
-                            return 'react-vendor'
-                        }
-                        if (id.includes('@vercel')) {
-                            return 'observability'
-                        }
-                        if (id.includes('@fortawesome')) {
-                            return 'icons'
-                        }
-                        return 'vendor'
-                    }
-                },
+                dispensaryNearFortLeonardWood:
+                    'dispensary-near-fort-leonard-wood.html',
+                route66DispensaryStRobert:
+                    'route-66-dispensary-st-robert-mo.html',
             },
         },
     },
     optimizeDeps: {
         include: [
-            '@vercel/analytics/react',
-            '@vercel/speed-insights/react',
             '@fortawesome/free-brands-svg-icons',
             '@fortawesome/free-regular-svg-icons',
             '@fortawesome/free-solid-svg-icons',

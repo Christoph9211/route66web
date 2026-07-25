@@ -80,10 +80,10 @@ describe('App product catalog loading', () => {
         const localPagesHeading = await screen.findByRole('heading', {
             name: 'Explore Local Dispensary Pages',
         })
-        const locationHeading = screen.getByRole('heading', {
+        const locationHeading = await screen.findByRole('heading', {
             name: 'Serving St Robert and Surrounding Communities',
         })
-        const reviewsHeading = screen.getByRole('heading', {
+        const reviewsHeading = await screen.findByRole('heading', {
             name: 'Google Reviews',
         })
 
