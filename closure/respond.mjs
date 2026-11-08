@@ -1,6 +1,6 @@
 import { pages } from './pages.mjs'
 
-export const closeAt = Date.parse('2026-11-12T06:00:00.000Z')
+export const closeAt = Date.parse('2020-01-01T00:00:00.000Z')
 export function closureResponse(request, now = Date.now()) {
     if (now < closeAt) return null
     const headers = { 'Cache-Control': 'no-store', 'CDN-Cache-Control': 'no-store', 'Vercel-CDN-Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', 'X-Route66-Status': 'closed' }
