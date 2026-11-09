@@ -2,9 +2,13 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { closureResponse, closeAt } from './respond.mjs'
 const request = (path, method = 'GET') => new Request('https://www.route66hemp.com' + path, { method })
-test('Central midnight boundary and unchanged pre-close handling', () => {
+test('Central midnight boundary and future-tense advance notice', async () => {
  assert.equal(new Intl.DateTimeFormat('en-US', {timeZone:'America/Chicago',dateStyle:'short',timeStyle:'long'}).format(closeAt), '11/12/26, 12:00:00 AM CST')
- for (const path of ['/', '/products/', '/products/products.json', '/assets/main.js', '/api/orders']) assert.equal(closureResponse(request(path),closeAt-1),null)
+ for (const path of ['/', '/products/', '/contact/', '/dispensary-st-robert-mo/']) {
+  const r=closureResponse(request(path),closeAt-1); assert.equal(r.status,200); assert.equal(r.headers.get('x-route66-status'),'closing'); const s=await r.text(); assert(s.includes('Our final day of business will be')); assert(s.includes('We will be closing in response to changes in Missouri hemp regulations.')); assert(s.includes('route66hemp@gmail.com')); assert(!s.includes('Has Closed')); assert(!s.includes('ended retail')); assert(!s.includes('was November')); assert(!s.includes('We closed'))
+ }
+ for (const path of ['/products/products.json','/assets/main.js','/api/orders']) { const r=closureResponse(request(path),closeAt-1);assert.equal(r.status,410);assert(!(await r.text()).includes('has closed')) }
+ assert.equal(closureResponse(request('/api/orders','POST'),closeAt-1).status,405)
 })
 test('All old landing pages close at boundary, without query/header override', async () => {
  for (const path of ['/', '/products/', '/contact/', '/dispensary-st-robert-mo/', '/dispensary-near-fort-leonard-wood/', '/route-66-dispensary-st-robert-mo.html','/?now=0']) {
