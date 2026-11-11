@@ -8,7 +8,12 @@ export function closureResponse(request, now = Date.now()) {
     const path = new URL(request.url).pathname.replace(/\/+$/, '') || '/'
     const respond = (body, type, status = 200) => new Response(request.method === 'HEAD' ? null : body, { status, headers: { ...headers, 'Content-Type': type } })
     if (path === '/robots.txt') return respond('User-agent: *\nAllow: /\nSitemap: https://www.route66hemp.com/sitemap.xml\n', 'text/plain; charset=utf-8')
-    if (path === '/sitemap.xml') return respond('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.route66hemp.com/</loc></url></urlset>', 'application/xml')
+    if (path === '/sitemap.xml' || path === '/image-sitemap.xml') return respond('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.route66hemp.com/</loc></url></urlset>', 'application/xml')
+    // These former store landing pages now share the closure/contact notice.
+    const legacyLanding = path.replace(/\.html$/, '')
+    if (['/dispensary-st-robert-mo', '/dispensary-near-fort-leonard-wood', '/route-66-dispensary-st-robert-mo'].includes(legacyLanding)) {
+        return new Response(null, { status: 308, headers: { ...headers, Location: 'https://www.route66hemp.com/' } })
+    }
     const policy = path.replace(/^\//, '').replace(/\.html$/, '')
     if (['privacy-policy', 'terms-of-service', 'cookie-policy'].includes(policy)) return respond(closed ? pages[policy] : pages[policy].replace('following the store closure', 'during the store closure transition'), 'text/html; charset=utf-8')
     if (/^\/(api|assets|products)(\/|$)/.test(path) && path !== '/products') return respond(closed ? 'This content is no longer available. Route 66 Hemp has closed.' : 'This content is no longer available. Route 66 Hemp will be closing on November 11, 2026.', 'text/plain; charset=utf-8', 410)
