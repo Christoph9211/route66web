@@ -1,4 +1,9 @@
 {
+  "git": {
+    "deploymentEnabled": {
+      "fix/closure-search-indexing": false
+    }
+  },
   "cleanUrls": true,
   "trailingSlash": true,
   "headers": [
